@@ -35,6 +35,21 @@ export class LaboratoryService {
     private lamp_base;
     private transfert_boxes;
     private transfert_boxes_rings;
+    private rose_rouge;
+    private rose_rouge_frame;
+    private verbal_shoota;
+    private verbal_shoota_frame;
+    private lapin_blanc;
+    private lapin_blanc_frame;
+    private fourty_four;
+    private fourty_four_marie_louise;
+    private fourty_four_frame;
+    private brique;
+    private brique_marie_louise;
+    private brique_frame;
+    private tofu;
+    private tofu_marie_louise;
+    private tofu_frame;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -48,6 +63,24 @@ export class LaboratoryService {
     private transfert_boxes_BAKING_HIGHLIGHT: BABYLON.Texture;
     private transfert_boxes_rings_BAKING: BABYLON.Texture;
     private transfert_boxes_rings_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private rose_rouge_BAKING: BABYLON.Texture;
+    private rose_rouge_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private verbal_shoota_BAKING: BABYLON.Texture;
+    private verbal_shoota_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private lapin_blanc_BAKING: BABYLON.Texture;
+    private lapin_blanc_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private fourty_four_BAKING: BABYLON.Texture;
+    private fourty_four_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private brique_BAKING: BABYLON.Texture;
+    private brique_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private tofu_BAKING: BABYLON.Texture;
+    private tofu_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private fourty_four_marie_louise_BAKING: BABYLON.Texture;
+    private fourty_four_marie_louise_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private brique_marie_louise_BAKING: BABYLON.Texture;
+    private brique_marie_louise_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private tofu_marie_louise_BAKING: BABYLON.Texture;
+    private tofu_marie_louise_BAKING_HIGHLIGHT: BABYLON.Texture;
 
     public constructor(
         private ngZone: NgZone,
@@ -176,6 +209,95 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("transfert_boxes_rings", "../../assets/glb/laboratory/", "transfert_boxes_rings.glb", this.scene).then((result) => {
             this.transfert_boxes_rings = this.scene.getMeshByName("transfert_boxes_rings");
+        });
+
+        // PHOTOGRAPHY
+
+        this.rose_rouge_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/rose_rouge_BAKING.jpg", this.scene, false, false);
+        this.rose_rouge_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/rose_rouge_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.verbal_shoota_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/verbal_shoota_BAKING.jpg", this.scene, false, false);
+        this.verbal_shoota_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/verbal_shoota_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.lapin_blanc_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/lapin_blanc_BAKING.jpg", this.scene, false, false);
+        this.lapin_blanc_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/lapin_blanc_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.fourty_four_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/fourty_four_BAKING.jpg", this.scene, false, false);
+        this.fourty_four_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/fourty_four_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.brique_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/brique_BAKING.jpg", this.scene, false, false);
+        this.brique_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/brique_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.tofu_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/tofu_BAKING.jpg", this.scene, false, false);
+        this.tofu_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/tofu_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.fourty_four_marie_louise_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/fourty_four_marie_louise_BAKING.jpg", this.scene, false, false);
+        this.fourty_four_marie_louise_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/fourty_four_marie_louise_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.brique_marie_louise_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/brique_marie_louise_BAKING.jpg", this.scene, false, false);
+        this.brique_marie_louise_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/brique_marie_louise_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.tofu_marie_louise_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/tofu_marie_louise_BAKING.jpg", this.scene, false, false);
+        this.tofu_marie_louise_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/tofu_marie_louise_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("rose_rouge", "../../assets/glb/laboratory/", "rose_rouge.glb", this.scene).then((result) => {
+            this.rose_rouge = this.scene.getMeshByName("rose_rouge");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("rose_rouge_frame", "../../assets/glb/laboratory/", "rose_rouge_frame.glb", this.scene).then((result) => {
+            this.rose_rouge_frame = this.scene.getMeshByName("rose_rouge_frame");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("verbal_shoota", "../../assets/glb/laboratory/", "verbal_shoota.glb", this.scene).then((result) => {
+            this.verbal_shoota = this.scene.getMeshByName("verbal_shoota");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("verbal_shoota_frame", "../../assets/glb/laboratory/", "verbal_shoota_frame.glb", this.scene).then((result) => {
+            this.verbal_shoota_frame = this.scene.getMeshByName("verbal_shoota_frame");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("lapin_blanc", "../../assets/glb/laboratory/", "lapin_blanc.glb", this.scene).then((result) => {
+            this.lapin_blanc = this.scene.getMeshByName("lapin_blanc");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("lapin_blanc_frame", "../../assets/glb/laboratory/", "lapin_blanc_frame.glb", this.scene).then((result) => {
+            this.lapin_blanc_frame = this.scene.getMeshByName("lapin_blanc_frame");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("fourty_four", "../../assets/glb/laboratory/", "fourty_four.glb", this.scene).then((result) => {
+            this.fourty_four = this.scene.getMeshByName("fourty_four");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("fourty_four_marie_louise", "../../assets/glb/laboratory/", "fourty_four_marie_louise.glb", this.scene).then((result) => {
+            this.fourty_four_marie_louise = this.scene.getMeshByName("fourty_four_marie_louise");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("fourty_four_frame", "../../assets/glb/laboratory/", "fourty_four_frame.glb", this.scene).then((result) => {
+            this.fourty_four_frame = this.scene.getMeshByName("fourty_four_frame");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("brique", "../../assets/glb/laboratory/", "brique.glb", this.scene).then((result) => {
+            this.brique = this.scene.getMeshByName("brique");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("brique_marie_louise", "../../assets/glb/laboratory/", "brique_marie_louise.glb", this.scene).then((result) => {
+            this.brique_marie_louise = this.scene.getMeshByName("brique_marie_louise");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("brique_frame", "../../assets/glb/laboratory/", "brique_frame.glb", this.scene).then((result) => {
+            this.brique_frame = this.scene.getMeshByName("brique_frame");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("tofu", "../../assets/glb/laboratory/", "tofu.glb", this.scene).then((result) => {
+            this.tofu = this.scene.getMeshByName("tofu");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("tofu_marie_louise", "../../assets/glb/laboratory/", "tofu_marie_louise.glb", this.scene).then((result) => {
+            this.tofu_marie_louise = this.scene.getMeshByName("tofu_marie_louise");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("tofu_frame", "../../assets/glb/laboratory/", "tofu_frame.glb", this.scene).then((result) => {
+            this.tofu_frame = this.scene.getMeshByName("tofu_frame");
         });
     }
 
