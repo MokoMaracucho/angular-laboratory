@@ -64,6 +64,9 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("parquet", "../../assets/glb/laboratory/", "parquet.glb").then((result) => {
         });
+
+        BABYLON.SceneLoader.ImportMeshAsync("persian_carpet", "../../assets/glb/laboratory/", "persian_carpet.glb").then((result) => {
+        });
     }
 
     public animate(): void {
