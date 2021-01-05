@@ -18,8 +18,21 @@ export class LaboratoryService {
     private hemispheric_light: BABYLON.Light;
     private directional_light: BABYLON.DirectionalLight;
 
-    private plan_inside;
-    private plan_outside;
+    private pegasus;
+    private pegasus_inside;
+    private pegasus_laces;
+    private pegasus_logo;
+    private pegasus_sole_inside;
+    private pegasus_sole_outside;
+
+    private pegasus_BAKING: BABYLON.Texture;
+    private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private pegasus_laces_BAKING: BABYLON.Texture;
+    private pegasus_laces_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private pegasus_sole_inside_BAKING: BABYLON.Texture;
+    private pegasus_sole_inside_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private pegasus_sole_outside_BAKING: BABYLON.Texture;
+    private pegasus_sole_outside_BAKING_HIGHLIGHT: BABYLON.Texture;
 
     public constructor(
         private ngZone: NgZone,
@@ -53,11 +66,9 @@ export class LaboratoryService {
         // PLANS
 
         BABYLON.SceneLoader.ImportMeshAsync("plan_inside", "../../assets/glb/laboratory/", "plan_inside.glb").then((result) => {
-            this.plan_inside = this.scene.getMeshByName("plan_inside");
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("plan_outside", "../../assets/glb/laboratory/", "plan_outside.glb").then((result) => {
-            this.plan_outside = this.scene.getMeshByName("plan_outside");
         });
 
         // FLOOR
@@ -66,6 +77,44 @@ export class LaboratoryService {
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("persian_carpet", "../../assets/glb/laboratory/", "persian_carpet.glb").then((result) => {
+        });
+
+        // PEGASUS
+
+        this.pegasus_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_BAKING.jpg", this.scene, false, false);
+        this.pegasus_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.pegasus_laces_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_laces_BAKING.jpg", this.scene, false, false);
+        this.pegasus_laces_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_laces_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.pegasus_sole_inside_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_sole_inside_BAKING.jpg", this.scene, false, false);
+        this.pegasus_sole_inside_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_sole_inside_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.pegasus_sole_outside_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_sole_outside_BAKING.jpg", this.scene, false, false);
+        this.pegasus_sole_outside_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_sole_outside_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("pegasus", "../../assets/glb/laboratory/", "pegasus.glb", this.scene).then((result) => {
+            this.pegasus = this.scene.getMeshByName("pegasus");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("pegasus_inside", "../../assets/glb/laboratory/", "pegasus_inside.glb", this.scene).then((result) => {
+            this.pegasus_inside = this.scene.getMeshByName("pegasus_inside");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("pegasus_laces", "../../assets/glb/laboratory/", "pegasus_laces.glb", this.scene).then((result) => {
+            this.pegasus_laces = this.scene.getMeshByName("pegasus_laces");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("pegasus_logo", "../../assets/glb/laboratory/", "pegasus_logo.glb", this.scene).then((result) => {
+            this.pegasus_logo = this.scene.getMeshByName("pegasus_logo");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("pegasus_sole_inside", "../../assets/glb/laboratory/", "pegasus_sole_inside.glb", this.scene).then((result) => {
+            this.pegasus_sole_inside = this.scene.getMeshByName("pegasus_sole_inside");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("pegasus_sole_outside", "../../assets/glb/laboratory/", "pegasus_sole_outside.glb", this.scene).then((result) => {
+            this.pegasus_sole_outside = this.scene.getMeshByName("pegasus_sole_outside");
         });
     }
 
