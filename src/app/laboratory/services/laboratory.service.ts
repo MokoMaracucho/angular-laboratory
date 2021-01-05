@@ -33,6 +33,8 @@ export class LaboratoryService {
     private lampshade_tissue;
     private lampshade;
     private lamp_base;
+    private transfert_boxes;
+    private transfert_boxes_rings;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -42,6 +44,10 @@ export class LaboratoryService {
     private pegasus_sole_inside_BAKING_HIGHLIGHT: BABYLON.Texture;
     private pegasus_sole_outside_BAKING: BABYLON.Texture;
     private pegasus_sole_outside_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private transfert_boxes_BAKING: BABYLON.Texture;
+    private transfert_boxes_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private transfert_boxes_rings_BAKING: BABYLON.Texture;
+    private transfert_boxes_rings_BAKING_HIGHLIGHT: BABYLON.Texture;
 
     public constructor(
         private ngZone: NgZone,
@@ -154,6 +160,22 @@ export class LaboratoryService {
         BABYLON.SceneLoader.ImportMeshAsync("lampshade", "../../assets/glb/laboratory/", "lampshade.glb", this.scene).then((result) => {
         });
         BABYLON.SceneLoader.ImportMeshAsync("lamp_base", "../../assets/glb/laboratory/", "lamp_base.glb", this.scene).then((result) => {
+        });
+
+        // TRANSFERT BOXES
+
+        this.transfert_boxes_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_BAKING.jpg", this.scene, false, false);
+        this.transfert_boxes_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.transfert_boxes_rings_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_rings_BAKING.jpg", this.scene, false, false);
+        this.transfert_boxes_rings_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_rings_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("transfert_boxes", "../../assets/glb/laboratory/", "transfert_boxes.glb", this.scene).then((result) => {
+            this.transfert_boxes = this.scene.getMeshByName("transfert_boxes");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("transfert_boxes_rings", "../../assets/glb/laboratory/", "transfert_boxes_rings.glb", this.scene).then((result) => {
+            this.transfert_boxes_rings = this.scene.getMeshByName("transfert_boxes_rings");
         });
     }
 
