@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+
+import { LaboratoryService } from './services/laboratory.service';
 
 @Component({
   selector: 'app-laboratory',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LaboratoryComponent implements OnInit {
 
-  constructor() { }
+    @ViewChild('rendererCanvas_laboratory', { static: true })
+    public rendererCanvas_laboratory: ElementRef<HTMLCanvasElement>;
 
-  ngOnInit(): void {
-  }
 
+    public constructor(
+      private laboratoryService: LaboratoryService
+    ) {}
+
+    ngOnInit(): void {
+        this.laboratoryService.createScene(this.rendererCanvas_laboratory);
+        this.laboratoryService.animate();
+    }
 }

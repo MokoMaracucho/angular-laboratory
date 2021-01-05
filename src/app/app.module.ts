@@ -7,6 +7,7 @@ import { LaboratoryComponent } from './laboratory/laboratory.component';
 import { LaboratoryModule } from './laboratory/laboratory.module';
 import { DevelopmentComponent } from './development/development.component';
 import { DevelopmentModule } from './development/development.module';
+import { WindowRefService } from './shared/services/window-ref.service';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,9 @@ import { DevelopmentModule } from './development/development.module';
         DevelopmentModule,
         AppRoutingModule
     ],
-    providers: [],
+    providers: [
+      WindowRefService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
