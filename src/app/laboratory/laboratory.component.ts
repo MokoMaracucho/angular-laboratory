@@ -12,7 +12,6 @@ export class LaboratoryComponent implements OnInit {
     @ViewChild('rendererCanvas_laboratory', { static: true })
     public rendererCanvas_laboratory: ElementRef<HTMLCanvasElement>;
 
-
     public constructor(
       private laboratoryService: LaboratoryService
     ) {}
