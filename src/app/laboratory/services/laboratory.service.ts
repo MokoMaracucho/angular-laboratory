@@ -34,7 +34,8 @@ export class LaboratoryService {
 
         // CANERAS
 
-        this.arc_rotate_camera = new BABYLON.ArcRotateCamera("arc_rotate_camera", 2.25, 1.05, 50, new BABYLON.Vector3(0, 0, 0), this.scene);
+        this.arc_rotate_camera = new BABYLON.ArcRotateCamera("arc_rotate_camera", 2.25, 1.05, 50, new BABYLON.Vector3(-16.2, 5, -12), this.scene);
+        this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
         this.arc_rotate_camera.lowerBetaLimit = 0.1;
         this.arc_rotate_camera.upperBetaLimit = 1.4;
         this.arc_rotate_camera.lowerRadiusLimit = 20;
@@ -57,6 +58,11 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("plan_outside", "../../assets/glb/laboratory/", "plan_outside.glb").then((result) => {
             this.plan_outside = this.scene.getMeshByName("plan_outside");
+        });
+
+        // FLOOR
+
+        BABYLON.SceneLoader.ImportMeshAsync("parquet", "../../assets/glb/laboratory/", "parquet.glb").then((result) => {
         });
     }
 
