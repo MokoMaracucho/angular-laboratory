@@ -24,6 +24,8 @@ export class LaboratoryService {
     private pegasus_logo;
     private pegasus_sole_inside;
     private pegasus_sole_outside;
+    private speakers;
+    private loud_speakers;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -115,6 +117,14 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("pegasus_sole_outside", "../../assets/glb/laboratory/", "pegasus_sole_outside.glb", this.scene).then((result) => {
             this.pegasus_sole_outside = this.scene.getMeshByName("pegasus_sole_outside");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("speakers", "../../assets/glb/laboratory/", "speakers.glb", this.scene).then((result) => {
+            this.speakers = this.scene.getMeshByName("speakers");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("loud_speakers", "../../assets/glb/laboratory/", "loud_speakers.glb", this.scene).then((result) => {
+            this.loud_speakers = this.scene.getMeshByName("loud_speakers");
         });
     }
 
