@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LaboratoryComponent } from './laboratory/laboratory.component';
 import { DevelopmentComponent } from './development/development.component';
+import { LaboratoryModule } from './laboratory/laboratory.module';
+import { DevelopmentModule } from './development/development.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { DevelopmentComponent } from './development/development.component';
       { path: '', redirectTo: 'laboratory', pathMatch: 'full' },
       { path: 'development', component: DevelopmentComponent },
       { path: '**', redirectTo: 'laboratory', pathMatch: 'full' }
-    ])
+    ]),
+    LaboratoryModule,
+    DevelopmentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
