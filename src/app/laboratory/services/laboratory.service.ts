@@ -2,6 +2,7 @@ import { Injectable, NgZone, ElementRef } from '@angular/core';
 import { WindowRefService } from '../../shared/services/window-ref.service';
 
 import * as BABYLON from 'babylonjs';
+import 'babylonjs-loaders';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class LaboratoryService {
     private arc_rotate_camera: BABYLON.ArcRotateCamera;
 
     private hemispheric_light: BABYLON.Light;
+    private directional_light: BABYLON.DirectionalLight;
+
+    private plan_inside;
+    private plan_outside;
 
     public constructor(
         private ngZone: NgZone,
@@ -41,7 +46,18 @@ export class LaboratoryService {
         this.hemispheric_light = new BABYLON.HemisphericLight('hemispheric_light', new BABYLON.Vector3(0, 1, 0), this.scene);
         this.hemispheric_light.intensity = 0.8;
 
-        const box = BABYLON.MeshBuilder.CreateBox("box", {});
+        this.directional_light = new BABYLON.DirectionalLight("directional_light", new BABYLON.Vector3(1, -5, -2), this.scene);
+        this.directional_light.intensity = 0.5;
+
+        // PLANS
+
+        BABYLON.SceneLoader.ImportMeshAsync("plan_inside", "../../assets/glb/laboratory/", "plan_inside.glb").then((result) => {
+            this.plan_inside = this.scene.getMeshByName("plan_inside");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("plan_outside", "../../assets/glb/laboratory/", "plan_outside.glb").then((result) => {
+            this.plan_outside = this.scene.getMeshByName("plan_outside");
+        });
     }
 
     public animate(): void {
