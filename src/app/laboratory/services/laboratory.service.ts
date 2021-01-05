@@ -27,6 +27,12 @@ export class LaboratoryService {
     private speakers;
     private loud_speakers;
     private chiva;
+    private leather_armchair;
+    private blanket;
+    private ome_gonorreas;
+    private lampshade_tissue;
+    private lampshade;
+    private lamp_base;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -120,16 +126,34 @@ export class LaboratoryService {
             this.pegasus_sole_outside = this.scene.getMeshByName("pegasus_sole_outside");
         });
 
+        // SPEAKERS
+
         BABYLON.SceneLoader.ImportMeshAsync("speakers", "../../assets/glb/laboratory/", "speakers.glb", this.scene).then((result) => {
-            this.speakers = this.scene.getMeshByName("speakers");
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("loud_speakers", "../../assets/glb/laboratory/", "loud_speakers.glb", this.scene).then((result) => {
         });
 
-        BABYLON.SceneLoader.ImportMeshAsync("loud_speakers", "../../assets/glb/laboratory/", "loud_speakers.glb", this.scene).then((result) => {
-            this.loud_speakers = this.scene.getMeshByName("loud_speakers");
-        });
+        // CHIVA
 
         BABYLON.SceneLoader.ImportMeshAsync("chiva", "../../assets/glb/laboratory/", "chiva.glb", this.scene).then((result) => {
-            this.chiva = this.scene.getMeshByName("chiva");
+        });
+
+        // LEATHER ARMCHAIR
+
+        BABYLON.SceneLoader.ImportMeshAsync("leather_armchair", "../../assets/glb/laboratory/", "leather_armchair.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("blanket", "../../assets/glb/laboratory/", "blanket.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("ome_gonorreas", "../../assets/glb/laboratory/", "ome_gonorreas.glb", this.scene).then((result) => {
+        });
+
+        // LAMP
+
+        BABYLON.SceneLoader.ImportMeshAsync("lampshade_tissue", "../../assets/glb/laboratory/", "lampshade_tissue.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("lampshade", "../../assets/glb/laboratory/", "lampshade.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("lamp_base", "../../assets/glb/laboratory/", "lamp_base.glb", this.scene).then((result) => {
         });
     }
 
