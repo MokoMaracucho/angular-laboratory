@@ -67,6 +67,8 @@ export class LaboratoryService {
     private desk;
     private via_air_mail;
     private support_laptop;
+    private wood_box_center;
+    private wood_box_right;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -358,7 +360,6 @@ export class LaboratoryService {
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("checker_bottom", "../../assets/glb/laboratory/", "checker_bottom.glb", this.scene).then((result) => {
-            this.checker_bottom = this.scene.getMeshByName("checker_bottom");
         });
 
         // TAROT DECK
@@ -371,35 +372,29 @@ export class LaboratoryService {
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("virgen_guadalupe", "../../assets/glb/laboratory/", "virgen_guadalupe.glb", this.scene).then((result) => {
-            this.virgen_guadalupe = this.scene.getMeshByName("virgen_guadalupe");
         });
 
         // VIRGEN
 
         BABYLON.SceneLoader.ImportMeshAsync("candelstick", "../../assets/glb/laboratory/", "candelstick.glb", this.scene).then((result) => {
-            this.candelstick = this.scene.getMeshByName("candelstick");
         });
 
         // WALL LEFT
 
         BABYLON.SceneLoader.ImportMeshAsync("wall_left_front", "../../assets/glb/laboratory/", "wall_left_front.glb", this.scene).then((result) => {
-            this.wall_left_front = this.scene.getMeshByName("wall_left_front");
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("wall_left_back", "../../assets/glb/laboratory/", "wall_left_back.glb", this.scene).then((result) => {
-            this.wall_left_back = this.scene.getMeshByName("wall_left_back");
         });
 
         // MIRROR
 
         BABYLON.SceneLoader.ImportMeshAsync("mirror_frame", "../../assets/glb/laboratory/", "mirror_frame.glb", this.scene).then((result) => {
-            this.mirror_frame = this.scene.getMeshByName("mirror_frame");
         });
 
         // DAISY
 
         BABYLON.SceneLoader.ImportMeshAsync("daisy", "../../assets/glb/laboratory/", "daisy.glb", this.scene).then((result) => {
-            this.daisy = this.scene.getMeshByName("daisy");
         });
 
         // AMOR AMOR
@@ -418,11 +413,9 @@ export class LaboratoryService {
         // DESK
 
         BABYLON.SceneLoader.ImportMeshAsync("trestle_left", "../../assets/glb/laboratory/", "trestle_left.glb", this.scene).then((result) => {
-            this.trestle_left = this.scene.getMeshByName("trestle_left");
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("trestle_right", "../../assets/glb/laboratory/", "trestle_right.glb", this.scene).then((result) => {
-            this.trestle_right = this.scene.getMeshByName("trestle_right");
         });
 
         var glass_MATERIAL = new BABYLON.StandardMaterial("desk_MATERIAL", this.scene);
@@ -458,7 +451,12 @@ export class LaboratoryService {
         // COMPUTERS
 
         BABYLON.SceneLoader.ImportMeshAsync("support_laptop", "../../assets/glb/laboratory/", "support_laptop.glb", this.scene).then((result) => {
-            this.support_laptop = this.scene.getMeshByName("support_laptop");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("wood_box_center", "../../assets/glb/laboratory/", "wood_box_center.glb", this.scene).then((result) => {
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("wood_box_right", "../../assets/glb/laboratory/", "wood_box_right.glb", this.scene).then((result) => {
         });
     }
 
