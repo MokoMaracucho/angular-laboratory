@@ -53,6 +53,8 @@ export class LaboratoryService {
     private checker;
     private checker_locks;
     private checker_bottom;
+    private tarot_deck;
+    private virgen_guadalupe;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -88,6 +90,8 @@ export class LaboratoryService {
     private checker_BAKING_HIGHLIGHT: BABYLON.Texture;
     private checker_locks_BAKING: BABYLON.Texture;
     private checker_locks_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private tarot_deck_BAKING: BABYLON.Texture;
+    private tarot_deck_BAKING_HIGHLIGHT: BABYLON.Texture;
 
     public constructor(
         private ngZone: NgZone,
@@ -339,6 +343,19 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("checker_bottom", "../../assets/glb/laboratory/", "checker_bottom.glb", this.scene).then((result) => {
             this.checker_bottom = this.scene.getMeshByName("checker_bottom");
+        });
+
+        // TAROT DECK
+
+        this.tarot_deck_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/tarot_deck_BAKING.jpg", this.scene, false, false);
+        this.tarot_deck_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/tarot_deck_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("tarot_deck", "../../assets/glb/laboratory/", "tarot_deck.glb", this.scene).then((result) => {
+            this.tarot_deck = this.scene.getMeshByName("tarot_deck");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("virgen_guadalupe", "../../assets/glb/laboratory/", "virgen_guadalupe.glb", this.scene).then((result) => {
+            this.virgen_guadalupe = this.scene.getMeshByName("virgen_guadalupe");
         });
     }
 
