@@ -457,8 +457,6 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("thermos", "../../assets/glb/laboratory/", "thermos.glb", this.scene).then((result) => {
         });
-        BABYLON.SceneLoader.ImportMeshAsync("thermos_cap", "../../assets/glb/laboratory/", "thermos_cap.glb", this.scene).then((result) => {
-        });
 
         // POST-IT
 
