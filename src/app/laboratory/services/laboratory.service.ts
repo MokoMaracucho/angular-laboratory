@@ -460,14 +460,14 @@ export class LaboratoryService {
 
         // POST-IT
 
-        BABYLON.SceneLoader.ImportMeshAsync("post_it", "../../assets/glb/", "post_it.glb", this.scene).then((result) => {
+        BABYLON.SceneLoader.ImportMeshAsync("post_it", "../../assets/glb/laboratory/", "post_it.glb", this.scene).then((result) => {
         });
 
         // MOTEBOOKS
 
-        BABYLON.SceneLoader.ImportMeshAsync("notebook_bottom", "../../assets/glb/", "notebook_bottom.glb", this.scene).then((result) => {
+        BABYLON.SceneLoader.ImportMeshAsync("notebook_bottom", "../../assets/glb/laboratory/", "notebook_bottom.glb", this.scene).then((result) => {
         });
-        BABYLON.SceneLoader.ImportMeshAsync("notebook_top", "../../assets/glb/", "notebook_top.glb", this.scene).then((result) => {
+        BABYLON.SceneLoader.ImportMeshAsync("notebook_top", "../../assets/glb/laboratory/", "notebook_top.glb", this.scene).then((result) => {
         });
 
         // COMPUTERS
