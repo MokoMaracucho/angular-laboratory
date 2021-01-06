@@ -65,6 +65,8 @@ export class LaboratoryService {
     private trestle_left;
     private trestle_right;
     private desk;
+    private via_air_mail;
+    private support_laptop;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -104,6 +106,8 @@ export class LaboratoryService {
     private tarot_deck_BAKING_HIGHLIGHT: BABYLON.Texture;
     private amor_amor_BAKING: BABYLON.Texture;
     private amor_amor_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private via_air_mail_BAKING: BABYLON.Texture;
+    private via_air_mail_BAKING_HIGHLIGHT: BABYLON.Texture;
 
     public constructor(
         private ngZone: NgZone,
@@ -442,6 +446,20 @@ export class LaboratoryService {
             this.desk.material = glass_MATERIAL;
         });
 
+        // VIA AIR MAIL
+
+        this.via_air_mail_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/via_air_mail_BAKING.jpg", this.scene, false, false);
+        this.via_air_mail_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/via_air_mail_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("via_air_mail", "../../assets/glb/laboratory/", "via_air_mail.glb", this.scene).then((result) => {
+            this.via_air_mail = this.scene.getMeshByName("via_air_mail");
+        });
+
+        // COMPUTERS
+
+        BABYLON.SceneLoader.ImportMeshAsync("support_laptop", "../../assets/glb/laboratory/", "support_laptop.glb", this.scene).then((result) => {
+            this.support_laptop = this.scene.getMeshByName("support_laptop");
+        });
     }
 
     public animate(): void {
