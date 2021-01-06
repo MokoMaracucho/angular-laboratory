@@ -97,6 +97,7 @@ export class LaboratoryService {
     private nhs_rainbow;
     private solar_system;
     private pablo;
+    private shelf;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -680,6 +681,17 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("pablo", "../../assets/glb/laboratory/", "pablo.glb", this.scene).then((result) => {
             this.pablo = this.scene.getMeshByName("pablo");
+        });
+
+        // SHELF
+
+        BABYLON.SceneLoader.ImportMeshAsync("shelf", "../../assets/glb/laboratory/", "shelf.glb", this.scene).then((result) => {
+            this.shelf = this.scene.getMeshByName("shelf");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("book_strategie_choc", "../../assets/glb/laboratory/", "book_strategie_choc.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("book_no_logo", "../../assets/glb/laboratory/", "book_no_logo.glb", this.scene).then((result) => {
         });
     }
 
