@@ -97,7 +97,25 @@ export class LaboratoryService {
     private nhs_rainbow;
     private solar_system;
     private pablo;
+    private united_kingdom_blue;
+    private united_kingdom_white;
+    private united_kingdom_red;
     private shelf;
+    private book_strategie_choc;
+    private book_no_logo;
+    private book_serpent_cosmique;
+    private book_meilleur_mondes;
+    private book_dictionnaire_symboles;
+    private book_prince;
+    private book_ca_I;
+    private book_ca_II;
+    private book_ca_III;
+    private book_sagrada_biblia;
+    private book_nuit_enfants_rois;
+    private world_map;
+    private world_map_bar;
+    private world_map_basement_metal;
+    private world_map_basement_marble;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -151,6 +169,12 @@ export class LaboratoryService {
     private screen_center_BAKING_HIGHLIGHT: BABYLON.Texture;
     private screen_right_BAKING: BABYLON.Texture;
     private screen_right_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private united_kingdom_red_BAKING: BABYLON.Texture;
+    private united_kingdom_red_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private united_kingdom_white_BAKING: BABYLON.Texture;
+    private united_kingdom_white_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private united_kingdom_blue_BAKING: BABYLON.Texture;
+    private united_kingdom_blue_BAKING_HIGHLIGHT: BABYLON.Texture;
 
     private glass_MATERIAL: BABYLON.StandardMaterial;
     private glass_blue_MATERIAL: BABYLON.StandardMaterial;
@@ -683,15 +707,72 @@ export class LaboratoryService {
             this.pablo = this.scene.getMeshByName("pablo");
         });
 
+        // LANGUAGES
+
+        this.united_kingdom_red_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_red_BAKING.jpg", this.scene, false, false);
+        this.united_kingdom_red_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_red_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.united_kingdom_white_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_white_BAKING.jpg", this.scene, false, false);
+        this.united_kingdom_white_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_white_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.united_kingdom_blue_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_blue_BAKING.jpg", this.scene, false, false);
+        this.united_kingdom_blue_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_blue_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("united_kingdom_black", "../../assets/glb/laboratory/", "united_kingdom_black.glb").then((result) => {
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("united_kingdom_blue", "../../assets/glb/laboratory/", "united_kingdom_blue.glb").then((result) => {
+            this.united_kingdom_blue = this.scene.getMeshByName("united_kingdom_blue");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("united_kingdom_white", "../../assets/glb/laboratory/", "united_kingdom_white.glb").then((result) => {
+            this.united_kingdom_white = this.scene.getMeshByName("united_kingdom_white");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("united_kingdom_red", "../../assets/glb/laboratory/", "united_kingdom_red.glb").then((result) => {
+            this.united_kingdom_red = this.scene.getMeshByName("united_kingdom_red");
+        });
+
         // SHELF
 
         BABYLON.SceneLoader.ImportMeshAsync("shelf", "../../assets/glb/laboratory/", "shelf.glb", this.scene).then((result) => {
             this.shelf = this.scene.getMeshByName("shelf");
         });
 
+        // BOOKS
+
         BABYLON.SceneLoader.ImportMeshAsync("book_strategie_choc", "../../assets/glb/laboratory/", "book_strategie_choc.glb", this.scene).then((result) => {
         });
         BABYLON.SceneLoader.ImportMeshAsync("book_no_logo", "../../assets/glb/laboratory/", "book_no_logo.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("book_serpent_cosmique", "../../assets/glb/laboratory/", "book_serpent_cosmique.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("book_meilleur_mondes", "../../assets/glb/laboratory/", "book_meilleur_mondes.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("book_dictionnaire_symboles", "../../assets/glb/laboratory/", "book_dictionnaire_symboles.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("book_prince", "../../assets/glb/laboratory/", "book_prince.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("book_ca_I", "../../assets/glb/laboratory/", "book_ca_I.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("book_ca_II", "../../assets/glb/laboratory/", "book_ca_II.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("book_ca_III", "../../assets/glb/laboratory/", "book_ca_III.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("book_sagrada_biblia", "../../assets/glb/laboratory/", "book_sagrada_biblia.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("book_nuit_enfants_rois", "../../assets/glb/laboratory/", "book_nuit_enfants_rois.glb", this.scene).then((result) => {
+        });
+
+        // WORLD MAP
+
+        BABYLON.SceneLoader.ImportMeshAsync("world_map", "../../assets/glb/laboratory/", "world_map.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("world_map_bar", "../../assets/glb/laboratory/", "world_map_bar.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("world_map_basement_metal", "../../assets/glb/laboratory/", "world_map_basement_metal.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("world_map_basement_marble", "../../assets/glb/laboratory/", "world_map_basement_marble.glb", this.scene).then((result) => {
         });
     }
 
