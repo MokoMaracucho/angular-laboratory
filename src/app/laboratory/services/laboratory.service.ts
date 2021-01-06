@@ -50,6 +50,9 @@ export class LaboratoryService {
     private tofu;
     private tofu_marie_louise;
     private tofu_frame;
+    private checker;
+    private checker_locks;
+    private checker_bottom;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -81,6 +84,10 @@ export class LaboratoryService {
     private brique_marie_louise_BAKING_HIGHLIGHT: BABYLON.Texture;
     private tofu_marie_louise_BAKING: BABYLON.Texture;
     private tofu_marie_louise_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private checker_BAKING: BABYLON.Texture;
+    private checker_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private checker_locks_BAKING: BABYLON.Texture;
+    private checker_locks_BAKING_HIGHLIGHT: BABYLON.Texture;
 
     public constructor(
         private ngZone: NgZone,
@@ -115,7 +122,6 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("plan_inside", "../../assets/glb/laboratory/", "plan_inside.glb").then((result) => {
         });
-
         BABYLON.SceneLoader.ImportMeshAsync("plan_outside", "../../assets/glb/laboratory/", "plan_outside.glb").then((result) => {
         });
 
@@ -123,7 +129,6 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("parquet", "../../assets/glb/laboratory/", "parquet.glb").then((result) => {
         });
-
         BABYLON.SceneLoader.ImportMeshAsync("persian_carpet", "../../assets/glb/laboratory/", "persian_carpet.glb").then((result) => {
         });
 
@@ -298,6 +303,42 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("tofu_frame", "../../assets/glb/laboratory/", "tofu_frame.glb", this.scene).then((result) => {
             this.tofu_frame = this.scene.getMeshByName("tofu_frame");
+        });
+
+        // CHIMNEY
+
+        BABYLON.SceneLoader.ImportMeshAsync("chimney", "../../assets/glb/laboratory/", "chimney.glb", this.scene).then((result) => {
+        });
+
+        var chimney_back_MATERIAL = new BABYLON.StandardMaterial("myMaterial", this.scene);
+        chimney_back_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 0);
+        chimney_back_MATERIAL.specularColor = new BABYLON.Color3(0, 0, 0);
+        chimney_back_MATERIAL.emissiveColor = new BABYLON.Color3(0, 0, 0);
+        chimney_back_MATERIAL.ambientColor = new BABYLON.Color3(0, 0, 0);
+
+        BABYLON.SceneLoader.ImportMeshAsync("chimney_back", "../../assets/glb/laboratory/", "chimney_back.glb", this.scene).then((result) => {
+            const chimney_back = this.scene.getMeshByName("chimney_back");
+            chimney_back.material = chimney_back_MATERIAL;
+        });
+
+        // CHIMNEY
+
+        this.checker_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/checker_BAKING.jpg", this.scene, false, false);
+        this.checker_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/checker_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.checker_locks_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/checker_locks_BAKING.jpg", this.scene, false, false);
+        this.checker_locks_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/checker_locks_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("checker", "../../assets/glb/laboratory/", "checker.glb", this.scene).then((result) => {
+            this.checker = this.scene.getMeshByName("checker");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("checker_locks", "../../assets/glb/laboratory/", "checker_locks.glb", this.scene).then((result) => {
+            this.checker_locks = this.scene.getMeshByName("checker_locks");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("checker_bottom", "../../assets/glb/laboratory/", "checker_bottom.glb", this.scene).then((result) => {
+            this.checker_bottom = this.scene.getMeshByName("checker_bottom");
         });
     }
 
