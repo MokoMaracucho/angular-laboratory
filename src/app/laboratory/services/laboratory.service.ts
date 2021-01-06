@@ -371,10 +371,12 @@ export class LaboratoryService {
             this.tarot_deck = this.scene.getMeshByName("tarot_deck");
         });
 
+        // VIRGEN
+
         BABYLON.SceneLoader.ImportMeshAsync("virgen_guadalupe", "../../assets/glb/laboratory/", "virgen_guadalupe.glb", this.scene).then((result) => {
         });
 
-        // VIRGEN
+        // CANDELSTICK
 
         BABYLON.SceneLoader.ImportMeshAsync("candelstick", "../../assets/glb/laboratory/", "candelstick.glb", this.scene).then((result) => {
         });
@@ -383,7 +385,6 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("wall_left_front", "../../assets/glb/laboratory/", "wall_left_front.glb", this.scene).then((result) => {
         });
-
         BABYLON.SceneLoader.ImportMeshAsync("wall_left_back", "../../assets/glb/laboratory/", "wall_left_back.glb", this.scene).then((result) => {
         });
 
@@ -414,7 +415,6 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("trestle_left", "../../assets/glb/laboratory/", "trestle_left.glb", this.scene).then((result) => {
         });
-
         BABYLON.SceneLoader.ImportMeshAsync("trestle_right", "../../assets/glb/laboratory/", "trestle_right.glb", this.scene).then((result) => {
         });
 
@@ -448,7 +448,34 @@ export class LaboratoryService {
             this.via_air_mail = this.scene.getMeshByName("via_air_mail");
         });
 
+        // RINCE COCHON
+
+        BABYLON.SceneLoader.ImportMeshAsync("rince_cochon", "../../assets/glb/laboratory/", "rince_cochon.glb", this.scene).then((result) => {
+        });
+
+        // THERMOS
+
+        BABYLON.SceneLoader.ImportMeshAsync("thermos", "../../assets/glb/laboratory/", "thermos.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("thermos_cap", "../../assets/glb/laboratory/", "thermos_cap.glb", this.scene).then((result) => {
+        });
+
+        // POST-IT
+
+        BABYLON.SceneLoader.ImportMeshAsync("post_it", "../../assets/glb/", "post_it.glb", this.scene).then((result) => {
+        });
+
+        // MOTEBOOKS
+
+        BABYLON.SceneLoader.ImportMeshAsync("notebook_bottom", "../../assets/glb/", "notebook_bottom.glb", this.scene).then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("notebook_top", "../../assets/glb/", "notebook_top.glb", this.scene).then((result) => {
+        });
+
         // COMPUTERS
+
+        BABYLON.SceneLoader.ImportMeshAsync("mouse", "../../assets/glb/laboratory/", "mouse.glb", this.scene).then((result) => {
+        });
 
         BABYLON.SceneLoader.ImportMeshAsync("support_laptop", "../../assets/glb/laboratory/", "support_laptop.glb", this.scene).then((result) => {
         });
