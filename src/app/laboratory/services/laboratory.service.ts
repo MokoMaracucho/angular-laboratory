@@ -505,8 +505,8 @@ export class LaboratoryService {
 
         // 3D GLASSES
 
-        this.threed_glasses_frame_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/3d_glasses_frame_BAKING.jpg", this.scene, false, false);
-        this.threed_glasses_frame_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/3d_glasses_frame_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+        this.threed_glasses_frame_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/threed_glasses_frame_BAKING.jpg", this.scene, false, false);
+        this.threed_glasses_frame_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/threed_glasses_frame_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
 
         BABYLON.SceneLoader.ImportMeshAsync("threed_glasses_frame", "../../assets/glb/laboratory/", "threed_glasses_frame.glb", this.scene).then((result) => {
             this.threed_glasses_frame = this.scene.getMeshByName("threed_glasses_frame");
