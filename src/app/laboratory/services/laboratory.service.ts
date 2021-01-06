@@ -55,6 +55,13 @@ export class LaboratoryService {
     private checker_bottom;
     private tarot_deck;
     private virgen_guadalupe;
+    private candelstick;
+    private wall_left_front;
+    private wall_left_back;
+    private mirror_frame;
+    private daisy;
+    private amor_amor;
+    private amor_amor_frame;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -92,6 +99,9 @@ export class LaboratoryService {
     private checker_locks_BAKING_HIGHLIGHT: BABYLON.Texture;
     private tarot_deck_BAKING: BABYLON.Texture;
     private tarot_deck_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private amor_amor_BAKING: BABYLON.Texture;
+    private amor_amor_BAKING_HIGHLIGHT: BABYLON.Texture;
+
 
     public constructor(
         private ngZone: NgZone,
@@ -356,6 +366,47 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("virgen_guadalupe", "../../assets/glb/laboratory/", "virgen_guadalupe.glb", this.scene).then((result) => {
             this.virgen_guadalupe = this.scene.getMeshByName("virgen_guadalupe");
+        });
+
+        // VIRGEN
+
+        BABYLON.SceneLoader.ImportMeshAsync("candelstick", "../../assets/glb/laboratory/", "candelstick.glb", this.scene).then((result) => {
+            this.candelstick = this.scene.getMeshByName("candelstick");
+        });
+
+        // WALL LEFT
+
+        BABYLON.SceneLoader.ImportMeshAsync("wall_left_front", "../../assets/glb/laboratory/", "wall_left_front.glb", this.scene).then((result) => {
+            this.wall_left_front = this.scene.getMeshByName("wall_left_front");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("wall_left_back", "../../assets/glb/laboratory/", "wall_left_back.glb", this.scene).then((result) => {
+            this.wall_left_back = this.scene.getMeshByName("wall_left_back");
+        });
+
+        // MIRROR
+
+        BABYLON.SceneLoader.ImportMeshAsync("mirror_frame", "../../assets/glb/laboratory/", "mirror_frame.glb", this.scene).then((result) => {
+            this.mirror_frame = this.scene.getMeshByName("mirror_frame");
+        });
+
+        // DAISY
+
+        BABYLON.SceneLoader.ImportMeshAsync("daisy", "../../assets/glb/laboratory/", "daisy.glb", this.scene).then((result) => {
+            this.daisy = this.scene.getMeshByName("daisy");
+        });
+
+        // AMOR AMOR
+
+        this.amor_amor_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/amor_amor_BAKING.jpg", this.scene, false, false);
+        this.amor_amor_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/amor_amor_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("amor_amor", "../../assets/glb/laboratory/", "amor_amor.glb", this.scene).then((result) => {
+            this.amor_amor = this.scene.getMeshByName("amor_amor");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("amor_amor_frame", "../../assets/glb/laboratory/", "amor_amor_frame.glb", this.scene).then((result) => {
+            this.amor_amor_frame = this.scene.getMeshByName("amor_amor_frame");
         });
     }
 
