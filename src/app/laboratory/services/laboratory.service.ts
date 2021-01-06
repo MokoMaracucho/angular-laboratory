@@ -75,9 +75,17 @@ export class LaboratoryService {
     private threed_glass_blue;
     private threed_glass_red;
     private mouse;
+    private mac_mini;
     private support_laptop;
     private wood_box_center;
     private wood_box_right;
+    private laptop;
+    private laptop_keyboard;
+    private laptop_screen;
+    private screen_center;
+    private screen_frame_center;
+    private screen_right;
+    private screen_frame_right;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -121,6 +129,16 @@ export class LaboratoryService {
     private via_air_mail_BAKING_HIGHLIGHT: BABYLON.Texture;
     private threed_glasses_frame_BAKING: BABYLON.Texture;
     private threed_glasses_frame_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private mac_mini_BAKING: BABYLON.Texture;
+    private mac_mini_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private laptop_BAKING: BABYLON.Texture;
+    private laptop_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private laptop_screen_BAKING: BABYLON.Texture;
+    private laptop_screen_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private screen_center_BAKING: BABYLON.Texture;
+    private screen_center_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private screen_right_BAKING: BABYLON.Texture;
+    private screen_right_BAKING_HIGHLIGHT: BABYLON.Texture;
 
     private glass_MATERIAL: BABYLON.StandardMaterial;
     private glass_blue_MATERIAL: BABYLON.StandardMaterial;
@@ -545,6 +563,53 @@ export class LaboratoryService {
         BABYLON.SceneLoader.ImportMeshAsync("wood_box_center", "../../assets/glb/laboratory/", "wood_box_center.glb", this.scene).then((result) => {
         });
         BABYLON.SceneLoader.ImportMeshAsync("wood_box_right", "../../assets/glb/laboratory/", "wood_box_right.glb", this.scene).then((result) => {
+        });
+
+        this.mac_mini_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/mac_mini_BAKING.png", this.scene, false, false);
+        this.mac_mini_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/mac_mini_BAKING_HIGHLIGHT.png", this.scene, false, false);
+
+        this.laptop_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/laptop_BAKING.png", this.scene, false, false);
+        this.laptop_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/laptop_BAKING_HIGHLIGHT.png", this.scene, false, false);
+
+        this.laptop_screen_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/laptop_screen_BAKING.png", this.scene, false, false);
+        this.laptop_screen_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/laptop_screen_BAKING_HIGHLIGHT.png", this.scene, false, false);
+
+        this.screen_center_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/screen_center_BAKING.png", this.scene, false, false);
+        this.screen_center_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/screen_center_BAKING_HIGHLIGHT.png", this.scene, false, false);
+
+        this.screen_right_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/screen_right_BAKING.png", this.scene, false, false);
+        this.screen_right_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/screen_right_BAKING_HIGHLIGHT.png", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("mac_mini", "../../assets/glb/laboratory/", "mac_mini.glb", this.scene).then((result) => {
+            this.mac_mini = this.scene.getMeshByName("mac_mini");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("laptop", "../../assets/glb/laboratory/", "laptop.glb", this.scene).then((result) => {
+            this.laptop = this.scene.getMeshByName("laptop");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("laptop_keyboard", "../../assets/glb/laboratory/", "laptop_keyboard.glb", this.scene).then((result) => {
+            this.laptop_keyboard = this.scene.getMeshByName("laptop_keyboard");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("laptop_screen", "../../assets/glb/laboratory/", "laptop_screen.glb", this.scene).then((result) => {
+            this.laptop_screen = this.scene.getMeshByName("laptop_screen");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("screen_frame_center", "../../assets/glb/laboratory/", "screen_frame_center.glb", this.scene).then((result) => {
+            this.screen_frame_center = this.scene.getMeshByName("screen_frame_center");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("screen_center", "../../assets/glb/laboratory/", "screen_center.glb", this.scene).then((result) => {
+            this.screen_center = this.scene.getMeshByName("screen_center");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("screen_frame_right", "../../assets/glb/laboratory/", "screen_frame_right.glb", this.scene).then((result) => {
+            this.screen_frame_right = this.scene.getMeshByName("screen_frame_right");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("screen_right", "../../assets/glb/laboratory/", "screen_right.glb", this.scene).then((result) => {
+            this.screen_right = this.scene.getMeshByName("screen_right");
         });
     }
 
