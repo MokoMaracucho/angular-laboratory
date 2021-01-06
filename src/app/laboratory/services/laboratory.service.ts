@@ -94,6 +94,9 @@ export class LaboratoryService {
     private window_right;
     private glass_right_top;
     private glass_right_bottom;
+    private nhs_rainbow;
+    private solar_system;
+    private pablo;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -660,6 +663,23 @@ export class LaboratoryService {
         BABYLON.SceneLoader.ImportMeshAsync("glass_right_bottom", "../../assets/glb/laboratory/", "glass_right_bottom.glb", this.scene).then((result) => {
             this.glass_right_bottom = this.scene.getMeshByName("glass_right_bottom");
             this.glass_right_bottom.material = this.glass_MATERIAL;
+        });
+
+        // NHS RAINBOW
+
+        BABYLON.SceneLoader.ImportMeshAsync("nhs_rainbow", "../../assets/glb/laboratory/", "nhs_rainbow.glb", this.scene).then((result) => {
+        });
+
+        // SOLAR SYSTEM
+
+        BABYLON.SceneLoader.ImportMeshAsync("solar_system", "../../assets/glb/laboratory/", "solar_system.glb", this.scene).then((result) => {
+            this.solar_system = this.scene.getMeshByName("solar_system");
+        });
+
+        // PABLO
+
+        BABYLON.SceneLoader.ImportMeshAsync("pablo", "../../assets/glb/laboratory/", "pablo.glb", this.scene).then((result) => {
+            this.pablo = this.scene.getMeshByName("pablo");
         });
     }
 
