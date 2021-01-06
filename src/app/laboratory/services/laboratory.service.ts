@@ -62,6 +62,9 @@ export class LaboratoryService {
     private daisy;
     private amor_amor;
     private amor_amor_frame;
+    private trestle_left;
+    private trestle_right;
+    private desk;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -101,7 +104,6 @@ export class LaboratoryService {
     private tarot_deck_BAKING_HIGHLIGHT: BABYLON.Texture;
     private amor_amor_BAKING: BABYLON.Texture;
     private amor_amor_BAKING_HIGHLIGHT: BABYLON.Texture;
-
 
     public constructor(
         private ngZone: NgZone,
@@ -408,6 +410,38 @@ export class LaboratoryService {
         BABYLON.SceneLoader.ImportMeshAsync("amor_amor_frame", "../../assets/glb/laboratory/", "amor_amor_frame.glb", this.scene).then((result) => {
             this.amor_amor_frame = this.scene.getMeshByName("amor_amor_frame");
         });
+
+        // DESK
+
+        BABYLON.SceneLoader.ImportMeshAsync("trestle_left", "../../assets/glb/laboratory/", "trestle_left.glb", this.scene).then((result) => {
+            this.trestle_left = this.scene.getMeshByName("trestle_left");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("trestle_right", "../../assets/glb/laboratory/", "trestle_right.glb", this.scene).then((result) => {
+            this.trestle_right = this.scene.getMeshByName("trestle_right");
+        });
+
+        var glass_MATERIAL = new BABYLON.StandardMaterial("desk_MATERIAL", this.scene);
+        glass_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 0);
+        glass_MATERIAL.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);
+        glass_MATERIAL.alpha = 0.2;
+        glass_MATERIAL.specularPower = 32;
+        glass_MATERIAL.reflectionFresnelParameters = new BABYLON.FresnelParameters();
+        glass_MATERIAL.reflectionFresnelParameters.bias = 0.1;
+        glass_MATERIAL.emissiveFresnelParameters = new BABYLON.FresnelParameters();
+        glass_MATERIAL.emissiveFresnelParameters.bias = 0.6;
+        glass_MATERIAL.emissiveFresnelParameters.power = 4;
+        glass_MATERIAL.emissiveFresnelParameters.leftColor = BABYLON.Color3.Gray();
+        glass_MATERIAL.emissiveFresnelParameters.rightColor = BABYLON.Color3.Black();
+        glass_MATERIAL.opacityFresnelParameters = new BABYLON.FresnelParameters();
+        glass_MATERIAL.opacityFresnelParameters.leftColor = BABYLON.Color3.Gray();
+        glass_MATERIAL.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();
+
+        BABYLON.SceneLoader.ImportMeshAsync("desk", "../../assets/glb/laboratory/", "desk.glb", this.scene).then((result) => {
+            this.desk = this.scene.getMeshByName("desk");
+            this.desk.material = glass_MATERIAL;
+        });
+
     }
 
     public animate(): void {
