@@ -66,6 +66,15 @@ export class LaboratoryService {
     private trestle_right;
     private desk;
     private via_air_mail;
+    private rince_cochon;
+    private thermos;
+    private post_it;
+    private notebook_bottom;
+    private notebook_top;
+    private threed_glasses_frame;
+    private threed_glass_blue;
+    private threed_glass_red;
+    private mouse;
     private support_laptop;
     private wood_box_center;
     private wood_box_right;
@@ -110,6 +119,12 @@ export class LaboratoryService {
     private amor_amor_BAKING_HIGHLIGHT: BABYLON.Texture;
     private via_air_mail_BAKING: BABYLON.Texture;
     private via_air_mail_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private threed_glasses_frame_BAKING: BABYLON.Texture;
+    private threed_glasses_frame_BAKING_HIGHLIGHT: BABYLON.Texture;
+
+    private glass_MATERIAL: BABYLON.StandardMaterial;
+    private glass_blue_MATERIAL: BABYLON.StandardMaterial;
+    private glass_red_MATERIAL: BABYLON.StandardMaterial;
 
     public constructor(
         private ngZone: NgZone,
@@ -418,25 +433,25 @@ export class LaboratoryService {
         BABYLON.SceneLoader.ImportMeshAsync("trestle_right", "../../assets/glb/laboratory/", "trestle_right.glb", this.scene).then((result) => {
         });
 
-        var glass_MATERIAL = new BABYLON.StandardMaterial("desk_MATERIAL", this.scene);
-        glass_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 0);
-        glass_MATERIAL.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);
-        glass_MATERIAL.alpha = 0.2;
-        glass_MATERIAL.specularPower = 32;
-        glass_MATERIAL.reflectionFresnelParameters = new BABYLON.FresnelParameters();
-        glass_MATERIAL.reflectionFresnelParameters.bias = 0.1;
-        glass_MATERIAL.emissiveFresnelParameters = new BABYLON.FresnelParameters();
-        glass_MATERIAL.emissiveFresnelParameters.bias = 0.6;
-        glass_MATERIAL.emissiveFresnelParameters.power = 4;
-        glass_MATERIAL.emissiveFresnelParameters.leftColor = BABYLON.Color3.Gray();
-        glass_MATERIAL.emissiveFresnelParameters.rightColor = BABYLON.Color3.Black();
-        glass_MATERIAL.opacityFresnelParameters = new BABYLON.FresnelParameters();
-        glass_MATERIAL.opacityFresnelParameters.leftColor = BABYLON.Color3.Gray();
-        glass_MATERIAL.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();
+        this.glass_MATERIAL = new BABYLON.StandardMaterial("desk_MATERIAL", this.scene);
+        this.glass_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 0);
+        this.glass_MATERIAL.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);
+        this.glass_MATERIAL.alpha = 0.2;
+        this.glass_MATERIAL.specularPower = 32;
+        this.glass_MATERIAL.reflectionFresnelParameters = new BABYLON.FresnelParameters();
+        this.glass_MATERIAL.reflectionFresnelParameters.bias = 0.1;
+        this.glass_MATERIAL.emissiveFresnelParameters = new BABYLON.FresnelParameters();
+        this.glass_MATERIAL.emissiveFresnelParameters.bias = 0.6;
+        this.glass_MATERIAL.emissiveFresnelParameters.power = 4;
+        this.glass_MATERIAL.emissiveFresnelParameters.leftColor = BABYLON.Color3.Gray();
+        this.glass_MATERIAL.emissiveFresnelParameters.rightColor = BABYLON.Color3.Black();
+        this.glass_MATERIAL.opacityFresnelParameters = new BABYLON.FresnelParameters();
+        this.glass_MATERIAL.opacityFresnelParameters.leftColor = BABYLON.Color3.Gray();
+        this.glass_MATERIAL.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();
 
         BABYLON.SceneLoader.ImportMeshAsync("desk", "../../assets/glb/laboratory/", "desk.glb", this.scene).then((result) => {
             this.desk = this.scene.getMeshByName("desk");
-            this.desk.material = glass_MATERIAL;
+            this.desk.material = this.glass_MATERIAL;
         });
 
         // VIA AIR MAIL
@@ -470,17 +485,65 @@ export class LaboratoryService {
         BABYLON.SceneLoader.ImportMeshAsync("notebook_top", "../../assets/glb/laboratory/", "notebook_top.glb", this.scene).then((result) => {
         });
 
+        // 3D GLASSES
+
+        this.threed_glasses_frame_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/3d_glasses_frame_BAKING.jpg", this.scene, false, false);
+        this.threed_glasses_frame_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/3d_glasses_frame_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("threed_glasses_frame", "../../assets/glb/laboratory/", "threed_glasses_frame.glb", this.scene).then((result) => {
+            this.threed_glasses_frame = this.scene.getMeshByName("threed_glasses_frame");
+        });
+
+        this.glass_blue_MATERIAL = new BABYLON.StandardMaterial("glass", this.scene);
+        this.glass_blue_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 1);
+        this.glass_blue_MATERIAL.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);
+        this.glass_blue_MATERIAL.alpha = 0.2;
+        this.glass_blue_MATERIAL.specularPower = 16;
+        this.glass_blue_MATERIAL.reflectionFresnelParameters = new BABYLON.FresnelParameters();
+        this.glass_blue_MATERIAL.reflectionFresnelParameters.bias = 0.1;
+        this.glass_blue_MATERIAL.emissiveFresnelParameters = new BABYLON.FresnelParameters();
+        this.glass_blue_MATERIAL.emissiveFresnelParameters.bias = 0.6;
+        this.glass_blue_MATERIAL.emissiveFresnelParameters.power = 4;
+        this.glass_blue_MATERIAL.emissiveFresnelParameters.leftColor = BABYLON.Color3.White();
+        this.glass_blue_MATERIAL.emissiveFresnelParameters.rightColor = BABYLON.Color3.Black();
+        this.glass_blue_MATERIAL.opacityFresnelParameters = new BABYLON.FresnelParameters();
+        this.glass_blue_MATERIAL.opacityFresnelParameters.leftColor = BABYLON.Color3.White();
+        this.glass_blue_MATERIAL.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();
+
+        BABYLON.SceneLoader.ImportMeshAsync("threed_glass_blue", "../../assets/glb/laboratory/", "threed_glass_blue.glb", this.scene).then((result) => {
+            this.threed_glass_blue = this.scene.getMeshByName("threed_glass_blue");
+            this.threed_glass_blue.material = this.glass_blue_MATERIAL;
+        });
+
+        this.glass_red_MATERIAL = new BABYLON.StandardMaterial("glass", this.scene);
+        this.glass_red_MATERIAL.diffuseColor = new BABYLON.Color3(1, 0, 0);
+        this.glass_red_MATERIAL.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);
+        this.glass_red_MATERIAL.alpha = 0.2;
+        this.glass_red_MATERIAL.specularPower = 16;
+        this.glass_red_MATERIAL.reflectionFresnelParameters = new BABYLON.FresnelParameters();
+        this.glass_red_MATERIAL.reflectionFresnelParameters.bias = 0.1;
+        this.glass_red_MATERIAL.emissiveFresnelParameters = new BABYLON.FresnelParameters();
+        this.glass_red_MATERIAL.emissiveFresnelParameters.bias = 0.6;
+        this.glass_red_MATERIAL.emissiveFresnelParameters.power = 4;
+        this.glass_red_MATERIAL.emissiveFresnelParameters.leftColor = BABYLON.Color3.White();
+        this.glass_red_MATERIAL.emissiveFresnelParameters.rightColor = BABYLON.Color3.Black();
+        this.glass_red_MATERIAL.opacityFresnelParameters = new BABYLON.FresnelParameters();
+        this.glass_red_MATERIAL.opacityFresnelParameters.leftColor = BABYLON.Color3.White();
+        this.glass_red_MATERIAL.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();
+
+        BABYLON.SceneLoader.ImportMeshAsync("threed_glass_red", "../../assets/glb/laboratory/", "threed_glass_red.glb", this.scene).then((result) => {
+            this.threed_glass_red = this.scene.getMeshByName("threed_glass_red");
+            this.threed_glass_red.material = this.glass_red_MATERIAL;
+        });
+
         // COMPUTERS
 
         BABYLON.SceneLoader.ImportMeshAsync("mouse", "../../assets/glb/laboratory/", "mouse.glb", this.scene).then((result) => {
         });
-
         BABYLON.SceneLoader.ImportMeshAsync("support_laptop", "../../assets/glb/laboratory/", "support_laptop.glb", this.scene).then((result) => {
         });
-
         BABYLON.SceneLoader.ImportMeshAsync("wood_box_center", "../../assets/glb/laboratory/", "wood_box_center.glb", this.scene).then((result) => {
         });
-
         BABYLON.SceneLoader.ImportMeshAsync("wood_box_right", "../../assets/glb/laboratory/", "wood_box_right.glb", this.scene).then((result) => {
         });
     }
