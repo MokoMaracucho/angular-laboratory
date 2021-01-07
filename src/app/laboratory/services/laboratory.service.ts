@@ -59,6 +59,7 @@ export class LaboratoryService {
     private wall_left_front;
     private wall_left_back;
     private mirror_frame;
+    private mirror;
     private daisy;
     private amor_amor;
     private amor_amor_frame;
@@ -211,6 +212,7 @@ export class LaboratoryService {
     private youtube_play_BAKING: BABYLON.Texture;
     private youtube_play_BAKING_HIGHLIGHT: BABYLON.Texture;
 
+    private mirror_MATERIAL: BABYLON.StandardMaterial;
     private glass_MATERIAL: BABYLON.StandardMaterial;
     private glass_blue_MATERIAL: BABYLON.StandardMaterial;
     private glass_red_MATERIAL: BABYLON.StandardMaterial;
@@ -455,7 +457,7 @@ export class LaboratoryService {
         // FIRE SOURCE
 
         var fire_source = BABYLON.Mesh.CreateBox("foutain", 0.1, this.scene);
-        fire_source.position = new BABYLON.Vector3(-0.2, 0, -9.3);
+        fire_source.position = new BABYLON.Vector3(-0.2, 0, -9.4);
 
         // SMOKE
 
@@ -578,27 +580,27 @@ export class LaboratoryService {
         BABYLON.SceneLoader.ImportMeshAsync("mirror_frame", "../../assets/glb/laboratory/", "mirror_frame.glb", this.scene).then((result) => {
         });
 
-        var glass = BABYLON.MeshBuilder.CreatePlane("glass", {width: 5.8, height: 9.2}, this.scene);
-        glass.position = new BABYLON.Vector3(-0.01, 11.8, -9.3);
-        glass.rotation = new BABYLON.Vector3(0, 1.57, 0);
+        this.mirror = BABYLON.MeshBuilder.CreatePlane("mirror", {width: 5.8, height: 9.2}, this.scene);
+        this.mirror.position = new BABYLON.Vector3(-0.01, 11.8, -9.3);
+        this.mirror.rotation = new BABYLON.Vector3(0, 1.57, 0);
 
-        glass.computeWorldMatrix(true);
-        var glass_worldMatrix = glass.getWorldMatrix();
+        this.mirror.computeWorldMatrix(true);
+        var glass_worldMatrix = this.mirror.getWorldMatrix();
 
-        var glass_vertexData = glass.getVerticesData("normal");
+        var glass_vertexData = this.mirror.getVerticesData("normal");
         var glassNormal = new BABYLON.Vector3(glass_vertexData[0], glass_vertexData[1], glass_vertexData[2]);
         glassNormal = BABYLON.Vector3.TransformNormal(glassNormal, glass_worldMatrix);
 
-        var reflector = BABYLON.Plane.FromPositionAndNormal(glass.position, glassNormal.scale(-1));
+        var reflector = BABYLON.Plane.FromPositionAndNormal(this.mirror.position, glassNormal.scale(-1));
 
-        var mirrorMaterial = new BABYLON.StandardMaterial("mirror", this.scene);
-        mirrorMaterial.reflectionTexture = new BABYLON.MirrorTexture("mirror", 1024, this.scene, true);
-        mirrorMaterial.reflectionTexture.mirrorPlane = reflector;
-        mirrorMaterial.reflectionTexture.renderList = this.scene.scene;
-        mirrorMaterial.reflectionTexture.level = 1;
-        mirrorMaterial.diffuseColor = new BABYLON.Color3(0.13, 0.13, 0.17);
+        this.mirror_MATERIAL = new BABYLON.StandardMaterial("mirror_MATERIAL", this.scene);
+        this.mirror_MATERIAL.reflectionTexture = new BABYLON.MirrorTexture("mirror_TEXTURE", 1024, this.scene, true);
+        this.mirror_MATERIAL.reflectionTexture.mirrorPlane = reflector;
+        this.mirror_MATERIAL.reflectionTexture.renderList = this.scene.scene;
+        this.mirror_MATERIAL.reflectionTexture.level = 1;
+        this.mirror_MATERIAL.diffuseColor = new BABYLON.Color3(0.13, 0.13, 0.17);
 
-        glass.material = mirrorMaterial;
+        this.mirror.material = this.mirror_MATERIAL;
 
         // DAISY
 
