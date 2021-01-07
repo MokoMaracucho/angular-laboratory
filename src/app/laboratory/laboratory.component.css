@@ -51,6 +51,10 @@
     text-align: justify;
 }
 
+.span_language {
+    cursor: pointer;
+}
+
 /* DASH BOARD */
 
 #divDashBoard {

@@ -39,11 +39,23 @@
                     Este sitio es el resultado de años de aprendizaje guiados por el deseo de crear sitios tridimensionales, basados ​​en tecnologías sólidas e innovadoras.
                     Esta plataforma es un laboratorio cuyo objetivo es, por un lado, dar a conocer mi saber hacer y, por otro, compartir mis conocimientos.
                 </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <button id="btn_close_introduction" type="button" class="btn btn-dark" (click)="close_introduction()" [disabled]="isLoaded == false" [@btnCloseIntroduction_fadeIn]="btnCloseIntroduction_fadeIn">
+                <button id="btn_close_introduction" type="button" class="btn btn-dark mt-3" (click)="close_introduction()" [disabled]="isLoaded == false" [@btnCloseIntroduction_fadeIn]="btnCloseIntroduction_fadeIn">
                     <span *ngIf="language_english">Enter</span>
                     <span *ngIf="language_french">Entrer</span>
                     <span *ngIf="language_spanish">Entrar</span>
