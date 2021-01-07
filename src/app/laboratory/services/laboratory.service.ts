@@ -88,6 +88,7 @@ export class LaboratoryService {
     private screen_frame_right;
     private wall_right_front;
     private wall_right_back;
+    private baseboard_right;
     private window_left;
     private glass_left_top;
     private glass_left_bottom;
@@ -673,15 +674,15 @@ export class LaboratoryService {
         // WALL RIGHT
 
         BABYLON.SceneLoader.ImportMeshAsync("wall_right_front", "../../assets/glb/laboratory/", "wall_right_front.glb", this.scene).then((result) => {
-            this.wall_right_front = this.scene.getMeshByName("wall_right_front");
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("wall_right_back", "../../assets/glb/laboratory/", "wall_right_back.glb", this.scene).then((result) => {
-            this.wall_right_back = this.scene.getMeshByName("wall_right_back");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("baseboard_right", "../../assets/glb/laboratory/", "baseboard_right.glb", this.scene).then((result) => {
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("window_left", "../../assets/glb/laboratory/", "window_left.glb", this.scene).then((result) => {
-            this.window_left = this.scene.getMeshByName("window_left");
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("glass_left_top", "../../assets/glb/laboratory/", "glass_left_top.glb", this.scene).then((result) => {
@@ -695,7 +696,6 @@ export class LaboratoryService {
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("window_right", "../../assets/glb/laboratory/", "window_right.glb", this.scene).then((result) => {
-            this.window_right = this.scene.getMeshByName("window_right");
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("glass_right_top", "../../assets/glb/laboratory/", "glass_right_top.glb", this.scene).then((result) => {
@@ -716,13 +716,11 @@ export class LaboratoryService {
         // SOLAR SYSTEM
 
         BABYLON.SceneLoader.ImportMeshAsync("solar_system", "../../assets/glb/laboratory/", "solar_system.glb", this.scene).then((result) => {
-            this.solar_system = this.scene.getMeshByName("solar_system");
         });
 
         // PABLO
 
         BABYLON.SceneLoader.ImportMeshAsync("pablo", "../../assets/glb/laboratory/", "pablo.glb", this.scene).then((result) => {
-            this.pablo = this.scene.getMeshByName("pablo");
         });
 
         // LANGUAGES
@@ -798,7 +796,6 @@ export class LaboratoryService {
         // SHELF
 
         BABYLON.SceneLoader.ImportMeshAsync("shelf", "../../assets/glb/laboratory/", "shelf.glb", this.scene).then((result) => {
-            this.shelf = this.scene.getMeshByName("shelf");
         });
 
         // BOOKS
