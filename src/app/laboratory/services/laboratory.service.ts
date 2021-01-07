@@ -447,16 +447,18 @@ export class LaboratoryService {
             chimney_back.material = chimney_back_MATERIAL;
         });
 
-        // SMOKE
+        // FIRE SOURCE
 
-        var fountain = BABYLON.Mesh.CreateBox("foutain", 0.1, this.scene);
-        fountain.position = new BABYLON.Vector3(-1, 0, -9);
+        var fire_source = BABYLON.Mesh.CreateBox("foutain", 0.1, this.scene);
+        fire_source.position = new BABYLON.Vector3(-0.2, 0, -9.3);
+
+        // SMOKE
 
         var smokeSystem = new BABYLON.ParticleSystem("particles", 1000, this.scene);
         smokeSystem.particleTexture = new BABYLON.Texture("../../assets/glb/laboratory/particles/smoke.png", this.scene);
-        smokeSystem.emitter = fountain; // the starting object, the emitter
-        smokeSystem.minEmitBox = new BABYLON.Vector3(-0.5, 1, -0.5); // Starting all from
-        smokeSystem.maxEmitBox = new BABYLON.Vector3(0.5, 1, 0.5); // To...
+        smokeSystem.emitter = fire_source;
+        smokeSystem.minEmitBox = new BABYLON.Vector3(-1, 1, -1);
+        smokeSystem.maxEmitBox = new BABYLON.Vector3(1, 1, 1);
 
         smokeSystem.color1 = new BABYLON.Color4(0.02, 0.02, 0.02, .02);
         smokeSystem.color2 = new BABYLON.Color4(0.02, 0.02, 0.02, .02);
@@ -466,9 +468,9 @@ export class LaboratoryService {
         smokeSystem.maxSize = 1.5;
 
         smokeSystem.minLifeTime = 0.3;
-        smokeSystem.maxLifeTime = 1.5;
+        smokeSystem.maxLifeTime = 1.2;
 
-        smokeSystem.emitRate = 350;
+        smokeSystem.emitRate = 150;
         smokeSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
 
         smokeSystem.gravity = new BABYLON.Vector3(0, 0, 0);
@@ -477,13 +479,49 @@ export class LaboratoryService {
         smokeSystem.direction2 = new BABYLON.Vector3(1.5, 8, 1.5);
 
         smokeSystem.minAngularSpeed = 0;
-           smokeSystem.maxAngularSpeed = Math.PI;
+        smokeSystem.maxAngularSpeed = Math.PI;
 
         smokeSystem.minEmitPower = 0.5;
         smokeSystem.maxEmitPower = 1.5;
         smokeSystem.updateSpeed = 0.005;
 
         smokeSystem.start();
+
+        // FIRE
+
+        var fireSystem = new BABYLON.ParticleSystem("particles", 1500, this.scene);
+        fireSystem.particleTexture = new BABYLON.Texture("../../assets/glb/laboratory/particles/smoke.png", this.scene);
+        fireSystem.emitter = fire_source;
+        fireSystem.minEmitBox = new BABYLON.Vector3(-0.6, 1, -0.6);
+        fireSystem.maxEmitBox = new BABYLON.Vector3(0.6, 1, 0.6);
+
+        fireSystem.color1 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+        fireSystem.color2 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+        fireSystem.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+        fireSystem.minSize = 0.3;
+        fireSystem.maxSize = 1;
+
+        fireSystem.minLifeTime = 0.2;
+        fireSystem.maxLifeTime = 0.4;
+
+        fireSystem.emitRate = 300;
+
+        fireSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+
+        fireSystem.gravity = new BABYLON.Vector3(0, 0, 0);
+
+        fireSystem.direction1 = new BABYLON.Vector3(0, 4, 0);
+        fireSystem.direction2 = new BABYLON.Vector3(0, 4, 0);
+
+        fireSystem.minAngularSpeed = 0;
+        fireSystem.maxAngularSpeed = Math.PI;
+
+        fireSystem.minEmitPower = 1;
+        fireSystem.maxEmitPower = 3;
+        fireSystem.updateSpeed = 0.005;
+
+        fireSystem.start();
 
         // CHECKER
 
