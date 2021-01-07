@@ -7,22 +7,14 @@
     <div id="container_introduction" class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="h1_webDeveloper" *ngIf="language_french" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DEVELOPPEUR<br/>WEB</h1>
                 <h1 class="h1_webDeveloper" *ngIf="language_english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">WEB<br/>DEVELOPER</h1>
+                <h1 class="h1_webDeveloper" *ngIf="language_french" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DEVELOPPEUR<br/>WEB</h1>
                 <h1 class="h1_webDeveloper" *ngIf="language_spanish" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DESARROLADOR<br/>WEB</h1>
                 <span class="span_webDeveloper" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">JAVA / SPRING - ANGULAR - BABYLONJS</span>
             </div>
         </div>
         <div class="row">
             <div class="col-7">
-                <p class="text_introduction mt-3" *ngIf="language_french" [@introduction_fadeIn]="introduction_fadeIn">
-                    Sorti des Beaux-Arts, maîtrisant Photoshop et Illustrator, je me suis très vite senti à l'etroit sur ce plan en deux dimensions.
-                    La découverte de la 3D, me fit l'effet d'entrer dans un nouvel univers qui comme le notre, est régit par les mathématiques et la physique.
-                    Un espace de création ne connaissant de frontières que celles de la capacité des réseaux et la puissance de calcul des terminaux.
-                    Ces frontières sont aujourd'hui sur le point de tomber, laissant le champ libre à une nouvelle manière de s'exprimer, d'expérimenter, de classer des données.
-                    Ce site est le fruit d'années d'apprentissage guidées par la volonté de réaliser des sites en 3 dimensions, reposant sur des technologies solides et novatrices.
-                    Cette plateforme est un "laboratoire" ayant pour objectif, d'une part, de présenter mon savoir-faire, et, d'autre part, de partager mes connaissances.
-                </p>
                 <p class="text_introduction" *ngIf="language_english" [@introduction_fadeIn]="introduction_fadeIn">
                     After graduating from Fine Arts, mastering Photoshop and Illustrator, I quickly felt cramped on this two-dimensional plane.
                     The discovery of 3D, made me the effect of entering a new universe which like ours, is governed by mathematics and physics.
@@ -30,6 +22,14 @@
                     These boundaries are now on the verge of falling, leaving the field open to a new way of expressing itself, of experimenting or of classifying.
                     This site is the result of years of learning guided by the desire to create 3-dimensional sites, based on solid and innovative technologies.
                     This platform is a laboratory whose objective is, on the one hand, to present my know-how, and, on the other hand, to share my knowledge.
+                </p>
+                <p class="text_introduction mt-3" *ngIf="language_french" [@introduction_fadeIn]="introduction_fadeIn">
+                    Sorti des Beaux-Arts, maîtrisant Photoshop et Illustrator, je me suis très vite senti à l'etroit sur ce plan en deux dimensions.
+                    La découverte de la 3D, me fit l'effet d'entrer dans un nouvel univers qui comme le notre, est régit par les mathématiques et la physique.
+                    Un espace de création ne connaissant de frontières que celles de la capacité des réseaux et la puissance de calcul des terminaux.
+                    Ces frontières sont aujourd'hui sur le point de tomber, laissant le champ libre à une nouvelle manière de s'exprimer, d'expérimenter, de classer des données.
+                    Ce site est le fruit d'années d'apprentissage guidées par la volonté de réaliser des sites en 3 dimensions, reposant sur des technologies solides et novatrices.
+                    Cette plateforme est un "laboratoire" ayant pour objectif, d'une part, de présenter mon savoir-faire, et, d'autre part, de partager mes connaissances.
                 </p>
                 <p class="text_introduction" *ngIf="language_spanish" [@introduction_fadeIn]="introduction_fadeIn">
                     Después de graduarme de Bellas Artes, dominar Photoshop e Illustrator, rápidamente me sentí apretado en este plano bidimensional.
@@ -44,8 +44,8 @@
         <div class="row">
             <div class="col-12">
                 <button id="btn_close_introduction" type="button" class="btn btn-dark" (click)="close_introduction()" [disabled]="isLoaded == false" [@btnCloseIntroduction_fadeIn]="btnCloseIntroduction_fadeIn">
-                    <span *ngIf="language_french">Entrer</span>
                     <span *ngIf="language_english">Enter</span>
+                    <span *ngIf="language_french">Entrer</span>
                     <span *ngIf="language_spanish">Entrar</span>
                 </button>
             </div>

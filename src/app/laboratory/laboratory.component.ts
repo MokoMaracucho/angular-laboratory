@@ -36,8 +36,8 @@ import { CameraDatas } from '../shared/models/camera-datas';
 })
 export class LaboratoryComponent implements OnInit, OnDestroy {
 
-    public language_french = true;
-    public language_english = false;
+    public language_french = false;
+    public language_english = true;
     public language_spanish = false;
 
     private subscription: Subscription;
@@ -72,6 +72,10 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
         this.subscription = this.interaction.isLoaded.subscribe(() => this.isLoaded_function());
 
+        this.subscription = this.interaction.change_language_english.subscribe(() => this.change_language_english());
+        this.subscription = this.interaction.change_language_french.subscribe(() => this.change_language_french());
+        this.subscription = this.interaction.change_language_spanish.subscribe(() => this.change_language_spanish());
+
         this.subscription = this.interaction.getCameraDatas_init.subscribe((cameraDatas: CameraDatas) => cameraDatas);
         this.camera_datas = this.laboratoryService.emitCameraDatas_init();
         this.subscription = this.interaction.getCameraDatas_loop.subscribe(() => this.getCameraDatas_loop());
@@ -90,6 +94,24 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.isVisible_introductionBackground = false;
         this.isVisible_introduction = false;
         this.laboratoryService.animation_enterLaboratory();
+    }
+
+    private change_language_english(): void {
+        this.language_english = true;
+        this.language_french = false;
+        this.language_spanish = false;
+    }
+
+    private change_language_french(): void {
+        this.language_english = false;
+        this.language_french = true;
+        this.language_spanish = false;
+    }
+
+    private change_language_spanish(): void {
+        this.language_english = false;
+        this.language_french = false;
+        this.language_spanish = true;
     }
 
     private getCameraDatas_loop(): void {

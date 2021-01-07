@@ -1100,6 +1100,16 @@ export class LaboratoryService {
         this.addActions_Twitter();
         this.addActions_Instagram();
         this.addActions_InstagramLens();
+        this.addActions_Youtube();
+        this.addActions_YoutubePlay();
+        this.addActions_UnitedKingdomRed();
+        this.addActions_UnitedKingdomWhite();
+        this.addActions_UnitedKingdomBlue();
+        this.addActions_FranceBlue();
+        this.addActions_FranceWhite();
+        this.addActions_FranceRed();
+        this.addActions_SpainRed();
+        this.addActions_SpainYellow();
     }
 
     private activation_buttons() {
@@ -1146,6 +1156,8 @@ export class LaboratoryService {
         this.twitter.isPickable = true;
         this.instagram.isPickable = true;
         this.instagram_lens.isPickable = true;
+        this.youtube.isPickable = true;
+        this.youtube_play.isPickable = true;
     }
 
     private desactivation_buttons() {
@@ -1192,6 +1204,8 @@ export class LaboratoryService {
         this.twitter.isPickable = false;
         this.instagram.isPickable = false;
         this.instagram_lens.isPickable = false;
+        this.youtube.isPickable = false;
+        this.youtube_play.isPickable = false;
     }
 
     private addActions_Pegasus() {
@@ -2651,6 +2665,168 @@ export class LaboratoryService {
                 }
             )
         );
+    }
+
+    private addActions_Youtube() {
+        this.youtube.isPickable = true;
+        this.youtube.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.youtube.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.youtube.material, "albedoTexture", this.youtube_BAKING_HIGHLIGHT));
+        this.youtube.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.youtube.material, "albedoTexture", this.youtube_BAKING));
+
+        this.youtube.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.youtube_play.material, "albedoTexture", this.youtube_play_BAKING_HIGHLIGHT));
+        this.youtube.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.youtube_play.material, "albedoTexture", this.youtube_play_BAKING));
+
+        this.youtube.actionManager.registerAction(
+            new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
+                function(event){
+                    var pickedMesh = event.meshUnderPointer;
+                    window.open("https://www.youtube.com/channel/UCi50Pr7mvDz79EFFMd0stEQ/playlists?view_as=subscriber");
+                }
+            )
+        );
+    }
+
+    private addActions_YoutubePlay() {
+        this.youtube_play.isPickable = true;
+        this.youtube_play.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.youtube_play.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.youtube.material, "albedoTexture", this.youtube_BAKING_HIGHLIGHT));
+        this.youtube_play.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.youtube.material, "albedoTexture", this.youtube_BAKING));
+
+        this.youtube_play.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.youtube_play.material, "albedoTexture", this.youtube_play_BAKING_HIGHLIGHT));
+        this.youtube_play.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.youtube_play.material, "albedoTexture", this.youtube_play_BAKING));
+
+        this.youtube_play.actionManager.registerAction(
+            new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
+                function(event){
+                    var pickedMesh = event.meshUnderPointer;
+                    window.open("https://www.youtube.com/channel/UCi50Pr7mvDz79EFFMd0stEQ/playlists?view_as=subscriber");
+                }
+            )
+        );
+    }
+
+    private addActions_UnitedKingdomRed() {
+        this.united_kingdom_red.isPickable = true;
+        this.united_kingdom_red.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.united_kingdom_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.united_kingdom_red.material, "albedoTexture", this.united_kingdom_red_BAKING_HIGHLIGHT));
+        this.united_kingdom_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.united_kingdom_red.material, "albedoTexture", this.united_kingdom_red_BAKING));
+
+        this.united_kingdom_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.united_kingdom_white.material, "albedoTexture", this.united_kingdom_white_BAKING_HIGHLIGHT));
+        this.united_kingdom_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.united_kingdom_white.material, "albedoTexture", this.united_kingdom_white_BAKING));
+
+        this.united_kingdom_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.united_kingdom_blue.material, "albedoTexture", this.united_kingdom_blue_BAKING_HIGHLIGHT));
+        this.united_kingdom_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.united_kingdom_blue.material, "albedoTexture", this.united_kingdom_blue_BAKING));
+
+        this.united_kingdom_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.change_language_english.next()));
+    }
+
+    private addActions_UnitedKingdomWhite() {
+        this.united_kingdom_white.isPickable = true;
+        this.united_kingdom_white.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.united_kingdom_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.united_kingdom_red.material, "albedoTexture", this.united_kingdom_red_BAKING_HIGHLIGHT));
+        this.united_kingdom_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.united_kingdom_red.material, "albedoTexture", this.united_kingdom_red_BAKING));
+
+        this.united_kingdom_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.united_kingdom_white.material, "albedoTexture", this.united_kingdom_white_BAKING_HIGHLIGHT));
+        this.united_kingdom_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.united_kingdom_white.material, "albedoTexture", this.united_kingdom_white_BAKING));
+
+        this.united_kingdom_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.united_kingdom_blue.material, "albedoTexture", this.united_kingdom_blue_BAKING_HIGHLIGHT));
+        this.united_kingdom_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.united_kingdom_blue.material, "albedoTexture", this.united_kingdom_blue_BAKING));
+
+        this.united_kingdom_white.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.change_language_english.next()));
+    }
+
+    private addActions_UnitedKingdomBlue() {
+        this.united_kingdom_blue.isPickable = true;
+        this.united_kingdom_blue.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.united_kingdom_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.united_kingdom_red.material, "albedoTexture", this.united_kingdom_red_BAKING_HIGHLIGHT));
+        this.united_kingdom_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.united_kingdom_red.material, "albedoTexture", this.united_kingdom_red_BAKING));
+
+        this.united_kingdom_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.united_kingdom_white.material, "albedoTexture", this.united_kingdom_white_BAKING_HIGHLIGHT));
+        this.united_kingdom_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.united_kingdom_white.material, "albedoTexture", this.united_kingdom_white_BAKING));
+
+        this.united_kingdom_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.united_kingdom_blue.material, "albedoTexture", this.united_kingdom_blue_BAKING_HIGHLIGHT));
+        this.united_kingdom_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.united_kingdom_blue.material, "albedoTexture", this.united_kingdom_blue_BAKING));
+
+        this.united_kingdom_blue.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.change_language_english.next()));
+    }
+
+    private addActions_FranceBlue() {
+        this.france_blue.isPickable = true;
+        this.france_blue.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.france_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.france_blue.material, "albedoTexture", this.france_blue_BAKING_HIGHLIGHT));
+        this.france_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.france_blue.material, "albedoTexture", this.france_blue_BAKING));
+
+        this.france_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.france_white.material, "albedoTexture", this.france_white_BAKING_HIGHLIGHT));
+        this.france_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.france_white.material, "albedoTexture", this.france_white_BAKING));
+
+        this.france_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.france_red.material, "albedoTexture", this.france_red_BAKING_HIGHLIGHT));
+        this.france_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.france_red.material, "albedoTexture", this.france_red_BAKING));
+
+        this.france_blue.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.change_language_french.next()));
+    }
+
+    private addActions_FranceWhite() {
+        this.france_white.isPickable = true;
+        this.france_white.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.france_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.france_blue.material, "albedoTexture", this.france_blue_BAKING_HIGHLIGHT));
+        this.france_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.france_blue.material, "albedoTexture", this.france_blue_BAKING));
+
+        this.france_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.france_white.material, "albedoTexture", this.france_white_BAKING_HIGHLIGHT));
+        this.france_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.france_white.material, "albedoTexture", this.france_white_BAKING));
+
+        this.france_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.france_red.material, "albedoTexture", this.france_red_BAKING_HIGHLIGHT));
+        this.france_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.france_red.material, "albedoTexture", this.france_red_BAKING));
+
+        this.france_white.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.change_language_french.next()));
+    }
+
+    private addActions_FranceRed() {
+        this.france_red.isPickable = true;
+        this.france_red.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.france_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.france_blue.material, "albedoTexture", this.france_blue_BAKING_HIGHLIGHT));
+        this.france_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.france_blue.material, "albedoTexture", this.france_blue_BAKING));
+
+        this.france_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.france_white.material, "albedoTexture", this.france_white_BAKING_HIGHLIGHT));
+        this.france_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.france_white.material, "albedoTexture", this.france_white_BAKING));
+
+        this.france_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.france_red.material, "albedoTexture", this.france_red_BAKING_HIGHLIGHT));
+        this.france_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.france_red.material, "albedoTexture", this.france_red_BAKING));
+
+        this.france_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.change_language_french.next()));
+    }
+
+    private addActions_SpainRed() {
+        this.spain_red.isPickable = true;
+        this.spain_red.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.spain_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.spain_red.material, "albedoTexture", this.spain_red_BAKING_HIGHLIGHT));
+        this.spain_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.spain_red.material, "albedoTexture", this.spain_red_BAKING));
+
+        this.spain_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.spain_yellow.material, "albedoTexture", this.spain_yellow_BAKING_HIGHLIGHT));
+        this.spain_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.spain_yellow.material, "albedoTexture", this.spain_yellow_BAKING));
+
+        this.spain_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.change_language_spanish.next()));
+    }
+
+    private addActions_SpainYellow() {
+        this.spain_yellow.isPickable = true;
+        this.spain_yellow.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.spain_yellow.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.spain_red.material, "albedoTexture", this.spain_red_BAKING_HIGHLIGHT));
+        this.spain_yellow.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.spain_red.material, "albedoTexture", this.spain_red_BAKING));
+
+        this.spain_yellow.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.spain_yellow.material, "albedoTexture", this.spain_yellow_BAKING_HIGHLIGHT));
+        this.spain_yellow.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.spain_yellow.material, "albedoTexture", this.spain_yellow_BAKING));
+
+        this.spain_yellow.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.change_language_spanish.next()));
     }
 
     // ENTER LABORATORY
