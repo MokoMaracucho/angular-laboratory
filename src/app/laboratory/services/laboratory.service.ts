@@ -82,11 +82,13 @@ export class LaboratoryService {
     private threed_glasses_frame;
     private threed_glass_blue;
     private threed_glass_red;
-    private mouse;
-    private mac_mini;
     private support_laptop;
     private wood_box_center;
     private wood_box_right;
+    private mouse;
+    private keyboard;
+    private keyboard_keyboard;
+    private mac_mini;
     private laptop;
     private laptop_keyboard;
     private laptop_screen;
@@ -182,6 +184,8 @@ export class LaboratoryService {
     private via_air_mail_BAKING_HIGHLIGHT: BABYLON.Texture;
     private threed_glasses_frame_BAKING: BABYLON.Texture;
     private threed_glasses_frame_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private keyboard_BAKING: BABYLON.Texture;
+    private keyboard_BAKING_HIGHLIGHT: BABYLON.Texture;
     private mac_mini_BAKING: BABYLON.Texture;
     private mac_mini_BAKING_HIGHLIGHT: BABYLON.Texture;
     private laptop_BAKING: BABYLON.Texture;
@@ -755,18 +759,17 @@ export class LaboratoryService {
 
         // COMPUTERS
 
-        BABYLON.SceneLoader.ImportMeshAsync("mouse", "../../assets/glb/laboratory/", "mouse.glb", this.scene).then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("keyboard", "../../assets/glb/laboratory/", "keyboard.glb", this.scene).then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("keyboard_keyboard", "../../assets/glb/laboratory/", "keyboard_keyboard.glb", this.scene).then((result) => {
-        });
         BABYLON.SceneLoader.ImportMeshAsync("support_laptop", "../../assets/glb/laboratory/", "support_laptop.glb", this.scene).then((result) => {
         });
         BABYLON.SceneLoader.ImportMeshAsync("wood_box_center", "../../assets/glb/laboratory/", "wood_box_center.glb", this.scene).then((result) => {
         });
         BABYLON.SceneLoader.ImportMeshAsync("wood_box_right", "../../assets/glb/laboratory/", "wood_box_right.glb", this.scene).then((result) => {
         });
+        BABYLON.SceneLoader.ImportMeshAsync("mouse", "../../assets/glb/laboratory/", "mouse.glb", this.scene).then((result) => {
+        });
+
+        this.keyboard_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/keyboard_BAKING.jpg", this.scene, false, false);
+        this.keyboard_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/keyboard_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
 
         this.mac_mini_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/mac_mini_BAKING.jpg", this.scene, false, false);
         this.mac_mini_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/mac_mini_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
@@ -782,6 +785,14 @@ export class LaboratoryService {
 
         this.screen_right_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/screen_right_BAKING.jpg", this.scene, false, false);
         this.screen_right_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/screen_right_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("keyboard", "../../assets/glb/laboratory/", "keyboard.glb", this.scene).then((result) => {
+            this.keyboard = this.scene.getMeshByName("keyboard");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("keyboard_keyboard", "../../assets/glb/laboratory/", "keyboard_keyboard.glb", this.scene).then((result) => {
+            this.keyboard_keyboard = this.scene.getMeshByName("keyboard_keyboard");
+        });
 
         BABYLON.SceneLoader.ImportMeshAsync("mac_mini", "../../assets/glb/laboratory/", "mac_mini.glb", this.scene).then((result) => {
             this.mac_mini = this.scene.getMeshByName("mac_mini");
@@ -1076,6 +1087,16 @@ export class LaboratoryService {
         this.addActions_AmorAmor();
         this.addActions_AmorAmorFrame();
         this.addActions_ViaAirMail();
+        this.addActions_Keyboard();
+        this.addActions_KeyboardKeyboard();
+        this.addActions_MacMini();
+        this.addActions_Laptop();
+        this.addActions_LaptopKeyboard();
+        this.addActions_LaptopScreen();
+        this.addActions_ScreenCenter();
+        this.addActions_ScreenFrameCenter();
+        this.addActions_ScreenRight();
+        this.addActions_ScreenFrameRight();
     }
 
     private activation_buttons() {
@@ -1111,6 +1132,14 @@ export class LaboratoryService {
         this.amor_amor.isPickable = true;
         this.amor_amor_frame.isPickable = true;
         this.via_air_mail.isPickable = true;
+        this.mac_mini.isPickable = true;
+        this.laptop.isPickable = true;
+        this.laptop_keyboard.isPickable = true;
+        this.laptop_screen.isPickable = true;
+        this.screen_center.isPickable = true;
+        this.screen_frame_center.isPickable = true;
+        this.screen_right.isPickable = true;
+        this.screen_frame_right.isPickable = true;
     }
 
     private desactivation_buttons() {
@@ -1146,6 +1175,14 @@ export class LaboratoryService {
         this.amor_amor.isPickable = false;
         this.amor_amor_frame.isPickable = false;
         this.via_air_mail.isPickable = false;
+        this.mac_mini.isPickable = false;
+        this.laptop.isPickable = false;
+        this.laptop_keyboard.isPickable = false;
+        this.laptop_screen.isPickable = false;
+        this.screen_center.isPickable = false;
+        this.screen_frame_center.isPickable = false;
+        this.screen_right.isPickable = false;
+        this.screen_frame_right.isPickable = false;
     }
 
     private addActions_Pegasus() {
@@ -2214,6 +2251,346 @@ export class LaboratoryService {
         );
 
         // this.via_air_mail.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_contactMe.next()));
+    }
+
+    private addActions_Keyboard() {
+        this.keyboard.isPickable = true;
+        this.keyboard.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING_HIGHLIGHT));
+        this.keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING));
+
+        this.keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING_HIGHLIGHT));
+        this.keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING));
+
+        this.keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING_HIGHLIGHT));
+        this.keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING));
+
+        this.keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING_HIGHLIGHT));
+        this.keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING));
+
+        this.keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING_HIGHLIGHT));
+        this.keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING));
+
+        this.keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
+        this.keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
+
+        this.keyboard.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.mac_mini},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+    }
+
+    private addActions_KeyboardKeyboard() {
+        this.keyboard_keyboard.isPickable = true;
+        this.keyboard_keyboard.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING_HIGHLIGHT));
+        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING));
+
+        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING_HIGHLIGHT));
+        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING));
+
+        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING_HIGHLIGHT));
+        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING));
+
+        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING_HIGHLIGHT));
+        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING));
+
+        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING_HIGHLIGHT));
+        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING));
+
+        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
+        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
+
+        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.mac_mini},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.keyboard_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+    }
+
+    private addActions_MacMini() {
+        this.mac_mini.isPickable = true;
+        this.mac_mini.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.mac_mini.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING_HIGHLIGHT));
+        this.mac_mini.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING));
+
+        this.mac_mini.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING_HIGHLIGHT));
+        this.mac_mini.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING));
+
+        this.mac_mini.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING_HIGHLIGHT));
+        this.mac_mini.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING));
+
+        this.mac_mini.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING_HIGHLIGHT));
+        this.mac_mini.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING));
+
+        this.mac_mini.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING_HIGHLIGHT));
+        this.mac_mini.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING));
+
+        this.mac_mini.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
+        this.mac_mini.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
+
+        this.mac_mini.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.mac_mini},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.mac_mini.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+    }
+
+    private addActions_Laptop() {
+        this.laptop.isPickable = true;
+        this.laptop.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.laptop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING_HIGHLIGHT));
+        this.laptop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING));
+
+        this.laptop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING_HIGHLIGHT));
+        this.laptop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING));
+
+        this.laptop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING_HIGHLIGHT));
+        this.laptop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING));
+
+        this.laptop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING_HIGHLIGHT));
+        this.laptop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING));
+
+        this.laptop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING_HIGHLIGHT));
+        this.laptop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING));
+
+        this.laptop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
+        this.laptop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
+
+        this.laptop.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.laptop.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+    }
+
+    private addActions_LaptopKeyboard() {
+        this.laptop_keyboard.isPickable = true;
+        this.laptop_keyboard.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.laptop_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING_HIGHLIGHT));
+        this.laptop_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING));
+
+        this.laptop_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING_HIGHLIGHT));
+        this.laptop_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING));
+
+        this.laptop_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING_HIGHLIGHT));
+        this.laptop_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING));
+
+        this.laptop_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING_HIGHLIGHT));
+        this.laptop_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING));
+
+        this.laptop_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING_HIGHLIGHT));
+        this.laptop_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING));
+
+        this.laptop_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
+        this.laptop_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
+
+        this.laptop_keyboard.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop_keyboard},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.laptop_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+    }
+
+    private addActions_LaptopScreen() {
+        this.laptop_screen.isPickable = true;
+        this.laptop_screen.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.laptop_screen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING_HIGHLIGHT));
+        this.laptop_screen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING));
+
+        this.laptop_screen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING_HIGHLIGHT));
+        this.laptop_screen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING));
+
+        this.laptop_screen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING_HIGHLIGHT));
+        this.laptop_screen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING));
+
+        this.laptop_screen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING_HIGHLIGHT));
+        this.laptop_screen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING));
+
+        this.laptop_screen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING_HIGHLIGHT));
+        this.laptop_screen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING));
+
+        this.laptop_screen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
+        this.laptop_screen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
+
+        this.laptop_screen.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop_screen},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.laptop_screen.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+    }
+
+    private addActions_ScreenCenter() {
+        this.screen_center.isPickable = true;
+        this.screen_center.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING_HIGHLIGHT));
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING));
+
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING_HIGHLIGHT));
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING));
+
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING_HIGHLIGHT));
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING));
+
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING_HIGHLIGHT));
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING));
+
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING_HIGHLIGHT));
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING));
+
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
+
+        this.screen_center.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_center},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+    }
+
+    private addActions_ScreenFrameCenter() {
+        this.screen_frame_center.isPickable = true;
+        this.screen_frame_center.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.screen_frame_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING_HIGHLIGHT));
+        this.screen_frame_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING));
+
+        this.screen_frame_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING_HIGHLIGHT));
+        this.screen_frame_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING));
+
+        this.screen_frame_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING_HIGHLIGHT));
+        this.screen_frame_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING));
+
+        this.screen_frame_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING_HIGHLIGHT));
+        this.screen_frame_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING));
+
+        this.screen_frame_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING_HIGHLIGHT));
+        this.screen_frame_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING));
+
+        this.screen_frame_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
+        this.screen_frame_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
+
+        this.screen_frame_center.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_frame_center},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.screen_frame_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+    }
+
+    private addActions_ScreenRight() {
+        this.screen_center.isPickable = true;
+        this.screen_center.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING_HIGHLIGHT));
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING));
+
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING_HIGHLIGHT));
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING));
+
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING_HIGHLIGHT));
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING));
+
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING_HIGHLIGHT));
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING));
+
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING_HIGHLIGHT));
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING));
+
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
+        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
+
+        this.screen_center.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_center},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+    }
+
+    private addActions_ScreenFrameRight() {
+        this.screen_frame_right.isPickable = true;
+        this.screen_frame_right.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.screen_frame_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING_HIGHLIGHT));
+        this.screen_frame_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING));
+
+        this.screen_frame_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING_HIGHLIGHT));
+        this.screen_frame_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING));
+
+        this.screen_frame_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING_HIGHLIGHT));
+        this.screen_frame_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING));
+
+        this.screen_frame_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING_HIGHLIGHT));
+        this.screen_frame_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING));
+
+        this.screen_frame_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING_HIGHLIGHT));
+        this.screen_frame_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING));
+
+        this.screen_frame_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
+        this.screen_frame_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
+
+        this.screen_frame_right.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_frame_right},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.screen_frame_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     // ENTER LABORATORY
