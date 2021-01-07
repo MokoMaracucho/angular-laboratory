@@ -792,6 +792,9 @@ export class LaboratoryService {
             this.spain_yellow = this.scene.getMeshByName("spain_yellow");
         });
 
+        BABYLON.SceneLoader.ImportMeshAsync("owl", "../../assets/glb/laboratory/", "owl.glb").then((result) => {
+        });
+
         // SHELF
 
         BABYLON.SceneLoader.ImportMeshAsync("shelf", "../../assets/glb/laboratory/", "shelf.glb", this.scene).then((result) => {
