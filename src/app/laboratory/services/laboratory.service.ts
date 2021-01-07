@@ -1098,6 +1098,8 @@ export class LaboratoryService {
         this.addActions_ScreenRight();
         this.addActions_ScreenFrameRight();
         this.addActions_Twitter();
+        this.addActions_Instagram();
+        this.addActions_InstagramLens();
     }
 
     private activation_buttons() {
@@ -1142,6 +1144,8 @@ export class LaboratoryService {
         this.screen_right.isPickable = true;
         this.screen_frame_right.isPickable = true;
         this.twitter.isPickable = true;
+        this.instagram.isPickable = true;
+        this.instagram_lens.isPickable = true;
     }
 
     private desactivation_buttons() {
@@ -1186,6 +1190,8 @@ export class LaboratoryService {
         this.screen_right.isPickable = false;
         this.screen_frame_right.isPickable = false;
         this.twitter.isPickable = false;
+        this.instagram.isPickable = false;
+        this.instagram_lens.isPickable = false;
     }
 
     private addActions_Pegasus() {
@@ -2608,6 +2614,40 @@ export class LaboratoryService {
                 function(event){
                     var pickedMesh = event.meshUnderPointer;
                     window.open("https://twitter.com/FedericoMoko");
+                }
+            )
+        );
+    }
+
+    private addActions_Instagram() {
+        this.instagram.isPickable = true;
+        this.instagram.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.instagram.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.instagram.material, "albedoTexture", this.instagram_BAKING_HIGHLIGHT));
+        this.instagram.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.instagram.material, "albedoTexture", this.instagram_BAKING));
+
+        this.instagram.actionManager.registerAction(
+            new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
+                function(event){
+                    var pickedMesh = event.meshUnderPointer;
+                    window.open("https://www.instagram.com/moko_maracucho/?hl=fr");
+                }
+            )
+        );
+    }
+
+    private addActions_InstagramLens() {
+        this.instagram_lens.isPickable = true;
+        this.instagram_lens.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.instagram_lens.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.instagram.material, "albedoTexture", this.instagram_BAKING_HIGHLIGHT));
+        this.instagram_lens.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.instagram.material, "albedoTexture", this.instagram_BAKING));
+
+        this.instagram_lens.actionManager.registerAction(
+            new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
+                function(event){
+                    var pickedMesh = event.meshUnderPointer;
+                    window.open("https://www.instagram.com/moko_maracucho/?hl=fr");
                 }
             )
         );
