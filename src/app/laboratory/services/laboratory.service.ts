@@ -578,6 +578,28 @@ export class LaboratoryService {
         BABYLON.SceneLoader.ImportMeshAsync("mirror_frame", "../../assets/glb/laboratory/", "mirror_frame.glb", this.scene).then((result) => {
         });
 
+        var glass = BABYLON.MeshBuilder.CreatePlane("glass", {width: 5.8, height: 9.2}, this.scene);
+        glass.position = new BABYLON.Vector3(-0.01, 11.8, -9.3);
+        glass.rotation = new BABYLON.Vector3(0, 1.57, 0);
+
+        glass.computeWorldMatrix(true);
+        var glass_worldMatrix = glass.getWorldMatrix();
+
+        var glass_vertexData = glass.getVerticesData("normal");
+        var glassNormal = new BABYLON.Vector3(glass_vertexData[0], glass_vertexData[1], glass_vertexData[2]);
+        glassNormal = BABYLON.Vector3.TransformNormal(glassNormal, glass_worldMatrix);
+
+        var reflector = BABYLON.Plane.FromPositionAndNormal(glass.position, glassNormal.scale(-1));
+
+        var mirrorMaterial = new BABYLON.StandardMaterial("mirror", this.scene);
+        mirrorMaterial.reflectionTexture = new BABYLON.MirrorTexture("mirror", 1024, this.scene, true);
+        mirrorMaterial.reflectionTexture.mirrorPlane = reflector;
+        mirrorMaterial.reflectionTexture.renderList = this.scene.scene;
+        mirrorMaterial.reflectionTexture.level = 1;
+        mirrorMaterial.diffuseColor = new BABYLON.Color3(0.13, 0.13, 0.17);
+
+        glass.material = mirrorMaterial;
+
         // DAISY
 
         BABYLON.SceneLoader.ImportMeshAsync("daisy", "../../assets/glb/laboratory/", "daisy.glb", this.scene).then((result) => {
