@@ -1050,6 +1050,8 @@ export class LaboratoryService {
         this.addActions_PegasusLogo();
         this.addActions_PegasusSoleOutside();
         this.addActions_PegasusSoleInside();
+        this.addActions_TransfertBoxes();
+        this.addActions_TransfertBoxesRings();
     }
 
     private activation_buttons() {
@@ -1059,6 +1061,8 @@ export class LaboratoryService {
         this.pegasus_logo.isPickable = true;
         this.pegasus_sole_outside.isPickable = true;
         this.pegasus_sole_inside.isPickable = true;
+        this.transfert_boxes.isPickable = true;
+        this.transfert_boxes_rings.isPickable = true;
     }
 
     private desactivation_buttons() {
@@ -1068,6 +1072,8 @@ export class LaboratoryService {
         this.pegasus_logo.isPickable = false;
         this.pegasus_sole_outside.isPickable = false;
         this.pegasus_sole_inside.isPickable = false;
+        this.transfert_boxes.isPickable = false;
+        this.transfert_boxes_rings.isPickable = false;
     }
 
     private addActions_Pegasus() {
@@ -1122,6 +1128,8 @@ export class LaboratoryService {
                 ]
             )
         );
+
+        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusLaces() {
@@ -1148,6 +1156,8 @@ export class LaboratoryService {
                 ]
             )
         );
+
+        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusLogo() {
@@ -1174,6 +1184,8 @@ export class LaboratoryService {
                 ]
             )
         );
+
+        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusSoleOutside() {
@@ -1200,6 +1212,8 @@ export class LaboratoryService {
                 ]
             )
         );
+
+        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusSoleInside() {
@@ -1226,6 +1240,54 @@ export class LaboratoryService {
                 ]
             )
         );
+
+        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
+    }
+
+    private addActions_TransfertBoxes() {
+        this.transfert_boxes.isPickable = true;
+        this.transfert_boxes.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING_HIGHLIGHT));
+        this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING));
+
+        this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING_HIGHLIGHT));
+        this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING));
+
+        this.transfert_boxes.actionManager.registerAction(
+            new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+              )
+        );
+
+        // this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_shareKnowledge.next()));
+    }
+
+    private addActions_TransfertBoxesRings() {
+        this.transfert_boxes_rings.isPickable = true;
+        this.transfert_boxes_rings.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING_HIGHLIGHT));
+        this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING));
+
+        this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING_HIGHLIGHT));
+        this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING));
+
+        this.transfert_boxes_rings.actionManager.registerAction(
+            new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes_rings},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+              )
+        );
+
+        // this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_shareKnowledge.next()));
     }
 
     private keepCameraDatas() {
