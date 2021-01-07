@@ -1998,6 +1998,9 @@ export class LaboratoryService {
         this.checker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING_HIGHLIGHT));
         this.checker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING));
 
+        this.checker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tarot_deck.material, "albedoTexture", this.tarot_deck_BAKING_HIGHLIGHT));
+        this.checker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tarot_deck.material, "albedoTexture", this.tarot_deck_BAKING));
+
         this.checker.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.checker},
                 [
@@ -2007,7 +2010,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.checker.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_checker.next()));
+        // this.checker.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_games.next()));
     }
 
     private addActions_CheckerLocks(){
@@ -2020,6 +2023,9 @@ export class LaboratoryService {
         this.checker_locks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING_HIGHLIGHT));
         this.checker_locks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING));
 
+        this.checker_locks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tarot_deck.material, "albedoTexture", this.tarot_deck_BAKING_HIGHLIGHT));
+        this.checker_locks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tarot_deck.material, "albedoTexture", this.tarot_deck_BAKING));
+
         this.checker_locks.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.checker_locks},
                 [
@@ -2029,7 +2035,32 @@ export class LaboratoryService {
             )
         );
 
-        // this.checker_locks.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_checker.next()));
+        // this.checker_locks.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_games.next()));
+    }
+
+    private addActions_TarotDeck() {
+        this.tarot_deck.isPickable = true;
+        this.tarot_deck.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.tarot_deck.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.checker.material, "albedoTexture", this.checker_BAKING_HIGHLIGHT));
+        this.tarot_deck.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.checker.material, "albedoTexture", this.checker_BAKING));
+
+        this.tarot_deck.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING_HIGHLIGHT));
+        this.tarot_deck.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING));
+
+        this.tarot_deck.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tarot_deck.material, "albedoTexture", this.tarot_deck_BAKING_HIGHLIGHT));
+        this.tarot_deck.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tarot_deck.material, "albedoTexture", this.tarot_deck_BAKING));
+
+        this.tarot_deck.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tarot_deck},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.tarot_deck.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_games.next()));
     }
 
     // ENTER LABORATORY
