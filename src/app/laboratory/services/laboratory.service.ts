@@ -613,7 +613,7 @@ export class LaboratoryService {
         var mirrorTexture = new BABYLON.MirrorTexture("mirrorTexture", 1024, this.scene);
         mirrorTexture.level = 1;
         mirrorTexture.mirrorPlane = reflector;
-        mirrorTexture.renderList = this.scene.scene;
+        // mirrorTexture.renderList = this.scene.scene;
 
         // Apply mirror texture
         this.mirror.material.reflectionTexture = mirrorTexture;

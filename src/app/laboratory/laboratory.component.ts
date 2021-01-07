@@ -14,10 +14,29 @@ import { InteractionService } from './services/interaction.service';
             state('false', style({background: '#160130'})),
             state('true', style({background: '#16013066'})),
             transition('false => true', [animate('2s')])
+        ]),
+        trigger('webDeveloper_fadeIn', [
+            state('false', style({opacity: '0'})),
+            state('true', style({opacity: '1'})),
+            transition('false => true', [animate('2s')])
+        ]),
+        trigger('introduction_fadeIn', [
+            state('false', style({opacity: '0'})),
+            state('true', style({opacity: '1'})),
+            transition('false => true', [animate('2s')])
+        ]),
+        trigger('btnCloseHome_fadeIn', [
+            state('false', style({opacity: '0'})),
+            state('true', style({opacity: '1'})),
+            transition('false => true', [animate('2s')])
         ])
     ]
 })
 export class LaboratoryComponent implements OnInit, OnDestroy {
+
+    public language_french = true;
+    public language_english = false;
+    public language_spanish = false;
 
     private subscription: Subscription;
     private readonly destroy = new Subject<boolean>();
@@ -25,6 +44,10 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public isLoaded = false;
     public isLoaded_fadeOut = false;
     public isVisible_introductionBackground = true;
+    public isVisible_introduction = true;
+    public webDeveloper_fadeIn = false;
+    public introduction_fadeIn = false;
+    public btnCloseHome_fadeIn = false;
 
     @ViewChild('rendererCanvas_laboratory', { static: true })
     public rendererCanvas_laboratory: ElementRef<HTMLCanvasElement>;
@@ -37,6 +60,18 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.laboratoryService.createScene(this.rendererCanvas_laboratory);
         this.laboratoryService.animate();
+
+        setTimeout(() => {
+            this.webDeveloper_fadeIn = true;
+        }, 500);
+
+        setTimeout(() => {
+            this.introduction_fadeIn = true;
+        }, 1000);
+
+        setTimeout(() => {
+            this.btnCloseHome_fadeIn = true;
+        }, 1500);
 
         this.subscription = this.interaction.isLoaded.subscribe(() => this.isLoaded_function());
     }
