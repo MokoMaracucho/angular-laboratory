@@ -447,7 +447,45 @@ export class LaboratoryService {
             chimney_back.material = chimney_back_MATERIAL;
         });
 
-        // CHIMNEY
+        // SMOKE
+
+        var fountain = BABYLON.Mesh.CreateBox("foutain", 0.1, this.scene);
+        fountain.position = new BABYLON.Vector3(-1, 0, -9);
+
+        var smokeSystem = new BABYLON.ParticleSystem("particles", 1000, this.scene);
+        smokeSystem.particleTexture = new BABYLON.Texture("../../assets/glb/laboratory/particles/smoke.png", this.scene);
+        smokeSystem.emitter = fountain; // the starting object, the emitter
+        smokeSystem.minEmitBox = new BABYLON.Vector3(-0.5, 1, -0.5); // Starting all from
+        smokeSystem.maxEmitBox = new BABYLON.Vector3(0.5, 1, 0.5); // To...
+
+        smokeSystem.color1 = new BABYLON.Color4(0.02, 0.02, 0.02, .02);
+        smokeSystem.color2 = new BABYLON.Color4(0.02, 0.02, 0.02, .02);
+        smokeSystem.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+        smokeSystem.minSize = 0.5;
+        smokeSystem.maxSize = 1.5;
+
+        smokeSystem.minLifeTime = 0.3;
+        smokeSystem.maxLifeTime = 1.5;
+
+        smokeSystem.emitRate = 350;
+        smokeSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+
+        smokeSystem.gravity = new BABYLON.Vector3(0, 0, 0);
+
+        smokeSystem.direction1 = new BABYLON.Vector3(-1.5, 8, -1.5);
+        smokeSystem.direction2 = new BABYLON.Vector3(1.5, 8, 1.5);
+
+        smokeSystem.minAngularSpeed = 0;
+           smokeSystem.maxAngularSpeed = Math.PI;
+
+        smokeSystem.minEmitPower = 0.5;
+        smokeSystem.maxEmitPower = 1.5;
+        smokeSystem.updateSpeed = 0.005;
+
+        smokeSystem.start();
+
+        // CHECKER
 
         this.checker_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/checker_BAKING.jpg", this.scene, false, false);
         this.checker_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/checker_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
