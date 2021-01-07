@@ -25,7 +25,7 @@ import { InteractionService } from './services/interaction.service';
             state('true', style({opacity: '1'})),
             transition('false => true', [animate('2s')])
         ]),
-        trigger('btnCloseHome_fadeIn', [
+        trigger('btnCloseIntroduction_fadeIn', [
             state('false', style({opacity: '0'})),
             state('true', style({opacity: '1'})),
             transition('false => true', [animate('2s')])
@@ -47,7 +47,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public isVisible_introduction = true;
     public webDeveloper_fadeIn = false;
     public introduction_fadeIn = false;
-    public btnCloseHome_fadeIn = false;
+    public btnCloseIntroduction_fadeIn = false;
 
     @ViewChild('rendererCanvas_laboratory', { static: true })
     public rendererCanvas_laboratory: ElementRef<HTMLCanvasElement>;
@@ -70,7 +70,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         }, 1000);
 
         setTimeout(() => {
-            this.btnCloseHome_fadeIn = true;
+            this.btnCloseIntroduction_fadeIn = true;
         }, 1500);
 
         this.subscription = this.interaction.isLoaded.subscribe(() => this.isLoaded_function());
@@ -83,5 +83,11 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     private isLoaded_function(): void {
         this.isLoaded = true;
         this.isLoaded_fadeOut = true;
+    }
+
+    public close_introduction(): void {
+        this.isVisible_introductionBackground = false;
+        this.isVisible_introduction = false;
+        this.laboratoryService.animation_enterLaboratory();
     }
 }

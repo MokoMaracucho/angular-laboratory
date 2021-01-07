@@ -246,6 +246,7 @@ export class LaboratoryService {
         this.arc_rotate_camera.lowerRadiusLimit = 20;
         this.arc_rotate_camera.upperRadiusLimit = 65;
         this.arc_rotate_camera.attachControl(canvas, true);
+        this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, 1);
 
         // LIGHTS
 
@@ -1031,6 +1032,23 @@ export class LaboratoryService {
             this.sceneLoaded = true;
             this.interaction.isLoaded.next();
         }
+    }
+
+    public animation_enterLaboratory() {
+        this.animation_cameraPosition_enterLaboratory();
+        this.animation_targetScreenOffset_enterLaboratory();
+    }
+
+    private animation_cameraPosition_enterLaboratory() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterLaboratory', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(-18.3222166454619, 34.053690918583385, 28.63716579383206), 0, ease);
+    }
+
+    private animation_targetScreenOffset_enterLaboratory() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, -1), 0, ease);
     }
 
     public animate(): void {
