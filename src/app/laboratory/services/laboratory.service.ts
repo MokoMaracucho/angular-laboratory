@@ -1073,6 +1073,9 @@ export class LaboratoryService {
         this.addActions_ThreedGlassesFrame();
         this.addActions_ThreedGlassBlue();
         this.addActions_ThreedGlassRed();
+        this.addActions_AmorAmor();
+        this.addActions_AmorAmorFrame();
+        this.addActions_ViaAirMail();
     }
 
     private activation_buttons() {
@@ -1105,6 +1108,9 @@ export class LaboratoryService {
         this.threed_glasses_frame.isPickable = true;
         this.threed_glass_blue.isPickable = true;
         this.threed_glass_red.isPickable = true;
+        this.amor_amor.isPickable = true;
+        this.amor_amor_frame.isPickable = true;
+        this.via_air_mail.isPickable = true;
     }
 
     private desactivation_buttons() {
@@ -1137,6 +1143,9 @@ export class LaboratoryService {
         this.threed_glasses_frame.isPickable = false;
         this.threed_glass_blue.isPickable = false;
         this.threed_glass_red.isPickable = false;
+        this.amor_amor.isPickable = false;
+        this.amor_amor_frame.isPickable = false;
+        this.via_air_mail.isPickable = false;
     }
 
     private addActions_Pegasus() {
@@ -2148,6 +2157,63 @@ export class LaboratoryService {
         );
 
         // this.threed_glass_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_stereoscopy.next()));
+    }
+
+    private addActions_AmorAmor() {
+        this.amor_amor.isPickable = true;
+        this.amor_amor.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.amor_amor.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.amor_amor.material, "albedoTexture", this.amor_amor_BAKING_HIGHLIGHT));
+        this.amor_amor.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.amor_amor.material, "albedoTexture", this.amor_amor_BAKING));
+
+        this.amor_amor.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.amor_amor},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.amor_amor.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_art.next()));
+    }
+
+    private addActions_AmorAmorFrame() {
+        this.amor_amor_frame.isPickable = true;
+        this.amor_amor_frame.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.amor_amor_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.amor_amor.material, "albedoTexture", this.amor_amor_BAKING_HIGHLIGHT));
+        this.amor_amor_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.amor_amor.material, "albedoTexture", this.amor_amor_BAKING));
+
+        this.amor_amor_frame.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.amor_amor_frame},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.amor_amor_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_art.next()));
+    }
+
+    private addActions_ViaAirMail() {
+        this.via_air_mail.isPickable = true;
+        this.via_air_mail.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.via_air_mail.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.via_air_mail.material, "albedoTexture", this.via_air_mail_BAKING_HIGHLIGHT));
+        this.via_air_mail.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.via_air_mail.material, "albedoTexture", this.via_air_mail_BAKING));
+
+        this.via_air_mail.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.via_air_mail},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.via_air_mail.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_contactMe.next()));
     }
 
     // ENTER LABORATORY
