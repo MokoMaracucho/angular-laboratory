@@ -1069,6 +1069,10 @@ export class LaboratoryService {
         this.addActions_TofuFrame();
         this.addActions_Checker();
         this.addActions_CheckerLocks();
+        this.addActions_TarotDeck();
+        this.addActions_ThreedGlassesFrame();
+        this.addActions_ThreedGlassBlue();
+        this.addActions_ThreedGlassRed();
     }
 
     private activation_buttons() {
@@ -1097,6 +1101,10 @@ export class LaboratoryService {
         this.tofu_frame.isPickable = true;
         this.checker.isPickable = true;
         this.checker_locks.isPickable = true;
+        this.tarot_deck.isPickable = true;
+        this.threed_glasses_frame.isPickable = true;
+        this.threed_glass_blue.isPickable = true;
+        this.threed_glass_red.isPickable = true;
     }
 
     private desactivation_buttons() {
@@ -1125,6 +1133,10 @@ export class LaboratoryService {
         this.tofu_frame.isPickable = false;
         this.checker.isPickable = false;
         this.checker_locks.isPickable = false;
+        this.tarot_deck.isPickable = false;
+        this.threed_glasses_frame.isPickable = false;
+        this.threed_glass_blue.isPickable = false;
+        this.threed_glass_red.isPickable = false;
     }
 
     private addActions_Pegasus() {
@@ -2061,6 +2073,81 @@ export class LaboratoryService {
         );
 
         // this.tarot_deck.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_games.next()));
+    }
+
+    private addActions_ThreedGlassesFrame() {
+        this.threed_glasses_frame.isPickable = true;
+        this.threed_glasses_frame.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glasses_frame .material, "albedoTexture", this.threed_glasses_frame_BAKING_HIGHLIGHT));
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glasses_frame .material, "albedoTexture", this.threed_glasses_frame_BAKING));
+
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_blue.material, "useEmissiveAsIllumination", true));
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_blue.material, "useEmissiveAsIllumination", false));
+
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", true));
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", false));
+
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glasses_frame},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.threed_glasses_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_stereoscopy.next()));
+    }
+
+    private addActions_ThreedGlassBlue() {
+        this.threed_glass_blue.isPickable = true;
+        this.threed_glass_blue.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glasses_frame.material, "albedoTexture", this.threed_glasses_frame_BAKING_HIGHLIGHT));
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glasses_frame.material, "albedoTexture", this.threed_glasses_frame_BAKING));
+
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_blue.material, "useEmissiveAsIllumination", true));
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_blue.material, "useEmissiveAsIllumination", false));
+
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", true));
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", false));
+
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_blue},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.threed_glass_blue.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_stereoscopy.next()));
+    }
+
+    private addActions_ThreedGlassRed() {
+        this.threed_glass_red.isPickable = true;
+        this.threed_glass_red.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glasses_frame.material, "albedoTexture", this.threed_glasses_frame_BAKING_HIGHLIGHT));
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glasses_frame.material, "albedoTexture", this.threed_glasses_frame_BAKING));
+
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_blue.material, "useEmissiveAsIllumination", true));
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_blue.material, "useEmissiveAsIllumination", false));
+
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", true));
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", false));
+
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_red},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.threed_glass_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_stereoscopy.next()));
     }
 
     // ENTER LABORATORY
