@@ -261,7 +261,7 @@ export class LaboratoryService {
         // LIGHTS
 
         this.hemispheric_light = new BABYLON.HemisphericLight('hemispheric_light', new BABYLON.Vector3(0, 1, 0), this.scene);
-        this.hemispheric_light.intensity = 0.8;
+        this.hemispheric_light.intensity = 0.6;
 
         this.directional_light = new BABYLON.DirectionalLight("directional_light", new BABYLON.Vector3(1, -5, -2), this.scene);
         this.directional_light.intensity = 0.5;
@@ -584,6 +584,11 @@ export class LaboratoryService {
         BABYLON.SceneLoader.ImportMeshAsync("virgen_guadalupe", "../../assets/glb/laboratory/", "virgen_guadalupe.glb", this.scene).then((result) => {
         });
 
+        // VIRGEN
+
+        BABYLON.SceneLoader.ImportMeshAsync("book_programmer_java", "../../assets/glb/laboratory/", "book_programmer_java.glb", this.scene).then((result) => {
+        });
+
         // CANDELSTICK
 
         BABYLON.SceneLoader.ImportMeshAsync("candelstick", "../../assets/glb/laboratory/", "candelstick.glb", this.scene).then((result) => {
@@ -624,7 +629,7 @@ export class LaboratoryService {
         var mirrorTexture = new BABYLON.MirrorTexture("mirrorTexture", 1024, this.scene);
         mirrorTexture.level = 1;
         mirrorTexture.mirrorPlane = reflector;
-        // mirrorTexture.renderList = this.scene.scene;
+        mirrorTexture.renderList = this.scene.scene;
 
         // Apply mirror texture
         this.mirror.material.reflectionTexture = mirrorTexture;
@@ -1034,6 +1039,7 @@ export class LaboratoryService {
         this.projector_MATERIAL.roughness = 1;
         this.projector_MATERIAL.emissiveColor = BABYLON.Color3.White();
         this.projector_MATERIAL.diffuseTexture = videoTexture;
+        this.projector_MATERIAL.alpha = 0.3;
 
         this.projector.material = this.projector_MATERIAL;
 
