@@ -125,6 +125,12 @@ export class LaboratoryService {
     private world_map_bar;
     private world_map_basement_metal;
     private world_map_basement_marble;
+    private twitter;
+    private instagram;
+    private instagram_lens;
+    private youtube;
+    private youtube_play;
+
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -194,6 +200,16 @@ export class LaboratoryService {
     private spain_red_BAKING_HIGHLIGHT: BABYLON.Texture;
     private spain_yellow_BAKING: BABYLON.Texture;
     private spain_yellow_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private twitter_BAKING: BABYLON.Texture;
+    private twitter_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private instagram_BAKING: BABYLON.Texture;
+    private instagram_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private instagram_lens_BAKING: BABYLON.Texture;
+    private instagram_lens_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private youtube_BAKING: BABYLON.Texture;
+    private youtube_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private youtube_play_BAKING: BABYLON.Texture;
+    private youtube_play_BAKING_HIGHLIGHT: BABYLON.Texture;
 
     private glass_MATERIAL: BABYLON.StandardMaterial;
     private glass_blue_MATERIAL: BABYLON.StandardMaterial;
@@ -832,6 +848,43 @@ export class LaboratoryService {
         BABYLON.SceneLoader.ImportMeshAsync("world_map_basement_metal", "../../assets/glb/laboratory/", "world_map_basement_metal.glb", this.scene).then((result) => {
         });
         BABYLON.SceneLoader.ImportMeshAsync("world_map_basement_marble", "../../assets/glb/laboratory/", "world_map_basement_marble.glb", this.scene).then((result) => {
+        });
+
+        // SOCIAL NETWORKS
+
+        this.twitter_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/twitter_BAKING.jpg", this.scene, false, false);
+        this.twitter_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/twitter_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("twitter", "../../assets/glb/laboratory/", "twitter.glb").then((result) => {
+            this.twitter = this.scene.getMeshByName("twitter");
+        });
+
+        this.instagram_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/instagram_BAKING.jpg", this.scene, false, false);
+        this.instagram_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/instagram_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.instagram_lens_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/instagram_lens_BAKING.jpg", this.scene, false, false);
+        this.instagram_lens_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/instagram_lens_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("instagram", "../../assets/glb/laboratory/", "instagram.glb").then((result) => {
+            this.instagram = this.scene.getMeshByName("instagram");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("instagram_lens", "../../assets/glb/laboratory/", "instagram_lens.glb").then((result) => {
+            this.instagram_lens = this.scene.getMeshByName("instagram_lens");
+        });
+
+        this.youtube_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/youtube_BAKING.jpg", this.scene, false, false);
+        this.youtube_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/youtube_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.youtube_play_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/youtube_play_BAKING.jpg", this.scene, false, false);
+        this.youtube_play_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/youtube_play_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("youtube", "../../assets/glb/laboratory/", "youtube.glb").then((result) => {
+            this.youtube = this.scene.getMeshByName("youtube");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("youtube_play", "../../assets/glb/laboratory/", "youtube_play.glb").then((result) => {
+            this.youtube_play = this.scene.getMeshByName("youtube_play");
         });
     }
 
