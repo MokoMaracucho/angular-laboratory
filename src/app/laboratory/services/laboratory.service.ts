@@ -245,8 +245,8 @@ export class LaboratoryService {
 
         this.arc_rotate_camera = new BABYLON.ArcRotateCamera("arc_rotate_camera", 2.25, 1.05, 50, new BABYLON.Vector3(-16.2, 5, -12), this.scene);
         this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
-        this.arc_rotate_camera.lowerBetaLimit = 0.1;
-        this.arc_rotate_camera.upperBetaLimit = 1.4;
+        this.arc_rotate_camera.lowerBetaLimit = -0.5;
+        this.arc_rotate_camera.upperBetaLimit = 1.65;
         this.arc_rotate_camera.lowerRadiusLimit = 20;
         this.arc_rotate_camera.upperRadiusLimit = 65;
         this.arc_rotate_camera.attachControl(canvas, true);
@@ -1031,12 +1031,16 @@ export class LaboratoryService {
         });
     }
 
+    // IS LOADED
+
     private sceneIsLoaded() {
         if(!this.sceneLoaded) {
             this.sceneLoaded = true;
             this.interaction.isLoaded.next();
         }
     }
+
+    // ENTER LABORATORY
 
     public animation_enterLaboratory() {
         this.animation_cameraPosition_enterLaboratory();
@@ -1046,13 +1050,13 @@ export class LaboratoryService {
     private animation_cameraPosition_enterLaboratory() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterLaboratory', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(-18.3222166454619, 34.053690918583385, 28.63716579383206), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterLaboratory', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(-43.88022966086636, 26.184629944750167, 23.847124616403107), 0, ease);
     }
 
     private animation_targetScreenOffset_enterLaboratory() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, -1), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(4, -0.5), 0, ease);
     }
 
     // DASHBOARD

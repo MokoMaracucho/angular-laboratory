@@ -51,7 +51,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public introduction_fadeIn = false;
     public btnCloseIntroduction_fadeIn = false;
 
-    public isVisible_dashBoard = true;
+    public isVisible_dashBoard = false;
     public camera_datas: CameraDatas;
 
     @ViewChild('rendererCanvas_laboratory', { static: true })
