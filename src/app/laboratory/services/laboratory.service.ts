@@ -447,6 +447,11 @@ export class LaboratoryService {
             chimney_back.material = chimney_back_MATERIAL;
         });
 
+        // LOGS
+
+        BABYLON.SceneLoader.ImportMeshAsync("logs", "../../assets/glb/laboratory/", "logs.glb", this.scene).then((result) => {
+        });
+
         // FIRE SOURCE
 
         var fire_source = BABYLON.Mesh.CreateBox("foutain", 0.1, this.scene);
