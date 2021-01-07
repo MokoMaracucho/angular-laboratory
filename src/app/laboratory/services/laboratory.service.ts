@@ -4,6 +4,8 @@ import { WindowRefService } from '../../shared/services/window-ref.service';
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
 
+import { InteractionService } from './interaction.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -136,7 +138,6 @@ export class LaboratoryService {
     private youtube_play;
     private projector;
 
-
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
     private pegasus_laces_BAKING: BABYLON.Texture;
@@ -222,9 +223,12 @@ export class LaboratoryService {
     private glass_red_MATERIAL: BABYLON.StandardMaterial;
     private projector_MATERIAL: BABYLON.StandardMaterial;
 
+    private sceneLoaded = false;
+
     public constructor(
         private ngZone: NgZone,
-        private windowRef: WindowRefService
+        private windowRef: WindowRefService,
+        protected readonly interaction: InteractionService
     ) {}
 
     public createScene(canvas: ElementRef<HTMLCanvasElement>): void {
@@ -1004,7 +1008,7 @@ export class LaboratoryService {
         // PROJECTOR
 
         this.projector = BABYLON.MeshBuilder.CreatePlane("projector", {width: 12, height: 6.75}, this.scene);
-        this.projector.position = new BABYLON.Vector3(-32.4 , 12, -7);
+        this.projector.position = new BABYLON.Vector3(-32.4 , 13.5, -7);
         this.projector.rotation = new BABYLON.Vector3(0, -1.57, 0);
 
         this.projector_MATERIAL = new BABYLON.StandardMaterial("projectorMaterial", this.scene);
@@ -1022,10 +1026,18 @@ export class LaboratoryService {
         });
     }
 
+    private sceneIsLoaded() {
+        if(!this.sceneLoaded) {
+            this.sceneLoaded = true;
+            this.interaction.isLoaded.next();
+        }
+    }
+
     public animate(): void {
         this.ngZone.runOutsideAngular(() => {
             const rendererLoopCallback = () => {
                 this.scene.render();
+                this.scene.executeWhenReady(() => this.sceneIsLoaded());
             };
 
             if (this.windowRef.document.readyState !== 'loading') {
