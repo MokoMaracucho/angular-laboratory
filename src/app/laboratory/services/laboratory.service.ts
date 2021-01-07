@@ -134,6 +134,7 @@ export class LaboratoryService {
     private instagram_lens;
     private youtube;
     private youtube_play;
+    private projector;
 
 
     private pegasus_BAKING: BABYLON.Texture;
@@ -219,6 +220,7 @@ export class LaboratoryService {
     private glass_MATERIAL: BABYLON.StandardMaterial;
     private glass_blue_MATERIAL: BABYLON.StandardMaterial;
     private glass_red_MATERIAL: BABYLON.StandardMaterial;
+    private projector_MATERIAL: BABYLON.StandardMaterial;
 
     public constructor(
         private ngZone: NgZone,
@@ -997,6 +999,26 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("youtube_play", "../../assets/glb/laboratory/", "youtube_play.glb").then((result) => {
             this.youtube_play = this.scene.getMeshByName("youtube_play");
+        });
+
+        // PROJECTOR
+
+        this.projector = BABYLON.MeshBuilder.CreatePlane("projector", {width: 12, height: 6.75}, this.scene);
+        this.projector.position = new BABYLON.Vector3(-32.4 , 12, -7);
+        this.projector.rotation = new BABYLON.Vector3(0, -1.57, 0);
+
+        this.projector_MATERIAL = new BABYLON.StandardMaterial("projectorMaterial", this.scene);
+        var videoTexture = new BABYLON.VideoTexture("videoTexture","../../assets/videos/pi.mp4", this.scene);
+        this.projector_MATERIAL.roughness = 1;
+        this.projector_MATERIAL.emissiveColor = BABYLON.Color3.White();
+        this.projector_MATERIAL.diffuseTexture = videoTexture;
+
+        this.projector.material = this.projector_MATERIAL;
+
+        videoTexture.onUserActionRequestedObservable.add(() => {
+            this.scene.onPointerDown = function () {
+              videoTexture.video.play();
+            }
         });
     }
 
