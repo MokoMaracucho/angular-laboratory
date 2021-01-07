@@ -97,9 +97,17 @@ export class LaboratoryService {
     private nhs_rainbow;
     private solar_system;
     private pablo;
+    private united_kingdom_black;
     private united_kingdom_blue;
     private united_kingdom_white;
     private united_kingdom_red;
+    private france_black;
+    private france_blue;
+    private france_white;
+    private spain_black;
+    private spain_red;
+    private spain_yellow;
+    private france_red;
     private shelf;
     private book_strategie_choc;
     private book_no_logo;
@@ -175,6 +183,16 @@ export class LaboratoryService {
     private united_kingdom_white_BAKING_HIGHLIGHT: BABYLON.Texture;
     private united_kingdom_blue_BAKING: BABYLON.Texture;
     private united_kingdom_blue_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private france_blue_BAKING: BABYLON.Texture;
+    private france_blue_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private france_white_BAKING: BABYLON.Texture;
+    private france_white_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private france_red_BAKING: BABYLON.Texture;
+    private france_red_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private spain_red_BAKING: BABYLON.Texture;
+    private spain_red_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private spain_yellow_BAKING: BABYLON.Texture;
+    private spain_yellow_BAKING_HIGHLIGHT: BABYLON.Texture;
 
     private glass_MATERIAL: BABYLON.StandardMaterial;
     private glass_blue_MATERIAL: BABYLON.StandardMaterial;
@@ -731,6 +749,47 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("united_kingdom_red", "../../assets/glb/laboratory/", "united_kingdom_red.glb").then((result) => {
             this.united_kingdom_red = this.scene.getMeshByName("united_kingdom_red");
+        });
+
+        this.france_blue_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_blue_BAKING.jpg", this.scene, false, false);
+        this.france_blue_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_blue_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.france_white_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_white_BAKING.jpg", this.scene, false, false);
+        this.france_white_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_white_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.france_red_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_red_BAKING.jpg", this.scene, false, false);
+        this.france_red_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_red_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("france_black", "../../assets/glb/laboratory/", "france_black.glb").then((result) => {
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("france_blue", "../../assets/glb/laboratory/", "france_blue.glb").then((result) => {
+            this.france_blue = this.scene.getMeshByName("france_blue");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("france_white", "../../assets/glb/laboratory/", "france_white.glb").then((result) => {
+            this.france_white = this.scene.getMeshByName("france_white");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("france_red", "../../assets/glb/laboratory/", "france_red.glb").then((result) => {
+            this.france_red = this.scene.getMeshByName("france_red");
+        });
+
+        this.spain_red_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/spain_red_BAKING.jpg", this.scene, false, false);
+        this.spain_red_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/spain_red_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.spain_yellow_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/spain_yellow_BAKING.jpg", this.scene, false, false);
+        this.spain_yellow_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/spain_yellow_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("spain_black", "../../assets/glb/laboratory/", "spain_black.glb").then((result) => {
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("spain_red", "../../assets/glb/laboratory/", "spain_red.glb").then((result) => {
+            this.spain_red = this.scene.getMeshByName("spain_red");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("spain_yellow", "../../assets/glb/laboratory/", "spain_yellow.glb").then((result) => {
+            this.spain_yellow = this.scene.getMeshByName("spain_yellow");
         });
 
         // SHELF
