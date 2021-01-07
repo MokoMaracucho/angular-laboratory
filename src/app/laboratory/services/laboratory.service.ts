@@ -862,9 +862,6 @@ export class LaboratoryService {
         this.instagram_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/instagram_BAKING.jpg", this.scene, false, false);
         this.instagram_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/instagram_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
 
-        this.instagram_lens_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/instagram_lens_BAKING.jpg", this.scene, false, false);
-        this.instagram_lens_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/instagram_lens_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
         BABYLON.SceneLoader.ImportMeshAsync("instagram", "../../assets/glb/laboratory/", "instagram.glb").then((result) => {
             this.instagram = this.scene.getMeshByName("instagram");
         });
