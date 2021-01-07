@@ -50,3 +50,20 @@
     color: #D3D3D3;
     text-align: justify;
 }
+
+/* DASH BOARD */
+
+#divDashBoard {
+    z-index: 4;
+    position: absolute;
+    background-color: #00000088;
+    color: #D3D3D3;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 85%;
+    width: 200px;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 10px;
+}

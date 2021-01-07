@@ -5,6 +5,8 @@ import { Subscription, Subject } from 'rxjs';
 import { LaboratoryService } from './services/laboratory.service';
 import { InteractionService } from './services/interaction.service';
 
+import { CameraDatas } from '../shared/models/camera-datas';
+
 @Component({
     selector: 'app-laboratory',
     templateUrl: './laboratory.component.html',
@@ -49,6 +51,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public introduction_fadeIn = false;
     public btnCloseIntroduction_fadeIn = false;
 
+    public isVisible_dashBoard = true;
+    public camera_datas: CameraDatas;
+
     @ViewChild('rendererCanvas_laboratory', { static: true })
     public rendererCanvas_laboratory: ElementRef<HTMLCanvasElement>;
 
@@ -61,19 +66,15 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.laboratoryService.createScene(this.rendererCanvas_laboratory);
         this.laboratoryService.animate();
 
-        setTimeout(() => {
-            this.webDeveloper_fadeIn = true;
-        }, 500);
-
-        setTimeout(() => {
-            this.introduction_fadeIn = true;
-        }, 1000);
-
-        setTimeout(() => {
-            this.btnCloseIntroduction_fadeIn = true;
-        }, 1500);
+        setTimeout(() => {this.webDeveloper_fadeIn = true}, 500);
+        setTimeout(() => {this.introduction_fadeIn = true}, 1000);
+        setTimeout(() => {this.btnCloseIntroduction_fadeIn = true}, 1500);
 
         this.subscription = this.interaction.isLoaded.subscribe(() => this.isLoaded_function());
+
+        this.subscription = this.interaction.getCameraDatas_init.subscribe((cameraDatas: CameraDatas) => cameraDatas);
+        this.camera_datas = this.laboratoryService.emitCameraDatas_init();
+        this.subscription = this.interaction.getCameraDatas_loop.subscribe(() => this.getCameraDatas_loop());
     }
 
     ngOnDestroy(): void {
@@ -89,5 +90,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.isVisible_introductionBackground = false;
         this.isVisible_introduction = false;
         this.laboratoryService.animation_enterLaboratory();
+    }
+
+    private getCameraDatas_loop(): void {
+        this.camera_datas = this.laboratoryService.emitCameraDatas_init();
     }
 }

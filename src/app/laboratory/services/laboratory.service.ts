@@ -6,6 +6,8 @@ import 'babylonjs-loaders';
 
 import { InteractionService } from './interaction.service';
 
+import { CameraDatas } from '../../shared/models/camera-datas';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -224,6 +226,8 @@ export class LaboratoryService {
     private projector_MATERIAL: BABYLON.StandardMaterial;
 
     private sceneLoaded = false;
+
+    private dashBoardCameraDatas: CameraDatas;
 
     public constructor(
         private ngZone: NgZone,
@@ -1051,11 +1055,37 @@ export class LaboratoryService {
         BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, -1), 0, ease);
     }
 
+    // DASHBOARD
+
+    public emitCameraDatas_init(): CameraDatas {
+        this.getCameraDatas_dashBoard();
+        this.interaction.getCameraDatas_init.next();
+        return this.dashBoardCameraDatas;
+    }
+
+    public emitCameraDatas_loop(): CameraDatas {
+        this.getCameraDatas_dashBoard();
+        this.interaction.getCameraDatas_loop.next();
+        return this.dashBoardCameraDatas;
+    }
+
+    public getCameraDatas_dashBoard() {
+        this.dashBoardCameraDatas = {
+            alpha: this.arc_rotate_camera.alpha,
+            beta: this.arc_rotate_camera.beta,
+            radius: this.arc_rotate_camera.radius,
+            x: this.arc_rotate_camera.position.x,
+            y: this.arc_rotate_camera.position.y,
+            z: this.arc_rotate_camera.position.z
+        }
+    }
+
     public animate(): void {
         this.ngZone.runOutsideAngular(() => {
             const rendererLoopCallback = () => {
                 this.scene.render();
                 this.scene.executeWhenReady(() => this.sceneIsLoaded());
+                this.emitCameraDatas_loop();
             };
 
             if (this.windowRef.document.readyState !== 'loading') {
