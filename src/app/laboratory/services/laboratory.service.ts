@@ -1052,6 +1052,21 @@ export class LaboratoryService {
         this.addActions_PegasusSoleInside();
         this.addActions_TransfertBoxes();
         this.addActions_TransfertBoxesRings();
+        this.addActions_RoseRouge();
+        this.addActions_RoseRougeFrame();
+        this.addActions_VerbalShoota();
+        this.addActions_VerbalShootaFrame();
+        this.addActions_LapinBlanc();
+        this.addActions_LapinBlancFrame();
+        this.addActions_FourtyFour();
+        this.addActions_FourtyFourMarieLouise();
+        this.addActions_FourtyFourFrame();
+        this.addActions_Brique();
+        this.addActions_BriqueMarieLouise();
+        this.addActions_BriqueFrame();
+        this.addActions_Tofu();
+        this.addActions_TofuMarieLouise();
+        this.addActions_TofuFrame();
     }
 
     private activation_buttons() {
@@ -1063,6 +1078,21 @@ export class LaboratoryService {
         this.pegasus_sole_inside.isPickable = true;
         this.transfert_boxes.isPickable = true;
         this.transfert_boxes_rings.isPickable = true;
+        this.rose_rouge.isPickable = true;
+        this.rose_rouge_frame.isPickable = true;
+        this.verbal_shoota.isPickable = true;
+        this.verbal_shoota_frame.isPickable = true;
+        this.lapin_blanc.isPickable = true;
+        this.lapin_blanc_frame.isPickable = true;
+        this.fourty_four.isPickable = true;
+        this.fourty_four_marie_louise.isPickable = true;
+        this.fourty_four_frame.isPickable = true;
+        this.brique.isPickable = true;
+        this.brique_marie_louise.isPickable = true;
+        this.brique_frame.isPickable = true;
+        this.tofu.isPickable = true;
+        this.tofu_marie_louise.isPickable = true;
+        this.tofu_frame.isPickable = true;
     }
 
     private desactivation_buttons() {
@@ -1074,6 +1104,21 @@ export class LaboratoryService {
         this.pegasus_sole_inside.isPickable = false;
         this.transfert_boxes.isPickable = false;
         this.transfert_boxes_rings.isPickable = false;
+        this.rose_rouge.isPickable = false;
+        this.rose_rouge_frame.isPickable = false;
+        this.verbal_shoota.isPickable = false;
+        this.verbal_shoota_frame.isPickable = false;
+        this.lapin_blanc.isPickable = false;
+        this.lapin_blanc_frame.isPickable = false;
+        this.fourty_four.isPickable = false;
+        this.fourty_four_marie_louise.isPickable = false;
+        this.fourty_four_frame.isPickable = false;
+        this.brique.isPickable = false;
+        this.brique_marie_louise.isPickable = false;
+        this.brique_frame.isPickable = false;
+        this.tofu.isPickable = false;
+        this.tofu_marie_louise.isPickable = false;
+        this.tofu_frame.isPickable = false;
     }
 
     private addActions_Pegasus() {
@@ -1290,8 +1335,651 @@ export class LaboratoryService {
         // this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_shareKnowledge.next()));
     }
 
-    private keepCameraDatas() {
-       this.camera_clone = this.arc_rotate_camera.position.clone();
+    private addActions_RoseRouge() {
+        this.rose_rouge.isPickable = true;
+        this.rose_rouge.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.rose_rouge.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+        this.rose_rouge.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.rose_rouge},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.rose_rouge.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+    private addActions_RoseRougeFrame() {
+        this.rose_rouge_frame.isPickable = true;
+        this.rose_rouge_frame.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.rose_rouge_frame},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.rose_rouge_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+    private addActions_VerbalShoota() {
+        this.verbal_shoota.isPickable = true;
+        this.verbal_shoota.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.verbal_shoota},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.verbal_shoota.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+    private addActions_VerbalShootaFrame() {
+        this.verbal_shoota_frame.isPickable = true;
+        this.verbal_shoota_frame.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.verbal_shoota_frame},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+    private addActions_LapinBlanc() {
+        this.lapin_blanc.isPickable = true;
+        this.lapin_blanc.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.lapin_blanc},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.lapin_blanc.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+    private addActions_LapinBlancFrame() {
+        this.lapin_blanc_frame.isPickable = true;
+        this.lapin_blanc_frame.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.lapin_blanc},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+    private addActions_FourtyFour() {
+        this.fourty_four.isPickable = true;
+        this.fourty_four.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.fourty_four.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+        this.fourty_four.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.fourty_four.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+    private addActions_FourtyFourMarieLouise() {
+        this.fourty_four_marie_louise.isPickable = true;
+        this.fourty_four_marie_louise.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four_marie_louise},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+    private addActions_FourtyFourFrame() {
+        this.fourty_four_frame.isPickable = true;
+        this.fourty_four_frame.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four_frame},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.fourty_four_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+    private addActions_Brique() {
+        this.brique.isPickable = true;
+        this.brique.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.brique.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+        this.brique.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.brique.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+    private addActions_BriqueMarieLouise() {
+        this.brique_marie_louise.isPickable = true;
+        this.brique_marie_louise.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique_marie_louise},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.brique_marie_louise.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+    private addActions_BriqueFrame() {
+        this.brique_frame.isPickable = true;
+        this.brique_frame.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.brique_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+        this.brique_frame.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique_frame},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.brique_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+    private addActions_Tofu() {
+        this.tofu.isPickable = true;
+        this.tofu.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.tofu.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+        this.tofu.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.tofu.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+
+    private addActions_TofuMarieLouise() {
+        this.tofu_marie_louise.isPickable = true;
+        this.tofu_marie_louise.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu_marie_louise},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.tofu_marie_louise.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+    private addActions_TofuFrame() {
+        this.tofu_frame.isPickable = true;
+        this.tofu_frame.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING_HIGHLIGHT));
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.rose_rouge.material, "albedoTexture", this.rose_rouge_BAKING));
+
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING_HIGHLIGHT));
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.verbal_shoota.material, "albedoTexture", this.verbal_shoota_BAKING));
+
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING_HIGHLIGHT));
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.lapin_blanc.material, "albedoTexture", this.lapin_blanc_BAKING));
+
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING_HIGHLIGHT));
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four.material, "albedoTexture", this.fourty_four_BAKING));
+
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique.material, "albedoTexture", this.brique_BAKING_HIGHLIGHT));
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique.material, "albedoTexture", this.brique_BAKING));
+
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING_HIGHLIGHT));
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu.material, "albedoTexture", this.tofu_BAKING));
+
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING_HIGHLIGHT));
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.fourty_four_marie_louise.material, "albedoTexture", this.fourty_four_marie_louise_BAKING));
+
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING_HIGHLIGHT));
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.brique_marie_louise.material, "albedoTexture", this.brique_marie_louise_BAKING));
+
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING_HIGHLIGHT));
+        this.tofu_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tofu_marie_louise.material, "albedoTexture", this.tofu_marie_louise_BAKING));
+
+        this.tofu_frame.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu_frame},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.tofu_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     // ENTER LABORATORY
