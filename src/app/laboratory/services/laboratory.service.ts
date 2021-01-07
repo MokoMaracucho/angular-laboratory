@@ -1097,6 +1097,7 @@ export class LaboratoryService {
         this.addActions_ScreenFrameCenter();
         this.addActions_ScreenRight();
         this.addActions_ScreenFrameRight();
+        this.addActions_Twitter();
     }
 
     private activation_buttons() {
@@ -1140,6 +1141,7 @@ export class LaboratoryService {
         this.screen_frame_center.isPickable = true;
         this.screen_right.isPickable = true;
         this.screen_frame_right.isPickable = true;
+        this.twitter.isPickable = true;
     }
 
     private desactivation_buttons() {
@@ -1183,6 +1185,7 @@ export class LaboratoryService {
         this.screen_frame_center.isPickable = false;
         this.screen_right.isPickable = false;
         this.screen_frame_right.isPickable = false;
+        this.twitter.isPickable = false;
     }
 
     private addActions_Pegasus() {
@@ -2591,6 +2594,23 @@ export class LaboratoryService {
         );
 
         // this.screen_frame_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+    }
+
+    private addActions_Twitter() {
+        this.twitter.isPickable = true;
+        this.twitter.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.twitter.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.twitter.material, "albedoTexture", this.twitter_BAKING_HIGHLIGHT));
+        this.twitter.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.twitter.material, "albedoTexture", this.twitter_BAKING));
+
+        this.twitter.actionManager.registerAction(
+            new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
+                function(event){
+                    var pickedMesh = event.meshUnderPointer;
+                    window.open("https://twitter.com/FedericoMoko");
+                }
+            )
+        );
     }
 
     // ENTER LABORATORY
