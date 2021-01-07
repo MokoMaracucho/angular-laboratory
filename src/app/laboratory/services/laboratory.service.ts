@@ -1067,6 +1067,8 @@ export class LaboratoryService {
         this.addActions_Tofu();
         this.addActions_TofuMarieLouise();
         this.addActions_TofuFrame();
+        this.addActions_Checker();
+        this.addActions_CheckerLocks();
     }
 
     private activation_buttons() {
@@ -1093,6 +1095,8 @@ export class LaboratoryService {
         this.tofu.isPickable = true;
         this.tofu_marie_louise.isPickable = true;
         this.tofu_frame.isPickable = true;
+        this.checker.isPickable = true;
+        this.checker_locks.isPickable = true;
     }
 
     private desactivation_buttons() {
@@ -1119,6 +1123,8 @@ export class LaboratoryService {
         this.tofu.isPickable = false;
         this.tofu_marie_louise.isPickable = false;
         this.tofu_frame.isPickable = false;
+        this.checker.isPickable = false;
+        this.checker_locks.isPickable = false;
     }
 
     private addActions_Pegasus() {
@@ -1980,6 +1986,50 @@ export class LaboratoryService {
         );
 
         // this.tofu_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+    }
+
+    private addActions_Checker() {
+        this.checker.isPickable = true;
+        this.checker.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.checker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.checker.material, "albedoTexture", this.checker_BAKING_HIGHLIGHT));
+        this.checker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.checker.material, "albedoTexture", this.checker_BAKING));
+
+        this.checker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING_HIGHLIGHT));
+        this.checker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING));
+
+        this.checker.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.checker},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.checker.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_checker.next()));
+    }
+
+    private addActions_CheckerLocks(){
+        this.checker_locks.isPickable = true;
+        this.checker_locks.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.checker_locks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.checker.material, "albedoTexture", this.checker_BAKING_HIGHLIGHT));
+        this.checker_locks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.checker.material, "albedoTexture", this.checker_BAKING));
+
+        this.checker_locks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING_HIGHLIGHT));
+        this.checker_locks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING));
+
+        this.checker_locks.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.checker_locks},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        // this.checker_locks.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_checker.next()));
     }
 
     // ENTER LABORATORY
