@@ -50,6 +50,9 @@ export class LaboratoryService {
     private tofu;
     private tofu_marie_louise;
     private tofu_frame;
+    private chimney;
+    private chimney_back;
+    private logs;
     private checker;
     private checker_locks;
     private checker_bottom;
@@ -436,6 +439,7 @@ export class LaboratoryService {
         // CHIMNEY
 
         BABYLON.SceneLoader.ImportMeshAsync("chimney", "../../assets/glb/laboratory/", "chimney.glb", this.scene).then((result) => {
+          this.chimney = this.scene.getMeshByName("chimney");
         });
 
         var chimney_back_MATERIAL = new BABYLON.StandardMaterial("myMaterial", this.scene);
@@ -566,6 +570,7 @@ export class LaboratoryService {
         // CANDELSTICK
 
         BABYLON.SceneLoader.ImportMeshAsync("candelstick", "../../assets/glb/laboratory/", "candelstick.glb", this.scene).then((result) => {
+          this.candelstick = this.scene.getMeshByName("candelstick");
         });
 
         // WALL LEFT
@@ -593,14 +598,19 @@ export class LaboratoryService {
 
         var reflector = BABYLON.Plane.FromPositionAndNormal(this.mirror.position, glassNormal.scale(-1));
 
+
         this.mirror_MATERIAL = new BABYLON.StandardMaterial("mirror_MATERIAL", this.scene);
-        this.mirror_MATERIAL.reflectionTexture = new BABYLON.MirrorTexture("mirror_TEXTURE", 1024, this.scene, true);
-        this.mirror_MATERIAL.reflectionTexture.mirrorPlane = reflector;
-        this.mirror_MATERIAL.reflectionTexture.renderList = this.scene.scene;
-        this.mirror_MATERIAL.reflectionTexture.level = 1;
         this.mirror_MATERIAL.diffuseColor = new BABYLON.Color3(0.13, 0.13, 0.17);
 
         this.mirror.material = this.mirror_MATERIAL;
+
+        var mirrorTexture = new BABYLON.MirrorTexture("mirrorTexture", 1024, this.scene);
+        mirrorTexture.level = 1;
+        mirrorTexture.mirrorPlane = reflector;
+        mirrorTexture.renderList = this.scene.scene;
+
+        // Apply mirror texture
+        this.mirror.material.reflectionTexture = mirrorTexture;
 
         // DAISY
 
