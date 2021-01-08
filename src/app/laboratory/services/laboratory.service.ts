@@ -3,7 +3,7 @@ import { WindowRefService } from '../../shared/services/window-ref.service';
 
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
-import * as GUI from 'babylonjs-gui';
+import * as MeshWriter from "meshwriter";
 
 import { InteractionService } from './interaction.service';
 
@@ -349,6 +349,21 @@ export class LaboratoryService {
             this.pop_up_running = this.scene.getMeshByName("pop_up_running");
             this.pop_up_running.isVisible = false;
         });
+
+        let Writer = MeshWriter(this.scene, {scale:1});
+        let text1  = new Writer(
+                        "ABC",
+                        {
+                            "anchor": "center",
+                            "letter-height": 50,
+                            "color": "#1C3870",
+                            "position": {
+                              x: 0,
+                              y: 10,
+                              z: 0
+                            }
+                        }
+                    );
 
         // SPEAKERS
 
