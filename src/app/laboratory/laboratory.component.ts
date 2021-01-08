@@ -31,6 +31,12 @@ import { CameraDatas } from '../shared/models/camera-datas';
             state('false', style({opacity: '0'})),
             state('true', style({opacity: '1'})),
             transition('false => true', [animate('2s')])
+        ]),
+        trigger('isVisible_running', [
+            state('false', style({opacity: '0'})),
+            state('true', style({opacity: '1'})),
+            transition('false => true', [animate('2s')]),
+            transition('true => false', [animate('1s')])
         ])
     ]
 })
@@ -50,6 +56,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public webDeveloper_fadeIn = false;
     public introduction_fadeIn = false;
     public btnCloseIntroduction_fadeIn = false;
+    public isVisible_running = false;
 
     public isVisible_dashBoard = false;
     public camera_datas: CameraDatas;
@@ -75,6 +82,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.subscription = this.interaction.change_language_english.subscribe(() => this.change_language_english());
         this.subscription = this.interaction.change_language_french.subscribe(() => this.change_language_french());
         this.subscription = this.interaction.change_language_spanish.subscribe(() => this.change_language_spanish());
+
+        this.subscription = this.interaction.open_running.subscribe(() => this.open_running());
 
         this.subscription = this.interaction.getCameraDatas_init.subscribe((cameraDatas: CameraDatas) => cameraDatas);
         this.camera_datas = this.laboratoryService.emitCameraDatas_init();
@@ -112,6 +121,17 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.language_english = false;
         this.language_french = false;
         this.language_spanish = true;
+    }
+
+    private open_running(): void {
+        setTimeout(() => {
+            this.isVisible_running = true;
+        }, 1000);
+    }
+
+    public close_running(): void {
+        this.laboratoryService.animation_close();
+        this.isVisible_running = false;
     }
 
     private getCameraDatas_loop(): void {

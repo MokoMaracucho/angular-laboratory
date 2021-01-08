@@ -142,6 +142,7 @@ export class LaboratoryService {
     private youtube;
     private youtube_play;
     private projector;
+    private pop_up_running;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -342,6 +343,11 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("pegasus_sole_outside", "../../assets/glb/laboratory/", "pegasus_sole_outside.glb", this.scene).then((result) => {
             this.pegasus_sole_outside = this.scene.getMeshByName("pegasus_sole_outside");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("pop_up_running", "../../assets/glb/laboratory/", "pop_up_running.glb", this.scene).then((result) => {
+            this.pop_up_running = this.scene.getMeshByName("pop_up_running");
+            this.pop_up_running.isVisible = false;
         });
 
         // SPEAKERS
@@ -1057,6 +1063,7 @@ export class LaboratoryService {
         // PROJECTOR
 
         this.projector = BABYLON.MeshBuilder.CreatePlane("projector", {width: 12, height: 6.75}, this.scene);
+        this.projector = this.scene.getMeshByName("projector");
         this.projector.position = new BABYLON.Vector3(-32.4 , 13.5, -7);
         this.projector.rotation = new BABYLON.Vector3(0, -1.57, 0);
 
@@ -1190,6 +1197,7 @@ export class LaboratoryService {
         this.instagram_lens.isPickable = true;
         this.youtube.isPickable = true;
         this.youtube_play.isPickable = true;
+        this.pop_up_running.isPickable = true;
     }
 
     private desactivation_buttons() {
@@ -1238,6 +1246,7 @@ export class LaboratoryService {
         this.instagram_lens.isPickable = false;
         this.youtube.isPickable = false;
         this.youtube_play.isPickable = false;
+        this.pop_up_running.isPickable = false;
     }
 
     private addActions_Pegasus() {
@@ -1256,6 +1265,9 @@ export class LaboratoryService {
         this.pegasus.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING_HIGHLIGHT));
         this.pegasus.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING));
 
+        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
+        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
+
         this.pegasus.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus},
                 [
@@ -1265,7 +1277,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
+        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusInside() {
@@ -1283,6 +1295,9 @@ export class LaboratoryService {
 
         this.pegasus_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING_HIGHLIGHT));
         this.pegasus_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING));
+
+        this.pegasus_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
+        this.pegasus_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
 
         this.pegasus_inside.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_inside},
@@ -1312,6 +1327,9 @@ export class LaboratoryService {
         this.pegasus_laces.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING_HIGHLIGHT));
         this.pegasus_laces.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING));
 
+        this.pegasus_laces.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
+        this.pegasus_laces.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
+
         this.pegasus_laces.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_laces},
                 [
@@ -1321,7 +1339,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
+        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusLogo() {
@@ -1340,6 +1358,9 @@ export class LaboratoryService {
         this.pegasus_logo.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING_HIGHLIGHT));
         this.pegasus_logo.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING));
 
+        this.pegasus_logo.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
+        this.pegasus_logo.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
+
         this.pegasus_logo.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_logo},
                 [
@@ -1349,7 +1370,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
+        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusSoleOutside() {
@@ -1368,6 +1389,9 @@ export class LaboratoryService {
         this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING_HIGHLIGHT));
         this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING));
 
+        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
+        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
+
         this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_sole_outside},
                 [
@@ -1377,7 +1401,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
+        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusSoleInside() {
@@ -1396,6 +1420,9 @@ export class LaboratoryService {
         this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING_HIGHLIGHT));
         this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING));
 
+        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
+        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
+
         this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_sole_inside},
                 [
@@ -1405,7 +1432,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
+        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_TransfertBoxes() {
@@ -2885,6 +2912,17 @@ export class LaboratoryService {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
         BABYLON.Animation.CreateAndStartAnimation('animation_Camera_Open', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), 0, ease);
+    }
+
+    public animation_close() {
+        this.animation_cameraPosition_close();
+        this.activation_buttons();
+    }
+
+    private animation_cameraPosition_close() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_close', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, this.camera_clone, 0, ease);
     }
 
     // DASHBOARD

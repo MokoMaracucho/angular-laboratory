@@ -65,6 +65,37 @@
     </div>
 </div>
 
+<div class="div_card" [style.display]="isVisible_running ? 'block' : 'none'" [@isVisible_running]="isVisible_running">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card" *ngIf="language_english">RUNNING</h1>
+                <h1 class="h1_card" *ngIf="language_french">RUNNING</h1>
+                <h1 class="h1_card" *ngIf="language_spanish">RUNNING</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+                </p>
+                <p class="text_content" *ngIf="language_french">
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_running" type="button" class="btn btn-dark" (click)="close_running()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="divDashBoard" *ngIf="isVisible_dashBoard">
     <h3>Camera</h3>
     <div>

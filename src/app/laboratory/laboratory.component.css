@@ -55,6 +55,39 @@
     cursor: pointer;
 }
 
+/* CARDS */
+
+.div_card {
+    z-index: 3;
+    position: absolute;
+    top: 45%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 5%;
+    width: 400px;
+}
+
+.h1_card {
+    margin-top: 15%;
+    font-family: Peace-Sans-Webfont;
+    font-size: 36px;
+    line-height: 35px;
+    /*
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #0A0018;
+    padding: 5px;
+    padding-top: 30px;
+    */
+    color: #6f8800;
+}
+
+.text_content {
+    color: #D3D3D3;
+    text-align: justify;
+    padding: 10px;
+}
+
 /* DASH BOARD */
 
 #divDashBoard {

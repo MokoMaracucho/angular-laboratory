@@ -19,4 +19,6 @@ export class InteractionService {
     change_language_french = new Subject<boolean>();
 
     change_language_spanish = new Subject<boolean>();
+
+    open_running = new Subject<boolean>();
 }
