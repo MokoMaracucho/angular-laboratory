@@ -17,7 +17,8 @@
       "dom"
     ],"types": [
       "babylonjs",
-      "babylonjs-loaders"
+      "babylonjs-loaders",
+      "babylonjs-gui"
     ]
   }
 }

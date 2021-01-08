@@ -3,6 +3,7 @@ import { WindowRefService } from '../../shared/services/window-ref.service';
 
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
+import * as GUI from 'babylonjs-gui';
 
 import { InteractionService } from './interaction.service';
 
@@ -258,6 +259,32 @@ export class LaboratoryService {
         this.arc_rotate_camera.attachControl(canvas, true);
         this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, 1);
 
+        var pipeline = new BABYLON.DefaultRenderingPipeline(
+            "pipeline", // The name of the pipeline
+            true, // Do you want the pipeline to use HDR texture?
+            this.scene, // The scene instance
+            [this.arc_rotate_camera] // The list of cameras to be attached to
+        );
+
+        pipeline.samples = 4;
+        pipeline.fxaaEnabled = true;
+        pipeline.bloomEnabled = true;
+        pipeline.bloomKernel = 640;
+        pipeline.bloomWeight = 1;
+        pipeline.bloomThreshold = 0.3;
+        pipeline.bloomScale = 0.5;
+
+        pipeline.chromaticAberrationEnabled = true;
+        pipeline.chromaticAberration.aberrationAmount = 30;
+        pipeline.chromaticAberration.radialIntensity = 1;
+        var rotation = 1;
+        pipeline.chromaticAberration.direction.x = Math.sin(rotation);
+        pipeline.chromaticAberration.direction.y = Math.cos(rotation);
+
+        pipeline.grainEnabled = true;
+        pipeline.grain.intensity = 7;
+
+        /*
         var bgCamera = new BABYLON.ArcRotateCamera("BGCamera", Math.PI / 2 + Math.PI / 7, Math.PI / 2, 100, new BABYLON.Vector3(0, 20, 0), this.scene);
         bgCamera.layerMask = 0x10000000;
 
@@ -514,6 +541,7 @@ export class LaboratoryService {
         }, defaultPipeline.grain.animated, "20px");
 
         this.scene.activeCameras = [this.arc_rotate_camera, bgCamera];
+        */
 
         // LIGHTS
 
@@ -886,7 +914,7 @@ export class LaboratoryService {
         var mirrorTexture = new BABYLON.MirrorTexture("mirrorTexture", 1024, this.scene);
         mirrorTexture.level = 1;
         mirrorTexture.mirrorPlane = reflector;
-        mirrorTexture.renderList = this.scene.scene;
+        // mirrorTexture.renderList = this.scene.scene;
 
         // Apply mirror texture
         this.mirror.material.reflectionTexture = mirrorTexture;
