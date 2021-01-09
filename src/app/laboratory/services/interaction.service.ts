@@ -26,4 +26,5 @@ export class InteractionService {
 
     open_photography = new Subject<boolean>();
 
+    open_games = new Subject<boolean>();
 }

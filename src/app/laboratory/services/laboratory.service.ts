@@ -2194,7 +2194,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.checker.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_games.next()));
+        this.checker.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_games.next()));
     }
 
     private addActions_CheckerLocks(){
@@ -2219,7 +2219,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.checker_locks.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_games.next()));
+        this.checker_locks.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_games.next()));
     }
 
     private addActions_TarotDeck() {
@@ -2244,7 +2244,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.tarot_deck.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_games.next()));
+        this.tarot_deck.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_games.next()));
     }
 
     private addActions_ThreedGlassesFrame() {
