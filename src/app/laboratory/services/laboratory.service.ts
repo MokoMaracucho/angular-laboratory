@@ -148,6 +148,7 @@ export class LaboratoryService {
     private pop_up_share_knowledge
     private pop_up_photography_left;
     private pop_up_games;
+    private pop_up_contact_me;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -776,6 +777,11 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("via_air_mail", "../../assets/glb/laboratory/", "via_air_mail.glb", this.scene).then((result) => {
             this.via_air_mail = this.scene.getMeshByName("via_air_mail");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("pop_up_contact_me", "../../assets/glb/laboratory/", "pop_up_contact_me.glb", this.scene).then((result) => {
+            this.pop_up_contact_me = this.scene.getMeshByName("pop_up_contact_me");
+            this.pop_up_contact_me.isVisible = false;
         });
 
         // RINCE COCHON
@@ -2424,6 +2430,9 @@ export class LaboratoryService {
 
         this.via_air_mail.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.via_air_mail.material, "albedoTexture", this.via_air_mail_BAKING_HIGHLIGHT));
         this.via_air_mail.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.via_air_mail.material, "albedoTexture", this.via_air_mail_BAKING));
+
+        this.via_air_mail.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_contact_me.isVisible = true));
+        this.via_air_mail.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_contact_me.isVisible = false));
 
         this.via_air_mail.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.via_air_mail},
