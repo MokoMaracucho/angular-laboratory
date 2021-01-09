@@ -2351,7 +2351,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.amor_amor.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_art.next()));
+        this.amor_amor.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_art.next()));
     }
 
     private addActions_AmorAmorFrame() {
@@ -2370,7 +2370,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.amor_amor_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_art.next()));
+        this.amor_amor_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_art.next()));
     }
 
     private addActions_ViaAirMail() {

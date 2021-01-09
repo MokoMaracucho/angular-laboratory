@@ -61,6 +61,12 @@ import { CameraDatas } from '../shared/models/camera-datas';
             state('true', style({opacity: '1'})),
             transition('false => true', [animate('2s')]),
             transition('true => false', [animate('1s')])
+        ]),
+        trigger('isVisible_art', [
+            state('false', style({opacity: '0'})),
+            state('true', style({opacity: '1'})),
+            transition('false => true', [animate('2s')]),
+            transition('true => false', [animate('1s')])
         ])
     ]
 })
@@ -86,6 +92,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public isVisible_photography = false;
     public isVisible_games = false;
     public isVisible_stereoscopy = false;
+    public isVisible_art = false;
 
     public anaglyph_activated = false;
 
@@ -120,6 +127,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.subscription = this.interaction.open_games.subscribe(() => this.open_games());
         this.subscription = this.interaction.open_stereoscopy.subscribe(() => this.open_stereoscopy());
         this.subscription = this.interaction.toogle_anaglyph_activated.subscribe(() => this.toogle_anaglyph_activated());
+        this.subscription = this.interaction.open_art.subscribe(() => this.open_art());
 
         this.subscription = this.interaction.getCameraDatas_init.subscribe((cameraDatas: CameraDatas) => cameraDatas);
         this.camera_datas = this.laboratoryService.emitCameraDatas_init();
@@ -220,6 +228,17 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
     private toogle_anaglyph_activated() {
         this.anaglyph_activated = !this.anaglyph_activated;
+    }
+
+    private open_art(): void {
+        setTimeout(() => {
+            this.isVisible_art = true;
+        }, 1000);
+    }
+
+    public close_art(): void {
+        this.laboratoryService.animation_close();
+        this.isVisible_art = false;
     }
 
     private getCameraDatas_loop(): void {

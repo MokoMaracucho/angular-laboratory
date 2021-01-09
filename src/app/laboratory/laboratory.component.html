@@ -239,6 +239,37 @@
     </div>
 </div>
 
+<div class="div_card" [style.display]="isVisible_art ? 'block' : 'none'" [@isVisible_art]="isVisible_art">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card" *ngIf="language_english">ARTS</h1>
+                <h1 class="h1_card" *ngIf="language_french">ARTS</h1>
+                <h1 class="h1_card" *ngIf="language_spanish">ARTES</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+                </p>
+                <p class="text_content" *ngIf="language_french">
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_Art" type="button" class="btn btn-dark" (click)="close_art()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="divDashBoard" *ngIf="isVisible_dashBoard">
     <h3>Camera</h3>
     <div>
