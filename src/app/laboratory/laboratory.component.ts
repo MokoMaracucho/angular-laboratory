@@ -73,6 +73,12 @@ import { CameraDatas } from '../shared/models/camera-datas';
             state('true', style({opacity: '1'})),
             transition('false => true', [animate('2s')]),
             transition('true => false', [animate('1s')])
+        ]),
+        trigger('isVisible_development', [
+            state('false', style({opacity: '0'})),
+            state('true', style({opacity: '1'})),
+            transition('false => true', [animate('2s')]),
+            transition('true => false', [animate('1s')])
         ])
     ]
 })
@@ -100,6 +106,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public isVisible_stereoscopy = false;
     public isVisible_art = false;
     public isVisible_contactMe = false;
+    public isVisible_development = false;
 
     public anaglyph_activated = false;
 
@@ -136,6 +143,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.subscription = this.interaction.toogle_anaglyph_activated.subscribe(() => this.toogle_anaglyph_activated());
         this.subscription = this.interaction.open_art.subscribe(() => this.open_art());
         this.subscription = this.interaction.open_contactMe.subscribe(() => this.open_contactMe());
+        this.subscription = this.interaction.open_development.subscribe(() => this.open_development());
 
         this.subscription = this.interaction.getCameraDatas_init.subscribe((cameraDatas: CameraDatas) => cameraDatas);
         this.camera_datas = this.laboratoryService.emitCameraDatas_init();
@@ -258,6 +266,17 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public close_contactMe(): void {
         this.laboratoryService.animation_close();
         this.isVisible_contactMe = false;
+    }
+
+    private open_development(): void {
+        setTimeout(() => {
+            this.isVisible_development = true;
+        }, 1000);
+    }
+
+    public close_development(): void {
+        this.laboratoryService.animation_close();
+        this.isVisible_development = false;
     }
 
     private getCameraDatas_loop(): void {

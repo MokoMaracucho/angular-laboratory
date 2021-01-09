@@ -2423,7 +2423,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+        this.keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_KeyboardKeyboard() {
@@ -2457,7 +2457,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.keyboard_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_MacMini() {
@@ -2491,7 +2491,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.mac_mini.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+        this.mac_mini.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_Laptop() {
@@ -2525,7 +2525,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.laptop.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+        this.laptop.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_LaptopKeyboard() {
@@ -2559,7 +2559,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.laptop_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+        this.laptop_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_LaptopScreen() {
@@ -2593,7 +2593,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.laptop_screen.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+        this.laptop_screen.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_ScreenCenter() {
@@ -2627,7 +2627,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+        this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_ScreenFrameCenter() {
@@ -2661,7 +2661,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.screen_frame_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+        this.screen_frame_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_ScreenRight() {
@@ -2695,7 +2695,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+        this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_ScreenFrameRight() {
@@ -2729,7 +2729,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.screen_frame_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
+        this.screen_frame_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_Twitter() {

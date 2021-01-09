@@ -303,6 +303,53 @@
     </div>
 </div>
 
+<div class="div_card" [style.display]="isVisible_development ? 'block' : 'none'" [@isVisible_development]="isVisible_development">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="h1_card" *ngIf="language_english">DEVELOPMENT</h1>
+                <h1 class="h1_card" *ngIf="language_french">MODE D'EMPLOI</h1>
+                <h1 class="h1_card" *ngIf="language_spanish">DESAROLLO</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+                    The creation of this site is based on the use and combinations of various languages and frameworks.
+                    A back-end developed in Java / Spring and communicates with PostgreSQL for data management.
+                    The front-office uses the Angular framework in which the 3D scene made with BabylonJS is implemented.
+
+                    Access the "Development" section for more details.
+                </p>
+                <p class="text_content" *ngIf="language_french">
+                    La réalisation de ce site repose sur l'utilisation et la conbinaisons de diverses langages et frameworks.
+                    Un back-end développer en Java / Spring et communique avec PostgreSQL pur la gestion des données.
+                    Le front-office utilise le framework Angular dans lequel est implémenté la la scene 3D réalisée avec BabylonJS.
+                    <br/>
+
+                    Accédez à la partie "Développement" pour plus de détails.
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+                    La creación de este sitio se basa en el uso y combinaciones de varios lenguajes y marcos.
+                    Un back-end desarrollado en Java / Spring y que se comunica con PostgreSQL para la gestión de datos.
+                    El front-office utiliza el framework Angular en el que se implementa la escena 3D realizada con BabylonJS.
+
+                    Acceda a la sección "Desarrollo" para obtener más detalles.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button id="btn_close_development" type="button" class="btn btn-dark" (click)="close_development()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="divDashBoard" *ngIf="isVisible_dashBoard">
     <h3>Camera</h3>
     <div>
