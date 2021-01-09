@@ -1565,7 +1565,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.rose_rouge.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.rose_rouge.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_RoseRougeFrame() {
@@ -1608,7 +1608,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.rose_rouge_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_VerbalShoota() {
@@ -1652,7 +1652,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.verbal_shoota.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.verbal_shoota.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_VerbalShootaFrame() {
@@ -1695,7 +1695,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_LapinBlanc() {
@@ -1738,7 +1738,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.lapin_blanc.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.lapin_blanc.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_LapinBlancFrame() {
@@ -1781,7 +1781,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_FourtyFour() {
@@ -1824,7 +1824,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.fourty_four.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.fourty_four.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_FourtyFourMarieLouise() {
@@ -1867,7 +1867,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_FourtyFourFrame() {
@@ -1910,7 +1910,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.fourty_four_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.fourty_four_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_Brique() {
@@ -1953,7 +1953,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.brique.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.brique.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_BriqueMarieLouise() {
@@ -1996,7 +1996,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.brique_marie_louise.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.brique_marie_louise.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_BriqueFrame() {
@@ -2039,7 +2039,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.brique_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.brique_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_Tofu() {
@@ -2082,7 +2082,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.tofu.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.tofu.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
 
@@ -2126,7 +2126,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.tofu_marie_louise.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_TofuFrame() {
@@ -2169,7 +2169,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.tofu_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
+        this.tofu_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_Checker() {

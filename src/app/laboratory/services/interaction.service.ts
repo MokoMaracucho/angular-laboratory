@@ -23,4 +23,7 @@ export class InteractionService {
     open_running = new Subject<boolean>();
 
     open_shareKnowledge = new Subject<boolean>();
+
+    open_photography = new Subject<boolean>();
+
 }

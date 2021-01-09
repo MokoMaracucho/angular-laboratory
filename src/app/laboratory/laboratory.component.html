@@ -133,6 +133,38 @@
     </div>
 </div>
 
+<div class="div_card" [style.display]="isVisible_photography ? 'block' : 'none'" [@isVisible_photography]="isVisible_photography">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card" *ngIf="language_english">PHOTOGRAPHY</h1>
+                <h1 class="h1_card" *ngIf="language_french">PHOTOGRAPHIE</h1>
+                <h1 class="h1_card" *ngIf="language_spanish">FOTOGRAFÍA</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+                </p>
+                <p class="text_content" *ngIf="language_french">
+                    Photographe de rue. Portraits et paysages urbains.
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_photography" type="button" class="btn btn-dark" (click)="close_photography()">
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="divDashBoard" *ngIf="isVisible_dashBoard">
     <h3>Camera</h3>
     <div>
