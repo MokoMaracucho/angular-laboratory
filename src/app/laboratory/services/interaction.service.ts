@@ -27,4 +27,8 @@ export class InteractionService {
     open_photography = new Subject<boolean>();
 
     open_games = new Subject<boolean>();
+
+    open_stereoscopy = new Subject<boolean>();
+
+    toogle_anaglyph_activated = new Subject<boolean>();
 }

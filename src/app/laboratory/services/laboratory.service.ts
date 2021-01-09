@@ -19,6 +19,7 @@ export class LaboratoryService {
     private scene: BABYLON.Scene;
 
     private arc_rotate_camera: BABYLON.ArcRotateCamera;
+    private anaglyph_arc_rotate_camera: BABYLON.AnaglyphArcRotateCamera;
 
     private hemispheric_light: BABYLON.Light;
     private directional_light: BABYLON.DirectionalLight;
@@ -234,7 +235,10 @@ export class LaboratoryService {
 
     private scene_loaded = false;
 
-    private camera_clone
+    private arc_rotate_camera_clone;
+    private anaglyph_arc_rotate_camera_clone;
+
+    private anaglyph_activated = false;
 
     private dashBoardCameraDatas: CameraDatas;
 
@@ -260,6 +264,15 @@ export class LaboratoryService {
         this.arc_rotate_camera.upperRadiusLimit = 65;
         this.arc_rotate_camera.attachControl(canvas, true);
         this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, 1);
+
+        this.anaglyph_arc_rotate_camera = new BABYLON.AnaglyphArcRotateCamera("anaglyph_arc_rotate_camera", 2.25, 1.05, 50, new BABYLON.Vector3(-16.2, 5, -12), 0.1, this.scene);
+        this.anaglyph_arc_rotate_camera.lockedTarget =  new BABYLON.Vector3(-16.2, 5, -12);
+        this.anaglyph_arc_rotate_camera.lowerBetaLimit = -0.5;
+        this.anaglyph_arc_rotate_camera.upperBetaLimit = 1.65;
+        this.anaglyph_arc_rotate_camera.lowerRadiusLimit = 20;
+        this.anaglyph_arc_rotate_camera.upperRadiusLimit = 65;
+        this.anaglyph_arc_rotate_camera.attachControl(canvas, true);
+        this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, 1);
 
         var pipeline = new BABYLON.DefaultRenderingPipeline(
             "pipeline", // The name of the pipeline
@@ -2269,7 +2282,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.threed_glasses_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_stereoscopy.next()));
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_stereoscopy.next()));
     }
 
     private addActions_ThreedGlassBlue() {
@@ -2294,7 +2307,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.threed_glass_blue.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_stereoscopy.next()));
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_stereoscopy.next()));
     }
 
     private addActions_ThreedGlassRed() {
@@ -2319,7 +2332,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.threed_glass_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_stereoscopy.next()));
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_stereoscopy.next()));
     }
 
     private addActions_AmorAmor() {
@@ -2952,7 +2965,7 @@ export class LaboratoryService {
     }
 
     private animation_camera_open() {
-        this.camera_clone = this.arc_rotate_camera.position.clone();
+        this.arc_rotate_camera_clone = this.arc_rotate_camera.position.clone();
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
         BABYLON.Animation.CreateAndStartAnimation('animation_Camera_Open', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), 0, ease);
@@ -2966,7 +2979,43 @@ export class LaboratoryService {
     private animation_cameraPosition_close() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_close', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, this.camera_clone, 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_close', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, this.arc_rotate_camera_clone, 0, ease);
+    }
+
+    // SWITCH CAMERA
+
+    public animation_switch_camera() {
+        if(this.anaglyph_activated) {
+            this.animation_anaglyphArcRotateCameraPosition_switch();
+        } else {
+            this.animation_arcRotateCameraPosition_switch();
+        }
+    }
+
+    private animation_anaglyphArcRotateCameraPosition_switch() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_anaglyphArcRotateCameraPosition_switch', this.anaglyph_arc_rotate_camera, 'position', 15, 30, this.anaglyph_arc_rotate_camera.position, new BABYLON.Vector3(this.arc_rotate_camera.position.x, this.arc_rotate_camera.position.y, this.arc_rotate_camera.position.z), 0, ease, () => this.switch_camera());
+    }
+
+    private animation_arcRotateCameraPosition_switch() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_arcRotateCameraPosition_switch', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(this.anaglyph_arc_rotate_camera.position.x, this.anaglyph_arc_rotate_camera.position.y, this.anaglyph_arc_rotate_camera.position.z), 0, ease, () => this.switch_camera());
+    }
+
+    private switch_camera() {
+      if(this.anaglyph_activated) {
+          this.scene.setActiveCameraByName("arc_rotate_camera");
+          this.anaglyph_activated = false;
+          this.interaction.toogle_anaglyph_activated.next();
+          this.activation_buttons();
+      } else {
+          this.scene.setActiveCameraByName("anaglyph_arc_rotate_camera");
+          this.anaglyph_activated = true;
+          this.interaction.toogle_anaglyph_activated.next();
+          this.desactivation_buttons();
+      }
     }
 
     // DASHBOARD

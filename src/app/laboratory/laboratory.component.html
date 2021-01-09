@@ -196,6 +196,49 @@
     </div>
 </div>
 
+<div class="div_card" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card" *ngIf="language_english">STEREOSCOPY</h1>
+                <h1 class="h1_card" *ngIf="language_french">STEREOSCOPIE</h1>
+                <h1 class="h1_card" *ngIf="language_spanish">ESTEREOSCOPIA</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+                </p>
+                <p class="text_content" *ngIf="language_french">
+                    La stéréoscopie est la technique sur laquelle repose le "Cinéma 3D". En effet, la perception du relief se constitue dans le cerveau à partir de la perception de deux images planes et différentes, provenant de chaque oeil.
+                    C'est également la technique utilisée par Oculus VR et qui sera certaine l'outil de la réalité augmentée.
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+                </p>
+                <p>
+                    <button btn_SwitchCamera id="btn_switch_camera" type="button" class="btn btn-primary" (click)="animation_switch_camera()">
+                        <span *ngIf="language_english && !anaglyph_activated">Anaglyphe</span>
+                        <span *ngIf="language_english && anaglyph_activated">Regular</span>
+                        <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
+                        <span *ngIf="language_french && anaglyph_activated">Normale</span>
+                        <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
+                        <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
+                    </button>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button id="btn_close_stereoscopy" type="button" class="btn btn-dark" (click)="close_stereoscopy()" [disabled]="anaglyph_activated == true">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="divDashBoard" *ngIf="isVisible_dashBoard">
     <h3>Camera</h3>
     <div>
