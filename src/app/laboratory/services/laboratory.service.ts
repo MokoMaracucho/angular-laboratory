@@ -149,6 +149,7 @@ export class LaboratoryService {
     private pop_up_photography_left;
     private pop_up_games;
     private pop_up_contact_me;
+    private pop_up_stereoscopy;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -855,6 +856,11 @@ export class LaboratoryService {
         BABYLON.SceneLoader.ImportMeshAsync("threed_glass_red", "../../assets/glb/laboratory/", "threed_glass_red.glb", this.scene).then((result) => {
             this.threed_glass_red = this.scene.getMeshByName("threed_glass_red");
             this.threed_glass_red.material = this.glass_red_MATERIAL;
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("pop_up_stereoscopy", "../../assets/glb/laboratory/", "pop_up_stereoscopy.glb", this.scene).then((result) => {
+            this.pop_up_stereoscopy = this.scene.getMeshByName("pop_up_stereoscopy");
+            this.pop_up_stereoscopy.isVisible = false;
         });
 
         // COMPUTERS
@@ -2324,6 +2330,9 @@ export class LaboratoryService {
         this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", true));
         this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", false));
 
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_stereoscopy.isVisible = true));
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_stereoscopy.isVisible = false));
+
         this.threed_glasses_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glasses_frame},
                 [
@@ -2349,6 +2358,9 @@ export class LaboratoryService {
         this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", true));
         this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", false));
 
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_stereoscopy.isVisible = true));
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_stereoscopy.isVisible = false));
+
         this.threed_glass_blue.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_blue},
                 [
@@ -2373,6 +2385,9 @@ export class LaboratoryService {
 
         this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", true));
         this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", false));
+
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_stereoscopy.isVisible = true));
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_stereoscopy.isVisible = false));
 
         this.threed_glass_red.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_red},
