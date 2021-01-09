@@ -145,6 +145,7 @@ export class LaboratoryService {
     private youtube_play;
     private projector;
     private pop_up_running;
+    private pop_up_share_knowledge
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -434,6 +435,11 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("transfert_boxes_rings", "../../assets/glb/laboratory/", "transfert_boxes_rings.glb", this.scene).then((result) => {
             this.transfert_boxes_rings = this.scene.getMeshByName("transfert_boxes_rings");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("pop_up_share_knowledge", "../../assets/glb/laboratory/", "pop_up_share_knowledge.glb", this.scene).then((result) => {
+            this.pop_up_share_knowledge = this.scene.getMeshByName("pop_up_share_knowledge");
+            this.pop_up_share_knowledge.isVisible = false;
         });
 
         // PHOTOGRAPHY
@@ -1501,6 +1507,9 @@ export class LaboratoryService {
 
         this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING_HIGHLIGHT));
         this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING));
+
+        this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_share_knowledge.isVisible = true));
+        this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_share_knowledge.isVisible = false));
 
         this.transfert_boxes.actionManager.registerAction(
             new BABYLON.CombineAction(
