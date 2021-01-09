@@ -688,7 +688,6 @@ export class LaboratoryService {
         var mirrorTexture = new BABYLON.MirrorTexture("mirrorTexture", 1024, this.scene);
         mirrorTexture.level = 1;
         mirrorTexture.mirrorPlane = reflector;
-        // mirrorTexture.renderList = this.scene.scene;
 
         // Apply mirror texture
         this.mirror.material.reflectionTexture = mirrorTexture;
@@ -1341,7 +1340,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
+        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusLaces() {
@@ -1500,7 +1499,7 @@ export class LaboratoryService {
               )
         );
 
-        // this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_shareKnowledge.next()));
+        this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_shareKnowledge.next()));
     }
 
     private addActions_TransfertBoxesRings() {
@@ -1523,7 +1522,7 @@ export class LaboratoryService {
               )
         );
 
-        // this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_shareKnowledge.next()));
+        this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_shareKnowledge.next()));
     }
 
     private addActions_RoseRouge() {

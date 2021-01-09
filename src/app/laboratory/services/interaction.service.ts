@@ -21,4 +21,6 @@ export class InteractionService {
     change_language_spanish = new Subject<boolean>();
 
     open_running = new Subject<boolean>();
+
+    open_shareKnowledge = new Subject<boolean>();
 }
