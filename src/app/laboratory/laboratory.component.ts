@@ -67,6 +67,12 @@ import { CameraDatas } from '../shared/models/camera-datas';
             state('true', style({opacity: '1'})),
             transition('false => true', [animate('2s')]),
             transition('true => false', [animate('1s')])
+        ]),
+        trigger('isVisible_contactMe', [
+            state('false', style({opacity: '0'})),
+            state('true', style({opacity: '1'})),
+            transition('false => true', [animate('2s')]),
+            transition('true => false', [animate('1s')])
         ])
     ]
 })
@@ -93,6 +99,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public isVisible_games = false;
     public isVisible_stereoscopy = false;
     public isVisible_art = false;
+    public isVisible_contactMe = false;
 
     public anaglyph_activated = false;
 
@@ -128,6 +135,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.subscription = this.interaction.open_stereoscopy.subscribe(() => this.open_stereoscopy());
         this.subscription = this.interaction.toogle_anaglyph_activated.subscribe(() => this.toogle_anaglyph_activated());
         this.subscription = this.interaction.open_art.subscribe(() => this.open_art());
+        this.subscription = this.interaction.open_contactMe.subscribe(() => this.open_contactMe());
 
         this.subscription = this.interaction.getCameraDatas_init.subscribe((cameraDatas: CameraDatas) => cameraDatas);
         this.camera_datas = this.laboratoryService.emitCameraDatas_init();
@@ -239,6 +247,17 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public close_art(): void {
         this.laboratoryService.animation_close();
         this.isVisible_art = false;
+    }
+
+    private open_contactMe(): void {
+        setTimeout(() => {
+            this.isVisible_contactMe = true;
+        }, 1000);
+    }
+
+    public close_contactMe(): void {
+        this.laboratoryService.animation_close();
+        this.isVisible_contactMe = false;
     }
 
     private getCameraDatas_loop(): void {

@@ -2389,7 +2389,7 @@ export class LaboratoryService {
             )
         );
 
-        // this.via_air_mail.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_contactMe.next()));
+        this.via_air_mail.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_contactMe.next()));
     }
 
     private addActions_Keyboard() {

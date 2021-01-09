@@ -33,4 +33,6 @@ export class InteractionService {
     toogle_anaglyph_activated = new Subject<boolean>();
 
     open_art = new Subject<boolean>();
+
+    open_contactMe = new Subject<boolean>();
 }
