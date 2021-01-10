@@ -37,4 +37,6 @@ export class InteractionService {
     open_contactMe = new Subject<boolean>();
 
     open_development = new Subject<boolean>();
+
+    open_travel = new Subject<boolean>();
 }
