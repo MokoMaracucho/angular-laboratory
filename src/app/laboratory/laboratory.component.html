@@ -350,6 +350,40 @@
     </div>
 </div>
 
+<div class="div_card" [style.display]="isVisible_travel ? 'block' : 'none'" [@isVisible_travel]="isVisible_travel">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="h1_card" *ngIf="language_english">TRAVELER</h1>
+                <h1 class="h1_card" *ngIf="language_french">VOYAGEUR</h1>
+                <h1 class="h1_card" *ngIf="language_spanish">VIAJERO</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button id="btn_close_travel" type="button" class="btn btn-dark" (click)="close_travel()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="divDashBoard" *ngIf="isVisible_dashBoard">
     <h3>Camera</h3>
     <div>
