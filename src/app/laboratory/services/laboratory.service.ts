@@ -143,6 +143,8 @@ export class LaboratoryService {
     private instagram_lens;
     private youtube;
     private youtube_play;
+    private spotify_green;
+    private spotify_white;
     private projector;
 
     private pop_up_running;
@@ -1173,6 +1175,14 @@ export class LaboratoryService {
         BABYLON.SceneLoader.ImportMeshAsync("pop_up_social_networks", "../../assets/glb/laboratory/", "pop_up_social_networks.glb", this.scene).then((result) => {
             this.pop_up_social_networks = this.scene.getMeshByName("pop_up_social_networks");
             this.pop_up_social_networks.isVisible = false;
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("spotify_green", "../../assets/glb/laboratory/", "spotify_green.glb").then((result) => {
+            this.spotify_green = this.scene.getMeshByName("spotify_green");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("spotify_black", "../../assets/glb/laboratory/", "spotify_black.glb").then((result) => {
+            this.spotify_black = this.scene.getMeshByName("spotify_black");
         });
 
         // PROJECTOR
@@ -3202,7 +3212,7 @@ export class LaboratoryService {
     private animation_cameraPosition_enterLaboratory() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterLaboratory', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(-43.88022966086636, 26.184629944750167, 23.847124616403107), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterLaboratory', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(-20.220454501261877, 26.68576493813795, 21.37067338632216), 0, ease);
     }
 
     private animation_targetScreenOffset_enterLaboratory() {
