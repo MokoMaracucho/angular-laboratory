@@ -1218,6 +1218,8 @@ export class LaboratoryService {
         }
     }
 
+    // ADD ACTIONS
+
     public addActions_buttons() {
         this.addActions_Pegasus();
         this.addActions_PegasusInside();

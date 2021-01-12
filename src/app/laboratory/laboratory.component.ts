@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Subscription, Subject } from 'rxjs';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import { LaboratoryService } from './services/laboratory.service';
 import { InteractionService } from './services/interaction.service';
@@ -132,11 +132,11 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.laboratoryService.createScene(this.rendererCanvas_laboratory);
         this.laboratoryService.animate();
 
+        this.subscription = this.interaction.isLoaded.subscribe(() => this.isLoaded_function());
+
         setTimeout(() => {this.webDeveloper_fadeIn = true}, 500);
         setTimeout(() => {this.introduction_fadeIn = true}, 1000);
         setTimeout(() => {this.btnCloseIntroduction_fadeIn = true}, 1500);
-
-        this.subscription = this.interaction.isLoaded.subscribe(() => this.isLoaded_function());
 
         this.subscription = this.interaction.change_language_english.subscribe(() => this.change_language_english());
         this.subscription = this.interaction.change_language_french.subscribe(() => this.change_language_french());

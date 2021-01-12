@@ -3,6 +3,8 @@ import { WindowRefService } from '../../shared/services/window-ref.service';
 
 import * as BABYLON from 'babylonjs';
 
+import { InteractionService } from './interaction.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,9 +35,12 @@ export class DevelopmentService {
     private glass_red_MATERIAL: BABYLON.StandardMaterial;
     private arrows_MATERIAL: BABYLON.StandardMaterial;
 
+    private scene_loaded = false;
+
     public constructor(
         private ngZone: NgZone,
-        private windowRef: WindowRefService
+        private windowRef: WindowRefService,
+        protected readonly interaction: InteractionService
     ) {}
 
     public createScene(canvas: ElementRef<HTMLCanvasElement>): void {
@@ -47,22 +52,22 @@ export class DevelopmentService {
         // CANERAS
 
         this.arc_rotate_camera = new BABYLON.ArcRotateCamera("arc_rotate_camera", 2.25, 1.05, 50, new BABYLON.Vector3(0, 5, 0), this.scene);
-        this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-8, 10, 10);
+        this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-8, 10, 5);
         this.arc_rotate_camera.lowerBetaLimit = -0.4;
         this.arc_rotate_camera.upperBetaLimit = 1.65;
         this.arc_rotate_camera.lowerRadiusLimit = 20;
         this.arc_rotate_camera.upperRadiusLimit = 65;
         this.arc_rotate_camera.attachControl(canvas, true);
-        this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, 1);
+        this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, -2);
 
         this.anaglyph_arc_rotate_camera = new BABYLON.AnaglyphArcRotateCamera("anaglyph_arc_rotate_camera", 2.25, 1.05, 50, new BABYLON.Vector3(0, 5, 0), 0.1, this.scene);
-        this.anaglyph_arc_rotate_camera.lockedTarget =  new BABYLON.Vector3(-8, 10, 10);
+        this.anaglyph_arc_rotate_camera.lockedTarget =  new BABYLON.Vector3(-8, 10, 5);
         this.anaglyph_arc_rotate_camera.lowerBetaLimit = -0.4;
         this.anaglyph_arc_rotate_camera.upperBetaLimit = 1.65;
         this.anaglyph_arc_rotate_camera.lowerRadiusLimit = 20;
         this.anaglyph_arc_rotate_camera.upperRadiusLimit = 65;
         this.anaglyph_arc_rotate_camera.attachControl(canvas, true);
-        this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, 1);
+        this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, -2);
 
         var pipeline = new BABYLON.DefaultRenderingPipeline(
             "pipeline", // The name of the pipeline
@@ -349,10 +354,20 @@ export class DevelopmentService {
         });
     }
 
+    // IS LOADED
+
+    private sceneIsLoaded() {
+        if(!this.scene_loaded) {
+            this.scene_loaded = true;
+            this.interaction.isLoaded.next();
+        }
+    }
+
     public animate(): void {
         this.ngZone.runOutsideAngular(() => {
             const rendererLoopCallback = () => {
                 this.scene.render();
+                this.scene.executeWhenReady(() => this.sceneIsLoaded());
             };
 
             if (this.windowRef.document.readyState !== 'loading') {
