@@ -144,7 +144,7 @@ export class LaboratoryService {
     private youtube;
     private youtube_play;
     private spotify_green;
-    private spotify_white;
+    private spotify_black;
     private projector;
 
     private pop_up_running;
