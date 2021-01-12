@@ -72,6 +72,10 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
         setTimeout(() => {this.introduction_fadeIn = true}, 1000);
         setTimeout(() => {this.btnCloseIntroduction_fadeIn = true}, 1500);
 
+        this.subscription = this.interaction.change_language_english.subscribe(() => this.change_language_english());
+        this.subscription = this.interaction.change_language_french.subscribe(() => this.change_language_french());
+        this.subscription = this.interaction.change_language_spanish.subscribe(() => this.change_language_spanish());
+
         this.subscription = this.interaction.getCameraDatas_init.subscribe((cameraDatas: CameraDatas) => cameraDatas);
         this.camera_datas = this.developmentService.emitCameraDatas_init();
         this.subscription = this.interaction.getCameraDatas_loop.subscribe(() => this.getCameraDatas_loop());
@@ -84,6 +88,30 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     private isLoaded_function(): void {
         this.isLoaded = true;
         this.isLoaded_fadeOut = true;
+    }
+
+    public close_introduction(): void {
+        this.isVisible_introductionBackground = false;
+        this.isVisible_introduction = false;
+        this.developmentService.animation_enterDevelopment();
+    }
+
+    private change_language_english(): void {
+        this.language_english = true;
+        this.language_french = false;
+        this.language_spanish = false;
+    }
+
+    private change_language_french(): void {
+        this.language_english = false;
+        this.language_french = true;
+        this.language_spanish = false;
+    }
+
+    private change_language_spanish(): void {
+        this.language_english = false;
+        this.language_french = false;
+        this.language_spanish = true;
     }
 
     private getCameraDatas_loop(): void {

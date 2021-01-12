@@ -13,4 +13,10 @@ export class InteractionService {
     getCameraDatas_loop = new Subject<CameraDatas>();
 
     isLoaded = new Subject<boolean>();
+
+    change_language_english = new Subject<boolean>();
+
+    change_language_french = new Subject<boolean>();
+
+    change_language_spanish = new Subject<boolean>();
 }

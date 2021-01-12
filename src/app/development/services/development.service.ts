@@ -367,6 +367,25 @@ export class DevelopmentService {
         }
     }
 
+    // ENTER DEVELOPMENT
+
+    public animation_enterDevelopment() {
+        this.animation_cameraPosition_enterDevelopment();
+        this.animation_targetScreenOffset_enterDevelopment();
+    }
+
+    private animation_cameraPosition_enterDevelopment() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterDevelopment', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(-20.220454501261877, 26.68576493813795, 21.37067338632216), 0, ease);
+    }
+
+    private animation_targetScreenOffset_enterDevelopment() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterDevelopment', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(4, -0.5), 0, ease);
+    }
+
     // DASHBOARD
 
     public emitCameraDatas_init(): CameraDatas {
