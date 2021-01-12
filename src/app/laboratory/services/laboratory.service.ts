@@ -3223,6 +3223,8 @@ export class LaboratoryService {
         BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(4, -0.5), 0, ease);
     }
 
+    // OPEN CAMERA
+
     private animation_camera_open() {
         this.arc_rotate_camera_clone = this.arc_rotate_camera.position.clone();
         const ease = new BABYLON.CubicEase();

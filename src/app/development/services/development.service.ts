@@ -29,6 +29,56 @@ export class DevelopmentService {
     private arrow_top;
     private arrow_bottom;
 
+
+    private icon_postgresql;
+    private icon_java;
+    private icon_spring_framework;
+    private icon_maven;
+    private icon_css;
+    private icon_html;
+    private icon_bootstrap;
+    private icon_angular;
+    private icon_typescript;
+    private icon_postman;
+    private icon_docker;
+    private icon_git;
+    private icon_blender;
+    private icon_babylon;
+    private icon_photoshop;
+    private icon_illustrator;
+
+    private icon_git_BAKING: BABYLON.Texture;
+    private icon_git_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_docker_BAKING: BABYLON.Texture;
+    private icon_docker_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_postman_BAKING: BABYLON.Texture;
+    private icon_postman_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_postgresql_BAKING: BABYLON.Texture;
+    private icon_postgresql_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_spring_framework_BAKING: BABYLON.Texture;
+    private icon_spring_framework_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_maven_BAKING: BABYLON.Texture;
+    private icon_maven_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_java_BAKING: BABYLON.Texture;
+    private icon_java_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_html_BAKING: BABYLON.Texture;
+    private icon_html_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_css_BAKING: BABYLON.Texture;
+    private icon_css_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_angular_BAKING: BABYLON.Texture;
+    private icon_angular_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_bootstrap_BAKING: BABYLON.Texture;
+    private icon_bootstrap_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_typescript_BAKING: BABYLON.Texture;
+    private icon_typescript_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_blender_BAKING: BABYLON.Texture;
+    private icon_blender_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_babylon_BAKING: BABYLON.Texture;
+    private icon_babylon_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_photoshop_BAKING: BABYLON.Texture;
+    private icon_photoshop_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private icon_illustrator_BAKING: BABYLON.Texture;
+    private icon_illustrator_BAKING_HIGHLIGHT: BABYLON.Texture;
     private threed_glasses_frame_BAKING: BABYLON.Texture;
     private threed_glasses_frame_BAKING_HIGHLIGHT: BABYLON.Texture;
 
@@ -38,6 +88,8 @@ export class DevelopmentService {
     private arrows_MATERIAL: BABYLON.StandardMaterial;
 
     private scene_loaded = false;
+
+    private arc_rotate_camera_clone;
 
     private dashBoardCameraDatas: CameraDatas;
 
@@ -258,37 +310,115 @@ export class DevelopmentService {
 
         // ICONS
 
+        this.icon_postgresql_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_postgresql_BAKING.jpg", this.scene, false, false);
+        this.icon_postgresql_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_postgresql_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_java_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_java_BAKING.jpg", this.scene, false, false);
+        this.icon_java_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_java_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_spring_framework_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_spring_framework_BAKING.jpg", this.scene, false, false);
+        this.icon_spring_framework_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_spring_framework_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_maven_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_maven_BAKING.jpg", this.scene, false, false);
+        this.icon_maven_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_maven_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_css_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_css_BAKING.jpg", this.scene, false, false);
+        this.icon_css_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_css_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_html_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_html_BAKING.jpg", this.scene, false, false);
+        this.icon_html_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_html_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_bootstrap_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_bootstrap_BAKING.jpg", this.scene, false, false);
+        this.icon_bootstrap_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_bootstrap_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_angular_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_angular_BAKING.jpg", this.scene, false, false);
+        this.icon_angular_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_angular_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_typescript_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_typescript_BAKING.jpg", this.scene, false, false);
+        this.icon_typescript_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_typescript_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_postman_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_postman_BAKING.jpg", this.scene, false, false);
+        this.icon_postman_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_postman_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_docker_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_docker_BAKING.jpg", this.scene, false, false);
+        this.icon_docker_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_docker_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_git_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_git_BAKING.jpg", this.scene, false, false);
+        this.icon_git_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_git_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_blender_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_blender_BAKING.jpg", this.scene, false, false);
+        this.icon_blender_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_blender_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_babylon_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_babylon_BAKING.jpg", this.scene, false, false);
+        this.icon_babylon_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_babylon_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_photoshop_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_photoshop_BAKING.jpg", this.scene, false, false);
+        this.icon_photoshop_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_photoshop_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.icon_illustrator_BAKING = new BABYLON.Texture("../../assets/glb/development/baking/icon_illustrator_BAKING.jpg", this.scene, false, false);
+        this.icon_illustrator_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/development/baking/icon_illustrator_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        BABYLON.SceneLoader.ImportMeshAsync("icon_postgresql", "../../assets/glb/development/", "icon_postgresql.glb").then((result) => {
+            this.icon_postgresql = this.scene.getMeshByName("icon_postgresql");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("icon_java", "../../assets/glb/development/", "icon_java.glb").then((result) => {
+          this.icon_java = this.scene.getMeshByName("icon_java");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("icon_spring_framework", "../../assets/glb/development/", "icon_spring_framework.glb").then((result) => {
+          this.icon_spring_framework = this.scene.getMeshByName("icon_spring_framework");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("icon_maven", "../../assets/glb/development/", "icon_maven.glb").then((result) => {
+          this.icon_maven = this.scene.getMeshByName("icon_maven");
+        });
+
         BABYLON.SceneLoader.ImportMeshAsync("icon_css", "../../assets/glb/development/", "icon_css.glb").then((result) => {
+          this.icon_css = this.scene.getMeshByName("icon_css");
         });
+
         BABYLON.SceneLoader.ImportMeshAsync("icon_html", "../../assets/glb/development/", "icon_html.glb").then((result) => {
+          this.icon_html = this.scene.getMeshByName("icon_html");
         });
+
         BABYLON.SceneLoader.ImportMeshAsync("icon_bootstrap", "../../assets/glb/development/", "icon_bootstrap.glb").then((result) => {
+          this.icon_bootstrap = this.scene.getMeshByName("icon_bootstrap");
         });
+
         BABYLON.SceneLoader.ImportMeshAsync("icon_angular", "../../assets/glb/development/", "icon_angular.glb").then((result) => {
+          this.icon_angular = this.scene.getMeshByName("icon_angular");
         });
+
         BABYLON.SceneLoader.ImportMeshAsync("icon_typescript", "../../assets/glb/development/", "icon_typescript.glb").then((result) => {
+          this.icon_typescript = this.scene.getMeshByName("icon_typescript");
         });
+
         BABYLON.SceneLoader.ImportMeshAsync("icon_postman", "../../assets/glb/development/", "icon_postman.glb").then((result) => {
+          this.icon_postman = this.scene.getMeshByName("icon_postman");
         });
+
         BABYLON.SceneLoader.ImportMeshAsync("icon_docker", "../../assets/glb/development/", "icon_docker.glb").then((result) => {
+          this.icon_docker = this.scene.getMeshByName("icon_docker");
         });
+
         BABYLON.SceneLoader.ImportMeshAsync("icon_git", "../../assets/glb/development/", "icon_git.glb").then((result) => {
+          this.icon_git = this.scene.getMeshByName("icon_git");
         });
+
         BABYLON.SceneLoader.ImportMeshAsync("icon_blender", "../../assets/glb/development/", "icon_blender.glb").then((result) => {
+          this.icon_blender = this.scene.getMeshByName("icon_blender");
         });
         BABYLON.SceneLoader.ImportMeshAsync("icon_babylon", "../../assets/glb/development/", "icon_babylon.glb").then((result) => {
+          this.icon_babylon = this.scene.getMeshByName("icon_babylon");
         });
+
         BABYLON.SceneLoader.ImportMeshAsync("icon_photoshop", "../../assets/glb/development/", "icon_photoshop.glb").then((result) => {
+          this.icon_photoshop = this.scene.getMeshByName("icon_photoshop");
         });
+
         BABYLON.SceneLoader.ImportMeshAsync("icon_illustrator", "../../assets/glb/development/", "icon_illustrator.glb").then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("icon_spring_framework", "../../assets/glb/development/", "icon_spring_framework.glb").then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("icon_maven", "../../assets/glb/development/", "icon_maven.glb").then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("icon_java", "../../assets/glb/development/", "icon_java.glb").then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("icon_postgresql", "../../assets/glb/development/", "icon_postgresql.glb").then((result) => {
+          this.icon_illustrator = this.scene.getMeshByName("icon_illustrator");
         });
 
         // OWL
@@ -364,7 +494,371 @@ export class DevelopmentService {
         if(!this.scene_loaded) {
             this.scene_loaded = true;
             this.interaction.isLoaded.next();
+            this.addActions_buttons();
         }
+    }
+
+    // ADD ACTIONS
+
+    public addActions_buttons() {
+        this.addActions_IconPostgresql();
+        this.addActions_IconJava();
+        this.addActions_IconSpringFramework();
+        this.addActions_IconMaven();
+        this.addActions_IconCss();
+        this.addActions_IconHtml();
+        this.addActions_IconBootstrap();
+        this.addActions_IconAngular();
+        this.addActions_IconTypescript();
+        this.addActions_IconPostman();
+        this.addActions_IconDocker();
+        this.addActions_IconGit();
+        this.addActions_IconBlender();
+        this.addActions_IconBabylon();
+        this.addActions_IconPhotoshop();
+        this.addActions_IconIllustrator();
+    }
+
+    private activation_buttons() {
+        this.icon_postgresql.isPickable = true;
+        this.icon_java.isPickable = true;
+        this.icon_spring_framework.isPickable = true;
+        this.icon_maven.isPickable = true;
+        this.icon_css.isPickable = true;
+        this.icon_html.isPickable = true;
+        this.icon_bootstrap.isPickable = true;
+        this.icon_angular.isPickable = true;
+        this.icon_typescript.isPickable = true;
+        this.icon_postman.isPickable = true;
+        this.icon_docker.isPickable = true;
+        this.icon_git.isPickable = true;
+        this.icon_blender.isPickable = true;
+        this.icon_babylon.isPickable = true;
+        this.icon_photoshop.isPickable = true;
+        this.icon_illustrator.isPickable = true;
+    }
+
+    private desactivation_buttons() {
+        this.icon_postgresql.isPickable = false;
+        this.icon_java.isPickable = false;
+        this.icon_spring_framework.isPickable = false;
+        this.icon_maven.isPickable = false;
+        this.icon_css.isPickable = false;
+        this.icon_html.isPickable = false;
+        this.icon_bootstrap.isPickable = false;
+        this.icon_angular.isPickable = false;
+        this.icon_typescript.isPickable = false;
+        this.icon_postman.isPickable = false;
+        this.icon_docker.isPickable = false;
+        this.icon_git.isPickable = false;
+        this.icon_blender.isPickable = false;
+        this.icon_babylon.isPickable = false;
+        this.icon_photoshop.isPickable = false;
+        this.icon_illustrator.isPickable = false;
+    }
+
+    private addActions_IconPostgresql() {
+        this.icon_postgresql.isPickable = true;
+        this.icon_postgresql.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_postgresql.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_postgresql.material, "albedoTexture", this.icon_postgresql_BAKING_HIGHLIGHT));
+        this.icon_postgresql.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_postgresql.material, "albedoTexture", this.icon_postgresql_BAKING));
+
+        this.icon_postgresql.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_postgresql},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_postgresql.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_postgresql.next()));
+    }
+
+    private addActions_IconJava() {
+        this.icon_java.isPickable = true;
+        this.icon_java.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_java.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_java.material, "albedoTexture", this.icon_java_BAKING_HIGHLIGHT));
+        this.icon_java.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_java.material, "albedoTexture", this.icon_java_BAKING));
+
+        this.icon_java.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_java},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_java.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_java.next()));
+    }
+
+    private addActions_IconSpringFramework() {
+        this.icon_spring_framework.isPickable = true;
+        this.icon_spring_framework.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_spring_framework.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_spring_framework.material, "albedoTexture", this.icon_spring_framework_BAKING_HIGHLIGHT));
+        this.icon_spring_framework.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_spring_framework.material, "albedoTexture", this.icon_spring_framework_BAKING));
+
+        this.icon_spring_framework.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_spring_framework},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_spring_framework.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_spring_framework.next()));
+    }
+
+    private addActions_IconMaven() {
+        this.icon_maven.isPickable = true;
+        this.icon_maven.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_maven.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_maven.material, "albedoTexture", this.icon_maven_BAKING_HIGHLIGHT));
+        this.icon_maven.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_maven.material, "albedoTexture", this.icon_maven_BAKING));
+
+        this.icon_maven.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_maven},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_maven.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_maven.next()));
+    }
+
+    private addActions_IconCss() {
+        this.icon_css.isPickable = true;
+        this.icon_css.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_css.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_css.material, "albedoTexture", this.icon_css_BAKING_HIGHLIGHT));
+        this.icon_css.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_css.material, "albedoTexture", this.icon_css_BAKING));
+
+        this.icon_css.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_css},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_css.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_css.next()));
+    }
+
+    private addActions_IconHtml() {
+        this.icon_html.isPickable = true;
+        this.icon_html.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_html.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_html.material, "albedoTexture", this.icon_html_BAKING_HIGHLIGHT));
+        this.icon_html.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_html.material, "albedoTexture", this.icon_html_BAKING));
+
+        this.icon_html.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_html},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_html.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_html.next()));
+    }
+
+    private addActions_IconBootstrap() {
+        this.icon_bootstrap.isPickable = true;
+        this.icon_bootstrap.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_bootstrap.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_bootstrap.material, "albedoTexture", this.icon_bootstrap_BAKING_HIGHLIGHT));
+        this.icon_bootstrap.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_bootstrap.material, "albedoTexture", this.icon_bootstrap_BAKING));
+
+        this.icon_bootstrap.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_bootstrap},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_bootstrap.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_bootstrap.next()));
+    }
+
+    private addActions_IconAngular() {
+        this.icon_angular.isPickable = true;
+        this.icon_angular.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_angular.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_angular.material, "albedoTexture", this.icon_angular_BAKING_HIGHLIGHT));
+        this.icon_angular.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_angular.material, "albedoTexture", this.icon_angular_BAKING));
+
+        this.icon_angular.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_angular},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_angular.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_angular.next()));
+    }
+
+    private addActions_IconTypescript() {
+        this.icon_typescript.isPickable = true;
+        this.icon_typescript.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_typescript.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_typescript.material, "albedoTexture", this.icon_typescript_BAKING_HIGHLIGHT));
+        this.icon_typescript.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_typescript.material, "albedoTexture", this.icon_typescript_BAKING));
+
+        this.icon_typescript.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_typescript},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_typescript.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_typescript.next()));
+    }
+
+    private addActions_IconPostman() {
+        this.icon_postman.isPickable = true;
+        this.icon_postman.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_postman.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_postman.material, "albedoTexture", this.icon_postman_BAKING_HIGHLIGHT));
+        this.icon_postman.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_postman.material, "albedoTexture", this.icon_postman_BAKING));
+
+        this.icon_postman.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_postman},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_postman.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_postman.next()));
+    }
+
+    private addActions_IconDocker() {
+        this.icon_docker.isPickable = true;
+        this.icon_docker.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_docker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_docker.material, "albedoTexture", this.icon_docker_BAKING_HIGHLIGHT));
+        this.icon_docker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_docker.material, "albedoTexture", this.icon_docker_BAKING));
+
+        this.icon_docker.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_docker},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_docker.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_docker.next()));
+    }
+
+    private addActions_IconGit() {
+        this.icon_git.isPickable = true;
+        this.icon_git.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_git.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_git.material, "albedoTexture", this.icon_git_BAKING_HIGHLIGHT));
+        this.icon_git.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_git.material, "albedoTexture", this.icon_git_BAKING));
+
+        this.icon_git.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_git},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_git.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_git.next()));
+    }
+
+    private addActions_IconBlender() {
+        this.icon_blender.isPickable = true;
+        this.icon_blender.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_blender.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_blender.material, "albedoTexture", this.icon_blender_BAKING_HIGHLIGHT));
+        this.icon_blender.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_blender.material, "albedoTexture", this.icon_blender_BAKING));
+
+        this.icon_blender.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_blender},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_blender.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_blender.next()));
+    }
+
+    private addActions_IconBabylon() {
+        this.icon_babylon.isPickable = true;
+        this.icon_babylon.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_babylon.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_babylon.material, "albedoTexture", this.icon_babylon_BAKING_HIGHLIGHT));
+        this.icon_babylon.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_babylon.material, "albedoTexture", this.icon_babylon_BAKING));
+
+        this.icon_babylon.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_babylon},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_babylon.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_babylon.next()));
+    }
+
+    private addActions_IconPhotoshop() {
+        this.icon_photoshop.isPickable = true;
+        this.icon_photoshop.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_photoshop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_photoshop.material, "albedoTexture", this.icon_photoshop_BAKING_HIGHLIGHT));
+        this.icon_photoshop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_photoshop.material, "albedoTexture", this.icon_photoshop_BAKING));
+
+        this.icon_photoshop.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_photoshop},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_photoshop.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photoshop.next()));
+    }
+
+    private addActions_IconIllustrator() {
+        this.icon_illustrator.isPickable = true;
+        this.icon_illustrator.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.icon_illustrator.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.icon_illustrator.material, "albedoTexture", this.icon_illustrator_BAKING_HIGHLIGHT));
+        this.icon_illustrator.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.icon_illustrator.material, "albedoTexture", this.icon_illustrator_BAKING));
+
+        this.icon_illustrator.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_illustrator},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                ]
+            )
+        );
+
+        this.icon_illustrator.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_illustrator.next()));
     }
 
     // ENTER DEVELOPMENT
@@ -377,13 +871,22 @@ export class DevelopmentService {
     private animation_cameraPosition_enterDevelopment() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterDevelopment', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(-20.220454501261877, 26.68576493813795, 21.37067338632216), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterDevelopment', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(-13.250570526303488, 14.444533883017286, 34.116240304922), 0, ease);
     }
 
     private animation_targetScreenOffset_enterDevelopment() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
         BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterDevelopment', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(4, -0.5), 0, ease);
+    }
+
+    // OPEN CAMERA
+
+    private animation_camera_open() {
+        this.arc_rotate_camera_clone = this.arc_rotate_camera.position.clone();
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_Camera_Open', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), 0, ease);
     }
 
     // DASHBOARD
@@ -416,6 +919,7 @@ export class DevelopmentService {
             const rendererLoopCallback = () => {
                 this.scene.render();
                 this.scene.executeWhenReady(() => this.sceneIsLoaded());
+                this.emitCameraDatas_loop();
             };
 
             if (this.windowRef.document.readyState !== 'loading') {
