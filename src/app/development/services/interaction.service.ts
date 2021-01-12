@@ -8,5 +8,9 @@ import { CameraDatas } from '../../shared/models/camera-datas';
 })
 export class InteractionService {
 
+    getCameraDatas_init = new Subject<CameraDatas>();
+
+    getCameraDatas_loop = new Subject<CameraDatas>();
+
     isLoaded = new Subject<boolean>();
 }

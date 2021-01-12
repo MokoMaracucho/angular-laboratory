@@ -5,6 +5,8 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { DevelopmentService } from './services/development.service';
 import { InteractionService } from './services/interaction.service';
 
+import { CameraDatas } from '../shared/models/camera-datas';
+
 @Component({
     selector: 'app-development',
     templateUrl: './development.component.html',
@@ -49,6 +51,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     public introduction_fadeIn = false;
     public btnCloseIntroduction_fadeIn = false;
 
+    public isVisible_dashBoard = true;
+    public camera_datas: CameraDatas;
+
     @ViewChild('rendererCanvas_development', { static: true })
     public rendererCanvas_development: ElementRef<HTMLCanvasElement>;
 
@@ -66,6 +71,10 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
         setTimeout(() => {this.webDeveloper_fadeIn = true}, 500);
         setTimeout(() => {this.introduction_fadeIn = true}, 1000);
         setTimeout(() => {this.btnCloseIntroduction_fadeIn = true}, 1500);
+
+        this.subscription = this.interaction.getCameraDatas_init.subscribe((cameraDatas: CameraDatas) => cameraDatas);
+        this.camera_datas = this.developmentService.emitCameraDatas_init();
+        this.subscription = this.interaction.getCameraDatas_loop.subscribe(() => this.getCameraDatas_loop());
     }
 
     ngOnDestroy(): void {
@@ -75,5 +84,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     private isLoaded_function(): void {
         this.isLoaded = true;
         this.isLoaded_fadeOut = true;
+    }
+
+    private getCameraDatas_loop(): void {
+        this.camera_datas = this.developmentService.emitCameraDatas_init();
     }
 }

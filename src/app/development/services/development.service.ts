@@ -5,6 +5,8 @@ import * as BABYLON from 'babylonjs';
 
 import { InteractionService } from './interaction.service';
 
+import { CameraDatas } from '../../shared/models/camera-datas';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,6 +38,8 @@ export class DevelopmentService {
     private arrows_MATERIAL: BABYLON.StandardMaterial;
 
     private scene_loaded = false;
+
+    private dashBoardCameraDatas: CameraDatas;
 
     public constructor(
         private ngZone: NgZone,
@@ -360,6 +364,31 @@ export class DevelopmentService {
         if(!this.scene_loaded) {
             this.scene_loaded = true;
             this.interaction.isLoaded.next();
+        }
+    }
+
+    // DASHBOARD
+
+    public emitCameraDatas_init(): CameraDatas {
+        this.getCameraDatas_dashBoard();
+        this.interaction.getCameraDatas_init.next();
+        return this.dashBoardCameraDatas;
+    }
+
+    public emitCameraDatas_loop(): CameraDatas {
+        this.getCameraDatas_dashBoard();
+        this.interaction.getCameraDatas_loop.next();
+        return this.dashBoardCameraDatas;
+    }
+
+    public getCameraDatas_dashBoard() {
+        this.dashBoardCameraDatas = {
+            alpha: this.arc_rotate_camera.alpha,
+            beta: this.arc_rotate_camera.beta,
+            radius: this.arc_rotate_camera.radius,
+            x: this.arc_rotate_camera.position.x,
+            y: this.arc_rotate_camera.position.y,
+            z: this.arc_rotate_camera.position.z
         }
     }
 
