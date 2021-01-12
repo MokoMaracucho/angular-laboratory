@@ -889,6 +889,19 @@ export class DevelopmentService {
         BABYLON.Animation.CreateAndStartAnimation('animation_Camera_Open', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), 0, ease);
     }
 
+    // CLOSE CAMERA
+
+    public animation_close() {
+        this.animation_cameraPosition_close();
+        this.activation_buttons();
+    }
+
+    private animation_cameraPosition_close() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_close', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, this.arc_rotate_camera_clone, 0, ease);
+    }
+
     // DASHBOARD
 
     public emitCameraDatas_init(): CameraDatas {

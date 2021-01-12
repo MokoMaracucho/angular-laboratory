@@ -7,9 +7,9 @@
     <div id="container_introduction" class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="h1_webDeveloper" *ngIf="language_english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">WEB<br/>DEVELOPER</h1>
-                <h1 class="h1_webDeveloper" *ngIf="language_french" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DEVELOPPEUR<br/>WEB</h1>
-                <h1 class="h1_webDeveloper" *ngIf="language_spanish" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DESARROLADOR<br/>WEB</h1>
+                <h1 class="h1_webDeveloper" *ngIf="language_english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DEVELOPMENT</h1>
+                <h1 class="h1_webDeveloper" *ngIf="language_french" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DÉVELOPPEMENT<br/>INFORMATIQUE</h1>
+                <h1 class="h1_webDeveloper" *ngIf="language_spanish" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DESARROLADOR<br/>INFORMATICO</h1>
                 <span class="span_webDeveloper" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">SPRING - ANGULAR - BABYLONJS</span>
             </div>
         </div>
@@ -44,6 +44,518 @@
                     <span *ngIf="language_english">Enter</span>
                     <span *ngIf="language_french">Entrer</span>
                     <span *ngIf="language_spanish">Entrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_postgresql ? 'block' : 'none'" [@isVisible_postgresql]="isVisible_postgresql">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">POSTGRESQL</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_postgresql" type="button" class="btn btn-dark" (click)="close_postgresql()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_java ? 'block' : 'none'" [@isVisible_java]="isVisible_java">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">JAVA</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_java" type="button" class="btn btn-dark" (click)="close_java()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_spring_framework ? 'block' : 'none'" [@isVisible_spring_framework]="isVisible_spring_framework">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">SPRING FRAMEWORK</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_spring_framework" type="button" class="btn btn-dark" (click)="close_spring_framework()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_maven ? 'block' : 'none'" [@isVisible_maven]="isVisible_maven">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">MAVEN</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_maven" type="button" class="btn btn-dark" (click)="close_maven()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_css ? 'block' : 'none'" [@isVisible_css]="isVisible_css">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">CSS</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_css" type="button" class="btn btn-dark" (click)="close_css()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_html ? 'block' : 'none'" [@isVisible_html]="isVisible_html">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">HTML</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_html" type="button" class="btn btn-dark" (click)="close_html()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_bootstrap ? 'block' : 'none'" [@isVisible_bootstrap]="isVisible_bootstrap">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">BOOTSTRAP</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_bootstrap" type="button" class="btn btn-dark" (click)="close_bootstrap()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_angular ? 'block' : 'none'" [@isVisible_angular]="isVisible_angular">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">ANGULAR</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_angular" type="button" class="btn btn-dark" (click)="close_angular()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_typescript ? 'block' : 'none'" [@isVisible_typescript]="isVisible_typescript">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">TYPESCRIPT</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_typescript" type="button" class="btn btn-dark" (click)="close_typescript()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_postman ? 'block' : 'none'" [@isVisible_postman]="isVisible_postman">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">POSTMAN</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_postman" type="button" class="btn btn-dark" (click)="close_postman()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_docker ? 'block' : 'none'" [@isVisible_docker]="isVisible_docker">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">DOCKER</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_docker" type="button" class="btn btn-dark" (click)="close_docker()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_git ? 'block' : 'none'" [@isVisible_git]="isVisible_git">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">GIT</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_git" type="button" class="btn btn-dark" (click)="close_git()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_blender ? 'block' : 'none'" [@isVisible_blender]="isVisible_blender">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">BLENDER</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_blender" type="button" class="btn btn-dark" (click)="close_blender()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_babylon ? 'block' : 'none'" [@isVisible_babylon]="isVisible_babylon">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">BABYLON</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_babylon" type="button" class="btn btn-dark" (click)="close_babylon()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_photoshop ? 'block' : 'none'" [@isVisible_photoshop]="isVisible_photoshop">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">PHOTOSHOP</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_photoshop" type="button" class="btn btn-dark" (click)="close_photoshop()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_illustrator ? 'block' : 'none'" [@isVisible_illustrator]="isVisible_illustrator">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card">ILLUSTRATOR</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button btnClose_Introduction id="btn_close_illustrator" type="button" class="btn btn-dark" (click)="close_illustrator()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
                 </button>
             </div>
         </div>

@@ -3232,6 +3232,8 @@ export class LaboratoryService {
         BABYLON.Animation.CreateAndStartAnimation('animation_Camera_Open', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), 0, ease);
     }
 
+    // CLOSE CAMERA
+
     public animation_close() {
         this.animation_cameraPosition_close();
         this.activation_buttons();
