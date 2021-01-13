@@ -950,10 +950,9 @@ export class DevelopmentService {
     }
 
     public cleanUp() {
-      alert("OK");
-      this.engine.stopRenderLoop();
-      this.scene.dispose();
-      this.engine.dispose();
-      this.scene_loaded = false;
+        this.engine.stopRenderLoop();
+        this.scene.dispose();
+        this.engine.dispose();
+        this.scene_loaded = false;
     }
 }

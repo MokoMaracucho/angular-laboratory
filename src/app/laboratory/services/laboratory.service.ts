@@ -3329,7 +3329,6 @@ export class LaboratoryService {
     }
 
     public cleanUp() {
-      alert("OK");
         this.engine.stopRenderLoop();
         this.scene.dispose();
         this.engine.dispose();
