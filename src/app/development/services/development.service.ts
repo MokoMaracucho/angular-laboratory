@@ -108,7 +108,7 @@ export class DevelopmentService {
         // CANERAS
 
         this.arc_rotate_camera = new BABYLON.ArcRotateCamera("arc_rotate_camera", 2.25, 1.05, 50, new BABYLON.Vector3(0, 5, 0), this.scene);
-        this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-8, 10, 5);
+        this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-4, 10, 5);
         this.arc_rotate_camera.lowerBetaLimit = -0.4;
         this.arc_rotate_camera.upperBetaLimit = 1.65;
         this.arc_rotate_camera.lowerRadiusLimit = 20;
@@ -117,7 +117,7 @@ export class DevelopmentService {
         this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, -2);
 
         this.anaglyph_arc_rotate_camera = new BABYLON.AnaglyphArcRotateCamera("anaglyph_arc_rotate_camera", 2.25, 1.05, 50, new BABYLON.Vector3(0, 5, 0), 0.1, this.scene);
-        this.anaglyph_arc_rotate_camera.lockedTarget =  new BABYLON.Vector3(-8, 10, 5);
+        this.anaglyph_arc_rotate_camera.lockedTarget =  new BABYLON.Vector3(-4, 10, 5);
         this.anaglyph_arc_rotate_camera.lowerBetaLimit = -0.4;
         this.anaglyph_arc_rotate_camera.upperBetaLimit = 1.65;
         this.anaglyph_arc_rotate_camera.lowerRadiusLimit = 20;
@@ -947,5 +947,12 @@ export class DevelopmentService {
                 this.engine.resize();
             });
         });
+    }
+
+    public cleanUp() {
+      alert("OK");
+      this.engine.stopRenderLoop();
+      this.scene.dispose();
+      this.engine.dispose();
     }
 }

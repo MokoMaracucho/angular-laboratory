@@ -164,7 +164,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     public isVisible_photoshop = false;
     public isVisible_illustrator = false;
 
-    public isVisible_dashBoard = true;
+    public isVisible_dashBoard = false;
     public camera_datas: CameraDatas;
 
     @ViewChild('rendererCanvas_development', { static: true })
