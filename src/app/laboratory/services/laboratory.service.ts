@@ -3333,5 +3333,6 @@ export class LaboratoryService {
         this.engine.stopRenderLoop();
         this.scene.dispose();
         this.engine.dispose();
+        this.scene_loaded = false;
     }
 }
