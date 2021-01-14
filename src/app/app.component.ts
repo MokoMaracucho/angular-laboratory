@@ -24,13 +24,12 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
       this.innerWidth = window.innerWidth;
       this.innerHeight = window.innerHeight;
-      alert(this.innerWidth);
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
       this.innerWidth = window.innerWidth;
-      alert(this.innerWidth)
+      this.innerHeight = window.innerHeight;
   }
 
   public cleanUp_development() {
