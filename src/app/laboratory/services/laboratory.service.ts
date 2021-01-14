@@ -1218,6 +1218,18 @@ export class LaboratoryService {
         this.innerHeight = height;
     }
 
+    private resize_screenOffset() {
+        if(this.innerWidth <= 576) {
+            this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(-4, 7);
+        } else if(this.innerWidth <= 768) {
+            this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, 5);
+        } else if(this.innerWidth <= 960) {
+            this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(4, 3);
+        } else  {
+            this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, 1);
+        }
+    }
+
     // IS LOADED
 
     private sceneIsLoaded() {
@@ -1415,7 +1427,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => console.log("Pegasus"))
                 ]
             )
         );
@@ -1449,12 +1462,13 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_inside},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => console.log("Pegasus"))
                 ]
             )
         );
 
-        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
+        this.pegasus_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusLaces() {
@@ -1483,12 +1497,13 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_laces},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => console.log("Pegasus"))
                 ]
             )
         );
 
-        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
+        this.pegasus_laces.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusLogo() {
@@ -1517,12 +1532,13 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_logo},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => console.log("Pegasus"))
                 ]
             )
         );
 
-        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
+        this.pegasus_logo.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusSoleOutside() {
@@ -1551,12 +1567,13 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_sole_outside},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => console.log("Pegasus"))
                 ]
             )
         );
 
-        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
+        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusSoleInside() {
@@ -1585,12 +1602,13 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_sole_inside},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => console.log("Pegasus"))
                 ]
             )
         );
 
-        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
+        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_TransfertBoxes() {
@@ -3334,6 +3352,7 @@ export class LaboratoryService {
 
             this.windowRef.window.addEventListener('resize', () => {
                 this.engine.resize();
+                this.resize_screenOffset();
             });
         });
     }
