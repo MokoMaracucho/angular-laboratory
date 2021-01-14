@@ -5,6 +5,16 @@ nav {
   background-color: #00000055;
 }
 
-.nav-link  {
-  font-family: Roboto-Bold;
+nav ul li a   {
+  font-family: Peace-Sans-Webfont;
+  font-size: 22px;
+  opacity: 0.8;
+}
+
+nav ul li a:hover   {
+  color: #00b1ffcc;
+}
+
+.link-is-active   {
+  color: red;
 }

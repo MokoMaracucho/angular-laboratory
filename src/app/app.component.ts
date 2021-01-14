@@ -10,6 +10,9 @@ import { LaboratoryService } from './laboratory/services/laboratory.service';
 })
 export class AppComponent {
 
+  laboratory_isActive = true;
+  development_isActive = false;
+
   constructor(
     private developmentService: DevelopmentService,
     private laboratoryService: LaboratoryService
@@ -17,9 +20,13 @@ export class AppComponent {
 
   public cleanUp_development() {
       this.developmentService.cleanUp();
+      this.laboratory_isActive = true;
+      this.development_isActive = false;
   }
 
   public cleanUp_laboratory() {
       this.laboratoryService.cleanUp();
+      this.laboratory_isActive = false;
+      this.development_isActive = true;
   }
 }
