@@ -7,14 +7,10 @@ nav {
 
 nav ul li a   {
   font-family: Peace-Sans-Webfont;
-  font-size: 22px;
+  font-size: 20px;
   opacity: 0.8;
 }
 
 nav ul li a:hover   {
-  color: #00b1ffcc;
-}
-
-.link-is-active   {
-  color: red;
+  color:red;
 }

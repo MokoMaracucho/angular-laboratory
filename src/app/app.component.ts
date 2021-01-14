@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 import { DevelopmentService } from './development/services/development.service';
 import { LaboratoryService } from './laboratory/services/laboratory.service';
@@ -8,15 +8,30 @@ import { LaboratoryService } from './laboratory/services/laboratory.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  laboratory_isActive = true;
-  development_isActive = false;
+  public innerWidth: any;
+  public innerHeight: any;
+
+  public laboratory_isActive = true;
+  public development_isActive = false;
 
   constructor(
-    private developmentService: DevelopmentService,
-    private laboratoryService: LaboratoryService
+      private developmentService: DevelopmentService,
+      private laboratoryService: LaboratoryService
   ) {}
+
+  ngOnInit(): void {
+      this.innerWidth = window.innerWidth;
+      this.innerHeight = window.innerHeight;
+      alert(this.innerWidth);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+      this.innerWidth = window.innerWidth;
+      alert(this.innerWidth)
+  }
 
   public cleanUp_development() {
       this.developmentService.cleanUp();

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#"><img id="logo_moko" class="mr-2" src="../assets/img/logos/moko/logo_moko.svg" alt="logo_moko" height=50 opacity=0.5></a>
+    <a class="navbar-brand" href="#"><img id="logo_moko" class="" src="../assets/img/logos/moko/logo_moko.svg" alt="logo_moko" height=40></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,10 +7,10 @@
     <div id="navbarNav" class="collapse navbar-collapse">
         <ul class="navbar-nav">
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link pl-3 pr-3" [routerLink]="['/laboratory']" [style.color]="laboratory_isActive ? '#00B2FFCC' : '#007CB1CC'" (click)="cleanUp_development()">LABORATORY</a>
+                <a class="nav-link pr-2" [routerLink]="['/laboratory']" [style.color]="laboratory_isActive ? '#00B2FFCC' : '#007CB1CC'" [style.color:hover]="'red'" (click)="cleanUp_development()">LABORATORY</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link pl-3 pr-3" [routerLink]="['/development']" [style.color]="development_isActive ? '#00B2FFCC' : '#007CB1CC'" (click)="cleanUp_laboratory()">DEVELOPMENT</a>
+                <a class="nav-link pl-2 pr-2" [routerLink]="['/development']" [style.color]="development_isActive ? '#00B2FFCC' : '#007CB1CC'" (click)="cleanUp_laboratory()">DEVELOPMENT</a>
             </li>
         </ul>
     </div>

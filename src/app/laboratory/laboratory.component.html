@@ -6,7 +6,7 @@
 <div id="div_introduction" [style.display]="isVisible_introduction ? 'block' : 'none'" *ngIf="isVisible_introduction">
     <div id="container_introduction" class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-md-8 col-lg-12 col-xl-12">
                 <h1 class="h1_webDeveloper" *ngIf="language_english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">WEB<br/>DEVELOPER</h1>
                 <h1 class="h1_webDeveloper" *ngIf="language_french" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DEVELOPPEUR<br/>WEB</h1>
                 <h1 class="h1_webDeveloper" *ngIf="language_spanish" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DESARROLADOR<br/>WEB</h1>
@@ -14,8 +14,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-7">
-                <p class="text_introduction" *ngIf="language_english" [@introduction_fadeIn]="introduction_fadeIn">
+            <div class="col-md-6 col-lg-7 col-xl-7" [@introduction_fadeIn]="introduction_fadeIn">
+                <p class="text_introduction" *ngIf="language_english">
                     Having fallen into computer science at a very young age, passionate about art and new technologies, the Web appeared to me as an ideal environment for the association of these two sensibilities.
                     From mastering languages ​​useful for creating sites to mastering graphics software, I quickly felt cramped on this two-dimensional plan. <br/>
                     The discovery of 3D made me the effect of entering a new universe. A universe very similar to ours and it too is governed by physics and mathematics.
@@ -24,7 +24,7 @@
                     This site is the result of a long training in programming languages ​​and graphical tools, guided by the desire to create 3-dimensional sites based on solid and innovative technologies.
                     This platform is a "laboratory" having for objective, on the one hand, to present my work, and, on the other hand, to share my know-how.
                 </p>
-                <p class="text_introduction mt-3" *ngIf="language_french" [@introduction_fadeIn]="introduction_fadeIn">
+                <p class="text_introduction" *ngIf="language_french">
                     Tombé très jeune dans l'informatique, passionné par l'art et les nouvelles technologies, le Web m'est apparu comme un environnemt idéal à l'association de ces deux sensibilités.
                     De la maîtrise des langages utiles à la réalisation de sites à celle des logiciels de graphismes, je me suis très vite senti à l'etroit sur ce plan en deux dimensions.<br/>
                     La découverte de la 3D me fit l'effet d'entrer dans un nouvel univers. Un univers très similaire au notre et lui aussi régit par la physique et les mathématiques.
@@ -34,7 +34,7 @@
                     Ce site est le fruit d'un long apprentissage des langages de programmations et des outils graphiques, guidées par la volonté de réaliser des sites en 3 dimensions reposant sur des technologies solides et novatrices.
                     Cette plateforme est un "laboratoire" ayant pour objectif, d'une part, de présenter mon travail, et, d'autre part, de partager mon savoir-faire.
                 </p>
-                <p class="text_introduction" *ngIf="language_spanish" [@introduction_fadeIn]="introduction_fadeIn">
+                <p class="text_introduction" *ngIf="language_spanish">
                     Habiendo entrado en la informática desde muy joven, apasionado por el arte y las nuevas tecnologías, la Web me pareció un entorno ideal para la asociación de estas dos sensibilidades.
                     Desde dominar lenguajes útiles para crear sitios hasta dominar el software de gráficos, rápidamente me sentí abrumado en este plan bidimensional.<br/>
                     El descubrimiento de 3D me hizo el efecto de entrar en un nuevo universo. Un universo muy parecido al nuestro y que también se rige por la física y las matemáticas.
@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-1">
                 <button id="btn_close_introduction" type="button" class="btn btn-dark mt-3" (click)="close_introduction()" [disabled]="isLoaded == false" [@btnCloseIntroduction_fadeIn]="btnCloseIntroduction_fadeIn">
                     <span *ngIf="language_english">Enter</span>
                     <span *ngIf="language_french">Entrer</span>
