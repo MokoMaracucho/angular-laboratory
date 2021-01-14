@@ -98,11 +98,23 @@
                   sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
                   Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
               </p>
+              <div *ngIf="language_english">
+                  <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                  <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+              </div>
+              <div *ngIf="language_french">
+                  <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                  <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+              </div>
+              <div *ngIf="language_spanish">
+                  <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                  <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+              </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <button btnClose_Introduction id="btn_close_running" type="button" class="btn btn-dark" (click)="close_running()">
+                <button btnClose_Introduction id="btn_close_running" type="button" class="btn btn-dark mt-3" (click)="close_running()">
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_spanish">Cerrar</span>
@@ -141,11 +153,23 @@
                     sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
                     Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
                 </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <button btnClose_Introduction id="btn_close_shareKnowledge" type="button" class="btn btn-dark" (click)="close_shareKnowledge()">
+                <button btnClose_Introduction id="btn_close_shareKnowledge" type="button" class="btn btn-dark mt-3" (click)="close_shareKnowledge()">
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_spanish">Cerrar</span>
@@ -173,11 +197,23 @@
                 </p>
                 <p class="text_content" *ngIf="language_spanish">
                 </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <button btnClose_Introduction id="btn_close_photography" type="button" class="btn btn-dark" (click)="close_photography()">
+                <button btnClose_Introduction id="btn_close_photography" type="button" class="btn btn-dark mt-3" (click)="close_photography()">
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_spanish">Cerrar</span>
@@ -205,11 +241,23 @@
                 </p>
                 <p class="text_content" *ngIf="language_spanish">
                 </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <button btnClose_Introduction id="btn_close_games" type="button" class="btn btn-dark" (click)="close_games()">
+                <button btnClose_Introduction id="btn_close_games" type="button" class="btn btn-dark mt-3" (click)="close_games()">
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_spanish">Cerrar</span>
@@ -253,11 +301,23 @@
                         <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
                     </button>
                 </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <button id="btn_close_stereoscopy" type="button" class="btn btn-dark" (click)="close_stereoscopy()" [disabled]="anaglyph_activated == true">
+                <button id="btn_close_stereoscopy" type="button" class="btn btn-dark mt-3" (click)="close_stereoscopy()" [disabled]="anaglyph_activated == true">
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_spanish">Cerrar</span>
@@ -286,11 +346,23 @@
                 </p>
                 <p class="text_content" *ngIf="language_spanish">
                 </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <button btnClose_Introduction id="btn_close_Art" type="button" class="btn btn-dark" (click)="close_art()">
+                <button btnClose_Introduction id="btn_close_Art" type="button" class="btn btn-dark mt-3" (click)="close_art()">
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_spanish">Cerrar</span>
@@ -319,11 +391,23 @@
                 </p>
                 <p class="text_content" *ngIf="language_spanish">
                 </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <button btnClose_Introduction id="btn_close_contactMe" type="button" class="btn btn-dark" (click)="close_contactMe()">
+                <button btnClose_Introduction id="btn_close_contactMe" type="button" class="btn btn-dark mt-3" (click)="close_contactMe()">
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_spanish">Cerrar</span>
@@ -359,11 +443,23 @@
                 <p class="text_content" *ngIf="language_spanish">
 
                 </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <button id="btn_close_development" type="button" class="btn btn-dark" (click)="close_development()">
+                <button id="btn_close_development" type="button" class="btn btn-dark mt-3" (click)="close_development()">
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_spanish">Cerrar</span>
@@ -397,11 +493,23 @@
                 <p class="text_content" *ngIf="language_spanish">
 
                 </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <button id="btn_close_travel" type="button" class="btn btn-dark" (click)="close_travel()">
+                <button id="btn_close_travel" type="button" class="btn btn-dark mt-3" (click)="close_travel()">
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_spanish">Cerrar</span>
