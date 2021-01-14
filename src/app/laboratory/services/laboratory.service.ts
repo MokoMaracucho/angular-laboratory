@@ -14,6 +14,9 @@ import { CameraDatas } from '../../shared/models/camera-datas';
 })
 export class LaboratoryService {
 
+    private innerWidth: any;
+    private innerHeight: any;
+
     private canvas: HTMLCanvasElement;
     private engine: BABYLON.Engine;
     private scene: BABYLON.Scene;
@@ -1206,6 +1209,13 @@ export class LaboratoryService {
               videoTexture.video.play();
             }
         });
+    }
+
+    // WINDOW DIMENSIONS
+
+    public set_windowDimensions(width, height) {
+        this.innerWidth = width;
+        this.innerHeight = height;
     }
 
     // IS LOADED
