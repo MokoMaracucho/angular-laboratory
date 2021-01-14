@@ -282,7 +282,7 @@ export class LaboratoryService {
         this.arc_rotate_camera.lowerRadiusLimit = 20;
         this.arc_rotate_camera.upperRadiusLimit = 65;
         this.arc_rotate_camera.attachControl(canvas, true);
-        this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, 1);
+        this.set_screenOffset_arcRotateCamera();
 
         this.anaglyph_arc_rotate_camera = new BABYLON.AnaglyphArcRotateCamera("anaglyph_arc_rotate_camera", 2.25, 1.05, 50, new BABYLON.Vector3(-16.2, 5, -12), 0.1, this.scene);
         this.anaglyph_arc_rotate_camera.lockedTarget =  new BABYLON.Vector3(-16.2, 5, -12);
@@ -291,7 +291,7 @@ export class LaboratoryService {
         this.anaglyph_arc_rotate_camera.lowerRadiusLimit = 20;
         this.anaglyph_arc_rotate_camera.upperRadiusLimit = 65;
         this.anaglyph_arc_rotate_camera.attachControl(canvas, true);
-        this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, 1);
+        this.set_screenOffset_anaglyphArcRotateCamera();
 
         var pipeline = new BABYLON.DefaultRenderingPipeline(
             "pipeline", // The name of the pipeline
@@ -1218,15 +1218,27 @@ export class LaboratoryService {
         this.innerHeight = height;
     }
 
-    private resize_screenOffset() {
+    private set_screenOffset_arcRotateCamera() {
         if(this.innerWidth <= 576) {
-            this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(-4, 7);
+            this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, 0.5);
         } else if(this.innerWidth <= 768) {
-            this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, 5);
+            this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, 0.5);
         } else if(this.innerWidth <= 960) {
-            this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(4, 3);
-        } else  {
-            this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, 1);
+            this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(4, 0.5);
+        } else {
+            this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(10, 0.5);
+        }
+    }
+
+    private set_screenOffset_anaglyphArcRotateCamera() {
+        if(this.innerWidth <= 576) {
+            this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, 7);
+        } else if(this.innerWidth <= 768) {
+            this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, 5);
+        } else if(this.innerWidth <= 960) {
+            this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(4, 3);
+        } else {
+            this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(10, 0.5);
         }
     }
 
@@ -3352,7 +3364,8 @@ export class LaboratoryService {
 
             this.windowRef.window.addEventListener('resize', () => {
                 this.engine.resize();
-                this.resize_screenOffset();
+                this.set_screenOffset_arcRotateCamera();
+                this.set_screenOffset_anaglyphArcRotateCamera();
             });
         });
     }
