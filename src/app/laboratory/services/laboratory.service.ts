@@ -1455,9 +1455,7 @@ export class LaboratoryService {
         this.pegasus.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => console.log("Pegasus"))
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard())
                 ]
             )
         );
@@ -1490,14 +1488,11 @@ export class LaboratoryService {
         this.pegasus_inside.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_inside},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => console.log("Pegasus"))
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next())
                 ]
             )
         );
-
-        this.pegasus_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusLaces() {
@@ -1525,14 +1520,11 @@ export class LaboratoryService {
         this.pegasus_laces.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_laces},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => console.log("Pegasus"))
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next())
                 ]
             )
         );
-
-        this.pegasus_laces.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusLogo() {
@@ -1560,14 +1552,11 @@ export class LaboratoryService {
         this.pegasus_logo.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_logo},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => console.log("Pegasus"))
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next())
                 ]
             )
         );
-
-        this.pegasus_logo.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusSoleOutside() {
@@ -1595,14 +1584,11 @@ export class LaboratoryService {
         this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_sole_outside},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => console.log("Pegasus"))
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next())
                 ]
             )
         );
-
-        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusSoleInside() {
@@ -1630,14 +1616,11 @@ export class LaboratoryService {
         this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_sole_inside},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => console.log("Pegasus"))
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next())
                 ]
             )
         );
-
-        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_TransfertBoxes() {
@@ -1653,17 +1636,14 @@ export class LaboratoryService {
         this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_share_knowledge.isVisible = true));
         this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_share_knowledge.isVisible = false));
 
-        this.transfert_boxes.actionManager.registerAction(
-            new BABYLON.CombineAction(
+        this.transfert_boxes.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_shareKnowledge.next())
                 ]
-              )
+            )
         );
-
-        this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_shareKnowledge.next()));
     }
 
     private addActions_TransfertBoxesRings() {
@@ -1679,17 +1659,14 @@ export class LaboratoryService {
         this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_share_knowledge.isVisible = true));
         this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_share_knowledge.isVisible = false));
 
-        this.transfert_boxes_rings.actionManager.registerAction(
-            new BABYLON.CombineAction(
+        this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes_rings},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_shareKnowledge.next())
                 ]
-              )
+            )
         );
-
-        this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_shareKnowledge.next()));
     }
 
     private addActions_RoseRouge() {
@@ -1729,13 +1706,11 @@ export class LaboratoryService {
         this.rose_rouge.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.rose_rouge},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.rose_rouge.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_RoseRougeFrame() {
@@ -1775,13 +1750,11 @@ export class LaboratoryService {
         this.rose_rouge_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.rose_rouge_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.rose_rouge_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_VerbalShoota() {
@@ -1821,13 +1794,11 @@ export class LaboratoryService {
         this.verbal_shoota.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.verbal_shoota},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.verbal_shoota.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_VerbalShootaFrame() {
@@ -1867,13 +1838,11 @@ export class LaboratoryService {
         this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.verbal_shoota_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_LapinBlanc() {
@@ -1913,13 +1882,11 @@ export class LaboratoryService {
         this.lapin_blanc.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.lapin_blanc},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.lapin_blanc.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_LapinBlancFrame() {
@@ -1957,15 +1924,13 @@ export class LaboratoryService {
         this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_photography_right.isVisible = false));
 
         this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.lapin_blanc},
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.lapin_blanc_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_FourtyFour() {
@@ -2005,13 +1970,11 @@ export class LaboratoryService {
         this.fourty_four.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.fourty_four.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_FourtyFourMarieLouise() {
@@ -2051,13 +2014,11 @@ export class LaboratoryService {
         this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four_marie_louise},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_FourtyFourFrame() {
@@ -2097,13 +2058,11 @@ export class LaboratoryService {
         this.fourty_four_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.fourty_four_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_Brique() {
@@ -2143,13 +2102,11 @@ export class LaboratoryService {
         this.brique.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.brique.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_BriqueMarieLouise() {
@@ -2189,13 +2146,11 @@ export class LaboratoryService {
         this.brique_marie_louise.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique_marie_louise},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.brique_marie_louise.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_BriqueFrame() {
@@ -2235,13 +2190,11 @@ export class LaboratoryService {
         this.brique_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.brique_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_Tofu() {
@@ -2281,13 +2234,11 @@ export class LaboratoryService {
         this.tofu.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.tofu.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
 
@@ -2328,13 +2279,11 @@ export class LaboratoryService {
         this.tofu_marie_louise.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu_marie_louise},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.tofu_marie_louise.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_TofuFrame() {
@@ -2374,13 +2323,11 @@ export class LaboratoryService {
         this.tofu_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
                 ]
             )
         );
-
-        this.tofu_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_photography.next()));
     }
 
     private addActions_Checker() {
@@ -2402,13 +2349,11 @@ export class LaboratoryService {
         this.checker.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.checker},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_games.next())
                 ]
             )
         );
-
-        this.checker.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_games.next()));
     }
 
     private addActions_CheckerLocks(){
@@ -2430,13 +2375,11 @@ export class LaboratoryService {
         this.checker_locks.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.checker_locks},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_games.next())
                 ]
             )
         );
-
-        this.checker_locks.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_games.next()));
     }
 
     private addActions_TarotDeck() {
@@ -2458,13 +2401,11 @@ export class LaboratoryService {
         this.tarot_deck.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tarot_deck},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_games.next())
                 ]
             )
         );
-
-        this.tarot_deck.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_games.next()));
     }
 
     private addActions_ThreedGlassesFrame() {
@@ -2486,13 +2427,11 @@ export class LaboratoryService {
         this.threed_glasses_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glasses_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
                 ]
             )
         );
-
-        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_stereoscopy.next()));
     }
 
     private addActions_ThreedGlassBlue() {
@@ -2514,13 +2453,11 @@ export class LaboratoryService {
         this.threed_glass_blue.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_blue},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
                 ]
             )
         );
-
-        this.threed_glass_blue.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_stereoscopy.next()));
     }
 
     private addActions_ThreedGlassRed() {
@@ -2542,13 +2479,11 @@ export class LaboratoryService {
         this.threed_glass_red.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_red},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
                 ]
             )
         );
-
-        this.threed_glass_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_stereoscopy.next()));
     }
 
     private addActions_AmorAmor() {
@@ -2564,13 +2499,11 @@ export class LaboratoryService {
         this.amor_amor.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.amor_amor},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_art.next())
                 ]
             )
         );
-
-        this.amor_amor.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_art.next()));
     }
 
     private addActions_AmorAmorFrame() {
@@ -2586,13 +2519,11 @@ export class LaboratoryService {
         this.amor_amor_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.amor_amor_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_art.next())
                 ]
             )
         );
-
-        this.amor_amor_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_art.next()));
     }
 
     private addActions_ViaAirMail() {
@@ -2608,13 +2539,11 @@ export class LaboratoryService {
         this.via_air_mail.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.via_air_mail},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_contactMe.next())
                 ]
             )
         );
-
-        this.via_air_mail.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_contactMe.next()));
     }
 
     private addActions_Keyboard() {
@@ -2643,15 +2572,13 @@ export class LaboratoryService {
         this.keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_development.isVisible = false));
 
         this.keyboard.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.mac_mini},
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.keyboard},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
                 ]
             )
         );
-
-        this.keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_KeyboardKeyboard() {
@@ -2680,15 +2607,13 @@ export class LaboratoryService {
         this.keyboard_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_development.isVisible = false));
 
         this.keyboard_keyboard.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.mac_mini},
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.keyboard_keyboard},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
                 ]
             )
         );
-
-        this.keyboard_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_MacMini() {
@@ -2719,13 +2644,11 @@ export class LaboratoryService {
         this.mac_mini.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.mac_mini},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
                 ]
             )
         );
-
-        this.mac_mini.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_Laptop() {
@@ -2756,13 +2679,11 @@ export class LaboratoryService {
         this.laptop.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
                 ]
             )
         );
-
-        this.laptop.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_LaptopKeyboard() {
@@ -2793,13 +2714,11 @@ export class LaboratoryService {
         this.laptop_keyboard.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop_keyboard},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
                 ]
             )
         );
-
-        this.laptop_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_LaptopScreen() {
@@ -2830,13 +2749,11 @@ export class LaboratoryService {
         this.laptop_screen.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop_screen},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
                 ]
             )
         );
-
-        this.laptop_screen.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_ScreenCenter() {
@@ -2867,13 +2784,11 @@ export class LaboratoryService {
         this.screen_center.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_center},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
                 ]
             )
         );
-
-        this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_ScreenFrameCenter() {
@@ -2904,50 +2819,46 @@ export class LaboratoryService {
         this.screen_frame_center.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_frame_center},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
                 ]
             )
         );
-
-        this.screen_frame_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_ScreenRight() {
-        this.screen_center.isPickable = true;
-        this.screen_center.actionManager = new BABYLON.ActionManager(this.scene);
+        this.screen_right.isPickable = true;
+        this.screen_right.actionManager = new BABYLON.ActionManager(this.scene);
 
-        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING_HIGHLIGHT));
-        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING));
+        this.screen_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING_HIGHLIGHT));
+        this.screen_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.keyboard.material, "albedoTexture", this.keyboard_BAKING));
 
-        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING_HIGHLIGHT));
-        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING));
+        this.screen_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING_HIGHLIGHT));
+        this.screen_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop.material, "albedoTexture", this.laptop_BAKING));
 
-        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING_HIGHLIGHT));
-        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING));
+        this.screen_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING_HIGHLIGHT));
+        this.screen_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.laptop_screen.material, "albedoTexture", this.laptop_screen_BAKING));
 
-        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING_HIGHLIGHT));
-        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING));
+        this.screen_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING_HIGHLIGHT));
+        this.screen_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_center.material, "albedoTexture", this.screen_center_BAKING));
 
-        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING_HIGHLIGHT));
-        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING));
+        this.screen_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING_HIGHLIGHT));
+        this.screen_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.screen_right.material, "albedoTexture", this.screen_right_BAKING));
 
-        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
-        this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
+        this.screen_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
+        this.screen_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
 
-        this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_development.isVisible = true));
-        this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_development.isVisible = false));
+        this.screen_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_development.isVisible = true));
+        this.screen_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_development.isVisible = false));
 
-        this.screen_center.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_center},
+        this.screen_right.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_right},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
                 ]
             )
         );
-
-        this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_ScreenFrameRight() {
@@ -2978,13 +2889,11 @@ export class LaboratoryService {
         this.screen_frame_right.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_frame_right},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
                 ]
             )
         );
-
-        this.screen_frame_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_development.next()));
     }
 
     private addActions_WorldMap() {
@@ -3000,7 +2909,7 @@ export class LaboratoryService {
         this.world_map.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.world_map},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_camera_open()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
                 ]
             )
@@ -3276,19 +3185,19 @@ export class LaboratoryService {
     }
 
     private get_positionCamera_enterLaboratory(): BABYLON.Vector3 {
-      if(this.innerWidth <= 576) {
-          return new BABYLON.Vector3(-57.00209934436164, 60.54865740597145, 45.78183748516181);
-      } else if(this.innerWidth <= 768) {
-          return new BABYLON.Vector3(-23.233695295682036, 42.938761097973696, 46.381247278745704);
-      } else if(this.innerWidth <= 960) {
-          return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
-      } else if(this.innerWidth <= 1140) {
-          return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
-      } else if(this.innerWidth <= 1500) {
-          return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
-      } else {
-          return new BABYLON.Vector3(-20.220454501261877, 26.68576493813795, 21.37067338632216);
-      }
+        if(this.innerWidth <= 576) {
+            return new BABYLON.Vector3(-57.00209934436164, 60.54865740597145, 45.78183748516181);
+        } else if(this.innerWidth <= 768) {
+            return new BABYLON.Vector3(-23.233695295682036, 42.938761097973696, 46.381247278745704);
+        } else if(this.innerWidth <= 960) {
+            return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
+        } else if(this.innerWidth <= 1140) {
+            return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
+        } else if(this.innerWidth <= 1500) {
+            return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
+        } else {
+            return new BABYLON.Vector3(-20.220454501261877, 26.68576493813795, 21.37067338632216);
+        }
     }
 
     private animation_targetScreenOffset_enterLaboratory() {
@@ -3299,24 +3208,59 @@ export class LaboratoryService {
 
     // OPEN CAMERA
 
-    private animation_camera_open() {
+    private animation_openCard() {
+        this.animation_cameraPosition_openCard();
+        this.animation_targetScreenOffset_openCard();
+        this.desactivation_buttons();
+    }
+
+    private animation_cameraPosition_openCard() {
         this.arc_rotate_camera_clone = this.arc_rotate_camera.position.clone();
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_Camera_Open', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_openCard', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, this.get_positionCamera_openCard(), 0, ease);
+    }
+
+    private get_positionCamera_openCard(): BABYLON.Vector3 {
+        if(this.innerWidth <= 576) {
+            return new BABYLON.Vector3(-50.65007800566379, 47.233077592451984, 13.183056196512112);
+        } else if(this.innerWidth <= 768) {
+            return new BABYLON.Vector3(-52.3410593253664, 58.85694487174785, 14.276335682616303);
+        } else if(this.innerWidth <= 960) {
+            return new BABYLON.Vector3(-57.04992146287326, 39.949376044454034, 14.642339769040099);
+        } else if(this.innerWidth <= 1140) {
+            return new BABYLON.Vector3(-60.62313059142518, 48.64356558951404, 19.878532715863148);
+        } else if(this.innerWidth <= 1500) {
+            return new BABYLON.Vector3(-58.38337660286841, 36.651254667701544, 33.99949253333725);
+        } else {
+            return new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514);
+        }
+    }
+
+    private animation_targetScreenOffset_openCard() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(10, 1), 0, ease);
     }
 
     // CLOSE CAMERA
 
-    public animation_close() {
-        this.animation_cameraPosition_close();
+    public animation_closeCard() {
+        this.animation_cameraPosition_closeCard();
+        this.animation_targetScreenOffset_closeCard();
         this.activation_buttons();
     }
 
-    private animation_cameraPosition_close() {
+    private animation_cameraPosition_closeCard() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_close', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, this.arc_rotate_camera_clone, 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_closeCard', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, this.arc_rotate_camera_clone, 0, ease);
+    }
+
+    private animation_targetScreenOffset_closeCard() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, 0), 0, ease);
     }
 
     // SWITCH CAMERA

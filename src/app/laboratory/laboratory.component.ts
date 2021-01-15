@@ -213,7 +213,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     public close_running(): void {
-        this.laboratoryService.animation_close();
+        this.laboratoryService.animation_closeCard();
         this.isVisible_running = false;
     }
 
@@ -224,7 +224,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     public close_shareKnowledge(): void {
-        this.laboratoryService.animation_close();
+        this.laboratoryService.animation_closeCard();
         this.isVisible_shareKnowledge = false;
     }
 
@@ -235,7 +235,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     public close_photography(): void {
-        this.laboratoryService.animation_close();
+        this.laboratoryService.animation_closeCard();
         this.isVisible_photography = false;
     }
 
@@ -246,7 +246,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     public close_games(): void {
-        this.laboratoryService.animation_close();
+        this.laboratoryService.animation_closeCard();
         this.isVisible_games = false;
     }
 
@@ -257,7 +257,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     public close_stereoscopy(): void {
-        this.laboratoryService.animation_close();
+        this.laboratoryService.animation_closeCard();
         this.isVisible_stereoscopy = false;
     }
 
@@ -276,7 +276,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     public close_art(): void {
-        this.laboratoryService.animation_close();
+        this.laboratoryService.animation_closeCard();
         this.isVisible_art = false;
     }
 
@@ -287,7 +287,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     public close_contactMe(): void {
-        this.laboratoryService.animation_close();
+        this.laboratoryService.animation_closeCard();
         this.isVisible_contactMe = false;
     }
 
@@ -298,7 +298,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     public close_development(): void {
-        this.laboratoryService.animation_close();
+        this.laboratoryService.animation_closeCard();
         this.isVisible_development = false;
     }
 
@@ -309,7 +309,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     public close_travel(): void {
-        this.laboratoryService.animation_close();
+        this.laboratoryService.animation_closeCard();
         this.isVisible_travel = false;
     }
 
