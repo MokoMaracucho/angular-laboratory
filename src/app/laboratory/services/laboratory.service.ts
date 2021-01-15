@@ -276,6 +276,7 @@ export class LaboratoryService {
         // CANERAS
 
         this.arc_rotate_camera = new BABYLON.ArcRotateCamera("arc_rotate_camera", 2.25, 1.05, 50, new BABYLON.Vector3(-16.2, 5, -12), this.scene);
+        this.arc_rotate_camera.position = this.set_position_arcRotateCamera();
         this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
         this.arc_rotate_camera.lowerBetaLimit = -0.5;
         this.arc_rotate_camera.upperBetaLimit = 1.65;
@@ -1216,6 +1217,20 @@ export class LaboratoryService {
     public set_windowDimensions(width, height) {
         this.innerWidth = width;
         this.innerHeight = height;
+    }
+
+    private set_position_arcRotateCamera(): BABYLON.Vector3 {
+        if(this.innerWidth <= 576) {
+            return new BABYLON.Vector3(0, 0.5);
+        } else if(this.innerWidth <= 768) {
+            return  new BABYLON.Vector3(-59.04388072040179, 41.984937572060815, 19.96116827662512);
+        } else if(this.innerWidth <= 960) {
+            return  new BABYLON.Vector3(-61.23476386994071, 43.72690671763587, 14.402589631742835);
+        } else if(this.innerWidth <= 1140) {
+            return new BABYLON.Vector3(-46.508958490944536, 28.192754202903267, -0.020789454918398675);
+        } else {
+            return new BABYLON.Vector3(-43.44461950276187, 29.878552394586347, 21.74593810963846);
+        }
     }
 
     private get_screenOffset_arcRotateCamera(): BABYLON.Vector2 {
