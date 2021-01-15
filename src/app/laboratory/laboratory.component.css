@@ -19,6 +19,12 @@
     background-color: #160130;
 }
 
+/* BADGES */
+
+.badge {
+  background-color: #777777;
+}
+
 /* INTRODUCTION */
 
 #div_introduction {
@@ -32,16 +38,42 @@
 
 .h1_webDeveloper {
     font-family: Peace-Sans-Webfont;
-    font-size: 80px;
-    line-height: 65px;
-    color: #6f8800;
+    color: #D5CC00CC;
+}
+
+@media (min-width: 576px) {
+  .h1_webDeveloper {
+      font-size: 35px;
+      line-height: 25px;
+  }
+}
+
+@media (min-width: 768px) {
+  .h1_webDeveloper {
+      font-size: 45px;
+      line-height: 35px;
+  }
+}
+
+@media (min-width: 960px) {
+  .h1_webDeveloper {
+      font-size: 45px;
+      line-height: 55px;
+  }
+}
+
+@media (min-width: 1140px) {
+  .h1_webDeveloper {
+      font-size: 80px;
+      line-height: 65px;
+  }
 }
 
 .span_webDeveloper {
     margin-top: -50;
     font-family: Peace-Sans-Webfont;
     font-size: 24px;
-    color: #8D6A00;
+    color: #007CB1CC;
 }
 
 .text_introduction {
@@ -73,7 +105,7 @@
     font-family: Peace-Sans-Webfont;
     font-size: 36px;
     line-height: 35px;
-    color: #6f8800;
+    color: #D5CC00;
 }
 
 .text_content {
