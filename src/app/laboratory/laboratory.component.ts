@@ -120,7 +120,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
     public anaglyph_activated = false;
 
-    public isVisible_dashBoard = false;
+    public isVisible_dashBoard = true;
     public camera_datas: CameraDatas;
 
     @ViewChild('rendererCanvas_laboratory', { static: true })

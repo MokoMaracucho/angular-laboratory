@@ -8,6 +8,7 @@ import * as MeshWriter from "meshwriter";
 import { InteractionService } from './interaction.service';
 
 import { CameraDatas } from '../../shared/models/camera-datas';
+import { Vector3 } from 'babylonjs';
 
 @Injectable({
   providedIn: 'root'
@@ -1222,29 +1223,23 @@ export class LaboratoryService {
 
     private set_initialPositionCameras() {
         if(this.innerWidth <= 576) {
-          this.arc_rotate_camera.alpha = 2.7;
-          this.arc_rotate_camera.beta = 0.6;
-          this.arc_rotate_camera.radius = 40;
+            this.arc_rotate_camera.alpha = 2.7;       this.arc_rotate_camera.beta = 0.6;      this.arc_rotate_camera.radius = 40;
+
         } else if(this.innerWidth <= 768) {
-          this.arc_rotate_camera.alpha = 2.7;
-          this.arc_rotate_camera.beta = 0.6;
-          this.arc_rotate_camera.radius = 40;
+            this.arc_rotate_camera.alpha = 2.7;       this.arc_rotate_camera.beta = 0.6;      this.arc_rotate_camera.radius = 40;
+
         } else if(this.innerWidth <= 960) {
-          this.arc_rotate_camera.alpha = 2.6;
-          this.arc_rotate_camera.beta = 0.9;
-          this.arc_rotate_camera.radius = 70;
+            this.arc_rotate_camera.alpha = 2.6;       this.arc_rotate_camera.beta = 0.9;      this.arc_rotate_camera.radius = 70;
+
         } else if(this.innerWidth <= 1140) {
-          this.arc_rotate_camera.alpha = 2.75;
-          this.arc_rotate_camera.beta = 1;
-          this.arc_rotate_camera.radius = 60;
+            this.arc_rotate_camera.alpha = 2.75;      this.arc_rotate_camera.beta = 1;        this.arc_rotate_camera.radius = 60;
+
         } else if(this.innerWidth <= 1500) {
-          this.arc_rotate_camera.alpha = 2.55;
-          this.arc_rotate_camera.beta = 1.1;
-          this.arc_rotate_camera.radius = 55;
+            this.arc_rotate_camera.alpha = 2.55;      this.arc_rotate_camera.beta = 1.1;      this.arc_rotate_camera.radius = 55;
+
         } else {
-          this.arc_rotate_camera.alpha = 2.25;
-          this.arc_rotate_camera.beta = 1.05;
-          this.arc_rotate_camera.radius = 50;
+            this.arc_rotate_camera.alpha = 2.25;      this.arc_rotate_camera.beta = 1.05;     this.arc_rotate_camera.radius = 50;
+
         }
     }
 
@@ -3277,13 +3272,29 @@ export class LaboratoryService {
     private animation_cameraPosition_enterLaboratory() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterLaboratory', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(-20.220454501261877, 26.68576493813795, 21.37067338632216), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterLaboratory', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.get_positionCamera_enterLaboratory(), 0, ease);
+    }
+
+    private get_positionCamera_enterLaboratory(): BABYLON.Vector3 {
+      if(this.innerWidth <= 576) {
+          return new BABYLON.Vector3(-57.00209934436164, 60.54865740597145, 45.78183748516181);
+      } else if(this.innerWidth <= 768) {
+          return new BABYLON.Vector3(-23.233695295682036, 42.938761097973696, 46.381247278745704);
+      } else if(this.innerWidth <= 960) {
+          return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
+      } else if(this.innerWidth <= 1140) {
+          return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
+      } else if(this.innerWidth <= 1500) {
+          return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
+      } else {
+          return new BABYLON.Vector3(-20.220454501261877, 26.68576493813795, 21.37067338632216);
+      }
     }
 
     private animation_targetScreenOffset_enterLaboratory() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, 0), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(2, -1), 0, ease);
     }
 
     // OPEN CAMERA
