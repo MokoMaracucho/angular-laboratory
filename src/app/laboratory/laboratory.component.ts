@@ -173,7 +173,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     onResize(event) {
         this.innerWidth = window.innerWidth;
         this.innerHeight = window.innerHeight;
-        this.laboratoryService.set_windowDimensions(this.innerWidth, this.innerHeight);
+        this.laboratoryService.set_windowDimensions(window.innerWidth, window.innerHeight);
     }
 
     private isLoaded_function(): void {

@@ -34,7 +34,9 @@
 
 @media (min-width: 10px) {
     #div_introduction {
-        top: 100px;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
         left: 10px;
     }
 }
@@ -89,8 +91,8 @@
 
 @media (min-width: 576px) {
     .h1_webDeveloper {
-        font-size: 55px;
-        line-height: 45px;
+        font-size: 45px;
+        line-height: 40px;
     }
 }
 
@@ -161,7 +163,7 @@
 
 @media (min-width: 10px) {
     .text_introduction {
-        max-height: 200px;
+        max-height: 500px;
     }
 }
 
