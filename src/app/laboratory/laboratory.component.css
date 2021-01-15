@@ -36,6 +36,30 @@
     left: 7%;
 }
 
+@media (min-width: 576px) {
+    #div_introduction {
+        left: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    #div_introduction {
+        left: 40px;
+    }
+}
+
+@media (min-width: 960px) {
+    #div_introduction {
+        left: 80px;
+    }
+}
+
+@media (min-width: 1140px) {
+    #div_introduction {
+        left: 120px;
+    }
+}
+
 .h1_webDeveloper {
     font-family: Peace-Sans-Webfont;
     color: #D5CC00CC;
