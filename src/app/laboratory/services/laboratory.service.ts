@@ -253,6 +253,7 @@ export class LaboratoryService {
     private projector_MATERIAL: BABYLON.StandardMaterial;
 
     private scene_loaded = false;
+    private introduction_closed = false;
 
     private arc_rotate_camera_clone;
     private anaglyph_arc_rotate_camera_clone;
@@ -3282,6 +3283,7 @@ export class LaboratoryService {
     public animation_enterLaboratory() {
         this.animation_cameraPosition_enterLaboratory();
         this.animation_targetScreenOffset_enterLaboratory();
+        this.introduction_closed = true;
     }
 
     private animation_cameraPosition_enterLaboratory() {
@@ -3397,6 +3399,9 @@ export class LaboratoryService {
 
             this.windowRef.window.addEventListener('resize', () => {
                 this.engine.resize();
+                if(this.introduction_closed == false) {
+                    this.set_position_arcRotateCamera();
+                }
                 this.set_screenOffset_arcRotateCamera();
                 this.set_screenOffset_anaglyphArcRotateCamera();
             });
