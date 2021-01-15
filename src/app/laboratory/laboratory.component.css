@@ -30,32 +30,47 @@
 #div_introduction {
     z-index: 2;
     position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    left: 7%;
+}
+
+@media (min-width: 10px) {
+    #div_introduction {
+        top: 100px;
+        left: 10px;
+    }
 }
 
 @media (min-width: 576px) {
     #div_introduction {
-        left: auto;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 20px;
     }
 }
 
 @media (min-width: 768px) {
     #div_introduction {
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
         left: 40px;
     }
 }
 
 @media (min-width: 960px) {
     #div_introduction {
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
         left: 80px;
     }
 }
 
 @media (min-width: 1140px) {
     #div_introduction {
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
         left: 120px;
     }
 }
@@ -63,6 +78,13 @@
 .h1_webDeveloper {
     font-family: Peace-Sans-Webfont;
     color: #D5CC00CC;
+}
+
+@media (min-width: 10px) {
+    .h1_webDeveloper {
+        font-size: 55px;
+        line-height: 45px;
+    }
 }
 
 @media (min-width: 576px) {
@@ -100,6 +122,12 @@
     color: #007CB1CC;
 }
 
+@media (min-width: 10px) {
+    .span_webDeveloper {
+        font-size: 18px;
+    }
+}
+
 @media (min-width: 576px) {
     .span_webDeveloper {
         font-size: 18px;
@@ -127,9 +155,38 @@
 .text_introduction {
     color: #D3D3D3;
     text-align: justify;
-    max-height: 400px;
     overflow-x: hidden;
     overflow-y: none;
+}
+
+@media (min-width: 10px) {
+    .text_introduction {
+        max-height: 200px;
+    }
+}
+
+@media (min-width: 576px) {
+    .text_introduction {
+        max-height: 400px;
+    }
+}
+
+@media (min-width: 768px) {
+    .text_introduction {
+        max-height: 400px;
+    }
+}
+
+@media (min-width: 960px) {
+    .text_introduction {
+        max-height: 400px;
+    }
+}
+
+@media (min-width: 1140px) {
+    .text_introduction {
+        max-height: 400px;
+    }
 }
 
 .span_language {

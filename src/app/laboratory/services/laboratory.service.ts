@@ -1236,7 +1236,7 @@ export class LaboratoryService {
 
     private get_screenOffset_arcRotateCamera(): BABYLON.Vector2 {
       if(this.innerWidth <= 576) {
-          return new BABYLON.Vector2(0, 0.5);
+          return new BABYLON.Vector2(0, -10);
       } else if(this.innerWidth <= 768) {
           return  new BABYLON.Vector2(0, 0.5);
       } else if(this.innerWidth <= 960) {
@@ -1250,7 +1250,7 @@ export class LaboratoryService {
 
     private set_screenOffset_arcRotateCamera() {
         if(this.innerWidth <= 576) {
-            this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, 0.5);
+            this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, -10);
         } else if(this.innerWidth <= 768) {
             this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, 0.5);
         } else if(this.innerWidth <= 960) {
