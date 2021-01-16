@@ -286,6 +286,8 @@ export class LaboratoryService {
     private touch_skip_forward_BAKING: BABYLON.Texture;
     private touch_skip_forward_BAKING_HIGHLIGHT: BABYLON.Texture;
 
+    private video_TEXTURE: BABYLON.VideoTexture;
+
     private mirror_MATERIAL: BABYLON.StandardMaterial;
     private glass_MATERIAL: BABYLON.StandardMaterial;
     private glass_blue_MATERIAL: BABYLON.StandardMaterial;
@@ -1296,13 +1298,15 @@ export class LaboratoryService {
         this.projector.rotation = new BABYLON.Vector3(0, -1.57, 0);
 
         this.projector_MATERIAL = new BABYLON.StandardMaterial("projectorMaterial", this.scene);
-        var videoTexture = new BABYLON.VideoTexture("videoTexture","../../assets/videos/pi.mp4", this.scene);
+        this.video_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/pi.mp4", this.scene);
         this.projector_MATERIAL.roughness = 1;
         this.projector_MATERIAL.emissiveColor = BABYLON.Color3.White();
-        this.projector_MATERIAL.diffuseTexture = videoTexture;
+        this.projector_MATERIAL.diffuseTexture = this.video_TEXTURE;
         this.projector_MATERIAL.alpha = 0.3;
 
         this.projector.material = this.projector_MATERIAL;
+
+        this.video_TEXTURE.video.pause();
 
         // videoTexture.onUserActionRequestedObservable.add(() => {
             // this.scene.onPointerDown = function () {
@@ -1468,6 +1472,7 @@ export class LaboratoryService {
         this.addActions_FranceRed();
         this.addActions_SpainRed();
         this.addActions_SpainYellow();
+        this.addActions_Projector();
         this.addActions_TouchSkipBack();
         this.addActions_TouchStop();
         this.addActions_TouchPlay();
@@ -1523,6 +1528,7 @@ export class LaboratoryService {
         this.youtube.isPickable = true;
         this.youtube_play.isPickable = true;
         this.pop_up_running.isPickable = true;
+        this.projector.isPickable = true;
     }
 
     private desactivation_buttons() {
@@ -1573,6 +1579,7 @@ export class LaboratoryService {
         this.youtube.isPickable = false;
         this.youtube_play.isPickable = false;
         this.pop_up_running.isPickable = false;
+        this.projector.isPickable = false;
     }
 
     private addActions_Pegasus() {
@@ -3681,6 +3688,45 @@ export class LaboratoryService {
         this.touch_play.isPickable = false;
         this.touch_pause.isPickable = false;
         this.touch_skip_forward.isPickable = false;
+    }
+
+    private addActions_Projector() {
+        this.projector.isPickable = true;
+        this.projector.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING_HIGHLIGHT));
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING));
+
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING_HIGHLIGHT));
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING));
+
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING_HIGHLIGHT));
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING));
+
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING_HIGHLIGHT));
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING));
+
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING_HIGHLIGHT));
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING));
+
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING_HIGHLIGHT));
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING));
+
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING_HIGHLIGHT));
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING));
+
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
+        this.projector.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
+
+        this.projector.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.projector},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                ]
+            )
+        );
     }
 
     private addActions_TouchSkipBack() {
