@@ -285,6 +285,8 @@ export class LaboratoryService {
     private touch_pause_BAKING_HIGHLIGHT: BABYLON.Texture;
     private touch_skip_forward_BAKING: BABYLON.Texture;
     private touch_skip_forward_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private spotify_green_BAKING: BABYLON.Texture;
+    private spotify_green_BAKING_HIGHLIGHT: BABYLON.Texture;
 
     private video_TEXTURE: BABYLON.VideoTexture;
 
@@ -1277,10 +1279,8 @@ export class LaboratoryService {
             this.youtube_play = this.scene.getMeshByName("youtube_play");
         });
 
-        BABYLON.SceneLoader.ImportMeshAsync("pop_up_social_networks", "../../assets/glb/laboratory/", "pop_up_social_networks.glb", this.scene).then((result) => {
-            this.pop_up_social_networks = this.scene.getMeshByName("pop_up_social_networks");
-            this.pop_up_social_networks.isVisible = false;
-        });
+        this.spotify_green_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/spotify_green_BAKING.jpg", this.scene, false, false);
+        this.spotify_green_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/spotify_green_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
 
         BABYLON.SceneLoader.ImportMeshAsync("spotify_green", "../../assets/glb/laboratory/", "spotify_green.glb").then((result) => {
             this.spotify_green = this.scene.getMeshByName("spotify_green");
@@ -1288,6 +1288,11 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("spotify_black", "../../assets/glb/laboratory/", "spotify_black.glb").then((result) => {
             this.spotify_black = this.scene.getMeshByName("spotify_black");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("pop_up_social_networks", "../../assets/glb/laboratory/", "pop_up_social_networks.glb", this.scene).then((result) => {
+            this.pop_up_social_networks = this.scene.getMeshByName("pop_up_social_networks");
+            this.pop_up_social_networks.isVisible = false;
         });
 
         // PROJECTOR
@@ -1464,6 +1469,8 @@ export class LaboratoryService {
         this.addActions_InstagramLens();
         this.addActions_Youtube();
         this.addActions_YoutubePlay();
+        this.addActions_SpotifyGreen();
+        this.addActions_SpotifyBlack();
         this.addActions_UnitedKingdomRed();
         this.addActions_UnitedKingdomWhite();
         this.addActions_UnitedKingdomBlue();
@@ -1527,6 +1534,8 @@ export class LaboratoryService {
         this.instagram_lens.isPickable = true;
         this.youtube.isPickable = true;
         this.youtube_play.isPickable = true;
+        this.spotify_green.isPickable = true;
+        this.spotify_black.isPickable = true;
         this.pop_up_running.isPickable = true;
         this.projector.isPickable = true;
     }
@@ -1578,6 +1587,8 @@ export class LaboratoryService {
         this.instagram_lens.isPickable = false;
         this.youtube.isPickable = false;
         this.youtube_play.isPickable = false;
+        this.spotify_green.isPickable = false;
+        this.spotify_black.isPickable = false;
         this.pop_up_running.isPickable = false;
         this.projector.isPickable = false;
     }
@@ -3523,6 +3534,46 @@ export class LaboratoryService {
                 function(event){
                     var pickedMesh = event.meshUnderPointer;
                     window.open("https://www.youtube.com/channel/UCi50Pr7mvDz79EFFMd0stEQ/playlists?view_as=subscriber");
+                }
+            )
+        );
+    }
+
+    private addActions_SpotifyGreen() {
+        this.spotify_green.isPickable = true;
+        this.spotify_green.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.spotify_green.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.spotify_green.material, "albedoTexture", this.spotify_green_BAKING_HIGHLIGHT));
+        this.spotify_green.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.spotify_green.material, "albedoTexture", this.spotify_green_BAKING));
+
+        this.spotify_green.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_social_networks.isVisible = true));
+        this.spotify_green.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_social_networks.isVisible = false));
+
+        this.spotify_green.actionManager.registerAction(
+            new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
+                function(event){
+                    var pickedMesh = event.meshUnderPointer;
+                    window.open("https://open.spotify.com/user/21g42fpdhcs6if5nooxgivpsq?si=VFoLaPHTRZSTdEEIb4d0Qw");
+                }
+            )
+        );
+    }
+
+    private addActions_SpotifyBlack() {
+        this.spotify_black.isPickable = true;
+        this.spotify_black.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.spotify_black.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.spotify_green.material, "albedoTexture", this.spotify_green_BAKING_HIGHLIGHT));
+        this.spotify_black.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.spotify_green.material, "albedoTexture", this.spotify_green_BAKING));
+
+        this.spotify_black.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_social_networks.isVisible = true));
+        this.spotify_black.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_social_networks.isVisible = false));
+
+        this.spotify_black.actionManager.registerAction(
+            new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
+                function(event){
+                    var pickedMesh = event.meshUnderPointer;
+                    window.open("https://open.spotify.com/user/21g42fpdhcs6if5nooxgivpsq?si=VFoLaPHTRZSTdEEIb4d0Qw");
                 }
             )
         );
