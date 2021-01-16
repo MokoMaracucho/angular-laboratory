@@ -1455,12 +1455,12 @@ export class LaboratoryService {
         this.pegasus.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
-
-        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_running.next()));
     }
 
     private addActions_PegasusInside() {
@@ -1489,7 +1489,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_inside},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1521,7 +1522,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_laces},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1553,7 +1555,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_logo},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1585,7 +1588,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_sole_outside},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1617,7 +1621,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_sole_inside},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1663,7 +1668,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes_rings},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_shareKnowledge.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_shareKnowledge.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1707,7 +1713,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.rose_rouge},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1751,7 +1758,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.rose_rouge_frame},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1795,7 +1803,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.verbal_shoota},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1839,7 +1848,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.verbal_shoota_frame},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1883,7 +1893,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.lapin_blanc},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1927,7 +1938,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.lapin_blanc_frame},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1971,7 +1983,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2015,7 +2028,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four_marie_louise},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2059,7 +2073,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four_frame},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2103,7 +2118,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2147,7 +2163,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique_marie_louise},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2191,7 +2208,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique_frame},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2235,7 +2253,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2280,7 +2299,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu_marie_louise},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2324,7 +2344,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu_frame},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2350,7 +2371,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.checker},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_games.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_games.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2402,7 +2424,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tarot_deck},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_games.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_games.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2428,7 +2451,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glasses_frame},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2454,7 +2478,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_blue},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2480,7 +2505,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_red},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2500,7 +2526,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.amor_amor},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_art.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_art.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2520,7 +2547,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.amor_amor_frame},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_art.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_art.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2540,7 +2568,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.via_air_mail},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_contactMe.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_contactMe.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2575,7 +2604,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.keyboard},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2610,7 +2640,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.keyboard_keyboard},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2645,7 +2676,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.mac_mini},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2680,7 +2712,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2715,7 +2748,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop_keyboard},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2750,7 +2784,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop_screen},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2785,7 +2820,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_center},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2820,7 +2856,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_frame_center},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2855,7 +2892,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_right},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2890,7 +2928,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_frame_right},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2910,7 +2949,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.world_map},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3203,7 +3243,7 @@ export class LaboratoryService {
     private animation_targetScreenOffset_enterLaboratory() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(2, -1), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(2, -1), 0, ease, () => this.interaction.toogle_cache.next());
     }
 
     // OPEN CAMERA
@@ -3218,7 +3258,7 @@ export class LaboratoryService {
         this.arc_rotate_camera_clone = this.arc_rotate_camera.position.clone();
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_openCard', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, this.get_positionCamera_openCard(), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_openCard', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.get_positionCamera_openCard(), 0, ease);
     }
 
     private get_positionCamera_openCard(): BABYLON.Vector3 {
@@ -3240,7 +3280,7 @@ export class LaboratoryService {
     private animation_targetScreenOffset_openCard() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(10, 1), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(10, 1), 0, ease, () => this.interaction.toogle_cache.next());
     }
 
     // CLOSE CAMERA
@@ -3254,13 +3294,13 @@ export class LaboratoryService {
     private animation_cameraPosition_closeCard() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_closeCard', this.arc_rotate_camera, 'position', 15, 40, this.arc_rotate_camera.position, this.arc_rotate_camera_clone, 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_closeCard', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.arc_rotate_camera_clone, 0, ease);
     }
 
     private animation_targetScreenOffset_closeCard() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, 0), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, 0), 0, ease, () => this.interaction.toogle_cache.next());
     }
 
     // SWITCH CAMERA
