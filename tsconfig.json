@@ -19,6 +19,9 @@
       "babylonjs",
       "babylonjs-loaders",
       "babylonjs-gui"
-    ]
+    ],
+    "paths": {
+      "@myMail": ["desmoulin.federico@gmail.com"]
+    }
   }
 }

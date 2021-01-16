@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { LaboratoryService } from './services/laboratory.service';
 import { InteractionService } from './services/interaction.service';
@@ -107,6 +107,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     private subscription: Subscription;
     private readonly destroy = new Subject<boolean>();
 
+    private FormData;
+
     public isLoaded = false;
     public isLoaded_fadeOut = false;
     public isVisible_introductionBackground = true;
@@ -128,15 +130,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
     public anaglyph_activated = false;
 
-    userEmails = new FormGroup({
-      primaryEmail: new FormControl('',[
-        Validators.required,
-        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-      secondaryEmail: new FormControl('',[
-        Validators.required,
-        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])
-    });
-
     public isVisible_cache = false;
 
     public isVisible_dashBoard = false;
@@ -146,6 +139,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public rendererCanvas_laboratory: ElementRef<HTMLCanvasElement>;
 
     public constructor(
+        private builder: FormBuilder,
         private laboratoryService: LaboratoryService,
         readonly interaction: InteractionService
     ) {}
@@ -157,6 +151,13 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
         this.laboratoryService.createScene(this.rendererCanvas_laboratory);
         this.laboratoryService.animate();
+
+
+        this.FormData = this.builder.group({
+            Fullname: new FormControl('', [Validators.required]),
+            Email: new FormControl('', [Validators.compose([Validators.required, Validators.email])]),
+            Comment: new FormControl('', [Validators.required])
+        });
 
         this.subscription = this.interaction.isLoaded.subscribe(() => this.isLoaded_function());
 
