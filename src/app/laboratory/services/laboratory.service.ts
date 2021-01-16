@@ -324,7 +324,7 @@ export class LaboratoryService {
         this.set_initialPositionCameras();
         this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
         this.arc_rotate_camera.lowerBetaLimit = -0.5;
-        this.arc_rotate_camera.upperBetaLimit = 1.65;
+        this.arc_rotate_camera.upperBetaLimit = 1.55;
         this.arc_rotate_camera.lowerRadiusLimit = 5;
         this.arc_rotate_camera.upperRadiusLimit = 90;
         this.arc_rotate_camera.attachControl(canvas, true);
@@ -333,7 +333,7 @@ export class LaboratoryService {
         this.anaglyph_arc_rotate_camera = new BABYLON.AnaglyphArcRotateCamera("anaglyph_arc_rotate_camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), 0.1, this.scene);
         this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
         this.anaglyph_arc_rotate_camera.lowerBetaLimit = -0.5;
-        this.anaglyph_arc_rotate_camera.upperBetaLimit = 1.65;
+        this.anaglyph_arc_rotate_camera.upperBetaLimit = 1.55;
         this.anaglyph_arc_rotate_camera.lowerRadiusLimit = 5;
         this.anaglyph_arc_rotate_camera.upperRadiusLimit = 90;
         this.anaglyph_arc_rotate_camera.attachControl(canvas, true);
