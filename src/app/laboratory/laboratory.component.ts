@@ -7,6 +7,7 @@ import { LaboratoryService } from './services/laboratory.service';
 import { InteractionService } from './services/interaction.service';
 
 import { CameraDatas } from '../shared/models/camera-datas';
+import { ContactService } from './services/contact.service';
 
 @Component({
     selector: 'app-laboratory',
@@ -141,7 +142,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public constructor(
         private builder: FormBuilder,
         private laboratoryService: LaboratoryService,
-        readonly interaction: InteractionService
+        readonly interaction: InteractionService,
+        private contactService: ContactService
     ) {}
 
     ngOnInit(): void {
@@ -321,6 +323,20 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.isVisible_contactMe = false;
         this.toogle_cache();
     }
+
+
+
+  public onSubmit(FormData) {
+    console.log(FormData)
+    this.contactService.PostMessage(FormData)
+      .subscribe(response => {
+        location.href = 'https://desmoulin.federico@gmail.com.to/confirm'
+        console.log(response)
+      }, error => {
+        console.warn(error.responseText)
+        console.log({ error })
+      })
+  }
 
     private open_development(): void {
         setTimeout(() => {
