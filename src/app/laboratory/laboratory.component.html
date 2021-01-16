@@ -519,6 +519,52 @@
     </div>
 </div>
 
+<div class="div_card" [style.display]="isVisible_movies ? 'block' : 'none'" [@isVisible_movies]="isVisible_movies">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="h1_card" *ngIf="language_english">CINEPHILE</h1>
+                <h1 class="h1_card" *ngIf="language_french">CINÉPHILE</h1>
+                <h1 class="h1_card" *ngIf="language_spanish">CINÉFILO</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button id="btn_close_movies" type="button" class="btn btn-dark mt-3" (click)="close_movies()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="divDashBoard" *ngIf="isVisible_dashBoard">
     <h3>Window</h3>
     <div>

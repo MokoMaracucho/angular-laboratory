@@ -321,7 +321,7 @@ export class LaboratoryService {
         this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
         this.arc_rotate_camera.lowerBetaLimit = -0.5;
         this.arc_rotate_camera.upperBetaLimit = 1.65;
-        this.arc_rotate_camera.lowerRadiusLimit = 20;
+        this.arc_rotate_camera.lowerRadiusLimit = 5;
         this.arc_rotate_camera.upperRadiusLimit = 90;
         this.arc_rotate_camera.attachControl(canvas, true);
         this.set_initialScreenOffset();
@@ -330,7 +330,7 @@ export class LaboratoryService {
         this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
         this.anaglyph_arc_rotate_camera.lowerBetaLimit = -0.5;
         this.anaglyph_arc_rotate_camera.upperBetaLimit = 1.65;
-        this.anaglyph_arc_rotate_camera.lowerRadiusLimit = 20;
+        this.anaglyph_arc_rotate_camera.lowerRadiusLimit = 5;
         this.anaglyph_arc_rotate_camera.upperRadiusLimit = 90;
         this.anaglyph_arc_rotate_camera.attachControl(canvas, true);
         this.set_initialScreenOffset();
@@ -1304,11 +1304,11 @@ export class LaboratoryService {
 
         this.projector.material = this.projector_MATERIAL;
 
-        videoTexture.onUserActionRequestedObservable.add(() => {
-            this.scene.onPointerDown = function () {
-              videoTexture.video.play();
-            }
-        });
+        // videoTexture.onUserActionRequestedObservable.add(() => {
+            // this.scene.onPointerDown = function () {
+                // videoTexture.video.play();
+            // }
+        // });
 
         this.touch_skip_back_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_back_BAKING.jpg", this.scene, false, false);
         this.touch_skip_back_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_back_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
@@ -3759,7 +3759,7 @@ export class LaboratoryService {
         BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(2, -1), 0, ease, () => this.interaction.toogle_cache.next());
     }
 
-    // OPEN CAMERA
+    // OPEN CARDS
 
     private animation_openCard() {
         this.animation_cameraPosition_openCard();
@@ -3796,7 +3796,7 @@ export class LaboratoryService {
         BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(10, 1), 0, ease, () => this.interaction.toogle_cache.next());
     }
 
-    // CLOSE CAMERA
+    // CLOSE CARDS
 
     public animation_closeCard() {
         this.animation_cameraPosition_closeCard();
@@ -3819,29 +3819,44 @@ export class LaboratoryService {
     // OPEN MOVIES
 
     public animation_openMovies() {
-      this.animation_cameraPosition_openMovies();
-      this.animation_targetCameraPosition_openMovies();
-      this.animation_targetScreenOffset_openMovies();
-      this.desactivation_buttons();
-      this.activation_buttonsProjector();
+        this.arc_rotate_camera_clone = this.arc_rotate_camera.position.clone();
+        this.animation_cameraPosition_openMovies();
+        this.animation_targetCameraPosition_openMovies();
+        this.desactivation_buttons();
+        this.activation_buttonsProjector();
+    }
+
+    private animation_cameraPosition_openMovies() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_openMovies', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(0, 22, -3), 0, ease);
+    }
+
+    private animation_targetCameraPosition_openMovies() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetCameraPosition_openMovies', this.arc_rotate_camera, 'lockedTarget', 15, 30, this.arc_rotate_camera.lockedTarget, new BABYLON.Vector3(-32.4, 7, -13.5), 0, ease, () => this.interaction.toogle_cache.next());
+    }
+
+    // CLOSE MOVIES
+
+    public animation_closeMovies() {
+      this.animation_cameraPosition_closeMovies();
+      this.animation_targetCameraPosition_closeMovies();
+      this.activation_buttons();
+      this.desactivation_buttonsProjector();
   }
 
-  private animation_cameraPosition_openMovies() {
+  private animation_cameraPosition_closeMovies() {
       const ease = new BABYLON.CubicEase();
       ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-      BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_openMovies', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(), 0, ease);
+      BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_closeMovies', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.arc_rotate_camera_clone, 0, ease);
   }
 
-  private animation_targetCameraPosition_openMovies() {
+  private animation_targetCameraPosition_closeMovies() {
       const ease = new BABYLON.CubicEase();
       ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-      BABYLON.Animation.CreateAndStartAnimation('animation_targetCameraPosition_openMovies', this.arc_rotate_camera, 'target', 15, 30, this.arc_rotate_camera.target, new BABYLON.Vector3(), 0, ease);
-  }
-
-  private animation_targetScreenOffset_openMovies() {
-      const ease = new BABYLON.CubicEase();
-      ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-      BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openMovies', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, 0), 0, ease, () => this.interaction.toogle_cache.next());
+      BABYLON.Animation.CreateAndStartAnimation('animation_targetCameraPosition_closeMovies', this.arc_rotate_camera, 'lockedTarget', 15, 30, this.arc_rotate_camera.lockedTarget, new BABYLON.Vector3(-16.2, 5, -12), 0, ease, () => this.interaction.toogle_cache.next());
   }
 
     // SWITCH CAMERA

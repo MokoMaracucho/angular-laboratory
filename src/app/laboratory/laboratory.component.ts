@@ -85,6 +85,12 @@ import { CameraDatas } from '../shared/models/camera-datas';
             state('true', style({opacity: '1'})),
             transition('false => true', [animate('2s')]),
             transition('true => false', [animate('1s')])
+        ]),
+        trigger('isVisible_movies', [
+            state('false', style({opacity: '0'})),
+            state('true', style({opacity: '1'})),
+            transition('false => true', [animate('2s')]),
+            transition('true => false', [animate('1s')])
         ])
     ]
 })
@@ -117,6 +123,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public isVisible_contactMe = false;
     public isVisible_development = false;
     public isVisible_travel = false;
+    public isVisible_movies = false;
 
     public anaglyph_activated = false;
 
@@ -161,6 +168,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.subscription = this.interaction.open_contactMe.subscribe(() => this.open_contactMe());
         this.subscription = this.interaction.open_development.subscribe(() => this.open_development());
         this.subscription = this.interaction.open_travel.subscribe(() => this.open_travel());
+        this.subscription = this.interaction.open_movies.subscribe(() => this.open_movies());
 
         this.subscription = this.interaction.toogle_cache.subscribe(() => this.toogle_cache());
 
@@ -324,6 +332,18 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public close_travel(): void {
         this.laboratoryService.animation_closeCard();
         this.isVisible_travel = false;
+        this.toogle_cache();
+    }
+
+    private open_movies(): void {
+        setTimeout(() => {
+            this.isVisible_movies = true;
+        }, 1000);
+    }
+
+    public close_movies(): void {
+        this.laboratoryService.animation_closeMovies();
+        this.isVisible_movies = false;
         this.toogle_cache();
     }
 
