@@ -3743,6 +3743,14 @@ export class LaboratoryService {
 
         this.touch_stop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_stop.material, "albedoTexture", this.touch_stop_BAKING_HIGHLIGHT));
         this.touch_stop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_stop.material, "albedoTexture", this.touch_stop_BAKING));
+
+        this.touch_stop.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.touch_stop},
+                [
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.video_TEXTURE.video.stop())
+                ]
+            )
+        );
     }
 
     private addActions_TouchPlay() {
@@ -3751,6 +3759,14 @@ export class LaboratoryService {
 
         this.touch_play.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_play.material, "albedoTexture", this.touch_play_BAKING_HIGHLIGHT));
         this.touch_play.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_play.material, "albedoTexture", this.touch_play_BAKING));
+
+        this.touch_play.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.touch_play},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.video_TEXTURE.video.play())
+                ]
+            )
+        );
     }
 
     private addActions_TouchPause() {
@@ -3759,6 +3775,14 @@ export class LaboratoryService {
 
         this.touch_pause.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_pause.material, "albedoTexture", this.touch_pause_BAKING_HIGHLIGHT));
         this.touch_pause.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_pause.material, "albedoTexture", this.touch_pause_BAKING));
+
+        this.touch_pause.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.touch_pause},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.video_TEXTURE.video.pause())
+                ]
+            )
+        );
     }
 
     private addActions_TouchSkipForward() {
@@ -3767,6 +3791,18 @@ export class LaboratoryService {
 
         this.touch_skip_forward.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_skip_forward.material, "albedoTexture", this.touch_skip_forward_BAKING_HIGHLIGHT));
         this.touch_skip_forward.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_skip_forward.material, "albedoTexture", this.touch_skip_forward_BAKING));
+
+        this.touch_skip_forward.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.touch_skip_forward},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.video_TEXTURE.video.pause()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.video_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/enter_the_void.mp4", this.scene)),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.projector_MATERIAL.diffuseTexture = this.video_TEXTURE),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.projector.material = this.projector_MATERIAL),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.video_TEXTURE.video.play())
+                ]
+            )
+        );
     }
 
     // ENTER LABORATORY
