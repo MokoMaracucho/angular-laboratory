@@ -1098,6 +1098,32 @@ export class LaboratoryService {
         BABYLON.SceneLoader.ImportMeshAsync("shelf", "../../assets/glb/laboratory/", "shelf.glb", this.scene).then((result) => {
         });
 
+        // DVDS
+
+        BABYLON.SceneLoader.ImportMeshAsync("dvd_pi", "../../assets/glb/laboratory/", "dvd_pi.glb", this.scene).then((result) => {
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("dvd_enter_the_void", "../../assets/glb/laboratory/", "dvd_enter_the_void.glb", this.scene).then((result) => {
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("dvd_2001_odyssee_espace", "../../assets/glb/laboratory/", "dvd_2001_odyssee_espace.glb", this.scene).then((result) => {
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("dvd_la_haine", "../../assets/glb/laboratory/", "dvd_la_haine.glb", this.scene).then((result) => {
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("dvd_sweet_sixteen", "../../assets/glb/laboratory/", "dvd_sweet_sixteen.glb", this.scene).then((result) => {
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("dvd_eternal_sunshine", "../../assets/glb/laboratory/", "dvd_eternal_sunshine.glb", this.scene).then((result) => {
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("dvd_zero_theorem", "../../assets/glb/laboratory/", "dvd_zero_theorem.glb", this.scene).then((result) => {
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("dvd_shining", "../../assets/glb/laboratory/", "dvd_shining.glb", this.scene).then((result) => {
+        });
+
         // BOOKS
 
         BABYLON.SceneLoader.ImportMeshAsync("book_strategie_choc", "../../assets/glb/laboratory/", "book_strategie_choc.glb", this.scene).then((result) => {
