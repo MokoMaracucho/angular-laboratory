@@ -275,6 +275,16 @@ export class LaboratoryService {
     private youtube_BAKING_HIGHLIGHT: BABYLON.Texture;
     private youtube_play_BAKING: BABYLON.Texture;
     private youtube_play_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private touch_skip_back_BAKING: BABYLON.Texture;
+    private touch_skip_back_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private touch_stop_BAKING: BABYLON.Texture;
+    private touch_stop_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private touch_play_BAKING: BABYLON.Texture;
+    private touch_play_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private touch_pause_BAKING: BABYLON.Texture;
+    private touch_pause_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private touch_skip_forward_BAKING: BABYLON.Texture;
+    private touch_skip_forward_BAKING_HIGHLIGHT: BABYLON.Texture;
 
     private mirror_MATERIAL: BABYLON.StandardMaterial;
     private glass_MATERIAL: BABYLON.StandardMaterial;
@@ -1300,6 +1310,21 @@ export class LaboratoryService {
             }
         });
 
+        this.touch_skip_back_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_back_BAKING.jpg", this.scene, false, false);
+        this.touch_skip_back_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_back_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.touch_stop_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_stop_BAKING.jpg", this.scene, false, false);
+        this.touch_stop_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_stop_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.touch_play_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_play_BAKING.jpg", this.scene, false, false);
+        this.touch_play_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_play_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.touch_pause_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_pause_BAKING.jpg", this.scene, false, false);
+        this.touch_pause_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_pause_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.touch_skip_forward_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_forward_BAKING.jpg", this.scene, false, false);
+        this.touch_skip_forward_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_forward_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
         BABYLON.SceneLoader.ImportMeshAsync("touch_skip_back", "../../assets/glb/laboratory/", "touch_skip_back.glb").then((result) => {
             this.touch_skip_back = this.scene.getMeshByName("touch_skip_back");
         });
@@ -1443,6 +1468,11 @@ export class LaboratoryService {
         this.addActions_FranceRed();
         this.addActions_SpainRed();
         this.addActions_SpainYellow();
+        this.addActions_TouchSkipBack();
+        this.addActions_TouchStop();
+        this.addActions_TouchPlay();
+        this.addActions_TouchPause();
+        this.addActions_TouchSkipForward();
     }
 
     private activation_buttons() {
@@ -3637,6 +3667,62 @@ export class LaboratoryService {
         this.spain_yellow.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.change_language_spanish.next()));
     }
 
+    private activation_buttonsProjector() {
+        this.touch_skip_back.isPickable = true;
+        this.touch_stop.isPickable = true;
+        this.touch_play.isPickable = true;
+        this.touch_pause.isPickable = true;
+        this.touch_skip_forward.isPickable = true;
+    }
+
+    private desactivation_buttonsProjector() {
+        this.touch_skip_back.isPickable = false;
+        this.touch_stop.isPickable = false;
+        this.touch_play.isPickable = false;
+        this.touch_pause.isPickable = false;
+        this.touch_skip_forward.isPickable = false;
+    }
+
+    private addActions_TouchSkipBack() {
+        this.touch_skip_back.isPickable = false;
+        this.touch_skip_back.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.touch_skip_back.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_skip_back.material, "albedoTexture", this.touch_skip_back_BAKING_HIGHLIGHT));
+        this.touch_skip_back.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_skip_back.material, "albedoTexture", this.touch_skip_back_BAKING));
+    }
+
+    private addActions_TouchStop() {
+        this.touch_stop.isPickable = false;
+        this.touch_stop.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.touch_stop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_stop.material, "albedoTexture", this.touch_stop_BAKING_HIGHLIGHT));
+        this.touch_stop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_stop.material, "albedoTexture", this.touch_stop_BAKING));
+    }
+
+    private addActions_TouchPlay() {
+        this.touch_play.isPickable = false;
+        this.touch_play.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.touch_play.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_play.material, "albedoTexture", this.touch_play_BAKING_HIGHLIGHT));
+        this.touch_play.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_play.material, "albedoTexture", this.touch_play_BAKING));
+    }
+
+    private addActions_TouchPause() {
+        this.touch_pause.isPickable = false;
+        this.touch_pause.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.touch_pause.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_pause.material, "albedoTexture", this.touch_pause_BAKING_HIGHLIGHT));
+        this.touch_pause.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_pause.material, "albedoTexture", this.touch_pause_BAKING));
+    }
+
+    private addActions_TouchSkipForward() {
+        this.touch_skip_forward.isPickable = false;
+        this.touch_skip_forward.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.touch_skip_forward.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_skip_forward.material, "albedoTexture", this.touch_skip_forward_BAKING_HIGHLIGHT));
+        this.touch_skip_forward.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_skip_forward.material, "albedoTexture", this.touch_skip_forward_BAKING));
+    }
+
     // ENTER LABORATORY
 
     public animation_enterLaboratory() {
@@ -3737,6 +3823,7 @@ export class LaboratoryService {
       this.animation_targetCameraPosition_openMovies();
       this.animation_targetScreenOffset_openMovies();
       this.desactivation_buttons();
+      this.activation_buttonsProjector();
   }
 
   private animation_cameraPosition_openMovies() {
