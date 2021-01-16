@@ -158,6 +158,11 @@ export class LaboratoryService {
     private spotify_green;
     private spotify_black;
     private projector;
+    private touch_skip_back;
+    private touch_stop;
+    private touch_play;
+    private touch_pause;
+    private touch_skip_forward;
 
     private pop_up_running;
     private pop_up_share_knowledge
@@ -1293,6 +1298,26 @@ export class LaboratoryService {
             this.scene.onPointerDown = function () {
               videoTexture.video.play();
             }
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("touch_skip_back", "../../assets/glb/laboratory/", "touch_skip_back.glb").then((result) => {
+            this.touch_skip_back = this.scene.getMeshByName("touch_skip_back");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("touch_stop", "../../assets/glb/laboratory/", "touch_stop.glb").then((result) => {
+            this.touch_stop = this.scene.getMeshByName("touch_stop");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("touch_play", "../../assets/glb/laboratory/", "touch_play.glb").then((result) => {
+            this.touch_play = this.scene.getMeshByName("touch_play");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("touch_pause", "../../assets/glb/laboratory/", "touch_pause.glb").then((result) => {
+            this.touch_pause = this.scene.getMeshByName("touch_pause");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("touch_skip_forward", "../../assets/glb/laboratory/", "touch_skip_forward.glb").then((result) => {
+            this.touch_skip_forward = this.scene.getMeshByName("touch_skip_forward");
         });
     }
 
