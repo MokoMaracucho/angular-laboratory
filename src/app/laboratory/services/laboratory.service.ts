@@ -3995,8 +3995,16 @@ export class LaboratoryService {
     // SWITCH CAMERA
 
     public animation_switch_camera() {
-        if(this.anaglyph_activated) {
-            this.animation_anaglyphArcRotateCameraPosition_switch();
+        if(!this.anaglyph_activated) {
+            this.anaglyph_arc_rotate_camera.lockedTarget = this.arc_rotate_camera.lockedTarget;
+            this.anaglyph_arc_rotate_camera.targetScreenOffset = this.arc_rotate_camera.targetScreenOffset;
+            this.anaglyph_arc_rotate_camera.alpha = this.arc_rotate_camera.alpha;
+            this.anaglyph_arc_rotate_camera.beta = this.arc_rotate_camera.beta;
+            this.anaglyph_arc_rotate_camera.radius = this.arc_rotate_camera.radius;
+            this.scene.setActiveCameraByName("anaglyph_arc_rotate_camera");
+            this.anaglyph_activated = true;
+            this.interaction.toogle_anaglyph_activated.next();
+            this.desactivation_buttons();
         } else {
             this.animation_arcRotateCameraPosition_switch();
         }
