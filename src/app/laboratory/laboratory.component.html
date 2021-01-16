@@ -403,6 +403,21 @@
                     <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
                     <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
                 </div>
+                <form [formGroup]="userEmails">
+
+                  <h3>Please provide your email addresses</h3>
+
+                  <div class="form-group">
+                  <label>Primary Email:</label>
+                  <input [class.is-invalid] = "userEmails.get('primaryEmail').invalid && userEmails.get('primaryEmail').touched" type="email" class="form-control" formControlName="primaryEmail" />
+                  </div>
+
+                  <div class="form-group">
+                  <label>Secondary Email:</label>
+                  <input [class.is-invalid] = "userEmails.get('secondaryEmail').invalid && userEmails.get('secondaryEmail').touched" type="email" class="form-control" formControlName="secondaryEmail" />
+                  </div>
+
+                </form>
             </div>
         </div>
         <div class="row">

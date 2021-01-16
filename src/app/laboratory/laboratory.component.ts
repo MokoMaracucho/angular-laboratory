@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { LaboratoryService } from './services/laboratory.service';
 import { InteractionService } from './services/interaction.service';
@@ -126,6 +127,15 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public isVisible_movies = false;
 
     public anaglyph_activated = false;
+
+    userEmails = new FormGroup({
+      primaryEmail: new FormControl('',[
+        Validators.required,
+        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      secondaryEmail: new FormControl('',[
+        Validators.required,
+        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])
+    });
 
     public isVisible_cache = false;
 
