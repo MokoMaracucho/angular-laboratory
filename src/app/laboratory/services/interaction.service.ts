@@ -40,5 +40,7 @@ export class InteractionService {
 
     open_travel = new Subject<boolean>();
 
+    open_movies = new Subject<boolean>();
+
     toogle_cache = new Subject<boolean>();
 }

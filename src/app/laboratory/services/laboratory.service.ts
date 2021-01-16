@@ -127,6 +127,14 @@ export class LaboratoryService {
     private spain_yellow;
     private france_red;
     private shelf;
+    private dvd_pi;
+    private dvd_enter_the_void;
+    private dvd_2001_odyssee_espace;
+    private dvd_la_haine;
+    private dvd_sweet_sixteen;
+    private dvd_eternal_sunshine;
+    private dvd_zero_theorem;
+    private dvd_shining;
     private book_strategie_choc;
     private book_no_logo;
     private book_serpent_cosmique;
@@ -220,6 +228,22 @@ export class LaboratoryService {
     private screen_right_BAKING_HIGHLIGHT: BABYLON.Texture;
     private world_map_BAKING: BABYLON.Texture;
     private world_map_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private dvd_pi_BAKING: BABYLON.Texture;
+    private dvd_pi_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private dvd_enter_the_void_BAKING: BABYLON.Texture;
+    private dvd_enter_the_void_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private dvd_2001_odyssee_espace_BAKING: BABYLON.Texture;
+    private dvd_2001_odyssee_espace_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private dvd_la_haine_BAKING: BABYLON.Texture;
+    private dvd_la_haine_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private dvd_sweet_sixteen_BAKING: BABYLON.Texture;
+    private dvd_sweet_sixteen_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private dvd_eternal_sunshine_BAKING: BABYLON.Texture;
+    private dvd_eternal_sunshine_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private dvd_zero_theorem_BAKING: BABYLON.Texture;
+    private dvd_zero_theorem_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private dvd_shining_BAKING: BABYLON.Texture;
+    private dvd_shining_BAKING_HIGHLIGHT: BABYLON.Texture;
     private united_kingdom_red_BAKING: BABYLON.Texture;
     private united_kingdom_red_BAKING_HIGHLIGHT: BABYLON.Texture;
     private united_kingdom_white_BAKING: BABYLON.Texture;
@@ -1100,28 +1124,60 @@ export class LaboratoryService {
 
         // DVDS
 
+        this.dvd_pi_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_pi_BAKING.jpg", this.scene, false, false);
+        this.dvd_pi_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_pi_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.dvd_enter_the_void_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_enter_the_void_BAKING.jpg", this.scene, false, false);
+        this.dvd_enter_the_void_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_enter_the_void_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.dvd_2001_odyssee_espace_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_2001_odyssee_espace_BAKING.jpg", this.scene, false, false);
+        this.dvd_2001_odyssee_espace_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_2001_odyssee_espace_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.dvd_la_haine_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_la_haine_BAKING.jpg", this.scene, false, false);
+        this.dvd_la_haine_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_la_haine_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.dvd_sweet_sixteen_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_sweet_sixteen_BAKING.jpg", this.scene, false, false);
+        this.dvd_sweet_sixteen_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_sweet_sixteen_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.dvd_eternal_sunshine_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_eternal_sunshine_BAKING.jpg", this.scene, false, false);
+        this.dvd_eternal_sunshine_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_eternal_sunshine_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.dvd_zero_theorem_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_zero_theorem_BAKING.jpg", this.scene, false, false);
+        this.dvd_zero_theorem_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_zero_theorem_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+        this.dvd_shining_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_shining_BAKING.jpg", this.scene, false, false);
+        this.dvd_shining_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_shining_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
         BABYLON.SceneLoader.ImportMeshAsync("dvd_pi", "../../assets/glb/laboratory/", "dvd_pi.glb", this.scene).then((result) => {
+            this.dvd_pi = this.scene.getMeshByName("dvd_pi");
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("dvd_enter_the_void", "../../assets/glb/laboratory/", "dvd_enter_the_void.glb", this.scene).then((result) => {
+            this.dvd_enter_the_void = this.scene.getMeshByName("dvd_enter_the_void");
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("dvd_2001_odyssee_espace", "../../assets/glb/laboratory/", "dvd_2001_odyssee_espace.glb", this.scene).then((result) => {
+            this.dvd_2001_odyssee_espace = this.scene.getMeshByName("dvd_2001_odyssee_espace");
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("dvd_la_haine", "../../assets/glb/laboratory/", "dvd_la_haine.glb", this.scene).then((result) => {
+            this.dvd_la_haine = this.scene.getMeshByName("dvd_la_haine");
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("dvd_sweet_sixteen", "../../assets/glb/laboratory/", "dvd_sweet_sixteen.glb", this.scene).then((result) => {
+            this.dvd_sweet_sixteen = this.scene.getMeshByName("dvd_sweet_sixteen");
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("dvd_eternal_sunshine", "../../assets/glb/laboratory/", "dvd_eternal_sunshine.glb", this.scene).then((result) => {
+            this.dvd_eternal_sunshine = this.scene.getMeshByName("dvd_eternal_sunshine");
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("dvd_zero_theorem", "../../assets/glb/laboratory/", "dvd_zero_theorem.glb", this.scene).then((result) => {
+            this.dvd_zero_theorem = this.scene.getMeshByName("dvd_zero_theorem");
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("dvd_shining", "../../assets/glb/laboratory/", "dvd_shining.glb", this.scene).then((result) => {
+          this.dvd_shining = this.scene.getMeshByName("dvd_shining");
         });
 
         // BOOKS
@@ -1341,6 +1397,14 @@ export class LaboratoryService {
         this.addActions_ScreenRight();
         this.addActions_ScreenFrameRight();
         this.addActions_WorldMap();
+        this.addActions_DvdPi();
+        this.addActions_DvdEnterTheVoid();
+        this.addActions_Dvd2001OdysseeEspace();
+        this.addActions_DvdLaHaine();
+        this.addActions_DvdSweetSixteen();
+        this.addActions_DvdEternalSunshine();
+        this.addActions_DvdZeroTheorem();
+        this.addActions_DvdShining();
         this.addActions_Twitter();
         this.addActions_Instagram();
         this.addActions_InstagramLens();
@@ -2982,6 +3046,318 @@ export class LaboratoryService {
         );
 
         this.world_map.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_travel.next()));
+    }
+
+    private addActions_DvdPi() {
+        this.dvd_pi.isPickable = true;
+        this.dvd_pi.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING_HIGHLIGHT));
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING));
+
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING_HIGHLIGHT));
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING));
+
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING_HIGHLIGHT));
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING));
+
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING_HIGHLIGHT));
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING));
+
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING_HIGHLIGHT));
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING));
+
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING_HIGHLIGHT));
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING));
+
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING_HIGHLIGHT));
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING));
+
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
+        this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
+
+        this.dvd_pi.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_pi},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                ]
+            )
+        );
+    }
+
+    private addActions_DvdEnterTheVoid() {
+        this.dvd_enter_the_void.isPickable = true;
+        this.dvd_enter_the_void.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING_HIGHLIGHT));
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING));
+
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING_HIGHLIGHT));
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING));
+
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING_HIGHLIGHT));
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING));
+
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING_HIGHLIGHT));
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING));
+
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING_HIGHLIGHT));
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING));
+
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING_HIGHLIGHT));
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING));
+
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING_HIGHLIGHT));
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING));
+
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
+
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_enter_the_void},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                ]
+            )
+        );
+    }
+
+    private addActions_Dvd2001OdysseeEspace() {
+        this.dvd_2001_odyssee_espace.isPickable = true;
+        this.dvd_2001_odyssee_espace.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING_HIGHLIGHT));
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING));
+
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING_HIGHLIGHT));
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING));
+
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING_HIGHLIGHT));
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING));
+
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING_HIGHLIGHT));
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING));
+
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING_HIGHLIGHT));
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING));
+
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING_HIGHLIGHT));
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING));
+
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING_HIGHLIGHT));
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING));
+
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
+
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_2001_odyssee_espace},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                ]
+            )
+        );
+    }
+
+    private addActions_DvdLaHaine() {
+        this.dvd_la_haine.isPickable = true;
+        this.dvd_la_haine.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING_HIGHLIGHT));
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING));
+
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING_HIGHLIGHT));
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING));
+
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING_HIGHLIGHT));
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING));
+
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING_HIGHLIGHT));
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING));
+
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING_HIGHLIGHT));
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING));
+
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING_HIGHLIGHT));
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING));
+
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING_HIGHLIGHT));
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING));
+
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
+
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_la_haine},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                ]
+            )
+        );
+    }
+
+    private addActions_DvdSweetSixteen() {
+        this.dvd_sweet_sixteen.isPickable = true;
+        this.dvd_sweet_sixteen.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING_HIGHLIGHT));
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING));
+
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING_HIGHLIGHT));
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING));
+
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING_HIGHLIGHT));
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING));
+
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING_HIGHLIGHT));
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING));
+
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING_HIGHLIGHT));
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING));
+
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING_HIGHLIGHT));
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING));
+
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING_HIGHLIGHT));
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING));
+
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
+
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_sweet_sixteen},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                ]
+            )
+        );
+    }
+
+    private addActions_DvdEternalSunshine() {
+        this.dvd_eternal_sunshine.isPickable = true;
+        this.dvd_eternal_sunshine.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING_HIGHLIGHT));
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING));
+
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING_HIGHLIGHT));
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING));
+
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING_HIGHLIGHT));
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING));
+
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING_HIGHLIGHT));
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING));
+
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING_HIGHLIGHT));
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING));
+
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING_HIGHLIGHT));
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING));
+
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING_HIGHLIGHT));
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING));
+
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
+
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_eternal_sunshine},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                ]
+            )
+        );
+    }
+
+    private addActions_DvdZeroTheorem() {
+        this.dvd_zero_theorem.isPickable = true;
+        this.dvd_zero_theorem.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING_HIGHLIGHT));
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING));
+
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING_HIGHLIGHT));
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING));
+
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING_HIGHLIGHT));
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING));
+
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING_HIGHLIGHT));
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING));
+
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING_HIGHLIGHT));
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING));
+
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING_HIGHLIGHT));
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING));
+
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING_HIGHLIGHT));
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING));
+
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
+
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_zero_theorem},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                ]
+            )
+        );
+    }
+
+    private addActions_DvdShining() {
+        this.dvd_shining.isPickable = true;
+        this.dvd_shining.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING_HIGHLIGHT));
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_pi.material, "albedoTexture", this.dvd_pi_BAKING));
+
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING_HIGHLIGHT));
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_enter_the_void.material, "albedoTexture", this.dvd_enter_the_void_BAKING));
+
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING_HIGHLIGHT));
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_2001_odyssee_espace.material, "albedoTexture", this.dvd_2001_odyssee_espace_BAKING));
+
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING_HIGHLIGHT));
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_la_haine.material, "albedoTexture", this.dvd_la_haine_BAKING));
+
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING_HIGHLIGHT));
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_sweet_sixteen.material, "albedoTexture", this.dvd_sweet_sixteen_BAKING));
+
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING_HIGHLIGHT));
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_eternal_sunshine.material, "albedoTexture", this.dvd_eternal_sunshine_BAKING));
+
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING_HIGHLIGHT));
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_zero_theorem.material, "albedoTexture", this.dvd_zero_theorem_BAKING));
+
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
+        this.dvd_shining.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
+
+        this.dvd_shining.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_shining},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                ]
+            )
+        );
     }
 
     private addActions_Twitter() {
