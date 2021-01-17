@@ -392,7 +392,7 @@
                 <p class="text_content" *ngIf="language_spanish">
                 </p>
 
-                <form [formGroup]="email" action="mailto:desmoulin.federico@gmail.com?subject=Test" method="post" enctype="text/plain">
+                <form [formGroup]="email">
                   <div class="form-group">
                     <label for="fullName" class="text-light">Your full name :</label>
                     <input type="text" id="fullName" name="fullName" class="form-control" formControlName="fullName" [class.is-invalid]="email.get('fullName').invalid && email.get('fullName').touched" />

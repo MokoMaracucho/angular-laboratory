@@ -319,8 +319,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     public mailMe() {
-      var mailText = "mailto:desmoulin.federico@gmail.com+?subject=body="+this.email;
-      window.location.href = mailText;
+
     }
 
     private open_development(): void {
