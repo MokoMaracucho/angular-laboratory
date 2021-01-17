@@ -1337,22 +1337,27 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("touch_skip_back", "../../assets/glb/laboratory/", "touch_skip_back.glb").then((result) => {
             this.touch_skip_back = this.scene.getMeshByName("touch_skip_back");
+            this.touch_skip_back.isVisible = false;
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("touch_stop", "../../assets/glb/laboratory/", "touch_stop.glb").then((result) => {
             this.touch_stop = this.scene.getMeshByName("touch_stop");
+            this.touch_stop.isVisible = false;
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("touch_play", "../../assets/glb/laboratory/", "touch_play.glb").then((result) => {
             this.touch_play = this.scene.getMeshByName("touch_play");
+            this.touch_play.isVisible = false;
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("touch_pause", "../../assets/glb/laboratory/", "touch_pause.glb").then((result) => {
             this.touch_pause = this.scene.getMeshByName("touch_pause");
+            this.touch_pause.isVisible = false;
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("touch_skip_forward", "../../assets/glb/laboratory/", "touch_skip_forward.glb").then((result) => {
             this.touch_skip_forward = this.scene.getMeshByName("touch_skip_forward");
+            this.touch_skip_forward.isVisible = false;
         });
     }
 
@@ -3812,6 +3817,7 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.projector},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.touch_skip_back.isVisible = true),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
@@ -4120,6 +4126,21 @@ export class LaboratoryService {
             const rendererLoopCallback = () => {
                 this.scene.render();
                 this.scene.executeWhenReady(() => this.sceneIsLoaded());
+                if(this.arc_rotate_camera.position.x < -34 && this.scene_loaded) {
+                  this.projector.isPickable = false;
+                  this.touch_skip_back.isVisible = false;
+                  this.touch_stop.isVisible = false;
+                  this.touch_play.isVisible = false;
+                  this.touch_pause.isVisible = false;
+                  this.touch_skip_forward.isVisible = false;
+                } else if(this.arc_rotate_camera.position.x >= -34 && this.scene_loaded){
+                  this.projector.isPickable = true;
+                  this.touch_skip_back.isVisible = true;
+                  this.touch_stop.isVisible = true;
+                  this.touch_play.isVisible = true;
+                  this.touch_pause.isVisible = true;
+                  this.touch_skip_forward.isVisible = true;
+                }
                 this.emitCameraDatas_loop();
             };
 
