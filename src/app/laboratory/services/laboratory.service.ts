@@ -321,23 +321,24 @@ export class LaboratoryService {
         // CANERAS
 
         this.arc_rotate_camera = new BABYLON.ArcRotateCamera("arc_rotate_camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), this.scene);
-        this.set_initialPositionCameras();
+        this.set_initialPosition_ArcRotateCamera();
         this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
         this.arc_rotate_camera.lowerBetaLimit = -0.5;
         this.arc_rotate_camera.upperBetaLimit = 1.55;
         this.arc_rotate_camera.lowerRadiusLimit = 5;
         this.arc_rotate_camera.upperRadiusLimit = 90;
         this.arc_rotate_camera.attachControl(canvas, true);
-        this.set_initialScreenOffset();
+        this.set_initialScreenOffset_ArcRotateCamera();
 
         this.anaglyph_arc_rotate_camera = new BABYLON.AnaglyphArcRotateCamera("anaglyph_arc_rotate_camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), 0.1, this.scene);
-        this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
+        this.set_initialPosition_AnaglyphArcRotateCamera();
+        this.anaglyph_arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
         this.anaglyph_arc_rotate_camera.lowerBetaLimit = -0.5;
         this.anaglyph_arc_rotate_camera.upperBetaLimit = 1.55;
         this.anaglyph_arc_rotate_camera.lowerRadiusLimit = 5;
         this.anaglyph_arc_rotate_camera.upperRadiusLimit = 90;
         this.anaglyph_arc_rotate_camera.attachControl(canvas, true);
-        this.set_initialScreenOffset();
+        this.set_initialScreenOffset_AnaglyphArcRotateCamera();
 
         var pipeline = new BABYLON.DefaultRenderingPipeline(
             "pipeline", // The name of the pipeline
@@ -1362,7 +1363,7 @@ export class LaboratoryService {
         this.innerHeight = height;
     }
 
-    private set_initialPositionCameras() {
+    private set_initialPosition_ArcRotateCamera() {
         if(this.innerWidth <= 576) {
             this.arc_rotate_camera.alpha = 2.7;       this.arc_rotate_camera.beta = 0.6;      this.arc_rotate_camera.radius = 40;
 
@@ -1384,7 +1385,29 @@ export class LaboratoryService {
         }
     }
 
-    private set_initialScreenOffset() {
+    private set_initialPosition_AnaglyphArcRotateCamera() {
+        if(this.innerWidth <= 576) {
+            this.anaglyph_arc_rotate_camera.alpha = 2.7;       this.anaglyph_arc_rotate_camera.beta = 0.6;      this.anaglyph_arc_rotate_camera.radius = 40;
+
+        } else if(this.innerWidth <= 768) {
+            this.anaglyph_arc_rotate_camera.alpha = 2.7;       this.anaglyph_arc_rotate_camera.beta = 0.6;      this.anaglyph_arc_rotate_camera.radius = 40;
+
+        } else if(this.innerWidth <= 960) {
+            this.anaglyph_arc_rotate_camera.alpha = 2.6;       this.anaglyph_arc_rotate_camera.beta = 0.9;      this.anaglyph_arc_rotate_camera.radius = 70;
+
+        } else if(this.innerWidth <= 1140) {
+            this.anaglyph_arc_rotate_camera.alpha = 2.75;      this.anaglyph_arc_rotate_camera.beta = 1;        this.anaglyph_arc_rotate_camera.radius = 60;
+
+        } else if(this.innerWidth <= 1500) {
+            this.anaglyph_arc_rotate_camera.alpha = 2.55;      this.anaglyph_arc_rotate_camera.beta = 1.1;      this.anaglyph_arc_rotate_camera.radius = 55;
+
+        } else {
+            this.anaglyph_arc_rotate_camera.alpha = 2.25;      this.anaglyph_arc_rotate_camera.beta = 1.05;     this.anaglyph_arc_rotate_camera.radius = 50;
+
+        }
+    }
+
+    private set_initialScreenOffset_ArcRotateCamera() {
       if(this.innerWidth <= 576) {
           this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, 0);
       } else if(this.innerWidth <= 768) {
@@ -1397,6 +1420,22 @@ export class LaboratoryService {
         this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(11, 1);
       } else {
           this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(13, 0);
+      }
+    }
+
+    private set_initialScreenOffset_AnaglyphArcRotateCamera() {
+      if(this.innerWidth <= 576) {
+          this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, 0);
+      } else if(this.innerWidth <= 768) {
+          this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(5, -0.5);
+      } else if(this.innerWidth <= 960) {
+          this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(10, -0.5);
+      } else if(this.innerWidth <= 1140) {
+          this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(10, 0);
+      } else if(this.innerWidth <= 1500) {
+          this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(11, 1);
+      } else {
+          this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(13, 0);
       }
     }
 
@@ -3996,43 +4035,58 @@ export class LaboratoryService {
 
     public animation_switch_camera() {
         if(!this.anaglyph_activated) {
-            this.anaglyph_arc_rotate_camera.lockedTarget = this.arc_rotate_camera.lockedTarget;
-            this.anaglyph_arc_rotate_camera.targetScreenOffset = this.arc_rotate_camera.targetScreenOffset;
-            this.anaglyph_arc_rotate_camera.alpha = this.arc_rotate_camera.alpha;
-            this.anaglyph_arc_rotate_camera.beta = this.arc_rotate_camera.beta;
-            this.anaglyph_arc_rotate_camera.radius = this.arc_rotate_camera.radius;
-            this.scene.setActiveCameraByName("anaglyph_arc_rotate_camera");
-            this.anaglyph_activated = true;
-            this.interaction.toogle_anaglyph_activated.next();
-            this.desactivation_buttons();
+          this.anaglyph_arc_rotate_camera.lockedTarget = this.arc_rotate_camera.lockedTarget.clone();
+          this.anaglyph_arc_rotate_camera.position = this.arc_rotate_camera.position.clone();
+          this.animation_arcRotateCamera_to_anaglyphArcRotateCamera();
         } else {
-            this.animation_arcRotateCameraPosition_switch();
-        }
-    }
-
-    private animation_anaglyphArcRotateCameraPosition_switch() {
-        const ease = new BABYLON.CubicEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_anaglyphArcRotateCameraPosition_switch', this.anaglyph_arc_rotate_camera, 'position', 15, 30, this.anaglyph_arc_rotate_camera.position, new BABYLON.Vector3(this.arc_rotate_camera.position.x, this.arc_rotate_camera.position.y, this.arc_rotate_camera.position.z), 0, ease, () => this.switch_camera());
-    }
-
-    private animation_arcRotateCameraPosition_switch() {
-        const ease = new BABYLON.CubicEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_arcRotateCameraPosition_switch', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(this.anaglyph_arc_rotate_camera.position.x, this.anaglyph_arc_rotate_camera.position.y, this.anaglyph_arc_rotate_camera.position.z), 0, ease, () => this.switch_camera());
-    }
-
-    private switch_camera() {
-      if(this.anaglyph_activated) {
+          this.arc_rotate_camera.lockedTarget = this.anaglyph_arc_rotate_camera.lockedTarget.clone();
+          this.arc_rotate_camera.position = this.anaglyph_arc_rotate_camera.position.clone();
           this.scene.setActiveCameraByName("arc_rotate_camera");
           this.anaglyph_activated = false;
           this.interaction.toogle_anaglyph_activated.next();
           this.activation_buttons();
-      } else {
+        }
+    }
+
+    private animation_arcRotateCamera_to_anaglyphArcRotateCamera() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_arcRotateCamera_to_anaglyphArcRotateCamera', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(-16.2, 20, 40), 0, ease, () => this.switch_camera());
+    }
+
+    private animation_offset_to_anaglyphOffset() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_offset_to_anaglyphOffset', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, 0), 0, ease);
+    }
+
+    private animation_anaglyphArcRotateCamera_to_arcRotateCamera() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_anaglyphArcRotateCamera_to_arcRotateCamera', this.anaglyph_arc_rotate_camera, 'position', 15, 30, this.anaglyph_arc_rotate_camera.position, new BABYLON.Vector3(-16.2, 20, 40), 0, ease, () => this.switch_camera());
+    }
+
+    private animation_anaglyphOffset_to_offset() {
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_anaglyphOffset_to_offset', this.anaglyph_arc_rotate_camera, 'targetScreenOffset', 15, 30, this.anaglyph_arc_rotate_camera.targetScreenOffset, new BABYLON.Vector3(10, 1), 0, ease);
+    }
+
+    private switch_camera() {
+      if(!this.anaglyph_activated) {
+          this.anaglyph_arc_rotate_camera.lockedTarget = this.arc_rotate_camera.lockedTarget.clone();
+          this.anaglyph_arc_rotate_camera.position = this.arc_rotate_camera.position.clone();
           this.scene.setActiveCameraByName("anaglyph_arc_rotate_camera");
           this.anaglyph_activated = true;
           this.interaction.toogle_anaglyph_activated.next();
           this.desactivation_buttons();
+      } else {
+          this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
+          this.arc_rotate_camera.position = new BABYLON.Vector3(-16.2, 20, 40);
+          this.scene.setActiveCameraByName("arc_rotate_camera");
+          this.anaglyph_activated = false;
+          this.interaction.toogle_anaglyph_activated.next();
+          this.activation_buttons();
       }
     }
 
@@ -4080,8 +4134,10 @@ export class LaboratoryService {
             this.windowRef.window.addEventListener('resize', () => {
                 this.engine.resize();
                 if(!this.introduction_closed) {
-                    this.set_initialPositionCameras();
-                    this.set_initialScreenOffset();
+                    this.set_initialPosition_ArcRotateCamera();
+                    this.set_initialPosition_AnaglyphArcRotateCamera();
+                    this.set_initialScreenOffset_ArcRotateCamera();
+                    this.set_initialScreenOffset_AnaglyphArcRotateCamera();
                 }
             });
         });
