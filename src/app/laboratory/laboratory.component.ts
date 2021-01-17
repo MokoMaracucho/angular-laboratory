@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { FormGroup, FormBuilder } from  '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import { LaboratoryService } from './services/laboratory.service';
 import { InteractionService } from './services/interaction.service';
@@ -124,11 +124,15 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public isVisible_contactMe = false;
     public isVisible_development = false;
     public isVisible_travel = false;
-    public isVisible_movies = false;
-
-    public contactForm: FormGroup;
+    public isVisible_movies = false
 
     public anaglyph_activated = false;
+
+    public email = new FormGroup({
+      fullName: new FormControl(''),
+      transmisorEmail: new FormControl(''),
+      message: new FormControl('')
+    });
 
     public isVisible_cache = false;
 
@@ -139,7 +143,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public rendererCanvas_laboratory: ElementRef<HTMLCanvasElement>;
 
     public constructor(
-        private formBuilder: FormBuilder,
         private laboratoryService: LaboratoryService,
         readonly interaction: InteractionService
     ) {}
@@ -148,8 +151,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.innerWidth = window.innerWidth;
         this.innerHeight = window.innerHeight;
         this.laboratoryService.set_windowDimensions(this.innerWidth, this.innerHeight);
-
-        this.createContactForm();
 
         this.laboratoryService.createScene(this.rendererCanvas_laboratory);
         this.laboratoryService.animate();
@@ -315,18 +316,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.laboratoryService.animation_closeCard();
         this.isVisible_contactMe = false;
         this.toogle_cache();
-    }
-
-    private createContactForm(){
-      this.contactForm = this.formBuilder.group({
-        fullName: [''],
-        email: [''],
-        message: ['']
-      });
-    }
-
-    public onSubmit() {
-      console.log('Your form data : ', this.contactForm.value );
     }
 
     private open_development(): void {

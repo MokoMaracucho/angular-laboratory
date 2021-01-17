@@ -392,29 +392,38 @@
                 <p class="text_content" *ngIf="language_spanish">
                 </p>
 
-                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-                  <input type="text" class="form-control" name="fullName" placeholder="Your full name" formControlName="fullName" >
-                  <br/>
+                <form>
+                  <div class="form-group">
+                    <label>Your full name :</label>
+                    <input type="text" class="form-control" formControlName="fullName" />
+                  </div>
+                  <div class="form-group">
+                    <label>Your email :</label>
+                    <input type="email" class="form-control" formControlName="transmisorEmail" />
+                  </div>
+                  <div class="form-group">
+                    <label>Your message :</label>
+                    <textarea class="form-control" formControlName="message"></textarea>
+                  </div>
 
-                  <input type="email" class="form-control" name="email" placeholder="Your email" formControlName="email" >
-                  <br/>
-
-                  <textarea name="message" class="form-control" placeholder="Your message" formControlName="message" ></textarea>
-                  <br/>
-                  <input type="submit" class="btn btn-success" value="Send">
+                  <button btnClose_Introduction id="btn_submit_email" type="button" class="btn btn-success mt-3" (click)="submit_email()">
+                    <span *ngIf="language_english">Send</span>
+                    <span *ngIf="language_french">Envoyer</span>
+                    <span *ngIf="language_spanish">Enviar</span>
+                  </button>
                 </form>
 
                 <div *ngIf="language_english">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                    <span class="span_language badge badge-pill badge-info mt-3 mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info mt-3 p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
                 </div>
                 <div *ngIf="language_french">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                    <span class="span_language badge badge-pill badge-info mt-3 mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info mt-3 p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
                 </div>
                 <div *ngIf="language_spanish">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                    <span class="span_language badge badge-pill badge-info mt-3 mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info mt-3 p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
                 </div>
             </div>
         </div>
