@@ -391,6 +391,37 @@
                 </p>
                 <p class="text_content" *ngIf="language_spanish">
                 </p>
+
+                <!-- Default form contact -->
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+                  <div class="form-group">
+                    <input type="text" formControlName="contactFormName" class="form-control">
+                  </div>
+
+                  <!-- Email -->
+                  <div class="form-group">
+                    <input type="email" formControlName="contactFormEmail" class="form-control">
+                  </div>
+
+                  <!-- Message -->
+                  <div class="form-group">
+                    <textarea formControlName="contactFormSubjects" class="form-control"></textarea>
+                  </div>
+
+                  <!-- Message -->
+                  <div class="form-group">
+                    <textarea formControlName="contactFormMessage" class="form-control"></textarea>
+                  </div>
+
+                  <!-- Send button -->
+                  <div class="form-group">
+                    <button type="submit" [disabled]="disabledSubmitButton">Send</button>
+                  </div>
+
+                </form>
+
+
                 <div *ngIf="language_english">
                     <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
                     <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>

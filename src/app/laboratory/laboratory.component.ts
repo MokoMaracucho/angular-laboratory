@@ -2,8 +2,12 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef, HostListener } fro
 import { Subscription, Subject } from 'rxjs';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+
 import { LaboratoryService } from './services/laboratory.service';
 import { InteractionService } from './services/interaction.service';
+
+import { ConnectionService } from './services/connection.service';
 
 import { CameraDatas } from '../shared/models/camera-datas';
 
@@ -127,6 +131,22 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
     public anaglyph_activated = false;
 
+    public contactForm = new FormGroup({
+      contactFormName: new FormControl(''),
+      contactFormEmail: new FormControl(''),
+      contactFormSubjects: new FormControl(''),
+      contactFormMessage: new FormControl('')
+    });
+
+    public disabledSubmitButton: boolean = true;
+
+    @HostListener('input') oninput() {
+      if (this.contactForm.valid) {
+        this.disabledSubmitButton = false;
+      }
+    }
+
+
     public isVisible_cache = false;
 
     public isVisible_dashBoard = false;
@@ -136,6 +156,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public rendererCanvas_laboratory: ElementRef<HTMLCanvasElement>;
 
     public constructor(
+        private fb: FormBuilder,
+        private connectionService: ConnectionService,
         private laboratoryService: LaboratoryService,
         readonly interaction: InteractionService
     ) {}
@@ -179,6 +201,16 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
+    }
+
+    onSubmit() {
+      this.connectionService.sendMessage(this.contactForm.value).subscribe(() => {
+        alert('Your message has been sent.');
+        this.contactForm.reset();
+        this.disabledSubmitButton = true;
+      }, error => {
+        console.log('Error', error);
+      });
     }
 
     @HostListener('window:resize', ['$event'])
