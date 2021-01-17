@@ -288,7 +288,14 @@ export class LaboratoryService {
     private spotify_green_BAKING: BABYLON.Texture;
     private spotify_green_BAKING_HIGHLIGHT: BABYLON.Texture;
 
-    private video_TEXTURE: BABYLON.VideoTexture;
+    private odyssee_espace_TEXTURE: BABYLON.VideoTexture;
+    private enter_the_void_TEXTURE: BABYLON.VideoTexture;
+    private eternal_sunshine_TEXTURE: BABYLON.VideoTexture;
+    private la_haine_TEXTURE: BABYLON.VideoTexture;
+    private pi_TEXTURE: BABYLON.VideoTexture;
+    private shining_TEXTURE: BABYLON.VideoTexture;
+    private zero_theorem_TEXTURE: BABYLON.VideoTexture;
+    private all_video_textures_loaded = false;
 
     private mirror_MATERIAL: BABYLON.StandardMaterial;
     private glass_MATERIAL: BABYLON.StandardMaterial;
@@ -301,6 +308,8 @@ export class LaboratoryService {
 
     private arc_rotate_camera_clone;
     private anaglyph_arc_rotate_camera_clone;
+
+    private trailer_position = 2;
 
     private anaglyph_activated = false;
 
@@ -338,7 +347,6 @@ export class LaboratoryService {
         this.anaglyph_arc_rotate_camera.lowerRadiusLimit = 5;
         this.anaglyph_arc_rotate_camera.upperRadiusLimit = 90;
         this.anaglyph_arc_rotate_camera.attachControl(canvas, true);
-        this.set_initialScreenOffset_AnaglyphArcRotateCamera();
 
         var pipeline = new BABYLON.DefaultRenderingPipeline(
             "pipeline", // The name of the pipeline
@@ -1304,15 +1312,15 @@ export class LaboratoryService {
         this.projector.rotation = new BABYLON.Vector3(0, -1.57, 0);
 
         this.projector_MATERIAL = new BABYLON.StandardMaterial("projectorMaterial", this.scene);
-        this.video_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/pi.mp4", this.scene);
+        this.enter_the_void_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/enter_the_void.mp4", this.scene);
         this.projector_MATERIAL.roughness = 1;
         this.projector_MATERIAL.emissiveColor = BABYLON.Color3.White();
-        this.projector_MATERIAL.diffuseTexture = this.video_TEXTURE;
+        this.projector_MATERIAL.diffuseTexture = this.enter_the_void_TEXTURE;
         this.projector_MATERIAL.alpha = 0.3;
 
         this.projector.material = this.projector_MATERIAL;
 
-        this.video_TEXTURE.video.pause();
+        this.enter_the_void_TEXTURE.video.pause();
 
         // videoTexture.onUserActionRequestedObservable.add(() => {
             // this.scene.onPointerDown = function () {
@@ -1425,22 +1433,6 @@ export class LaboratoryService {
         this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(11, 1);
       } else {
           this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(13, 0);
-      }
-    }
-
-    private set_initialScreenOffset_AnaglyphArcRotateCamera() {
-      if(this.innerWidth <= 576) {
-          this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, 0);
-      } else if(this.innerWidth <= 768) {
-          this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(5, -0.5);
-      } else if(this.innerWidth <= 960) {
-          this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(10, -0.5);
-      } else if(this.innerWidth <= 1140) {
-          this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(10, 0);
-      } else if(this.innerWidth <= 1500) {
-          this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(11, 1);
-      } else {
-          this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(13, 0);
       }
     }
 
@@ -3859,10 +3851,36 @@ export class LaboratoryService {
         this.touch_play.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.touch_play},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.video_TEXTURE.video.play())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.play_videoTexture(this.trailer_position))
                 ]
             )
         );
+    }
+
+    private play_videoTexture(trailer_position) {
+      switch(trailer_position) {
+        case 1:
+          this.enter_the_void_TEXTURE.video.play();
+          break;
+        case 2:
+          this.pi_TEXTURE.video.play();
+          break;
+        case 3:
+          this.eternal_sunshine_TEXTURE.video.play();
+          break;
+        case 4:
+          this.odyssee_espace_TEXTURE.video.play();
+          break;
+        case 5:
+          this.zero_theorem_TEXTURE.video.play();
+          break;
+        case 6:
+          this.shining_TEXTURE.video.play();
+          break;
+        case 7:
+          this.la_haine_TEXTURE.video.play();
+          break;
+      }
     }
 
     private addActions_TouchPause() {
@@ -3875,10 +3893,36 @@ export class LaboratoryService {
         this.touch_pause.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.touch_pause},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.video_TEXTURE.video.pause())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.pause_videoTexture(this.trailer_position))
                 ]
             )
         );
+    }
+
+    private pause_videoTexture(trailer_position) {
+      switch(trailer_position) {
+        case 1:
+          this.enter_the_void_TEXTURE.video.pause();
+          break;
+        case 2:
+          this.pi_TEXTURE.video.pause();
+          break;
+        case 3:
+          this.eternal_sunshine_TEXTURE.video.pause();
+          break;
+        case 4:
+          this.odyssee_espace_TEXTURE.video.pause();
+          break;
+        case 5:
+          this.zero_theorem_TEXTURE.video.pause();
+          break;
+        case 6:
+          this.shining_TEXTURE.video.pause();
+          break;
+        case 7:
+          this.la_haine_TEXTURE.video.pause();
+          break;
+      }
     }
 
     private addActions_TouchSkipForward() {
@@ -3891,14 +3935,77 @@ export class LaboratoryService {
         this.touch_skip_forward.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.touch_skip_forward},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.video_TEXTURE.video.pause()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.video_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/enter_the_void.mp4", this.scene)),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.projector_MATERIAL.diffuseTexture = this.video_TEXTURE),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.projector.material = this.projector_MATERIAL),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.video_TEXTURE.video.play())
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.switch_trailer(this.trailer_position))
                 ]
             )
         );
+    }
+
+    private switch_trailer(trailer_position) {
+      switch(trailer_position) {
+        case 1:
+          this.enter_the_void_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/enter_the_void.mp4", this.scene);
+          this.projector_MATERIAL.diffuseTexture = this.enter_the_void_TEXTURE;
+          this.projector.material = this.projector_MATERIAL;
+          this.enter_the_void_TEXTURE.video.play();
+          this.trailer_position++;
+          break;
+        case 2:
+          if(!this.all_video_textures_loaded) {
+            this.pi_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/pi.mp4", this.scene);
+          }
+          this.projector_MATERIAL.diffuseTexture = this.pi_TEXTURE;
+          this.projector.material = this.projector_MATERIAL;
+          this.pi_TEXTURE.video.play();
+          this.trailer_position++;
+          break;
+        case 3:
+          if(!this.all_video_textures_loaded) {
+            this.eternal_sunshine_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/eternal_sunshine.mp4", this.scene);
+          }
+          this.projector_MATERIAL.diffuseTexture = this.eternal_sunshine_TEXTURE;
+          this.projector.material = this.projector_MATERIAL;
+          this.eternal_sunshine_TEXTURE.video.play();
+          this.trailer_position++;
+          break;
+        case 4:
+          if(!this.all_video_textures_loaded) {
+            this.odyssee_espace_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/2001_odyssee_espace.mp4", this.scene);
+          }
+          this.projector_MATERIAL.diffuseTexture = this.odyssee_espace_TEXTURE;
+          this.projector.material = this.projector_MATERIAL;
+          this.odyssee_espace_TEXTURE.video.play();
+          this.trailer_position++;
+          break;
+        case 5:
+          if(!this.all_video_textures_loaded) {
+            this.zero_theorem_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/zero_theorem.mp4", this.scene);
+          }
+          this.projector_MATERIAL.diffuseTexture = this.zero_theorem_TEXTURE;
+          this.projector.material = this.projector_MATERIAL;
+          this.zero_theorem_TEXTURE.video.play();
+          this.trailer_position++;
+          break;
+        case 6:
+          if(!this.all_video_textures_loaded) {
+            this.shining_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/shining.mp4", this.scene);
+          }
+          this.projector_MATERIAL.diffuseTexture = this.shining_TEXTURE;
+          this.projector.material = this.projector_MATERIAL;
+          this.shining_TEXTURE.video.play();
+          this.trailer_position++;
+          break;
+        case 7:
+          if(!this.all_video_textures_loaded) {
+            this.la_haine_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/la_haine.mp4", this.scene);
+          }
+          this.projector_MATERIAL.diffuseTexture = this.la_haine_TEXTURE;
+          this.projector.material = this.projector_MATERIAL;
+          this.la_haine_TEXTURE.video.play();
+          this.trailer_position = 1;
+          this.all_video_textures_loaded = true;
+          break;
+      }
     }
 
     // ENTER LABORATORY
@@ -4041,13 +4148,18 @@ export class LaboratoryService {
 
     public animation_switch_camera() {
         if(!this.anaglyph_activated) {
-          this.anaglyph_arc_rotate_camera.lockedTarget = this.arc_rotate_camera.lockedTarget.clone();
-          this.anaglyph_arc_rotate_camera.position = this.arc_rotate_camera.position.clone();
-          this.animation_arcRotateCamera_to_anaglyphArcRotateCamera();
+          this.arc_rotate_camera_clone = this.arc_rotate_camera.position;
+          this.scene.setActiveCameraByName("anaglyph_arc_rotate_camera");
+          this.anaglyph_arc_rotate_camera.position = this.arc_rotate_camera_clone;
+          this.anaglyph_arc_rotate_camera.attachControl(this.canvas, true);
+          this.anaglyph_activated = true;
+          this.interaction.toogle_anaglyph_activated.next();
+          this.desactivation_buttons();
         } else {
-          this.arc_rotate_camera.lockedTarget = this.anaglyph_arc_rotate_camera.lockedTarget.clone();
-          this.arc_rotate_camera.position = this.anaglyph_arc_rotate_camera.position.clone();
+          this.anaglyph_arc_rotate_camera_clone = this.anaglyph_arc_rotate_camera.position;
           this.scene.setActiveCameraByName("arc_rotate_camera");
+          this.arc_rotate_camera.position = this.anaglyph_arc_rotate_camera_clone;
+          this.arc_rotate_camera.attachControl(this.canvas, true);
           this.anaglyph_activated = false;
           this.interaction.toogle_anaglyph_activated.next();
           this.activation_buttons();
@@ -4080,9 +4192,11 @@ export class LaboratoryService {
 
     private switch_camera() {
       if(!this.anaglyph_activated) {
-          this.anaglyph_arc_rotate_camera.lockedTarget = this.arc_rotate_camera.lockedTarget.clone();
-          this.anaglyph_arc_rotate_camera.position = this.arc_rotate_camera.position.clone();
           this.scene.setActiveCameraByName("anaglyph_arc_rotate_camera");
+          this.anaglyph_arc_rotate_camera.alpha = this.arc_rotate_camera.alpha;
+          this.anaglyph_arc_rotate_camera.beta = this.arc_rotate_camera.beta;
+          this.anaglyph_arc_rotate_camera.radius = this.arc_rotate_camera.radius;
+          this.anaglyph_arc_rotate_camera.lockedTarget = new BABYLON.Vector2(0, 0);
           this.anaglyph_activated = true;
           this.interaction.toogle_anaglyph_activated.next();
           this.desactivation_buttons();
@@ -4158,7 +4272,6 @@ export class LaboratoryService {
                     this.set_initialPosition_ArcRotateCamera();
                     this.set_initialPosition_AnaglyphArcRotateCamera();
                     this.set_initialScreenOffset_ArcRotateCamera();
-                    this.set_initialScreenOffset_AnaglyphArcRotateCamera();
                 }
             });
         });

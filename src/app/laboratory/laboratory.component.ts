@@ -148,7 +148,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
     public isVisible_cache = false;
 
-    public isVisible_dashBoard = true;
+    public isVisible_dashBoard = false;
     public camera_datas: CameraDatas;
 
     @ViewChild('rendererCanvas_laboratory', { static: true })
