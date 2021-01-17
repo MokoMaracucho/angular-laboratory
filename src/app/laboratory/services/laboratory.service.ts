@@ -309,7 +309,7 @@ export class LaboratoryService {
     private arc_rotate_camera_clone;
     private anaglyph_arc_rotate_camera_clone;
 
-    private trailer_position = 2;
+    private trailer_position = 1;
 
     private anaglyph_activated = false;
 
@@ -3944,13 +3944,6 @@ export class LaboratoryService {
     private switch_trailer(trailer_position) {
       switch(trailer_position) {
         case 1:
-          this.enter_the_void_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/enter_the_void.mp4", this.scene);
-          this.projector_MATERIAL.diffuseTexture = this.enter_the_void_TEXTURE;
-          this.projector.material = this.projector_MATERIAL;
-          this.enter_the_void_TEXTURE.video.play();
-          this.trailer_position++;
-          break;
-        case 2:
           if(!this.all_video_textures_loaded) {
             this.pi_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/pi.mp4", this.scene);
           }
@@ -3959,7 +3952,7 @@ export class LaboratoryService {
           this.pi_TEXTURE.video.play();
           this.trailer_position++;
           break;
-        case 3:
+        case 2:
           if(!this.all_video_textures_loaded) {
             this.eternal_sunshine_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/eternal_sunshine.mp4", this.scene);
           }
@@ -3968,7 +3961,7 @@ export class LaboratoryService {
           this.eternal_sunshine_TEXTURE.video.play();
           this.trailer_position++;
           break;
-        case 4:
+        case 3:
           if(!this.all_video_textures_loaded) {
             this.odyssee_espace_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/2001_odyssee_espace.mp4", this.scene);
           }
@@ -3977,7 +3970,7 @@ export class LaboratoryService {
           this.odyssee_espace_TEXTURE.video.play();
           this.trailer_position++;
           break;
-        case 5:
+        case 4:
           if(!this.all_video_textures_loaded) {
             this.zero_theorem_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/zero_theorem.mp4", this.scene);
           }
@@ -3986,7 +3979,7 @@ export class LaboratoryService {
           this.zero_theorem_TEXTURE.video.play();
           this.trailer_position++;
           break;
-        case 6:
+        case 5:
           if(!this.all_video_textures_loaded) {
             this.shining_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/shining.mp4", this.scene);
           }
@@ -3995,13 +3988,19 @@ export class LaboratoryService {
           this.shining_TEXTURE.video.play();
           this.trailer_position++;
           break;
-        case 7:
+        case 6:
           if(!this.all_video_textures_loaded) {
             this.la_haine_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/la_haine.mp4", this.scene);
           }
           this.projector_MATERIAL.diffuseTexture = this.la_haine_TEXTURE;
           this.projector.material = this.projector_MATERIAL;
           this.la_haine_TEXTURE.video.play();
+          this.trailer_position++;
+          break;
+        case 7:
+          this.projector_MATERIAL.diffuseTexture = this.enter_the_void_TEXTURE;
+          this.projector.material = this.projector_MATERIAL;
+          this.enter_the_void_TEXTURE.video.play();
           this.trailer_position = 1;
           this.all_video_textures_loaded = true;
           break;
