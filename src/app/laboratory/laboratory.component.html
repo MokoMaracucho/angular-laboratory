@@ -392,25 +392,26 @@
                 <p class="text_content" *ngIf="language_spanish">
                 </p>
 
-                <form>
+                <form [formGroup]="email" action="mailto:desmoulin.federico@gmail.com?subject=Test" method="post" enctype="text/plain">
                   <div class="form-group">
-                    <label>Your full name :</label>
-                    <input type="text" class="form-control" formControlName="fullName" />
+                    <label for="fullName" class="text-light">Your full name :</label>
+                    <input type="text" id="fullName" name="fullName" class="form-control" formControlName="fullName" [class.is-invalid]="email.get('fullName').invalid && email.get('fullName').touched" />
                   </div>
                   <div class="form-group">
-                    <label>Your email :</label>
-                    <input type="email" class="form-control" formControlName="transmisorEmail" />
+                    <label for="transmisorEmail" class="text-light">Your email :</label>
+                    <input type="email" id="transmisorEmail" name="transmisorEmail" class="form-control" formControlName="transmisorEmail" [class.is-invalid]="email.get('transmisorEmail').invalid && email.get('transmisorEmail').touched" />
                   </div>
                   <div class="form-group">
-                    <label>Your message :</label>
-                    <textarea class="form-control" formControlName="message"></textarea>
+                    <label for="message" class="text-light">Your message :</label>
+                    <textarea id="message" name="message" class="form-control" formControlName="message" [class.is-invalid] = "email.get('message').invalid && email.get('message').touched"></textarea>
                   </div>
-
-                  <button btnClose_Introduction id="btn_submit_email" type="button" class="btn btn-success mt-3" (click)="submit_email()">
-                    <span *ngIf="language_english">Send</span>
-                    <span *ngIf="language_french">Envoyer</span>
-                    <span *ngIf="language_spanish">Enviar</span>
-                  </button>
+                  <div class="form-group">
+                    <button id="btn_submit_email" type="submit" class="btn btn-success mt-3">
+                      <span *ngIf="language_english">Send</span>
+                      <span *ngIf="language_french">Envoyer</span>
+                      <span *ngIf="language_spanish">Enviar</span>
+                    </button>
+                  </div>
                 </form>
 
                 <div *ngIf="language_english">
