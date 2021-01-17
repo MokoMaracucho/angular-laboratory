@@ -200,15 +200,55 @@
 .div_card {
     z-index: 4;
     position: absolute;
-    top: 45%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    left: 5%;
     width: 400px;
 }
 
+@media (min-width: 10px) {
+    .div_card {
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 10px;
+    }
+}
+
+@media (min-width: 576px) {
+    .div_card {
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .div_card {
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 40px;
+    }
+}
+
+@media (min-width: 960px) {
+    .div_card {
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 80px;
+    }
+}
+
+@media (min-width: 1140px) {
+    .div_card {
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 120px;
+    }
+}
+
 .h1_card {
-    margin-top: 15%;
     font-family: Peace-Sans-Webfont;
     font-size: 36px;
     line-height: 35px;
@@ -218,8 +258,37 @@
 .text_content {
     color: #D3D3D3;
     text-align: justify;
-    max-height: 400px;
     overflow-x: none;
+}
+
+@media (min-width: 10px) {
+    .text_content {
+        max-height: 500px;
+    }
+}
+
+@media (min-width: 576px) {
+    .text_content {
+        max-height: 400px;
+    }
+}
+
+@media (min-width: 768px) {
+    .text_content {
+        max-height: 400px;
+    }
+}
+
+@media (min-width: 960px) {
+    .text_content {
+        max-height: 400px;
+    }
+}
+
+@media (min-width: 1140px) {
+    .text_content {
+        max-height: 400px;
+    }
 }
 
 /* DASH BOARD */
