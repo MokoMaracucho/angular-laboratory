@@ -318,6 +318,11 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.toogle_cache();
     }
 
+    public mailMe() {
+      var mailText = "mailto:desmoulin.federico@gmail.com+?subject=body="+this.email;
+      window.location.href = mailText;
+    }
+
     private open_development(): void {
         setTimeout(() => {
             this.isVisible_development = true;
