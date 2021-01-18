@@ -250,7 +250,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     private open_running(): void {
-        console.log("Running");
         setTimeout(() => {
             this.isVisible_running = true;
         }, 1000);

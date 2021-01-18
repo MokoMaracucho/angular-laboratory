@@ -173,7 +173,9 @@ export class LaboratoryService {
     private pop_up_social_networks;
     private pop_up_languages;
     private pop_up_art;
+    private pop_up_movies;
     private pop_up_travel;
+    private pop_up_spotify;
 
     private pegasus_BAKING: BABYLON.Texture;
     private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -1202,6 +1204,11 @@ export class LaboratoryService {
           this.dvd_shining = this.scene.getMeshByName("dvd_shining");
         });
 
+        BABYLON.SceneLoader.ImportMeshAsync("pop_up_movies", "../../assets/glb/laboratory/", "pop_up_movies.glb", this.scene).then((result) => {
+            this.pop_up_movies = this.scene.getMeshByName("pop_up_movies");
+            this.pop_up_movies.isVisible = false;
+        });
+
         // BOOKS
 
         BABYLON.SceneLoader.ImportMeshAsync("book_strategie_choc", "../../assets/glb/laboratory/", "book_strategie_choc.glb", this.scene).then((result) => {
@@ -1287,6 +1294,11 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("spotify_green", "../../assets/glb/laboratory/", "spotify_green.glb").then((result) => {
             this.spotify_green = this.scene.getMeshByName("spotify_green");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("pop_up_spotify", "../../assets/glb/laboratory/", "pop_up_spotify.glb", this.scene).then((result) => {
+            this.pop_up_spotify = this.scene.getMeshByName("pop_up_spotify");
+            this.pop_up_spotify.isVisible = false;
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("spotify_black", "../../assets/glb/laboratory/", "spotify_black.glb").then((result) => {
@@ -3161,6 +3173,9 @@ export class LaboratoryService {
         this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
         this.dvd_pi.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
 
+        this.dvd_pi.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_movies.isVisible = true));
+        this.dvd_pi.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_movies.isVisible = false));
+
         this.dvd_pi.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_pi},
                 [
@@ -3199,6 +3214,9 @@ export class LaboratoryService {
 
         this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
         this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
+
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_movies.isVisible = true));
+        this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_movies.isVisible = false));
 
         this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_enter_the_void},
@@ -3239,6 +3257,9 @@ export class LaboratoryService {
         this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
         this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
 
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_movies.isVisible = true));
+        this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_movies.isVisible = false));
+
         this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_2001_odyssee_espace},
                 [
@@ -3277,6 +3298,9 @@ export class LaboratoryService {
 
         this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
         this.dvd_la_haine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
+
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_movies.isVisible = true));
+        this.dvd_la_haine.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_movies.isVisible = false));
 
         this.dvd_la_haine.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_la_haine},
@@ -3317,6 +3341,9 @@ export class LaboratoryService {
         this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
         this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
 
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_movies.isVisible = true));
+        this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_movies.isVisible = false));
+
         this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_sweet_sixteen},
                 [
@@ -3356,6 +3383,9 @@ export class LaboratoryService {
         this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
         this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
 
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_movies.isVisible = true));
+        this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_movies.isVisible = false));
+
         this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_eternal_sunshine},
                 [
@@ -3394,6 +3424,9 @@ export class LaboratoryService {
 
         this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING_HIGHLIGHT));
         this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.dvd_shining.material, "albedoTexture", this.dvd_shining_BAKING));
+
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_movies.isVisible = true));
+        this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_movies.isVisible = false));
 
         this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_zero_theorem},
@@ -3558,8 +3591,8 @@ export class LaboratoryService {
         this.spotify_green.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.spotify_green.material, "albedoTexture", this.spotify_green_BAKING_HIGHLIGHT));
         this.spotify_green.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.spotify_green.material, "albedoTexture", this.spotify_green_BAKING));
 
-        this.spotify_green.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_social_networks.isVisible = true));
-        this.spotify_green.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_social_networks.isVisible = false));
+        this.spotify_green.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_spotify.isVisible = true));
+        this.spotify_green.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_spotify.isVisible = false));
 
         this.spotify_green.actionManager.registerAction(
             new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
@@ -3578,8 +3611,8 @@ export class LaboratoryService {
         this.spotify_black.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.spotify_green.material, "albedoTexture", this.spotify_green_BAKING_HIGHLIGHT));
         this.spotify_black.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.spotify_green.material, "albedoTexture", this.spotify_green_BAKING));
 
-        this.spotify_black.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_social_networks.isVisible = true));
-        this.spotify_black.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_social_networks.isVisible = false));
+        this.spotify_black.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_spotify.isVisible = true));
+        this.spotify_black.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_spotify.isVisible = false));
 
         this.spotify_black.actionManager.registerAction(
             new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},

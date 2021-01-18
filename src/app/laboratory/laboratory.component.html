@@ -114,7 +114,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <button btnClose_Introduction id="btn_close_running" type="button" class="btn btn-dark mt-3" (click)="close_running()">
+                <button id="btn_close_running" type="button" class="btn btn-dark mt-3" (click)="close_running()">
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_spanish">Cerrar</span>
@@ -129,47 +129,47 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="h1_card" *ngIf="language_english">SHARE KNOWLEDGE</h1>
-                <h1 class="h1_card" *ngIf="language_french">PARTAGE DE CONNAISSANCES</h1>
-                <h1 class="h1_card" *ngIf="language_spanish">COMPARTIR LOS CONOCIMIENTOS</h1>
+                <h1 class="h1_card" *ngIf="language_french">PARTAGER LE SAVOIR</h1>
+                <h1 class="h1_card" *ngIf="language_spanish">COMPARTIR CONOCIMIENTOS</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <p class="text_content" *ngIf="language_english">
-                    Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                    Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                    sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                    Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-                </p>
-                <p class="text_content" *ngIf="language_french">
-                    C'est en grande partie grâces aux forums, aux tutoriaux, aux youtubeurs que j'ai (et je pense comme beaucoup d'autres !) eu la'opportunité de progresser.
-                    Maintenant c'est à mon tour !
-                    Cette partie est en préparation. Je souhaite utiliser la trois dimensions et tenter d'exploiter au mieux ses avantages pour que les tutos soient le plus ludique / intuitifs
-                    J'essaierai également de fournir une documnetation permettant de ráliser un site from scratch avec les outils que je maîtrise.
-                </p>
-                <p class="text_content" *ngIf="language_spanish">
-                    Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                    Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                    sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                    Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-                </p>
-                <div *ngIf="language_english">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-                </div>
-                <div *ngIf="language_french">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-                </div>
-                <div *ngIf="language_spanish">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-                </div>
+              <p class="text_content" *ngIf="language_english">
+                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
+                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
+                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
+                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
+              </p>
+              <p class="text_content" *ngIf="language_french">
+                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
+                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
+                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
+                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
+              </p>
+              <p class="text_content" *ngIf="language_spanish">
+                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
+                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
+                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
+                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
+              </p>
+              <div *ngIf="language_english">
+                  <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                  <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+              </div>
+              <div *ngIf="language_french">
+                  <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                  <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+              </div>
+              <div *ngIf="language_spanish">
+                  <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                  <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+              </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <button btnClose_Introduction id="btn_close_shareKnowledge" type="button" class="btn btn-dark mt-3" (click)="close_shareKnowledge()">
+                <button id="btn_close_shareKnowledge" type="button" class="btn btn-dark mt-3" (click)="close_shareKnowledge()">
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_spanish">Cerrar</span>
@@ -213,7 +213,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <button btnClose_Introduction id="btn_close_photography" type="button" class="btn btn-dark mt-3" (click)="close_photography()">
+                <button id="btn_close_photography" type="button" class="btn btn-dark mt-3" (click)="close_photography()">
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_spanish">Cerrar</span>
@@ -257,7 +257,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <button btnClose_Introduction id="btn_close_games" type="button" class="btn btn-dark mt-3" (click)="close_games()">
+                <button id="btn_close_games" type="button" class="btn btn-dark mt-3" (click)="close_games()">
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_spanish">Cerrar</span>
@@ -292,7 +292,7 @@
                 <p class="text_content" *ngIf="language_spanish">
                 </p>
                 <p>
-                    <button btn_SwitchCamera id="btn_switch_camera" type="button" class="btn btn-primary" (click)="animation_switch_camera()">
+                    <button id="btn_switch_camera" type="button" class="btn btn-primary" (click)="animation_switch_camera()">
                         <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
                         <span *ngIf="language_english && anaglyph_activated">Regular</span>
                         <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
@@ -362,7 +362,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <button btnClose_Introduction id="btn_close_Art" type="button" class="btn btn-dark mt-3" (click)="close_art()">
+                <button id="btn_close_Art" type="button" class="btn btn-dark mt-3" (click)="close_art()">
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_spanish">Cerrar</span>
@@ -396,31 +396,37 @@
                 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
 
                   <div class="form-group">
-                    <input type="text" formControlName="contactFormName" class="form-control">
+                    <label for="contactFormName" class="text-light mt-1">Your name</label>
+                    <input type="text" id="contactFormName" name="contactFormName" formControlName="contactFormName" class="form-control">
                   </div>
 
                   <!-- Email -->
                   <div class="form-group">
-                    <input type="email" formControlName="contactFormEmail" class="form-control">
+                    <label for="contactFormEmail" class="text-light mt-1">Your email</label>
+                    <input type="email" id="contactFormEmail" name="contactFormEmail" formControlName="contactFormEmail" class="form-control">
                   </div>
 
                   <!-- Message -->
                   <div class="form-group">
-                    <textarea formControlName="contactFormSubjects" class="form-control"></textarea>
+                    <label for="contactFormSubjects" class="text-light mt-1">Why would you like to contact me ? 🤔</label>
+                    <input type="email" id="contactFormSubjects" name="contactFormSubjects" formControlName="contactFormSubjects" class="form-control">
                   </div>
 
                   <!-- Message -->
                   <div class="form-group">
-                    <textarea formControlName="contactFormMessage" class="form-control"></textarea>
+                    <label for="contactFormMessage" class="text-light mt-1">Your message</label>
+                    <textarea id="contactFormMessage" name="contactFormMessage" formControlName="contactFormMessage" class="form-control"></textarea>
                   </div>
 
                   <!-- Send button -->
                   <div class="form-group">
-                    <button type="submit" [disabled]="disabledSubmitButton">Send</button>
+                    <button type="submit" class="btn btn-danger mt-1" [disabled]="disabledSubmitButton">
+                        <span *ngIf="language_english">Send</span>
+                        <span *ngIf="language_french">Envoyer</span>
+                        <span *ngIf="language_spanish">Enviar</span>
+                    </button>
                   </div>
-
                 </form>
-
 
                 <div *ngIf="language_english">
                     <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -438,7 +444,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <button btnClose_Introduction id="btn_close_contactMe" type="button" class="btn btn-dark mt-3" (click)="close_contactMe()">
+                <button id="btn_close_contactMe" type="button" class="btn btn-dark mt-3" (click)="close_contactMe()">
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_spanish">Cerrar</span>
