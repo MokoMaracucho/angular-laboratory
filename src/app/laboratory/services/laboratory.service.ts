@@ -336,8 +336,6 @@ export class LaboratoryService {
         this.set_initialScreenOffset_ArcRotateCamera();
 
         this.anaglyph_arc_rotate_camera = new BABYLON.AnaglyphArcRotateCamera("anaglyph_arc_rotate_camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), 0.1, this.scene);
-        this.set_initialPosition_AnaglyphArcRotateCamera();
-        this.anaglyph_arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
         this.anaglyph_arc_rotate_camera.lowerBetaLimit = -0.5;
         this.anaglyph_arc_rotate_camera.upperBetaLimit = 1.55;
         this.anaglyph_arc_rotate_camera.lowerRadiusLimit = 5;
@@ -1384,28 +1382,6 @@ export class LaboratoryService {
 
         } else {
             this.arc_rotate_camera.alpha = 2.25;      this.arc_rotate_camera.beta = 1.05;     this.arc_rotate_camera.radius = 50;
-
-        }
-    }
-
-    private set_initialPosition_AnaglyphArcRotateCamera() {
-        if(this.innerWidth <= 576) {
-            this.anaglyph_arc_rotate_camera.alpha = 2.7;       this.anaglyph_arc_rotate_camera.beta = 0.6;      this.anaglyph_arc_rotate_camera.radius = 40;
-
-        } else if(this.innerWidth <= 768) {
-            this.anaglyph_arc_rotate_camera.alpha = 2.7;       this.anaglyph_arc_rotate_camera.beta = 0.6;      this.anaglyph_arc_rotate_camera.radius = 40;
-
-        } else if(this.innerWidth <= 960) {
-            this.anaglyph_arc_rotate_camera.alpha = 2.6;       this.anaglyph_arc_rotate_camera.beta = 0.9;      this.anaglyph_arc_rotate_camera.radius = 70;
-
-        } else if(this.innerWidth <= 1140) {
-            this.anaglyph_arc_rotate_camera.alpha = 2.75;      this.anaglyph_arc_rotate_camera.beta = 1;        this.anaglyph_arc_rotate_camera.radius = 60;
-
-        } else if(this.innerWidth <= 1500) {
-            this.anaglyph_arc_rotate_camera.alpha = 2.55;      this.anaglyph_arc_rotate_camera.beta = 1.1;      this.anaglyph_arc_rotate_camera.radius = 55;
-
-        } else {
-            this.anaglyph_arc_rotate_camera.alpha = 2.25;      this.anaglyph_arc_rotate_camera.beta = 1.05;     this.anaglyph_arc_rotate_camera.radius = 50;
 
         }
     }
@@ -4244,7 +4220,6 @@ export class LaboratoryService {
                 this.engine.resize();
                 if(!this.introduction_closed) {
                     this.set_initialPosition_ArcRotateCamera();
-                    this.set_initialPosition_AnaglyphArcRotateCamera();
                     this.set_initialScreenOffset_ArcRotateCamera();
                 }
             });

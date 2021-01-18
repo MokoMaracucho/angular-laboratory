@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
@@ -132,6 +132,9 @@ import { CameraDatas } from '../shared/models/camera-datas';
 })
 export class DevelopmentComponent implements OnInit, OnDestroy {
 
+    public innerWidth: any;
+    public innerHeight: any;
+
     public language_french = false;
     public language_english = true;
     public language_spanish = false;
@@ -176,6 +179,10 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit(): void {
+        this.innerWidth = window.innerWidth;
+        this.innerHeight = window.innerHeight;
+        this.developmentService.set_windowDimensions(this.innerWidth, this.innerHeight);
+
         this.developmentService.createScene(this.rendererCanvas_development);
         this.developmentService.animate();
 
@@ -213,6 +220,13 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
+    }
+
+    @HostListener('window:resize', ['$event'])
+    onResize(event) {
+        this.innerWidth = window.innerWidth;
+        this.innerHeight = window.innerHeight;
+        this.developmentService.set_windowDimensions(window.innerWidth, window.innerHeight);
     }
 
     private isLoaded_function(): void {

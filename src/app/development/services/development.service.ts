@@ -12,6 +12,9 @@ import { CameraDatas } from '../../shared/models/camera-datas';
 })
 export class DevelopmentService {
 
+    private innerWidth: any;
+    private innerHeight: any;
+
     private canvas: HTMLCanvasElement;
     private engine: BABYLON.Engine;
     private scene: BABYLON.Scene;
@@ -88,6 +91,7 @@ export class DevelopmentService {
     private arrows_MATERIAL: BABYLON.StandardMaterial;
 
     private scene_loaded = false;
+    private introduction_closed = false;
 
     private arc_rotate_camera_clone;
 
@@ -486,6 +490,51 @@ export class DevelopmentService {
             this.arrow_bottom = this.scene.getMeshByName("arrow_bottom");
             this.arrow_bottom.material = this.arrows_MATERIAL;
         });
+    }
+
+    // WINDOW DIMENSIONS
+
+    public set_windowDimensions(width, height) {
+        this.innerWidth = width;
+        this.innerHeight = height;
+    }
+
+    private set_initialPosition_ArcRotateCamera() {
+        if(this.innerWidth <= 576) {
+            this.arc_rotate_camera.alpha = 2.7;       this.arc_rotate_camera.beta = 0.6;      this.arc_rotate_camera.radius = 40;
+
+        } else if(this.innerWidth <= 768) {
+            this.arc_rotate_camera.alpha = 2.7;       this.arc_rotate_camera.beta = 0.6;      this.arc_rotate_camera.radius = 40;
+
+        } else if(this.innerWidth <= 960) {
+            this.arc_rotate_camera.alpha = 2.6;       this.arc_rotate_camera.beta = 0.9;      this.arc_rotate_camera.radius = 70;
+
+        } else if(this.innerWidth <= 1140) {
+            this.arc_rotate_camera.alpha = 2.75;      this.arc_rotate_camera.beta = 1;        this.arc_rotate_camera.radius = 60;
+
+        } else if(this.innerWidth <= 1500) {
+            this.arc_rotate_camera.alpha = 2.55;      this.arc_rotate_camera.beta = 1.1;      this.arc_rotate_camera.radius = 55;
+
+        } else {
+            this.arc_rotate_camera.alpha = 2.25;      this.arc_rotate_camera.beta = 1.05;     this.arc_rotate_camera.radius = 50;
+
+        }
+    }
+
+    private set_initialScreenOffset_ArcRotateCamera() {
+      if(this.innerWidth <= 576) {
+          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, 0);
+      } else if(this.innerWidth <= 768) {
+          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(5, -0.5);
+      } else if(this.innerWidth <= 960) {
+          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(10, -0.5);
+      } else if(this.innerWidth <= 1140) {
+          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(10, 0);
+      } else if(this.innerWidth <= 1500) {
+        this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(11, 1);
+      } else {
+          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(13, 0);
+      }
     }
 
     // IS LOADED
@@ -945,6 +994,10 @@ export class DevelopmentService {
 
             this.windowRef.window.addEventListener('resize', () => {
                 this.engine.resize();
+                if(!this.introduction_closed) {
+                    this.set_initialPosition_ArcRotateCamera();
+                    this.set_initialScreenOffset_ArcRotateCamera();
+                }
             });
         });
     }
