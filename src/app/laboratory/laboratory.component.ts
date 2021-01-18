@@ -7,7 +7,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { LaboratoryService } from './services/laboratory.service';
 import { InteractionService } from './services/interaction.service';
 
-import { ConnectionService } from './services/connection.service';
+import { ConnectionService } from '../shared/services/connection.service';
 
 import { CameraDatas } from '../shared/models/camera-datas';
 
@@ -155,7 +155,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public rendererCanvas_laboratory: ElementRef<HTMLCanvasElement>;
 
     public constructor(
-        private fb: FormBuilder,
+        private formBuilder: FormBuilder,
         private connectionService: ConnectionService,
         private laboratoryService: LaboratoryService,
         readonly interaction: InteractionService

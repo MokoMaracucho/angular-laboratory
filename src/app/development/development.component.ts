@@ -2,8 +2,12 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef, HostListener } fro
 import { Subscription, Subject } from 'rxjs';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+
 import { DevelopmentService } from './services/development.service';
 import { InteractionService } from './services/interaction.service';
+
+import { ConnectionService } from '../shared/services/connection.service';
 
 import { CameraDatas } from '../shared/models/camera-datas';
 
@@ -127,6 +131,12 @@ import { CameraDatas } from '../shared/models/camera-datas';
             state('true', style({opacity: '1'})),
             transition('false => true', [animate('2s')]),
             transition('true => false', [animate('1s')])
+        ]),
+        trigger('isVisible_contactMe', [
+            state('false', style({opacity: '0'})),
+            state('true', style({opacity: '1'})),
+            transition('false => true', [animate('2s')]),
+            transition('true => false', [animate('1s')])
         ])
     ]
 })
@@ -166,16 +176,28 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     public isVisible_babylon = false;
     public isVisible_photoshop = false;
     public isVisible_illustrator = false;
+    public isVisible_contactMe = false;
+
+    public contactForm = new FormGroup({
+      contactFormName: new FormControl(''),
+      contactFormEmail: new FormControl(''),
+      contactFormSubjects: new FormControl(''),
+      contactFormMessage: new FormControl('')
+    });
+
+    public disabledSubmitButton: boolean = true;
 
     public isVisible_cache = false;
 
-    public isVisible_dashBoard = true;
+    public isVisible_dashBoard = false;
     public camera_datas: CameraDatas;
 
     @ViewChild('rendererCanvas_development', { static: true })
     public rendererCanvas_development: ElementRef<HTMLCanvasElement>;
 
     public constructor(
+        private formBuilder: FormBuilder,
+        private connectionService: ConnectionService,
         private developmentService: DevelopmentService,
         readonly interaction: InteractionService
     ) {}
@@ -214,6 +236,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
         this.subscription = this.interaction.open_babylon.subscribe(() => this.open_babylon());
         this.subscription = this.interaction.open_photoshop.subscribe(() => this.open_photoshop());
         this.subscription = this.interaction.open_illustrator.subscribe(() => this.open_illustrator());
+        this.subscription = this.interaction.open_contactMe.subscribe(() => this.open_contactMe());
 
         this.subscription = this.interaction.toogle_cache.subscribe(() => this.toogle_cache());
 
@@ -224,6 +247,16 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.subscription.unsubscribe();
+    }
+
+    onSubmit() {
+      this.connectionService.sendMessage(this.contactForm.value).subscribe(() => {
+        alert('Your message has been sent.');
+        this.contactForm.reset();
+        this.disabledSubmitButton = true;
+      }, error => {
+        console.log('Error', error);
+      });
     }
 
     @HostListener('window:resize', ['$event'])
@@ -452,6 +485,18 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     public close_illustrator(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_illustrator = false;
+        this.toogle_cache();
+    }
+
+    private open_contactMe(): void {
+        setTimeout(() => {
+            this.isVisible_contactMe = true;
+        }, 1000);
+    }
+
+    public close_contactMe(): void {
+        this.developmentService.animation_closeCard();
+        this.isVisible_contactMe = false;
         this.toogle_cache();
     }
 

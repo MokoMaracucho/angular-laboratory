@@ -581,6 +581,88 @@
     </div>
 </div>
 
+<div class="div_card" [style.display]="isVisible_contactMe ? 'block' : 'none'" [@isVisible_contactMe]="isVisible_contactMe">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <div class="div_Head">
+                    <h1 class="h1_card" *ngIf="language_english">CONTACT ME</h1>
+                    <h1 class="h1_card" *ngIf="language_french">ME CONTACTER</h1>
+                    <h1 class="h1_card" *ngIf="language_spanish">CONTÁCTAME</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text_content" *ngIf="language_english">
+                </p>
+                <p class="text_content" *ngIf="language_french">
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+                </p>
+
+                <!-- Default form contact -->
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+                  <div class="form-group">
+                    <label for="contactFormName" class="text-light mt-1">Your name</label>
+                    <input type="text" id="contactFormName" name="contactFormName" formControlName="contactFormName" class="form-control">
+                  </div>
+
+                  <!-- Email -->
+                  <div class="form-group">
+                    <label for="contactFormEmail" class="text-light mt-1">Your email</label>
+                    <input type="email" id="contactFormEmail" name="contactFormEmail" formControlName="contactFormEmail" class="form-control">
+                  </div>
+
+                  <!-- Message -->
+                  <div class="form-group">
+                    <label for="contactFormSubjects" class="text-light mt-1">Why would you like to contact me ? 🤔</label>
+                    <input type="email" id="contactFormSubjects" name="contactFormSubjects" formControlName="contactFormSubjects" class="form-control">
+                  </div>
+
+                  <!-- Message -->
+                  <div class="form-group">
+                    <label for="contactFormMessage" class="text-light mt-1">Your message</label>
+                    <textarea id="contactFormMessage" name="contactFormMessage" formControlName="contactFormMessage" class="form-control"></textarea>
+                  </div>
+
+                  <!-- Send button -->
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-danger mt-1" [disabled]="disabledSubmitButton">
+                        <span *ngIf="language_english">Send</span>
+                        <span *ngIf="language_french">Envoyer</span>
+                        <span *ngIf="language_spanish">Enviar</span>
+                    </button>
+                  </div>
+                </form>
+
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button id="btn_close_contactMe" type="button" class="btn btn-dark mt-3" (click)="close_contactMe()">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="div_cache" [style.display]="isVisible_cache ? 'block' : 'none'">
 </div>
 

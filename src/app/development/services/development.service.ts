@@ -49,6 +49,7 @@ export class DevelopmentService {
     private icon_babylon;
     private icon_photoshop;
     private icon_illustrator;
+    private via_air_mail;
 
     private icon_git_BAKING: BABYLON.Texture;
     private icon_git_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -82,6 +83,8 @@ export class DevelopmentService {
     private icon_photoshop_BAKING_HIGHLIGHT: BABYLON.Texture;
     private icon_illustrator_BAKING: BABYLON.Texture;
     private icon_illustrator_BAKING_HIGHLIGHT: BABYLON.Texture;
+    private via_air_mail_BAKING: BABYLON.Texture;
+    private via_air_mail_BAKING_HIGHLIGHT: BABYLON.Texture;
     private threed_glasses_frame_BAKING: BABYLON.Texture;
     private threed_glasses_frame_BAKING_HIGHLIGHT: BABYLON.Texture;
 
@@ -215,7 +218,11 @@ export class DevelopmentService {
 
         // VIA AIR MAIL
 
+        this.via_air_mail_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/via_air_mail_BAKING.jpg", this.scene, false, false);
+        this.via_air_mail_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/via_air_mail_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
         BABYLON.SceneLoader.ImportMeshAsync("via_air_mail", "../../assets/glb/development/", "via_air_mail.glb").then((result) => {
+          this.via_air_mail = this.scene.getMeshByName("via_air_mail");
         });
 
         // NOTEBOOKS
@@ -567,6 +574,7 @@ export class DevelopmentService {
         this.addActions_IconBabylon();
         this.addActions_IconPhotoshop();
         this.addActions_IconIllustrator();
+        this.addActions_ViaAirMail();
     }
 
     private activation_buttons() {
@@ -586,6 +594,7 @@ export class DevelopmentService {
         this.icon_babylon.isPickable = true;
         this.icon_photoshop.isPickable = true;
         this.icon_illustrator.isPickable = true;
+        this.via_air_mail.isPickable = true;
     }
 
     private desactivation_buttons() {
@@ -605,6 +614,7 @@ export class DevelopmentService {
         this.icon_babylon.isPickable = false;
         this.icon_photoshop.isPickable = false;
         this.icon_illustrator.isPickable = false;
+        this.via_air_mail.isPickable = false;
     }
 
     private addActions_IconPostgresql() {
@@ -925,6 +935,24 @@ export class DevelopmentService {
         );
 
         this.icon_illustrator.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.open_illustrator.next()));
+    }
+
+    private addActions_ViaAirMail() {
+        this.via_air_mail.isPickable = true;
+        this.via_air_mail.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.via_air_mail.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.via_air_mail.material, "albedoTexture", this.via_air_mail_BAKING_HIGHLIGHT));
+        this.via_air_mail.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.via_air_mail.material, "albedoTexture", this.via_air_mail_BAKING));
+
+        this.via_air_mail.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.via_air_mail},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_contactMe.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                ]
+            )
+        );
     }
 
     // ENTER DEVELOPMENT

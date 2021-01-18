@@ -52,5 +52,7 @@ export class InteractionService {
 
     open_illustrator = new Subject<boolean>();
 
+    open_contactMe = new Subject<boolean>();
+
     toogle_cache = new Subject<boolean>();
 }
