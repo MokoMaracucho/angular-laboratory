@@ -51,4 +51,6 @@ export class InteractionService {
     open_photoshop = new Subject<boolean>();
 
     open_illustrator = new Subject<boolean>();
+
+    toogle_cache = new Subject<boolean>();
 }

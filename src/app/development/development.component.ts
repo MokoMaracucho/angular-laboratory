@@ -167,7 +167,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     public isVisible_photoshop = false;
     public isVisible_illustrator = false;
 
-    public isVisible_dashBoard = false;
+    public isVisible_cache = false;
+
+    public isVisible_dashBoard = true;
     public camera_datas: CameraDatas;
 
     @ViewChild('rendererCanvas_development', { static: true })
@@ -213,6 +215,8 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
         this.subscription = this.interaction.open_photoshop.subscribe(() => this.open_photoshop());
         this.subscription = this.interaction.open_illustrator.subscribe(() => this.open_illustrator());
 
+        this.subscription = this.interaction.toogle_cache.subscribe(() => this.toogle_cache());
+
         this.subscription = this.interaction.getCameraDatas_init.subscribe((cameraDatas: CameraDatas) => cameraDatas);
         this.camera_datas = this.developmentService.emitCameraDatas_init();
         this.subscription = this.interaction.getCameraDatas_loop.subscribe(() => this.getCameraDatas_loop());
@@ -237,6 +241,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     public close_introduction(): void {
         this.isVisible_introductionBackground = false;
         this.isVisible_introduction = false;
+        this.toogle_cache();
         this.developmentService.animation_enterDevelopment();
     }
 
@@ -265,8 +270,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_postgresql(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_postgresql = false;
+        this.toogle_cache();
     }
 
     private open_java(): void {
@@ -276,8 +282,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_java(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_java = false;
+        this.toogle_cache();
     }
 
     private open_spring_framework(): void {
@@ -287,8 +294,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_spring_framework(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_spring_framework = false;
+        this.toogle_cache();
     }
 
     private open_maven(): void {
@@ -298,8 +306,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_maven(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_maven = false;
+        this.toogle_cache();
     }
 
     private open_css(): void {
@@ -309,8 +318,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_css(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_css = false;
+        this.toogle_cache();
     }
 
     private open_html(): void {
@@ -320,8 +330,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_html(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_html = false;
+        this.toogle_cache();
     }
 
     private open_bootstrap(): void {
@@ -331,8 +342,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_bootstrap(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_bootstrap = false;
+        this.toogle_cache();
     }
 
     private open_angular(): void {
@@ -342,8 +354,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_angular(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_angular = false;
+        this.toogle_cache();
     }
 
     private open_typescript(): void {
@@ -353,8 +366,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_typescript(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_typescript = false;
+        this.toogle_cache();
     }
 
     private open_postman(): void {
@@ -364,8 +378,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_postman(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_postman = false;
+        this.toogle_cache();
     }
 
     private open_docker(): void {
@@ -375,8 +390,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_docker(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_docker = false;
+        this.toogle_cache();
     }
 
     private open_git(): void {
@@ -386,8 +402,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_git(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_git = false;
+        this.toogle_cache();
     }
 
     private open_blender(): void {
@@ -397,8 +414,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_blender(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_blender = false;
+        this.toogle_cache();
     }
 
     private open_babylon(): void {
@@ -408,8 +426,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_babylon(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_babylon = false;
+        this.toogle_cache();
     }
 
     private open_photoshop(): void {
@@ -419,8 +438,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_photoshop(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_photoshop = false;
+        this.toogle_cache();
     }
 
     private open_illustrator(): void {
@@ -430,8 +450,13 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     public close_illustrator(): void {
-        this.developmentService.animation_close();
+        this.developmentService.animation_closeCard();
         this.isVisible_illustrator = false;
+        this.toogle_cache();
+    }
+
+    private toogle_cache(): void {
+        this.isVisible_cache = !this.isVisible_cache;
     }
 
     private getCameraDatas_loop(): void {

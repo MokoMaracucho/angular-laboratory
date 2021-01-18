@@ -602,6 +602,9 @@
     </div>
 </div>
 
+<div id="div_cache" [style.display]="isVisible_cache ? 'block' : 'none'">
+</div>
+
 <div id="divDashBoard" *ngIf="isVisible_dashBoard">
     <h3>Window</h3>
     <div>
@@ -617,8 +620,5 @@
         <p>Y : <span>{{ camera_datas.y }}</span></p>
         <p>Z : <span>{{ camera_datas.z }}</span></p>
     </div>
-</div>
-
-<div id="div_cache" [style.display]="isVisible_cache ? 'block' : 'none'">
 </div>
 

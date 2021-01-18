@@ -377,11 +377,11 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.toogle_cache();
     }
 
-    private getCameraDatas_loop(): void {
-        this.camera_datas = this.laboratoryService.emitCameraDatas_init();
-    }
-
     private toogle_cache(): void {
         this.isVisible_cache = !this.isVisible_cache;
+    }
+
+    private getCameraDatas_loop(): void {
+        this.camera_datas = this.laboratoryService.emitCameraDatas_init();
     }
 }
