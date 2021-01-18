@@ -345,6 +345,14 @@ export class LaboratoryService {
         this.anaglyph_arc_rotate_camera.upperRadiusLimit = 90;
         this.anaglyph_arc_rotate_camera.attachControl(canvas, true);
 
+        // COLLISIONS
+
+        this.scene.collisionsEnabled = true;
+        this.arc_rotate_camera.checkCollisions = true;
+        this.anaglyph_arc_rotate_camera.checkCollisions = true;
+
+        // PIPE
+
         this.pipeline = new BABYLON.DefaultRenderingPipeline("pipeline", true, this.scene, [this.arc_rotate_camera]);
 
         this.pipeline.samples = 4;
@@ -755,8 +763,13 @@ export class LaboratoryService {
         // WALL LEFT
 
         BABYLON.SceneLoader.ImportMeshAsync("wall_left_front", "../../assets/glb/laboratory/", "wall_left_front.glb", this.scene).then((result) => {
+            this.wall_left_front = this.scene.getMeshByName("wall_left_front");
+            this.wall_left_front.checkCollisions = true;
         });
+
         BABYLON.SceneLoader.ImportMeshAsync("wall_left_back", "../../assets/glb/laboratory/", "wall_left_back.glb", this.scene).then((result) => {
+            this.wall_left_back = this.scene.getMeshByName("wall_left_back");
+            this.wall_left_back.checkCollisions = true;
         });
 
         // MIRROR
@@ -1010,9 +1023,13 @@ export class LaboratoryService {
         // WALL RIGHT
 
         BABYLON.SceneLoader.ImportMeshAsync("wall_right_front", "../../assets/glb/laboratory/", "wall_right_front.glb", this.scene).then((result) => {
+            this.wall_right_front = this.scene.getMeshByName("wall_right_front");
+            this.wall_right_front.checkCollisions = true;
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("wall_right_back", "../../assets/glb/laboratory/", "wall_right_back.glb", this.scene).then((result) => {
+            this.wall_right_back = this.scene.getMeshByName("wall_right_back");
+            this.wall_right_back.checkCollisions = true;
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("baseboard_right", "../../assets/glb/laboratory/", "baseboard_right.glb", this.scene).then((result) => {
