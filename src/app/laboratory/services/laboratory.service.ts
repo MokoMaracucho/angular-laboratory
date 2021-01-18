@@ -432,31 +432,31 @@ export class LaboratoryService {
             this.pop_up_running.isVisible = false;
         });
 
-        let Writer = MeshWriter(this.scene, {scale: 1});
-        let running  = new Writer(
-                        "Running",
-                        {
-                            "anchor": "left",
-                            "letter-height": 0.7,
-                            "letter-thickness": 0.2,
-                            "color": "#000000",
-                            colors:{
-                              diffuse  :"#000000",
-                              specular :"#000000",
-                              ambient  :"#000000",
-                              emissive :"#000000"
-                            },
-                            "position": {
-                              x: -12.3,
-                              y: 2.1,
-                              z: -1.9
-                            }
-                        }
-                    );
-        this.WriterMesh = running.getMesh();
-        this.WriterMesh.rotation.x = -Math.PI/2;
-        this.WriterMesh.rotation.z = Math.PI;
-        this.WriterMesh.isVisible = false;
+        // let Writer = MeshWriter(this.scene, {scale: 1});
+        // let running  = new Writer(
+                        // "Running",
+                        // {
+                            // "anchor": "left",
+                            // "letter-height": 0.7,
+                            // "letter-thickness": 0.2,
+                            // "color": "#000000",
+                            // colors:{
+                              // diffuse  :"#000000",
+                              // specular :"#000000",
+                              // ambient  :"#000000",
+                              // emissive :"#000000"
+                            // },
+                            // "position": {
+                              // x: -12.3,
+                              // y: 2.1,
+                              // z: -1.9
+                            // }
+                        // }
+                    // );
+        // this.WriterMesh = running.getMesh();
+        // this.WriterMesh.rotation.x = -Math.PI/2;
+        // this.WriterMesh.rotation.z = Math.PI;
+        // this.WriterMesh.isVisible = false;
 
         // SPEAKERS
 
@@ -1624,8 +1624,8 @@ export class LaboratoryService {
         this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
         this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
 
-        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
-        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
+        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
+        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
 
         this.pegasus.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus},
@@ -1657,8 +1657,8 @@ export class LaboratoryService {
         this.pegasus_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
         this.pegasus_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
 
-        this.pegasus_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
-        this.pegasus_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
+        // this.pegasus_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
+        // this.pegasus_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
 
         this.pegasus_inside.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_inside},
@@ -1690,8 +1690,8 @@ export class LaboratoryService {
         this.pegasus_laces.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
         this.pegasus_laces.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
 
-        this.pegasus_laces.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
-        this.pegasus_laces.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
+        // this.pegasus_laces.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
+        // this.pegasus_laces.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
 
         this.pegasus_laces.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_laces},
@@ -1723,8 +1723,8 @@ export class LaboratoryService {
         this.pegasus_logo.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
         this.pegasus_logo.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
 
-        this.pegasus_logo.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
-        this.pegasus_logo.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
+        // this.pegasus_logo.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
+        // this.pegasus_logo.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
 
         this.pegasus_logo.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_logo},
@@ -1756,8 +1756,8 @@ export class LaboratoryService {
         this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
         this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
 
-        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
-        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
+        // this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
+        // this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
 
         this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_sole_outside},
@@ -1789,8 +1789,8 @@ export class LaboratoryService {
         this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
         this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
 
-        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
-        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
+        // this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
+        // this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
 
         this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_sole_inside},
