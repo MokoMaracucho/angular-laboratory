@@ -22,6 +22,9 @@ export class DevelopmentService {
     private arc_rotate_camera: BABYLON.ArcRotateCamera;
     private anaglyph_arc_rotate_camera: BABYLON.AnaglyphArcRotateCamera;
 
+    private pipeline: BABYLON.DefaultRenderingPipeline;
+    private rotation;
+
     private hemispheric_light: BABYLON.Light;
 
     private desk;
@@ -133,31 +136,24 @@ export class DevelopmentService {
         this.anaglyph_arc_rotate_camera.attachControl(canvas, true);
         this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, -2);
 
-        var pipeline = new BABYLON.DefaultRenderingPipeline(
-            "pipeline", // The name of the pipeline
-            true, // Do you want the pipeline to use HDR texture?
-            this.scene, // The scene instance
-            [this.arc_rotate_camera] // The list of cameras to be attached to
-        );
+        this.pipeline = new BABYLON.DefaultRenderingPipeline("pipeline", true, this.scene, [this.arc_rotate_camera]);
 
-        pipeline.samples = 4;
-        pipeline.fxaaEnabled = true;
-        pipeline.bloomEnabled = true;
-        pipeline.bloomKernel = 640;
-        pipeline.bloomWeight = 1;
-        pipeline.bloomThreshold = 0.3;
-        pipeline.bloomScale = 0.5;
+        this.pipeline.samples = 4;
+        this.pipeline.fxaaEnabled = true;
+        this.pipeline.bloomEnabled = true;
+        this.pipeline.bloomKernel = 640;
+        this.pipeline.bloomWeight = 1;
+        this.pipeline.bloomThreshold = 0.3;
+        this.pipeline.bloomScale = 0.5;
 
-        pipeline.chromaticAberrationEnabled = true;
-        pipeline.chromaticAberration.aberrationAmount = 30;
-        pipeline.chromaticAberration.radialIntensity = 1;
-        var rotation = 1;
-        pipeline.chromaticAberration.direction.x = Math.sin(rotation);
-        pipeline.chromaticAberration.direction.y = Math.cos(rotation);
+        this.pipeline.chromaticAberrationEnabled = true;
+        this.set_chromaticAberration();
+        this.rotation = 1;
+        this.pipeline.chromaticAberration.direction.x = Math.sin(this.rotation);
+        this.pipeline.chromaticAberration.direction.y = Math.cos(this.rotation);
 
-        pipeline.grainEnabled = true;
-        pipeline.grain.intensity = 7;
-
+        this.pipeline.grainEnabled = true;
+        this.pipeline.grain.intensity = 7;
 
         // LIGHTS
 
@@ -545,9 +541,33 @@ export class DevelopmentService {
       }
     }
 
+    // ABERRATION CHROMATIC AMOUNT
+
+    private set_chromaticAberration():void {
+      if(this.innerWidth <= 576) {
+        this.pipeline.chromaticAberration.aberrationAmount = 15;
+        this.pipeline.chromaticAberration.radialIntensity = 1;
+      } else if(this.innerWidth <= 768) {
+        this.pipeline.chromaticAberration.aberrationAmount = 18;
+        this.pipeline.chromaticAberration.radialIntensity = 1;
+      } else if(this.innerWidth <= 960) {
+        this.pipeline.chromaticAberration.aberrationAmount = 21;
+        this.pipeline.chromaticAberration.radialIntensity = 0.9;
+      } else if(this.innerWidth <= 1140) {
+        this.pipeline.chromaticAberration.aberrationAmount = 24;
+        this.pipeline.chromaticAberration.radialIntensity = 0.8;
+      } else if(this.innerWidth <= 1500) {
+        this.pipeline.chromaticAberration.aberrationAmount = 27;
+        this.pipeline.chromaticAberration.radialIntensity = 0.8;
+      } else {
+        this.pipeline.chromaticAberration.aberrationAmount = 30;
+        this.pipeline.chromaticAberration.radialIntensity = 0.8;
+      }
+    }
+
     // IS LOADED
 
-    private sceneIsLoaded() {
+    private sceneIsLoaded():void {
         if(!this.scene_loaded) {
             this.scene_loaded = true;
             this.interaction.isLoaded.next();
@@ -1095,6 +1115,7 @@ export class DevelopmentService {
                     this.set_initialPosition_ArcRotateCamera();
                     this.set_initialScreenOffset_ArcRotateCamera();
                 }
+                this.set_chromaticAberration();
             });
         });
     }
