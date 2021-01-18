@@ -158,8 +158,6 @@ export class LaboratoryService {
     private spotify_green;
     private spotify_black;
     private projector;
-    private touch_skip_back;
-    private touch_stop;
     private touch_play;
     private touch_pause;
     private touch_skip_forward;
@@ -275,10 +273,6 @@ export class LaboratoryService {
     private youtube_BAKING_HIGHLIGHT: BABYLON.Texture;
     private youtube_play_BAKING: BABYLON.Texture;
     private youtube_play_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private touch_skip_back_BAKING: BABYLON.Texture;
-    private touch_skip_back_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private touch_stop_BAKING: BABYLON.Texture;
-    private touch_stop_BAKING_HIGHLIGHT: BABYLON.Texture;
     private touch_play_BAKING: BABYLON.Texture;
     private touch_play_BAKING_HIGHLIGHT: BABYLON.Texture;
     private touch_pause_BAKING: BABYLON.Texture;
@@ -1328,12 +1322,6 @@ export class LaboratoryService {
             // }
         // });
 
-        this.touch_skip_back_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_back_BAKING.jpg", this.scene, false, false);
-        this.touch_skip_back_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_back_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.touch_stop_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_stop_BAKING.jpg", this.scene, false, false);
-        this.touch_stop_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_stop_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
         this.touch_play_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_play_BAKING.jpg", this.scene, false, false);
         this.touch_play_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_play_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
 
@@ -1342,16 +1330,6 @@ export class LaboratoryService {
 
         this.touch_skip_forward_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_forward_BAKING.jpg", this.scene, false, false);
         this.touch_skip_forward_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_forward_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("touch_skip_back", "../../assets/glb/laboratory/", "touch_skip_back.glb").then((result) => {
-            this.touch_skip_back = this.scene.getMeshByName("touch_skip_back");
-            this.touch_skip_back.isVisible = false;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("touch_stop", "../../assets/glb/laboratory/", "touch_stop.glb").then((result) => {
-            this.touch_stop = this.scene.getMeshByName("touch_stop");
-            this.touch_stop.isVisible = false;
-        });
 
         BABYLON.SceneLoader.ImportMeshAsync("touch_play", "../../assets/glb/laboratory/", "touch_play.glb").then((result) => {
             this.touch_play = this.scene.getMeshByName("touch_play");
@@ -1516,8 +1494,6 @@ export class LaboratoryService {
         this.addActions_SpainRed();
         this.addActions_SpainYellow();
         this.addActions_Projector();
-        this.addActions_TouchSkipBack();
-        this.addActions_TouchStop();
         this.addActions_TouchPlay();
         this.addActions_TouchPause();
         this.addActions_TouchSkipForward();
@@ -3762,16 +3738,12 @@ export class LaboratoryService {
     }
 
     private activation_buttonsProjector() {
-        this.touch_skip_back.isPickable = true;
-        this.touch_stop.isPickable = true;
         this.touch_play.isPickable = true;
         this.touch_pause.isPickable = true;
         this.touch_skip_forward.isPickable = true;
     }
 
     private desactivation_buttonsProjector() {
-        this.touch_skip_back.isPickable = false;
-        this.touch_stop.isPickable = false;
         this.touch_play.isPickable = false;
         this.touch_pause.isPickable = false;
         this.touch_skip_forward.isPickable = false;
@@ -3809,33 +3781,8 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.projector},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.touch_skip_back.isVisible = true),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
-                ]
-            )
-        );
-    }
-
-    private addActions_TouchSkipBack() {
-        this.touch_skip_back.isPickable = false;
-        this.touch_skip_back.actionManager = new BABYLON.ActionManager(this.scene);
-
-        this.touch_skip_back.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_skip_back.material, "albedoTexture", this.touch_skip_back_BAKING_HIGHLIGHT));
-        this.touch_skip_back.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_skip_back.material, "albedoTexture", this.touch_skip_back_BAKING));
-    }
-
-    private addActions_TouchStop() {
-        this.touch_stop.isPickable = false;
-        this.touch_stop.actionManager = new BABYLON.ActionManager(this.scene);
-
-        this.touch_stop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_stop.material, "albedoTexture", this.touch_stop_BAKING_HIGHLIGHT));
-        this.touch_stop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_stop.material, "albedoTexture", this.touch_stop_BAKING));
-
-        this.touch_stop.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.touch_stop},
-                [
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.video_TEXTURE.video.stop())
                 ]
             )
         );
@@ -3935,13 +3882,13 @@ export class LaboratoryService {
         this.touch_skip_forward.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.touch_skip_forward},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.switch_trailer(this.trailer_position))
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.switch_trailer_forward(this.trailer_position))
                 ]
             )
         );
     }
 
-    private switch_trailer(trailer_position) {
+    private switch_trailer_forward(trailer_position) {
       switch(trailer_position) {
         case 1:
           if(!this.all_video_textures_loaded) {
@@ -4002,7 +3949,6 @@ export class LaboratoryService {
           this.projector.material = this.projector_MATERIAL;
           this.enter_the_void_TEXTURE.video.play();
           this.trailer_position = 1;
-          this.all_video_textures_loaded = true;
           break;
       }
     }
@@ -4119,7 +4065,7 @@ export class LaboratoryService {
     private animation_targetCameraPosition_openMovies() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetCameraPosition_openMovies', this.arc_rotate_camera, 'lockedTarget', 15, 30, this.arc_rotate_camera.lockedTarget, new BABYLON.Vector3(-32.4, 7, -13.5), 0, ease, () => this.interaction.toogle_cache.next());
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetCameraPosition_openMovies', this.arc_rotate_camera, 'lockedTarget', 15, 30, this.arc_rotate_camera.lockedTarget, new BABYLON.Vector3(-32.4, 12, -7), 0, ease, () => this.interaction.toogle_cache.next());
     }
 
     // CLOSE MOVIES
@@ -4241,15 +4187,11 @@ export class LaboratoryService {
                 this.scene.executeWhenReady(() => this.sceneIsLoaded());
                 if(this.arc_rotate_camera.position.x < -34 && this.scene_loaded) {
                   this.projector.isPickable = false;
-                  this.touch_skip_back.isVisible = false;
-                  this.touch_stop.isVisible = false;
                   this.touch_play.isVisible = false;
                   this.touch_pause.isVisible = false;
                   this.touch_skip_forward.isVisible = false;
                 } else if(this.arc_rotate_camera.position.x >= -34 && this.scene_loaded){
                   this.projector.isPickable = true;
-                  this.touch_skip_back.isVisible = true;
-                  this.touch_stop.isVisible = true;
                   this.touch_play.isVisible = true;
                   this.touch_pause.isVisible = true;
                   this.touch_skip_forward.isVisible = true;
