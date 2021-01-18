@@ -40,7 +40,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <button id="btn_close_introduction" type="button" class="btn btn-dark mt-3" (click)="close_introduction()" [disabled]="isLoaded == false" [@btnCloseIntroduction_fadeIn]="btnCloseIntroduction_fadeIn">
+                <button id="btn_close_introduction" type="button" class="btn btn-primary mt-3" (click)="close_introduction()" [disabled]="isLoaded == false" [@btnCloseIntroduction_fadeIn]="btnCloseIntroduction_fadeIn">
                     <span *ngIf="language_english">Enter</span>
                     <span *ngIf="language_french">Entrer</span>
                     <span *ngIf="language_spanish">Entrar</span>
@@ -563,6 +563,11 @@
 </div>
 
 <div id="divDashBoard" *ngIf="isVisible_dashBoard">
+  <h3>Window</h3>
+  <div>
+      <p>Width : <span>{{ innerWidth }}</span></p>
+      <p>Height : <span>{{ innerHeight }}</span></p>
+  </div>
     <h3>Camera</h3>
     <div>
         <p>Alpha : <span>{{ camera_datas.alpha }}</span></p>

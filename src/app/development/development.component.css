@@ -34,14 +34,14 @@
     font-family: Peace-Sans-Webfont;
     font-size: 80px;
     line-height: 65px;
-    color: #6f8800;
+    color: #D5CC00CC;
 }
 
 .span_webDeveloper {
     margin-top: -50;
     font-family: Peace-Sans-Webfont;
     font-size: 24px;
-    color: #8D6A00;
+    color: #007CB1CC;
 }
 
 .text_introduction {
@@ -49,8 +49,14 @@
     text-align: justify;
 }
 
+/* BADGES */
+
 .span_language {
     cursor: pointer;
+}
+
+.badge {
+  background-color: #777777;
 }
 
 /* CARDS */

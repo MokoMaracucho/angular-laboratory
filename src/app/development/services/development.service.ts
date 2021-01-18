@@ -111,16 +111,17 @@ export class DevelopmentService {
 
         // CANERAS
 
-        this.arc_rotate_camera = new BABYLON.ArcRotateCamera("arc_rotate_camera", 2.25, 1.05, 50, new BABYLON.Vector3(0, 5, 0), this.scene);
+        this.arc_rotate_camera = new BABYLON.ArcRotateCamera("arc_rotate_camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), this.scene);
+        this.set_initialPosition_ArcRotateCamera();
         this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-4, 10, 5);
         this.arc_rotate_camera.lowerBetaLimit = -0.4;
         this.arc_rotate_camera.upperBetaLimit = 1.65;
         this.arc_rotate_camera.lowerRadiusLimit = 20;
         this.arc_rotate_camera.upperRadiusLimit = 65;
         this.arc_rotate_camera.attachControl(canvas, true);
-        this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, -2);
+        this.set_initialScreenOffset_ArcRotateCamera();
 
-        this.anaglyph_arc_rotate_camera = new BABYLON.AnaglyphArcRotateCamera("anaglyph_arc_rotate_camera", 2.25, 1.05, 50, new BABYLON.Vector3(0, 5, 0), 0.1, this.scene);
+        this.anaglyph_arc_rotate_camera = new BABYLON.AnaglyphArcRotateCamera("anaglyph_arc_rotate_camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), 0.1, this.scene);
         this.anaglyph_arc_rotate_camera.lockedTarget =  new BABYLON.Vector3(-4, 10, 5);
         this.anaglyph_arc_rotate_camera.lowerBetaLimit = -0.4;
         this.anaglyph_arc_rotate_camera.upperBetaLimit = 1.65;
@@ -501,10 +502,10 @@ export class DevelopmentService {
 
     private set_initialPosition_ArcRotateCamera() {
         if(this.innerWidth <= 576) {
-            this.arc_rotate_camera.alpha = 2.7;       this.arc_rotate_camera.beta = 0.6;      this.arc_rotate_camera.radius = 40;
+          this.arc_rotate_camera.alpha = 2.5;       this.arc_rotate_camera.beta = 0.6;      this.arc_rotate_camera.radius = 65;
 
         } else if(this.innerWidth <= 768) {
-            this.arc_rotate_camera.alpha = 2.7;       this.arc_rotate_camera.beta = 0.6;      this.arc_rotate_camera.radius = 40;
+            this.arc_rotate_camera.alpha = 2.5;       this.arc_rotate_camera.beta = 0.6;      this.arc_rotate_camera.radius = 65;
 
         } else if(this.innerWidth <= 960) {
             this.arc_rotate_camera.alpha = 2.6;       this.arc_rotate_camera.beta = 0.9;      this.arc_rotate_camera.radius = 70;
@@ -513,7 +514,7 @@ export class DevelopmentService {
             this.arc_rotate_camera.alpha = 2.75;      this.arc_rotate_camera.beta = 1;        this.arc_rotate_camera.radius = 60;
 
         } else if(this.innerWidth <= 1500) {
-            this.arc_rotate_camera.alpha = 2.55;      this.arc_rotate_camera.beta = 1.1;      this.arc_rotate_camera.radius = 55;
+          this.arc_rotate_camera.alpha = 2.4;      this.arc_rotate_camera.beta = 0.85;        this.arc_rotate_camera.radius = 64;
 
         } else {
             this.arc_rotate_camera.alpha = 2.25;      this.arc_rotate_camera.beta = 1.05;     this.arc_rotate_camera.radius = 50;
@@ -523,17 +524,17 @@ export class DevelopmentService {
 
     private set_initialScreenOffset_ArcRotateCamera() {
       if(this.innerWidth <= 576) {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, 0);
+          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, -2);
       } else if(this.innerWidth <= 768) {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(5, -0.5);
+          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(1, -2);
       } else if(this.innerWidth <= 960) {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(10, -0.5);
+          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(7, -0.5);
       } else if(this.innerWidth <= 1140) {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(10, 0);
+          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(7, 0);
       } else if(this.innerWidth <= 1500) {
-        this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(11, 1);
+        this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, -1);
       } else {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(13, 0);
+          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(9, 0);
       }
     }
 
