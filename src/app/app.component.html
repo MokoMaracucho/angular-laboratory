@@ -7,10 +7,16 @@
     <div id="navbarNav" class="collapse navbar-collapse">
         <ul class="navbar-nav">
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link pr-2" [routerLink]="['/laboratory']" [style.color]="laboratory_isActive ? '#C1C1C1CC' : '#C1C1C177'" [style.font-family]="laboratory_isActive ? 'Roboto-Bold' : 'Roboto-Regular'" [style.color:hover]="'red'" (click)="cleanUp_development()">Laboratory</a>
+                <a class="nav-link pr-2" [routerLink]="['/laboratory']" [style.color:active]="'#C1C1C1CC' : '#C1C1C177'" [style.font-family:active]="'Roboto-Bold' : 'Roboto-Regular'" [style.color:hover]="'red'" (click)="cleanUp_development()">Laboratory</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link pl-2 pr-2" [routerLink]="['/development']" [style.color]="development_isActive ? '#C1C1C1CC' : '#C1C1C177'" [style.font-family]="development_isActive ? 'Roboto-Bold' : 'Roboto-Regular'" (click)="cleanUp_laboratory()">Development</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="disable nav-link pl-2 pr-2" [routerLink]="['/shareKnowledge']" [style.color]="'#C1C1C144'" [style.font-family]="shareKnowledge_isActive ? 'Roboto-Bold' : 'Roboto-Regular'" (click)="cleanUp_shareKnowledge()">Tutorials</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="disable nav-link pl-2 pr-2" [routerLink]="['/photography']" [style.color]="'#C1C1C144'" [style.font-family]="photography_isActive ? 'Roboto-Bold' : 'Roboto-Regular'" (click)="cleanUp_photography()">Photography</a>
             </li>
         </ul>
     </div>
