@@ -6,12 +6,18 @@ nav {
 }
 
 nav ul li a   {
+  font-family: Roboto-Regular;
   font-size: 18px;
+  color: #C1C1C177;
   opacity: 0.8;
 }
 
+.active .nav-link {
+  color: red;
+}
+
 nav ul li a:hover   {
-  color:red;
+  color:white;
 }
 
 .disable {
