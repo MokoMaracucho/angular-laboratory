@@ -1083,14 +1083,14 @@ export class DevelopmentService {
     }
 
     public getCameraDatas_dashBoard() {
-        this.dashBoardCameraDatas = {
-            alpha: this.arc_rotate_camera.alpha,
-            beta: this.arc_rotate_camera.beta,
-            radius: this.arc_rotate_camera.radius,
-            x: this.arc_rotate_camera.position.x,
-            y: this.arc_rotate_camera.position.y,
-            z: this.arc_rotate_camera.position.z
-        }
+        // this.dashBoardCameraDatas = {
+            // alpha: this.arc_rotate_camera.alpha,
+            // beta: this.arc_rotate_camera.beta,
+            // radius: this.arc_rotate_camera.radius,
+            // x: this.arc_rotate_camera.position.x,
+            // y: this.arc_rotate_camera.position.y,
+            // z: this.arc_rotate_camera.position.z
+        // }
     }
 
     public animate(): void {

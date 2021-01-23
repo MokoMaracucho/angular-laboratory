@@ -330,6 +330,9 @@ export class LaboratoryService {
 
         this.universal_camera = new BABYLON.UniversalCamera("universal_camera", new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), this.scene);
         this.universal_camera.target = new BABYLON.Vector3(-16.2, 5, -12);
+        this.universal_camera.touchAngularSensibility = 0.02;
+        this.universal_camera.speed = 0.7;
+        this.universal_camera.invertRotation = false;
         this.universal_camera.attachControl(canvas, true);
         this.set_initialScreenOffset_UniversalCamera();
 
@@ -4192,14 +4195,14 @@ export class LaboratoryService {
     }
 
     public getCameraDatas_dashBoard() {
-        // this.dashBoardCameraDatas = {
-            // alpha: this.arc_rotate_camera.alpha,
-            // beta: this.arc_rotate_camera.beta,
-            // radius: this.arc_rotate_camera.radius,
-            // x: this.arc_rotate_camera.position.x,
-            // y: this.arc_rotate_camera.position.y,
-            // z: this.arc_rotate_camera.position.z
-        // }
+        this.dashBoardCameraDatas = {
+            x: this.universal_camera.position.x,
+            y: this.universal_camera.position.y,
+            z: this.universal_camera.position.z,
+            target_x: this.universal_camera.target.x,
+            target_y: this.universal_camera.target.y,
+            target_z: this.universal_camera.target.z
+        }
     }
 
     public animate(): void {
