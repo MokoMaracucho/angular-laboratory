@@ -22,7 +22,7 @@ export class LaboratoryService {
     private engine: BABYLON.Engine;
     private scene: BABYLON.Scene;
 
-    private arc_rotate_camera: BABYLON.ArcRotateCamera;
+    private universal_camera: BABYLON.UniversalCamera;
     private anaglyph_arc_rotate_camera: BABYLON.AnaglyphArcRotateCamera;
 
     private pipeline: BABYLON.DefaultRenderingPipeline;
@@ -328,15 +328,10 @@ export class LaboratoryService {
 
         // CANERAS
 
-        this.arc_rotate_camera = new BABYLON.ArcRotateCamera("arc_rotate_camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), this.scene);
-        this.set_initialPosition_ArcRotateCamera();
-        this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
-        this.arc_rotate_camera.lowerBetaLimit = -0.5;
-        this.arc_rotate_camera.upperBetaLimit = 1.55;
-        this.arc_rotate_camera.lowerRadiusLimit = 5;
-        this.arc_rotate_camera.upperRadiusLimit = 90;
-        this.arc_rotate_camera.attachControl(canvas, true);
-        this.set_initialScreenOffset_ArcRotateCamera();
+        this.universal_camera = new BABYLON.UniversalCamera("universal_camera", new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), this.scene);
+        this.universal_camera.target = new BABYLON.Vector3(-16.2, 5, -12);
+        this.universal_camera.attachControl(canvas, true);
+        this.set_initialScreenOffset_UniversalCamera();
 
         this.anaglyph_arc_rotate_camera = new BABYLON.AnaglyphArcRotateCamera("anaglyph_arc_rotate_camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), 0.1, this.scene);
         this.anaglyph_arc_rotate_camera.lowerBetaLimit = -0.5;
@@ -348,12 +343,12 @@ export class LaboratoryService {
         // COLLISIONS
 
         this.scene.collisionsEnabled = true;
-        this.arc_rotate_camera.checkCollisions = true;
+        this.universal_camera.checkCollisions = true;
         this.anaglyph_arc_rotate_camera.checkCollisions = true;
 
         // PIPE
 
-        this.pipeline = new BABYLON.DefaultRenderingPipeline("pipeline", true, this.scene, [this.arc_rotate_camera]);
+        this.pipeline = new BABYLON.DefaultRenderingPipeline("pipeline", true, this.scene, [this.universal_camera]);
 
         this.pipeline.samples = 4;
         this.pipeline.fxaaEnabled = true;
@@ -1402,41 +1397,19 @@ export class LaboratoryService {
         this.innerHeight = height;
     }
 
-    private set_initialPosition_ArcRotateCamera() {
-        if(this.innerWidth <= 576) {
-            this.arc_rotate_camera.alpha = 2.7;       this.arc_rotate_camera.beta = 0.6;      this.arc_rotate_camera.radius = 40;
-
-        } else if(this.innerWidth <= 768) {
-            this.arc_rotate_camera.alpha = 2.7;       this.arc_rotate_camera.beta = 0.6;      this.arc_rotate_camera.radius = 40;
-
-        } else if(this.innerWidth <= 960) {
-            this.arc_rotate_camera.alpha = 2.6;       this.arc_rotate_camera.beta = 0.9;      this.arc_rotate_camera.radius = 70;
-
-        } else if(this.innerWidth <= 1140) {
-            this.arc_rotate_camera.alpha = 2.75;      this.arc_rotate_camera.beta = 1;        this.arc_rotate_camera.radius = 60;
-
-        } else if(this.innerWidth <= 1500) {
-            this.arc_rotate_camera.alpha = 2.55;      this.arc_rotate_camera.beta = 1.1;      this.arc_rotate_camera.radius = 55;
-
-        } else {
-            this.arc_rotate_camera.alpha = 2.25;      this.arc_rotate_camera.beta = 1.05;     this.arc_rotate_camera.radius = 50;
-
-        }
-    }
-
-    private set_initialScreenOffset_ArcRotateCamera() {
+    private set_initialScreenOffset_UniversalCamera() {
       if(this.innerWidth <= 576) {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, 0);
+          this.universal_camera.ellipsoidOffset = new BABYLON.Vector3(0, 0);
       } else if(this.innerWidth <= 768) {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(5, -0.5);
+          this.universal_camera.ellipsoidOffset = new BABYLON.Vector3(5, -0.5);
       } else if(this.innerWidth <= 960) {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(10, -0.5);
+          this.universal_camera.ellipsoidOffset = new BABYLON.Vector3(10, -0.5);
       } else if(this.innerWidth <= 1140) {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(10, 0);
+          this.universal_camera.ellipsoidOffset = new BABYLON.Vector3(10, 0);
       } else if(this.innerWidth <= 1500) {
-        this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(11, 1);
+        this.universal_camera.ellipsoidOffset = new BABYLON.Vector3(11, 1);
       } else {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(13, 0);
+          this.universal_camera.ellipsoidOffset = new BABYLON.Vector3(13, 0);
       }
     }
 
@@ -1658,7 +1631,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1691,7 +1664,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1724,7 +1697,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1757,7 +1730,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1790,7 +1763,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1823,7 +1796,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1847,7 +1820,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_shareKnowledge.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1871,7 +1844,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_shareKnowledge.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1916,7 +1889,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -1961,7 +1934,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2006,7 +1979,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2051,7 +2024,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2096,7 +2069,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2141,7 +2114,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2186,7 +2159,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2231,7 +2204,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2276,7 +2249,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2321,7 +2294,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2366,7 +2339,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2411,7 +2384,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2456,7 +2429,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2502,7 +2475,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2547,7 +2520,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2574,7 +2547,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_games.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2627,7 +2600,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_games.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2654,7 +2627,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2681,7 +2654,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2708,7 +2681,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2729,7 +2702,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_art.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2750,7 +2723,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_art.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2771,7 +2744,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_contactMe.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2807,7 +2780,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2843,7 +2816,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2879,7 +2852,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2915,7 +2888,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2951,7 +2924,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2987,7 +2960,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3023,7 +2996,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3059,7 +3032,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3095,7 +3068,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3131,7 +3104,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3152,7 +3125,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3196,7 +3169,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3238,7 +3211,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3280,7 +3253,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3322,7 +3295,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3364,7 +3337,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3406,7 +3379,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3448,7 +3421,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3487,7 +3460,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3830,7 +3803,7 @@ export class LaboratoryService {
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -4004,144 +3977,145 @@ export class LaboratoryService {
     // ENTER LABORATORY
 
     public animation_enterLaboratory() {
-        this.animation_cameraPosition_enterLaboratory();
-        this.animation_targetScreenOffset_enterLaboratory();
+        // this.animation_cameraPosition_enterLaboratory();
+        // this.animation_targetScreenOffset_enterLaboratory();
         this.introduction_closed = true;
+        // this.interaction.toogle_cache.next()
     }
 
     private animation_cameraPosition_enterLaboratory() {
-        const ease = new BABYLON.CubicEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterLaboratory', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.get_positionCamera_enterLaboratory(), 0, ease);
+        // const ease = new BABYLON.CubicEase();
+        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        // BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterLaboratory', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.get_positionCamera_enterLaboratory(), 0, ease);
     }
 
-    private get_positionCamera_enterLaboratory(): BABYLON.Vector3 {
-        if(this.innerWidth <= 576) {
-            return new BABYLON.Vector3(-57.00209934436164, 60.54865740597145, 45.78183748516181);
-        } else if(this.innerWidth <= 768) {
-            return new BABYLON.Vector3(-23.233695295682036, 42.938761097973696, 46.381247278745704);
-        } else if(this.innerWidth <= 960) {
-            return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
-        } else if(this.innerWidth <= 1140) {
-            return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
-        } else if(this.innerWidth <= 1500) {
-            return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
-        } else {
-            return new BABYLON.Vector3(-20.220454501261877, 26.68576493813795, 21.37067338632216);
-        }
-    }
+    // private get_positionCamera_enterLaboratory(): BABYLON.Vector3 {
+        // if(this.innerWidth <= 576) {
+            // return new BABYLON.Vector3(-57.00209934436164, 60.54865740597145, 45.78183748516181);
+        // } else if(this.innerWidth <= 768) {
+            // return new BABYLON.Vector3(-23.233695295682036, 42.938761097973696, 46.381247278745704);
+        // } else if(this.innerWidth <= 960) {
+            // return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
+        // } else if(this.innerWidth <= 1140) {
+            // return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
+        // } else if(this.innerWidth <= 1500) {
+            // return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
+        // } else {
+            // return new BABYLON.Vector3(-20.220454501261877, 26.68576493813795, 21.37067338632216);
+        // }
+    // }
 
     private animation_targetScreenOffset_enterLaboratory() {
-        const ease = new BABYLON.CubicEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(2, -1), 0, ease, () => this.interaction.toogle_cache.next());
+        // const ease = new BABYLON.CubicEase();
+        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        // BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(2, -1), 0, ease, () => this.interaction.toogle_cache.next());
     }
 
     // OPEN CARDS
 
     private animation_openCard() {
-        this.animation_cameraPosition_openCard();
-        this.animation_targetScreenOffset_openCard();
-        this.desactivation_buttons();
+        // this.animation_cameraPosition_openCard();
+        // this.animation_targetScreenOffset_openCard();
+        // this.desactivation_buttons();
     }
 
     private animation_cameraPosition_openCard() {
-        this.arc_rotate_camera_clone = this.arc_rotate_camera.position.clone();
-        const ease = new BABYLON.CubicEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_openCard', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.get_positionCamera_openCard(), 0, ease);
+        // this.arc_rotate_camera_clone = this.arc_rotate_camera.position.clone();
+        // const ease = new BABYLON.CubicEase();
+        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        // BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_openCard', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.get_positionCamera_openCard(), 0, ease);
     }
 
-    private get_positionCamera_openCard(): BABYLON.Vector3 {
-        if(this.innerWidth <= 576) {
-            return new BABYLON.Vector3(-50.65007800566379, 47.233077592451984, 13.183056196512112);
-        } else if(this.innerWidth <= 768) {
-            return new BABYLON.Vector3(-52.3410593253664, 58.85694487174785, 14.276335682616303);
-        } else if(this.innerWidth <= 960) {
-            return new BABYLON.Vector3(-57.04992146287326, 39.949376044454034, 14.642339769040099);
-        } else if(this.innerWidth <= 1140) {
-            return new BABYLON.Vector3(-60.62313059142518, 48.64356558951404, 19.878532715863148);
-        } else if(this.innerWidth <= 1500) {
-            return new BABYLON.Vector3(-58.38337660286841, 36.651254667701544, 33.99949253333725);
-        } else {
-            return new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514);
-        }
-    }
+    // private get_positionCamera_openCard(): BABYLON.Vector3 {
+        // if(this.innerWidth <= 576) {
+            // return new BABYLON.Vector3(-50.65007800566379, 47.233077592451984, 13.183056196512112);
+        // } else if(this.innerWidth <= 768) {
+            // return new BABYLON.Vector3(-52.3410593253664, 58.85694487174785, 14.276335682616303);
+        // } else if(this.innerWidth <= 960) {
+            // return new BABYLON.Vector3(-57.04992146287326, 39.949376044454034, 14.642339769040099);
+        // } else if(this.innerWidth <= 1140) {
+            // return new BABYLON.Vector3(-60.62313059142518, 48.64356558951404, 19.878532715863148);
+        // } else if(this.innerWidth <= 1500) {
+            // return new BABYLON.Vector3(-58.38337660286841, 36.651254667701544, 33.99949253333725);
+        // } else {
+            // return new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514);
+        // }
+    // }
 
     private animation_targetScreenOffset_openCard() {
-        const ease = new BABYLON.CubicEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(10, 1), 0, ease, () => this.interaction.toogle_cache.next());
+        // const ease = new BABYLON.CubicEase();
+        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        // BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(10, 1), 0, ease, () => this.interaction.toogle_cache.next());
     }
 
     // CLOSE CARDS
 
     public animation_closeCard() {
-        this.animation_cameraPosition_closeCard();
-        this.animation_targetScreenOffset_closeCard();
-        this.activation_buttons();
+        // this.animation_cameraPosition_closeCard();
+        // this.animation_targetScreenOffset_closeCard();
+        // this.activation_buttons();
     }
 
     private animation_cameraPosition_closeCard() {
-        const ease = new BABYLON.CubicEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_closeCard', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.arc_rotate_camera_clone, 0, ease);
+        // const ease = new BABYLON.CubicEase();
+        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        // BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_closeCard', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.arc_rotate_camera_clone, 0, ease);
     }
 
     private animation_targetScreenOffset_closeCard() {
-        const ease = new BABYLON.CubicEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, 0), 0, ease, () => this.interaction.toogle_cache.next());
+        // const ease = new BABYLON.CubicEase();
+        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        // BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, 0), 0, ease, () => this.interaction.toogle_cache.next());
     }
 
     // OPEN MOVIES
 
     public animation_openMovies() {
-        this.arc_rotate_camera_clone = this.arc_rotate_camera.position.clone();
-        this.animation_cameraPosition_openMovies();
-        this.animation_targetCameraPosition_openMovies();
-        this.desactivation_buttons();
-        this.activation_buttonsProjector();
+        // this.arc_rotate_camera_clone = this.arc_rotate_camera.position.clone();
+        // this.animation_cameraPosition_openMovies();
+        // this.animation_targetCameraPosition_openMovies();
+        // this.desactivation_buttons();
+        // this.activation_buttonsProjector();
     }
 
     private animation_cameraPosition_openMovies() {
-        const ease = new BABYLON.CubicEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_openMovies', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(0, 22, -3), 0, ease);
+        // const ease = new BABYLON.CubicEase();
+        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        // BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_openMovies', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(0, 22, -3), 0, ease);
     }
 
     private animation_targetCameraPosition_openMovies() {
-        const ease = new BABYLON.CubicEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetCameraPosition_openMovies', this.arc_rotate_camera, 'lockedTarget', 15, 30, this.arc_rotate_camera.lockedTarget, new BABYLON.Vector3(-32.4, 12, -7), 0, ease, () => this.interaction.toogle_cache.next());
+        // const ease = new BABYLON.CubicEase();
+        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        // BABYLON.Animation.CreateAndStartAnimation('animation_targetCameraPosition_openMovies', this.arc_rotate_camera, 'lockedTarget', 15, 30, this.arc_rotate_camera.lockedTarget, new BABYLON.Vector3(-32.4, 12, -7), 0, ease, () => this.interaction.toogle_cache.next());
     }
 
     // CLOSE MOVIES
 
     public animation_closeMovies() {
-      this.animation_cameraPosition_closeMovies();
-      this.animation_targetCameraPosition_closeMovies();
-      this.activation_buttons();
-      this.desactivation_buttonsProjector();
+      // this.animation_cameraPosition_closeMovies();
+      // this.animation_targetCameraPosition_closeMovies();
+      // this.activation_buttons();
+      // this.desactivation_buttonsProjector();
   }
 
   private animation_cameraPosition_closeMovies() {
-      const ease = new BABYLON.CubicEase();
-      ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-      BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_closeMovies', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.arc_rotate_camera_clone, 0, ease);
+      // const ease = new BABYLON.CubicEase();
+      // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+      // BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_closeMovies', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.arc_rotate_camera_clone, 0, ease);
   }
 
   private animation_targetCameraPosition_closeMovies() {
-      const ease = new BABYLON.CubicEase();
-      ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-      BABYLON.Animation.CreateAndStartAnimation('animation_targetCameraPosition_closeMovies', this.arc_rotate_camera, 'lockedTarget', 15, 30, this.arc_rotate_camera.lockedTarget, new BABYLON.Vector3(-16.2, 5, -12), 0, ease, () => this.interaction.toogle_cache.next());
+      // const ease = new BABYLON.CubicEase();
+      // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+      // BABYLON.Animation.CreateAndStartAnimation('animation_targetCameraPosition_closeMovies', this.arc_rotate_camera, 'lockedTarget', 15, 30, this.arc_rotate_camera.lockedTarget, new BABYLON.Vector3(-16.2, 5, -12), 0, ease, () => this.interaction.toogle_cache.next());
   }
 
     // SWITCH CAMERA
 
     public animation_switch_camera() {
         if(!this.anaglyph_activated) {
-          this.arc_rotate_camera_clone = this.arc_rotate_camera.position;
+          // this.arc_rotate_camera_clone = this.arc_rotate_camera.position;
           this.scene.setActiveCameraByName("anaglyph_arc_rotate_camera");
           this.anaglyph_arc_rotate_camera.position = this.arc_rotate_camera_clone;
           this.anaglyph_arc_rotate_camera.attachControl(this.canvas, true);
@@ -4151,8 +4125,8 @@ export class LaboratoryService {
         } else {
           this.anaglyph_arc_rotate_camera_clone = this.anaglyph_arc_rotate_camera.position;
           this.scene.setActiveCameraByName("arc_rotate_camera");
-          this.arc_rotate_camera.position = this.anaglyph_arc_rotate_camera_clone;
-          this.arc_rotate_camera.attachControl(this.canvas, true);
+          // this.arc_rotate_camera.position = this.anaglyph_arc_rotate_camera_clone;
+          // this.arc_rotate_camera.attachControl(this.canvas, true);
           this.anaglyph_activated = false;
           this.interaction.toogle_anaglyph_activated.next();
           this.activation_buttons();
@@ -4160,15 +4134,15 @@ export class LaboratoryService {
     }
 
     private animation_arcRotateCamera_to_anaglyphArcRotateCamera() {
-        const ease = new BABYLON.CubicEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_arcRotateCamera_to_anaglyphArcRotateCamera', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(-16.2, 20, 40), 0, ease, () => this.switch_camera());
+        // const ease = new BABYLON.CubicEase();
+        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        // BABYLON.Animation.CreateAndStartAnimation('animation_arcRotateCamera_to_anaglyphArcRotateCamera', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(-16.2, 20, 40), 0, ease, () => this.switch_camera());
     }
 
     private animation_offset_to_anaglyphOffset() {
-        const ease = new BABYLON.CubicEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_offset_to_anaglyphOffset', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, 0), 0, ease);
+        // const ease = new BABYLON.CubicEase();
+        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        // BABYLON.Animation.CreateAndStartAnimation('animation_offset_to_anaglyphOffset', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, 0), 0, ease);
     }
 
     private animation_anaglyphArcRotateCamera_to_arcRotateCamera() {
@@ -4186,16 +4160,16 @@ export class LaboratoryService {
     private switch_camera() {
       if(!this.anaglyph_activated) {
           this.scene.setActiveCameraByName("anaglyph_arc_rotate_camera");
-          this.anaglyph_arc_rotate_camera.alpha = this.arc_rotate_camera.alpha;
-          this.anaglyph_arc_rotate_camera.beta = this.arc_rotate_camera.beta;
-          this.anaglyph_arc_rotate_camera.radius = this.arc_rotate_camera.radius;
+          // this.anaglyph_arc_rotate_camera.alpha = this.arc_rotate_camera.alpha;
+          // this.anaglyph_arc_rotate_camera.beta = this.arc_rotate_camera.beta;
+          // this.anaglyph_arc_rotate_camera.radius = this.arc_rotate_camera.radius;
           this.anaglyph_arc_rotate_camera.lockedTarget = new BABYLON.Vector2(0, 0);
           this.anaglyph_activated = true;
           this.interaction.toogle_anaglyph_activated.next();
           this.desactivation_buttons();
       } else {
-          this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
-          this.arc_rotate_camera.position = new BABYLON.Vector3(-16.2, 20, 40);
+          // this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
+          // this.arc_rotate_camera.position = new BABYLON.Vector3(-16.2, 20, 40);
           this.scene.setActiveCameraByName("arc_rotate_camera");
           this.anaglyph_activated = false;
           this.interaction.toogle_anaglyph_activated.next();
@@ -4218,14 +4192,14 @@ export class LaboratoryService {
     }
 
     public getCameraDatas_dashBoard() {
-        this.dashBoardCameraDatas = {
-            alpha: this.arc_rotate_camera.alpha,
-            beta: this.arc_rotate_camera.beta,
-            radius: this.arc_rotate_camera.radius,
-            x: this.arc_rotate_camera.position.x,
-            y: this.arc_rotate_camera.position.y,
-            z: this.arc_rotate_camera.position.z
-        }
+        // this.dashBoardCameraDatas = {
+            // alpha: this.arc_rotate_camera.alpha,
+            // beta: this.arc_rotate_camera.beta,
+            // radius: this.arc_rotate_camera.radius,
+            // x: this.arc_rotate_camera.position.x,
+            // y: this.arc_rotate_camera.position.y,
+            // z: this.arc_rotate_camera.position.z
+        // }
     }
 
     public animate(): void {
@@ -4233,12 +4207,12 @@ export class LaboratoryService {
             const rendererLoopCallback = () => {
                 this.scene.render();
                 this.scene.executeWhenReady(() => this.sceneIsLoaded());
-                if(this.arc_rotate_camera.position.x < -34 && this.scene_loaded) {
+                if(this.universal_camera.position.x < -34 && this.scene_loaded) {
                   this.projector.isPickable = false;
                   this.touch_play.isVisible = false;
                   this.touch_pause.isVisible = false;
                   this.touch_skip_forward.isVisible = false;
-                } else if(this.arc_rotate_camera.position.x >= -34 && this.scene_loaded){
+                } else if(this.universal_camera.position.x >= -34 && this.scene_loaded){
                   this.projector.isPickable = true;
                   this.touch_play.isVisible = true;
                   this.touch_pause.isVisible = true;
@@ -4258,8 +4232,8 @@ export class LaboratoryService {
             this.windowRef.window.addEventListener('resize', () => {
                 this.engine.resize();
                 if(!this.introduction_closed) {
-                    this.set_initialPosition_ArcRotateCamera();
-                    this.set_initialScreenOffset_ArcRotateCamera();
+                    // this.set_initialPosition_ArcRotateCamera();
+                    // this.set_initialScreenOffset_ArcRotateCamera();
                 }
                 this.set_chromaticAberration();
             });

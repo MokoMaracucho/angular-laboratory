@@ -146,7 +146,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       }
     }
 
-    public isVisible_cache = false;
+    // public isVisible_cache = false;
 
     public isVisible_dashBoard = false;
     public camera_datas: CameraDatas;
@@ -191,7 +191,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.subscription = this.interaction.open_travel.subscribe(() => this.open_travel());
         this.subscription = this.interaction.open_movies.subscribe(() => this.open_movies());
 
-        this.subscription = this.interaction.toogle_cache.subscribe(() => this.toogle_cache());
+        // this.subscription = this.interaction.toogle_cache.subscribe(() => this.toogle_cache());
 
         this.subscription = this.interaction.getCameraDatas_init.subscribe((cameraDatas: CameraDatas) => cameraDatas);
         this.camera_datas = this.laboratoryService.emitCameraDatas_init();
@@ -227,7 +227,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public close_introduction(): void {
         this.isVisible_introductionBackground = false;
         this.isVisible_introduction = false;
-        this.toogle_cache();
+        // this.toogle_cache();
         this.laboratoryService.animation_enterLaboratory();
     }
 
@@ -258,7 +258,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public close_running(): void {
         this.laboratoryService.animation_closeCard();
         this.isVisible_running = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_shareKnowledge(): void {
@@ -270,7 +270,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public close_shareKnowledge(): void {
         this.laboratoryService.animation_closeCard();
         this.isVisible_shareKnowledge = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_photography(): void {
@@ -282,7 +282,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public close_photography(): void {
         this.laboratoryService.animation_closeCard();
         this.isVisible_photography = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_games(): void {
@@ -294,7 +294,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public close_games(): void {
         this.laboratoryService.animation_closeCard();
         this.isVisible_games = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_stereoscopy(): void {
@@ -306,7 +306,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public close_stereoscopy(): void {
         this.laboratoryService.animation_closeCard();
         this.isVisible_stereoscopy = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     public animation_switch_camera(): void {
@@ -326,7 +326,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public close_art(): void {
         this.laboratoryService.animation_closeCard();
         this.isVisible_art = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_contactMe(): void {
@@ -338,7 +338,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public close_contactMe(): void {
         this.laboratoryService.animation_closeCard();
         this.isVisible_contactMe = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_development(): void {
@@ -350,7 +350,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public close_development(): void {
         this.laboratoryService.animation_closeCard();
         this.isVisible_development = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_travel(): void {
@@ -362,7 +362,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public close_travel(): void {
         this.laboratoryService.animation_closeCard();
         this.isVisible_travel = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_movies(): void {
@@ -374,12 +374,12 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public close_movies(): void {
         this.laboratoryService.animation_closeMovies();
         this.isVisible_movies = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
-    private toogle_cache(): void {
-        this.isVisible_cache = !this.isVisible_cache;
-    }
+    // private toogle_cache(): void {
+        // this.isVisible_cache = !this.isVisible_cache;
+    // }
 
     private getCameraDatas_loop(): void {
         this.camera_datas = this.laboratoryService.emitCameraDatas_init();

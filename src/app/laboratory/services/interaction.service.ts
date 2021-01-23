@@ -42,5 +42,5 @@ export class InteractionService {
 
     open_movies = new Subject<boolean>();
 
-    toogle_cache = new Subject<boolean>();
+    // toogle_cache = new Subject<boolean>();
 }
