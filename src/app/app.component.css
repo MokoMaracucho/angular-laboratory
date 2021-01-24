@@ -2,29 +2,14 @@ nav {
   z-index: 10;
   position: absolute;
   width: 100%;
-  background-color: #00000033;
 }
 
-.navbar-toggle .icon-bar {
-  background: white;
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-.navbar-toggle:hover,
-.navbar-toggle.is-active {
-  background: white !important;
-}
-
-.navbar-toggle:hover .icon-bar,
-.navbar-toggle.is-active .icon-bar {
-  background: #F4511e !important;
-}
-
-.navbar-toggle:focus {
-  background: #F4511e;
-}
-
-.navbar-toggle:focus .icon-bar {
-  background: #FFF;
+.navbar-toggler {
+  border-color: #BBBBBBAA;
 }
 
 nav ul li a   {
