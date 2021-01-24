@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light" [style.background]="isCollapsed ? '#00000033' : '#000000EE'">
+<nav class="navbar navbar-expand-lg navbar-light" [@isCollapsed]="isCollapsed">
     <a class="navbar-brand" href="#"><img id="logo_moko" class="" src="../assets/img/logos/moko/logo_moko.svg" alt="logo_moko" height=35></a>
 
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="navbarNav">

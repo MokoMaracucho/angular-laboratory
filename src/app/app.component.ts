@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import { DevelopmentService } from './development/services/development.service';
 import { LaboratoryService } from './laboratory/services/laboratory.service';
@@ -6,7 +7,15 @@ import { LaboratoryService } from './laboratory/services/laboratory.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+      trigger('isCollapsed', [
+          state('false', style({background: '#000000EE'})),
+          state('true', style({background: '#00000033'})),
+          transition('false => true', [animate('0.2s')]),
+          transition('true => false', [animate('0.2s')])
+      ])
+  ]
 })
 export class AppComponent {
 
