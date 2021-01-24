@@ -336,8 +336,7 @@ export class LaboratoryService {
 
         this.universal_camera = new BABYLON.UniversalCamera("universal_camera", new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), this.scene);
         this.universal_camera.target = new BABYLON.Vector3(0, -1, -12);
-        this.universal_camera.touchAngularSensibility = 1;
-        this.universal_camera.touchMoveSensibility = 100;
+        this.universal_camera.touchAngularSensibility = 10000;
         this.universal_camera.speed = 0.7;
         this.universal_camera.invertRotation = false;
         this.universal_camera.attachControl(canvas, true);
@@ -1560,6 +1559,9 @@ export class LaboratoryService {
         this.spotify_black.isPickable = true;
         this.pop_up_running.isPickable = true;
         this.projector.isPickable = true;
+        this.touch_play.isPickable = true;
+        this.touch_pause.isPickable = true;
+        this.touch_skip_forward.isPickable = true;
     }
 
     private desactivation_buttons() {
@@ -1613,6 +1615,9 @@ export class LaboratoryService {
         this.spotify_black.isPickable = false;
         this.pop_up_running.isPickable = false;
         this.projector.isPickable = false;
+        this.touch_play.isPickable = false;
+        this.touch_pause.isPickable = false;
+        this.touch_skip_forward.isPickable = false;
     }
 
     private addActions_Pegasus() {
@@ -3821,7 +3826,7 @@ export class LaboratoryService {
     }
 
     private addActions_TouchPlay() {
-        this.touch_play.isPickable = false;
+        this.touch_play.isPickable = true;
         this.touch_play.actionManager = new BABYLON.ActionManager(this.scene);
 
         this.touch_play.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_play.material, "albedoTexture", this.touch_play_BAKING_HIGHLIGHT));
@@ -3863,7 +3868,7 @@ export class LaboratoryService {
     }
 
     private addActions_TouchPause() {
-        this.touch_pause.isPickable = false;
+        this.touch_pause.isPickable = true;
         this.touch_pause.actionManager = new BABYLON.ActionManager(this.scene);
 
         this.touch_pause.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_pause.material, "albedoTexture", this.touch_pause_BAKING_HIGHLIGHT));
@@ -3905,7 +3910,7 @@ export class LaboratoryService {
     }
 
     private addActions_TouchSkipForward() {
-        this.touch_skip_forward.isPickable = false;
+        this.touch_skip_forward.isPickable = true;
         this.touch_skip_forward.actionManager = new BABYLON.ActionManager(this.scene);
 
         this.touch_skip_forward.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_skip_forward.material, "albedoTexture", this.touch_skip_forward_BAKING_HIGHLIGHT));
@@ -3928,6 +3933,8 @@ export class LaboratoryService {
           }
           this.projector_MATERIAL.diffuseTexture = this.pi_TEXTURE;
           this.projector.material = this.projector_MATERIAL;
+          this.enter_the_void_TEXTURE.video.pause();
+          this.pi_TEXTURE.video.currentTime = 0;
           this.pi_TEXTURE.video.play();
           this.trailer_position++;
           break;
@@ -3937,6 +3944,8 @@ export class LaboratoryService {
           }
           this.projector_MATERIAL.diffuseTexture = this.eternal_sunshine_TEXTURE;
           this.projector.material = this.projector_MATERIAL;
+          this.pi_TEXTURE.video.pause();
+          this.eternal_sunshine_TEXTURE.video.currentTime = 0;
           this.eternal_sunshine_TEXTURE.video.play();
           this.trailer_position++;
           break;
@@ -3946,6 +3955,8 @@ export class LaboratoryService {
           }
           this.projector_MATERIAL.diffuseTexture = this.odyssee_espace_TEXTURE;
           this.projector.material = this.projector_MATERIAL;
+          this.eternal_sunshine_TEXTURE.video.pause();
+          this.odyssee_espace_TEXTURE.video.currentTime = 0;
           this.odyssee_espace_TEXTURE.video.play();
           this.trailer_position++;
           break;
@@ -3955,6 +3966,8 @@ export class LaboratoryService {
           }
           this.projector_MATERIAL.diffuseTexture = this.zero_theorem_TEXTURE;
           this.projector.material = this.projector_MATERIAL;
+          this.odyssee_espace_TEXTURE.video.pause();
+          this.zero_theorem_TEXTURE.video.currentTime = 0;
           this.zero_theorem_TEXTURE.video.play();
           this.trailer_position++;
           break;
@@ -3964,6 +3977,8 @@ export class LaboratoryService {
           }
           this.projector_MATERIAL.diffuseTexture = this.shining_TEXTURE;
           this.projector.material = this.projector_MATERIAL;
+          this.zero_theorem_TEXTURE.video.pause();
+          this.shining_TEXTURE.video.currentTime = 0;
           this.shining_TEXTURE.video.play();
           this.trailer_position++;
           break;
@@ -3973,12 +3988,16 @@ export class LaboratoryService {
           }
           this.projector_MATERIAL.diffuseTexture = this.la_haine_TEXTURE;
           this.projector.material = this.projector_MATERIAL;
+          this.shining_TEXTURE.video.pause();
+          this.la_haine_TEXTURE.video.currentTime = 0;
           this.la_haine_TEXTURE.video.play();
           this.trailer_position++;
           break;
         case 7:
           this.projector_MATERIAL.diffuseTexture = this.enter_the_void_TEXTURE;
           this.projector.material = this.projector_MATERIAL;
+          this.la_haine_TEXTURE.video.pause();
+          this.enter_the_void_TEXTURE.video.currentTime = 0;
           this.enter_the_void_TEXTURE.video.play();
           this.trailer_position = 1;
           break;
