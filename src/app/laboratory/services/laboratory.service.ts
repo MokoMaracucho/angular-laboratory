@@ -329,12 +329,12 @@ export class LaboratoryService {
         // CANERAS
 
         this.universal_camera = new BABYLON.UniversalCamera("universal_camera", new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), this.scene);
-        this.universal_camera.target = new BABYLON.Vector3(-16.2, 5, -12);
-        this.universal_camera.touchAngularSensibility = 0.02;
+        this.universal_camera.target = new BABYLON.Vector3(0, -1, -12);
+        this.universal_camera.touchAngularSensibility = 1;
+        this.universal_camera.touchMoveSensibility = 100;
         this.universal_camera.speed = 0.7;
         this.universal_camera.invertRotation = false;
         this.universal_camera.attachControl(canvas, true);
-        this.set_initialScreenOffset_UniversalCamera();
 
         this.anaglyph_arc_rotate_camera = new BABYLON.AnaglyphArcRotateCamera("anaglyph_arc_rotate_camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), 0.1, this.scene);
         this.anaglyph_arc_rotate_camera.lowerBetaLimit = -0.5;
@@ -3980,16 +3980,16 @@ export class LaboratoryService {
     // ENTER LABORATORY
 
     public animation_enterLaboratory() {
-        // this.animation_cameraPosition_enterLaboratory();
-        // this.animation_targetScreenOffset_enterLaboratory();
+        this.animation_cameraPosition_enterLaboratory();
+        this.animation_targetScreenOffset_enterLaboratory();
         this.introduction_closed = true;
         // this.interaction.toogle_cache.next()
     }
 
     private animation_cameraPosition_enterLaboratory() {
-        // const ease = new BABYLON.CubicEase();
-        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        // BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterLaboratory', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.get_positionCamera_enterLaboratory(), 0, ease);
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterLaboratory', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(-16.5, 9, 15), 0, ease);
     }
 
     // private get_positionCamera_enterLaboratory(): BABYLON.Vector3 {
@@ -4009,9 +4009,9 @@ export class LaboratoryService {
     // }
 
     private animation_targetScreenOffset_enterLaboratory() {
-        // const ease = new BABYLON.CubicEase();
-        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        // BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(2, -1), 0, ease, () => this.interaction.toogle_cache.next());
+        const ease = new BABYLON.CubicEase();
+        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-16.5, 5, -12), 0, ease);
     }
 
     // OPEN CARDS
