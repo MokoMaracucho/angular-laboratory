@@ -272,14 +272,14 @@
 
 @media (min-width: 10px) {
     .text_content {
-      max-height: 300px;
+      max-height: 250px;
       width: auto;
     }
 }
 
 @media (min-width: 576px) {
     .text_content {
-      max-height: 300px;
+      max-height: 250px;
       width: auto;
     }
 }
@@ -345,4 +345,3 @@
     height: 100%;
     background-color: #00000000;
 }
-
