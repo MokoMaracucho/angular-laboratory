@@ -326,6 +326,12 @@ export class LaboratoryService {
         this.engine = new BABYLON.Engine(this.canvas, true, { stencil: true });
         this.scene = new BABYLON.Scene(this.engine);
 
+        this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP;
+        this.scene.fogDensity = 0.003;
+        this.scene.fogStart = 1000.0;
+        this.scene.fogEnd = 3000.0;
+        this.scene.fogColor = BABYLON.Color3.FromHexString("#261043");
+
         // CANERAS
 
         this.universal_camera = new BABYLON.UniversalCamera("universal_camera", new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), this.scene);
@@ -383,6 +389,8 @@ export class LaboratoryService {
         BABYLON.SceneLoader.ImportMeshAsync("plan_inside", "../../assets/glb/laboratory/", "plan_inside.glb").then((result) => {
         });
         BABYLON.SceneLoader.ImportMeshAsync("plan_outside", "../../assets/glb/laboratory/", "plan_outside.glb").then((result) => {
+        });
+        BABYLON.SceneLoader.ImportMeshAsync("dome", "../../assets/glb/laboratory/", "dome.glb").then((result) => {
         });
 
         // FLOOR
@@ -3127,7 +3135,7 @@ export class LaboratoryService {
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.world_map},
                 [
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_travel.next()),
                     // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )

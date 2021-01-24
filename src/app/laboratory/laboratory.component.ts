@@ -250,9 +250,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     private open_running(): void {
-        setTimeout(() => {
-            this.isVisible_running = true;
-        }, 1000);
+        this.isVisible_running = true;
     }
 
     public close_running(): void {
@@ -262,9 +260,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     private open_shareKnowledge(): void {
-        setTimeout(() => {
-            this.isVisible_shareKnowledge = true;
-        }, 1000);
+        this.isVisible_shareKnowledge = true;
     }
 
     public close_shareKnowledge(): void {
@@ -274,9 +270,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     private open_photography(): void {
-        setTimeout(() => {
-            this.isVisible_photography = true;
-        }, 1000);
+        this.isVisible_photography = true;
     }
 
     public close_photography(): void {
@@ -286,9 +280,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     private open_games(): void {
-        setTimeout(() => {
-            this.isVisible_games = true;
-        }, 1000);
+        this.isVisible_games = true;
     }
 
     public close_games(): void {
@@ -298,9 +290,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     private open_stereoscopy(): void {
-        setTimeout(() => {
-            this.isVisible_stereoscopy = true;
-        }, 1000);
+        this.isVisible_stereoscopy = true;
     }
 
     public close_stereoscopy(): void {
@@ -318,9 +308,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     private open_art(): void {
-        setTimeout(() => {
-            this.isVisible_art = true;
-        }, 1000);
+        this.isVisible_art = true;
     }
 
     public close_art(): void {
@@ -330,9 +318,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     private open_contactMe(): void {
-        setTimeout(() => {
-            this.isVisible_contactMe = true;
-        }, 1000);
+        this.isVisible_contactMe = true;
     }
 
     public close_contactMe(): void {
@@ -342,9 +328,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     private open_development(): void {
-        setTimeout(() => {
-            this.isVisible_development = true;
-        }, 1000);
+        this.isVisible_development = true;
     }
 
     public close_development(): void {
@@ -354,9 +338,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     private open_travel(): void {
-        setTimeout(() => {
-            this.isVisible_travel = true;
-        }, 1000);
+        this.isVisible_travel = true;
     }
 
     public close_travel(): void {
@@ -366,9 +348,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
 
     private open_movies(): void {
-        setTimeout(() => {
-            this.isVisible_movies = true;
-        }, 1000);
+        this.isVisible_movies = true;
     }
 
     public close_movies(): void {
