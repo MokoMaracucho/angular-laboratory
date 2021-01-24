@@ -5,6 +5,28 @@ nav {
   background-color: #00000033;
 }
 
+.navbar-toggle .icon-bar {
+  background: white;
+}
+
+.navbar-toggle:hover,
+.navbar-toggle.is-active {
+  background: white !important;
+}
+
+.navbar-toggle:hover .icon-bar,
+.navbar-toggle.is-active .icon-bar {
+  background: #F4511e !important;
+}
+
+.navbar-toggle:focus {
+  background: #F4511e;
+}
+
+.navbar-toggle:focus .icon-bar {
+  background: #FFF;
+}
+
 nav ul li a   {
   font-family: Roboto-Regular;
   font-size: 18px;

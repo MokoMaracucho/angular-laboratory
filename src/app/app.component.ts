@@ -10,7 +10,7 @@ import { LaboratoryService } from './laboratory/services/laboratory.service';
 })
 export class AppComponent {
 
-  public photography_isCreated = false;
+  public isCollapsed = true;
 
   constructor(
       private developmentService: DevelopmentService,

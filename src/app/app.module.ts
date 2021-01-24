@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +24,7 @@ import { WindowRefService } from './shared/services/window-ref.service';
         BrowserAnimationsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        NgbModule,
         LaboratoryModule,
         DevelopmentModule,
         AppRoutingModule
