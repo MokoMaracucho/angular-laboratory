@@ -302,6 +302,13 @@
     }
 }
 
+/* SPANS DEVELOPMENT */
+
+.span_development {
+    font-size: 12px;
+    padding-left: 20px;
+}
+
 /* DASH BOARD */
 
 #divDashBoard {

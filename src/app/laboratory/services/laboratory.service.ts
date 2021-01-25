@@ -1518,7 +1518,7 @@ export class LaboratoryService {
         this.addActions_ThreedGlassRed();
         this.addActions_AmorAmor();
         this.addActions_AmorAmorFrame();
-        this.addActions_ViaAirMail();
+        // this.addActions_ViaAirMail();
         this.addActions_Keyboard();
         this.addActions_KeyboardKeyboard();
         this.addActions_MacMini();
@@ -1591,7 +1591,7 @@ export class LaboratoryService {
         this.threed_glass_red.isPickable = true;
         this.amor_amor.isPickable = true;
         this.amor_amor_frame.isPickable = true;
-        this.via_air_mail.isPickable = true;
+        // this.via_air_mail.isPickable = true;
         this.mac_mini.isPickable = true;
         this.laptop.isPickable = true;
         this.laptop_keyboard.isPickable = true;
@@ -1644,7 +1644,7 @@ export class LaboratoryService {
         this.threed_glass_red.isPickable = false;
         this.amor_amor.isPickable = false;
         this.amor_amor_frame.isPickable = false;
-        this.via_air_mail.isPickable = false;
+        // this.via_air_mail.isPickable = false;
         this.mac_mini.isPickable = false;
         this.laptop.isPickable = false;
         this.laptop_keyboard.isPickable = false;

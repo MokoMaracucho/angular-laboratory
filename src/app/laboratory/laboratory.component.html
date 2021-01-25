@@ -166,10 +166,6 @@
                 Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
               </p>
               <p class="text_content" *ngIf="language_french">
-                Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
               </p>
               <p class="text_content" *ngIf="language_spanish">
                 Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
@@ -433,6 +429,7 @@
     </div>
 </div>
 
+<!--
 <div class="div_card" [style.display]="isVisible_contactMe ? 'block' : 'none'" [@isVisible_contactMe]="isVisible_contactMe">
     <div class="container_card container">
         <div class="row">
@@ -453,7 +450,6 @@
                 <p class="text_content" *ngIf="language_spanish">
                 </p>
 
-                <!-- Default form contact -->
                 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
 
                   <div class="form-group">
@@ -461,25 +457,21 @@
                     <input type="text" id="contactFormName" name="contactFormName" formControlName="contactFormName" class="form-control">
                   </div>
 
-                  <!-- Email -->
                   <div class="form-group">
                     <label for="contactFormEmail" class="text-light mt-1">Your email</label>
                     <input type="email" id="contactFormEmail" name="contactFormEmail" formControlName="contactFormEmail" class="form-control">
                   </div>
 
-                  <!-- Message -->
                   <div class="form-group">
                     <label for="contactFormSubjects" class="text-light mt-1">Why would you like to contact me ? 🤔</label>
                     <input type="email" id="contactFormSubjects" name="contactFormSubjects" formControlName="contactFormSubjects" class="form-control">
                   </div>
 
-                  <!-- Message -->
                   <div class="form-group">
                     <label for="contactFormMessage" class="text-light mt-1">Your message</label>
                     <textarea id="contactFormMessage" name="contactFormMessage" formControlName="contactFormMessage" class="form-control"></textarea>
                   </div>
 
-                  <!-- Send button -->
                   <div class="form-group">
                     <button type="submit" class="btn btn-danger mt-1" [disabled]="disabledSubmitButton">
                         <span *ngIf="language_english">Send</span>
@@ -514,6 +506,7 @@
         </div>
     </div>
 </div>
+-->
 
 <div class="div_card" [style.display]="isVisible_development ? 'block' : 'none'" [@isVisible_development]="isVisible_development">
     <div class="container_card container">
@@ -525,24 +518,86 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" *ngIf="!isCV">
                 <p class="text_content" *ngIf="language_english">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
+                  Unleash your creativity! <br/>
+                  Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas. <br/>
+                  > Back-office development (Spring), <br/>
+                  > Front-office (Angular), <br/>
+                  > Managing your data,<br/>
+                  > Configuration and securing of your servers, <br/>
+                  > 3D programming and modeling
                 </p>
                 <p class="text_content" *ngIf="language_french">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
+                  Liberez votre créativité !<br/>
+                  Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.<br/>
+                  > Développement Back-office (Spring),<br/>
+                  > Front-office (Angular),<br/>
+                  > Gestion de vos données,<br/>
+                  > Configuration et sécurisation de vos serveurs,<br/>
+                  > Programmation et modélisation 3D
                 </p>
                 <p class="text_content" *ngIf="language_spanish">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
+                  ¡Da rienda suelta a tu creatividad! <br/>
+                  Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas. <br/>
+                  > Desarrollo de back-office (primavera), <br/>
+                  > Front-office (Angular), <br/>
+                  > Gestionar sus datos,<br/>
+                  > Configuración y protección de sus servidores, <br/>
+                  > Programación y modelado 3D
+                </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
+            </div>
+            <div class="col-12" *ngIf="isCV">
+                <p class="text_content" *ngIf="language_english">
+                  Guided by a desire for independence, I became interested in all aspects of building a website:<br/>
+                  > Back-office development :<br/>
+                  <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
+                  > Front-office development :<br/>
+                  <span class="span_development">HTML - CSS - Bootstrap - Javascript - Angular</span><br/>
+                  > Data bases<br/>
+                  <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
+                  > Configuration and securing of your servers :<br/>
+                  <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
+                  > 3D programming and modeling :<br/>
+                  <span class="span_development">3Ds Max - Blender - BabylonJS</span>
+                </p>
+                <p class="text_content" *ngIf="language_french">
+                  Guidé par une volonté d'indépendance, je me suis intéressé à tous les aspects de la réalisation d'un site Web :<br/>
+                  > Développement Back-office (Spring),<br/>
+                  <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
+                  > Développement Front-office (Angular),<br/>
+                  <span class="span_development">HTML - CSS - Bootstrap - Javascript - Angular</span><br/>
+                  > Bases de données,<br/>
+                  <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
+                  > Configuration et sécurisation de vos serveurs,<br/>
+                  <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
+                  > Programmation et modélisation 3D<br/>
+                  <span class="span_development">3Ds Max - Blender - BabylonJS</span>
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+                  Guiado por un deseo de independencia, me interesé en todos los aspectos de la construcción de un sitio web:<br/>
+                  > Desarrollo de back-office (primavera) :<br/>
+                  <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
+                  > Front-office (Angular) :<br/>
+                  <span class="span_development">HTML - CSS - Bootstrap - Javascript - Angular</span><br/>
+                  > Bases de datos :<br/>
+                  <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
+                  > Configuración y protección de sus servidores :<br/>
+                  <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
+                  > Programación y modelado 3D :<br/>
+                  <span class="span_development">3Ds Max - Blender - BabylonJS</span>
                 </p>
                 <div *ngIf="language_english">
                     <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
