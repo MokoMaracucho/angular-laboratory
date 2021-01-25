@@ -209,22 +209,19 @@
         <div class="row">
             <div class="col-12">
                 <p class="text_content" *ngIf="language_english">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
+                  Street photographer, my desire is to show the beauty of the things that surround us and that the frenzy of our urban lives does not leave us time to contemplate.<br/>
+                  Light and colors at the service of emotions, such is my conception of photography!<br/>
+                  Dedicated site to come.
                 </p>
                 <p class="text_content" *ngIf="language_french">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
+                  Photographe de rue, ma volonté est de montrer la beauté des choses qui nous entourent et que la frénésie de nos vies urbaines ne nous laisse le temps de contempler.<br/>
+                  La lumière et les couleurs aux service deémotions, telle est ma conception de la photographie !<br/>
+                  Site dédié à venir.
                 </p>
                 <p class="text_content" *ngIf="language_spanish">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
+                  Fotografo callejero, mi deseo es mostrar la belleza de las cosas que nos rodean y que el frenesí de nuestra vida urbana no nos deje tiempo para contemplar.<br/>
+                  La luz y los colores al servicio de las emociones, ¡tal es mi concepción de la fotografía!<br/>
+                  Sitio dedicado por venir.
                 </p>
                 <div *ngIf="language_english">
                     <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -709,7 +706,8 @@
     </div>
 </div>
 
-<div class="div_card" [style.display]="isVisible_movies ? 'block' : 'none'" [@isVisible_movies]="isVisible_movies">
+<!--
+<div id="div_movies">
     <div class="container_card container">
         <div class="row">
             <div class="col-12">
@@ -762,7 +760,15 @@
             </div>
         </div>
     </div>
-</div>
+    -->
+    <button id="btn_close_movies" type="button" class="btn btn-primary mr-2 mb-2" (click)="close_movies()" [style.display]="isVisible_movies ? 'block' : 'none'" [@isVisible_movies]="isVisible_movies">
+        <span *ngIf="language_english">Close</span>
+        <span *ngIf="language_french">Fermer</span>
+        <span *ngIf="language_spanish">Cerrar</span>
+    </button>
+<!--
+  </div>
+-->
 
 <!--
 <div id="div_cache" [style.display]="isVisible_cache ? 'block' : 'none'">

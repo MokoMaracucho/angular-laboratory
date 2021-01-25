@@ -309,6 +309,21 @@
     padding-left: 20px;
 }
 
+/* */
+
+#div_movies {
+    z-index: 4;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#btn_close_movies {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
 /* DASH BOARD */
 
 #divDashBoard {

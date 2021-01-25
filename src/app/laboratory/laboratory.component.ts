@@ -133,7 +133,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
     public anaglyph_activated = false;
 
-    private isCV: boolean;
+    public isCV: boolean;
 
     public contactForm = new FormGroup({
       contactFormName: new FormControl(''),
