@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { ActivatedRoute } from '@angular/router';
 
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
+import { AppComponent } from '../app.component';
 import { LaboratoryService } from './services/laboratory.service';
 import { InteractionService } from './services/interaction.service';
 
@@ -131,6 +133,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
     public anaglyph_activated = false;
 
+    private isCV: boolean;
+
     public contactForm = new FormGroup({
       contactFormName: new FormControl(''),
       contactFormEmail: new FormControl(''),
@@ -156,7 +160,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
     public constructor(
         private formBuilder: FormBuilder,
+        private activatedRoute: ActivatedRoute,
         private connectionService: ConnectionService,
+        private appComponent: AppComponent,
         private laboratoryService: LaboratoryService,
         readonly interaction: InteractionService
     ) {}
@@ -165,6 +171,12 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.innerWidth = window.innerWidth;
         this.innerHeight = window.innerHeight;
         this.laboratoryService.set_windowDimensions(this.innerWidth, this.innerHeight);
+
+        this.isCV = this.activatedRoute.snapshot.params.isCV;
+        if(!this.isCV) {
+          this.isCV = false;
+        }
+        this.laboratoryService.set_isCV(this.isCV);
 
         this.laboratoryService.createScene(this.rendererCanvas_laboratory);
         this.laboratoryService.animate();
@@ -235,18 +247,21 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.language_english = true;
         this.language_french = false;
         this.language_spanish = false;
+        this.appComponent.change_language_english();
     }
 
     private change_language_french(): void {
         this.language_english = false;
         this.language_french = true;
         this.language_spanish = false;
+        this.appComponent.change_language_french();
     }
 
     private change_language_spanish(): void {
         this.language_english = false;
         this.language_french = false;
         this.language_spanish = true;
+        this.appComponent.change_language_spanish();
     }
 
     private open_running(): void {

@@ -21,6 +21,10 @@ export class AppComponent {
 
   public isCollapsed = true;
 
+  public language_french = false;
+  public language_english = true;
+  public language_spanish = false;
+
   constructor(
       private developmentService: DevelopmentService,
       private laboratoryService: LaboratoryService
@@ -40,5 +44,23 @@ export class AppComponent {
 
   public cleanUp_shareKnowledge() {
       // this.photographyService.cleanUp();
+  }
+
+  public change_language_english(): void {
+      this.language_english = true;
+      this.language_french = false;
+      this.language_spanish = false;
+  }
+
+  public change_language_french(): void {
+      this.language_english = false;
+      this.language_french = true;
+      this.language_spanish = false;
+  }
+
+  public change_language_spanish(): void {
+      this.language_english = false;
+      this.language_french = false;
+      this.language_spanish = true;
   }
 }

@@ -31,6 +31,13 @@ export class LaboratoryService {
     private hemispheric_light: BABYLON.Light;
     private directional_light: BABYLON.DirectionalLight;
 
+    private boundary_bottom;
+    private boundary_front;
+    private boundary_left;
+    private boundary_back;
+    private boundary_right;
+    private boundary_top;
+    private plan_inside;
     private pegasus;
     private pegasus_inside;
     private pegasus_laces;
@@ -305,12 +312,11 @@ export class LaboratoryService {
     private scene_loaded = false;
     private introduction_closed = false;
 
-    private arc_rotate_camera_clone;
-    private anaglyph_arc_rotate_camera_clone;
-
     private trailer_position = 1;
 
     private anaglyph_activated = false;
+
+    private isCV: boolean;
 
     private dashBoardCameraDatas: CameraDatas;
 
@@ -327,10 +333,13 @@ export class LaboratoryService {
         this.scene = new BABYLON.Scene(this.engine);
 
         this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP;
-        this.scene.fogDensity = 0.003;
+        this.scene.fogDensity = 0.03;
         this.scene.fogStart = 1000.0;
         this.scene.fogEnd = 3000.0;
         this.scene.fogColor = BABYLON.Color3.FromHexString("#261043");
+
+        // this.scene.clearColor = new BABYLON.Color4(0.01, 0.00, 0.05, 0.5);
+        // this.scene.ambientColor = new BABYLON.Color3(0.3, 0.3, 0.3);
 
         // CANERAS
 
@@ -350,13 +359,9 @@ export class LaboratoryService {
         this.anaglyph_universal_camera.inputs.addMouseWheel();
         this.anaglyph_universal_camera.attachControl(canvas, true);
 
-        // COLLISIONS
-
-        this.scene.collisionsEnabled = false;
-        this.universal_camera.checkCollisions = true;
-        this.anaglyph_universal_camera.checkCollisions = true;
-
         // PIPE
+
+        // this.scene.addLensFlareSystem;
 
         this.pipeline = new BABYLON.DefaultRenderingPipeline("pipeline", true, this.scene, [this.universal_camera]);
 
@@ -385,14 +390,58 @@ export class LaboratoryService {
         this.directional_light = new BABYLON.DirectionalLight("directional_light", new BABYLON.Vector3(1, -5, -2), this.scene);
         this.directional_light.intensity = 0.5;
 
+        // COLLISIONS
+
+        this.scene.collisionsEnabled = true;
+        this.universal_camera.checkCollisions = true;
+
+        // BOUNDARIES
+
+        this.boundary_bottom = BABYLON.Mesh.CreatePlane("boundary_bottom", 100, this.scene);
+        this.boundary_bottom.position = new BABYLON.Vector3(-16.2, 0, -20);
+        this.boundary_bottom.rotation = new BABYLON.Vector3(Math.PI/2, 0, 0);
+        this.boundary_bottom.isVisible = false;
+
+        this.boundary_front = BABYLON.Mesh.CreatePlane("boundary_front", 100, this.scene);
+        this.boundary_front.position = new BABYLON.Vector3(-16.2, 30, 30);
+        this.boundary_front.isVisible = false;
+
+        this.boundary_left = BABYLON.Mesh.CreatePlane("boundary_left", 100, this.scene);
+        this.boundary_left.position = new BABYLON.Vector3(33.8, 30, -20);
+        this.boundary_left.rotation = new BABYLON.Vector3(0, Math.PI/2, 0);
+        this.boundary_left.isVisible = false;
+
+        this.boundary_back = BABYLON.Mesh.CreatePlane("boundary_back", 100, this.scene);
+        this.boundary_back.position = new BABYLON.Vector3(-16.2, 30, -70);
+        this.boundary_back.rotation = new BABYLON.Vector3(0, Math.PI, 0);
+        this.boundary_back.isVisible = false;
+
+        this.boundary_right = BABYLON.Mesh.CreatePlane("boundary_right", 100, this.scene);
+        this.boundary_right.position = new BABYLON.Vector3(-66.2, 30, -20);
+        this.boundary_right.rotation = new BABYLON.Vector3(0, -Math.PI/2, 0);
+        this.boundary_right.isVisible = false;
+
+        this.boundary_top = BABYLON.Mesh.CreatePlane("boundary_top", 100, this.scene);
+        this.boundary_top.position = new BABYLON.Vector3(-16.2, 70, -20);
+        this.boundary_top.rotation = new BABYLON.Vector3(-Math.PI/2, 0, 0);
+        this.boundary_top.isVisible = false;
+
+        this.boundary_bottom.checkCollisions = true;
+        this.boundary_front.checkCollisions = true;
+        this.boundary_left.checkCollisions = true;
+        this.boundary_back.checkCollisions = true;
+        this.boundary_right.checkCollisions = true;
+        this.boundary_top.checkCollisions = true;
+
         // PLANS
 
         BABYLON.SceneLoader.ImportMeshAsync("plan_inside", "../../assets/glb/laboratory/", "plan_inside.glb").then((result) => {
+            this.plan_inside = this.scene.getMeshByName("pegasus_sole_outside");
         });
+
         BABYLON.SceneLoader.ImportMeshAsync("plan_outside", "../../assets/glb/laboratory/", "plan_outside.glb").then((result) => {
         });
-        BABYLON.SceneLoader.ImportMeshAsync("dome", "../../assets/glb/laboratory/", "dome.glb").then((result) => {
-        });
+
 
         // FLOOR
 
@@ -771,12 +820,12 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("wall_left_front", "../../assets/glb/laboratory/", "wall_left_front.glb", this.scene).then((result) => {
             this.wall_left_front = this.scene.getMeshByName("wall_left_front");
-            this.wall_left_front.checkCollisions = true;
+            // this.wall_left_front.checkCollisions = true;
         });
 
         BABYLON.SceneLoader.ImportMeshAsync("wall_left_back", "../../assets/glb/laboratory/", "wall_left_back.glb", this.scene).then((result) => {
             this.wall_left_back = this.scene.getMeshByName("wall_left_back");
-            this.wall_left_back.checkCollisions = true;
+            // this.wall_left_back.checkCollisions = true;
         });
 
         // MIRROR
@@ -799,14 +848,14 @@ export class LaboratoryService {
 
 
         this.mirror_MATERIAL = new BABYLON.StandardMaterial("mirror_MATERIAL", this.scene);
-        this.mirror_MATERIAL.diffuseColor = new BABYLON.Color3(0.13, 0.13, 0.17);
+        this.mirror_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.12);
 
         this.mirror.material = this.mirror_MATERIAL;
 
         var mirrorTexture = new BABYLON.MirrorTexture("mirrorTexture", 1024, this.scene);
         mirrorTexture.level = 1;
         mirrorTexture.mirrorPlane = reflector;
-
+        mirrorTexture.renderList = this.scene.meshes;
         // Apply mirror texture
         this.mirror.material.reflectionTexture = mirrorTexture;
 
@@ -1438,12 +1487,12 @@ export class LaboratoryService {
     // ADD ACTIONS
 
     public addActions_buttons() {
-        this.addActions_Pegasus();
-        this.addActions_PegasusInside();
-        this.addActions_PegasusLaces();
-        this.addActions_PegasusLogo();
-        this.addActions_PegasusSoleOutside();
-        this.addActions_PegasusSoleInside();
+        // this.addActions_Pegasus();
+        // this.addActions_PegasusInside();
+        // this.addActions_PegasusLaces();
+        // this.addActions_PegasusLogo();
+        // this.addActions_PegasusSoleOutside();
+        // this.addActions_PegasusSoleInside();
         this.addActions_TransfertBoxes();
         this.addActions_TransfertBoxesRings();
         this.addActions_RoseRouge();
@@ -1511,12 +1560,12 @@ export class LaboratoryService {
     }
 
     private activation_buttons() {
-        this.pegasus.isPickable = true;
-        this.pegasus_inside.isPickable = true;
-        this.pegasus_laces.isPickable = true;
-        this.pegasus_logo.isPickable = true;
-        this.pegasus_sole_outside.isPickable = true;
-        this.pegasus_sole_inside.isPickable = true;
+        // this.pegasus.isPickable = true;
+        // this.pegasus_inside.isPickable = true;
+        // this.pegasus_laces.isPickable = true;
+        // this.pegasus_logo.isPickable = true;
+        // this.pegasus_sole_outside.isPickable = true;
+        // this.pegasus_sole_inside.isPickable = true;
         this.transfert_boxes.isPickable = true;
         this.transfert_boxes_rings.isPickable = true;
         this.rose_rouge.isPickable = true;
@@ -1564,12 +1613,12 @@ export class LaboratoryService {
     }
 
     private desactivation_buttons() {
-        this.pegasus.isPickable = false;
-        this.pegasus_inside.isPickable = false;
-        this.pegasus_laces.isPickable = false;
-        this.pegasus_logo.isPickable = false;
-        this.pegasus_sole_outside.isPickable = false;
-        this.pegasus_sole_inside.isPickable = false;
+        // this.pegasus.isPickable = false;
+        // this.pegasus_inside.isPickable = false;
+        // this.pegasus_laces.isPickable = false;
+        // this.pegasus_logo.isPickable = false;
+        // this.pegasus_sole_outside.isPickable = false;
+        // this.pegasus_sole_inside.isPickable = false;
         this.transfert_boxes.isPickable = false;
         this.transfert_boxes_rings.isPickable = false;
         this.rose_rouge.isPickable = false;
@@ -4065,7 +4114,7 @@ export class LaboratoryService {
     private animation_cameraPosition_enterLaboratory() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterLaboratory', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(-16.5, 9, 15), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterLaboratory', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(-16.5, 14, 15), 0, ease);
     }
 
     // private get_positionCamera_enterLaboratory(): BABYLON.Vector3 {
@@ -4194,17 +4243,19 @@ export class LaboratoryService {
 
     public animation_switch_camera() {
         if(!this.anaglyph_activated) {
-          this.arc_rotate_camera_clone = this.universal_camera.position;
+          this.anaglyph_universal_camera.position = this.universal_camera.position;
+          this.anaglyph_universal_camera.rotation = this.universal_camera.rotation;
+          this.universal_camera.detachControl();
           this.scene.setActiveCameraByName("anaglyph_universal_camera");
-          this.anaglyph_universal_camera.target = new BABYLON.Vector3(0, -1, -12);
           this.anaglyph_universal_camera.attachControl(this.canvas, true);
           this.anaglyph_activated = true;
           this.interaction.toogle_anaglyph_activated.next();
           // this.desactivation_buttons();
         } else {
-          this.anaglyph_arc_rotate_camera_clone = this.anaglyph_universal_camera.position;
+          this.universal_camera.position = this.anaglyph_universal_camera.position;
+          this.universal_camera.rotation = this.anaglyph_universal_camera.rotation;
+          this.anaglyph_universal_camera.detachControl();
           this.scene.setActiveCameraByName("universal_camera");
-          this.universal_camera.target = new BABYLON.Vector3(0, -1, -12);
           this.universal_camera.attachControl(this.canvas, true);
           this.anaglyph_activated = false;
           this.interaction.toogle_anaglyph_activated.next();
@@ -4254,6 +4305,12 @@ export class LaboratoryService {
           this.interaction.toogle_anaglyph_activated.next();
           this.activation_buttons();
       }
+    }
+
+    // IS CV
+
+    public set_isCV(isCV): void {
+        this.isCV = isCV;
     }
 
     // DASHBOARD

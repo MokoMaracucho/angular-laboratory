@@ -10,57 +10,60 @@
                 <h1 class="h1_webDeveloper" *ngIf="language_english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">WEB<br/>DEVELOPER</h1>
                 <h1 class="h1_webDeveloper" *ngIf="language_french" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DEVELOPPEUR<br/>WEB</h1>
                 <h1 class="h1_webDeveloper" *ngIf="language_spanish" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DESARROLADOR<br/>WEB</h1>
-                <span class="span_webDeveloper" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">SPRING - ANGULAR - BABYLONJS</span>
+
+                <span class="span_webDeveloper" *ngIf="language_english && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Enter the 3rd dimension with MK-Lab</span>
+                <span class="span_webDeveloper" *ngIf="language_french && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Entrez dans la 3ème dimension avec MK-Lab</span>
+                <span class="span_webDeveloper" *ngIf="language_spanish && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Ingrese a la tercera dimensión con MK-Lab</span>
+
+                <span class="span_webDeveloper" *ngIf="isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">SPRING - ANGULAR - BABYLONJS</span>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-8 col-sm-7 col-md-6 col-lg-6 col-xl-6" [@introduction_fadeIn]="introduction_fadeIn">
+            <div class="col-xs-8 col-sm-7 col-md-6 col-lg-6 col-xl-6" *ngIf="!isCV" [@introduction_fadeIn]="introduction_fadeIn">
                 <p class="text_introduction pr-3" *ngIf="language_english">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget nisl est.
-                  Pellentesque pulvinar nunc neque, eleifend pellentesque augue bibendum non.
-                  Quisque lorem dui, accumsan eget tristique id, pellentesque sit amet quam.
-                  Nullam pretium maximus mollis.
-                  Aenean sollicitudin augue libero, et tristique elit ultrices eu. Aenean auctor porta efficitur.
-                  Mauris tincidunt nulla nibh, vitae dictum ligula luctus sodales.
-                  Nulla est eros, auctor ullamcorper scelerisque sed, tristique commodo erat.
-                  Vestibulum vel turpis non diam aliquet tristique sed eget felis.
-                  Sed bibendum ligula urna, sit amet rutrum dui tristique quis.
-                  In gravida magna nec turpis dignissim, id elementum sem dapibus.
+                  Give yourself a powerful digital identity and offer your users a unique experience based on innovative technologies that will be part of the web for a long time.<br/>
+                  The 3D web offers digital marketing solutions revolutionizing your interactions with your community, an unprecedented presentation of your products, efficient classification of your data, unlimited customization of your interfaces.
                 </p>
                 <p class="text_introduction" *ngIf="language_french">
-                  A l'heure où la présence sur le web et oú l'identié numérique sont devenus fondamentales, il est important pur tout communiquan t e trouver une solution iédéle.
-
-                  De véhiculer un image. Reposer sur des technologies solides et novatrices
-
-                  La 3D une nouvelle manière de s'exprimer, d'expérimenter, de classer des données.
-
-                  Ce "laboratoire" a pour ambition de présnter mon tarvail, de servir de plateforme au partage du savoir-faire
-
-
-
-                  Passionné par les arts graphiques et les jeux vidéos, captivés par les nouvelles nouvelles technologies, il me fallait trouver un environnement idéal à l'association de ces deux sensibilités.
-                  A l´heure d'un basculement vers la numérisation des achats, des informations
-
-                  Tombé très jeune dans l'informatique, passionné par l'art et les nouvelles technologies, le Web m'est apparu comme un environnemt idéal à l'association de ces deux sensibilités.
-                  De la maîtrise des langages utiles à la réalisation de sites à celle des logiciels de graphismes, je me suis très vite senti à l'etroit sur ce plan en deux dimensions.<br/>
-                  La découverte de la 3D me fit l'effet d'entrer dans un nouvel univers. Un univers très similaire au notre et lui aussi régit par la physique et les mathématiques.
-                  Très presente autour de nous, dans le cinema, les jeux vidéos, toutefois pas encore sur internet...
-                  La capacité des réseaux et la puissance de calcul des terminaux ont jusqu'ici eté un frein à l'intégration de la troisième dimension au Web.
-                  Mais ces barrières sont aujourd'hui sur le point de tomber, laissant le champ libre à une nouvelle manière de s'exprimer, d'expérimenter, de classer des données.<br/>
-                  Ce site est le fruit d'un long apprentissage des langages de programmations et des outils graphiques, guidées par la volonté de réaliser des sites en 3 dimensions reposant sur des technologies solides et novatrices.
-                  Cette plateforme est un "laboratoire" ayant pour objectif, d'une part, de présenter mon travail, et, d'autre part, de partager mon savoir-faire.
+                  Entrez dans la 3e dimension avec MK Lab
+                  Dotez vous d'une identité numérique puissante et proposez à vos utilisateurs une expérience unique reposant sur des technologies novatrices qui s'inscriront durablement dans le web.<br/>
+                  Le web 3D offre des solutions de marketing digital révolutionnant vos interactions avec votre communauté, une présentation inédite de vos produits, une classification efficace de vos données, une customisation illimitée de vos interfaces.
                 </p>
                 <p class="text_introduction" *ngIf="language_spanish">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget nisl est.
-                  Pellentesque pulvinar nunc neque, eleifend pellentesque augue bibendum non.
-                  Quisque lorem dui, accumsan eget tristique id, pellentesque sit amet quam.
-                  Nullam pretium maximus mollis.
-                  Aenean sollicitudin augue libero, et tristique elit ultrices eu. Aenean auctor porta efficitur.
-                  Mauris tincidunt nulla nibh, vitae dictum ligula luctus sodales.
-                  Nulla est eros, auctor ullamcorper scelerisque sed, tristique commodo erat.
-                  Vestibulum vel turpis non diam aliquet tristique sed eget felis.
-                  Sed bibendum ligula urna, sit amet rutrum dui tristique quis.
-                  In gravida magna nec turpis dignissim, id elementum sem dapibus.
+                  Date una poderosa identidad digital y ofrece a tus usuarios una experiencia única basada en tecnologías innovadoras que serán parte de la web durante mucho tiempo.<br/>
+                  La web 3D ofrece soluciones de marketing digital que revolucionan sus interacciones con su comunidad, una presentación sin precedentes de sus productos, clasificación eficiente de sus datos, personalización ilimitada de sus interfaces.
+                </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
+            </div>
+            <div class="col-xs-8 col-sm-7 col-md-6 col-lg-6 col-xl-6" *ngIf="isCV" [@introduction_fadeIn]="introduction_fadeIn">
+                <p class="text_introduction pr-3" *ngIf="language_english">
+                  Following a course as a Java application developer with OpenClassrooms, I am looking for a 4-month operational internship.<br/>
+                  Passionate about IT, I fell into the Web very early on. I trained in a self-taught way in Font-end development and in 3D modeling and programming.<br/>
+                  In order to validate and complete my knowledge, I decided to acquire a Back-end developer diploma.<br/>
+                  Open the door of my laboratory and discover my universe !
+                </p>
+                <p class="text_introduction" *ngIf="language_french">
+                  Suivant un cursus de de développeur d'applications Java avec OpenClassrooms, je suis à la recherche d'un stage opérationnel de 4 mois.<br/>
+                  Passionné d'informatique, je suis très tôt tombé dans le Web. Je me suis formé de manière autodidacte au développement Font-end et à la modélisation et la programmation 3D.<br/>
+                  Dans l'objectif de valider et de compléter mes acquis, j'ai décidé d'acquérir un diplôme de développeur Back-end.<br/>
+                  Poussez la porte de mon laboratoire et découvrez mon univers !
+                </p>
+                <p class="text_introduction" *ngIf="language_spanish">
+                  Después de un curso como desarrollador de aplicaciones Java con OpenClassrooms, estoy buscando una pasantía operativa de 4 meses.<br/>
+                  Apasionado por las tecnologías de la información, entré en la Web desde el principio. Me formé de forma autodidacta en desarrollo Font-end y en modelado y programación 3D.<br/>
+                  Para validar y completar mis conocimientos, decidí adquirir un diploma de desarrollador back-end.<br/>
+                  Abre la puerta de mi laboratorio y descubre mi universo !
                 </p>
                 <div *ngIf="language_english">
                     <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -88,6 +91,7 @@
     </div>
 </div>
 
+<!--
 <div class="div_card" [style.display]="isVisible_running ? 'block' : 'none'" [@isVisible_running]="isVisible_running">
     <div class="container_card container">
         <div class="row">
@@ -142,6 +146,7 @@
         </div>
     </div>
 </div>
+-->
 
 <div class="div_card" [style.display]="isVisible_shareKnowledge ? 'block' : 'none'" [@isVisible_shareKnowledge]="isVisible_shareKnowledge">
     <div class="container_card container">

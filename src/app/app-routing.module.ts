@@ -9,6 +9,7 @@ import { DevelopmentComponent } from './development/development.component';
     RouterModule.forRoot([
       { path: 'laboratory', component: LaboratoryComponent },
       { path: '', redirectTo: 'laboratory', pathMatch: 'full' },
+      { path: 'laboratory/:isCV', component: LaboratoryComponent },
       { path: 'development', component: DevelopmentComponent },
       { path: '**', redirectTo: 'laboratory', pathMatch: 'full' }
     ])
