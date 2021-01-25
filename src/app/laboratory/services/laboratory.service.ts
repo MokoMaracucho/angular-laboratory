@@ -1512,9 +1512,9 @@ export class LaboratoryService {
         this.addActions_Tofu();
         this.addActions_TofuMarieLouise();
         this.addActions_TofuFrame();
-        this.addActions_Checker();
-        this.addActions_CheckerLocks();
-        this.addActions_TarotDeck();
+        // this.addActions_Checker();
+        // this.addActions_CheckerLocks();
+        // this.addActions_TarotDeck();
         this.addActions_ThreedGlassesFrame();
         this.addActions_ThreedGlassBlue();
         this.addActions_ThreedGlassRed();
@@ -1587,9 +1587,9 @@ export class LaboratoryService {
         this.tofu.isPickable = true;
         this.tofu_marie_louise.isPickable = true;
         this.tofu_frame.isPickable = true;
-        this.checker.isPickable = true;
-        this.checker_locks.isPickable = true;
-        this.tarot_deck.isPickable = true;
+        // this.checker.isPickable = true;
+        // this.checker_locks.isPickable = true;
+        // this.tarot_deck.isPickable = true;
         this.threed_glasses_frame.isPickable = true;
         this.threed_glass_blue.isPickable = true;
         this.threed_glass_red.isPickable = true;
@@ -1642,9 +1642,9 @@ export class LaboratoryService {
         this.tofu.isPickable = false;
         this.tofu_marie_louise.isPickable = false;
         this.tofu_frame.isPickable = false;
-        this.checker.isPickable = false;
-        this.checker_locks.isPickable = false;
-        this.tarot_deck.isPickable = false;
+        // this.checker.isPickable = false;
+        // this.checker_locks.isPickable = false;
+        // this.tarot_deck.isPickable = false;
         this.threed_glasses_frame.isPickable = false;
         this.threed_glass_blue.isPickable = false;
         this.threed_glass_red.isPickable = false;

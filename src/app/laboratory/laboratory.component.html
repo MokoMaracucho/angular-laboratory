@@ -252,6 +252,7 @@
     </div>
 </div>
 
+<!--
 <div class="div_card" [style.display]="isVisible_games ? 'block' : 'none'" [@isVisible_games]="isVisible_games">
     <div class="container_card container">
         <div class="row">
@@ -306,6 +307,7 @@
         </div>
     </div>
 </div>
+-->
 
 <div class="div_card" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
     <div class="container_card container">
@@ -317,24 +319,51 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" *ngIf="!isCV">
                 <p class="text_content" *ngIf="language_english">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
+                  Immerse your community in your universe!<br/>
+                  Give your community an unprecedented viewing experience for your products and data using stereoscopy.
                 </p>
                 <p class="text_content" *ngIf="language_french">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
+                  Faites plonger votre communauté dans votre univers !<br/>
+                  Offrez à votre communauté une expérience inédite de visualisation de vos produits et de vos données grâce à la stéréoscopie.
                 </p>
                 <p class="text_content" *ngIf="language_spanish">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
+                  ¡Sumerja a su comunidad en su universo!<br/>
+                  Ofrezca a su comunidad una experiencia de visualización sin precedentes para sus productos y datos mediante estereoscopía.
+                </p>
+                <p>
+                    <button id="btn_switch_camera" type="button" class="btn btn-primary" (click)="animation_switch_camera()">
+                        <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
+                        <span *ngIf="language_english && anaglyph_activated">Regular</span>
+                        <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
+                        <span *ngIf="language_french && anaglyph_activated">Normale</span>
+                        <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
+                        <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
+                    </button>
+                </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
+            </div>
+            <div class="col-12" *ngIf="isCV">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
                 </p>
                 <p>
                     <button id="btn_switch_camera" type="button" class="btn btn-primary" (click)="animation_switch_camera()">
