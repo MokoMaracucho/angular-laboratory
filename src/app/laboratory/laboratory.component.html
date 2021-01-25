@@ -158,20 +158,18 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" *ngIf="!isCV">
               <p class="text_content" *ngIf="language_english">
-                Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
+                MK-Lab develops innovative 3D representation tools for better visualization and exploitation of your data.<br/>
+                Improve your user experience and gain efficiency with our innovative representation tools.
               </p>
               <p class="text_content" *ngIf="language_french">
+                MK-Lab développe des outils de représentation 3D innovants pour une meilleure visualisation et exploitation de vos données.<br/>
+                Améliorez votre expérience utilisateur et gagnez en efficience grâce à nos outils de représentation innovants.
               </p>
               <p class="text_content" *ngIf="language_spanish">
-                Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
+                MK-Lab desarrolla herramientas de representación 3D innovadoras para una mejor visualización y explotación de sus datos.<br/>
+                Mejore su experiencia de usuario y gane eficiencia con nuestras innovadoras herramientas de representación.
               </p>
               <div *ngIf="language_english">
                   <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -374,6 +372,7 @@
     </div>
 </div>
 
+<!--
 <div class="div_card" [style.display]="isVisible_art ? 'block' : 'none'" [@isVisible_art]="isVisible_art">
     <div class="container_card container">
         <div class="row">
@@ -428,6 +427,7 @@
         </div>
     </div>
 </div>
+-->
 
 <!--
 <div class="div_card" [style.display]="isVisible_contactMe ? 'block' : 'none'" [@isVisible_contactMe]="isVisible_contactMe">
