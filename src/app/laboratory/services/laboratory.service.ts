@@ -332,13 +332,13 @@ export class LaboratoryService {
         this.engine = new BABYLON.Engine(this.canvas, true, { stencil: true });
         this.scene = new BABYLON.Scene(this.engine);
 
-        this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP;
-        this.scene.fogDensity = 0.03;
-        this.scene.fogStart = 1000.0;
-        this.scene.fogEnd = 3000.0;
-        this.scene.fogColor = BABYLON.Color3.FromHexString("#261043");
+        // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP;
+        // this.scene.fogDensity = 0.03;
+        // this.scene.fogStart = 2000;
+        // this.scene.fogEnd = 3000;
+        // this.scene.fogColor = BABYLON.Color3.FromHexString("#261043");
 
-        // this.scene.clearColor = new BABYLON.Color4(0.01, 0.00, 0.05, 0.5);
+        this.scene.clearColor = new BABYLON.Color4(0.003, 0.003, 0.003, 1);
         // this.scene.ambientColor = new BABYLON.Color3(0.3, 0.3, 0.3);
 
         // CANERAS
