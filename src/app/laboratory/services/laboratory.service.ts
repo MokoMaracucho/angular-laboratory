@@ -339,6 +339,7 @@ export class LaboratoryService {
         this.universal_camera.touchAngularSensibility = 10000;
         this.universal_camera.speed = 0.7;
         this.universal_camera.invertRotation = false;
+        this.universal_camera.inputs.addMouseWheel();
         this.universal_camera.attachControl(canvas, true);
 
         this.anaglyph_universal_camera = new BABYLON.AnaglyphUniversalCamera("anaglyph_universal_camera", new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), 0.1, this.scene);
@@ -346,11 +347,12 @@ export class LaboratoryService {
         this.anaglyph_universal_camera.touchAngularSensibility = 10000;
         this.anaglyph_universal_camera.speed = 0.7;
         this.anaglyph_universal_camera.invertRotation = false;
+        this.anaglyph_universal_camera.inputs.addMouseWheel();
         this.anaglyph_universal_camera.attachControl(canvas, true);
 
         // COLLISIONS
 
-        this.scene.collisionsEnabled = true;
+        this.scene.collisionsEnabled = false;
         this.universal_camera.checkCollisions = true;
         this.anaglyph_universal_camera.checkCollisions = true;
 
@@ -4198,7 +4200,7 @@ export class LaboratoryService {
           this.anaglyph_universal_camera.attachControl(this.canvas, true);
           this.anaglyph_activated = true;
           this.interaction.toogle_anaglyph_activated.next();
-          this.desactivation_buttons();
+          // this.desactivation_buttons();
         } else {
           this.anaglyph_arc_rotate_camera_clone = this.anaglyph_universal_camera.position;
           this.scene.setActiveCameraByName("universal_camera");
@@ -4206,7 +4208,7 @@ export class LaboratoryService {
           this.universal_camera.attachControl(this.canvas, true);
           this.anaglyph_activated = false;
           this.interaction.toogle_anaglyph_activated.next();
-          this.activation_buttons();
+          // this.activation_buttons();
         }
     }
 

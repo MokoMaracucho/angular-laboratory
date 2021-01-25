@@ -19,8 +19,9 @@ nav ul li a   {
   opacity: 0.8;
 }
 
-.active .nav-link {
-  color: red;
+.nav-item.active .nav-link {
+  font-family: Roboto-Bold;
+  color: white;
 }
 
 nav ul li a:hover   {
