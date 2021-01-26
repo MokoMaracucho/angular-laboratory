@@ -7,9 +7,11 @@
     <div id="container_introduction" class="container">
         <div class="row">
             <div class="col-md-8 col-lg-12 col-xl-12">
-                <h1 class="h1_webDeveloper" *ngIf="language_english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">WEB<br/>DEVELOPER</h1>
-                <h1 class="h1_webDeveloper" *ngIf="language_french" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DEVELOPPEUR<br/>WEB</h1>
-                <h1 class="h1_webDeveloper" *ngIf="language_spanish" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DESARROLADOR<br/>WEB</h1>
+                <h1 class="h1_webDeveloper" *ngIf="!isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">MK-LAB</h1>
+
+                <h1 class="h1_webDeveloper" *ngIf="language_english && isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">WEB<br/>DEVELOPER</h1>
+                <h1 class="h1_webDeveloper" *ngIf="language_french && isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DEVELOPPEUR<br/>WEB</h1>
+                <h1 class="h1_webDeveloper" *ngIf="language_spanish && isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DESARROLADOR<br/>WEB</h1>
 
                 <span class="span_webDeveloper" *ngIf="language_english && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Enter the 3rd dimension with MK-Lab</span>
                 <span class="span_webDeveloper" *ngIf="language_french && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Entrez dans la 3ème dimension avec MK-Lab</span>
