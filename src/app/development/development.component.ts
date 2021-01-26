@@ -242,7 +242,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
 
         this.subscription = this.interaction.getCameraDatas_init.subscribe((cameraDatas: CameraDatas) => cameraDatas);
         this.camera_datas = this.developmentService.emitCameraDatas_init();
-        this.subscription = this.interaction.getCameraDatas_loop.subscribe(() => this.getCameraDatas_loop());
+        // this.subscription = this.interaction.getCameraDatas_loop.subscribe(() => this.getCameraDatas_loop());
     }
 
     ngOnDestroy(): void {
@@ -274,7 +274,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     public close_introduction(): void {
         this.isVisible_introductionBackground = false;
         this.isVisible_introduction = false;
-        this.toogle_cache();
+        // this.toogle_cache();
         this.developmentService.animation_enterDevelopment();
     }
 
@@ -297,45 +297,37 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     private open_postgresql(): void {
-        setTimeout(() => {
-            this.isVisible_postgresql = true;
-        }, 1000);
+        this.isVisible_postgresql = true;
     }
 
     public close_postgresql(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_postgresql = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_java(): void {
-        setTimeout(() => {
-            this.isVisible_java = true;
-        }, 1000);
+        this.isVisible_java = true;
     }
 
     public close_java(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_java = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_spring_framework(): void {
-        setTimeout(() => {
-            this.isVisible_spring_framework = true;
-        }, 1000);
+        this.isVisible_spring_framework = true;
     }
 
     public close_spring_framework(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_spring_framework = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_maven(): void {
-        setTimeout(() => {
-            this.isVisible_maven = true;
-        }, 1000);
+        this.isVisible_maven = true;
     }
 
     public close_maven(): void {
@@ -345,168 +337,142 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
 
     private open_css(): void {
-        setTimeout(() => {
-            this.isVisible_css = true;
-        }, 1000);
+        this.isVisible_css = true;
     }
 
     public close_css(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_css = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_html(): void {
-        setTimeout(() => {
-            this.isVisible_html = true;
-        }, 1000);
+        this.isVisible_html = true;
     }
 
     public close_html(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_html = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_bootstrap(): void {
-        setTimeout(() => {
-            this.isVisible_bootstrap = true;
-        }, 1000);
+        this.isVisible_bootstrap = true;
     }
 
     public close_bootstrap(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_bootstrap = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_angular(): void {
-        setTimeout(() => {
-            this.isVisible_angular = true;
-        }, 1000);
+        this.isVisible_angular = true;
     }
 
     public close_angular(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_angular = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_typescript(): void {
-        setTimeout(() => {
-            this.isVisible_typescript = true;
-        }, 1000);
+        this.isVisible_typescript = true;
     }
 
     public close_typescript(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_typescript = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_postman(): void {
-        setTimeout(() => {
-            this.isVisible_postman = true;
-        }, 1000);
+        this.isVisible_postman = true;
     }
 
     public close_postman(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_postman = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_docker(): void {
-        setTimeout(() => {
-            this.isVisible_docker = true;
-        }, 1000);
+        this.isVisible_docker = true;
     }
 
     public close_docker(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_docker = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_git(): void {
-        setTimeout(() => {
-            this.isVisible_git = true;
-        }, 1000);
+        this.isVisible_git = true;
     }
 
     public close_git(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_git = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_blender(): void {
-        setTimeout(() => {
-            this.isVisible_blender = true;
-        }, 1000);
+        this.isVisible_blender = true;
     }
 
     public close_blender(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_blender = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_babylon(): void {
-        setTimeout(() => {
-            this.isVisible_babylon = true;
-        }, 1000);
+        this.isVisible_babylon = true;
     }
 
     public close_babylon(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_babylon = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_photoshop(): void {
-        setTimeout(() => {
-            this.isVisible_photoshop = true;
-        }, 1000);
+        this.isVisible_photoshop = true;
     }
 
     public close_photoshop(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_photoshop = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_illustrator(): void {
-        setTimeout(() => {
-            this.isVisible_illustrator = true;
-        }, 1000);
+        this.isVisible_illustrator = true;
     }
 
     public close_illustrator(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_illustrator = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private open_contactMe(): void {
-        setTimeout(() => {
-            this.isVisible_contactMe = true;
-        }, 1000);
+        this.isVisible_contactMe = true;
     }
 
     public close_contactMe(): void {
         this.developmentService.animation_closeCard();
         this.isVisible_contactMe = false;
-        this.toogle_cache();
+        // this.toogle_cache();
     }
 
     private toogle_cache(): void {
         this.isVisible_cache = !this.isVisible_cache;
     }
 
-    private getCameraDatas_loop(): void {
-        this.camera_datas = this.developmentService.emitCameraDatas_init();
-    }
+    // private getCameraDatas_loop(): void {
+        // this.camera_datas = this.developmentService.emitCameraDatas_init();
+    // }
 
     public init_position(): void {
       this.developmentService.init_position();

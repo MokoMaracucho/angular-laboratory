@@ -1063,8 +1063,8 @@ export class DevelopmentService {
     // CLOSE CARD
 
     public animation_closeCard() {
-      this.animation_cameraPosition_closeCard();
-      this.animation_targetScreenOffset_closeCard();
+      // this.animation_cameraPosition_closeCard();
+      // this.animation_targetScreenOffset_closeCard();
       this.activation_buttons();
     }
 
