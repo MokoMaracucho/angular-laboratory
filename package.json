@@ -30,6 +30,7 @@
     "lite-server": "^2.6.1",
     "material-icons": "^0.5.2",
     "meshwriter": "^1.2.4",
+    "ngx-device-detector": "^2.0.5",
     "nodemailer": "^6.4.17",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

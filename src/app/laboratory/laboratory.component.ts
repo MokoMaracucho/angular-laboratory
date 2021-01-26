@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef, HostListener } fro
 import { Subscription, Subject } from 'rxjs';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
@@ -102,6 +103,10 @@ import { CameraDatas } from '../shared/models/camera-datas';
 })
 export class LaboratoryComponent implements OnInit, OnDestroy {
 
+    private isMobileDevice;
+    private isTabletDevice;
+    private isDesktopDevice;
+
     public innerWidth: any;
     public innerHeight: any;
 
@@ -144,6 +149,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
     public disabledSubmitButton: boolean = true;
 
+    private deviceInfo = null;
+
     @HostListener('input') oninput() {
       if (this.contactForm.valid) {
         this.disabledSubmitButton = false;
@@ -161,6 +168,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public constructor(
         private formBuilder: FormBuilder,
         private activatedRoute: ActivatedRoute,
+        private deviceService: DeviceDetectorService,
         private connectionService: ConnectionService,
         private appComponent: AppComponent,
         private laboratoryService: LaboratoryService,
@@ -168,6 +176,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit(): void {
+        this.epicFunction();
         this.innerWidth = window.innerWidth;
         this.innerHeight = window.innerHeight;
         this.laboratoryService.set_windowDimensions(this.innerWidth, this.innerHeight);
@@ -378,5 +387,17 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
     private getCameraDatas_loop(): void {
         this.camera_datas = this.laboratoryService.emitCameraDatas_init();
+    }
+
+    private epicFunction() {
+      console.log('hello `Home` component');
+      this.deviceInfo = this.deviceService.getDeviceInfo();
+      this.isMobileDevice = this.deviceService.isMobile();
+      this.isTabletDevice = this.deviceService.isTablet();
+      this.isDesktopDevice = this.deviceService.isDesktop();
+      console.log(this.deviceInfo);
+      console.log(this.isMobileDevice);
+      console.log(this.isTabletDevice);
+      console.log(this.isDesktopDevice);
     }
 }
