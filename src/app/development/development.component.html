@@ -1103,8 +1103,16 @@
     </div>
 </div>
 
+<button id="btn_init_position" type="button" class="btn btn-primary mr-2 mb-2" (click)="init_position()">
+  <span *ngIf="language_english">Init</span>
+  <span *ngIf="language_french">Init</span>
+  <span *ngIf="language_spanish">Init</span>
+</button>
+
+<!--
 <div id="div_cache" [style.display]="isVisible_cache ? 'block' : 'none'">
 </div>
+-->
 
 <div id="divDashBoard" *ngIf="isVisible_dashBoard">
   <h3>Window</h3>

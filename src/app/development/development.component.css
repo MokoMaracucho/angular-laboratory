@@ -311,18 +311,26 @@ background-color: #777777;
 /* SCROLLBAR */
 
 ::-webkit-scrollbar {
-padding-left: 10px;
-width: 6px;
+  padding-left: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-margin-top: 15px;
-margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 ::-webkit-scrollbar-thumb {
-border-radius: 10px;
-background-color: #ffffff44;
+  border-radius: 10px;
+  background-color: #ffffff44;
+}
+
+/* INIT POSITION */
+
+#btn_init_position {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
 }
 
 /* BACKGROUND */

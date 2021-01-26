@@ -55,4 +55,6 @@ export class InteractionService {
     open_contactMe = new Subject<boolean>();
 
     toogle_cache = new Subject<boolean>();
+
+    toogle_anaglyph_activated = new Subject<boolean>();
 }

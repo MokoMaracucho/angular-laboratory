@@ -19,14 +19,20 @@ export class DevelopmentService {
     private engine: BABYLON.Engine;
     private scene: BABYLON.Scene;
 
-    private arc_rotate_camera: BABYLON.ArcRotateCamera;
-    private anaglyph_arc_rotate_camera: BABYLON.AnaglyphArcRotateCamera;
+    private universal_camera: BABYLON.UniversalCamera;
+    private anaglyph_universal_camera: BABYLON.AnaglyphUniversalCamera;
 
     private pipeline: BABYLON.DefaultRenderingPipeline;
     private rotation;
 
     private hemispheric_light: BABYLON.Light;
 
+    private boundary_bottom;
+    private boundary_front;
+    private boundary_left;
+    private boundary_back;
+    private boundary_right;
+    private boundary_top;
     private desk;
     private threed_glasses_frame;
     private threed_glass_blue;
@@ -34,7 +40,6 @@ export class DevelopmentService {
     private server_glass;
     private arrow_top;
     private arrow_bottom;
-
 
     private icon_postgresql;
     private icon_java;
@@ -101,6 +106,8 @@ export class DevelopmentService {
 
     private arc_rotate_camera_clone;
 
+    private anaglyph_activated = false;
+
     private dashBoardCameraDatas: CameraDatas;
 
     public constructor(
@@ -117,26 +124,25 @@ export class DevelopmentService {
 
         // CANERAS
 
-        this.arc_rotate_camera = new BABYLON.ArcRotateCamera("arc_rotate_camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), this.scene);
-        this.set_initialPosition_ArcRotateCamera();
-        this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-4, 10, 5);
-        this.arc_rotate_camera.lowerBetaLimit = -0.4;
-        this.arc_rotate_camera.upperBetaLimit = 1.65;
-        this.arc_rotate_camera.lowerRadiusLimit = 5;
-        this.arc_rotate_camera.upperRadiusLimit = 90;
-        this.arc_rotate_camera.attachControl(canvas, true);
-        this.set_initialScreenOffset_ArcRotateCamera();
+        this.universal_camera = new BABYLON.UniversalCamera("universal_camera", new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), this.scene);
+        this.universal_camera.target = new BABYLON.Vector3(-4, 10, 5);
+        this.universal_camera.touchAngularSensibility = 10000;
+        this.universal_camera.speed = 0.7;
+        this.universal_camera.invertRotation = false;
+        this.universal_camera.ellipsoid = new BABYLON.Vector3(2, 2, 2);
+        this.universal_camera.inputs.addMouseWheel();
+        this.universal_camera.attachControl(canvas, true);
 
-        this.anaglyph_arc_rotate_camera = new BABYLON.AnaglyphArcRotateCamera("anaglyph_arc_rotate_camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), 0.1, this.scene);
-        this.anaglyph_arc_rotate_camera.lockedTarget =  new BABYLON.Vector3(-4, 10, 5);
-        this.anaglyph_arc_rotate_camera.lowerBetaLimit = -0.4;
-        this.anaglyph_arc_rotate_camera.upperBetaLimit = 1.65;
-        this.anaglyph_arc_rotate_camera.lowerRadiusLimit = 5;
-        this.anaglyph_arc_rotate_camera.upperRadiusLimit = 90;
-        this.anaglyph_arc_rotate_camera.attachControl(canvas, true);
-        this.anaglyph_arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, -2);
+        this.anaglyph_universal_camera = new BABYLON.AnaglyphUniversalCamera("anaglyph_universal_camera", new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), 0.1, this.scene);
+        this.anaglyph_universal_camera.target = new BABYLON.Vector3(-4, 10, 5);
+        this.anaglyph_universal_camera.touchAngularSensibility = 10000;
+        this.anaglyph_universal_camera.speed = 0.7;
+        this.anaglyph_universal_camera.invertRotation = false;
+        this.anaglyph_universal_camera.ellipsoid = new BABYLON.Vector3(2, 2, 2);
+        this.anaglyph_universal_camera.inputs.addMouseWheel();
+        this.anaglyph_universal_camera.attachControl(canvas, true);
 
-        this.pipeline = new BABYLON.DefaultRenderingPipeline("pipeline", true, this.scene, [this.arc_rotate_camera]);
+        this.pipeline = new BABYLON.DefaultRenderingPipeline("pipeline", true, this.scene, [this.universal_camera]);
 
         this.pipeline.samples = 4;
         this.pipeline.fxaaEnabled = true;
@@ -159,6 +165,50 @@ export class DevelopmentService {
 
         this.hemispheric_light = new BABYLON.HemisphericLight('hemispheric_light', new BABYLON.Vector3(0, 1, 0), this.scene);
         this.hemispheric_light.intensity = 0.8;
+
+        // COLLISIONS
+
+        this.scene.collisionsEnabled = true;
+        this.universal_camera.checkCollisions = true;
+        this.anaglyph_universal_camera.checkCollisions = true;
+
+        // BOUNDARIES
+
+        this.boundary_bottom = BABYLON.Mesh.CreatePlane("boundary_bottom", 150, this.scene);
+        this.boundary_bottom.position = new BABYLON.Vector3(-16.2, 0, -20);
+        this.boundary_bottom.rotation = new BABYLON.Vector3(Math.PI/2, 0, 0);
+        this.boundary_bottom.isVisible = false;
+
+        this.boundary_front = BABYLON.Mesh.CreatePlane("boundary_front", 150, this.scene);
+        this.boundary_front.position = new BABYLON.Vector3(-16.2, 45, 40);
+        this.boundary_front.isVisible = false;
+
+        this.boundary_left = BABYLON.Mesh.CreatePlane("boundary_left", 150, this.scene);
+        this.boundary_left.position = new BABYLON.Vector3(43.8, 45, -20);
+        this.boundary_left.rotation = new BABYLON.Vector3(0, Math.PI/2, 0);
+        this.boundary_left.isVisible = false;
+
+        this.boundary_back = BABYLON.Mesh.CreatePlane("boundary_back", 150, this.scene);
+        this.boundary_back.position = new BABYLON.Vector3(-16.2, 45, -80);
+        this.boundary_back.rotation = new BABYLON.Vector3(0, Math.PI, 0);
+        this.boundary_back.isVisible = false;
+
+        this.boundary_right = BABYLON.Mesh.CreatePlane("boundary_right", 150, this.scene);
+        this.boundary_right.position = new BABYLON.Vector3(-76.2, 45, -20);
+        this.boundary_right.rotation = new BABYLON.Vector3(0, -Math.PI/2, 0);
+        this.boundary_right.isVisible = false;
+
+        this.boundary_top = BABYLON.Mesh.CreatePlane("boundary_top", 150, this.scene);
+        this.boundary_top.position = new BABYLON.Vector3(-16.2, 80, -20);
+        this.boundary_top.rotation = new BABYLON.Vector3(-Math.PI/2, 0, 0);
+        this.boundary_top.isVisible = false;
+
+        this.boundary_bottom.checkCollisions = true;
+        this.boundary_front.checkCollisions = true;
+        this.boundary_left.checkCollisions = true;
+        this.boundary_back.checkCollisions = true;
+        this.boundary_right.checkCollisions = true;
+        this.boundary_top.checkCollisions = true;
 
         // PLANS
 
@@ -503,44 +553,6 @@ export class DevelopmentService {
         this.innerHeight = height;
     }
 
-    private set_initialPosition_ArcRotateCamera() {
-        if(this.innerWidth <= 576) {
-          this.arc_rotate_camera.alpha = 2.5;       this.arc_rotate_camera.beta = 0.6;      this.arc_rotate_camera.radius = 65;
-
-        } else if(this.innerWidth <= 768) {
-            this.arc_rotate_camera.alpha = 2.5;       this.arc_rotate_camera.beta = 0.6;      this.arc_rotate_camera.radius = 65;
-
-        } else if(this.innerWidth <= 960) {
-            this.arc_rotate_camera.alpha = 2.6;       this.arc_rotate_camera.beta = 0.9;      this.arc_rotate_camera.radius = 70;
-
-        } else if(this.innerWidth <= 1140) {
-            this.arc_rotate_camera.alpha = 2.75;      this.arc_rotate_camera.beta = 1;        this.arc_rotate_camera.radius = 60;
-
-        } else if(this.innerWidth <= 1500) {
-          this.arc_rotate_camera.alpha = 2.4;      this.arc_rotate_camera.beta = 0.85;        this.arc_rotate_camera.radius = 64;
-
-        } else {
-            this.arc_rotate_camera.alpha = 2.25;      this.arc_rotate_camera.beta = 1.05;     this.arc_rotate_camera.radius = 50;
-
-        }
-    }
-
-    private set_initialScreenOffset_ArcRotateCamera() {
-      if(this.innerWidth <= 576) {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(0, -2);
-      } else if(this.innerWidth <= 768) {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(1, -2);
-      } else if(this.innerWidth <= 960) {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(7, -0.5);
-      } else if(this.innerWidth <= 1140) {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(7, 0);
-      } else if(this.innerWidth <= 1500) {
-        this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(8, -1);
-      } else {
-          this.arc_rotate_camera.targetScreenOffset = new BABYLON.Vector2(9, 0);
-      }
-    }
-
     // ABERRATION CHROMATIC AMOUNT
 
     private set_chromaticAberration():void {
@@ -647,9 +659,9 @@ export class DevelopmentService {
         this.icon_postgresql.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_postgresql},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -667,9 +679,9 @@ export class DevelopmentService {
         this.icon_java.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_java},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -687,9 +699,9 @@ export class DevelopmentService {
         this.icon_spring_framework.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_spring_framework},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -707,9 +719,9 @@ export class DevelopmentService {
         this.icon_maven.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_maven},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -727,9 +739,9 @@ export class DevelopmentService {
         this.icon_css.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_css},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -747,9 +759,9 @@ export class DevelopmentService {
         this.icon_html.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_html},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -767,9 +779,9 @@ export class DevelopmentService {
         this.icon_bootstrap.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_bootstrap},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -787,9 +799,9 @@ export class DevelopmentService {
         this.icon_angular.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_angular},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -807,9 +819,9 @@ export class DevelopmentService {
         this.icon_typescript.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_typescript},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -827,9 +839,9 @@ export class DevelopmentService {
         this.icon_postman.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_postman},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -847,9 +859,9 @@ export class DevelopmentService {
         this.icon_docker.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_docker},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -867,9 +879,9 @@ export class DevelopmentService {
         this.icon_git.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_git},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -887,9 +899,9 @@ export class DevelopmentService {
         this.icon_blender.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_blender},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -907,9 +919,9 @@ export class DevelopmentService {
         this.icon_babylon.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_babylon},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -927,9 +939,9 @@ export class DevelopmentService {
         this.icon_photoshop.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_photoshop},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -947,9 +959,9 @@ export class DevelopmentService {
         this.icon_illustrator.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_illustrator},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -967,9 +979,9 @@ export class DevelopmentService {
         this.via_air_mail.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.via_air_mail},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_contactMe.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -986,7 +998,7 @@ export class DevelopmentService {
     private animation_cameraPosition_enterDevelopment() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterDevelopment', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.get_positionCamera_enterDevelopment(), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterDevelopment', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(-16.5, 14, 15), 0, ease);
     }
 
     private get_positionCamera_enterDevelopment(): BABYLON.Vector3 {
@@ -1008,7 +1020,7 @@ export class DevelopmentService {
     private animation_targetScreenOffset_enterDevelopment() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterDevelopment', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(4, -0.5), 0, ease, () => this.interaction.toogle_cache.next());
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterDevelopment', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-16.5, 5, -12), 0, ease);
     }
 
     // OPEN CARD
@@ -1020,10 +1032,10 @@ export class DevelopmentService {
     }
 
     private animation_cameraPosition_openCard() {
-        this.arc_rotate_camera_clone = this.arc_rotate_camera.position.clone();
+        this.arc_rotate_camera_clone = this.universal_camera.position.clone();
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_openCard', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.get_positionCamera_openCard(), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_openCard', this.universal_camera, 'position', 15, 30, this.universal_camera.position, this.get_positionCamera_openCard(), 0, ease);
     }
 
     private get_positionCamera_openCard(): BABYLON.Vector3 {
@@ -1045,7 +1057,7 @@ export class DevelopmentService {
     private animation_targetScreenOffset_openCard() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(10, 1), 0, ease, () => this.interaction.toogle_cache.next());
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector2(10, 1), 0, ease);
     }
 
     // CLOSE CARD
@@ -1059,13 +1071,37 @@ export class DevelopmentService {
     private animation_cameraPosition_closeCard() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_closeCard', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.arc_rotate_camera_clone, 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_closeCard', this.universal_camera, 'position', 15, 30, this.universal_camera.position, this.arc_rotate_camera_clone, 0, ease);
     }
 
     private animation_targetScreenOffset_closeCard() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, 0), 0, ease, () => this.interaction.toogle_cache.next());
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector2(0, 0), 0, ease);
+    }
+
+    // SWITCH CAMERA
+
+    public animation_switch_camera() {
+        if(!this.anaglyph_activated) {
+          this.anaglyph_universal_camera.position = this.universal_camera.position;
+          this.anaglyph_universal_camera.rotation = this.universal_camera.rotation;
+          this.universal_camera.detachControl();
+          this.scene.setActiveCameraByName("anaglyph_universal_camera");
+          this.anaglyph_universal_camera.attachControl(this.canvas, true);
+          this.anaglyph_activated = true;
+          this.interaction.toogle_anaglyph_activated.next();
+          // this.desactivation_buttons();
+        } else {
+          this.universal_camera.position = this.anaglyph_universal_camera.position;
+          this.universal_camera.rotation = this.anaglyph_universal_camera.rotation;
+          this.anaglyph_universal_camera.detachControl();
+          this.scene.setActiveCameraByName("universal_camera");
+          this.universal_camera.attachControl(this.canvas, true);
+          this.anaglyph_activated = false;
+          this.interaction.toogle_anaglyph_activated.next();
+          // this.activation_buttons();
+        }
     }
 
     // DASHBOARD
@@ -1112,8 +1148,8 @@ export class DevelopmentService {
             this.windowRef.window.addEventListener('resize', () => {
                 this.engine.resize();
                 if(!this.introduction_closed) {
-                    this.set_initialPosition_ArcRotateCamera();
-                    this.set_initialScreenOffset_ArcRotateCamera();
+                    // this.set_initialPosition_ArcRotateCamera();
+                    // this.set_initialScreenOffset_ArcRotateCamera();
                 }
                 this.set_chromaticAberration();
             });
@@ -1125,5 +1161,12 @@ export class DevelopmentService {
         this.scene.dispose();
         this.engine.dispose();
         this.scene_loaded = false;
+    }
+
+    // INIT POSITION
+
+    public init_position(): void {
+      this.animation_cameraPosition_enterDevelopment();
+      this.animation_targetScreenOffset_enterDevelopment();
     }
 }

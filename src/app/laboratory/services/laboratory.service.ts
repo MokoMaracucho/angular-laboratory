@@ -402,32 +402,32 @@ export class LaboratoryService {
 
         // BOUNDARIES
 
-        this.boundary_bottom = BABYLON.Mesh.CreatePlane("boundary_bottom", 100, this.scene);
+        this.boundary_bottom = BABYLON.Mesh.CreatePlane("boundary_bottom", 150, this.scene);
         this.boundary_bottom.position = new BABYLON.Vector3(-16.2, 0, -20);
         this.boundary_bottom.rotation = new BABYLON.Vector3(Math.PI/2, 0, 0);
         this.boundary_bottom.isVisible = false;
 
-        this.boundary_front = BABYLON.Mesh.CreatePlane("boundary_front", 100, this.scene);
-        this.boundary_front.position = new BABYLON.Vector3(-16.2, 30, 30);
+        this.boundary_front = BABYLON.Mesh.CreatePlane("boundary_front", 150, this.scene);
+        this.boundary_front.position = new BABYLON.Vector3(-16.2, 45, 40);
         this.boundary_front.isVisible = false;
 
-        this.boundary_left = BABYLON.Mesh.CreatePlane("boundary_left", 100, this.scene);
-        this.boundary_left.position = new BABYLON.Vector3(33.8, 30, -20);
+        this.boundary_left = BABYLON.Mesh.CreatePlane("boundary_left", 150, this.scene);
+        this.boundary_left.position = new BABYLON.Vector3(43.8, 45, -20);
         this.boundary_left.rotation = new BABYLON.Vector3(0, Math.PI/2, 0);
         this.boundary_left.isVisible = false;
 
-        this.boundary_back = BABYLON.Mesh.CreatePlane("boundary_back", 100, this.scene);
-        this.boundary_back.position = new BABYLON.Vector3(-16.2, 30, -70);
+        this.boundary_back = BABYLON.Mesh.CreatePlane("boundary_back", 150, this.scene);
+        this.boundary_back.position = new BABYLON.Vector3(-16.2, 45, -80);
         this.boundary_back.rotation = new BABYLON.Vector3(0, Math.PI, 0);
         this.boundary_back.isVisible = false;
 
-        this.boundary_right = BABYLON.Mesh.CreatePlane("boundary_right", 100, this.scene);
-        this.boundary_right.position = new BABYLON.Vector3(-66.2, 30, -20);
+        this.boundary_right = BABYLON.Mesh.CreatePlane("boundary_right", 150, this.scene);
+        this.boundary_right.position = new BABYLON.Vector3(-76.2, 45, -20);
         this.boundary_right.rotation = new BABYLON.Vector3(0, -Math.PI/2, 0);
         this.boundary_right.isVisible = false;
 
-        this.boundary_top = BABYLON.Mesh.CreatePlane("boundary_top", 100, this.scene);
-        this.boundary_top.position = new BABYLON.Vector3(-16.2, 70, -20);
+        this.boundary_top = BABYLON.Mesh.CreatePlane("boundary_top", 150, this.scene);
+        this.boundary_top.position = new BABYLON.Vector3(-16.2, 80, -20);
         this.boundary_top.rotation = new BABYLON.Vector3(-Math.PI/2, 0, 0);
         this.boundary_top.isVisible = false;
 

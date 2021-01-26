@@ -507,4 +507,8 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     private getCameraDatas_loop(): void {
         this.camera_datas = this.developmentService.emitCameraDatas_init();
     }
+
+    public init_position(): void {
+      this.developmentService.init_position();
+    }
 }
