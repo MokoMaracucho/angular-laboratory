@@ -4397,6 +4397,15 @@ export class LaboratoryService {
         }
     }
 
+    // INIT POSITION
+
+    public init_position(): void {
+      this.animation_cameraPosition_enterLaboratory();
+      this.animation_targetScreenOffset_enterLaboratory();
+    }
+
+    // ANIMATE
+
     public animate(): void {
         this.ngZone.runOutsideAngular(() => {
             const rendererLoopCallback = () => {

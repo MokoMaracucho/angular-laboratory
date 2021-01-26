@@ -103,9 +103,9 @@ import { CameraDatas } from '../shared/models/camera-datas';
 })
 export class LaboratoryComponent implements OnInit, OnDestroy {
 
-    private isMobileDevice;
-    private isTabletDevice;
-    private isDesktopDevice;
+    public isMobileDevice;
+    public isTabletDevice;
+    public isDesktopDevice;
 
     public innerWidth: any;
     public innerHeight: any;
@@ -399,5 +399,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       console.log(this.isMobileDevice);
       console.log(this.isTabletDevice);
       console.log(this.isDesktopDevice);
+    }
+
+    public init_position(): void {
+      this.laboratoryService.init_position();
     }
 }

@@ -308,7 +308,7 @@
 </div>
 -->
 
-<div class="div_card" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
+<div class="div_card" *ngIf="!isMobileDevice" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
     <div class="container_card container">
         <div class="row">
             <div class="col">
@@ -398,6 +398,22 @@
             </div>
         </div>
     </div>
+</div>
+
+<div id="div_mobile_stereoscopy" class="d-inline-flex p-2" *ngIf="isMobileDevice" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
+  <button id="btn_switch_camera" type="button" class="btn btn-primary mr-2 mb-2" (click)="animation_switch_camera()">
+    <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
+    <span *ngIf="language_english && anaglyph_activated">Regular</span>
+    <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
+    <span *ngIf="language_french && anaglyph_activated">Normale</span>
+    <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
+    <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
+  </button>
+  <button id="btn_close_stereoscopy" type="button" class="btn btn-primary mr-2 mb-2" *ngIf="isMobileDevice" (click)="close_stereoscopy()">
+      <span *ngIf="language_english">Close</span>
+      <span *ngIf="language_french">Fermer</span>
+      <span *ngIf="language_spanish">Cerrar</span>
+  </button>
 </div>
 
 <!--
@@ -771,6 +787,12 @@
 <!--
   </div>
 -->
+
+<button id="btn_init_position" type="button" class="btn btn-primary mr-2 mb-2" (click)="init_position()">
+  <span *ngIf="language_english">Init</span>
+  <span *ngIf="language_french">Init</span>
+  <span *ngIf="language_spanish">Init</span>
+</button>
 
 <!--
 <div id="div_cache" [style.display]="isVisible_cache ? 'block' : 'none'">
