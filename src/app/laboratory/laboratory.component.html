@@ -1,1 +1,12 @@
-<p>laboratory works!</p>
+<!-- CANVAS -->
+
+<canvas #rendererCanvas_laboratory id="rendererCanvas_laboratory"></canvas>
+
+<!-- INTRODUCTION BACKGROUND -->
+
+<div id="div_introductionBackground" [style.display]="isVisible_introductionBackground ? 'block' : 'none'" [@isLoaded_fadeOut]="isLoaded_fadeOut">
+</div>
+
+<!-- INTRODUCTION -->
+
+<introduction-introduction></introduction-introduction>

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LaboratoryIntroductionComponent } from './laboratory-introduction/laboratory-introduction.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [LaboratoryIntroductionComponent],
   imports: [
     CommonModule
   ]
