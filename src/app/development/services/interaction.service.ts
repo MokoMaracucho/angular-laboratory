@@ -57,4 +57,6 @@ export class InteractionService {
     toogle_cache = new Subject<boolean>();
 
     toogle_anaglyph_activated = new Subject<boolean>();
+
+    open_stereoscopy = new Subject<boolean>();
 }

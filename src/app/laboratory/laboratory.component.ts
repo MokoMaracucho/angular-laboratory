@@ -106,6 +106,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     public isMobileDevice;
     public isTabletDevice;
     public isDesktopDevice;
+    private deviceInfo = null;
 
     public innerWidth: any;
     public innerHeight: any;
@@ -148,8 +149,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     });
 
     public disabledSubmitButton: boolean = true;
-
-    private deviceInfo = null;
 
     @HostListener('input') oninput() {
       if (this.contactForm.valid) {

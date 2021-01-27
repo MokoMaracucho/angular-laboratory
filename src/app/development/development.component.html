@@ -7,9 +7,9 @@
     <div id="container_introduction" class="container">
         <div class="row">
             <div class="col-md-8 col-lg-12 col-xl-12">
-                <h1 class="h1_webDeveloper" *ngIf="language_english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">WEB<br/>DEVELOPER</h1>
-                <h1 class="h1_webDeveloper" *ngIf="language_french" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DEVELOPPEUR<br/>WEB</h1>
-                <h1 class="h1_webDeveloper" *ngIf="language_spanish" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DESARROLADOR<br/>WEB</h1>
+                <h1 class="h1_webDeveloper" *ngIf="language_english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DEVELOPMENT</h1>
+                <h1 class="h1_webDeveloper" *ngIf="language_french" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DÉVELOPPEMENT</h1>
+                <h1 class="h1_webDeveloper" *ngIf="language_spanish" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DESARROLO</h1>
                 <span class="span_webDeveloper" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">SPRING - ANGULAR - BABYLONJS</span>
             </div>
         </div>
@@ -933,6 +933,114 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="div_card" *ngIf="!isMobileDevice" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
+    <div class="container_card container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1_card" *ngIf="language_english">STEREOSCOPY</h1>
+                <h1 class="h1_card" *ngIf="language_french">STEREOSCOPIE</h1>
+                <h1 class="h1_card" *ngIf="language_spanish">ESTEREOSCOPIA</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" *ngIf="!isCV">
+                <p class="text_content" *ngIf="language_english">
+                  Immerse your community in your universe!<br/>
+                  Give your community an unprecedented viewing experience for your products and data using stereoscopy.
+                </p>
+                <p class="text_content" *ngIf="language_french">
+                  Faites plonger votre communauté dans votre univers !<br/>
+                  Offrez à votre communauté une expérience inédite de visualisation de vos produits et de vos données grâce à la stéréoscopie.
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+                  ¡Sumerja a su comunidad en su universo!<br/>
+                  Ofrezca a su comunidad una experiencia de visualización sin precedentes para sus productos y datos mediante estereoscopía.
+                </p>
+                <p>
+                    <button id="btn_switch_camera" type="button" class="btn btn-primary" (click)="animation_switch_camera()">
+                        <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
+                        <span *ngIf="language_english && anaglyph_activated">Regular</span>
+                        <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
+                        <span *ngIf="language_french && anaglyph_activated">Normale</span>
+                        <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
+                        <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
+                    </button>
+                </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
+            </div>
+            <div class="col-12" *ngIf="isCV">
+                <p class="text_content" *ngIf="language_english">
+
+                </p>
+                <p class="text_content" *ngIf="language_french">
+
+                </p>
+                <p class="text_content" *ngIf="language_spanish">
+
+                </p>
+                <p>
+                    <button id="btn_switch_camera" type="button" class="btn btn-primary" (click)="animation_switch_camera()">
+                        <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
+                        <span *ngIf="language_english && anaglyph_activated">Regular</span>
+                        <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
+                        <span *ngIf="language_french && anaglyph_activated">Normale</span>
+                        <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
+                        <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
+                    </button>
+                </p>
+                <div *ngIf="language_english">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+                </div>
+                <div *ngIf="language_french">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+                </div>
+                <div *ngIf="language_spanish">
+                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button id="btn_close_stereoscopy" type="button" class="btn btn-primary mt-3" (click)="close_stereoscopy()" [disabled]="anaglyph_activated == true">
+                    <span *ngIf="language_english">Close</span>
+                    <span *ngIf="language_french">Fermer</span>
+                    <span *ngIf="language_spanish">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="div_mobile_stereoscopy" class="d-inline-flex p-2" *ngIf="isMobileDevice" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
+  <button id="btn_switch_camera" type="button" class="btn btn-primary mr-2 mb-2" (click)="animation_switch_camera()">
+    <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
+    <span *ngIf="language_english && anaglyph_activated">Regular</span>
+    <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
+    <span *ngIf="language_french && anaglyph_activated">Normale</span>
+    <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
+    <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
+  </button>
+  <button id="btn_close_stereoscopy" type="button" class="btn btn-primary mr-2 mb-2" *ngIf="isMobileDevice" (click)="close_stereoscopy()">
+      <span *ngIf="language_english">Close</span>
+      <span *ngIf="language_french">Fermer</span>
+      <span *ngIf="language_spanish">Cerrar</span>
+  </button>
 </div>
 
 <button id="btn_init_position" type="button" class="btn btn-primary mr-2 mb-2" (click)="init_position()">

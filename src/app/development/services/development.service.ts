@@ -124,7 +124,8 @@ export class DevelopmentService {
 
         // CANERAS
 
-        this.universal_camera = new BABYLON.UniversalCamera("universal_camera", new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514), this.scene);
+        this.universal_camera = new BABYLON.UniversalCamera("universal_camera", new BABYLON.Vector3(0, 0, 0), this.scene);
+        this.universal_camera.position = this.get_initPositionCamera();
         this.universal_camera.target = new BABYLON.Vector3(-4, 10, 5);
         this.universal_camera.touchAngularSensibility = 10000;
         this.universal_camera.speed = 0.7;
@@ -174,31 +175,31 @@ export class DevelopmentService {
 
         // BOUNDARIES
 
-        this.boundary_bottom = BABYLON.Mesh.CreatePlane("boundary_bottom", 150, this.scene);
+        this.boundary_bottom = BABYLON.Mesh.CreatePlane("boundary_bottom", 200, this.scene);
         this.boundary_bottom.position = new BABYLON.Vector3(-16.2, 0, -20);
         this.boundary_bottom.rotation = new BABYLON.Vector3(Math.PI/2, 0, 0);
         this.boundary_bottom.isVisible = false;
 
-        this.boundary_front = BABYLON.Mesh.CreatePlane("boundary_front", 150, this.scene);
-        this.boundary_front.position = new BABYLON.Vector3(-16.2, 45, 40);
+        this.boundary_front = BABYLON.Mesh.CreatePlane("boundary_front", 200, this.scene);
+        this.boundary_front.position = new BABYLON.Vector3(-16.2, 65, 60);
         this.boundary_front.isVisible = false;
 
-        this.boundary_left = BABYLON.Mesh.CreatePlane("boundary_left", 150, this.scene);
-        this.boundary_left.position = new BABYLON.Vector3(43.8, 45, -20);
+        this.boundary_left = BABYLON.Mesh.CreatePlane("boundary_left", 200, this.scene);
+        this.boundary_left.position = new BABYLON.Vector3(63.8, 65, -20);
         this.boundary_left.rotation = new BABYLON.Vector3(0, Math.PI/2, 0);
         this.boundary_left.isVisible = false;
 
-        this.boundary_back = BABYLON.Mesh.CreatePlane("boundary_back", 150, this.scene);
-        this.boundary_back.position = new BABYLON.Vector3(-16.2, 45, -80);
+        this.boundary_back = BABYLON.Mesh.CreatePlane("boundary_back", 200, this.scene);
+        this.boundary_back.position = new BABYLON.Vector3(-16.2, 65, -100);
         this.boundary_back.rotation = new BABYLON.Vector3(0, Math.PI, 0);
         this.boundary_back.isVisible = false;
 
-        this.boundary_right = BABYLON.Mesh.CreatePlane("boundary_right", 150, this.scene);
-        this.boundary_right.position = new BABYLON.Vector3(-76.2, 45, -20);
+        this.boundary_right = BABYLON.Mesh.CreatePlane("boundary_right", 200, this.scene);
+        this.boundary_right.position = new BABYLON.Vector3(-96.2, 65, -20);
         this.boundary_right.rotation = new BABYLON.Vector3(0, -Math.PI/2, 0);
         this.boundary_right.isVisible = false;
 
-        this.boundary_top = BABYLON.Mesh.CreatePlane("boundary_top", 150, this.scene);
+        this.boundary_top = BABYLON.Mesh.CreatePlane("boundary_top", 200, this.scene);
         this.boundary_top.position = new BABYLON.Vector3(-16.2, 80, -20);
         this.boundary_top.rotation = new BABYLON.Vector3(-Math.PI/2, 0, 0);
         this.boundary_top.isVisible = false;
@@ -483,6 +484,8 @@ export class DevelopmentService {
 
         BABYLON.SceneLoader.ImportMeshAsync("owl", "../../assets/glb/development/", "owl.glb").then((result) => {
         });
+        BABYLON.SceneLoader.ImportMeshAsync("owl_wireframe", "../../assets/glb/development/", "owl_wireframe.glb").then((result) => {
+        });
 
         // IPAD
 
@@ -607,6 +610,9 @@ export class DevelopmentService {
         this.addActions_IconPhotoshop();
         this.addActions_IconIllustrator();
         this.addActions_ViaAirMail();
+        this.addActions_ThreedGlassesFrame();
+        this.addActions_ThreedGlassBlue();
+        this.addActions_ThreedGlassRed();
     }
 
     private activation_buttons() {
@@ -627,6 +633,9 @@ export class DevelopmentService {
         this.icon_photoshop.isPickable = true;
         this.icon_illustrator.isPickable = true;
         this.via_air_mail.isPickable = true;
+        this.threed_glasses_frame.isPickable = true;
+        this.threed_glass_blue.isPickable = true;
+        this.threed_glass_red.isPickable = true;
     }
 
     private desactivation_buttons() {
@@ -647,6 +656,9 @@ export class DevelopmentService {
         this.icon_photoshop.isPickable = false;
         this.icon_illustrator.isPickable = false;
         this.via_air_mail.isPickable = false;
+        this.threed_glasses_frame.isPickable = false;
+        this.threed_glass_blue.isPickable = false;
+        this.threed_glass_red.isPickable = false;
     }
 
     private addActions_IconPostgresql() {
@@ -987,6 +999,97 @@ export class DevelopmentService {
         );
     }
 
+    private addActions_ThreedGlassesFrame() {
+        this.threed_glasses_frame.isPickable = true;
+        this.threed_glasses_frame.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glasses_frame .material, "albedoTexture", this.threed_glasses_frame_BAKING_HIGHLIGHT));
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glasses_frame .material, "albedoTexture", this.threed_glasses_frame_BAKING));
+
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_blue.material, "useEmissiveAsIllumination", true));
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_blue.material, "useEmissiveAsIllumination", false));
+
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", true));
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", false));
+
+        this.threed_glasses_frame.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glasses_frame},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                ]
+            )
+        );
+    }
+
+    private addActions_ThreedGlassBlue() {
+        this.threed_glass_blue.isPickable = true;
+        this.threed_glass_blue.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glasses_frame.material, "albedoTexture", this.threed_glasses_frame_BAKING_HIGHLIGHT));
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glasses_frame.material, "albedoTexture", this.threed_glasses_frame_BAKING));
+
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_blue.material, "useEmissiveAsIllumination", true));
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_blue.material, "useEmissiveAsIllumination", false));
+
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", true));
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", false));
+
+        this.threed_glass_blue.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_blue},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                ]
+            )
+        );
+    }
+
+    private addActions_ThreedGlassRed() {
+        this.threed_glass_red.isPickable = true;
+        this.threed_glass_red.actionManager = new BABYLON.ActionManager(this.scene);
+
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glasses_frame.material, "albedoTexture", this.threed_glasses_frame_BAKING_HIGHLIGHT));
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glasses_frame.material, "albedoTexture", this.threed_glasses_frame_BAKING));
+
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_blue.material, "useEmissiveAsIllumination", true));
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_blue.material, "useEmissiveAsIllumination", false));
+
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", true));
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", false));
+
+        this.threed_glass_red.actionManager.registerAction(new BABYLON.CombineAction(
+                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_red},
+                [
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
+                ]
+            )
+        );
+    }
+
+    // INITIAL POSITION CAMERA
+
+    private get_initPositionCamera(): BABYLON.Vector3 {
+        if(this.innerWidth <= 576) {
+            return new BABYLON.Vector3(-30, 20, 20);
+        } else if(this.innerWidth <= 768) {
+          return new BABYLON.Vector3(-40, 30, 30);
+        } else if(this.innerWidth <= 960) {
+          return new BABYLON.Vector3(-40, 15, 25);
+        } else if(this.innerWidth <= 1140) {
+          return new BABYLON.Vector3(-40, 15, 25);
+        } else {
+          return new BABYLON.Vector3(-30, 15, 30);
+        }
+    }
+
     // ENTER DEVELOPMENT
 
     public animation_enterDevelopment() {
@@ -998,36 +1101,34 @@ export class DevelopmentService {
     private animation_cameraPosition_enterDevelopment() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterDevelopment', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(-16.5, 14, 15), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterDevelopment', this.universal_camera, 'position', 15, 30, this.universal_camera.position, this.get_initPositionCamera_enterLaboratory(), 0, ease);
     }
 
-    private get_positionCamera_enterDevelopment(): BABYLON.Vector3 {
+    private get_initPositionCamera_enterLaboratory(): BABYLON.Vector3 {
         if(this.innerWidth <= 576) {
-            return new BABYLON.Vector3(-3.094765153164219, 39.442763062028746, 90.04295534108225);
+          return new BABYLON.Vector3(60, 20, 60);
         } else if(this.innerWidth <= 768) {
-          return new BABYLON.Vector3(-3.094765153164219, 39.442763062028746, 90.04295534108225);
+          return new BABYLON.Vector3(50, 30, 50);
         } else if(this.innerWidth <= 960) {
-            return new BABYLON.Vector3(-3.346219277285269, 31.264217767020764, 66.41991219078163);
+          return new BABYLON.Vector3(0, 30, 70);
         } else if(this.innerWidth <= 1140) {
-            return new BABYLON.Vector3(-3.3883415436680724, 29.89419106833633, 62.46270480821193);
-        } else if(this.innerWidth <= 1500) {
-            return new BABYLON.Vector3(-3.48872236413827, 26.629304919281328, 53.03235459336118);
+          return new BABYLON.Vector3(0, 20, 60);
         } else {
-            return new BABYLON.Vector3(-3.5891031846084673, 23.364418770226326, 43.60200437851042);
+          return new BABYLON.Vector3(0, 20, 40);
         }
     }
 
     private animation_targetScreenOffset_enterDevelopment() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterDevelopment', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-16.5, 5, -12), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterDevelopment', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(0, 10, 0), 0, ease);
     }
 
     // OPEN CARD
 
     private animation_openCard() {
-      this.animation_cameraPosition_openCard();
-      this.animation_targetScreenOffset_openCard();
+      // this.animation_cameraPosition_openCard();
+      // this.animation_targetScreenOffset_openCard();
       this.desactivation_buttons();
     }
 
