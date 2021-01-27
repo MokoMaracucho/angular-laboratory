@@ -169,12 +169,20 @@ export class LaboratoryService {
     private world_map_basement_metal;
     private world_map_basement_marble;
     private twitter;
+    private cursor_twitter_black;
+    private cursor_twitter_white;
     private instagram;
     private instagram_lens;
+    private cursor_instagram_black;
+    private cursor_instagram_white;
     private youtube;
     private youtube_play;
+    private cursor_youtube_black;
+    private cursor_youtube_white;
     private spotify_green;
     private spotify_black;
+    private cursor_spotify_black;
+    private cursor_spotify_white;
     private projector;
     private touch_play;
     private touch_pause;
@@ -599,8 +607,6 @@ export class LaboratoryService {
             this.grid = this.scene.getMeshByName("grid");
             this.grid.isVisible = false;
         });
-
-
 
         BABYLON.SceneLoader.ImportMeshAsync("graphic", "../../assets/glb/laboratory/", "graphic.glb", this.scene).then((result) => {
             this.graphic = this.scene.getMeshByName("graphic");
@@ -1440,6 +1446,16 @@ export class LaboratoryService {
             this.twitter = this.scene.getMeshByName("twitter");
         });
 
+        BABYLON.SceneLoader.ImportMeshAsync("cursor_twitter_white", "../../assets/glb/laboratory/", "cursor_twitter_white.glb", this.scene).then((result) => {
+            this.cursor_twitter_white = this.scene.getMeshByName("cursor_twitter_white");
+            this.cursor_twitter_white.isVisible = false;
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("cursor_twitter_black", "../../assets/glb/laboratory/", "cursor_twitter_black.glb", this.scene).then((result) => {
+            this.cursor_twitter_black = this.scene.getMeshByName("cursor_twitter_black");
+            this.cursor_twitter_black.isVisible = false;
+        });
+
         this.instagram_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/instagram_BAKING.jpg", this.scene, false, false);
         this.instagram_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/instagram_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
 
@@ -1449,6 +1465,16 @@ export class LaboratoryService {
 
         BABYLON.SceneLoader.ImportMeshAsync("instagram_lens", "../../assets/glb/laboratory/", "instagram_lens.glb").then((result) => {
             this.instagram_lens = this.scene.getMeshByName("instagram_lens");
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("cursor_instagram_black", "../../assets/glb/laboratory/", "cursor_instagram_black.glb", this.scene).then((result) => {
+            this.cursor_instagram_black = this.scene.getMeshByName("cursor_instagram_black");
+            this.cursor_instagram_black.isVisible = false;
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("cursor_instagram_white", "../../assets/glb/laboratory/", "cursor_instagram_white.glb", this.scene).then((result) => {
+            this.cursor_instagram_white = this.scene.getMeshByName("cursor_instagram_white");
+            this.cursor_instagram_white.isVisible = false;
         });
 
         this.youtube_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/youtube_BAKING.jpg", this.scene, false, false);
@@ -1465,6 +1491,16 @@ export class LaboratoryService {
             this.youtube_play = this.scene.getMeshByName("youtube_play");
         });
 
+        BABYLON.SceneLoader.ImportMeshAsync("cursor_youtube_black", "../../assets/glb/laboratory/", "cursor_youtube_black.glb", this.scene).then((result) => {
+            this.cursor_youtube_black = this.scene.getMeshByName("cursor_youtube_black");
+            this.cursor_youtube_black.isVisible = false;
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("cursor_youtube_white", "../../assets/glb/laboratory/", "cursor_youtube_white.glb", this.scene).then((result) => {
+            this.cursor_youtube_white = this.scene.getMeshByName("cursor_youtube_white");
+            this.cursor_youtube_white.isVisible = false;
+        });
+
         this.spotify_green_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/spotify_green_BAKING.jpg", this.scene, false, false);
         this.spotify_green_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/spotify_green_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
 
@@ -1472,18 +1508,18 @@ export class LaboratoryService {
             this.spotify_green = this.scene.getMeshByName("spotify_green");
         });
 
-        BABYLON.SceneLoader.ImportMeshAsync("pop_up_spotify", "../../assets/glb/laboratory/", "pop_up_spotify.glb", this.scene).then((result) => {
-            this.pop_up_spotify = this.scene.getMeshByName("pop_up_spotify");
-            this.pop_up_spotify.isVisible = false;
-        });
-
         BABYLON.SceneLoader.ImportMeshAsync("spotify_black", "../../assets/glb/laboratory/", "spotify_black.glb").then((result) => {
             this.spotify_black = this.scene.getMeshByName("spotify_black");
         });
 
-        BABYLON.SceneLoader.ImportMeshAsync("pop_up_social_networks", "../../assets/glb/laboratory/", "pop_up_social_networks.glb", this.scene).then((result) => {
-            this.pop_up_social_networks = this.scene.getMeshByName("pop_up_social_networks");
-            this.pop_up_social_networks.isVisible = false;
+        BABYLON.SceneLoader.ImportMeshAsync("cursor_spotify_black", "../../assets/glb/laboratory/", "cursor_spotify_black.glb", this.scene).then((result) => {
+            this.cursor_spotify_black = this.scene.getMeshByName("cursor_spotify_black");
+            this.cursor_spotify_black.isVisible = false;
+        });
+
+        BABYLON.SceneLoader.ImportMeshAsync("cursor_spotify_white", "../../assets/glb/laboratory/", "cursor_spotify_white.glb", this.scene).then((result) => {
+            this.cursor_spotify_white = this.scene.getMeshByName("cursor_spotify_white");
+            this.cursor_spotify_white.isVisible = false;
         });
 
         // PROJECTOR
@@ -3798,8 +3834,11 @@ export class LaboratoryService {
         this.twitter.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.twitter.material, "albedoTexture", this.twitter_BAKING_HIGHLIGHT));
         this.twitter.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.twitter.material, "albedoTexture", this.twitter_BAKING));
 
-        this.twitter.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_social_networks.isVisible = true));
-        this.twitter.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_social_networks.isVisible = false));
+        this.twitter.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.cursor_twitter_white.isVisible = true));
+        this.twitter.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.cursor_twitter_white.isVisible = false));
+
+        this.twitter.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.cursor_twitter_black.isVisible = true));
+        this.twitter.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.cursor_twitter_black.isVisible = false));
 
         this.twitter.actionManager.registerAction(
             new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
@@ -3818,8 +3857,11 @@ export class LaboratoryService {
         this.instagram.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.instagram.material, "albedoTexture", this.instagram_BAKING_HIGHLIGHT));
         this.instagram.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.instagram.material, "albedoTexture", this.instagram_BAKING));
 
-        this.instagram.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_social_networks.isVisible = true));
-        this.instagram.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_social_networks.isVisible = false));
+        this.instagram.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.cursor_instagram_black.isVisible = true));
+        this.instagram.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.cursor_instagram_black.isVisible = false));
+
+        this.instagram.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.cursor_instagram_white.isVisible = true));
+        this.instagram.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.cursor_instagram_white.isVisible = false));
 
         this.instagram.actionManager.registerAction(
             new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
@@ -3838,8 +3880,11 @@ export class LaboratoryService {
         this.instagram_lens.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.instagram.material, "albedoTexture", this.instagram_BAKING_HIGHLIGHT));
         this.instagram_lens.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.instagram.material, "albedoTexture", this.instagram_BAKING));
 
-        this.instagram_lens.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_social_networks.isVisible = true));
-        this.instagram_lens.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_social_networks.isVisible = false));
+        this.instagram_lens.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.cursor_instagram_black.isVisible = true));
+        this.instagram_lens.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.cursor_instagram_black.isVisible = false));
+
+        this.instagram_lens.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.cursor_instagram_white.isVisible = true));
+        this.instagram_lens.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.cursor_instagram_white.isVisible = false));
 
         this.instagram_lens.actionManager.registerAction(
             new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
@@ -3861,8 +3906,11 @@ export class LaboratoryService {
         this.youtube.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.youtube_play.material, "albedoTexture", this.youtube_play_BAKING_HIGHLIGHT));
         this.youtube.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.youtube_play.material, "albedoTexture", this.youtube_play_BAKING));
 
-        this.youtube.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_social_networks.isVisible = true));
-        this.youtube.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_social_networks.isVisible = false));
+        this.youtube.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.cursor_youtube_black.isVisible = true));
+        this.youtube.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.cursor_youtube_black.isVisible = false));
+
+        this.youtube.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.cursor_youtube_white.isVisible = true));
+        this.youtube.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.cursor_youtube_white.isVisible = false));
 
         this.youtube.actionManager.registerAction(
             new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
@@ -3884,8 +3932,11 @@ export class LaboratoryService {
         this.youtube_play.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.youtube_play.material, "albedoTexture", this.youtube_play_BAKING_HIGHLIGHT));
         this.youtube_play.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.youtube_play.material, "albedoTexture", this.youtube_play_BAKING));
 
-        this.youtube_play.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_social_networks.isVisible = true));
-        this.youtube_play.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_social_networks.isVisible = false));
+        this.youtube_play.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.cursor_youtube_black.isVisible = true));
+        this.youtube_play.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.cursor_youtube_black.isVisible = false));
+
+        this.youtube_play.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.cursor_youtube_white.isVisible = true));
+        this.youtube_play.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.cursor_youtube_white.isVisible = false));
 
         this.youtube_play.actionManager.registerAction(
             new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
@@ -3904,8 +3955,11 @@ export class LaboratoryService {
         this.spotify_green.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.spotify_green.material, "albedoTexture", this.spotify_green_BAKING_HIGHLIGHT));
         this.spotify_green.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.spotify_green.material, "albedoTexture", this.spotify_green_BAKING));
 
-        this.spotify_green.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_spotify.isVisible = true));
-        this.spotify_green.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_spotify.isVisible = false));
+        this.spotify_green.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.cursor_spotify_black.isVisible = true));
+        this.spotify_green.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.cursor_spotify_black.isVisible = false));
+
+        this.spotify_green.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.cursor_spotify_white.isVisible = true));
+        this.spotify_green.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.cursor_spotify_white.isVisible = false));
 
         this.spotify_green.actionManager.registerAction(
             new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
@@ -3924,8 +3978,11 @@ export class LaboratoryService {
         this.spotify_black.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.spotify_green.material, "albedoTexture", this.spotify_green_BAKING_HIGHLIGHT));
         this.spotify_black.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.spotify_green.material, "albedoTexture", this.spotify_green_BAKING));
 
-        this.spotify_black.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_spotify.isVisible = true));
-        this.spotify_black.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_spotify.isVisible = false));
+        this.spotify_black.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.cursor_spotify_black.isVisible = true));
+        this.spotify_black.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.cursor_spotify_black.isVisible = false));
+
+        this.spotify_black.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.cursor_spotify_white.isVisible = true));
+        this.spotify_black.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.cursor_spotify_white.isVisible = false));
 
         this.spotify_black.actionManager.registerAction(
             new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
@@ -4319,11 +4376,11 @@ export class LaboratoryService {
 
     private get_initPositionCamera(): BABYLON.Vector3 {
         if(this.innerWidth <= 576) {
-            return new BABYLON.Vector3(-30, 20, 20);
+          return new BABYLON.Vector3(-50, 50, 15);
         } else if(this.innerWidth <= 768) {
-          return new BABYLON.Vector3(-40, 30, 30);
+          return new BABYLON.Vector3(-50, 50, 15);
         } else if(this.innerWidth <= 960) {
-          return new BABYLON.Vector3(-40, 15, 25);
+          return new BABYLON.Vector3(-60, 35, 25);
         } else if(this.innerWidth <= 1140) {
           return new BABYLON.Vector3(-40, 22, 35);
         } else {
@@ -4333,13 +4390,13 @@ export class LaboratoryService {
 
     private get_initPositionCameraTarget(): BABYLON.Vector3 {
         if(this.innerWidth <= 576) {
-            return new BABYLON.Vector3(-30, 20, 20);
+          return new BABYLON.Vector3(-8, 2, -12);
         } else if(this.innerWidth <= 768) {
-          return new BABYLON.Vector3(-40, 30, 30);
+          return new BABYLON.Vector3(-10, 2, -12);
         } else if(this.innerWidth <= 960) {
-          return new BABYLON.Vector3(-40, 15, 25);
+          return new BABYLON.Vector3(-4, 2, -12);
         } else if(this.innerWidth <= 1140) {
-          return new BABYLON.Vector3(0, -1, -12);
+          return new BABYLON.Vector3(-8, 5, -12);
         } else {
           return new BABYLON.Vector3(0, -1, -12);
         }
@@ -4620,8 +4677,8 @@ export class LaboratoryService {
             this.windowRef.window.addEventListener('resize', () => {
                 this.engine.resize();
                 if(!this.introduction_closed) {
-                    // this.set_initialPosition_ArcRotateCamera();
-                    // this.set_initialScreenOffset_ArcRotateCamera();
+                    this.universal_camera.position = this.get_initPositionCamera();
+                    this.universal_camera.target = this.get_initPositionCameraTarget();
                 }
                 this.set_chromaticAberration();
             });
