@@ -317,6 +317,14 @@
   right: 10px;
 }
 
+/* STEREOSCOPY CV */
+
+#div_cv_stereoscopy {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
 /* MOVIES */
 
 #btn_close_movies {

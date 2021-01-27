@@ -4,153 +4,206 @@
 </div>
 
 <div id="div_introduction" [style.display]="isVisible_introduction ? 'block' : 'none'" *ngIf="isVisible_introduction">
-    <div id="container_introduction" class="container">
-        <div class="row">
-            <div class="col-md-8 col-lg-12 col-xl-12">
-                <h1 class="h1_webDeveloper" *ngIf="!isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">MK-Lab</h1>
+  <div id="container_introduction" class="container">
+    <div class="row">
+      <div class="col-md-8 col-lg-12 col-xl-12">
+        <h1 class="h1_webDeveloper" *ngIf="!isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">MK-Lab</h1>
 
-                <h1 class="h1_webDeveloper" *ngIf="language_english && isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">WEB<br/>DEVELOPER</h1>
-                <h1 class="h1_webDeveloper" *ngIf="language_french && isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DEVELOPPEUR<br/>WEB</h1>
-                <h1 class="h1_webDeveloper" *ngIf="language_spanish && isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DESARROLADOR<br/>WEB</h1>
+        <span class="span_webDeveloper" *ngIf="language_english && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Enter the 3rd dimension with MK-Lab</span>
+        <span class="span_webDeveloper" *ngIf="language_french && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Entrez dans la 3ème dimension avec MK-Lab</span>
+        <span class="span_webDeveloper" *ngIf="language_spanish && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Ingrese a la tercera dimensión con MK-Lab</span>
 
-                <span class="span_webDeveloper" *ngIf="language_english && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Enter the 3rd dimension with MK-Lab</span>
-                <span class="span_webDeveloper" *ngIf="language_french && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Entrez dans la 3ème dimension avec MK-Lab</span>
-                <span class="span_webDeveloper" *ngIf="language_spanish && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Ingrese a la tercera dimensión con MK-Lab</span>
+        <h1 class="h1_webDeveloper" *ngIf="language_english && isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">WEB<br/>DEVELOPER</h1>
+        <h1 class="h1_webDeveloper" *ngIf="language_french && isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DEVELOPPEUR<br/>WEB</h1>
+        <h1 class="h1_webDeveloper" *ngIf="language_spanish && isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DESARROLADOR<br/>WEB</h1>
 
-                <span class="span_webDeveloper" *ngIf="isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">SPRING - ANGULAR - BABYLONJS</span>
-            </div>
+        <span class="span_webDeveloper" *ngIf="isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">SPRING - ANGULAR - BABYLONJS</span>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-xs-8 col-sm-7 col-md-6 col-lg-6 col-xl-6" *ngIf="!isCV" [@introduction_fadeIn]="introduction_fadeIn">
+          <p class="text_introduction pr-3" *ngIf="language_english">
+            Give yourself a powerful digital identity and offer your users a unique experience based on innovative technologies that will be part of the web for a long time.<br/>
+            The 3D web offers digital marketing solutions revolutionizing your interactions with your community, an unprecedented presentation of your products, efficient classification of your data, unlimited customization of your interfaces.
+          </p>
+          <p class="text_introduction" *ngIf="language_french">
+            Dotez-vous d'une identité numérique puissante et proposez à vos utilisateurs une expérience unique reposant sur des technologies novatrices qui s'inscriront durablement dans le web.<br/>
+            Le web 3D offre des solutions de marketing digital révolutionnant vos interactions avec votre communauté, une présentation inédite de vos produits, une classification efficace de vos données, une customisation illimitée de vos interfaces.
+          </p>
+          <p class="text_introduction" *ngIf="language_spanish">
+            Date una poderosa identidad digital y ofrece a tus usuarios una experiencia única basada en tecnologías innovadoras que serán parte de la web durante mucho tiempo.<br/>
+            La web 3D ofrece soluciones de marketing digital que revolucionan sus interacciones con su comunidad, una presentación sin precedentes de sus productos, clasificación eficiente de sus datos, personalización ilimitada de sus interfaces.
+          </p>
+          <div *ngIf="language_english">
+            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+          </div>
+          <div *ngIf="language_french">
+            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+          </div>
+          <div *ngIf="language_spanish">
+            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-xs-8 col-sm-7 col-md-6 col-lg-6 col-xl-6" *ngIf="!isCV" [@introduction_fadeIn]="introduction_fadeIn">
-                <p class="text_introduction pr-3" *ngIf="language_english">
-                  Give yourself a powerful digital identity and offer your users a unique experience based on innovative technologies that will be part of the web for a long time.<br/>
-                  The 3D web offers digital marketing solutions revolutionizing your interactions with your community, an unprecedented presentation of your products, efficient classification of your data, unlimited customization of your interfaces.
-                </p>
-                <p class="text_introduction" *ngIf="language_french">
-                  Entrez dans la 3e dimension avec MK Lab
-                  Dotez vous d'une identité numérique puissante et proposez à vos utilisateurs une expérience unique reposant sur des technologies novatrices qui s'inscriront durablement dans le web.<br/>
-                  Le web 3D offre des solutions de marketing digital révolutionnant vos interactions avec votre communauté, une présentation inédite de vos produits, une classification efficace de vos données, une customisation illimitée de vos interfaces.
-                </p>
-                <p class="text_introduction" *ngIf="language_spanish">
-                  Date una poderosa identidad digital y ofrece a tus usuarios una experiencia única basada en tecnologías innovadoras que serán parte de la web durante mucho tiempo.<br/>
-                  La web 3D ofrece soluciones de marketing digital que revolucionan sus interacciones con su comunidad, una presentación sin precedentes de sus productos, clasificación eficiente de sus datos, personalización ilimitada de sus interfaces.
-                </p>
-                <div *ngIf="language_english">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-                </div>
-                <div *ngIf="language_french">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-                </div>
-                <div *ngIf="language_spanish">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-                </div>
-            </div>
-            <div class="col-xs-8 col-sm-7 col-md-6 col-lg-6 col-xl-6" *ngIf="isCV" [@introduction_fadeIn]="introduction_fadeIn">
-                <p class="text_introduction pr-3" *ngIf="language_english">
-                  Following a course as a Java application developer with OpenClassrooms, I am looking for a 4-month operational internship.<br/>
-                  Passionate about IT, I fell into the Web very early on. I trained in a self-taught way in Font-end development and in 3D modeling and programming.<br/>
-                  In order to validate and complete my knowledge, I decided to acquire a Back-end developer diploma.<br/>
-                  Open the door of my laboratory and discover my universe !
-                </p>
-                <p class="text_introduction" *ngIf="language_french">
-                  Suivant un cursus de de développeur d'applications Java avec OpenClassrooms, je suis à la recherche d'un stage opérationnel de 4 mois.<br/>
-                  Passionné d'informatique, je suis très tôt tombé dans le Web. Je me suis formé de manière autodidacte au développement Font-end et à la modélisation et la programmation 3D.<br/>
-                  Dans l'objectif de valider et de compléter mes acquis, j'ai décidé d'acquérir un diplôme de développeur Back-end.<br/>
-                  Poussez la porte de mon laboratoire et découvrez mon univers !
-                </p>
-                <p class="text_introduction" *ngIf="language_spanish">
-                  Después de un curso como desarrollador de aplicaciones Java con OpenClassrooms, estoy buscando una pasantía operativa de 4 meses.<br/>
-                  Apasionado por las tecnologías de la información, entré en la Web desde el principio. Me formé de forma autodidacta en desarrollo Font-end y en modelado y programación 3D.<br/>
-                  Para validar y completar mis conocimientos, decidí adquirir un diploma de desarrollador back-end.<br/>
-                  Abre la puerta de mi laboratorio y descubre mi universo !
-                </p>
-                <div *ngIf="language_english">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-                </div>
-                <div *ngIf="language_french">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-                </div>
-                <div *ngIf="language_spanish">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-                </div>
-            </div>
+
+        <div class="col-xs-8 col-sm-7 col-md-6 col-lg-6 col-xl-6" *ngIf="isCV" [@introduction_fadeIn]="introduction_fadeIn">
+          <p class="text_introduction pr-3" *ngIf="language_english">
+            Following a course as a Java application developer with OpenClassrooms, I am looking for a 4-month operational internship.<br/>
+            Passionate about IT, I fell into the Web very early on. I trained in a self-taught way in Front-end development and in 3D modeling and programming.<br/>
+            In order to validate and complete my knowledge, I decided to acquire a Back-end developer diploma.<br/>
+            Open the door of my laboratory and discover my universe !
+          </p>
+          <p class="text_introduction" *ngIf="language_french">
+            Suivant un cursus de développeur d'applications Java avec OpenClassrooms, je suis à la recherche d'un stage opérationnel de 4 mois.<br/>
+            Passionné d'informatique, je suis très tôt tombé dans le Web. Je me suis formé de manière autodidacte au développement Front-end et à la modélisation et la programmation 3D.<br/>
+            Dans l'objectif de valider et de compléter mes acquis, j'ai décidé d'acquérir un diplôme de développeur Back-end.<br/>
+            Poussez la porte de mon laboratoire et découvrez mon univers !
+          </p>
+          <p class="text_introduction" *ngIf="language_spanish">
+            Después de un curso como desarrollador de aplicaciones Java con OpenClassrooms, estoy buscando una práctica operativa de 4 meses.<br/>
+            Apasionado por las tecnologías de la información, entré en la Web desde el principio. Me formé de forma autodidacta en desarrollo Front-end y en modelización y programación 3D.<br/>
+            Para validar y completar mis conocimientos, decidí adquirir un diploma de desarrollador back-end.<br/>
+            Abre la puerta de mi laboratorio y descubre mi universo !
+          </p>
+          <div *ngIf="language_english">
+            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+          </div>
+          <div *ngIf="language_french">
+            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+          </div>
+          <div *ngIf="language_spanish">
+            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+          </div>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-1">
+          <button type="button" class="btn btn-primary mt-3" [disabled]="isLoaded == false" [@btnCloseIntroduction_fadeIn]="btnCloseIntroduction_fadeIn" (click)="close_introduction()">
+            <span *ngIf="language_english">Enter</span>
+            <span *ngIf="language_french">Entrer</span>
+            <span *ngIf="language_spanish">Entrar</span>
+          </button>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="div_card" [style.display]="isVisible_development ? 'block' : 'none'" [@isVisible_development]="isVisible_development">
+  <div class="container_card container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="h1_card" *ngIf="language_english">DEVELOPMENT</h1>
+        <h1 class="h1_card" *ngIf="language_french">DÉVELOPPEMENT</h1>
+        <h1 class="h1_card" *ngIf="language_spanish">DESAROLLO</h1>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-12" *ngIf="!isCV">
+          <p class="text_content" *ngIf="language_english">
+            Unleash your creativity! <br/>
+            Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas.<br/>
+            Front-end and back-end development for a better distribution of functionalities. Database management. Configuration and securing of your servers. 3D modeling and programming.<br/>
+            Go to the "Development" section for more details.
+          </p>
+          <p class="text_content" *ngIf="language_french">
+            Liberez votre créativité !<br/>
+            Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.<br/>
+            Developpement front-end et back-end pour une meilleure répartition des fonctionnalités. Gestion des bases de données. Configuration et sécurisation de vos serveurs. Modélisation et programmtion 3D.<br/>
+            Accédez à la rubrique "Dévelopment" pour plus de détails.
+          </p>
+          <p class="text_content" *ngIf="language_spanish">
+            ¡Da rienda suelta a tu creatividad! <br/>
+            Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.<br/>
+            Desarrollo front-end y back-end para una mejor distribución de funcionalidades. Gestión de base de datos. Configuración y aseguramiento de sus servidores. Modelado y programación 3D.<br/>
+            Vaya a la sección "Desarrollo" para obtener más detalles.
+          </p>
+          <a type="button" class="btn btn-dark mb-2" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Développement</a>
+          <div *ngIf="language_english">
+            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+          </div>
+          <div *ngIf="language_french">
+            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+          </div>
+          <div *ngIf="language_spanish">
+            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+          </div>
+        </div>
+        <div class="col-12" *ngIf="isCV">
+          <p class="text_content" *ngIf="language_english">
+            Guided by a desire for independence, I became interested in all aspects of building a website:<br/>
+            Back-office development:<br/>
+            <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
+            Front-office development:<br/>
+            <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
+            Data bases:<br/>
+            <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
+            Configuration and securing of your servers:<br/>
+            <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
+            3D programming and modeling:<br/>
+            <span class="span_development">3Ds Max - Blender - BabylonJS</span>
+          </p>
+          <p class="text_content" *ngIf="language_french">
+            Guidé par une volonté d'indépendance, je me suis intéressé à tous les aspects de la réalisation d'un site Web :<br/>
+            Développement Back-office :<br/>
+            <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
+            Développement Front-office :<br/>
+            <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
+            Bases de données :<br/>
+            <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
+            Configuration et sécurisation de vos serveurs :<br/>
+            <span class="span_development">Ubuntu - Apache - Apache Tomcat</span><br/>
+            Programmation et modélisation 3D :<br/>
+            <span class="span_development">3Ds Max - Blender - BabylonJS</span>
+          </p>
+          <p class="text_content" *ngIf="language_spanish">
+            Guiado por un deseo de independencia, me interesé en todos los aspectos de la construcción de un website:<br/>
+            Desarrollo de back-office :<br/>
+            <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
+            Front-office (Angular) :<br/>
+            <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
+            Bases de datos :<br/>
+            <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
+            Configuración y protección de sus servidores :<br/>
+            <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
+            Programación y modelado 3D :<br/>
+            <span class="span_development">3Ds Max - Blender - BabylonJS</span>
+          </p>
+          <a type="button" class="btn btn-dark mb-2" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Développement</a>
+          <div *ngIf="language_english">
+              <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+              <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+          </div>
+          <div *ngIf="language_french">
+              <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+              <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+          </div>
+          <div *ngIf="language_spanish">
+              <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+              <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+          </div>
+        </div>
+      </div>
         <div class="row">
-            <div class="col-1">
-                <button id="btn_close_introduction" type="button" class="btn btn-primary mt-3" (click)="close_introduction()" [disabled]="isLoaded == false" [@btnCloseIntroduction_fadeIn]="btnCloseIntroduction_fadeIn">
-                    <span *ngIf="language_english">Enter</span>
-                    <span *ngIf="language_french">Entrer</span>
-                    <span *ngIf="language_spanish">Entrar</span>
-                </button>
-            </div>
+          <div class="col-12">
+            <button type="button" class="btn btn-primary mt-3" (click)="close_development()">
+              <span *ngIf="language_english">Close</span>
+              <span *ngIf="language_french">Fermer</span>
+              <span *ngIf="language_spanish">Cerrar</span>
+            </button>
+          </div>
         </div>
     </div>
 </div>
 
-<!--
-<div class="div_card" [style.display]="isVisible_running ? 'block' : 'none'" [@isVisible_running]="isVisible_running">
-    <div class="container_card container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="h1_card" *ngIf="language_english">RUNNING</h1>
-                <h1 class="h1_card" *ngIf="language_french">RUNNING</h1>
-                <h1 class="h1_card" *ngIf="language_spanish">RUNNING</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-              <p class="text_content" *ngIf="language_english">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-              </p>
-              <p class="text_content" *ngIf="language_french">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-              </p>
-              <p class="text_content" *ngIf="language_spanish">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-              </p>
-              <div *ngIf="language_english">
-                  <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                  <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-              </div>
-              <div *ngIf="language_french">
-                  <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                  <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-              </div>
-              <div *ngIf="language_spanish">
-                  <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                  <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-              </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <button id="btn_close_running" type="button" class="btn btn-primary mt-3" (click)="close_running()">
-                    <span *ngIf="language_english">Close</span>
-                    <span *ngIf="language_french">Fermer</span>
-                    <span *ngIf="language_spanish">Cerrar</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
--->
-
-<div class="div_card" [style.display]="isVisible_shareKnowledge ? 'block' : 'none'" [@isVisible_shareKnowledge]="isVisible_shareKnowledge">
+<div class="div_card" [style.display]="isVisible_datas ? 'block' : 'none'" [@isVisible_datas]="isVisible_datas">
     <div class="container_card container">
         <div class="row">
             <div class="col-12">
@@ -189,7 +242,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <button id="btn_close_shareKnowledge" type="button" class="btn btn-primary mt-3" (click)="close_shareKnowledge()">
+                <button type="button" class="btn btn-primary mt-3" (click)="close_datas()">
                     <span *ngIf="language_english">Close</span>
                     <span *ngIf="language_french">Fermer</span>
                     <span *ngIf="language_spanish">Cerrar</span>
@@ -197,6 +250,95 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="div_card" *ngIf="!isMobileDevice && !isCV" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
+  <div class="container_card container">
+    <div class="row">
+      <div class="col">
+        <h1 class="h1_card" *ngIf="language_english">STEREOSCOPY</h1>
+        <h1 class="h1_card" *ngIf="language_french">STEREOSCOPIE</h1>
+        <h1 class="h1_card" *ngIf="language_spanish">ESTEREOSCOPIA</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12" *ngIf="!isCV">
+        <p class="text_content" *ngIf="language_english">
+          Immerse your community in your universe!<br/>
+          Give your community an unprecedented viewing experience for your products and data using stereoscopy.
+        </p>
+        <p class="text_content" *ngIf="language_french">
+          Immergez votre communauté dans votre univers !<br/>
+          Offrez à votre communauté une expérience inédite de visualisation de vos produits et de vos données grâce à la stéréoscopie.
+        </p>
+        <p class="text_content" *ngIf="language_spanish">
+          ¡Sumerja a su comunidad en su universo!<br/>
+          Ofrezca a su comunidad una experiencia de visualización sin precedentes para sus productos y datos mediante estereoscopía.
+        </p>
+        <p>
+          <button id="btn_switch_camera" type="button" class="btn btn-primary" (click)="animation_switch_camera()">
+            <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
+            <span *ngIf="language_english && anaglyph_activated">Regular</span>
+            <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
+            <span *ngIf="language_french && anaglyph_activated">Normale</span>
+            <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
+            <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
+          </button>
+        </p>
+        <div *ngIf="language_english">
+          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+        </div>
+        <div *ngIf="language_french">
+          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+        </div>
+        <div *ngIf="language_spanish">
+          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <button id="btn_close_stereoscopy" type="button" class="btn btn-primary mt-3" (click)="close_stereoscopy()" [disabled]="anaglyph_activated == true">
+          <span *ngIf="language_english">Close</span>
+          <span *ngIf="language_french">Fermer</span>
+          <span *ngIf="language_spanish">Cerrar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="div_cv_stereoscopy" class="d-inline-flex p-2" *ngIf="!isMobileDevice && isCV" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
+  <button id="btn_switch_camera" type="button" class="btn btn-primary mr-2 mb-2" (click)="animation_switch_camera()">
+    <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
+    <span *ngIf="language_english && anaglyph_activated">Regular</span>
+    <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
+    <span *ngIf="language_french && anaglyph_activated">Normale</span>
+    <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
+    <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
+  </button>
+  <button id="btn_close_stereoscopy" type="button" class="btn btn-primary mr-2 mb-2" (click)="close_stereoscopy()" [disabled]="anaglyph_activated == true">
+      <span *ngIf="language_english">Close</span>
+      <span *ngIf="language_french">Fermer</span>
+      <span *ngIf="language_spanish">Cerrar</span>
+  </button>
+</div>
+<div id="div_mobile_stereoscopy" class="d-inline-flex p-2" *ngIf="isMobileDevice" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
+  <button id="btn_switch_camera" type="button" class="btn btn-primary mr-2 mb-2" (click)="animation_switch_camera()">
+    <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
+    <span *ngIf="language_english && anaglyph_activated">Regular</span>
+    <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
+    <span *ngIf="language_french && anaglyph_activated">Normale</span>
+    <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
+    <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
+  </button>
+  <button id="btn_close_stereoscopy" type="button" class="btn btn-primary mr-2 mb-2" *ngIf="isMobileDevice" (click)="close_stereoscopy()">
+      <span *ngIf="language_english">Close</span>
+      <span *ngIf="language_french">Fermer</span>
+      <span *ngIf="language_spanish">Cerrar</span>
+  </button>
 </div>
 
 <div class="div_card" [style.display]="isVisible_photography ? 'block' : 'none'" [@isVisible_photography]="isVisible_photography">
@@ -217,7 +359,7 @@
                 </p>
                 <p class="text_content" *ngIf="language_french">
                   Photographe de rue, ma volonté est de montrer la beauté des choses qui nous entourent et que la frénésie de nos vies urbaines ne nous laisse le temps de contempler.<br/>
-                  La lumière et les couleurs aux service deémotions, telle est ma conception de la photographie !<br/>
+                  La lumière et les couleurs aux service des émotions, telle est ma conception de la photographie !<br/>
                   Site dédié à venir.
                 </p>
                 <p class="text_content" *ngIf="language_spanish">
@@ -251,553 +393,18 @@
     </div>
 </div>
 
-<!--
-<div class="div_card" [style.display]="isVisible_games ? 'block' : 'none'" [@isVisible_games]="isVisible_games">
-    <div class="container_card container">
-        <div class="row">
-            <div class="col">
-                <h1 class="h1_card" *ngIf="language_english">JEUX DE STRATÉGIE</h1>
-                <h1 class="h1_card" *ngIf="language_french">STRATEGY GAMES</h1>
-                <h1 class="h1_card" *ngIf="language_spanish">JUEGOS DE ESTRATEGIA</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <p class="text_content" *ngIf="language_english">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-                </p>
-                <p class="text_content" *ngIf="language_french">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-                </p>
-                <p class="text_content" *ngIf="language_spanish">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-                </p>
-                <div *ngIf="language_english">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-                </div>
-                <div *ngIf="language_french">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-                </div>
-                <div *ngIf="language_spanish">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <button id="btn_close_games" type="button" class="btn btn-primary mt-3" (click)="close_games()">
-                    <span *ngIf="language_english">Close</span>
-                    <span *ngIf="language_french">Fermer</span>
-                    <span *ngIf="language_spanish">Cerrar</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
--->
-
-<div class="div_card" *ngIf="!isMobileDevice" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
-    <div class="container_card container">
-        <div class="row">
-            <div class="col">
-                <h1 class="h1_card" *ngIf="language_english">STEREOSCOPY</h1>
-                <h1 class="h1_card" *ngIf="language_french">STEREOSCOPIE</h1>
-                <h1 class="h1_card" *ngIf="language_spanish">ESTEREOSCOPIA</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12" *ngIf="!isCV">
-                <p class="text_content" *ngIf="language_english">
-                  Immerse your community in your universe!<br/>
-                  Give your community an unprecedented viewing experience for your products and data using stereoscopy.
-                </p>
-                <p class="text_content" *ngIf="language_french">
-                  Faites plonger votre communauté dans votre univers !<br/>
-                  Offrez à votre communauté une expérience inédite de visualisation de vos produits et de vos données grâce à la stéréoscopie.
-                </p>
-                <p class="text_content" *ngIf="language_spanish">
-                  ¡Sumerja a su comunidad en su universo!<br/>
-                  Ofrezca a su comunidad una experiencia de visualización sin precedentes para sus productos y datos mediante estereoscopía.
-                </p>
-                <p>
-                    <button id="btn_switch_camera" type="button" class="btn btn-primary" (click)="animation_switch_camera()">
-                        <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
-                        <span *ngIf="language_english && anaglyph_activated">Regular</span>
-                        <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
-                        <span *ngIf="language_french && anaglyph_activated">Normale</span>
-                        <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
-                        <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
-                    </button>
-                </p>
-                <div *ngIf="language_english">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-                </div>
-                <div *ngIf="language_french">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-                </div>
-                <div *ngIf="language_spanish">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-                </div>
-            </div>
-            <div class="col-12" *ngIf="isCV">
-                <p class="text_content" *ngIf="language_english">
-
-                </p>
-                <p class="text_content" *ngIf="language_french">
-
-                </p>
-                <p class="text_content" *ngIf="language_spanish">
-
-                </p>
-                <p>
-                    <button id="btn_switch_camera" type="button" class="btn btn-primary" (click)="animation_switch_camera()">
-                        <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
-                        <span *ngIf="language_english && anaglyph_activated">Regular</span>
-                        <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
-                        <span *ngIf="language_french && anaglyph_activated">Normale</span>
-                        <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
-                        <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
-                    </button>
-                </p>
-                <div *ngIf="language_english">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-                </div>
-                <div *ngIf="language_french">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-                </div>
-                <div *ngIf="language_spanish">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <button id="btn_close_stereoscopy" type="button" class="btn btn-primary mt-3" (click)="close_stereoscopy()" [disabled]="anaglyph_activated == true">
-                    <span *ngIf="language_english">Close</span>
-                    <span *ngIf="language_french">Fermer</span>
-                    <span *ngIf="language_spanish">Cerrar</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="div_mobile_stereoscopy" class="d-inline-flex p-2" *ngIf="isMobileDevice" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
-  <button id="btn_switch_camera" type="button" class="btn btn-primary mr-2 mb-2" (click)="animation_switch_camera()">
-    <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
-    <span *ngIf="language_english && anaglyph_activated">Regular</span>
-    <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
-    <span *ngIf="language_french && anaglyph_activated">Normale</span>
-    <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
-    <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
-  </button>
-  <button id="btn_close_stereoscopy" type="button" class="btn btn-primary mr-2 mb-2" *ngIf="isMobileDevice" (click)="close_stereoscopy()">
-      <span *ngIf="language_english">Close</span>
-      <span *ngIf="language_french">Fermer</span>
-      <span *ngIf="language_spanish">Cerrar</span>
-  </button>
-</div>
-
-<!--
-<div class="div_card" [style.display]="isVisible_art ? 'block' : 'none'" [@isVisible_art]="isVisible_art">
-    <div class="container_card container">
-        <div class="row">
-            <div class="col">
-                <h1 class="h1_card" *ngIf="language_english">ARTS</h1>
-                <h1 class="h1_card" *ngIf="language_french">ARTS</h1>
-                <h1 class="h1_card" *ngIf="language_spanish">ARTES</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <p class="text_content" *ngIf="language_english">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-                </p>
-                <p class="text_content" *ngIf="language_french">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-                </p>
-                <p class="text_content" *ngIf="language_spanish">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-                </p>
-                <div *ngIf="language_english">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-                </div>
-                <div *ngIf="language_french">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-                </div>
-                <div *ngIf="language_spanish">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <button id="btn_close_Art" type="button" class="btn btn-primary mt-3" (click)="close_art()">
-                    <span *ngIf="language_english">Close</span>
-                    <span *ngIf="language_french">Fermer</span>
-                    <span *ngIf="language_spanish">Cerrar</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
--->
-
-<!--
-<div class="div_card" [style.display]="isVisible_contactMe ? 'block' : 'none'" [@isVisible_contactMe]="isVisible_contactMe">
-    <div class="container_card container">
-        <div class="row">
-            <div class="col">
-                <div class="div_Head">
-                    <h1 class="h1_card" *ngIf="language_english">CONTACT ME</h1>
-                    <h1 class="h1_card" *ngIf="language_french">ME CONTACTER</h1>
-                    <h1 class="h1_card" *ngIf="language_spanish">CONTÁCTAME</h1>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <p class="text_content" *ngIf="language_english">
-                </p>
-                <p class="text_content" *ngIf="language_french">
-                </p>
-                <p class="text_content" *ngIf="language_spanish">
-                </p>
-
-                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-
-                  <div class="form-group">
-                    <label for="contactFormName" class="text-light mt-1">Your name</label>
-                    <input type="text" id="contactFormName" name="contactFormName" formControlName="contactFormName" class="form-control">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="contactFormEmail" class="text-light mt-1">Your email</label>
-                    <input type="email" id="contactFormEmail" name="contactFormEmail" formControlName="contactFormEmail" class="form-control">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="contactFormSubjects" class="text-light mt-1">Why would you like to contact me ? 🤔</label>
-                    <input type="email" id="contactFormSubjects" name="contactFormSubjects" formControlName="contactFormSubjects" class="form-control">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="contactFormMessage" class="text-light mt-1">Your message</label>
-                    <textarea id="contactFormMessage" name="contactFormMessage" formControlName="contactFormMessage" class="form-control"></textarea>
-                  </div>
-
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-danger mt-1" [disabled]="disabledSubmitButton">
-                        <span *ngIf="language_english">Send</span>
-                        <span *ngIf="language_french">Envoyer</span>
-                        <span *ngIf="language_spanish">Enviar</span>
-                    </button>
-                  </div>
-                </form>
-
-                <div *ngIf="language_english">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-                </div>
-                <div *ngIf="language_french">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-                </div>
-                <div *ngIf="language_spanish">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <button id="btn_close_contactMe" type="button" class="btn btn-primary mt-3" (click)="close_contactMe()">
-                    <span *ngIf="language_english">Close</span>
-                    <span *ngIf="language_french">Fermer</span>
-                    <span *ngIf="language_spanish">Cerrar</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
--->
-
-<div class="div_card" [style.display]="isVisible_development ? 'block' : 'none'" [@isVisible_development]="isVisible_development">
-    <div class="container_card container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="h1_card" *ngIf="language_english">DEVELOPMENT</h1>
-                <h1 class="h1_card" *ngIf="language_french">MODE D'EMPLOI</h1>
-                <h1 class="h1_card" *ngIf="language_spanish">DESAROLLO</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12" *ngIf="!isCV">
-                <p class="text_content" *ngIf="language_english">
-                  Unleash your creativity! <br/>
-                  Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas. <br/>
-                  > Back-office development (Spring), <br/>
-                  > Front-office (Angular), <br/>
-                  > Managing your data,<br/>
-                  > Configuration and securing of your servers, <br/>
-                  > 3D programming and modeling
-                </p>
-                <p class="text_content" *ngIf="language_french">
-                  Liberez votre créativité !<br/>
-                  Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.<br/>
-                  > Développement Back-office (Spring),<br/>
-                  > Front-office (Angular),<br/>
-                  > Gestion de vos données,<br/>
-                  > Configuration et sécurisation de vos serveurs,<br/>
-                  > Programmation et modélisation 3D
-                </p>
-                <p class="text_content" *ngIf="language_spanish">
-                  ¡Da rienda suelta a tu creatividad! <br/>
-                  Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas. <br/>
-                  > Desarrollo de back-office (primavera), <br/>
-                  > Front-office (Angular), <br/>
-                  > Gestionar sus datos,<br/>
-                  > Configuración y protección de sus servidores, <br/>
-                  > Programación y modelado 3D
-                </p>
-                <div *ngIf="language_english">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-                </div>
-                <div *ngIf="language_french">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-                </div>
-                <div *ngIf="language_spanish">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-                </div>
-            </div>
-            <div class="col-12" *ngIf="isCV">
-                <p class="text_content" *ngIf="language_english">
-                  Guided by a desire for independence, I became interested in all aspects of building a website:<br/>
-                  > Back-office development :<br/>
-                  <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
-                  > Front-office development :<br/>
-                  <span class="span_development">HTML - CSS - Bootstrap - Javascript - Angular</span><br/>
-                  > Data bases<br/>
-                  <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
-                  > Configuration and securing of your servers :<br/>
-                  <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
-                  > 3D programming and modeling :<br/>
-                  <span class="span_development">3Ds Max - Blender - BabylonJS</span>
-                </p>
-                <p class="text_content" *ngIf="language_french">
-                  Guidé par une volonté d'indépendance, je me suis intéressé à tous les aspects de la réalisation d'un site Web :<br/>
-                  > Développement Back-office (Spring),<br/>
-                  <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
-                  > Développement Front-office (Angular),<br/>
-                  <span class="span_development">HTML - CSS - Bootstrap - Javascript - Angular</span><br/>
-                  > Bases de données,<br/>
-                  <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
-                  > Configuration et sécurisation de vos serveurs,<br/>
-                  <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
-                  > Programmation et modélisation 3D<br/>
-                  <span class="span_development">3Ds Max - Blender - BabylonJS</span>
-                </p>
-                <p class="text_content" *ngIf="language_spanish">
-                  Guiado por un deseo de independencia, me interesé en todos los aspectos de la construcción de un sitio web:<br/>
-                  > Desarrollo de back-office (primavera) :<br/>
-                  <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
-                  > Front-office (Angular) :<br/>
-                  <span class="span_development">HTML - CSS - Bootstrap - Javascript - Angular</span><br/>
-                  > Bases de datos :<br/>
-                  <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
-                  > Configuración y protección de sus servidores :<br/>
-                  <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
-                  > Programación y modelado 3D :<br/>
-                  <span class="span_development">3Ds Max - Blender - BabylonJS</span>
-                </p>
-                <div *ngIf="language_english">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-                </div>
-                <div *ngIf="language_french">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-                </div>
-                <div *ngIf="language_spanish">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <button id="btn_close_development" type="button" class="btn btn-primary mt-3" (click)="close_development()">
-                    <span *ngIf="language_english">Close</span>
-                    <span *ngIf="language_french">Fermer</span>
-                    <span *ngIf="language_spanish">Cerrar</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="div_card" [style.display]="isVisible_travel ? 'block' : 'none'" [@isVisible_travel]="isVisible_travel">
-    <div class="container_card container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="h1_card" *ngIf="language_english">TRAVELER</h1>
-                <h1 class="h1_card" *ngIf="language_french">VOYAGEUR</h1>
-                <h1 class="h1_card" *ngIf="language_spanish">VIAJERO</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <p class="text_content" *ngIf="language_english">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-                </p>
-                <p class="text_content" *ngIf="language_french">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-                </p>
-                <p class="text_content" *ngIf="language_spanish">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-                </p>
-                <div *ngIf="language_english">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-                </div>
-                <div *ngIf="language_french">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-                </div>
-                <div *ngIf="language_spanish">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <button id="btn_close_travel" type="button" class="btn btn-primary mt-3" (click)="close_travel()">
-                    <span *ngIf="language_english">Close</span>
-                    <span *ngIf="language_french">Fermer</span>
-                    <span *ngIf="language_spanish">Cerrar</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--
-<div id="div_movies">
-    <div class="container_card container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="h1_card" *ngIf="language_english">CINEPHILE</h1>
-                <h1 class="h1_card" *ngIf="language_french">CINÉPHILE</h1>
-                <h1 class="h1_card" *ngIf="language_spanish">CINÉFILO</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <p class="text_content" *ngIf="language_english">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-                </p>
-                <p class="text_content" *ngIf="language_french">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-                </p>
-                <p class="text_content" *ngIf="language_spanish">
-                  Ut enim quisque sibi plurimum confidit et ut quisque maxime virtute et sapientia sic munitus est, ut nullo egeat suaque omnia in se ipso posita iudicet, ita in amicitiis expetendis colendisque maxime excellit.
-                  Quid enim? Africanus indigens mei? Minime hercule! ac ne ego quidem illius;
-                  sed ego admiratione quadam virtutis eius, ille vicissim opinione fortasse non nulla, quam de meis moribus habebat, me dilexit; auxit benevolentiam consuetudo.
-                  Sed quamquam utilitates multae et magnae consecutae sunt, non sunt tamen ab earum spe causae diligendi profectae.
-                </p>
-                <div *ngIf="language_english">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-                </div>
-                <div *ngIf="language_french">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-                </div>
-                <div *ngIf="language_spanish">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <button id="btn_close_movies" type="button" class="btn btn-primary mt-3" (click)="close_movies()">
-                    <span *ngIf="language_english">Close</span>
-                    <span *ngIf="language_french">Fermer</span>
-                    <span *ngIf="language_spanish">Cerrar</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    -->
-    <button id="btn_close_movies" type="button" class="btn btn-primary mr-2 mb-2" (click)="close_movies()" [style.display]="isVisible_movies ? 'block' : 'none'" [@isVisible_movies]="isVisible_movies">
-        <span *ngIf="language_english">Close</span>
-        <span *ngIf="language_french">Fermer</span>
-        <span *ngIf="language_spanish">Cerrar</span>
-    </button>
-<!--
-  </div>
--->
-
-<button id="btn_init_position" type="button" class="btn btn-primary mr-2 mb-2" (click)="init_position()">
-  <span *ngIf="language_english">Init</span>
-  <span *ngIf="language_french">Init</span>
-  <span *ngIf="language_spanish">Init</span>
+<button id="btn_close_movies" type="button" class="btn btn-primary mr-2 mb-2" (click)="close_movies()" [style.display]="isVisible_movies ? 'block' : 'none'" [@isVisible_movies]="isVisible_movies">
+  <span *ngIf="language_english">Close</span>
+  <span *ngIf="language_french">Fermer</span>
+  <span *ngIf="language_spanish">Cerrar</span>
 </button>
 
-<!--
-<div id="div_cache" [style.display]="isVisible_cache ? 'block' : 'none'">
-</div>
--->
+<button id="btn_init_position" type="button" class="d-flex btn btn-secondary mr-2 mb-2" (click)="init_position()" [style.display]="isVisible_initPosition ? 'block' : 'none'" [@isVisible_initPosition]="isVisible_initPosition">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-geo" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"/>
+  </svg>
+  <span class="ml-1" *ngIf="!isMobileDevice">Init Position</span>
+</button>
 
 <div id="divDashBoard" *ngIf="isVisible_dashBoard">
     <h3>Window</h3>

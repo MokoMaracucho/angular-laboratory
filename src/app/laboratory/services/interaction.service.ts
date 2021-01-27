@@ -8,39 +8,31 @@ import { CameraDatas } from '../../shared/models/camera-datas';
 })
 export class InteractionService {
 
-    getCameraDatas_init = new Subject<CameraDatas>();
+  isLoaded = new Subject<boolean>();
 
-    getCameraDatas_loop = new Subject<CameraDatas>();
+  open_development = new Subject<boolean>();
 
-    isLoaded = new Subject<boolean>();
+  open_datas = new Subject<boolean>();
 
-    change_language_english = new Subject<boolean>();
+  open_photography = new Subject<boolean>();
 
-    change_language_french = new Subject<boolean>();
+  open_stereoscopy = new Subject<boolean>();
 
-    change_language_spanish = new Subject<boolean>();
+  toogle_anaglyph_activated = new Subject<boolean>();
 
-    open_running = new Subject<boolean>();
+  open_contactMe = new Subject<boolean>();
 
-    open_shareKnowledge = new Subject<boolean>();
+  open_travel = new Subject<boolean>();
 
-    open_photography = new Subject<boolean>();
+  open_movies = new Subject<boolean>();
 
-    open_games = new Subject<boolean>();
+  getCameraDatas_init = new Subject<CameraDatas>();
 
-    open_stereoscopy = new Subject<boolean>();
+  getCameraDatas_loop = new Subject<CameraDatas>();
 
-    toogle_anaglyph_activated = new Subject<boolean>();
+  change_language_english = new Subject<boolean>();
 
-    open_art = new Subject<boolean>();
+  change_language_french = new Subject<boolean>();
 
-    open_contactMe = new Subject<boolean>();
-
-    open_development = new Subject<boolean>();
-
-    open_travel = new Subject<boolean>();
-
-    open_movies = new Subject<boolean>();
-
-    // toogle_cache = new Subject<boolean>();
+  change_language_spanish = new Subject<boolean>();
 }

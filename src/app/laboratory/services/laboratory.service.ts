@@ -15,2008 +15,1455 @@ import { Vector3 } from 'babylonjs';
 })
 export class LaboratoryService {
 
-    private innerWidth: any;
-    private innerHeight: any;
-
-    private canvas: HTMLCanvasElement;
-    private engine: BABYLON.Engine;
-    private scene: BABYLON.Scene;
-
-    private universal_camera: BABYLON.UniversalCamera;
-    private anaglyph_universal_camera: BABYLON.AnaglyphUniversalCamera;
-
-    private pipeline: BABYLON.DefaultRenderingPipeline;
-    private rotation;
-
-    private hemispheric_light: BABYLON.Light;
-    private directional_light: BABYLON.DirectionalLight;
-
-    private boundary_bottom;
-    private boundary_front;
-    private boundary_left;
-    private boundary_back;
-    private boundary_right;
-    private boundary_top;
-    private wall_left_collision;
-    private wall_right_collision;
-    private plan_inside;
-    private pegasus;
-    private pegasus_inside;
-    private pegasus_laces;
-    private pegasus_logo;
-    private pegasus_sole_inside;
-    private pegasus_sole_outside;
-    private WriterMesh;
-    private speakers;
-    private loud_speakers;
-    private chiva;
-    private leather_armchair;
-    private blanket;
-    private ome_gonorreas;
-    private lampshade_tissue;
-    private lampshade;
-    private lamp_base;
-    private transfert_boxes;
-    private transfert_boxes_rings;
-    private grid;
-    private graphic;
-    private rose_rouge;
-    private rose_rouge_frame;
-    private verbal_shoota;
-    private verbal_shoota_frame;
-    private lapin_blanc;
-    private lapin_blanc_frame;
-    private fourty_four;
-    private fourty_four_marie_louise;
-    private fourty_four_frame;
-    private brique;
-    private brique_marie_louise;
-    private brique_frame;
-    private tofu;
-    private tofu_marie_louise;
-    private tofu_frame;
-    private chimney;
-    private chimney_back;
-    private logs;
-    private checker;
-    private checker_locks;
-    private checker_bottom;
-    private tarot_deck;
-    private virgen_guadalupe;
-    private candelstick;
-    private wall_left_front;
-    private wall_left_back;
-    private mirror_frame;
-    private mirror;
-    private daisy;
-    private amor_amor;
-    private amor_amor_frame;
-    private trestle_left;
-    private trestle_right;
-    private desk;
-    private via_air_mail;
-    private rince_cochon;
-    private thermos;
-    private post_it;
-    private notebook_bottom;
-    private notebook_top;
-    private threed_glasses_frame;
-    private threed_glass_blue;
-    private threed_glass_red;
-    private support_laptop;
-    private wood_box_center;
-    private wood_box_right;
-    private mouse;
-    private keyboard;
-    private keyboard_keyboard;
-    private mac_mini;
-    private laptop;
-    private laptop_keyboard;
-    private laptop_screen;
-    private screen_center;
-    private screen_frame_center;
-    private screen_right;
-    private screen_frame_right;
-    private bulb;
-    private bulb_pin;
-    private bulb_string;
-    private bulb_string_support;
-    private wall_right_front;
-    private wall_right_back;
-    private baseboard_right;
-    private window_left;
-    private glass_left_top;
-    private glass_left_bottom;
-    private window_right;
-    private glass_right_top;
-    private glass_right_bottom;
-    private nhs_rainbow;
-    private solar_system;
-    private pablo;
-    private united_kingdom_black;
-    private united_kingdom_blue;
-    private united_kingdom_white;
-    private united_kingdom_red;
-    private france_black;
-    private france_blue;
-    private france_white;
-    private spain_black;
-    private spain_red;
-    private spain_yellow;
-    private france_red;
-    private shelf;
-    private dvd_pi;
-    private dvd_enter_the_void;
-    private dvd_2001_odyssee_espace;
-    private dvd_la_haine;
-    private dvd_sweet_sixteen;
-    private dvd_eternal_sunshine;
-    private dvd_zero_theorem;
-    private dvd_shining;
-    private book_strategie_choc;
-    private book_no_logo;
-    private book_serpent_cosmique;
-    private book_meilleur_mondes;
-    private book_dictionnaire_symboles;
-    private book_prince;
-    private book_ca_I;
-    private book_ca_II;
-    private book_ca_III;
-    private book_sagrada_biblia;
-    private book_nuit_enfants_rois;
-    private world_map;
-    private world_map_bar;
-    private world_map_basement_metal;
-    private world_map_basement_marble;
-    private twitter;
-    private cursor_twitter_black;
-    private cursor_twitter_white;
-    private instagram;
-    private instagram_lens;
-    private cursor_instagram_black;
-    private cursor_instagram_white;
-    private youtube;
-    private youtube_play;
-    private cursor_youtube_black;
-    private cursor_youtube_white;
-    private spotify_green;
-    private spotify_black;
-    private cursor_spotify_black;
-    private cursor_spotify_white;
-    private projector;
-    private touch_play;
-    private touch_pause;
-    private touch_skip_forward;
-
-    private pop_up_running;
-    private pop_up_share_knowledge
-    private pop_up_photography_left;
-    private pop_up_photography_right;
-    private pop_up_games;
-    private pop_up_contact_me;
-    private pop_up_stereoscopy;
-    private pop_up_development;
-    private pop_up_social_networks;
-    private pop_up_languages;
-    private pop_up_art;
-    private pop_up_movies;
-    private pop_up_travel;
-    private pop_up_spotify;
-
-    private pegasus_BAKING: BABYLON.Texture;
-    private pegasus_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private pegasus_laces_BAKING: BABYLON.Texture;
-    private pegasus_laces_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private pegasus_sole_inside_BAKING: BABYLON.Texture;
-    private pegasus_sole_inside_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private pegasus_sole_outside_BAKING: BABYLON.Texture;
-    private pegasus_sole_outside_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private transfert_boxes_BAKING: BABYLON.Texture;
-    private transfert_boxes_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private transfert_boxes_rings_BAKING: BABYLON.Texture;
-    private transfert_boxes_rings_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private rose_rouge_BAKING: BABYLON.Texture;
-    private rose_rouge_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private verbal_shoota_BAKING: BABYLON.Texture;
-    private verbal_shoota_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private lapin_blanc_BAKING: BABYLON.Texture;
-    private lapin_blanc_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private fourty_four_BAKING: BABYLON.Texture;
-    private fourty_four_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private brique_BAKING: BABYLON.Texture;
-    private brique_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private tofu_BAKING: BABYLON.Texture;
-    private tofu_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private fourty_four_marie_louise_BAKING: BABYLON.Texture;
-    private fourty_four_marie_louise_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private brique_marie_louise_BAKING: BABYLON.Texture;
-    private brique_marie_louise_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private tofu_marie_louise_BAKING: BABYLON.Texture;
-    private tofu_marie_louise_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private checker_BAKING: BABYLON.Texture;
-    private checker_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private checker_locks_BAKING: BABYLON.Texture;
-    private checker_locks_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private tarot_deck_BAKING: BABYLON.Texture;
-    private tarot_deck_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private amor_amor_BAKING: BABYLON.Texture;
-    private amor_amor_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private via_air_mail_BAKING: BABYLON.Texture;
-    private via_air_mail_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private threed_glasses_frame_BAKING: BABYLON.Texture;
-    private threed_glasses_frame_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private keyboard_BAKING: BABYLON.Texture;
-    private keyboard_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private mac_mini_BAKING: BABYLON.Texture;
-    private mac_mini_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private laptop_BAKING: BABYLON.Texture;
-    private laptop_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private laptop_screen_BAKING: BABYLON.Texture;
-    private laptop_screen_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private screen_center_BAKING: BABYLON.Texture;
-    private screen_center_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private screen_right_BAKING: BABYLON.Texture;
-    private screen_right_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private world_map_BAKING: BABYLON.Texture;
-    private world_map_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private dvd_pi_BAKING: BABYLON.Texture;
-    private dvd_pi_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private dvd_enter_the_void_BAKING: BABYLON.Texture;
-    private dvd_enter_the_void_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private dvd_2001_odyssee_espace_BAKING: BABYLON.Texture;
-    private dvd_2001_odyssee_espace_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private dvd_la_haine_BAKING: BABYLON.Texture;
-    private dvd_la_haine_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private dvd_sweet_sixteen_BAKING: BABYLON.Texture;
-    private dvd_sweet_sixteen_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private dvd_eternal_sunshine_BAKING: BABYLON.Texture;
-    private dvd_eternal_sunshine_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private dvd_zero_theorem_BAKING: BABYLON.Texture;
-    private dvd_zero_theorem_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private dvd_shining_BAKING: BABYLON.Texture;
-    private dvd_shining_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private united_kingdom_red_BAKING: BABYLON.Texture;
-    private united_kingdom_red_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private united_kingdom_white_BAKING: BABYLON.Texture;
-    private united_kingdom_white_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private united_kingdom_blue_BAKING: BABYLON.Texture;
-    private united_kingdom_blue_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private france_blue_BAKING: BABYLON.Texture;
-    private france_blue_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private france_white_BAKING: BABYLON.Texture;
-    private france_white_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private france_red_BAKING: BABYLON.Texture;
-    private france_red_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private spain_red_BAKING: BABYLON.Texture;
-    private spain_red_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private spain_yellow_BAKING: BABYLON.Texture;
-    private spain_yellow_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private twitter_BAKING: BABYLON.Texture;
-    private twitter_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private instagram_BAKING: BABYLON.Texture;
-    private instagram_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private instagram_lens_BAKING: BABYLON.Texture;
-    private instagram_lens_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private youtube_BAKING: BABYLON.Texture;
-    private youtube_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private youtube_play_BAKING: BABYLON.Texture;
-    private youtube_play_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private touch_play_BAKING: BABYLON.Texture;
-    private touch_play_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private touch_pause_BAKING: BABYLON.Texture;
-    private touch_pause_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private touch_skip_forward_BAKING: BABYLON.Texture;
-    private touch_skip_forward_BAKING_HIGHLIGHT: BABYLON.Texture;
-    private spotify_green_BAKING: BABYLON.Texture;
-    private spotify_green_BAKING_HIGHLIGHT: BABYLON.Texture;
-
-    private odyssee_espace_TEXTURE: BABYLON.VideoTexture;
-    private enter_the_void_TEXTURE: BABYLON.VideoTexture;
-    private eternal_sunshine_TEXTURE: BABYLON.VideoTexture;
-    private la_haine_TEXTURE: BABYLON.VideoTexture;
-    private pi_TEXTURE: BABYLON.VideoTexture;
-    private shining_TEXTURE: BABYLON.VideoTexture;
-    private zero_theorem_TEXTURE: BABYLON.VideoTexture;
-    private all_video_textures_loaded = false;
-
-    private mirror_MATERIAL: BABYLON.StandardMaterial;
-    private glass_MATERIAL: BABYLON.StandardMaterial;
-    private glass_blue_MATERIAL: BABYLON.StandardMaterial;
-    private glass_red_MATERIAL: BABYLON.StandardMaterial;
-    private glass_bulb_MATERIAL: BABYLON.StandardMaterial;
-    private bulb_string_MATERIAL: BABYLON.StandardMaterial;
-    private projector_MATERIAL: BABYLON.StandardMaterial;
-
-    private scene_loaded = false;
-    private introduction_closed = false;
-
-    private trailer_position = 1;
-
-    private anaglyph_activated = false;
-
-    private isCV: boolean;
-
-    private dashBoardCameraDatas: CameraDatas;
-
-    public constructor(
-        private ngZone: NgZone,
-        private windowRef: WindowRefService,
-        protected readonly interaction: InteractionService
-    ) {}
-
-    public createScene(canvas: ElementRef<HTMLCanvasElement>): void {
-
-        this.canvas = canvas.nativeElement;
-        this.engine = new BABYLON.Engine(this.canvas, true, { stencil: true });
-        this.scene = new BABYLON.Scene(this.engine);
-
-        // this.scene.fogMode = BABYLON.Scene.FOGMODE_EXP;
-        // this.scene.fogDensity = 0.03;
-        // this.scene.fogStart = 2000;
-        // this.scene.fogEnd = 3000;
-        // this.scene.fogColor = BABYLON.Color3.FromHexString("#261043");
-
-        this.scene.clearColor = new BABYLON.Color4(0.0035, 0.0035, 0.0035, 1);
-        // this.scene.ambientColor = new BABYLON.Color3(0.3, 0.3, 0.3);
-
-        // CANERAS
-
-        this.universal_camera = new BABYLON.UniversalCamera("universal_camera", new BABYLON.Vector3(0, 0, 0), this.scene);
-        this.universal_camera.position = this.get_initPositionCamera();
-        this.universal_camera.target = this.get_initPositionCameraTarget();
-        this.universal_camera.touchAngularSensibility = 10000;
-        this.universal_camera.speed = 0.7;
-        this.universal_camera.invertRotation = false;
-        this.universal_camera.ellipsoid = new BABYLON.Vector3(2, 2, 2);
-        this.universal_camera.inputs.addMouseWheel();
-        this.universal_camera.attachControl(canvas, true);
-
-        this.anaglyph_universal_camera = new BABYLON.AnaglyphUniversalCamera("anaglyph_universal_camera", new BABYLON.Vector3(0, 0, 0), 0.05, this.scene);
-        this.anaglyph_universal_camera.target = new BABYLON.Vector3(-16.2, 5, -12);
-        this.anaglyph_universal_camera.touchAngularSensibility = 10000;
-        this.anaglyph_universal_camera.speed = 0.7;
-        this.anaglyph_universal_camera.invertRotation = false;
-        this.anaglyph_universal_camera.ellipsoid = new BABYLON.Vector3(2, 2, 2);
-        this.anaglyph_universal_camera.inputs.addMouseWheel();
-        this.anaglyph_universal_camera.attachControl(canvas, true);
-
-        // PIPE
-
-        // this.scene.addLensFlareSystem;
-
-        this.pipeline = new BABYLON.DefaultRenderingPipeline("pipeline", true, this.scene, [this.universal_camera]);
-
-        this.pipeline.samples = 4;
-        this.pipeline.fxaaEnabled = true;
-        this.pipeline.bloomEnabled = true;
-        this.pipeline.bloomKernel = 640;
-        this.pipeline.bloomWeight = 1;
-        this.pipeline.bloomThreshold = 0.3;
-        this.pipeline.bloomScale = 0.5;
-
-        this.pipeline.chromaticAberrationEnabled = true;
-        this.set_chromaticAberration();
-        this.rotation = 1;
-        this.pipeline.chromaticAberration.direction.x = Math.sin(this.rotation);
-        this.pipeline.chromaticAberration.direction.y = Math.cos(this.rotation);
-
-        this.pipeline.grainEnabled = true;
-        this.pipeline.grain.intensity = 7;
-
-        // LIGHTS
-
-        this.hemispheric_light = new BABYLON.HemisphericLight('hemispheric_light', new BABYLON.Vector3(0, 1, 0), this.scene);
-        this.hemispheric_light.intensity = 0.6;
-
-        this.directional_light = new BABYLON.DirectionalLight("directional_light", new BABYLON.Vector3(1, -5, -2), this.scene);
-        this.directional_light.intensity = 0.5;
-
-        // COLLISIONS
-
-        this.scene.collisionsEnabled = true;
-        this.universal_camera.checkCollisions = true;
-        this.anaglyph_universal_camera.checkCollisions = true;
-
-        // BOUNDARIES
-
-        this.boundary_bottom = BABYLON.Mesh.CreatePlane("boundary_bottom", 150, this.scene);
-        this.boundary_bottom.position = new BABYLON.Vector3(-16.2, 0, -20);
-        this.boundary_bottom.rotation = new BABYLON.Vector3(Math.PI/2, 0, 0);
-        this.boundary_bottom.isVisible = false;
-
-        this.boundary_front = BABYLON.Mesh.CreatePlane("boundary_front", 150, this.scene);
-        this.boundary_front.position = new BABYLON.Vector3(-16.2, 45, 40);
-        this.boundary_front.isVisible = false;
-
-        this.boundary_left = BABYLON.Mesh.CreatePlane("boundary_left", 150, this.scene);
-        this.boundary_left.position = new BABYLON.Vector3(43.8, 45, -20);
-        this.boundary_left.rotation = new BABYLON.Vector3(0, Math.PI/2, 0);
-        this.boundary_left.isVisible = false;
-
-        this.boundary_back = BABYLON.Mesh.CreatePlane("boundary_back", 150, this.scene);
-        this.boundary_back.position = new BABYLON.Vector3(-16.2, 45, -80);
-        this.boundary_back.rotation = new BABYLON.Vector3(0, Math.PI, 0);
-        this.boundary_back.isVisible = false;
-
-        this.boundary_right = BABYLON.Mesh.CreatePlane("boundary_right", 150, this.scene);
-        this.boundary_right.position = new BABYLON.Vector3(-76.2, 45, -20);
-        this.boundary_right.rotation = new BABYLON.Vector3(0, -Math.PI/2, 0);
-        this.boundary_right.isVisible = false;
-
-        this.boundary_top = BABYLON.Mesh.CreatePlane("boundary_top", 150, this.scene);
-        this.boundary_top.position = new BABYLON.Vector3(-16.2, 40, -20);
-        this.boundary_top.rotation = new BABYLON.Vector3(-Math.PI/2, 0, 0);
-        this.boundary_top.isVisible = false;
-
-        this.boundary_bottom.checkCollisions = true;
-        this.boundary_front.checkCollisions = true;
-        this.boundary_left.checkCollisions = true;
-        this.boundary_back.checkCollisions = true;
-        this.boundary_right.checkCollisions = true;
-        this.boundary_top.checkCollisions = true;
-
-        BABYLON.SceneLoader.ImportMeshAsync("wall_left_collision", "../../assets/glb/laboratory/", "wall_left_collision.glb").then((result) => {
-          this.wall_left_collision = this.scene.getMeshByName("wall_left_collision");
-          this.wall_left_collision.isVisible = false;
-          this.wall_left_collision.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("wall_right_collision", "../../assets/glb/laboratory/", "wall_right_collision.glb").then((result) => {
-          this.wall_right_collision = this.scene.getMeshByName("wall_right_collision");
-          this.wall_right_collision.isVisible = false;
-          this.wall_right_collision.checkCollisions = true;
-        });
-
-        // PLANS
-
-        BABYLON.SceneLoader.ImportMeshAsync("plan_inside", "../../assets/glb/laboratory/", "plan_inside.glb").then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("plan_outside", "../../assets/glb/laboratory/", "plan_outside.glb").then((result) => {
-        });
-
-
-        // FLOOR
-
-        BABYLON.SceneLoader.ImportMeshAsync("parquet", "../../assets/glb/laboratory/", "parquet.glb").then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("persian_carpet", "../../assets/glb/laboratory/", "persian_carpet.glb").then((result) => {
-        });
-
-        // PEGASUS
-
-        this.pegasus_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_BAKING.jpg", this.scene, false, false);
-        this.pegasus_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.pegasus_laces_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_laces_BAKING.jpg", this.scene, false, false);
-        this.pegasus_laces_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_laces_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.pegasus_sole_inside_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_sole_inside_BAKING.jpg", this.scene, false, false);
-        this.pegasus_sole_inside_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_sole_inside_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.pegasus_sole_outside_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_sole_outside_BAKING.jpg", this.scene, false, false);
-        this.pegasus_sole_outside_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/pegasus_sole_outside_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("pegasus", "../../assets/glb/laboratory/", "pegasus.glb", this.scene).then((result) => {
-            this.pegasus = this.scene.getMeshByName("pegasus");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pegasus_inside", "../../assets/glb/laboratory/", "pegasus_inside.glb", this.scene).then((result) => {
-            this.pegasus_inside = this.scene.getMeshByName("pegasus_inside");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pegasus_laces", "../../assets/glb/laboratory/", "pegasus_laces.glb", this.scene).then((result) => {
-            this.pegasus_laces = this.scene.getMeshByName("pegasus_laces");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pegasus_logo", "../../assets/glb/laboratory/", "pegasus_logo.glb", this.scene).then((result) => {
-            this.pegasus_logo = this.scene.getMeshByName("pegasus_logo");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pegasus_sole_inside", "../../assets/glb/laboratory/", "pegasus_sole_inside.glb", this.scene).then((result) => {
-            this.pegasus_sole_inside = this.scene.getMeshByName("pegasus_sole_inside");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pegasus_sole_outside", "../../assets/glb/laboratory/", "pegasus_sole_outside.glb", this.scene).then((result) => {
-            this.pegasus_sole_outside = this.scene.getMeshByName("pegasus_sole_outside");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pop_up_running", "../../assets/glb/laboratory/", "pop_up_running.glb", this.scene).then((result) => {
-            this.pop_up_running = this.scene.getMeshByName("pop_up_running");
-            this.pop_up_running.isVisible = false;
-        });
-
-        // let Writer = MeshWriter(this.scene, {scale: 1});
-        // let running  = new Writer(
-                        // "Running",
-                        // {
-                            // "anchor": "left",
-                            // "letter-height": 0.7,
-                            // "letter-thickness": 0.2,
-                            // "color": "#000000",
-                            // colors:{
-                              // diffuse  :"#000000",
-                              // specular :"#000000",
-                              // ambient  :"#000000",
-                              // emissive :"#000000"
-                            // },
-                            // "position": {
-                              // x: -12.3,
-                              // y: 2.1,
-                              // z: -1.9
-                            // }
-                        // }
-                    // );
-        // this.WriterMesh = running.getMesh();
-        // this.WriterMesh.rotation.x = -Math.PI/2;
-        // this.WriterMesh.rotation.z = Math.PI;
-        // this.WriterMesh.isVisible = false;
-
-        // SPEAKERS
-
-        BABYLON.SceneLoader.ImportMeshAsync("speakers", "../../assets/glb/laboratory/", "speakers.glb", this.scene).then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("loud_speakers", "../../assets/glb/laboratory/", "loud_speakers.glb", this.scene).then((result) => {
-        });
-
-        // CHIVA
-
-        BABYLON.SceneLoader.ImportMeshAsync("chiva", "../../assets/glb/laboratory/", "chiva.glb", this.scene).then((result) => {
-        });
-
-        // LEATHER ARMCHAIR
-
-        BABYLON.SceneLoader.ImportMeshAsync("leather_armchair", "../../assets/glb/laboratory/", "leather_armchair.glb", this.scene).then((result) => {
-          this.leather_armchair = this.scene.getMeshByName("leather_armchair");
-          this.leather_armchair.checkCollisions = true;
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("blanket", "../../assets/glb/laboratory/", "blanket.glb", this.scene).then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("ome_gonorreas", "../../assets/glb/laboratory/", "ome_gonorreas.glb", this.scene).then((result) => {
-        });
-
-        // LAMP
-
-        BABYLON.SceneLoader.ImportMeshAsync("lampshade_tissue", "../../assets/glb/laboratory/", "lampshade_tissue.glb", this.scene).then((result) => {
-          this.lampshade_tissue = this.scene.getMeshByName("lampshade_tissue");
-          this.lampshade_tissue.checkCollisions = true;
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("lampshade", "../../assets/glb/laboratory/", "lampshade.glb", this.scene).then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("lamp_base", "../../assets/glb/laboratory/", "lamp_base.glb", this.scene).then((result) => {
-        });
-
-        // TRANSFERT BOXES
-
-        this.transfert_boxes_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_BAKING.jpg", this.scene, false, false);
-        this.transfert_boxes_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.transfert_boxes_rings_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_rings_BAKING.jpg", this.scene, false, false);
-        this.transfert_boxes_rings_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_rings_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("transfert_boxes", "../../assets/glb/laboratory/", "transfert_boxes.glb", this.scene).then((result) => {
-            this.transfert_boxes = this.scene.getMeshByName("transfert_boxes");
-            this.transfert_boxes.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("transfert_boxes_rings", "../../assets/glb/laboratory/", "transfert_boxes_rings.glb", this.scene).then((result) => {
-            this.transfert_boxes_rings = this.scene.getMeshByName("transfert_boxes_rings");
-            this.transfert_boxes_rings.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("grid", "../../assets/glb/laboratory/", "grid.glb", this.scene).then((result) => {
-            this.grid = this.scene.getMeshByName("grid");
-            this.grid.isVisible = false;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("graphic", "../../assets/glb/laboratory/", "graphic.glb", this.scene).then((result) => {
-            this.graphic = this.scene.getMeshByName("graphic");
-            this.graphic.alpha = 0.3;
-            this.graphic.isVisible = false;
-        });
-
-        // PHOTOGRAPHY
-
-        this.rose_rouge_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/rose_rouge_BAKING.jpg", this.scene, false, false);
-        this.rose_rouge_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/rose_rouge_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.verbal_shoota_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/verbal_shoota_BAKING.jpg", this.scene, false, false);
-        this.verbal_shoota_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/verbal_shoota_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.lapin_blanc_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/lapin_blanc_BAKING.jpg", this.scene, false, false);
-        this.lapin_blanc_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/lapin_blanc_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.fourty_four_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/fourty_four_BAKING.jpg", this.scene, false, false);
-        this.fourty_four_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/fourty_four_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.brique_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/brique_BAKING.jpg", this.scene, false, false);
-        this.brique_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/brique_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.tofu_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/tofu_BAKING.jpg", this.scene, false, false);
-        this.tofu_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/tofu_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.fourty_four_marie_louise_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/fourty_four_marie_louise_BAKING.jpg", this.scene, false, false);
-        this.fourty_four_marie_louise_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/fourty_four_marie_louise_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.brique_marie_louise_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/brique_marie_louise_BAKING.jpg", this.scene, false, false);
-        this.brique_marie_louise_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/brique_marie_louise_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.tofu_marie_louise_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/tofu_marie_louise_BAKING.jpg", this.scene, false, false);
-        this.tofu_marie_louise_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/tofu_marie_louise_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("rose_rouge", "../../assets/glb/laboratory/", "rose_rouge.glb", this.scene).then((result) => {
-            this.rose_rouge = this.scene.getMeshByName("rose_rouge");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("rose_rouge_frame", "../../assets/glb/laboratory/", "rose_rouge_frame.glb", this.scene).then((result) => {
-            this.rose_rouge_frame = this.scene.getMeshByName("rose_rouge_frame");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("verbal_shoota", "../../assets/glb/laboratory/", "verbal_shoota.glb", this.scene).then((result) => {
-            this.verbal_shoota = this.scene.getMeshByName("verbal_shoota");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("verbal_shoota_frame", "../../assets/glb/laboratory/", "verbal_shoota_frame.glb", this.scene).then((result) => {
-            this.verbal_shoota_frame = this.scene.getMeshByName("verbal_shoota_frame");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("lapin_blanc", "../../assets/glb/laboratory/", "lapin_blanc.glb", this.scene).then((result) => {
-            this.lapin_blanc = this.scene.getMeshByName("lapin_blanc");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("lapin_blanc_frame", "../../assets/glb/laboratory/", "lapin_blanc_frame.glb", this.scene).then((result) => {
-            this.lapin_blanc_frame = this.scene.getMeshByName("lapin_blanc_frame");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("fourty_four", "../../assets/glb/laboratory/", "fourty_four.glb", this.scene).then((result) => {
-            this.fourty_four = this.scene.getMeshByName("fourty_four");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("fourty_four_marie_louise", "../../assets/glb/laboratory/", "fourty_four_marie_louise.glb", this.scene).then((result) => {
-            this.fourty_four_marie_louise = this.scene.getMeshByName("fourty_four_marie_louise");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("fourty_four_frame", "../../assets/glb/laboratory/", "fourty_four_frame.glb", this.scene).then((result) => {
-            this.fourty_four_frame = this.scene.getMeshByName("fourty_four_frame");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("brique", "../../assets/glb/laboratory/", "brique.glb", this.scene).then((result) => {
-            this.brique = this.scene.getMeshByName("brique");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("brique_marie_louise", "../../assets/glb/laboratory/", "brique_marie_louise.glb", this.scene).then((result) => {
-            this.brique_marie_louise = this.scene.getMeshByName("brique_marie_louise");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("brique_frame", "../../assets/glb/laboratory/", "brique_frame.glb", this.scene).then((result) => {
-            this.brique_frame = this.scene.getMeshByName("brique_frame");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("tofu", "../../assets/glb/laboratory/", "tofu.glb", this.scene).then((result) => {
-            this.tofu = this.scene.getMeshByName("tofu");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("tofu_marie_louise", "../../assets/glb/laboratory/", "tofu_marie_louise.glb", this.scene).then((result) => {
-            this.tofu_marie_louise = this.scene.getMeshByName("tofu_marie_louise");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("tofu_frame", "../../assets/glb/laboratory/", "tofu_frame.glb", this.scene).then((result) => {
-            this.tofu_frame = this.scene.getMeshByName("tofu_frame");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pop_up_photography_left", "../../assets/glb/laboratory/", "pop_up_photography_left.glb", this.scene).then((result) => {
-            this.pop_up_photography_left = this.scene.getMeshByName("pop_up_photography_left");
-            this.pop_up_photography_left.isVisible = false;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pop_up_photography_right", "../../assets/glb/laboratory/", "pop_up_photography_right.glb", this.scene).then((result) => {
-            this.pop_up_photography_right = this.scene.getMeshByName("pop_up_photography_right");
-            this.pop_up_photography_right.isVisible = false;
-        });
-
-        // CHIMNEY
-
-        BABYLON.SceneLoader.ImportMeshAsync("chimney", "../../assets/glb/laboratory/", "chimney.glb", this.scene).then((result) => {
-          this.chimney = this.scene.getMeshByName("chimney");
-          this.chimney.checkCollisions = true;
-        });
-
-        var chimney_back_MATERIAL = new BABYLON.StandardMaterial("myMaterial", this.scene);
-        chimney_back_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 0);
-        chimney_back_MATERIAL.specularColor = new BABYLON.Color3(0, 0, 0);
-        chimney_back_MATERIAL.emissiveColor = new BABYLON.Color3(0, 0, 0);
-        chimney_back_MATERIAL.ambientColor = new BABYLON.Color3(0, 0, 0);
-
-        BABYLON.SceneLoader.ImportMeshAsync("chimney_back", "../../assets/glb/laboratory/", "chimney_back.glb", this.scene).then((result) => {
-            const chimney_back = this.scene.getMeshByName("chimney_back");
-            chimney_back.material = chimney_back_MATERIAL;
-        });
-
-        // LOGS
-
-        BABYLON.SceneLoader.ImportMeshAsync("logs", "../../assets/glb/laboratory/", "logs.glb", this.scene).then((result) => {
-        });
-
-        // FIRE SOURCE
-
-        var fire_source = BABYLON.Mesh.CreateBox("foutain", 0.1, this.scene);
-        fire_source.position = new BABYLON.Vector3(-0.2, 0, -9.4);
-
-        // SMOKE
-
-        var smokeSystem = new BABYLON.ParticleSystem("particles", 1000, this.scene);
-        smokeSystem.particleTexture = new BABYLON.Texture("../../assets/glb/laboratory/particles/smoke.png", this.scene);
-        smokeSystem.emitter = fire_source;
-        smokeSystem.minEmitBox = new BABYLON.Vector3(-1, 1, -1);
-        smokeSystem.maxEmitBox = new BABYLON.Vector3(1, 1, 1);
-
-        smokeSystem.color1 = new BABYLON.Color4(0.02, 0.02, 0.02, .02);
-        smokeSystem.color2 = new BABYLON.Color4(0.02, 0.02, 0.02, .02);
-        smokeSystem.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
-
-        smokeSystem.minSize = 0.5;
-        smokeSystem.maxSize = 1.5;
-
-        smokeSystem.minLifeTime = 0.3;
-        smokeSystem.maxLifeTime = 1.2;
-
-        smokeSystem.emitRate = 150;
-        smokeSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
-
-        smokeSystem.gravity = new BABYLON.Vector3(0, 0, 0);
-
-        smokeSystem.direction1 = new BABYLON.Vector3(-1.5, 8, -1.5);
-        smokeSystem.direction2 = new BABYLON.Vector3(1.5, 8, 1.5);
-
-        smokeSystem.minAngularSpeed = 0;
-        smokeSystem.maxAngularSpeed = Math.PI;
-
-        smokeSystem.minEmitPower = 0.5;
-        smokeSystem.maxEmitPower = 1.5;
-        smokeSystem.updateSpeed = 0.005;
-
-        smokeSystem.start();
-
-        // FIRE
-
-        var fireSystem = new BABYLON.ParticleSystem("particles", 1500, this.scene);
-        fireSystem.particleTexture = new BABYLON.Texture("../../assets/glb/laboratory/particles/smoke.png", this.scene);
-        fireSystem.emitter = fire_source;
-        fireSystem.minEmitBox = new BABYLON.Vector3(-0.6, 1, -0.6);
-        fireSystem.maxEmitBox = new BABYLON.Vector3(0.6, 1, 0.6);
-
-        fireSystem.color1 = new BABYLON.Color4(1, 0.5, 0, 1.0);
-        fireSystem.color2 = new BABYLON.Color4(1, 0.5, 0, 1.0);
-        fireSystem.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
-
-        fireSystem.minSize = 0.3;
-        fireSystem.maxSize = 1;
-
-        fireSystem.minLifeTime = 0.2;
-        fireSystem.maxLifeTime = 0.4;
-
-        fireSystem.emitRate = 300;
-
-        fireSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
-
-        fireSystem.gravity = new BABYLON.Vector3(0, 0, 0);
-
-        fireSystem.direction1 = new BABYLON.Vector3(0, 4, 0);
-        fireSystem.direction2 = new BABYLON.Vector3(0, 4, 0);
-
-        fireSystem.minAngularSpeed = 0;
-        fireSystem.maxAngularSpeed = Math.PI;
-
-        fireSystem.minEmitPower = 1;
-        fireSystem.maxEmitPower = 3;
-        fireSystem.updateSpeed = 0.005;
-
-        fireSystem.start();
-
-        // CHECKER
-
-        this.checker_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/checker_BAKING.jpg", this.scene, false, false);
-        this.checker_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/checker_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.checker_locks_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/checker_locks_BAKING.jpg", this.scene, false, false);
-        this.checker_locks_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/checker_locks_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("checker", "../../assets/glb/laboratory/", "checker.glb", this.scene).then((result) => {
-            this.checker = this.scene.getMeshByName("checker");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("checker_locks", "../../assets/glb/laboratory/", "checker_locks.glb", this.scene).then((result) => {
-            this.checker_locks = this.scene.getMeshByName("checker_locks");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("checker_bottom", "../../assets/glb/laboratory/", "checker_bottom.glb", this.scene).then((result) => {
-        });
-
-        // TAROT DECK
-
-        this.tarot_deck_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/tarot_deck_BAKING.jpg", this.scene, false, false);
-        this.tarot_deck_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/tarot_deck_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("tarot_deck", "../../assets/glb/laboratory/", "tarot_deck.glb", this.scene).then((result) => {
-            this.tarot_deck = this.scene.getMeshByName("tarot_deck");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pop_up_games", "../../assets/glb/laboratory/", "pop_up_games.glb", this.scene).then((result) => {
-            this.pop_up_games = this.scene.getMeshByName("pop_up_games");
-            this.pop_up_games.isVisible = false;
-        });
-
-        // VIRGEN
-
-        BABYLON.SceneLoader.ImportMeshAsync("virgen_guadalupe", "../../assets/glb/laboratory/", "virgen_guadalupe.glb", this.scene).then((result) => {
-        });
-
-        // VIRGEN
-
-        BABYLON.SceneLoader.ImportMeshAsync("book_programmer_java", "../../assets/glb/laboratory/", "book_programmer_java.glb", this.scene).then((result) => {
-        });
-
-        // CANDELSTICK
-
-        BABYLON.SceneLoader.ImportMeshAsync("candelstick", "../../assets/glb/laboratory/", "candelstick.glb", this.scene).then((result) => {
-          this.candelstick = this.scene.getMeshByName("candelstick");
-        });
-
-        // WALL LEFT
-
-        BABYLON.SceneLoader.ImportMeshAsync("wall_left_front", "../../assets/glb/laboratory/", "wall_left_front.glb", this.scene).then((result) => {
-            this.wall_left_front = this.scene.getMeshByName("wall_left_front");
-            //this.wall_left_front.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("wall_left_back", "../../assets/glb/laboratory/", "wall_left_back.glb", this.scene).then((result) => {
-            this.wall_left_back = this.scene.getMeshByName("wall_left_back");
-            // this.wall_left_back.checkCollisions = true;
-        });
-
-        // MIRROR
-
-        BABYLON.SceneLoader.ImportMeshAsync("mirror_frame", "../../assets/glb/laboratory/", "mirror_frame.glb", this.scene).then((result) => {
-        });
-
-        this.mirror = BABYLON.MeshBuilder.CreatePlane("mirror", {width: 5.8, height: 9.2}, this.scene);
-        this.mirror.position = new BABYLON.Vector3(-0.01, 11.8, -9.3);
-        this.mirror.rotation = new BABYLON.Vector3(0, 1.57, 0);
-        this.mirror.computeWorldMatrix(true);
-        var glass_worldMatrix = this.mirror.getWorldMatrix();
-        var glass_vertexData = this.mirror.getVerticesData("normal");
-        var glassNormal = new BABYLON.Vector3(glass_vertexData[0], glass_vertexData[1], glass_vertexData[2]);
-        glassNormal = BABYLON.Vector3.TransformNormal(glassNormal, glass_worldMatrix);
-        var reflector = BABYLON.Plane.FromPositionAndNormal(this.mirror.position, glassNormal.scale(-1));
-        this.mirror_MATERIAL = new BABYLON.StandardMaterial("mirror_MATERIAL", this.scene);
-        this.mirror_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.12);
-        this.mirror.material = this.mirror_MATERIAL;
-        var mirrorTexture = new BABYLON.MirrorTexture("mirrorTexture", 1024, this.scene);
-        mirrorTexture.level = 1;
-        mirrorTexture.mirrorPlane = reflector;
-        mirrorTexture.renderList = this.scene.meshes;
-        this.mirror.material.reflectionTexture = mirrorTexture;
-
-        // DAISY
-
-        BABYLON.SceneLoader.ImportMeshAsync("daisy", "../../assets/glb/laboratory/", "daisy.glb", this.scene).then((result) => {
-        });
-
-        // AMOR AMOR
-
-        this.amor_amor_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/amor_amor_BAKING.jpg", this.scene, false, false);
-        this.amor_amor_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/amor_amor_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("amor_amor", "../../assets/glb/laboratory/", "amor_amor.glb", this.scene).then((result) => {
-            this.amor_amor = this.scene.getMeshByName("amor_amor");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("amor_amor_frame", "../../assets/glb/laboratory/", "amor_amor_frame.glb", this.scene).then((result) => {
-            this.amor_amor_frame = this.scene.getMeshByName("amor_amor_frame");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pop_up_art", "../../assets/glb/laboratory/", "pop_up_art.glb", this.scene).then((result) => {
-            this.pop_up_art = this.scene.getMeshByName("pop_up_art");
-            this.pop_up_art.isVisible = false;
-        });
-
-        // DESK
-
-        BABYLON.SceneLoader.ImportMeshAsync("trestle_left", "../../assets/glb/laboratory/", "trestle_left.glb", this.scene).then((result) => {
-          this.trestle_left = this.scene.getMeshByName("trestle_left");
-          this.trestle_left.checkCollisions = true;
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("trestle_right", "../../assets/glb/laboratory/", "trestle_right.glb", this.scene).then((result) => {
-          this.trestle_right = this.scene.getMeshByName("trestle_right");
-          this.trestle_right.checkCollisions = true;
-        });
-
-        this.glass_MATERIAL = new BABYLON.StandardMaterial("desk_MATERIAL", this.scene);
-        this.glass_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 0);
-        this.glass_MATERIAL.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);
-        this.glass_MATERIAL.alpha = 0.2;
-        this.glass_MATERIAL.specularPower = 32;
-        this.glass_MATERIAL.reflectionFresnelParameters = new BABYLON.FresnelParameters();
-        this.glass_MATERIAL.reflectionFresnelParameters.bias = 0.1;
-        this.glass_MATERIAL.emissiveFresnelParameters = new BABYLON.FresnelParameters();
-        this.glass_MATERIAL.emissiveFresnelParameters.bias = 0.6;
-        this.glass_MATERIAL.emissiveFresnelParameters.power = 4;
-        this.glass_MATERIAL.emissiveFresnelParameters.leftColor = BABYLON.Color3.Gray();
-        this.glass_MATERIAL.emissiveFresnelParameters.rightColor = BABYLON.Color3.Black();
-        this.glass_MATERIAL.opacityFresnelParameters = new BABYLON.FresnelParameters();
-        this.glass_MATERIAL.opacityFresnelParameters.leftColor = BABYLON.Color3.Gray();
-        this.glass_MATERIAL.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();
-
-        BABYLON.SceneLoader.ImportMeshAsync("desk", "../../assets/glb/laboratory/", "desk.glb", this.scene).then((result) => {
-            this.desk = this.scene.getMeshByName("desk");
-            this.desk.material = this.glass_MATERIAL;
-        });
-
-        // VIA AIR MAIL
-
-        this.via_air_mail_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/via_air_mail_BAKING.jpg", this.scene, false, false);
-        this.via_air_mail_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/via_air_mail_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("via_air_mail", "../../assets/glb/laboratory/", "via_air_mail.glb", this.scene).then((result) => {
-            this.via_air_mail = this.scene.getMeshByName("via_air_mail");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pop_up_contact_me", "../../assets/glb/laboratory/", "pop_up_contact_me.glb", this.scene).then((result) => {
-            this.pop_up_contact_me = this.scene.getMeshByName("pop_up_contact_me");
-            this.pop_up_contact_me.isVisible = false;
-        });
-
-        // RINCE COCHON
-
-        BABYLON.SceneLoader.ImportMeshAsync("rince_cochon", "../../assets/glb/laboratory/", "rince_cochon.glb", this.scene).then((result) => {
-        });
-
-        // THERMOS
-
-        BABYLON.SceneLoader.ImportMeshAsync("thermos", "../../assets/glb/laboratory/", "thermos.glb", this.scene).then((result) => {
-        });
-
-        // POST-IT
-
-        BABYLON.SceneLoader.ImportMeshAsync("post_it", "../../assets/glb/laboratory/", "post_it.glb", this.scene).then((result) => {
-        });
-
-        // MOTEBOOKS
-
-        BABYLON.SceneLoader.ImportMeshAsync("notebook_bottom", "../../assets/glb/laboratory/", "notebook_bottom.glb", this.scene).then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("notebook_top", "../../assets/glb/laboratory/", "notebook_top.glb", this.scene).then((result) => {
-        });
-
-        // 3D GLASSES
-
-        this.threed_glasses_frame_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/threed_glasses_frame_BAKING.jpg", this.scene, false, false);
-        this.threed_glasses_frame_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/threed_glasses_frame_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("threed_glasses_frame", "../../assets/glb/laboratory/", "threed_glasses_frame.glb", this.scene).then((result) => {
-            this.threed_glasses_frame = this.scene.getMeshByName("threed_glasses_frame");
-        });
-
-        this.glass_blue_MATERIAL = new BABYLON.StandardMaterial("glass", this.scene);
-        this.glass_blue_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 1);
-        this.glass_blue_MATERIAL.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);
-        this.glass_blue_MATERIAL.alpha = 0.2;
-        this.glass_blue_MATERIAL.specularPower = 16;
-        this.glass_blue_MATERIAL.reflectionFresnelParameters = new BABYLON.FresnelParameters();
-        this.glass_blue_MATERIAL.reflectionFresnelParameters.bias = 0.1;
-        this.glass_blue_MATERIAL.emissiveFresnelParameters = new BABYLON.FresnelParameters();
-        this.glass_blue_MATERIAL.emissiveFresnelParameters.bias = 0.6;
-        this.glass_blue_MATERIAL.emissiveFresnelParameters.power = 4;
-        this.glass_blue_MATERIAL.emissiveFresnelParameters.leftColor = BABYLON.Color3.White();
-        this.glass_blue_MATERIAL.emissiveFresnelParameters.rightColor = BABYLON.Color3.Black();
-        this.glass_blue_MATERIAL.opacityFresnelParameters = new BABYLON.FresnelParameters();
-        this.glass_blue_MATERIAL.opacityFresnelParameters.leftColor = BABYLON.Color3.White();
-        this.glass_blue_MATERIAL.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();
-
-        BABYLON.SceneLoader.ImportMeshAsync("threed_glass_blue", "../../assets/glb/laboratory/", "threed_glass_blue.glb", this.scene).then((result) => {
-            this.threed_glass_blue = this.scene.getMeshByName("threed_glass_blue");
-            this.threed_glass_blue.material = this.glass_blue_MATERIAL;
-        });
-
-        this.glass_red_MATERIAL = new BABYLON.StandardMaterial("glass", this.scene);
-        this.glass_red_MATERIAL.diffuseColor = new BABYLON.Color3(1, 0, 0);
-        this.glass_red_MATERIAL.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);
-        this.glass_red_MATERIAL.alpha = 0.2;
-        this.glass_red_MATERIAL.specularPower = 16;
-        this.glass_red_MATERIAL.reflectionFresnelParameters = new BABYLON.FresnelParameters();
-        this.glass_red_MATERIAL.reflectionFresnelParameters.bias = 0.1;
-        this.glass_red_MATERIAL.emissiveFresnelParameters = new BABYLON.FresnelParameters();
-        this.glass_red_MATERIAL.emissiveFresnelParameters.bias = 0.6;
-        this.glass_red_MATERIAL.emissiveFresnelParameters.power = 4;
-        this.glass_red_MATERIAL.emissiveFresnelParameters.leftColor = BABYLON.Color3.White();
-        this.glass_red_MATERIAL.emissiveFresnelParameters.rightColor = BABYLON.Color3.Black();
-        this.glass_red_MATERIAL.opacityFresnelParameters = new BABYLON.FresnelParameters();
-        this.glass_red_MATERIAL.opacityFresnelParameters.leftColor = BABYLON.Color3.White();
-        this.glass_red_MATERIAL.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();
-
-        BABYLON.SceneLoader.ImportMeshAsync("threed_glass_red", "../../assets/glb/laboratory/", "threed_glass_red.glb", this.scene).then((result) => {
-            this.threed_glass_red = this.scene.getMeshByName("threed_glass_red");
-            this.threed_glass_red.material = this.glass_red_MATERIAL;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pop_up_stereoscopy", "../../assets/glb/laboratory/", "pop_up_stereoscopy.glb", this.scene).then((result) => {
-            this.pop_up_stereoscopy = this.scene.getMeshByName("pop_up_stereoscopy");
-            this.pop_up_stereoscopy.isVisible = false;
-        });
-
-        // COMPUTERS
-
-        BABYLON.SceneLoader.ImportMeshAsync("support_laptop", "../../assets/glb/laboratory/", "support_laptop.glb", this.scene).then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("wood_box_center", "../../assets/glb/laboratory/", "wood_box_center.glb", this.scene).then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("wood_box_right", "../../assets/glb/laboratory/", "wood_box_right.glb", this.scene).then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("mouse", "../../assets/glb/laboratory/", "mouse.glb", this.scene).then((result) => {
-        });
-
-        this.keyboard_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/keyboard_BAKING.jpg", this.scene, false, false);
-        this.keyboard_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/keyboard_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.mac_mini_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/mac_mini_BAKING.jpg", this.scene, false, false);
-        this.mac_mini_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/mac_mini_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.laptop_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/laptop_BAKING.jpg", this.scene, false, false);
-        this.laptop_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/laptop_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.laptop_screen_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/laptop_screen_BAKING.jpg", this.scene, false, false);
-        this.laptop_screen_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/laptop_screen_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.screen_center_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/screen_center_BAKING.jpg", this.scene, false, false);
-        this.screen_center_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/screen_center_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.screen_right_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/screen_right_BAKING.jpg", this.scene, false, false);
-        this.screen_right_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/screen_right_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("keyboard", "../../assets/glb/laboratory/", "keyboard.glb", this.scene).then((result) => {
-            this.keyboard = this.scene.getMeshByName("keyboard");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("keyboard_keyboard", "../../assets/glb/laboratory/", "keyboard_keyboard.glb", this.scene).then((result) => {
-            this.keyboard_keyboard = this.scene.getMeshByName("keyboard_keyboard");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("mac_mini", "../../assets/glb/laboratory/", "mac_mini.glb", this.scene).then((result) => {
-            this.mac_mini = this.scene.getMeshByName("mac_mini");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("laptop", "../../assets/glb/laboratory/", "laptop.glb", this.scene).then((result) => {
-            this.laptop = this.scene.getMeshByName("laptop");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("laptop_keyboard", "../../assets/glb/laboratory/", "laptop_keyboard.glb", this.scene).then((result) => {
-            this.laptop_keyboard = this.scene.getMeshByName("laptop_keyboard");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("laptop_screen", "../../assets/glb/laboratory/", "laptop_screen.glb", this.scene).then((result) => {
-            this.laptop_screen = this.scene.getMeshByName("laptop_screen");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("screen_frame_center", "../../assets/glb/laboratory/", "screen_frame_center.glb", this.scene).then((result) => {
-            this.screen_frame_center = this.scene.getMeshByName("screen_frame_center");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("screen_center", "../../assets/glb/laboratory/", "screen_center.glb", this.scene).then((result) => {
-            this.screen_center = this.scene.getMeshByName("screen_center");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("screen_frame_right", "../../assets/glb/laboratory/", "screen_frame_right.glb", this.scene).then((result) => {
-            this.screen_frame_right = this.scene.getMeshByName("screen_frame_right");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("screen_right", "../../assets/glb/laboratory/", "screen_right.glb", this.scene).then((result) => {
-            this.screen_right = this.scene.getMeshByName("screen_right");
-        });
-
-        this.glass_bulb_MATERIAL = new BABYLON.StandardMaterial("bulb_MATERIAL", this.scene);
-        this.glass_bulb_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 0);
-        this.glass_bulb_MATERIAL.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);
-        this.glass_bulb_MATERIAL.alpha = 0.2;
-        this.glass_bulb_MATERIAL.specularPower = 32;
-        this.glass_bulb_MATERIAL.reflectionFresnelParameters = new BABYLON.FresnelParameters();
-        this.glass_bulb_MATERIAL.reflectionFresnelParameters.bias = 0.1;
-        this.glass_bulb_MATERIAL.emissiveFresnelParameters = new BABYLON.FresnelParameters();
-        this.glass_bulb_MATERIAL.emissiveFresnelParameters.bias = 0.6;
-        this.glass_bulb_MATERIAL.emissiveFresnelParameters.power = 4;
-        this.glass_bulb_MATERIAL.emissiveFresnelParameters.leftColor = BABYLON.Color3.Gray();
-        this.glass_bulb_MATERIAL.emissiveFresnelParameters.rightColor = BABYLON.Color3.Black();
-        this.glass_bulb_MATERIAL.opacityFresnelParameters = new BABYLON.FresnelParameters();
-        this.glass_bulb_MATERIAL.opacityFresnelParameters.leftColor = BABYLON.Color3.Gray();
-        this.glass_bulb_MATERIAL.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();
-
-        BABYLON.SceneLoader.ImportMeshAsync("bulb", "../../assets/glb/laboratory/", "bulb.glb", this.scene).then((result) => {
-            this.bulb = this.scene.getMeshByName("bulb");
-            this.bulb.isVisible = false;
-            this.bulb.material = this.glass_bulb_MATERIAL;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("bulb_pin", "../../assets/glb/laboratory/", "bulb_pin.glb", this.scene).then((result) => {
-            this.bulb_pin = this.scene.getMeshByName("bulb_pin");
-            this.bulb_pin.isVisible = false;
-        });
-
-        this.bulb_string_MATERIAL = new BABYLON.StandardMaterial("bulb_string_MATERIAL", this.scene);
-        this.bulb_string_MATERIAL.emissiveColor = new BABYLON.Color3(0.94, 0.86, 0.71);
-
-        var gl = new BABYLON.GlowLayer("glow", this.scene);
-        gl.intensity = 1.5;
-
-        BABYLON.SceneLoader.ImportMeshAsync("bulb_string", "../../assets/glb/laboratory/", "bulb_string.glb", this.scene).then((result) => {
-            this.bulb_string = this.scene.getMeshByName("bulb_string");
-            this.bulb_string.isVisible = false;
-            this.bulb_string.material = this.bulb_string_MATERIAL;
-            gl.addIncludedOnlyMesh(this.bulb_string);
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("bulb_string_support", "../../assets/glb/laboratory/", "bulb_string_support.glb", this.scene).then((result) => {
-            this.bulb_string_support = this.scene.getMeshByName("bulb_string_support");
-            this.bulb_string_support.isVisible = false;
-        });
-
-        // WALL RIGHT
-
-        BABYLON.SceneLoader.ImportMeshAsync("wall_right_front", "../../assets/glb/laboratory/", "wall_right_front.glb", this.scene).then((result) => {
-            this.wall_right_front = this.scene.getMeshByName("wall_right_front");
-            this.wall_right_front.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("wall_right_back", "../../assets/glb/laboratory/", "wall_right_back.glb", this.scene).then((result) => {
-            this.wall_right_back = this.scene.getMeshByName("wall_right_back");
-            // this.wall_right_back.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("baseboard_right", "../../assets/glb/laboratory/", "baseboard_right.glb", this.scene).then((result) => {
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("window_left", "../../assets/glb/laboratory/", "window_left.glb", this.scene).then((result) => {
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("glass_left_top", "../../assets/glb/laboratory/", "glass_left_top.glb", this.scene).then((result) => {
-            this.glass_left_top = this.scene.getMeshByName("glass_left_top");
-            this.glass_left_top.material = this.glass_MATERIAL;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("glass_left_bottom", "../../assets/glb/laboratory/", "glass_left_bottom.glb", this.scene).then((result) => {
-            this.glass_left_bottom = this.scene.getMeshByName("glass_left_bottom");
-            this.glass_left_bottom.material = this.glass_MATERIAL;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("window_right", "../../assets/glb/laboratory/", "window_right.glb", this.scene).then((result) => {
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("glass_right_top", "../../assets/glb/laboratory/", "glass_right_top.glb", this.scene).then((result) => {
-            this.glass_right_top = this.scene.getMeshByName("glass_right_top");
-            this.glass_right_top.material = this.glass_MATERIAL;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("glass_right_bottom", "../../assets/glb/laboratory/", "glass_right_bottom.glb", this.scene).then((result) => {
-            this.glass_right_bottom = this.scene.getMeshByName("glass_right_bottom");
-            this.glass_right_bottom.material = this.glass_MATERIAL;
-        });
-
-        // NHS RAINBOW
-
-        BABYLON.SceneLoader.ImportMeshAsync("nhs_rainbow", "../../assets/glb/laboratory/", "nhs_rainbow.glb", this.scene).then((result) => {
-        });
-
-        // SOLAR SYSTEM
-
-        BABYLON.SceneLoader.ImportMeshAsync("solar_system", "../../assets/glb/laboratory/", "solar_system.glb", this.scene).then((result) => {
-        });
-
-        // PABLO
-
-        BABYLON.SceneLoader.ImportMeshAsync("pablo", "../../assets/glb/laboratory/", "pablo.glb", this.scene).then((result) => {
-        });
-
-        // LANGUAGES
-
-        this.united_kingdom_red_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_red_BAKING.jpg", this.scene, false, false);
-        this.united_kingdom_red_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_red_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.united_kingdom_white_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_white_BAKING.jpg", this.scene, false, false);
-        this.united_kingdom_white_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_white_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.united_kingdom_blue_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_blue_BAKING.jpg", this.scene, false, false);
-        this.united_kingdom_blue_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_blue_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("united_kingdom_black", "../../assets/glb/laboratory/", "united_kingdom_black.glb").then((result) => {
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("united_kingdom_blue", "../../assets/glb/laboratory/", "united_kingdom_blue.glb").then((result) => {
-            this.united_kingdom_blue = this.scene.getMeshByName("united_kingdom_blue");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("united_kingdom_white", "../../assets/glb/laboratory/", "united_kingdom_white.glb").then((result) => {
-            this.united_kingdom_white = this.scene.getMeshByName("united_kingdom_white");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("united_kingdom_red", "../../assets/glb/laboratory/", "united_kingdom_red.glb").then((result) => {
-            this.united_kingdom_red = this.scene.getMeshByName("united_kingdom_red");
-        });
-
-        this.france_blue_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_blue_BAKING.jpg", this.scene, false, false);
-        this.france_blue_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_blue_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.france_white_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_white_BAKING.jpg", this.scene, false, false);
-        this.france_white_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_white_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.france_red_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_red_BAKING.jpg", this.scene, false, false);
-        this.france_red_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_red_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("france_black", "../../assets/glb/laboratory/", "france_black.glb").then((result) => {
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("france_blue", "../../assets/glb/laboratory/", "france_blue.glb").then((result) => {
-            this.france_blue = this.scene.getMeshByName("france_blue");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("france_white", "../../assets/glb/laboratory/", "france_white.glb").then((result) => {
-            this.france_white = this.scene.getMeshByName("france_white");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("france_red", "../../assets/glb/laboratory/", "france_red.glb").then((result) => {
-            this.france_red = this.scene.getMeshByName("france_red");
-        });
-
-        this.spain_red_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/spain_red_BAKING.jpg", this.scene, false, false);
-        this.spain_red_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/spain_red_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.spain_yellow_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/spain_yellow_BAKING.jpg", this.scene, false, false);
-        this.spain_yellow_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/spain_yellow_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("spain_black", "../../assets/glb/laboratory/", "spain_black.glb").then((result) => {
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("spain_red", "../../assets/glb/laboratory/", "spain_red.glb").then((result) => {
-            this.spain_red = this.scene.getMeshByName("spain_red");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("spain_yellow", "../../assets/glb/laboratory/", "spain_yellow.glb").then((result) => {
-            this.spain_yellow = this.scene.getMeshByName("spain_yellow");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pop_up_languages", "../../assets/glb/laboratory/", "pop_up_languages.glb", this.scene).then((result) => {
-            this.pop_up_languages = this.scene.getMeshByName("pop_up_languages");
-            this.pop_up_languages.isVisible = false;
-        });
-
-        // OWL
-
-        BABYLON.SceneLoader.ImportMeshAsync("owl", "../../assets/glb/laboratory/", "owl.glb").then((result) => {
-        });
-
-        // SHELF
-
-        BABYLON.SceneLoader.ImportMeshAsync("shelf", "../../assets/glb/laboratory/", "shelf.glb", this.scene).then((result) => {
-          this.shelf = this.scene.getMeshByName("shelf");
-          this.shelf.checkCollisions = true;
-        });
-
-        // DVDS
-
-        this.dvd_pi_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_pi_BAKING.jpg", this.scene, false, false);
-        this.dvd_pi_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_pi_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.dvd_enter_the_void_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_enter_the_void_BAKING.jpg", this.scene, false, false);
-        this.dvd_enter_the_void_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_enter_the_void_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.dvd_2001_odyssee_espace_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_2001_odyssee_espace_BAKING.jpg", this.scene, false, false);
-        this.dvd_2001_odyssee_espace_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_2001_odyssee_espace_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.dvd_la_haine_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_la_haine_BAKING.jpg", this.scene, false, false);
-        this.dvd_la_haine_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_la_haine_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.dvd_sweet_sixteen_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_sweet_sixteen_BAKING.jpg", this.scene, false, false);
-        this.dvd_sweet_sixteen_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_sweet_sixteen_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.dvd_eternal_sunshine_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_eternal_sunshine_BAKING.jpg", this.scene, false, false);
-        this.dvd_eternal_sunshine_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_eternal_sunshine_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.dvd_zero_theorem_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_zero_theorem_BAKING.jpg", this.scene, false, false);
-        this.dvd_zero_theorem_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_zero_theorem_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.dvd_shining_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_shining_BAKING.jpg", this.scene, false, false);
-        this.dvd_shining_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_shining_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("dvd_pi", "../../assets/glb/laboratory/", "dvd_pi.glb", this.scene).then((result) => {
-          this.dvd_pi = this.scene.getMeshByName("dvd_pi");
-          this.dvd_pi.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("dvd_enter_the_void", "../../assets/glb/laboratory/", "dvd_enter_the_void.glb", this.scene).then((result) => {
-          this.dvd_enter_the_void = this.scene.getMeshByName("dvd_enter_the_void");
-          this.dvd_enter_the_void.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("dvd_2001_odyssee_espace", "../../assets/glb/laboratory/", "dvd_2001_odyssee_espace.glb", this.scene).then((result) => {
-          this.dvd_2001_odyssee_espace = this.scene.getMeshByName("dvd_2001_odyssee_espace");
-          this.dvd_2001_odyssee_espace.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("dvd_la_haine", "../../assets/glb/laboratory/", "dvd_la_haine.glb", this.scene).then((result) => {
-          this.dvd_la_haine = this.scene.getMeshByName("dvd_la_haine");
-          this.dvd_la_haine.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("dvd_sweet_sixteen", "../../assets/glb/laboratory/", "dvd_sweet_sixteen.glb", this.scene).then((result) => {
-          this.dvd_sweet_sixteen = this.scene.getMeshByName("dvd_sweet_sixteen");
-          this.dvd_sweet_sixteen.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("dvd_eternal_sunshine", "../../assets/glb/laboratory/", "dvd_eternal_sunshine.glb", this.scene).then((result) => {
-          this.dvd_eternal_sunshine = this.scene.getMeshByName("dvd_eternal_sunshine");
-          this.dvd_eternal_sunshine.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("dvd_zero_theorem", "../../assets/glb/laboratory/", "dvd_zero_theorem.glb", this.scene).then((result) => {
-          this.dvd_zero_theorem = this.scene.getMeshByName("dvd_zero_theorem");
-          this.dvd_zero_theorem.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("dvd_shining", "../../assets/glb/laboratory/", "dvd_shining.glb", this.scene).then((result) => {
-          this.dvd_shining = this.scene.getMeshByName("dvd_shining");
-          this.dvd_shining.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pop_up_movies", "../../assets/glb/laboratory/", "pop_up_movies.glb", this.scene).then((result) => {
-            this.pop_up_movies = this.scene.getMeshByName("pop_up_movies");
-            this.pop_up_movies.isVisible = false;
-        });
-
-        // BOOKS
-
-        BABYLON.SceneLoader.ImportMeshAsync("book_strategie_choc", "../../assets/glb/laboratory/", "book_strategie_choc.glb", this.scene).then((result) => {
-          this.book_strategie_choc = this.scene.getMeshByName("book_strategie_choc");
-          this.book_strategie_choc.checkCollisions = true;
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("book_no_logo", "../../assets/glb/laboratory/", "book_no_logo.glb", this.scene).then((result) => {
-          this.book_no_logo = this.scene.getMeshByName("book_no_logo");
-          this.book_no_logo.checkCollisions = true;
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("book_serpent_cosmique", "../../assets/glb/laboratory/", "book_serpent_cosmique.glb", this.scene).then((result) => {
-          this.book_serpent_cosmique = this.scene.getMeshByName("book_serpent_cosmique");
-          this.book_serpent_cosmique.checkCollisions = true;
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("book_meilleur_mondes", "../../assets/glb/laboratory/", "book_meilleur_mondes.glb", this.scene).then((result) => {
-          this.book_meilleur_mondes = this.scene.getMeshByName("book_meilleur_mondes");
-          this.book_meilleur_mondes.checkCollisions = true;
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("book_dictionnaire_symboles", "../../assets/glb/laboratory/", "book_dictionnaire_symboles.glb", this.scene).then((result) => {
-          this.book_dictionnaire_symboles = this.scene.getMeshByName("book_dictionnaire_symboles");
-          this.book_dictionnaire_symboles.checkCollisions = true;
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("book_prince", "../../assets/glb/laboratory/", "book_prince.glb", this.scene).then((result) => {
-          this.book_prince = this.scene.getMeshByName("book_prince");
-          this.book_prince.checkCollisions = true;
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("book_ca_I", "../../assets/glb/laboratory/", "book_ca_I.glb", this.scene).then((result) => {
-          this.book_ca_I = this.scene.getMeshByName("book_ca_I");
-          this.book_ca_I.checkCollisions = true;
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("book_ca_II", "../../assets/glb/laboratory/", "book_ca_II.glb", this.scene).then((result) => {
-          this.book_ca_II = this.scene.getMeshByName("book_ca_II");
-          this.book_ca_II.checkCollisions = true;
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("book_ca_III", "../../assets/glb/laboratory/", "book_ca_III.glb", this.scene).then((result) => {
-          this.book_ca_III = this.scene.getMeshByName("book_ca_III");
-          this.book_ca_III.checkCollisions = true;
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("book_sagrada_biblia", "../../assets/glb/laboratory/", "book_sagrada_biblia.glb", this.scene).then((result) => {
-          this.book_sagrada_biblia = this.scene.getMeshByName("book_sagrada_biblia");
-          this.book_sagrada_biblia.checkCollisions = true;
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("book_nuit_enfants_rois", "../../assets/glb/laboratory/", "book_nuit_enfants_rois.glb", this.scene).then((result) => {
-          this.book_nuit_enfants_rois = this.scene.getMeshByName("book_nuit_enfants_rois");
-          this.book_nuit_enfants_rois.checkCollisions = true;
-        });
-
-        // WORLD MAP
-
-        this.world_map_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/world_map_BAKING.jpg", this.scene, false, false);
-        this.world_map_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/world_map_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("world_map", "../../assets/glb/laboratory/", "world_map.glb", this.scene).then((result) => {
-            this.world_map = this.scene.getMeshByName("world_map");
-            this.world_map.checkCollisions = true;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("pop_up_travel", "../../assets/glb/laboratory/", "pop_up_travel.glb", this.scene).then((result) => {
-            this.pop_up_travel = this.scene.getMeshByName("pop_up_travel");
-            this.pop_up_travel.isVisible = false;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("world_map_bar", "../../assets/glb/laboratory/", "world_map_bar.glb", this.scene).then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("world_map_basement_metal", "../../assets/glb/laboratory/", "world_map_basement_metal.glb", this.scene).then((result) => {
-        });
-        BABYLON.SceneLoader.ImportMeshAsync("world_map_basement_marble", "../../assets/glb/laboratory/", "world_map_basement_marble.glb", this.scene).then((result) => {
-        });
-
-        // SOCIAL NETWORKS
-
-        this.twitter_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/twitter_BAKING.jpg", this.scene, false, false);
-        this.twitter_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/twitter_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("twitter", "../../assets/glb/laboratory/", "twitter.glb").then((result) => {
-            this.twitter = this.scene.getMeshByName("twitter");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("cursor_twitter_white", "../../assets/glb/laboratory/", "cursor_twitter_white.glb", this.scene).then((result) => {
-            this.cursor_twitter_white = this.scene.getMeshByName("cursor_twitter_white");
-            this.cursor_twitter_white.isVisible = false;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("cursor_twitter_black", "../../assets/glb/laboratory/", "cursor_twitter_black.glb", this.scene).then((result) => {
-            this.cursor_twitter_black = this.scene.getMeshByName("cursor_twitter_black");
-            this.cursor_twitter_black.isVisible = false;
-        });
-
-        this.instagram_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/instagram_BAKING.jpg", this.scene, false, false);
-        this.instagram_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/instagram_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("instagram", "../../assets/glb/laboratory/", "instagram.glb").then((result) => {
-            this.instagram = this.scene.getMeshByName("instagram");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("instagram_lens", "../../assets/glb/laboratory/", "instagram_lens.glb").then((result) => {
-            this.instagram_lens = this.scene.getMeshByName("instagram_lens");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("cursor_instagram_black", "../../assets/glb/laboratory/", "cursor_instagram_black.glb", this.scene).then((result) => {
-            this.cursor_instagram_black = this.scene.getMeshByName("cursor_instagram_black");
-            this.cursor_instagram_black.isVisible = false;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("cursor_instagram_white", "../../assets/glb/laboratory/", "cursor_instagram_white.glb", this.scene).then((result) => {
-            this.cursor_instagram_white = this.scene.getMeshByName("cursor_instagram_white");
-            this.cursor_instagram_white.isVisible = false;
-        });
-
-        this.youtube_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/youtube_BAKING.jpg", this.scene, false, false);
-        this.youtube_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/youtube_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.youtube_play_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/youtube_play_BAKING.jpg", this.scene, false, false);
-        this.youtube_play_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/youtube_play_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("youtube", "../../assets/glb/laboratory/", "youtube.glb").then((result) => {
-            this.youtube = this.scene.getMeshByName("youtube");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("youtube_play", "../../assets/glb/laboratory/", "youtube_play.glb").then((result) => {
-            this.youtube_play = this.scene.getMeshByName("youtube_play");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("cursor_youtube_black", "../../assets/glb/laboratory/", "cursor_youtube_black.glb", this.scene).then((result) => {
-            this.cursor_youtube_black = this.scene.getMeshByName("cursor_youtube_black");
-            this.cursor_youtube_black.isVisible = false;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("cursor_youtube_white", "../../assets/glb/laboratory/", "cursor_youtube_white.glb", this.scene).then((result) => {
-            this.cursor_youtube_white = this.scene.getMeshByName("cursor_youtube_white");
-            this.cursor_youtube_white.isVisible = false;
-        });
-
-        this.spotify_green_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/spotify_green_BAKING.jpg", this.scene, false, false);
-        this.spotify_green_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/spotify_green_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("spotify_green", "../../assets/glb/laboratory/", "spotify_green.glb").then((result) => {
-            this.spotify_green = this.scene.getMeshByName("spotify_green");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("spotify_black", "../../assets/glb/laboratory/", "spotify_black.glb").then((result) => {
-            this.spotify_black = this.scene.getMeshByName("spotify_black");
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("cursor_spotify_black", "../../assets/glb/laboratory/", "cursor_spotify_black.glb", this.scene).then((result) => {
-            this.cursor_spotify_black = this.scene.getMeshByName("cursor_spotify_black");
-            this.cursor_spotify_black.isVisible = false;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("cursor_spotify_white", "../../assets/glb/laboratory/", "cursor_spotify_white.glb", this.scene).then((result) => {
-            this.cursor_spotify_white = this.scene.getMeshByName("cursor_spotify_white");
-            this.cursor_spotify_white.isVisible = false;
-        });
-
-        // PROJECTOR
-
-        this.projector = BABYLON.MeshBuilder.CreatePlane("projector", {width: 12, height: 6.75}, this.scene);
-        this.projector = this.scene.getMeshByName("projector");
-        this.projector.position = new BABYLON.Vector3(-32.4 , 13.5, -7);
-        this.projector.rotation = new BABYLON.Vector3(0, -1.57, 0);
-
-        this.projector_MATERIAL = new BABYLON.StandardMaterial("projectorMaterial", this.scene);
-        this.enter_the_void_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/enter_the_void.mp4", this.scene);
-        this.projector_MATERIAL.roughness = 1;
-        this.projector_MATERIAL.emissiveColor = BABYLON.Color3.White();
-        this.projector_MATERIAL.diffuseTexture = this.enter_the_void_TEXTURE;
-        this.projector_MATERIAL.alpha = 0.3;
-
-        this.projector.material = this.projector_MATERIAL;
-
-        this.enter_the_void_TEXTURE.video.pause();
-
-        // videoTexture.onUserActionRequestedObservable.add(() => {
-            // this.scene.onPointerDown = function () {
-                // videoTexture.video.play();
-            // }
-        // });
-
-        this.touch_play_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_play_BAKING.jpg", this.scene, false, false);
-        this.touch_play_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_play_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.touch_pause_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_pause_BAKING.jpg", this.scene, false, false);
-        this.touch_pause_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_pause_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        this.touch_skip_forward_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_forward_BAKING.jpg", this.scene, false, false);
-        this.touch_skip_forward_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_forward_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-        BABYLON.SceneLoader.ImportMeshAsync("touch_play", "../../assets/glb/laboratory/", "touch_play.glb").then((result) => {
-            this.touch_play = this.scene.getMeshByName("touch_play");
-            this.touch_play.isVisible = false;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("touch_pause", "../../assets/glb/laboratory/", "touch_pause.glb").then((result) => {
-            this.touch_pause = this.scene.getMeshByName("touch_pause");
-            this.touch_pause.isVisible = false;
-        });
-
-        BABYLON.SceneLoader.ImportMeshAsync("touch_skip_forward", "../../assets/glb/laboratory/", "touch_skip_forward.glb").then((result) => {
-            this.touch_skip_forward = this.scene.getMeshByName("touch_skip_forward");
-            this.touch_skip_forward.isVisible = false;
-        });
+  private isCV: boolean;
+
+  private innerWidth: any;
+  private innerHeight: any;
+
+  private canvas: HTMLCanvasElement;
+  private engine: BABYLON.Engine;
+  private scene: BABYLON.Scene;
+
+  private universal_camera: BABYLON.UniversalCamera;
+  private anaglyph_universal_camera: BABYLON.AnaglyphUniversalCamera;
+
+  private pipeline: BABYLON.DefaultRenderingPipeline;
+  private rotation;
+
+  private hemispheric_light: BABYLON.Light;
+  private directional_light: BABYLON.DirectionalLight;
+
+  private boundary_bottom; boundary_front; boundary_left; boundary_back; boundary_right; boundary_top;
+  private wall_left_collision; wall_right_collision;
+  private leather_armchair;
+  private lampshade_tissue;
+  private transfert_boxes; transfert_boxes_rings;
+  private grid; graphic;
+  private rose_rouge; rose_rouge_frame;
+  private verbal_shoota; verbal_shoota_frame;
+  private lapin_blanc; lapin_blanc_frame;
+  private fourty_four; fourty_four_marie_louise; fourty_four_frame;
+  private brique; brique_marie_louise; brique_frame;
+  private tofu; tofu_marie_louise; tofu_frame;
+  private chimney;
+  private mirror;
+  private trestle_left; trestle_right;
+  private desk;
+  private via_air_mail;
+  private threed_glasses_frame; threed_glass_blue; threed_glass_red;
+  private keyboard; keyboard_keyboard; mac_mini; laptop; laptop_keyboard; laptop_screen; screen_center; screen_frame_center; screen_right; screen_frame_right;
+  private bulb; bulb_pin; bulb_string; bulb_string_support;
+  private glass_left_top; glass_left_bottom; glass_right_top; glass_right_bottom;
+  private united_kingdom_blue; united_kingdom_white; united_kingdom_red;
+  private france_blue; france_white; france_red;
+  private spain_red; spain_yellow;
+  private shelf;
+  private dvd_pi; dvd_enter_the_void; dvd_2001_odyssee_espace; dvd_la_haine; dvd_sweet_sixteen; dvd_eternal_sunshine; dvd_zero_theorem; dvd_shining;
+  private book_strategie_choc; book_no_logo; book_serpent_cosmique; book_meilleur_mondes; book_dictionnaire_symboles; book_prince; book_ca_I; book_ca_II; book_ca_III; book_sagrada_biblia; book_nuit_enfants_rois;
+  private world_map;
+  private twitter;
+  private cursor_twitter_black; cursor_twitter_white;
+  private instagram; instagram_lens;
+  private cursor_instagram_black; cursor_instagram_white;
+  private youtube; youtube_play;
+  private cursor_youtube_black; cursor_youtube_white;
+  private spotify_green; spotify_black;
+  private cursor_spotify_black; cursor_spotify_white;
+  private projector;
+  private touch_play; touch_pause; touch_skip_forward;
+
+  private pop_up_running;
+  private pop_up_photography_left;
+  private pop_up_photography_right;
+  private pop_up_contact_me;
+  private pop_up_stereoscopy;
+  private pop_up_languages;
+  private pop_up_art;
+  private pop_up_movies;
+  private pop_up_travel;
+
+  private transfert_boxes_BAKING: BABYLON.Texture;
+  private transfert_boxes_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private transfert_boxes_rings_BAKING: BABYLON.Texture;
+  private transfert_boxes_rings_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private rose_rouge_BAKING: BABYLON.Texture;
+  private rose_rouge_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private verbal_shoota_BAKING: BABYLON.Texture;
+  private verbal_shoota_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private lapin_blanc_BAKING: BABYLON.Texture;
+  private lapin_blanc_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private fourty_four_BAKING: BABYLON.Texture;
+  private fourty_four_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private brique_BAKING: BABYLON.Texture;
+  private brique_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private tofu_BAKING: BABYLON.Texture;
+  private tofu_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private fourty_four_marie_louise_BAKING: BABYLON.Texture;
+  private fourty_four_marie_louise_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private brique_marie_louise_BAKING: BABYLON.Texture;
+  private brique_marie_louise_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private tofu_marie_louise_BAKING: BABYLON.Texture;
+  private tofu_marie_louise_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private via_air_mail_BAKING: BABYLON.Texture;
+  private via_air_mail_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private threed_glasses_frame_BAKING: BABYLON.Texture;
+  private threed_glasses_frame_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private keyboard_BAKING: BABYLON.Texture;
+  private keyboard_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private mac_mini_BAKING: BABYLON.Texture;
+  private mac_mini_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private laptop_BAKING: BABYLON.Texture;
+  private laptop_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private laptop_screen_BAKING: BABYLON.Texture;
+  private laptop_screen_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private screen_center_BAKING: BABYLON.Texture;
+  private screen_center_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private screen_right_BAKING: BABYLON.Texture;
+  private screen_right_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private world_map_BAKING: BABYLON.Texture;
+  private world_map_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private dvd_pi_BAKING: BABYLON.Texture;
+  private dvd_pi_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private dvd_enter_the_void_BAKING: BABYLON.Texture;
+  private dvd_enter_the_void_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private dvd_2001_odyssee_espace_BAKING: BABYLON.Texture;
+  private dvd_2001_odyssee_espace_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private dvd_la_haine_BAKING: BABYLON.Texture;
+  private dvd_la_haine_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private dvd_sweet_sixteen_BAKING: BABYLON.Texture;
+  private dvd_sweet_sixteen_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private dvd_eternal_sunshine_BAKING: BABYLON.Texture;
+  private dvd_eternal_sunshine_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private dvd_zero_theorem_BAKING: BABYLON.Texture;
+  private dvd_zero_theorem_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private dvd_shining_BAKING: BABYLON.Texture;
+  private dvd_shining_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private united_kingdom_red_BAKING: BABYLON.Texture;
+  private united_kingdom_red_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private united_kingdom_white_BAKING: BABYLON.Texture;
+  private united_kingdom_white_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private united_kingdom_blue_BAKING: BABYLON.Texture;
+  private united_kingdom_blue_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private france_blue_BAKING: BABYLON.Texture;
+  private france_blue_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private france_white_BAKING: BABYLON.Texture;
+  private france_white_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private france_red_BAKING: BABYLON.Texture;
+  private france_red_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private spain_red_BAKING: BABYLON.Texture;
+  private spain_red_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private spain_yellow_BAKING: BABYLON.Texture;
+  private spain_yellow_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private twitter_BAKING: BABYLON.Texture;
+  private twitter_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private instagram_BAKING: BABYLON.Texture;
+  private instagram_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private youtube_BAKING: BABYLON.Texture;
+  private youtube_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private youtube_play_BAKING: BABYLON.Texture;
+  private youtube_play_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private touch_play_BAKING: BABYLON.Texture;
+  private touch_play_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private touch_pause_BAKING: BABYLON.Texture;
+  private touch_pause_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private touch_skip_forward_BAKING: BABYLON.Texture;
+  private touch_skip_forward_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private spotify_green_BAKING: BABYLON.Texture;
+  private spotify_green_BAKING_HIGHLIGHT: BABYLON.Texture;
+
+  private odyssee_espace_TEXTURE: BABYLON.VideoTexture;
+  private enter_the_void_TEXTURE: BABYLON.VideoTexture;
+  private eternal_sunshine_TEXTURE: BABYLON.VideoTexture;
+  private la_haine_TEXTURE: BABYLON.VideoTexture;
+  private pi_TEXTURE: BABYLON.VideoTexture;
+  private shining_TEXTURE: BABYLON.VideoTexture;
+  private zero_theorem_TEXTURE: BABYLON.VideoTexture;
+  private trailer_position = 1;
+  private all_video_textures_loaded = false;
+
+  private mirror_MATERIAL: BABYLON.StandardMaterial;
+  private glass_MATERIAL: BABYLON.StandardMaterial;
+  private glass_blue_MATERIAL: BABYLON.StandardMaterial;
+  private glass_red_MATERIAL: BABYLON.StandardMaterial;
+  private bulb_string_MATERIAL: BABYLON.StandardMaterial;
+  private projector_MATERIAL: BABYLON.StandardMaterial;
+
+  private glow_layer: BABYLON.GlowLayer;
+
+  private scene_loaded = false;
+  private introduction_closed = false;
+
+  private anaglyph_activated = false;
+
+  private dashBoardCameraDatas: CameraDatas;
+
+  public constructor(
+    private ngZone: NgZone,
+    private windowRef: WindowRefService,
+    protected readonly interaction: InteractionService
+  ) {}
+
+  public createScene(canvas: ElementRef<HTMLCanvasElement>): void {
+
+    // CANVAS / ENGINE / SCENE
+
+    this.canvas = canvas.nativeElement;
+
+    this.engine = new BABYLON.Engine(this.canvas, true, { stencil: true });
+
+    this.scene = new BABYLON.Scene(this.engine);
+    this.scene.clearColor = new BABYLON.Color4(0.0035, 0.0035, 0.0035, 1);
+
+    // CANERAS
+
+    this.universal_camera = new BABYLON.UniversalCamera("universal_camera", new BABYLON.Vector3(0, 0, 0), this.scene);
+    this.universal_camera.position = this.get_initPositionCamera();
+    this.universal_camera.target = this.get_initPositionCameraTarget();
+    this.universal_camera.touchAngularSensibility = 10000;
+    this.universal_camera.speed = 0.7;
+    this.universal_camera.invertRotation = false;
+    this.universal_camera.ellipsoid = new BABYLON.Vector3(2, 2, 2);
+    this.universal_camera.inputs.addMouseWheel();
+    this.universal_camera.attachControl(canvas, true);
+
+    this.anaglyph_universal_camera = new BABYLON.AnaglyphUniversalCamera("anaglyph_universal_camera", new BABYLON.Vector3(0, 0, 0), 0.05, this.scene);
+    this.anaglyph_universal_camera.target = new BABYLON.Vector3(-16.2, 5, -12);
+    this.anaglyph_universal_camera.touchAngularSensibility = 10000;
+    this.anaglyph_universal_camera.speed = 0.7;
+    this.anaglyph_universal_camera.invertRotation = false;
+    this.anaglyph_universal_camera.ellipsoid = new BABYLON.Vector3(2, 2, 2);
+    this.anaglyph_universal_camera.inputs.addMouseWheel();
+    this.anaglyph_universal_camera.attachControl(canvas, true);
+
+    // PIPE
+
+    this.pipeline = new BABYLON.DefaultRenderingPipeline("pipeline", true, this.scene, [this.universal_camera]);
+
+    this.pipeline.samples = 4;
+    this.pipeline.fxaaEnabled = true;
+    this.pipeline.bloomEnabled = true;
+    this.pipeline.bloomKernel = 640;
+    this.pipeline.bloomWeight = 1;
+    this.pipeline.bloomThreshold = 0.3;
+    this.pipeline.bloomScale = 0.5;
+
+    this.pipeline.chromaticAberrationEnabled = true;
+    this.set_chromaticAberration();
+    this.rotation = 1;
+    this.pipeline.chromaticAberration.direction.x = Math.sin(this.rotation);
+    this.pipeline.chromaticAberration.direction.y = Math.cos(this.rotation);
+
+    this.pipeline.grainEnabled = true;
+    this.pipeline.grain.intensity = 7;
+
+    // LIGHTS
+
+    this.hemispheric_light = new BABYLON.HemisphericLight('hemispheric_light', new BABYLON.Vector3(0, 1, 0), this.scene);
+    this.hemispheric_light.intensity = 0.6;
+
+    this.directional_light = new BABYLON.DirectionalLight("directional_light", new BABYLON.Vector3(1, -5, -2), this.scene);
+    this.directional_light.intensity = 0.5;
+
+    // COLLISIONS
+
+    this.scene.collisionsEnabled = true;
+    this.universal_camera.checkCollisions = true;
+    this.anaglyph_universal_camera.checkCollisions = true;
+
+    // BOUNDARIES
+
+    this.boundary_bottom = BABYLON.Mesh.CreatePlane("boundary_bottom", 150, this.scene);
+    this.boundary_bottom.position = new BABYLON.Vector3(-16.2, 0, -20);
+    this.boundary_bottom.rotation = new BABYLON.Vector3(Math.PI/2, 0, 0);
+    this.boundary_bottom.isVisible = false;
+
+    this.boundary_front = BABYLON.Mesh.CreatePlane("boundary_front", 150, this.scene);
+    this.boundary_front.position = new BABYLON.Vector3(-16.2, 45, 40);
+    this.boundary_front.isVisible = false;
+
+    this.boundary_left = BABYLON.Mesh.CreatePlane("boundary_left", 150, this.scene);
+    this.boundary_left.position = new BABYLON.Vector3(43.8, 45, -20);
+    this.boundary_left.rotation = new BABYLON.Vector3(0, Math.PI/2, 0);
+    this.boundary_left.isVisible = false;
+
+    this.boundary_back = BABYLON.Mesh.CreatePlane("boundary_back", 150, this.scene);
+    this.boundary_back.position = new BABYLON.Vector3(-16.2, 45, -80);
+    this.boundary_back.rotation = new BABYLON.Vector3(0, Math.PI, 0);
+    this.boundary_back.isVisible = false;
+
+    this.boundary_right = BABYLON.Mesh.CreatePlane("boundary_right", 150, this.scene);
+    this.boundary_right.position = new BABYLON.Vector3(-76.2, 45, -20);
+    this.boundary_right.rotation = new BABYLON.Vector3(0, -Math.PI/2, 0);
+    this.boundary_right.isVisible = false;
+
+    this.boundary_top = BABYLON.Mesh.CreatePlane("boundary_top", 150, this.scene);
+    this.boundary_top.position = new BABYLON.Vector3(-16.2, 40, -20);
+    this.boundary_top.rotation = new BABYLON.Vector3(-Math.PI/2, 0, 0);
+    this.boundary_top.isVisible = false;
+
+    this.boundary_bottom.checkCollisions = true;
+    this.boundary_front.checkCollisions = true;
+    this.boundary_left.checkCollisions = true;
+    this.boundary_back.checkCollisions = true;
+    this.boundary_right.checkCollisions = true;
+    this.boundary_top.checkCollisions = true;
+
+    BABYLON.SceneLoader.ImportMeshAsync("wall_left_collision", "../../assets/glb/laboratory/", "wall_left_collision.glb").then((result) => {
+      this.wall_left_collision = this.scene.getMeshByName("wall_left_collision");
+      this.wall_left_collision.isVisible = false;
+      this.wall_left_collision.checkCollisions = true;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("wall_right_collision", "../../assets/glb/laboratory/", "wall_right_collision.glb").then((result) => {
+      this.wall_right_collision = this.scene.getMeshByName("wall_right_collision");
+      this.wall_right_collision.isVisible = false;
+      this.wall_right_collision.checkCollisions = true;
+    });
+
+    // PLANS
+
+    BABYLON.SceneLoader.ImportMeshAsync("plan_inside", "../../assets/glb/laboratory/", "plan_inside.glb").then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("plan_outside", "../../assets/glb/laboratory/", "plan_outside.glb").then((result) => {
+    });
+
+    // FLOOR
+
+    BABYLON.SceneLoader.ImportMeshAsync("parquet", "../../assets/glb/laboratory/", "parquet.glb").then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("persian_carpet", "../../assets/glb/laboratory/", "persian_carpet.glb").then((result) => {
+    });
+
+    // PEGASUS
+
+    BABYLON.SceneLoader.ImportMeshAsync("pegasus", "../../assets/glb/laboratory/", "pegasus.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("pegasus_inside", "../../assets/glb/laboratory/", "pegasus_inside.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("pegasus_laces", "../../assets/glb/laboratory/", "pegasus_laces.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("pegasus_logo", "../../assets/glb/laboratory/", "pegasus_logo.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("pegasus_sole_inside", "../../assets/glb/laboratory/", "pegasus_sole_inside.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("pegasus_sole_outside", "../../assets/glb/laboratory/", "pegasus_sole_outside.glb", this.scene).then((result) => {
+    });
+
+    // SPEAKERS
+
+    BABYLON.SceneLoader.ImportMeshAsync("speakers", "../../assets/glb/laboratory/", "speakers.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("loud_speakers", "../../assets/glb/laboratory/", "loud_speakers.glb", this.scene).then((result) => {
+    });
+
+    // CHIVA
+
+    BABYLON.SceneLoader.ImportMeshAsync("chiva", "../../assets/glb/laboratory/", "chiva.glb", this.scene).then((result) => {
+    });
+
+    // LEATHER ARMCHAIR
+
+    BABYLON.SceneLoader.ImportMeshAsync("leather_armchair", "../../assets/glb/laboratory/", "leather_armchair.glb", this.scene).then((result) => {
+      this.leather_armchair = this.scene.getMeshByName("leather_armchair");
+      this.leather_armchair.checkCollisions = true;
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("blanket", "../../assets/glb/laboratory/", "blanket.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("ome_gonorreas", "../../assets/glb/laboratory/", "ome_gonorreas.glb", this.scene).then((result) => {
+    });
+
+    // LAMP
+
+    BABYLON.SceneLoader.ImportMeshAsync("lampshade_tissue", "../../assets/glb/laboratory/", "lampshade_tissue.glb", this.scene).then((result) => {
+      this.lampshade_tissue = this.scene.getMeshByName("lampshade_tissue");
+      this.lampshade_tissue.checkCollisions = true;
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("lampshade", "../../assets/glb/laboratory/", "lampshade.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("lamp_base", "../../assets/glb/laboratory/", "lamp_base.glb", this.scene).then((result) => {
+    });
+
+    // TRANSFERT BOXES
+
+    this.transfert_boxes_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_BAKING.jpg", this.scene, false, false);
+    this.transfert_boxes_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.transfert_boxes_rings_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_rings_BAKING.jpg", this.scene, false, false);
+    this.transfert_boxes_rings_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_rings_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("transfert_boxes", "../../assets/glb/laboratory/", "transfert_boxes.glb", this.scene).then((result) => {
+        this.transfert_boxes = this.scene.getMeshByName("transfert_boxes");
+        this.transfert_boxes.checkCollisions = true;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("transfert_boxes_rings", "../../assets/glb/laboratory/", "transfert_boxes_rings.glb", this.scene).then((result) => {
+        this.transfert_boxes_rings = this.scene.getMeshByName("transfert_boxes_rings");
+        this.transfert_boxes_rings.checkCollisions = true;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("grid", "../../assets/glb/laboratory/", "grid.glb", this.scene).then((result) => {
+        this.grid = this.scene.getMeshByName("grid");
+        this.grid.isVisible = false;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("graphic", "../../assets/glb/laboratory/", "graphic.glb", this.scene).then((result) => {
+        this.graphic = this.scene.getMeshByName("graphic");
+        this.graphic.alpha = 0.3;
+        this.graphic.isVisible = false;
+    });
+
+    // PHOTOGRAPHY
+
+    this.rose_rouge_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/rose_rouge_BAKING.jpg", this.scene, false, false);
+    this.rose_rouge_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/rose_rouge_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.verbal_shoota_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/verbal_shoota_BAKING.jpg", this.scene, false, false);
+    this.verbal_shoota_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/verbal_shoota_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.lapin_blanc_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/lapin_blanc_BAKING.jpg", this.scene, false, false);
+    this.lapin_blanc_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/lapin_blanc_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.fourty_four_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/fourty_four_BAKING.jpg", this.scene, false, false);
+    this.fourty_four_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/fourty_four_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.brique_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/brique_BAKING.jpg", this.scene, false, false);
+    this.brique_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/brique_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.tofu_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/tofu_BAKING.jpg", this.scene, false, false);
+    this.tofu_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/tofu_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.fourty_four_marie_louise_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/fourty_four_marie_louise_BAKING.jpg", this.scene, false, false);
+    this.fourty_four_marie_louise_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/fourty_four_marie_louise_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.brique_marie_louise_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/brique_marie_louise_BAKING.jpg", this.scene, false, false);
+    this.brique_marie_louise_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/brique_marie_louise_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.tofu_marie_louise_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/tofu_marie_louise_BAKING.jpg", this.scene, false, false);
+    this.tofu_marie_louise_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/tofu_marie_louise_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("rose_rouge", "../../assets/glb/laboratory/", "rose_rouge.glb", this.scene).then((result) => {
+        this.rose_rouge = this.scene.getMeshByName("rose_rouge");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("rose_rouge_frame", "../../assets/glb/laboratory/", "rose_rouge_frame.glb", this.scene).then((result) => {
+        this.rose_rouge_frame = this.scene.getMeshByName("rose_rouge_frame");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("verbal_shoota", "../../assets/glb/laboratory/", "verbal_shoota.glb", this.scene).then((result) => {
+        this.verbal_shoota = this.scene.getMeshByName("verbal_shoota");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("verbal_shoota_frame", "../../assets/glb/laboratory/", "verbal_shoota_frame.glb", this.scene).then((result) => {
+        this.verbal_shoota_frame = this.scene.getMeshByName("verbal_shoota_frame");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("lapin_blanc", "../../assets/glb/laboratory/", "lapin_blanc.glb", this.scene).then((result) => {
+        this.lapin_blanc = this.scene.getMeshByName("lapin_blanc");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("lapin_blanc_frame", "../../assets/glb/laboratory/", "lapin_blanc_frame.glb", this.scene).then((result) => {
+        this.lapin_blanc_frame = this.scene.getMeshByName("lapin_blanc_frame");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("fourty_four", "../../assets/glb/laboratory/", "fourty_four.glb", this.scene).then((result) => {
+        this.fourty_four = this.scene.getMeshByName("fourty_four");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("fourty_four_marie_louise", "../../assets/glb/laboratory/", "fourty_four_marie_louise.glb", this.scene).then((result) => {
+        this.fourty_four_marie_louise = this.scene.getMeshByName("fourty_four_marie_louise");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("fourty_four_frame", "../../assets/glb/laboratory/", "fourty_four_frame.glb", this.scene).then((result) => {
+        this.fourty_four_frame = this.scene.getMeshByName("fourty_four_frame");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("brique", "../../assets/glb/laboratory/", "brique.glb", this.scene).then((result) => {
+        this.brique = this.scene.getMeshByName("brique");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("brique_marie_louise", "../../assets/glb/laboratory/", "brique_marie_louise.glb", this.scene).then((result) => {
+        this.brique_marie_louise = this.scene.getMeshByName("brique_marie_louise");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("brique_frame", "../../assets/glb/laboratory/", "brique_frame.glb", this.scene).then((result) => {
+        this.brique_frame = this.scene.getMeshByName("brique_frame");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("tofu", "../../assets/glb/laboratory/", "tofu.glb", this.scene).then((result) => {
+        this.tofu = this.scene.getMeshByName("tofu");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("tofu_marie_louise", "../../assets/glb/laboratory/", "tofu_marie_louise.glb", this.scene).then((result) => {
+        this.tofu_marie_louise = this.scene.getMeshByName("tofu_marie_louise");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("tofu_frame", "../../assets/glb/laboratory/", "tofu_frame.glb", this.scene).then((result) => {
+        this.tofu_frame = this.scene.getMeshByName("tofu_frame");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("pop_up_photography_left", "../../assets/glb/laboratory/", "pop_up_photography_left.glb", this.scene).then((result) => {
+        this.pop_up_photography_left = this.scene.getMeshByName("pop_up_photography_left");
+        this.pop_up_photography_left.isVisible = false;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("pop_up_photography_right", "../../assets/glb/laboratory/", "pop_up_photography_right.glb", this.scene).then((result) => {
+        this.pop_up_photography_right = this.scene.getMeshByName("pop_up_photography_right");
+        this.pop_up_photography_right.isVisible = false;
+    });
+
+    // CHIMNEY
+
+    BABYLON.SceneLoader.ImportMeshAsync("chimney", "../../assets/glb/laboratory/", "chimney.glb", this.scene).then((result) => {
+      this.chimney = this.scene.getMeshByName("chimney");
+      this.chimney.checkCollisions = true;
+    });
+
+    var chimney_back_MATERIAL = new BABYLON.StandardMaterial("myMaterial", this.scene);
+    chimney_back_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 0);
+    chimney_back_MATERIAL.specularColor = new BABYLON.Color3(0, 0, 0);
+    chimney_back_MATERIAL.emissiveColor = new BABYLON.Color3(0, 0, 0);
+    chimney_back_MATERIAL.ambientColor = new BABYLON.Color3(0, 0, 0);
+
+    BABYLON.SceneLoader.ImportMeshAsync("chimney_back", "../../assets/glb/laboratory/", "chimney_back.glb", this.scene).then((result) => {
+        const chimney_back = this.scene.getMeshByName("chimney_back");
+        chimney_back.material = chimney_back_MATERIAL;
+    });
+
+    // LOGS
+
+    BABYLON.SceneLoader.ImportMeshAsync("logs", "../../assets/glb/laboratory/", "logs.glb", this.scene).then((result) => {
+    });
+
+    // FIRE SOURCE
+
+    var fire_source = BABYLON.Mesh.CreateBox("foutain", 0.1, this.scene);
+    fire_source.position = new BABYLON.Vector3(-0.2, 0, -9.4);
+
+    // SMOKE
+
+    var smokeSystem = new BABYLON.ParticleSystem("particles", 1000, this.scene);
+    smokeSystem.particleTexture = new BABYLON.Texture("../../assets/glb/laboratory/particles/smoke.png", this.scene);
+    smokeSystem.emitter = fire_source;
+    smokeSystem.minEmitBox = new BABYLON.Vector3(-1, 1, -1);
+    smokeSystem.maxEmitBox = new BABYLON.Vector3(1, 1, 1);
+
+    smokeSystem.color1 = new BABYLON.Color4(0.02, 0.02, 0.02, .02);
+    smokeSystem.color2 = new BABYLON.Color4(0.02, 0.02, 0.02, .02);
+    smokeSystem.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+    smokeSystem.minSize = 0.5;
+    smokeSystem.maxSize = 1.5;
+
+    smokeSystem.minLifeTime = 0.3;
+    smokeSystem.maxLifeTime = 1.2;
+
+    smokeSystem.emitRate = 150;
+    smokeSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+
+    smokeSystem.gravity = new BABYLON.Vector3(0, 0, 0);
+
+    smokeSystem.direction1 = new BABYLON.Vector3(-1.5, 8, -1.5);
+    smokeSystem.direction2 = new BABYLON.Vector3(1.5, 8, 1.5);
+
+    smokeSystem.minAngularSpeed = 0;
+    smokeSystem.maxAngularSpeed = Math.PI;
+
+    smokeSystem.minEmitPower = 0.5;
+    smokeSystem.maxEmitPower = 1.5;
+    smokeSystem.updateSpeed = 0.005;
+
+    smokeSystem.start();
+
+    // FIRE
+
+    var fireSystem = new BABYLON.ParticleSystem("particles", 1500, this.scene);
+    fireSystem.particleTexture = new BABYLON.Texture("../../assets/glb/laboratory/particles/smoke.png", this.scene);
+    fireSystem.emitter = fire_source;
+    fireSystem.minEmitBox = new BABYLON.Vector3(-0.6, 1, -0.6);
+    fireSystem.maxEmitBox = new BABYLON.Vector3(0.6, 1, 0.6);
+
+    fireSystem.color1 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    fireSystem.color2 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+    fireSystem.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+    fireSystem.minSize = 0.3;
+    fireSystem.maxSize = 1;
+
+    fireSystem.minLifeTime = 0.2;
+    fireSystem.maxLifeTime = 0.4;
+
+    fireSystem.emitRate = 300;
+
+    fireSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+
+    fireSystem.gravity = new BABYLON.Vector3(0, 0, 0);
+
+    fireSystem.direction1 = new BABYLON.Vector3(0, 4, 0);
+    fireSystem.direction2 = new BABYLON.Vector3(0, 4, 0);
+
+    fireSystem.minAngularSpeed = 0;
+    fireSystem.maxAngularSpeed = Math.PI;
+
+    fireSystem.minEmitPower = 1;
+    fireSystem.maxEmitPower = 3;
+    fireSystem.updateSpeed = 0.005;
+
+    fireSystem.start();
+
+    // CHECKER
+
+    BABYLON.SceneLoader.ImportMeshAsync("checker", "../../assets/glb/laboratory/", "checker.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("checker_locks", "../../assets/glb/laboratory/", "checker_locks.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("checker_bottom", "../../assets/glb/laboratory/", "checker_bottom.glb", this.scene).then((result) => {
+    });
+
+    // TAROT DECK
+
+    BABYLON.SceneLoader.ImportMeshAsync("tarot_deck", "../../assets/glb/laboratory/", "tarot_deck.glb", this.scene).then((result) => {
+    });
+
+    // VIRGEN
+
+    BABYLON.SceneLoader.ImportMeshAsync("virgen_guadalupe", "../../assets/glb/laboratory/", "virgen_guadalupe.glb", this.scene).then((result) => {
+    });
+
+    // VIRGEN
+
+    BABYLON.SceneLoader.ImportMeshAsync("book_programmer_java", "../../assets/glb/laboratory/", "book_programmer_java.glb", this.scene).then((result) => {
+    });
+
+    // CANDELSTICK
+
+    BABYLON.SceneLoader.ImportMeshAsync("candelstick", "../../assets/glb/laboratory/", "candelstick.glb", this.scene).then((result) => {
+    });
+
+    // WALL LEFT
+
+    BABYLON.SceneLoader.ImportMeshAsync("wall_left_front", "../../assets/glb/laboratory/", "wall_left_front.glb", this.scene).then((result) => {
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("wall_left_back", "../../assets/glb/laboratory/", "wall_left_back.glb", this.scene).then((result) => {
+    });
+
+    // MIRROR
+
+    BABYLON.SceneLoader.ImportMeshAsync("mirror_frame", "../../assets/glb/laboratory/", "mirror_frame.glb", this.scene).then((result) => {
+    });
+
+    this.mirror = BABYLON.MeshBuilder.CreatePlane("mirror", {width: 5.8, height: 9.2}, this.scene);
+    this.mirror.position = new BABYLON.Vector3(-0.01, 11.8, -9.3);
+    this.mirror.rotation = new BABYLON.Vector3(0, 1.57, 0);
+    this.mirror.computeWorldMatrix(true);
+    var glass_worldMatrix = this.mirror.getWorldMatrix();
+    var glass_vertexData = this.mirror.getVerticesData("normal");
+    var glassNormal = new BABYLON.Vector3(glass_vertexData[0], glass_vertexData[1], glass_vertexData[2]);
+    glassNormal = BABYLON.Vector3.TransformNormal(glassNormal, glass_worldMatrix);
+    var reflector = BABYLON.Plane.FromPositionAndNormal(this.mirror.position, glassNormal.scale(-1));
+    this.mirror_MATERIAL = new BABYLON.StandardMaterial("mirror_MATERIAL", this.scene);
+    this.mirror_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.12);
+    this.mirror.material = this.mirror_MATERIAL;
+    var mirrorTexture = new BABYLON.MirrorTexture("mirrorTexture", 1024, this.scene);
+    mirrorTexture.level = 1;
+    mirrorTexture.mirrorPlane = reflector;
+    mirrorTexture.renderList = this.scene.meshes;
+    this.mirror.material.reflectionTexture = mirrorTexture;
+
+    // DAISY
+
+    BABYLON.SceneLoader.ImportMeshAsync("daisy", "../../assets/glb/laboratory/", "daisy.glb", this.scene).then((result) => {
+    });
+
+    // AMOR AMOR
+
+    BABYLON.SceneLoader.ImportMeshAsync("amor_amor", "../../assets/glb/laboratory/", "amor_amor.glb", this.scene).then((result) => {
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("amor_amor_frame", "../../assets/glb/laboratory/", "amor_amor_frame.glb", this.scene).then((result) => {
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("pop_up_art", "../../assets/glb/laboratory/", "pop_up_art.glb", this.scene).then((result) => {
+        this.pop_up_art = this.scene.getMeshByName("pop_up_art");
+        this.pop_up_art.isVisible = false;
+    });
+
+    // DESK
+
+    BABYLON.SceneLoader.ImportMeshAsync("trestle_left", "../../assets/glb/laboratory/", "trestle_left.glb", this.scene).then((result) => {
+      this.trestle_left = this.scene.getMeshByName("trestle_left");
+      this.trestle_left.checkCollisions = true;
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("trestle_right", "../../assets/glb/laboratory/", "trestle_right.glb", this.scene).then((result) => {
+      this.trestle_right = this.scene.getMeshByName("trestle_right");
+      this.trestle_right.checkCollisions = true;
+    });
+
+    this.glass_MATERIAL = new BABYLON.StandardMaterial("desk_MATERIAL", this.scene);
+    this.glass_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 0);
+    this.glass_MATERIAL.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);
+    this.glass_MATERIAL.alpha = 0.2;
+    this.glass_MATERIAL.specularPower = 32;
+    this.glass_MATERIAL.reflectionFresnelParameters = new BABYLON.FresnelParameters();
+    this.glass_MATERIAL.reflectionFresnelParameters.bias = 0.1;
+    this.glass_MATERIAL.emissiveFresnelParameters = new BABYLON.FresnelParameters();
+    this.glass_MATERIAL.emissiveFresnelParameters.bias = 0.6;
+    this.glass_MATERIAL.emissiveFresnelParameters.power = 4;
+    this.glass_MATERIAL.emissiveFresnelParameters.leftColor = BABYLON.Color3.Gray();
+    this.glass_MATERIAL.emissiveFresnelParameters.rightColor = BABYLON.Color3.Black();
+    this.glass_MATERIAL.opacityFresnelParameters = new BABYLON.FresnelParameters();
+    this.glass_MATERIAL.opacityFresnelParameters.leftColor = BABYLON.Color3.Gray();
+    this.glass_MATERIAL.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();
+
+    BABYLON.SceneLoader.ImportMeshAsync("desk", "../../assets/glb/laboratory/", "desk.glb", this.scene).then((result) => {
+        this.desk = this.scene.getMeshByName("desk");
+        this.desk.material = this.glass_MATERIAL;
+    });
+
+    // VIA AIR MAIL
+
+    this.via_air_mail_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/via_air_mail_BAKING.jpg", this.scene, false, false);
+    this.via_air_mail_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/via_air_mail_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("via_air_mail", "../../assets/glb/laboratory/", "via_air_mail.glb", this.scene).then((result) => {
+        this.via_air_mail = this.scene.getMeshByName("via_air_mail");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("pop_up_contact_me", "../../assets/glb/laboratory/", "pop_up_contact_me.glb", this.scene).then((result) => {
+        this.pop_up_contact_me = this.scene.getMeshByName("pop_up_contact_me");
+        this.pop_up_contact_me.isVisible = false;
+    });
+
+    // RINCE COCHON
+
+    BABYLON.SceneLoader.ImportMeshAsync("rince_cochon", "../../assets/glb/laboratory/", "rince_cochon.glb", this.scene).then((result) => {
+    });
+
+    // THERMOS
+
+    BABYLON.SceneLoader.ImportMeshAsync("thermos", "../../assets/glb/laboratory/", "thermos.glb", this.scene).then((result) => {
+    });
+
+    // POST-IT
+
+    BABYLON.SceneLoader.ImportMeshAsync("post_it", "../../assets/glb/laboratory/", "post_it.glb", this.scene).then((result) => {
+    });
+
+    // MOTEBOOKS
+
+    BABYLON.SceneLoader.ImportMeshAsync("notebook_bottom", "../../assets/glb/laboratory/", "notebook_bottom.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("notebook_top", "../../assets/glb/laboratory/", "notebook_top.glb", this.scene).then((result) => {
+    });
+
+    // 3D GLASSES
+
+    this.threed_glasses_frame_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/threed_glasses_frame_BAKING.jpg", this.scene, false, false);
+    this.threed_glasses_frame_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/threed_glasses_frame_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("threed_glasses_frame", "../../assets/glb/laboratory/", "threed_glasses_frame.glb", this.scene).then((result) => {
+        this.threed_glasses_frame = this.scene.getMeshByName("threed_glasses_frame");
+    });
+
+    this.glass_blue_MATERIAL = new BABYLON.StandardMaterial("glass", this.scene);
+    this.glass_blue_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 1);
+    this.glass_blue_MATERIAL.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);
+    this.glass_blue_MATERIAL.alpha = 0.2;
+    this.glass_blue_MATERIAL.specularPower = 16;
+    this.glass_blue_MATERIAL.reflectionFresnelParameters = new BABYLON.FresnelParameters();
+    this.glass_blue_MATERIAL.reflectionFresnelParameters.bias = 0.1;
+    this.glass_blue_MATERIAL.emissiveFresnelParameters = new BABYLON.FresnelParameters();
+    this.glass_blue_MATERIAL.emissiveFresnelParameters.bias = 0.6;
+    this.glass_blue_MATERIAL.emissiveFresnelParameters.power = 4;
+    this.glass_blue_MATERIAL.emissiveFresnelParameters.leftColor = BABYLON.Color3.White();
+    this.glass_blue_MATERIAL.emissiveFresnelParameters.rightColor = BABYLON.Color3.Black();
+    this.glass_blue_MATERIAL.opacityFresnelParameters = new BABYLON.FresnelParameters();
+    this.glass_blue_MATERIAL.opacityFresnelParameters.leftColor = BABYLON.Color3.White();
+    this.glass_blue_MATERIAL.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();
+
+    BABYLON.SceneLoader.ImportMeshAsync("threed_glass_blue", "../../assets/glb/laboratory/", "threed_glass_blue.glb", this.scene).then((result) => {
+        this.threed_glass_blue = this.scene.getMeshByName("threed_glass_blue");
+        this.threed_glass_blue.material = this.glass_blue_MATERIAL;
+    });
+
+    this.glass_red_MATERIAL = new BABYLON.StandardMaterial("glass", this.scene);
+    this.glass_red_MATERIAL.diffuseColor = new BABYLON.Color3(1, 0, 0);
+    this.glass_red_MATERIAL.emissiveColor = new BABYLON.Color3(0.5, 0.5, 0.5);
+    this.glass_red_MATERIAL.alpha = 0.2;
+    this.glass_red_MATERIAL.specularPower = 16;
+    this.glass_red_MATERIAL.reflectionFresnelParameters = new BABYLON.FresnelParameters();
+    this.glass_red_MATERIAL.reflectionFresnelParameters.bias = 0.1;
+    this.glass_red_MATERIAL.emissiveFresnelParameters = new BABYLON.FresnelParameters();
+    this.glass_red_MATERIAL.emissiveFresnelParameters.bias = 0.6;
+    this.glass_red_MATERIAL.emissiveFresnelParameters.power = 4;
+    this.glass_red_MATERIAL.emissiveFresnelParameters.leftColor = BABYLON.Color3.White();
+    this.glass_red_MATERIAL.emissiveFresnelParameters.rightColor = BABYLON.Color3.Black();
+    this.glass_red_MATERIAL.opacityFresnelParameters = new BABYLON.FresnelParameters();
+    this.glass_red_MATERIAL.opacityFresnelParameters.leftColor = BABYLON.Color3.White();
+    this.glass_red_MATERIAL.opacityFresnelParameters.rightColor = BABYLON.Color3.Black();
+
+    BABYLON.SceneLoader.ImportMeshAsync("threed_glass_red", "../../assets/glb/laboratory/", "threed_glass_red.glb", this.scene).then((result) => {
+        this.threed_glass_red = this.scene.getMeshByName("threed_glass_red");
+        this.threed_glass_red.material = this.glass_red_MATERIAL;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("pop_up_stereoscopy", "../../assets/glb/laboratory/", "pop_up_stereoscopy.glb", this.scene).then((result) => {
+        this.pop_up_stereoscopy = this.scene.getMeshByName("pop_up_stereoscopy");
+        this.pop_up_stereoscopy.isVisible = false;
+    });
+
+    // COMPUTERS
+
+    BABYLON.SceneLoader.ImportMeshAsync("support_laptop", "../../assets/glb/laboratory/", "support_laptop.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("wood_box_center", "../../assets/glb/laboratory/", "wood_box_center.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("wood_box_right", "../../assets/glb/laboratory/", "wood_box_right.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("mouse", "../../assets/glb/laboratory/", "mouse.glb", this.scene).then((result) => {
+    });
+
+    this.keyboard_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/keyboard_BAKING.jpg", this.scene, false, false);
+    this.keyboard_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/keyboard_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.mac_mini_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/mac_mini_BAKING.jpg", this.scene, false, false);
+    this.mac_mini_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/mac_mini_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.laptop_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/laptop_BAKING.jpg", this.scene, false, false);
+    this.laptop_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/laptop_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.laptop_screen_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/laptop_screen_BAKING.jpg", this.scene, false, false);
+    this.laptop_screen_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/laptop_screen_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.screen_center_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/screen_center_BAKING.jpg", this.scene, false, false);
+    this.screen_center_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/screen_center_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.screen_right_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/screen_right_BAKING.jpg", this.scene, false, false);
+    this.screen_right_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/screen_right_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("keyboard", "../../assets/glb/laboratory/", "keyboard.glb", this.scene).then((result) => {
+        this.keyboard = this.scene.getMeshByName("keyboard");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("keyboard_keyboard", "../../assets/glb/laboratory/", "keyboard_keyboard.glb", this.scene).then((result) => {
+        this.keyboard_keyboard = this.scene.getMeshByName("keyboard_keyboard");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("mac_mini", "../../assets/glb/laboratory/", "mac_mini.glb", this.scene).then((result) => {
+        this.mac_mini = this.scene.getMeshByName("mac_mini");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("laptop", "../../assets/glb/laboratory/", "laptop.glb", this.scene).then((result) => {
+        this.laptop = this.scene.getMeshByName("laptop");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("laptop_keyboard", "../../assets/glb/laboratory/", "laptop_keyboard.glb", this.scene).then((result) => {
+        this.laptop_keyboard = this.scene.getMeshByName("laptop_keyboard");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("laptop_screen", "../../assets/glb/laboratory/", "laptop_screen.glb", this.scene).then((result) => {
+        this.laptop_screen = this.scene.getMeshByName("laptop_screen");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("screen_frame_center", "../../assets/glb/laboratory/", "screen_frame_center.glb", this.scene).then((result) => {
+        this.screen_frame_center = this.scene.getMeshByName("screen_frame_center");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("screen_center", "../../assets/glb/laboratory/", "screen_center.glb", this.scene).then((result) => {
+        this.screen_center = this.scene.getMeshByName("screen_center");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("screen_frame_right", "../../assets/glb/laboratory/", "screen_frame_right.glb", this.scene).then((result) => {
+        this.screen_frame_right = this.scene.getMeshByName("screen_frame_right");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("screen_right", "../../assets/glb/laboratory/", "screen_right.glb", this.scene).then((result) => {
+        this.screen_right = this.scene.getMeshByName("screen_right");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("bulb", "../../assets/glb/laboratory/", "bulb.glb", this.scene).then((result) => {
+        this.bulb = this.scene.getMeshByName("bulb");
+        this.bulb.isVisible = false;
+        this.bulb.material = this.glass_MATERIAL;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("bulb_pin", "../../assets/glb/laboratory/", "bulb_pin.glb", this.scene).then((result) => {
+        this.bulb_pin = this.scene.getMeshByName("bulb_pin");
+        this.bulb_pin.isVisible = false;
+    });
+
+    this.bulb_string_MATERIAL = new BABYLON.StandardMaterial("bulb_string_MATERIAL", this.scene);
+    this.bulb_string_MATERIAL.emissiveColor = new BABYLON.Color3(0.94, 0.86, 0.71);
+
+    this.glow_layer = new BABYLON.GlowLayer("glow", this.scene);
+    this.glow_layer.intensity = 1.5;
+
+    BABYLON.SceneLoader.ImportMeshAsync("bulb_string", "../../assets/glb/laboratory/", "bulb_string.glb", this.scene).then((result) => {
+        this.bulb_string = this.scene.getMeshByName("bulb_string");
+        this.bulb_string.isVisible = false;
+        this.bulb_string.material = this.bulb_string_MATERIAL;
+        this.glow_layer.addIncludedOnlyMesh(this.bulb_string);
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("bulb_string_support", "../../assets/glb/laboratory/", "bulb_string_support.glb", this.scene).then((result) => {
+        this.bulb_string_support = this.scene.getMeshByName("bulb_string_support");
+        this.bulb_string_support.isVisible = false;
+    });
+
+    // WALL RIGHT
+
+    BABYLON.SceneLoader.ImportMeshAsync("wall_right_front", "../../assets/glb/laboratory/", "wall_right_front.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("wall_right_back", "../../assets/glb/laboratory/", "wall_right_back.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("baseboard_right", "../../assets/glb/laboratory/", "baseboard_right.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("window_left", "../../assets/glb/laboratory/", "window_left.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("window_right", "../../assets/glb/laboratory/", "window_right.glb", this.scene).then((result) => {
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("glass_left_top", "../../assets/glb/laboratory/", "glass_left_top.glb", this.scene).then((result) => {
+        this.glass_left_top = this.scene.getMeshByName("glass_left_top");
+        this.glass_left_top.material = this.glass_MATERIAL;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("glass_left_bottom", "../../assets/glb/laboratory/", "glass_left_bottom.glb", this.scene).then((result) => {
+        this.glass_left_bottom = this.scene.getMeshByName("glass_left_bottom");
+        this.glass_left_bottom.material = this.glass_MATERIAL;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("glass_right_top", "../../assets/glb/laboratory/", "glass_right_top.glb", this.scene).then((result) => {
+        this.glass_right_top = this.scene.getMeshByName("glass_right_top");
+        this.glass_right_top.material = this.glass_MATERIAL;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("glass_right_bottom", "../../assets/glb/laboratory/", "glass_right_bottom.glb", this.scene).then((result) => {
+        this.glass_right_bottom = this.scene.getMeshByName("glass_right_bottom");
+        this.glass_right_bottom.material = this.glass_MATERIAL;
+    });
+
+    // NHS RAINBOW
+
+    BABYLON.SceneLoader.ImportMeshAsync("nhs_rainbow", "../../assets/glb/laboratory/", "nhs_rainbow.glb", this.scene).then((result) => {
+    });
+
+    // SOLAR SYSTEM
+
+    BABYLON.SceneLoader.ImportMeshAsync("solar_system", "../../assets/glb/laboratory/", "solar_system.glb", this.scene).then((result) => {
+    });
+
+    // PABLO
+
+    BABYLON.SceneLoader.ImportMeshAsync("pablo", "../../assets/glb/laboratory/", "pablo.glb", this.scene).then((result) => {
+    });
+
+    // LANGUAGES
+
+    this.united_kingdom_red_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_red_BAKING.jpg", this.scene, false, false);
+    this.united_kingdom_red_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_red_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.united_kingdom_white_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_white_BAKING.jpg", this.scene, false, false);
+    this.united_kingdom_white_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_white_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.united_kingdom_blue_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_blue_BAKING.jpg", this.scene, false, false);
+    this.united_kingdom_blue_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_blue_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("united_kingdom_black", "../../assets/glb/laboratory/", "united_kingdom_black.glb").then((result) => {
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("united_kingdom_blue", "../../assets/glb/laboratory/", "united_kingdom_blue.glb").then((result) => {
+        this.united_kingdom_blue = this.scene.getMeshByName("united_kingdom_blue");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("united_kingdom_white", "../../assets/glb/laboratory/", "united_kingdom_white.glb").then((result) => {
+        this.united_kingdom_white = this.scene.getMeshByName("united_kingdom_white");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("united_kingdom_red", "../../assets/glb/laboratory/", "united_kingdom_red.glb").then((result) => {
+        this.united_kingdom_red = this.scene.getMeshByName("united_kingdom_red");
+    });
+
+    this.france_blue_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_blue_BAKING.jpg", this.scene, false, false);
+    this.france_blue_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/united_kingdom_blue_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.france_white_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_white_BAKING.jpg", this.scene, false, false);
+    this.france_white_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_white_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.france_red_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_red_BAKING.jpg", this.scene, false, false);
+    this.france_red_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/france_red_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("france_black", "../../assets/glb/laboratory/", "france_black.glb").then((result) => {
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("france_blue", "../../assets/glb/laboratory/", "france_blue.glb").then((result) => {
+        this.france_blue = this.scene.getMeshByName("france_blue");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("france_white", "../../assets/glb/laboratory/", "france_white.glb").then((result) => {
+        this.france_white = this.scene.getMeshByName("france_white");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("france_red", "../../assets/glb/laboratory/", "france_red.glb").then((result) => {
+        this.france_red = this.scene.getMeshByName("france_red");
+    });
+
+    this.spain_red_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/spain_red_BAKING.jpg", this.scene, false, false);
+    this.spain_red_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/spain_red_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.spain_yellow_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/spain_yellow_BAKING.jpg", this.scene, false, false);
+    this.spain_yellow_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/spain_yellow_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("spain_black", "../../assets/glb/laboratory/", "spain_black.glb").then((result) => {
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("spain_red", "../../assets/glb/laboratory/", "spain_red.glb").then((result) => {
+        this.spain_red = this.scene.getMeshByName("spain_red");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("spain_yellow", "../../assets/glb/laboratory/", "spain_yellow.glb").then((result) => {
+        this.spain_yellow = this.scene.getMeshByName("spain_yellow");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("pop_up_languages", "../../assets/glb/laboratory/", "pop_up_languages.glb", this.scene).then((result) => {
+        this.pop_up_languages = this.scene.getMeshByName("pop_up_languages");
+        this.pop_up_languages.isVisible = false;
+    });
+
+    // OWL
+
+    BABYLON.SceneLoader.ImportMeshAsync("owl", "../../assets/glb/laboratory/", "owl.glb").then((result) => {
+    });
+
+    // SHELF
+
+    BABYLON.SceneLoader.ImportMeshAsync("shelf", "../../assets/glb/laboratory/", "shelf.glb", this.scene).then((result) => {
+      this.shelf = this.scene.getMeshByName("shelf");
+      this.shelf.checkCollisions = true;
+    });
+
+    // DVDS
+
+    this.dvd_pi_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_pi_BAKING.jpg", this.scene, false, false);
+    this.dvd_pi_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_pi_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.dvd_enter_the_void_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_enter_the_void_BAKING.jpg", this.scene, false, false);
+    this.dvd_enter_the_void_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_enter_the_void_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.dvd_2001_odyssee_espace_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_2001_odyssee_espace_BAKING.jpg", this.scene, false, false);
+    this.dvd_2001_odyssee_espace_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_2001_odyssee_espace_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.dvd_la_haine_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_la_haine_BAKING.jpg", this.scene, false, false);
+    this.dvd_la_haine_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_la_haine_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.dvd_sweet_sixteen_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_sweet_sixteen_BAKING.jpg", this.scene, false, false);
+    this.dvd_sweet_sixteen_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_sweet_sixteen_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.dvd_eternal_sunshine_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_eternal_sunshine_BAKING.jpg", this.scene, false, false);
+    this.dvd_eternal_sunshine_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_eternal_sunshine_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.dvd_zero_theorem_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_zero_theorem_BAKING.jpg", this.scene, false, false);
+    this.dvd_zero_theorem_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_zero_theorem_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.dvd_shining_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_shining_BAKING.jpg", this.scene, false, false);
+    this.dvd_shining_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/dvd_shining_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("dvd_pi", "../../assets/glb/laboratory/", "dvd_pi.glb", this.scene).then((result) => {
+      this.dvd_pi = this.scene.getMeshByName("dvd_pi");
+      this.dvd_pi.checkCollisions = true;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("dvd_enter_the_void", "../../assets/glb/laboratory/", "dvd_enter_the_void.glb", this.scene).then((result) => {
+      this.dvd_enter_the_void = this.scene.getMeshByName("dvd_enter_the_void");
+      this.dvd_enter_the_void.checkCollisions = true;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("dvd_2001_odyssee_espace", "../../assets/glb/laboratory/", "dvd_2001_odyssee_espace.glb", this.scene).then((result) => {
+      this.dvd_2001_odyssee_espace = this.scene.getMeshByName("dvd_2001_odyssee_espace");
+      this.dvd_2001_odyssee_espace.checkCollisions = true;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("dvd_la_haine", "../../assets/glb/laboratory/", "dvd_la_haine.glb", this.scene).then((result) => {
+      this.dvd_la_haine = this.scene.getMeshByName("dvd_la_haine");
+      this.dvd_la_haine.checkCollisions = true;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("dvd_sweet_sixteen", "../../assets/glb/laboratory/", "dvd_sweet_sixteen.glb", this.scene).then((result) => {
+      this.dvd_sweet_sixteen = this.scene.getMeshByName("dvd_sweet_sixteen");
+      this.dvd_sweet_sixteen.checkCollisions = true;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("dvd_eternal_sunshine", "../../assets/glb/laboratory/", "dvd_eternal_sunshine.glb", this.scene).then((result) => {
+      this.dvd_eternal_sunshine = this.scene.getMeshByName("dvd_eternal_sunshine");
+      this.dvd_eternal_sunshine.checkCollisions = true;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("dvd_zero_theorem", "../../assets/glb/laboratory/", "dvd_zero_theorem.glb", this.scene).then((result) => {
+      this.dvd_zero_theorem = this.scene.getMeshByName("dvd_zero_theorem");
+      this.dvd_zero_theorem.checkCollisions = true;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("dvd_shining", "../../assets/glb/laboratory/", "dvd_shining.glb", this.scene).then((result) => {
+      this.dvd_shining = this.scene.getMeshByName("dvd_shining");
+      this.dvd_shining.checkCollisions = true;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("pop_up_movies", "../../assets/glb/laboratory/", "pop_up_movies.glb", this.scene).then((result) => {
+        this.pop_up_movies = this.scene.getMeshByName("pop_up_movies");
+        this.pop_up_movies.isVisible = false;
+    });
+
+    // BOOKS
+
+    BABYLON.SceneLoader.ImportMeshAsync("book_strategie_choc", "../../assets/glb/laboratory/", "book_strategie_choc.glb", this.scene).then((result) => {
+      this.book_strategie_choc = this.scene.getMeshByName("book_strategie_choc");
+      this.book_strategie_choc.checkCollisions = true;
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("book_no_logo", "../../assets/glb/laboratory/", "book_no_logo.glb", this.scene).then((result) => {
+      this.book_no_logo = this.scene.getMeshByName("book_no_logo");
+      this.book_no_logo.checkCollisions = true;
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("book_serpent_cosmique", "../../assets/glb/laboratory/", "book_serpent_cosmique.glb", this.scene).then((result) => {
+      this.book_serpent_cosmique = this.scene.getMeshByName("book_serpent_cosmique");
+      this.book_serpent_cosmique.checkCollisions = true;
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("book_meilleur_mondes", "../../assets/glb/laboratory/", "book_meilleur_mondes.glb", this.scene).then((result) => {
+      this.book_meilleur_mondes = this.scene.getMeshByName("book_meilleur_mondes");
+      this.book_meilleur_mondes.checkCollisions = true;
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("book_dictionnaire_symboles", "../../assets/glb/laboratory/", "book_dictionnaire_symboles.glb", this.scene).then((result) => {
+      this.book_dictionnaire_symboles = this.scene.getMeshByName("book_dictionnaire_symboles");
+      this.book_dictionnaire_symboles.checkCollisions = true;
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("book_prince", "../../assets/glb/laboratory/", "book_prince.glb", this.scene).then((result) => {
+      this.book_prince = this.scene.getMeshByName("book_prince");
+      this.book_prince.checkCollisions = true;
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("book_ca_I", "../../assets/glb/laboratory/", "book_ca_I.glb", this.scene).then((result) => {
+      this.book_ca_I = this.scene.getMeshByName("book_ca_I");
+      this.book_ca_I.checkCollisions = true;
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("book_ca_II", "../../assets/glb/laboratory/", "book_ca_II.glb", this.scene).then((result) => {
+      this.book_ca_II = this.scene.getMeshByName("book_ca_II");
+      this.book_ca_II.checkCollisions = true;
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("book_ca_III", "../../assets/glb/laboratory/", "book_ca_III.glb", this.scene).then((result) => {
+      this.book_ca_III = this.scene.getMeshByName("book_ca_III");
+      this.book_ca_III.checkCollisions = true;
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("book_sagrada_biblia", "../../assets/glb/laboratory/", "book_sagrada_biblia.glb", this.scene).then((result) => {
+      this.book_sagrada_biblia = this.scene.getMeshByName("book_sagrada_biblia");
+      this.book_sagrada_biblia.checkCollisions = true;
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("book_nuit_enfants_rois", "../../assets/glb/laboratory/", "book_nuit_enfants_rois.glb", this.scene).then((result) => {
+      this.book_nuit_enfants_rois = this.scene.getMeshByName("book_nuit_enfants_rois");
+      this.book_nuit_enfants_rois.checkCollisions = true;
+    });
+
+    // WORLD MAP
+
+    this.world_map_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/world_map_BAKING.jpg", this.scene, false, false);
+    this.world_map_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/world_map_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("world_map", "../../assets/glb/laboratory/", "world_map.glb", this.scene).then((result) => {
+        this.world_map = this.scene.getMeshByName("world_map");
+        this.world_map.checkCollisions = true;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("pop_up_travel", "../../assets/glb/laboratory/", "pop_up_travel.glb", this.scene).then((result) => {
+        this.pop_up_travel = this.scene.getMeshByName("pop_up_travel");
+        this.pop_up_travel.isVisible = false;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("world_map_bar", "../../assets/glb/laboratory/", "world_map_bar.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("world_map_basement_metal", "../../assets/glb/laboratory/", "world_map_basement_metal.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("world_map_basement_marble", "../../assets/glb/laboratory/", "world_map_basement_marble.glb", this.scene).then((result) => {
+    });
+
+    // TWITTER
+
+    this.twitter_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/twitter_BAKING.jpg", this.scene, false, false);
+    this.twitter_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/twitter_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("twitter", "../../assets/glb/laboratory/", "twitter.glb").then((result) => {
+        this.twitter = this.scene.getMeshByName("twitter");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("cursor_twitter_white", "../../assets/glb/laboratory/", "cursor_twitter_white.glb", this.scene).then((result) => {
+        this.cursor_twitter_white = this.scene.getMeshByName("cursor_twitter_white");
+        this.cursor_twitter_white.isVisible = false;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("cursor_twitter_black", "../../assets/glb/laboratory/", "cursor_twitter_black.glb", this.scene).then((result) => {
+        this.cursor_twitter_black = this.scene.getMeshByName("cursor_twitter_black");
+        this.cursor_twitter_black.isVisible = false;
+    });
+
+    // INSTAGRAM
+
+    this.instagram_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/instagram_BAKING.jpg", this.scene, false, false);
+    this.instagram_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/instagram_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("instagram", "../../assets/glb/laboratory/", "instagram.glb").then((result) => {
+        this.instagram = this.scene.getMeshByName("instagram");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("instagram_lens", "../../assets/glb/laboratory/", "instagram_lens.glb").then((result) => {
+        this.instagram_lens = this.scene.getMeshByName("instagram_lens");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("cursor_instagram_black", "../../assets/glb/laboratory/", "cursor_instagram_black.glb", this.scene).then((result) => {
+        this.cursor_instagram_black = this.scene.getMeshByName("cursor_instagram_black");
+        this.cursor_instagram_black.isVisible = false;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("cursor_instagram_white", "../../assets/glb/laboratory/", "cursor_instagram_white.glb", this.scene).then((result) => {
+        this.cursor_instagram_white = this.scene.getMeshByName("cursor_instagram_white");
+        this.cursor_instagram_white.isVisible = false;
+    });
+
+    // YOUTUBE
+
+    this.youtube_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/youtube_BAKING.jpg", this.scene, false, false);
+    this.youtube_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/youtube_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.youtube_play_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/youtube_play_BAKING.jpg", this.scene, false, false);
+    this.youtube_play_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/youtube_play_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("youtube", "../../assets/glb/laboratory/", "youtube.glb").then((result) => {
+        this.youtube = this.scene.getMeshByName("youtube");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("youtube_play", "../../assets/glb/laboratory/", "youtube_play.glb").then((result) => {
+        this.youtube_play = this.scene.getMeshByName("youtube_play");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("cursor_youtube_black", "../../assets/glb/laboratory/", "cursor_youtube_black.glb", this.scene).then((result) => {
+        this.cursor_youtube_black = this.scene.getMeshByName("cursor_youtube_black");
+        this.cursor_youtube_black.isVisible = false;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("cursor_youtube_white", "../../assets/glb/laboratory/", "cursor_youtube_white.glb", this.scene).then((result) => {
+        this.cursor_youtube_white = this.scene.getMeshByName("cursor_youtube_white");
+        this.cursor_youtube_white.isVisible = false;
+    });
+
+    // SPOTIFY
+
+    this.spotify_green_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/spotify_green_BAKING.jpg", this.scene, false, false);
+    this.spotify_green_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/spotify_green_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("spotify_green", "../../assets/glb/laboratory/", "spotify_green.glb").then((result) => {
+        this.spotify_green = this.scene.getMeshByName("spotify_green");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("spotify_black", "../../assets/glb/laboratory/", "spotify_black.glb").then((result) => {
+        this.spotify_black = this.scene.getMeshByName("spotify_black");
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("cursor_spotify_black", "../../assets/glb/laboratory/", "cursor_spotify_black.glb", this.scene).then((result) => {
+        this.cursor_spotify_black = this.scene.getMeshByName("cursor_spotify_black");
+        this.cursor_spotify_black.isVisible = false;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("cursor_spotify_white", "../../assets/glb/laboratory/", "cursor_spotify_white.glb", this.scene).then((result) => {
+        this.cursor_spotify_white = this.scene.getMeshByName("cursor_spotify_white");
+        this.cursor_spotify_white.isVisible = false;
+    });
+
+    // PROJECTOR
+
+    this.projector = BABYLON.MeshBuilder.CreatePlane("projector", {width: 12, height: 6.75}, this.scene);
+    this.projector = this.scene.getMeshByName("projector");
+    this.projector.position = new BABYLON.Vector3(-32.4 , 13.5, -7);
+    this.projector.rotation = new BABYLON.Vector3(0, -1.57, 0);
+
+    this.projector_MATERIAL = new BABYLON.StandardMaterial("projectorMaterial", this.scene);
+    this.enter_the_void_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/enter_the_void.mp4", this.scene);
+    this.projector_MATERIAL.roughness = 1;
+    this.projector_MATERIAL.emissiveColor = BABYLON.Color3.White();
+    this.projector_MATERIAL.diffuseTexture = this.enter_the_void_TEXTURE;
+    this.projector_MATERIAL.alpha = 0.3;
+
+    this.projector.material = this.projector_MATERIAL;
+
+    this.enter_the_void_TEXTURE.video.pause();
+
+    // PROJECTOR BUTTONS
+
+    this.touch_play_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_play_BAKING.jpg", this.scene, false, false);
+    this.touch_play_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_play_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.touch_pause_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_pause_BAKING.jpg", this.scene, false, false);
+    this.touch_pause_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_pause_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    this.touch_skip_forward_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_forward_BAKING.jpg", this.scene, false, false);
+    this.touch_skip_forward_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_forward_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("touch_play", "../../assets/glb/laboratory/", "touch_play.glb").then((result) => {
+        this.touch_play = this.scene.getMeshByName("touch_play");
+        this.touch_play.isVisible = false;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("touch_pause", "../../assets/glb/laboratory/", "touch_pause.glb").then((result) => {
+        this.touch_pause = this.scene.getMeshByName("touch_pause");
+        this.touch_pause.isVisible = false;
+    });
+
+    BABYLON.SceneLoader.ImportMeshAsync("touch_skip_forward", "../../assets/glb/laboratory/", "touch_skip_forward.glb").then((result) => {
+        this.touch_skip_forward = this.scene.getMeshByName("touch_skip_forward");
+        this.touch_skip_forward.isVisible = false;
+    });
+}
+
+// IS CV
+
+public set_isCV(isCV): void {
+    this.isCV = isCV;
+}
+
+// WINDOW DIMENSIONS
+
+public set_windowDimensions(width, height) {
+    this.innerWidth = width;
+    this.innerHeight = height;
+}
+
+// INITIAL POSITION CAMERA
+
+private get_initPositionCamera(): BABYLON.Vector3 {
+    if(this.innerWidth <= 576) {
+      return new BABYLON.Vector3(-50, 50, 15);
+    } else if(this.innerWidth <= 768) {
+      return new BABYLON.Vector3(-50, 50, 15);
+    } else if(this.innerWidth <= 960) {
+      return new BABYLON.Vector3(-60, 35, 25);
+    } else if(this.innerWidth <= 1140) {
+      return new BABYLON.Vector3(-40, 22, 35);
+    } else {
+      return new BABYLON.Vector3(-50, 22, 19);
     }
+}
 
-    // ABERRATION CHROMATIC AMOUNT
-
-    private set_chromaticAberration():void {
-      if(this.innerWidth <= 576) {
-        this.pipeline.chromaticAberration.aberrationAmount = 15;
-        this.pipeline.chromaticAberration.radialIntensity = 1;
-      } else if(this.innerWidth <= 768) {
-        this.pipeline.chromaticAberration.aberrationAmount = 18;
-        this.pipeline.chromaticAberration.radialIntensity = 1;
-      } else if(this.innerWidth <= 960) {
-        this.pipeline.chromaticAberration.aberrationAmount = 21;
-        this.pipeline.chromaticAberration.radialIntensity = 0.9;
-      } else if(this.innerWidth <= 1140) {
-        this.pipeline.chromaticAberration.aberrationAmount = 24;
-        this.pipeline.chromaticAberration.radialIntensity = 0.8;
-      } else if(this.innerWidth <= 1500) {
-        this.pipeline.chromaticAberration.aberrationAmount = 27;
-        this.pipeline.chromaticAberration.radialIntensity = 0.8;
-      } else {
-        this.pipeline.chromaticAberration.aberrationAmount = 30;
-        this.pipeline.chromaticAberration.radialIntensity = 0.8;
-      }
+private get_initPositionCameraTarget(): BABYLON.Vector3 {
+    if(this.innerWidth <= 576) {
+      return new BABYLON.Vector3(-8, 2, -12);
+    } else if(this.innerWidth <= 768) {
+      return new BABYLON.Vector3(-10, 2, -12);
+    } else if(this.innerWidth <= 960) {
+      return new BABYLON.Vector3(-4, 2, -12);
+    } else if(this.innerWidth <= 1140) {
+      return new BABYLON.Vector3(-8, 5, -12);
+    } else {
+      return new BABYLON.Vector3(0, -1, -12);
     }
+}
 
-    // WINDOW DIMENSIONS
+// ABERRATION CHROMATIC AMOUNT
 
-    public set_windowDimensions(width, height) {
-        this.innerWidth = width;
-        this.innerHeight = height;
+private set_chromaticAberration():void {
+  if(this.innerWidth <= 576) {
+    this.pipeline.chromaticAberration.aberrationAmount = 15;
+    this.pipeline.chromaticAberration.radialIntensity = 1;
+  } else if(this.innerWidth <= 768) {
+    this.pipeline.chromaticAberration.aberrationAmount = 18;
+    this.pipeline.chromaticAberration.radialIntensity = 1;
+  } else if(this.innerWidth <= 960) {
+    this.pipeline.chromaticAberration.aberrationAmount = 21;
+    this.pipeline.chromaticAberration.radialIntensity = 0.9;
+  } else if(this.innerWidth <= 1140) {
+    this.pipeline.chromaticAberration.aberrationAmount = 24;
+    this.pipeline.chromaticAberration.radialIntensity = 0.8;
+  } else if(this.innerWidth <= 1500) {
+    this.pipeline.chromaticAberration.aberrationAmount = 27;
+    this.pipeline.chromaticAberration.radialIntensity = 0.8;
+  } else {
+    this.pipeline.chromaticAberration.aberrationAmount = 30;
+    this.pipeline.chromaticAberration.radialIntensity = 0.8;
+  }
+}
+
+// IS LOADED
+
+private sceneIsLoaded() {
+    if(!this.scene_loaded) {
+        this.scene_loaded = true;
+        this.interaction.isLoaded.next();
+        this.addActions_buttons();
     }
+}
 
-    private set_initialScreenOffset_UniversalCamera() {
-      if(this.innerWidth <= 576) {
-          this.universal_camera.ellipsoidOffset = new BABYLON.Vector3(0, 0);
-      } else if(this.innerWidth <= 768) {
-          this.universal_camera.ellipsoidOffset = new BABYLON.Vector3(5, -0.5);
-      } else if(this.innerWidth <= 960) {
-          this.universal_camera.ellipsoidOffset = new BABYLON.Vector3(10, -0.5);
-      } else if(this.innerWidth <= 1140) {
-          this.universal_camera.ellipsoidOffset = new BABYLON.Vector3(10, 0);
-      } else if(this.innerWidth <= 1500) {
-        this.universal_camera.ellipsoidOffset = new BABYLON.Vector3(11, 1);
-      } else {
-          this.universal_camera.ellipsoidOffset = new BABYLON.Vector3(13, 0);
-      }
+// ADD ACTIONS
+
+public addActions_buttons() {
+    if(!this.isCV) {
+      this.addActions_TransfertBoxes();
+      this.addActions_TransfertBoxesRings();
     }
+    this.addActions_RoseRouge(); this.addActions_RoseRougeFrame();
+    this.addActions_VerbalShoota(); this.addActions_VerbalShootaFrame();
+    this.addActions_LapinBlanc(); this.addActions_LapinBlancFrame();
+    this.addActions_FourtyFour(); this.addActions_FourtyFourMarieLouise(); this.addActions_FourtyFourFrame();
+    this.addActions_Brique(); this.addActions_BriqueMarieLouise(); this.addActions_BriqueFrame();
+    this.addActions_Tofu(); this.addActions_TofuMarieLouise(); this.addActions_TofuFrame();
+    this.addActions_ThreedGlassesFrame(); this.addActions_ThreedGlassBlue(); this.addActions_ThreedGlassRed();
+    this.addActions_Keyboard(); this.addActions_KeyboardKeyboard();
+    this.addActions_MacMini(); this.addActions_Laptop(); this.addActions_LaptopKeyboard(); this.addActions_LaptopScreen(); this.addActions_ScreenCenter(); this.addActions_ScreenFrameCenter(); this.addActions_ScreenRight(); this.addActions_ScreenFrameRight();
+    this.addActions_WorldMap();
+    this.addActions_DvdPi(); this.addActions_DvdEnterTheVoid(); this.addActions_Dvd2001OdysseeEspace(); this.addActions_DvdLaHaine(); this.addActions_DvdSweetSixteen(); this.addActions_DvdEternalSunshine(); this.addActions_DvdZeroTheorem(); this.addActions_DvdShining();
+    this.addActions_Twitter();
+    this.addActions_Instagram(); this.addActions_InstagramLens();
+    this.addActions_Youtube(); this.addActions_YoutubePlay();
+    this.addActions_SpotifyGreen(); this.addActions_SpotifyBlack();
+    this.addActions_UnitedKingdomRed(); this.addActions_UnitedKingdomWhite(); this.addActions_UnitedKingdomBlue();
+    this.addActions_FranceBlue(); this.addActions_FranceWhite(); this.addActions_FranceRed();
+    this.addActions_SpainRed(); this.addActions_SpainYellow();
+    this.addActions_Projector();
+    this.addActions_TouchPlay(); this.addActions_TouchPause(); this.addActions_TouchSkipForward();
+}
 
-    // IS LOADED
-
-    private sceneIsLoaded() {
-        if(!this.scene_loaded) {
-            this.scene_loaded = true;
-            this.interaction.isLoaded.next();
-            this.addActions_buttons();
-        }
-    }
-
-    // ADD ACTIONS
-
-    public addActions_buttons() {
-        // this.addActions_Pegasus();
-        // this.addActions_PegasusInside();
-        // this.addActions_PegasusLaces();
-        // this.addActions_PegasusLogo();
-        // this.addActions_PegasusSoleOutside();
-        // this.addActions_PegasusSoleInside();
-        if(!this.isCV) {
-          this.addActions_TransfertBoxes();
-          this.addActions_TransfertBoxesRings();
-        }
-        this.addActions_RoseRouge();
-        this.addActions_RoseRougeFrame();
-        this.addActions_VerbalShoota();
-        this.addActions_VerbalShootaFrame();
-        this.addActions_LapinBlanc();
-        this.addActions_LapinBlancFrame();
-        this.addActions_FourtyFour();
-        this.addActions_FourtyFourMarieLouise();
-        this.addActions_FourtyFourFrame();
-        this.addActions_Brique();
-        this.addActions_BriqueMarieLouise();
-        this.addActions_BriqueFrame();
-        this.addActions_Tofu();
-        this.addActions_TofuMarieLouise();
-        this.addActions_TofuFrame();
-        // this.addActions_Checker();
-        // this.addActions_CheckerLocks();
-        // this.addActions_TarotDeck();
-        this.addActions_ThreedGlassesFrame();
-        this.addActions_ThreedGlassBlue();
-        this.addActions_ThreedGlassRed();
-        // this.addActions_AmorAmor();
-        // this.addActions_AmorAmorFrame();
-        // this.addActions_ViaAirMail();
-        this.addActions_Keyboard();
-        this.addActions_KeyboardKeyboard();
-        this.addActions_MacMini();
-        this.addActions_Laptop();
-        this.addActions_LaptopKeyboard();
-        this.addActions_LaptopScreen();
-        this.addActions_ScreenCenter();
-        this.addActions_ScreenFrameCenter();
-        this.addActions_ScreenRight();
-        this.addActions_ScreenFrameRight();
-        this.addActions_WorldMap();
-        this.addActions_DvdPi();
-        this.addActions_DvdEnterTheVoid();
-        this.addActions_Dvd2001OdysseeEspace();
-        this.addActions_DvdLaHaine();
-        this.addActions_DvdSweetSixteen();
-        this.addActions_DvdEternalSunshine();
-        this.addActions_DvdZeroTheorem();
-        this.addActions_DvdShining();
-        this.addActions_Twitter();
-        this.addActions_Instagram();
-        this.addActions_InstagramLens();
-        this.addActions_Youtube();
-        this.addActions_YoutubePlay();
-        this.addActions_SpotifyGreen();
-        this.addActions_SpotifyBlack();
-        this.addActions_UnitedKingdomRed();
-        this.addActions_UnitedKingdomWhite();
-        this.addActions_UnitedKingdomBlue();
-        this.addActions_FranceBlue();
-        this.addActions_FranceWhite();
-        this.addActions_FranceRed();
-        this.addActions_SpainRed();
-        this.addActions_SpainYellow();
-        this.addActions_Projector();
-        this.addActions_TouchPlay();
-        this.addActions_TouchPause();
-        this.addActions_TouchSkipForward();
-    }
-
-    private activation_buttons() {
-        // this.pegasus.isPickable = true;
-        // this.pegasus_inside.isPickable = true;
-        // this.pegasus_laces.isPickable = true;
-        // this.pegasus_logo.isPickable = true;
-        // this.pegasus_sole_outside.isPickable = true;
-        // this.pegasus_sole_inside.isPickable = true;
+    public activation_buttons() {
         if(!this.isCV) {
           this.transfert_boxes.isPickable = true;
           this.transfert_boxes_rings.isPickable = true;
         }
-        this.rose_rouge.isPickable = true;
-        this.rose_rouge_frame.isPickable = true;
-        this.verbal_shoota.isPickable = true;
-        this.verbal_shoota_frame.isPickable = true;
-        this.lapin_blanc.isPickable = true;
-        this.lapin_blanc_frame.isPickable = true;
-        this.fourty_four.isPickable = true;
-        this.fourty_four_marie_louise.isPickable = true;
-        this.fourty_four_frame.isPickable = true;
-        this.brique.isPickable = true;
-        this.brique_marie_louise.isPickable = true;
-        this.brique_frame.isPickable = true;
-        this.tofu.isPickable = true;
-        this.tofu_marie_louise.isPickable = true;
-        this.tofu_frame.isPickable = true;
-        // this.checker.isPickable = true;
-        // this.checker_locks.isPickable = true;
-        // this.tarot_deck.isPickable = true;
-        this.threed_glasses_frame.isPickable = true;
-        this.threed_glass_blue.isPickable = true;
-        this.threed_glass_red.isPickable = true;
-        // this.amor_amor.isPickable = true;
-        // this.amor_amor_frame.isPickable = true;
-        // this.via_air_mail.isPickable = true;
-        this.mac_mini.isPickable = true;
-        this.laptop.isPickable = true;
-        this.laptop_keyboard.isPickable = true;
-        this.laptop_screen.isPickable = true;
-        this.screen_center.isPickable = true;
-        this.screen_frame_center.isPickable = true;
-        this.screen_right.isPickable = true;
-        this.screen_frame_right.isPickable = true;
+        this.rose_rouge.isPickable = true; this.rose_rouge_frame.isPickable = true;
+        this.verbal_shoota.isPickable = true; this.verbal_shoota_frame.isPickable = true;
+        this.lapin_blanc.isPickable = true;  this.lapin_blanc_frame.isPickable = true;
+        this.fourty_four.isPickable = true; this.fourty_four_marie_louise.isPickable = true; this.fourty_four_frame.isPickable = true;
+        this.brique.isPickable = true; this.brique_marie_louise.isPickable = true; this.brique_frame.isPickable = true;
+        this.tofu.isPickable = true; this.tofu_marie_louise.isPickable = true; this.tofu_frame.isPickable = true;
+        this.threed_glasses_frame.isPickable = true; this.threed_glass_blue.isPickable = true; this.threed_glass_red.isPickable = true;
+        this.mac_mini.isPickable = true; this.laptop.isPickable = true; this.laptop_keyboard.isPickable = true; this.laptop_screen.isPickable = true; this.screen_center.isPickable = true; this.screen_frame_center.isPickable = true; this.screen_right.isPickable = true; this.screen_frame_right.isPickable = true;
         this.world_map.isPickable = true;
         this.twitter.isPickable = true;
-        this.instagram.isPickable = true;
-        this.instagram_lens.isPickable = true;
-        this.youtube.isPickable = true;
-        this.youtube_play.isPickable = true;
-        this.spotify_green.isPickable = true;
-        this.spotify_black.isPickable = true;
-        this.pop_up_running.isPickable = true;
+        this.instagram.isPickable = true; this.instagram_lens.isPickable = true;
+        this.youtube.isPickable = true; this.youtube_play.isPickable = true;
+        this.spotify_green.isPickable = true; this.spotify_black.isPickable = true;
         this.projector.isPickable = true;
     }
 
     private desactivation_buttons() {
-        // this.pegasus.isPickable = false;
-        // this.pegasus_inside.isPickable = false;
-        // this.pegasus_laces.isPickable = false;
-        // this.pegasus_logo.isPickable = false;
-        // this.pegasus_sole_outside.isPickable = false;
-        // this.pegasus_sole_inside.isPickable = false;
         if(!this.isCV) {
           this.transfert_boxes.isPickable = false;
           this.transfert_boxes_rings.isPickable = false;
         }
-        this.rose_rouge.isPickable = false;
-        this.rose_rouge_frame.isPickable = false;
-        this.verbal_shoota.isPickable = false;
-        this.verbal_shoota_frame.isPickable = false;
-        this.lapin_blanc.isPickable = false;
-        this.lapin_blanc_frame.isPickable = false;
-        this.fourty_four.isPickable = false;
-        this.fourty_four_marie_louise.isPickable = false;
-        this.fourty_four_frame.isPickable = false;
-        this.brique.isPickable = false;
-        this.brique_marie_louise.isPickable = false;
-        this.brique_frame.isPickable = false;
-        this.tofu.isPickable = false;
-        this.tofu_marie_louise.isPickable = false;
-        this.tofu_frame.isPickable = false;
-        // this.checker.isPickable = false;
-        // this.checker_locks.isPickable = false;
-        // this.tarot_deck.isPickable = false;
-        this.threed_glasses_frame.isPickable = false;
-        this.threed_glass_blue.isPickable = false;
-        this.threed_glass_red.isPickable = false;
-        // this.amor_amor.isPickable = false;
-        // this.amor_amor_frame.isPickable = false;
-        // this.via_air_mail.isPickable = false;
-        this.mac_mini.isPickable = false;
-        this.laptop.isPickable = false;
-        this.laptop_keyboard.isPickable = false;
-        this.laptop_screen.isPickable = false;
-        this.screen_center.isPickable = false;
-        this.screen_frame_center.isPickable = false;
-        this.screen_right.isPickable = false;
-        this.screen_frame_right.isPickable = false;
+        this.rose_rouge.isPickable = false; this.rose_rouge_frame.isPickable = false;
+        this.verbal_shoota.isPickable = false; this.verbal_shoota_frame.isPickable = false;
+        this.lapin_blanc.isPickable = false; this.lapin_blanc_frame.isPickable = false;
+        this.fourty_four.isPickable = false; this.fourty_four_marie_louise.isPickable = false; this.fourty_four_frame.isPickable = false;
+        this.brique.isPickable = false; this.brique_marie_louise.isPickable = false; this.brique_frame.isPickable = false;
+        this.tofu.isPickable = false; this.tofu_marie_louise.isPickable = false; this.tofu_frame.isPickable = false;
+        this.threed_glasses_frame.isPickable = false; this.threed_glass_blue.isPickable = false; this.threed_glass_red.isPickable = false;
+        this.mac_mini.isPickable = false; this.laptop.isPickable = false; this.laptop_keyboard.isPickable = false; this.laptop_screen.isPickable = false; this.screen_center.isPickable = false; this.screen_frame_center.isPickable = false; this.screen_right.isPickable = false; this.screen_frame_right.isPickable = false;
         this.world_map.isPickable = false;
         this.twitter.isPickable = false;
-        this.instagram.isPickable = false;
-        this.instagram_lens.isPickable = false;
-        this.youtube.isPickable = false;
-        this.youtube_play.isPickable = false;
-        this.spotify_green.isPickable = false;
-        this.spotify_black.isPickable = false;
-        this.pop_up_running.isPickable = false;
+        this.instagram.isPickable = false; this.instagram_lens.isPickable = false;
+        this.youtube.isPickable = false; this.youtube_play.isPickable = false;
+        this.spotify_green.isPickable = false; this.spotify_black.isPickable = false;
         this.projector.isPickable = false;
-    }
-
-    private addActions_Pegasus() {
-        this.pegasus.isPickable = true;
-        this.pegasus.actionManager = new BABYLON.ActionManager(this.scene);
-
-        this.pegasus.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus.material, "albedoTexture", this.pegasus_BAKING_HIGHLIGHT));
-        this.pegasus.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus.material, "albedoTexture", this.pegasus_BAKING));
-
-        this.pegasus.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_laces.material, "albedoTexture", this.pegasus_laces_BAKING_HIGHLIGHT));
-        this.pegasus.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_laces.material, "albedoTexture", this.pegasus_laces_BAKING));
-
-        this.pegasus.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_inside.material, "albedoTexture", this.pegasus_sole_inside_BAKING_HIGHLIGHT));
-        this.pegasus.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_inside.material, "albedoTexture", this.pegasus_sole_inside_BAKING));
-
-        this.pegasus.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING_HIGHLIGHT));
-        this.pegasus.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING));
-
-        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
-        this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
-
-        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
-        // this.pegasus.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
-
-        this.pegasus.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus},
-                [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
-                ]
-            )
-        );
-    }
-
-    private addActions_PegasusInside() {
-        this.pegasus_inside.isPickable = true;
-        this.pegasus_inside.actionManager = new BABYLON.ActionManager(this.scene);
-
-        this.pegasus_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus.material, "albedoTexture", this.pegasus_BAKING_HIGHLIGHT));
-        this.pegasus_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus.material, "albedoTexture", this.pegasus_BAKING));
-
-        this.pegasus_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_laces.material, "albedoTexture", this.pegasus_laces_BAKING_HIGHLIGHT));
-        this.pegasus_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_laces.material, "albedoTexture", this.pegasus_laces_BAKING));
-
-        this.pegasus_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_inside.material, "albedoTexture", this.pegasus_sole_inside_BAKING_HIGHLIGHT));
-        this.pegasus_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_inside.material, "albedoTexture", this.pegasus_sole_inside_BAKING));
-
-        this.pegasus_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING_HIGHLIGHT));
-        this.pegasus_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING));
-
-        this.pegasus_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
-        this.pegasus_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
-
-        // this.pegasus_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
-        // this.pegasus_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
-
-        this.pegasus_inside.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_inside},
-                [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
-                ]
-            )
-        );
-    }
-
-    private addActions_PegasusLaces() {
-        this.pegasus_laces.isPickable = true;
-        this.pegasus_laces.actionManager = new BABYLON.ActionManager(this.scene);
-
-        this.pegasus_laces.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus.material, "albedoTexture", this.pegasus_BAKING_HIGHLIGHT));
-        this.pegasus_laces.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus.material, "albedoTexture", this.pegasus_BAKING));
-
-        this.pegasus_laces.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_laces.material, "albedoTexture", this.pegasus_laces_BAKING_HIGHLIGHT));
-        this.pegasus_laces.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_laces.material, "albedoTexture", this.pegasus_laces_BAKING));
-
-        this.pegasus_laces.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_inside.material, "albedoTexture", this.pegasus_sole_inside_BAKING_HIGHLIGHT));
-        this.pegasus_laces.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_inside.material, "albedoTexture", this.pegasus_sole_inside_BAKING));
-
-        this.pegasus_laces.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING_HIGHLIGHT));
-        this.pegasus_laces.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING));
-
-        this.pegasus_laces.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
-        this.pegasus_laces.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
-
-        // this.pegasus_laces.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
-        // this.pegasus_laces.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
-
-        this.pegasus_laces.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_laces},
-                [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
-                ]
-            )
-        );
-    }
-
-    private addActions_PegasusLogo() {
-        this.pegasus_logo.isPickable = true;
-        this.pegasus_logo.actionManager = new BABYLON.ActionManager(this.scene);
-
-        this.pegasus_logo.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus.material, "albedoTexture", this.pegasus_BAKING_HIGHLIGHT));
-        this.pegasus_logo.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus.material, "albedoTexture", this.pegasus_BAKING));
-
-        this.pegasus_logo.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_laces.material, "albedoTexture", this.pegasus_laces_BAKING_HIGHLIGHT));
-        this.pegasus_logo.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_laces.material, "albedoTexture", this.pegasus_laces_BAKING));
-
-        this.pegasus_logo.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_inside.material, "albedoTexture", this.pegasus_sole_inside_BAKING_HIGHLIGHT));
-        this.pegasus_logo.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_inside.material, "albedoTexture", this.pegasus_sole_inside_BAKING));
-
-        this.pegasus_logo.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING_HIGHLIGHT));
-        this.pegasus_logo.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING));
-
-        this.pegasus_logo.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
-        this.pegasus_logo.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
-
-        // this.pegasus_logo.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
-        // this.pegasus_logo.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
-
-        this.pegasus_logo.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_logo},
-                [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
-                ]
-            )
-        );
-    }
-
-    private addActions_PegasusSoleOutside() {
-        this.pegasus_sole_outside.isPickable = true;
-        this.pegasus_sole_outside.actionManager = new BABYLON.ActionManager(this.scene);
-
-        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus.material, "albedoTexture", this.pegasus_BAKING_HIGHLIGHT));
-        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus.material, "albedoTexture", this.pegasus_BAKING));
-
-        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_laces.material, "albedoTexture", this.pegasus_laces_BAKING_HIGHLIGHT));
-        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_laces.material, "albedoTexture", this.pegasus_laces_BAKING));
-
-        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_inside.material, "albedoTexture", this.pegasus_sole_inside_BAKING_HIGHLIGHT));
-        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_inside.material, "albedoTexture", this.pegasus_sole_inside_BAKING));
-
-        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING_HIGHLIGHT));
-        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING));
-
-        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
-        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
-
-        // this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
-        // this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
-
-        this.pegasus_sole_outside.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_sole_outside},
-                [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
-                ]
-            )
-        );
-    }
-
-    private addActions_PegasusSoleInside() {
-        this.pegasus_sole_inside.isPickable = true;
-        this.pegasus_sole_inside.actionManager = new BABYLON.ActionManager(this.scene);
-
-        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus.material, "albedoTexture", this.pegasus_BAKING_HIGHLIGHT));
-        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus.material, "albedoTexture", this.pegasus_BAKING));
-
-        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_laces.material, "albedoTexture", this.pegasus_laces_BAKING_HIGHLIGHT));
-        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_laces.material, "albedoTexture", this.pegasus_laces_BAKING));
-
-        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_inside.material, "albedoTexture", this.pegasus_sole_inside_BAKING_HIGHLIGHT));
-        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_inside.material, "albedoTexture", this.pegasus_sole_inside_BAKING));
-
-        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING_HIGHLIGHT));
-        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.pegasus_sole_outside.material, "albedoTexture", this.pegasus_sole_outside_BAKING));
-
-        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_running.isVisible = true));
-        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_running.isVisible = false));
-
-        // this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.WriterMesh.isVisible = true));
-        // this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.WriterMesh.isVisible = false));
-
-        this.pegasus_sole_inside.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.pegasus_sole_inside},
-                [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_running.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
-                ]
-            )
-        );
     }
 
     private addActions_TransfertBoxes() {
@@ -2039,10 +1486,8 @@ export class LaboratoryService {
             this.transfert_boxes.actionManager.registerAction(new BABYLON.CombineAction(
                     {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes},
                     [
-                        new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                        new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_shareKnowledge.next()),
+                        new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next()),
                         new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                        // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                     ]
                 )
             );
@@ -2068,10 +1513,8 @@ export class LaboratoryService {
         this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes_rings},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_shareKnowledge.next()),
+                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2114,10 +1557,8 @@ export class LaboratoryService {
         this.rose_rouge.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.rose_rouge},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2160,10 +1601,8 @@ export class LaboratoryService {
         this.rose_rouge_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.rose_rouge_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2206,10 +1645,8 @@ export class LaboratoryService {
         this.verbal_shoota.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.verbal_shoota},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2252,10 +1689,8 @@ export class LaboratoryService {
         this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.verbal_shoota_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2298,10 +1733,8 @@ export class LaboratoryService {
         this.lapin_blanc.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.lapin_blanc},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2344,10 +1777,8 @@ export class LaboratoryService {
         this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.lapin_blanc_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2390,10 +1821,8 @@ export class LaboratoryService {
         this.fourty_four.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2436,10 +1865,8 @@ export class LaboratoryService {
         this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four_marie_louise},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2482,10 +1909,8 @@ export class LaboratoryService {
         this.fourty_four_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2528,10 +1953,8 @@ export class LaboratoryService {
         this.brique.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2574,10 +1997,8 @@ export class LaboratoryService {
         this.brique_marie_louise.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique_marie_louise},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2620,10 +2041,8 @@ export class LaboratoryService {
         this.brique_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2666,10 +2085,8 @@ export class LaboratoryService {
         this.tofu.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2713,10 +2130,8 @@ export class LaboratoryService {
         this.tofu_marie_louise.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu_marie_louise},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2759,93 +2174,8 @@ export class LaboratoryService {
         this.tofu_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
-                ]
-            )
-        );
-    }
-
-    private addActions_Checker() {
-        this.checker.isPickable = true;
-        this.checker.actionManager = new BABYLON.ActionManager(this.scene);
-
-        this.checker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.checker.material, "albedoTexture", this.checker_BAKING_HIGHLIGHT));
-        this.checker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.checker.material, "albedoTexture", this.checker_BAKING));
-
-        this.checker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING_HIGHLIGHT));
-        this.checker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING));
-
-        this.checker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tarot_deck.material, "albedoTexture", this.tarot_deck_BAKING_HIGHLIGHT));
-        this.checker.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tarot_deck.material, "albedoTexture", this.tarot_deck_BAKING));
-
-        this.checker.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_games.isVisible = true));
-        this.checker.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_games.isVisible = false));
-
-        this.checker.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.checker},
-                [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_games.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
-                ]
-            )
-        );
-    }
-
-    private addActions_CheckerLocks(){
-        this.checker_locks.isPickable = true;
-        this.checker_locks.actionManager = new BABYLON.ActionManager(this.scene);
-
-        this.checker_locks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.checker.material, "albedoTexture", this.checker_BAKING_HIGHLIGHT));
-        this.checker_locks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.checker.material, "albedoTexture", this.checker_BAKING));
-
-        this.checker_locks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING_HIGHLIGHT));
-        this.checker_locks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING));
-
-        this.checker_locks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tarot_deck.material, "albedoTexture", this.tarot_deck_BAKING_HIGHLIGHT));
-        this.checker_locks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tarot_deck.material, "albedoTexture", this.tarot_deck_BAKING));
-
-        this.checker_locks.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_games.isVisible = true));
-        this.checker_locks.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_games.isVisible = false));
-
-        this.checker_locks.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.checker_locks},
-                [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_games.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                ]
-            )
-        );
-    }
-
-    private addActions_TarotDeck() {
-        this.tarot_deck.isPickable = true;
-        this.tarot_deck.actionManager = new BABYLON.ActionManager(this.scene);
-
-        this.tarot_deck.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.checker.material, "albedoTexture", this.checker_BAKING_HIGHLIGHT));
-        this.tarot_deck.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.checker.material, "albedoTexture", this.checker_BAKING));
-
-        this.tarot_deck.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING_HIGHLIGHT));
-        this.tarot_deck.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.checker_locks.material, "albedoTexture", this.checker_locks_BAKING));
-
-        this.tarot_deck.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.tarot_deck.material, "albedoTexture", this.tarot_deck_BAKING_HIGHLIGHT));
-        this.tarot_deck.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.tarot_deck.material, "albedoTexture", this.tarot_deck_BAKING));
-
-        this.tarot_deck.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_games.isVisible = true));
-        this.tarot_deck.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_games.isVisible = false));
-
-        this.tarot_deck.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tarot_deck},
-                [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_games.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2870,10 +2200,8 @@ export class LaboratoryService {
         this.threed_glasses_frame.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glasses_frame},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2898,10 +2226,8 @@ export class LaboratoryService {
         this.threed_glass_blue.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_blue},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2926,54 +2252,8 @@ export class LaboratoryService {
         this.threed_glass_red.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_red},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
-                ]
-            )
-        );
-    }
-
-    private addActions_AmorAmor() {
-        this.amor_amor.isPickable = true;
-        this.amor_amor.actionManager = new BABYLON.ActionManager(this.scene);
-
-        this.amor_amor.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.amor_amor.material, "albedoTexture", this.amor_amor_BAKING_HIGHLIGHT));
-        this.amor_amor.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.amor_amor.material, "albedoTexture", this.amor_amor_BAKING));
-
-        this.amor_amor.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_art.isVisible = true));
-        this.amor_amor.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_art.isVisible = false));
-
-        this.amor_amor.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.amor_amor},
-                [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_art.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
-                ]
-            )
-        );
-    }
-
-    private addActions_AmorAmorFrame() {
-        this.amor_amor_frame.isPickable = true;
-        this.amor_amor_frame.actionManager = new BABYLON.ActionManager(this.scene);
-
-        this.amor_amor_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.amor_amor.material, "albedoTexture", this.amor_amor_BAKING_HIGHLIGHT));
-        this.amor_amor_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.amor_amor.material, "albedoTexture", this.amor_amor_BAKING));
-
-        this.amor_amor_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.pop_up_art.isVisible = true));
-        this.amor_amor_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.pop_up_art.isVisible = false));
-
-        this.amor_amor_frame.actionManager.registerAction(new BABYLON.CombineAction(
-                {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.amor_amor_frame},
-                [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_art.next()),
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -2992,10 +2272,8 @@ export class LaboratoryService {
         this.via_air_mail.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.via_air_mail},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_contactMe.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3039,10 +2317,8 @@ export class LaboratoryService {
         this.keyboard.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.keyboard},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3085,10 +2361,8 @@ export class LaboratoryService {
         this.keyboard_keyboard.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.keyboard_keyboard},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3131,10 +2405,8 @@ export class LaboratoryService {
         this.mac_mini.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.mac_mini},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3177,10 +2449,8 @@ export class LaboratoryService {
         this.laptop.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3223,10 +2493,8 @@ export class LaboratoryService {
         this.laptop_keyboard.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop_keyboard},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3269,10 +2537,8 @@ export class LaboratoryService {
         this.laptop_screen.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop_screen},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3315,10 +2581,8 @@ export class LaboratoryService {
         this.screen_center.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_center},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3361,10 +2625,8 @@ export class LaboratoryService {
         this.screen_frame_center.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_frame_center},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3407,10 +2669,8 @@ export class LaboratoryService {
         this.screen_right.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_right},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3453,10 +2713,8 @@ export class LaboratoryService {
         this.screen_frame_right.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_frame_right},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3475,10 +2733,8 @@ export class LaboratoryService {
         this.world_map.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.world_map},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openCard()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_travel.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3520,10 +2776,8 @@ export class LaboratoryService {
         this.dvd_pi.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_pi},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3563,10 +2817,8 @@ export class LaboratoryService {
         this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_enter_the_void},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3606,10 +2858,8 @@ export class LaboratoryService {
         this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_2001_odyssee_espace},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3649,10 +2899,8 @@ export class LaboratoryService {
         this.dvd_la_haine.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_la_haine},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3692,10 +2940,8 @@ export class LaboratoryService {
         this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_sweet_sixteen},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3735,10 +2981,8 @@ export class LaboratoryService {
         this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_eternal_sunshine},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3778,10 +3022,8 @@ export class LaboratoryService {
         this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_zero_theorem},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -3818,10 +3060,8 @@ export class LaboratoryService {
         this.dvd_shining.actionManager.registerAction(new BABYLON.CombineAction(
                 {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_shining},
                 [
-                    new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -4187,7 +3427,6 @@ export class LaboratoryService {
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
                     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies())
-                    // new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.toogle_cache.next())
                 ]
             )
         );
@@ -4372,49 +3611,18 @@ export class LaboratoryService {
       }
     }
 
-    // INITIAL POSITION CAMERA
-
-    private get_initPositionCamera(): BABYLON.Vector3 {
-        if(this.innerWidth <= 576) {
-          return new BABYLON.Vector3(-50, 50, 15);
-        } else if(this.innerWidth <= 768) {
-          return new BABYLON.Vector3(-50, 50, 15);
-        } else if(this.innerWidth <= 960) {
-          return new BABYLON.Vector3(-60, 35, 25);
-        } else if(this.innerWidth <= 1140) {
-          return new BABYLON.Vector3(-40, 22, 35);
-        } else {
-          return new BABYLON.Vector3(-50, 22, 19);
-        }
-    }
-
-    private get_initPositionCameraTarget(): BABYLON.Vector3 {
-        if(this.innerWidth <= 576) {
-          return new BABYLON.Vector3(-8, 2, -12);
-        } else if(this.innerWidth <= 768) {
-          return new BABYLON.Vector3(-10, 2, -12);
-        } else if(this.innerWidth <= 960) {
-          return new BABYLON.Vector3(-4, 2, -12);
-        } else if(this.innerWidth <= 1140) {
-          return new BABYLON.Vector3(-8, 5, -12);
-        } else {
-          return new BABYLON.Vector3(0, -1, -12);
-        }
-    }
-
     // ENTER LABORATORY
 
     public animation_enterLaboratory() {
-        this.animation_cameraPosition_enterLaboratory();
-        this.animation_targetScreenOffset_enterLaboratory();
+        this.animation_camera_enterLaboratory();
+        this.animation_cameraTarget_enterLaboratory();
         this.introduction_closed = true;
-        // this.interaction.toogle_cache.next()
     }
 
-    private animation_cameraPosition_enterLaboratory() {
+    private animation_camera_enterLaboratory() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_enterLaboratory', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(-16.5, 14, 15), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_camera_enterLaboratory', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(-16.5, 14, 15), 0, ease);
     }
 
     // private get_positionCamera_enterLaboratory(): BABYLON.Vector3 {
@@ -4433,110 +3641,52 @@ export class LaboratoryService {
         // }
     // }
 
-    private animation_targetScreenOffset_enterLaboratory() {
+    private animation_cameraTarget_enterLaboratory() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterLaboratory', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-16.5, 5, -12), 0, ease);
-    }
-
-    // OPEN CARDS
-
-    private animation_openCard() {
-        // this.animation_cameraPosition_openCard();
-        // this.animation_targetScreenOffset_openCard();
-        // this.desactivation_buttons();
-    }
-
-    private animation_cameraPosition_openCard() {
-        // this.arc_rotate_camera_clone = this.arc_rotate_camera.position.clone();
-        // const ease = new BABYLON.CubicEase();
-        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        // BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_openCard', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.get_positionCamera_openCard(), 0, ease);
-    }
-
-    // private get_positionCamera_openCard(): BABYLON.Vector3 {
-        // if(this.innerWidth <= 576) {
-            // return new BABYLON.Vector3(-50.65007800566379, 47.233077592451984, 13.183056196512112);
-        // } else if(this.innerWidth <= 768) {
-            // return new BABYLON.Vector3(-52.3410593253664, 58.85694487174785, 14.276335682616303);
-        // } else if(this.innerWidth <= 960) {
-            // return new BABYLON.Vector3(-57.04992146287326, 39.949376044454034, 14.642339769040099);
-        // } else if(this.innerWidth <= 1140) {
-            // return new BABYLON.Vector3(-60.62313059142518, 48.64356558951404, 19.878532715863148);
-        // } else if(this.innerWidth <= 1500) {
-            // return new BABYLON.Vector3(-58.38337660286841, 36.651254667701544, 33.99949253333725);
-        // } else {
-            // return new BABYLON.Vector3(-49.863988231551964, 22.117887723833682, 19.477904270270514);
-        // }
-    // }
-
-    private animation_targetScreenOffset_openCard() {
-        // const ease = new BABYLON.CubicEase();
-        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        // BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(10, 1), 0, ease, () => this.interaction.toogle_cache.next());
-    }
-
-    // CLOSE CARDS
-
-    public animation_closeCard() {
-        // this.animation_cameraPosition_closeCard();
-        // this.animation_targetScreenOffset_closeCard();
-        this.activation_buttons();
-    }
-
-    private animation_cameraPosition_closeCard() {
-        // const ease = new BABYLON.CubicEase();
-        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        // BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_closeCard', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, this.arc_rotate_camera_clone, 0, ease);
-    }
-
-    private animation_targetScreenOffset_closeCard() {
-        // const ease = new BABYLON.CubicEase();
-        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        // BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_openCard', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, 0), 0, ease, () => this.interaction.toogle_cache.next());
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_enterLaboratory', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-16.5, 5, -12), 0, ease);
     }
 
     // OPEN MOVIES
 
     public animation_openMovies() {
-        // this.arc_rotate_camera_clone = this.universal_camera.position.clone();
-        this.animation_cameraPosition_openMovies();
-        this.animation_targetCameraPosition_openMovies();
+        this.animation_camera_openMovies();
+        this.animation_cameraTarget_openMovies();
         this.desactivation_buttons();
         this.activation_buttonsProjector();
     }
 
-    private animation_cameraPosition_openMovies() {
+    private animation_camera_openMovies() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_openMovies', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(0, 22, -3), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_camera_openMovies', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(0, 22, -3), 0, ease);
     }
 
-    private animation_targetCameraPosition_openMovies() {
+    private animation_cameraTarget_openMovies() {
         const ease = new BABYLON.CubicEase();
         ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_targetCameraPosition_openMovies', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-32.4, 12, -7), 0, ease);
+        BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_openMovies', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-32.4, 12, -7), 0, ease);
     }
 
     // CLOSE MOVIES
 
     public animation_closeMovies() {
-      this.animation_cameraPosition_closeMovies();
-      this.animation_targetCameraPosition_closeMovies();
+      this.animation_camera_closeMovies();
+      this.animation_targetCamera_closeMovies();
       this.activation_buttons();
       this.desactivation_buttonsProjector();
   }
 
-  private animation_cameraPosition_closeMovies() {
+  private animation_camera_closeMovies() {
       const ease = new BABYLON.CubicEase();
       ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-      BABYLON.Animation.CreateAndStartAnimation('animation_cameraPosition_closeMovies', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(-16.5, 9, 15), 0, ease);
+      BABYLON.Animation.CreateAndStartAnimation('animation_camera_closeMovies', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(-16.5, 9, 15), 0, ease);
   }
 
-  private animation_targetCameraPosition_closeMovies() {
+  private animation_targetCamera_closeMovies() {
       const ease = new BABYLON.CubicEase();
       ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-      BABYLON.Animation.CreateAndStartAnimation('animation_targetCameraPosition_closeMovies', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-16.2, 5, -12), 0, ease);
+      BABYLON.Animation.CreateAndStartAnimation('animation_targetCamera_closeMovies', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-16.2, 5, -12), 0, ease);
   }
 
   // SWITCH CAMERA
@@ -4550,7 +3700,7 @@ export class LaboratoryService {
         this.anaglyph_universal_camera.attachControl(this.canvas, true);
         this.anaglyph_activated = true;
         this.interaction.toogle_anaglyph_activated.next();
-        // this.desactivation_buttons();
+        this.desactivation_buttons();
       } else {
         this.universal_camera.position = this.anaglyph_universal_camera.position;
         this.universal_camera.rotation = this.anaglyph_universal_camera.rotation;
@@ -4559,58 +3709,8 @@ export class LaboratoryService {
         this.universal_camera.attachControl(this.canvas, true);
         this.anaglyph_activated = false;
         this.interaction.toogle_anaglyph_activated.next();
-        // this.activation_buttons();
+        this.activation_buttons();
       }
-    }
-
-    private animation_arcRotateCamera_to_anaglyphArcRotateCamera() {
-        // const ease = new BABYLON.CubicEase();
-        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        // BABYLON.Animation.CreateAndStartAnimation('animation_arcRotateCamera_to_anaglyphArcRotateCamera', this.arc_rotate_camera, 'position', 15, 30, this.arc_rotate_camera.position, new BABYLON.Vector3(-16.2, 20, 40), 0, ease, () => this.switch_camera());
-    }
-
-    private animation_offset_to_anaglyphOffset() {
-        // const ease = new BABYLON.CubicEase();
-        // ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        // BABYLON.Animation.CreateAndStartAnimation('animation_offset_to_anaglyphOffset', this.arc_rotate_camera, 'targetScreenOffset', 15, 30, this.arc_rotate_camera.targetScreenOffset, new BABYLON.Vector2(0, 0), 0, ease);
-    }
-
-    private animation_anaglyphArcRotateCamera_to_arcRotateCamera() {
-        const ease = new BABYLON.CubicEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_anaglyphArcRotateCamera_to_arcRotateCamera', this.anaglyph_universal_camera, 'position', 15, 30, this.anaglyph_universal_camera.position, new BABYLON.Vector3(-16.2, 20, 40), 0, ease, () => this.switch_camera());
-    }
-
-    private animation_anaglyphOffset_to_offset() {
-        const ease = new BABYLON.CubicEase();
-        ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-        BABYLON.Animation.CreateAndStartAnimation('animation_anaglyphOffset_to_offset', this.anaglyph_universal_camera, 'target', 15, 30, this.anaglyph_universal_camera.target, new BABYLON.Vector3(10, 1), 0, ease);
-    }
-
-    private switch_camera() {
-      if(!this.anaglyph_activated) {
-          this.scene.setActiveCameraByName("anaglyph_arc_rotate_camera");
-          // this.anaglyph_arc_rotate_camera.alpha = this.arc_rotate_camera.alpha;
-          // this.anaglyph_arc_rotate_camera.beta = this.arc_rotate_camera.beta;
-          // this.anaglyph_arc_rotate_camera.radius = this.arc_rotate_camera.radius;
-          this.anaglyph_universal_camera.lockedTarget = new BABYLON.Vector2(0, 0);
-          this.anaglyph_activated = true;
-          this.interaction.toogle_anaglyph_activated.next();
-          this.desactivation_buttons();
-      } else {
-          // this.arc_rotate_camera.lockedTarget = new BABYLON.Vector3(-16.2, 5, -12);
-          // this.arc_rotate_camera.position = new BABYLON.Vector3(-16.2, 20, 40);
-          this.scene.setActiveCameraByName("arc_rotate_camera");
-          this.anaglyph_activated = false;
-          this.interaction.toogle_anaglyph_activated.next();
-          this.activation_buttons();
-      }
-    }
-
-    // IS CV
-
-    public set_isCV(isCV): void {
-        this.isCV = isCV;
     }
 
     // DASHBOARD
@@ -4641,8 +3741,8 @@ export class LaboratoryService {
     // INIT POSITION
 
     public init_position(): void {
-      this.animation_cameraPosition_enterLaboratory();
-      this.animation_targetScreenOffset_enterLaboratory();
+      this.animation_camera_enterLaboratory();
+      this.animation_cameraTarget_enterLaboratory();
     }
 
     // ANIMATE
