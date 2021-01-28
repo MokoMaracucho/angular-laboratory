@@ -22,11 +22,15 @@ export class InteractionService {
 
     open_postgresql = new Subject<boolean>();
 
+    open_maven = new Subject<boolean>();
+
     open_java = new Subject<boolean>();
 
     open_spring_framework = new Subject<boolean>();
 
-    open_maven = new Subject<boolean>();
+    open_ubuntu = new Subject<boolean>();
+
+    open_apache = new Subject<boolean>();
 
     open_css = new Subject<boolean>();
 
