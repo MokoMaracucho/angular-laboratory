@@ -50,6 +50,7 @@ export class LaboratoryService {
   private desk;
   private via_air_mail;
   private threed_glasses_frame; threed_glass_blue; threed_glass_red;
+  private suzanne_blue; suzanne_red; suzanne_white;
   private keyboard; keyboard_keyboard; mac_mini; laptop; laptop_keyboard; laptop_screen; screen_center; screen_frame_center; screen_right; screen_frame_right;
   private bulb; bulb_pin; bulb_string; bulb_string_support;
   private glass_left_top; glass_left_bottom; glass_right_top; glass_right_bottom;
@@ -174,6 +175,9 @@ export class LaboratoryService {
   private glass_MATERIAL: BABYLON.StandardMaterial;
   private glass_blue_MATERIAL: BABYLON.StandardMaterial;
   private glass_red_MATERIAL: BABYLON.StandardMaterial;
+  private suzanne_blue_MATERIAL: BABYLON.StandardMaterial;
+  private suzanne_red_MATERIAL: BABYLON.StandardMaterial;
+  private suzanne_white_MATERIAL: BABYLON.StandardMaterial;
   private bulb_string_MATERIAL: BABYLON.StandardMaterial;
   private projector_MATERIAL: BABYLON.StandardMaterial;
 
@@ -328,11 +332,9 @@ export class LaboratoryService {
 
     BABYLON.SceneLoader.ImportMeshAsync("parquet", "../../assets/glb/laboratory/", "parquet.glb").then((result) => {
       this.parquet = this.scene.getMeshByName("parquet");
-      this.parquet.receiveShadows = true;
     });
     BABYLON.SceneLoader.ImportMeshAsync("persian_carpet", "../../assets/glb/laboratory/", "persian_carpet.glb").then((result) => {
       this.persian_carpet = this.scene.getMeshByName("persian_carpet");
-      this.persian_carpet.receiveShadows = true;
     });
 
     // PEGASUS
@@ -670,12 +672,11 @@ export class LaboratoryService {
     this.trestle_left = this.scene.getMeshByName("trestle_left");
     this.trestle_left.checkCollisions = true;
   });
-  shadowGenerator.getShadowMap().renderList.push(this.trestle_left);
+
   BABYLON.SceneLoader.ImportMeshAsync("trestle_right", "../../assets/glb/laboratory/", "trestle_right.glb", this.scene).then((result) => {
     this.trestle_right = this.scene.getMeshByName("trestle_right");
     this.trestle_right.checkCollisions = true;
   });
-  shadowGenerator.getShadowMap().renderList.push(this.trestle_right);
 
   this.glass_MATERIAL = new BABYLON.StandardMaterial("desk_MATERIAL", this.scene);
   this.glass_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 0);
@@ -778,6 +779,37 @@ export class LaboratoryService {
   BABYLON.SceneLoader.ImportMeshAsync("threed_glass_red", "../../assets/glb/laboratory/", "threed_glass_red.glb", this.scene).then((result) => {
     this.threed_glass_red = this.scene.getMeshByName("threed_glass_red");
     this.threed_glass_red.material = this.glass_red_MATERIAL;
+  });
+
+  // SUZANNE
+
+  this.suzanne_blue_MATERIAL = new BABYLON.StandardMaterial("suzanne_blue_MATERIAL", this.scene);
+  this.suzanne_blue_MATERIAL.diffuseColor = new BABYLON.Color3(0, 1, 1);
+  this.suzanne_blue_MATERIAL.alpha = 0.5;
+
+  this.suzanne_red_MATERIAL = new BABYLON.StandardMaterial("suzanne_red_MATERIAL", this.scene);
+  this.suzanne_red_MATERIAL.diffuseColor = new BABYLON.Color3(1, 0, 0);
+  this.suzanne_red_MATERIAL.alpha = 0.5;
+
+  this.suzanne_white_MATERIAL = new BABYLON.StandardMaterial("suzanne_white_MATERIAL", this.scene);
+  this.suzanne_white_MATERIAL.diffuseColor = new BABYLON.Color3(1, 1, 1);
+  this.suzanne_white_MATERIAL.alpha = 0.5;
+
+  this.suzanne_white_MATERIAL = new BABYLON.StandardMaterial("suzanne_white_MATERIAL", this.scene);
+
+  BABYLON.SceneLoader.ImportMeshAsync("suzanne_blue", "../../assets/glb/laboratory/", "suzanne_blue.glb", this.scene).then((result) => {
+    this.suzanne_blue = this.scene.getMeshByName("suzanne_blue");
+    this.suzanne_blue.material = this.suzanne_blue_MATERIAL;
+  });
+
+  BABYLON.SceneLoader.ImportMeshAsync("suzanne_red", "../../assets/glb/laboratory/", "suzanne_red.glb", this.scene).then((result) => {
+    this.suzanne_red = this.scene.getMeshByName("suzanne_red");
+    this.suzanne_red.material = this.suzanne_red_MATERIAL;
+  });
+
+  BABYLON.SceneLoader.ImportMeshAsync("suzanne_white", "../../assets/glb/laboratory/", "suzanne_white.glb", this.scene).then((result) => {
+    this.suzanne_white = this.scene.getMeshByName("suzanne_white");
+    this.suzanne_white.material = this.suzanne_white_MATERIAL;
   });
 
   // COMPUTERS
@@ -1188,15 +1220,13 @@ export class LaboratoryService {
   this.projector.rotation = new BABYLON.Vector3(0, -1.57, 0);
 
   this.projector_MATERIAL = new BABYLON.StandardMaterial("projectorMaterial", this.scene);
-  this.enter_the_void_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/enter_the_void.mp4", this.scene);
+  // this.enter_the_void_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/enter_the_void.mp4", this.scene);
   this.projector_MATERIAL.roughness = 1;
   this.projector_MATERIAL.emissiveColor = BABYLON.Color3.White();
   this.projector_MATERIAL.diffuseTexture = this.enter_the_void_TEXTURE;
   this.projector_MATERIAL.alpha = 0.3;
 
-  this.projector.material = this.projector_MATERIAL;
-
-  this.enter_the_void_TEXTURE.video.pause();
+  // this.projector.material = this.projector_MATERIAL;
 
   // PROJECTOR BUTTONS
 
@@ -1327,7 +1357,7 @@ public addActions_buttons() {
     this.addActions_FranceBlue(); this.addActions_FranceWhite(); this.addActions_FranceRed();
     this.addActions_SpainRed(); this.addActions_SpainYellow();
     this.addActions_Projector();
-    this.addActions_TouchPlay(); this.addActions_TouchPause(); this.addActions_TouchSkipForward();
+    this.addActions_TouchPlay(); // this.addActions_TouchPause(); this.addActions_TouchSkipForward();
 }
 
   public activation_buttons() {
@@ -3187,162 +3217,10 @@ public addActions_buttons() {
   private play_videoTexture(trailer_position) {
     switch(trailer_position) {
       case 1:
-        this.enter_the_void_TEXTURE.video.play();
-        break;
-      case 2:
-        this.pi_TEXTURE.video.play();
-        break;
-      case 3:
-        this.eternal_sunshine_TEXTURE.video.play();
-        break;
-      case 4:
-        this.odyssee_espace_TEXTURE.video.play();
-        break;
-      case 5:
-        this.zero_theorem_TEXTURE.video.play();
-        break;
-      case 6:
-        this.shining_TEXTURE.video.play();
-        break;
-      case 7:
-        this.la_haine_TEXTURE.video.play();
-        break;
-    }
-  }
-
-  private addActions_TouchPause() {
-    this.touch_pause.isPickable = false;
-    this.touch_pause.actionManager = new BABYLON.ActionManager(this.scene);
-
-    this.touch_pause.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_pause.material, "albedoTexture", this.touch_pause_BAKING_HIGHLIGHT));
-    this.touch_pause.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_pause.material, "albedoTexture", this.touch_pause_BAKING));
-
-    this.touch_pause.actionManager.registerAction(new BABYLON.CombineAction(
-        {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.touch_pause},
-        [
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.pause_videoTexture(this.trailer_position))
-        ]
-      )
-    );
-  }
-
-  private pause_videoTexture(trailer_position) {
-    switch(trailer_position) {
-      case 1:
-        this.enter_the_void_TEXTURE.video.pause();
-        break;
-      case 2:
-        this.pi_TEXTURE.video.pause();
-        break;
-      case 3:
-        this.eternal_sunshine_TEXTURE.video.pause();
-        break;
-      case 4:
-        this.odyssee_espace_TEXTURE.video.pause();
-        break;
-      case 5:
-        this.zero_theorem_TEXTURE.video.pause();
-        break;
-      case 6:
-        this.shining_TEXTURE.video.pause();
-        break;
-      case 7:
-        this.la_haine_TEXTURE.video.pause();
-        break;
-    }
-  }
-
-  private addActions_TouchSkipForward() {
-    this.touch_skip_forward.isPickable = false;
-    this.touch_skip_forward.actionManager = new BABYLON.ActionManager(this.scene);
-
-    this.touch_skip_forward.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_skip_forward.material, "albedoTexture", this.touch_skip_forward_BAKING_HIGHLIGHT));
-    this.touch_skip_forward.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_skip_forward.material, "albedoTexture", this.touch_skip_forward_BAKING));
-
-    this.touch_skip_forward.actionManager.registerAction(new BABYLON.CombineAction(
-        {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.touch_skip_forward},
-        [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.switch_trailer_forward(this.trailer_position))
-        ]
-      )
-    );
-  }
-
-  private switch_trailer_forward(trailer_position) {
-    switch(trailer_position) {
-      case 1:
-        if(!this.all_video_textures_loaded) {
-          this.pi_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/pi.mp4", this.scene);
-        }
-        this.projector_MATERIAL.diffuseTexture = this.pi_TEXTURE;
-        this.projector.material = this.projector_MATERIAL;
-        this.enter_the_void_TEXTURE.video.pause();
-        this.pi_TEXTURE.video.currentTime = 0;
-        this.pi_TEXTURE.video.play();
-        this.trailer_position++;
-        break;
-      case 2:
-        if(!this.all_video_textures_loaded) {
-          this.eternal_sunshine_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/eternal_sunshine.mp4", this.scene);
-        }
-        this.projector_MATERIAL.diffuseTexture = this.eternal_sunshine_TEXTURE;
-        this.projector.material = this.projector_MATERIAL;
-        this.pi_TEXTURE.video.pause();
-        this.eternal_sunshine_TEXTURE.video.currentTime = 0;
-        this.eternal_sunshine_TEXTURE.video.play();
-        this.trailer_position++;
-        break;
-      case 3:
-        if(!this.all_video_textures_loaded) {
-          this.odyssee_espace_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/2001_odyssee_espace.mp4", this.scene);
-        }
-        this.projector_MATERIAL.diffuseTexture = this.odyssee_espace_TEXTURE;
-        this.projector.material = this.projector_MATERIAL;
-        this.eternal_sunshine_TEXTURE.video.pause();
-        this.odyssee_espace_TEXTURE.video.currentTime = 0;
-        this.odyssee_espace_TEXTURE.video.play();
-        this.trailer_position++;
-        break;
-      case 4:
-        if(!this.all_video_textures_loaded) {
-          this.zero_theorem_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/zero_theorem.mp4", this.scene);
-        }
-        this.projector_MATERIAL.diffuseTexture = this.zero_theorem_TEXTURE;
-        this.projector.material = this.projector_MATERIAL;
-        this.odyssee_espace_TEXTURE.video.pause();
-        this.zero_theorem_TEXTURE.video.currentTime = 0;
-        this.zero_theorem_TEXTURE.video.play();
-        this.trailer_position++;
-        break;
-      case 5:
-        if(!this.all_video_textures_loaded) {
-          this.shining_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/shining.mp4", this.scene);
-        }
-        this.projector_MATERIAL.diffuseTexture = this.shining_TEXTURE;
-        this.projector.material = this.projector_MATERIAL;
-        this.zero_theorem_TEXTURE.video.pause();
-        this.shining_TEXTURE.video.currentTime = 0;
-        this.shining_TEXTURE.video.play();
-        this.trailer_position++;
-        break;
-      case 6:
-        if(!this.all_video_textures_loaded) {
-          this.la_haine_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/la_haine.mp4", this.scene);
-        }
-        this.projector_MATERIAL.diffuseTexture = this.la_haine_TEXTURE;
-        this.projector.material = this.projector_MATERIAL;
-        this.shining_TEXTURE.video.pause();
-        this.la_haine_TEXTURE.video.currentTime = 0;
-        this.la_haine_TEXTURE.video.play();
-        this.trailer_position++;
-        break;
-      case 7:
+        this.enter_the_void_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/enter_the_void.mp4", this.scene);
         this.projector_MATERIAL.diffuseTexture = this.enter_the_void_TEXTURE;
         this.projector.material = this.projector_MATERIAL;
-        this.la_haine_TEXTURE.video.pause();
-        this.enter_the_void_TEXTURE.video.currentTime = 0;
         this.enter_the_void_TEXTURE.video.play();
-        this.trailer_position = 1;
         break;
     }
   }
@@ -3493,13 +3371,13 @@ public addActions_buttons() {
         if(this.universal_camera.position.x < -34 && this.scene_loaded) {
           this.projector.isPickable = false;
           this.touch_play.isVisible = false;
-          this.touch_pause.isVisible = false;
-          this.touch_skip_forward.isVisible = false;
+          //this.touch_pause.isVisible = false;
+          //this.touch_skip_forward.isVisible = false;
         } else if(this.universal_camera.position.x >= -34 && this.scene_loaded){
           this.projector.isPickable = true;
           this.touch_play.isVisible = true;
-          this.touch_pause.isVisible = true;
-          this.touch_skip_forward.isVisible = true;
+          //this.touch_pause.isVisible = true;
+          //this.touch_skip_forward.isVisible = true;
         }
         this.emitCameraDatas_loop();
       };
