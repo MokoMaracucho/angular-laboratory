@@ -3,12 +3,10 @@ import { WindowRefService } from '../../shared/services/window-ref.service';
 
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
-import * as MeshWriter from "meshwriter";
 
 import { InteractionService } from './interaction.service';
 
 import { CameraDatas } from '../../shared/models/camera-datas';
-import { Vector3 } from 'babylonjs';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +33,7 @@ export class LaboratoryService {
 
   private boundary_bottom; boundary_front; boundary_left; boundary_back; boundary_right; boundary_top;
   private wall_left_collision; wall_right_collision;
+  private parquet; persian_carpet
   private leather_armchair;
   private lampshade_tissue;
   private transfert_boxes; transfert_boxes_rings;
@@ -235,7 +234,7 @@ export class LaboratoryService {
     this.pipeline.fxaaEnabled = true;
     this.pipeline.bloomEnabled = true;
     this.pipeline.bloomKernel = 640;
-    this.pipeline.bloomWeight = 1;
+    this.pipeline.bloomWeight = 0.1;
     this.pipeline.bloomThreshold = 0.3;
     this.pipeline.bloomScale = 0.5;
 
@@ -251,10 +250,16 @@ export class LaboratoryService {
     // LIGHTS
 
     this.hemispheric_light = new BABYLON.HemisphericLight('hemispheric_light', new BABYLON.Vector3(0, 1, 0), this.scene);
-    this.hemispheric_light.intensity = 0.6;
+    this.hemispheric_light.intensity = 1;
 
     this.directional_light = new BABYLON.DirectionalLight("directional_light", new BABYLON.Vector3(1, -5, -2), this.scene);
-    this.directional_light.intensity = 0.5;
+    this.directional_light.intensity = 1;
+    this.directional_light.diffuse = new BABYLON.Color3(0.8, 0, 0.2);
+    this.directional_light.specular = new BABYLON.Color3(0, 0, 0);
+
+    // SHADOWS
+
+    var shadowGenerator = new BABYLON.ShadowGenerator(1024, this.directional_light);
 
     // COLLISIONS
 
@@ -322,8 +327,12 @@ export class LaboratoryService {
     // FLOOR
 
     BABYLON.SceneLoader.ImportMeshAsync("parquet", "../../assets/glb/laboratory/", "parquet.glb").then((result) => {
+      this.parquet = this.scene.getMeshByName("parquet");
+      this.parquet.receiveShadows = true;
     });
     BABYLON.SceneLoader.ImportMeshAsync("persian_carpet", "../../assets/glb/laboratory/", "persian_carpet.glb").then((result) => {
+      this.persian_carpet = this.scene.getMeshByName("persian_carpet");
+      this.persian_carpet.receiveShadows = true;
     });
 
     // PEGASUS
@@ -661,10 +670,12 @@ export class LaboratoryService {
     this.trestle_left = this.scene.getMeshByName("trestle_left");
     this.trestle_left.checkCollisions = true;
   });
+  shadowGenerator.getShadowMap().renderList.push(this.trestle_left);
   BABYLON.SceneLoader.ImportMeshAsync("trestle_right", "../../assets/glb/laboratory/", "trestle_right.glb", this.scene).then((result) => {
     this.trestle_right = this.scene.getMeshByName("trestle_right");
     this.trestle_right.checkCollisions = true;
   });
+  shadowGenerator.getShadowMap().renderList.push(this.trestle_right);
 
   this.glass_MATERIAL = new BABYLON.StandardMaterial("desk_MATERIAL", this.scene);
   this.glass_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 0);
@@ -3425,6 +3436,7 @@ public addActions_buttons() {
       this.anaglyph_universal_camera.attachControl(this.canvas, true);
       this.anaglyph_activated = true;
       this.interaction.toogle_anaglyph_activated.next();
+      this.hemispheric_light.intensity = 1.5;
       this.desactivation_buttons();
     } else {
       this.universal_camera.position = this.anaglyph_universal_camera.position;
@@ -3434,6 +3446,7 @@ public addActions_buttons() {
       this.universal_camera.attachControl(this.canvas, true);
       this.anaglyph_activated = false;
       this.interaction.toogle_anaglyph_activated.next();
+      this.hemispheric_light.intensity = 1;
       this.activation_buttons();
     }
   }

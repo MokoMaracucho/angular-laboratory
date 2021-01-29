@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef, HostListener } fro
 import { Subscription, Subject } from 'rxjs';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { ActivatedRoute } from '@angular/router';
 
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
@@ -166,6 +167,8 @@ import { CameraDatas } from '../shared/models/camera-datas';
 })
 export class DevelopmentComponent implements OnInit, OnDestroy {
 
+  private isCV: boolean;
+
   public isMobileDevice;
   public isTabletDevice;
   public isDesktopDevice;
@@ -232,7 +235,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
   public rendererCanvas_development: ElementRef<HTMLCanvasElement>;
 
   public constructor(
-    private formBuilder: FormBuilder,
+    private activatedRoute: ActivatedRoute,
     private deviceService: DeviceDetectorService,
     private connectionService: ConnectionService,
     private developmentService: DevelopmentService,
@@ -244,6 +247,11 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
     this.developmentService.set_windowDimensions(this.innerWidth, this.innerHeight);
+
+    this.isCV = this.activatedRoute.snapshot.params.isCV;
+    if(!this.isCV) {
+      this.isCV = false;
+    }
 
     this.developmentService.createScene(this.rendererCanvas_development);
     this.developmentService.animate();

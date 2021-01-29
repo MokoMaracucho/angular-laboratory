@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { LaboratoryComponent } from './laboratory/laboratory.component';
 import { DevelopmentComponent } from './development/development.component';
+import { DevelopmentModule } from './development/development.module';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { DevelopmentComponent } from './development/development.component';
       { path: '', redirectTo: 'laboratory', pathMatch: 'full' },
       { path: 'laboratory/:isCV', component: LaboratoryComponent },
       { path: 'development', component: DevelopmentComponent },
+      { path: 'development/:isCV', component: DevelopmentComponent},
       { path: '**', redirectTo: 'laboratory', pathMatch: 'full' }
     ])
   ],

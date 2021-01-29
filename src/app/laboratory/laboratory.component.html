@@ -9,9 +9,9 @@
       <div class="col-md-8 col-lg-12 col-xl-12">
         <h1 class="h1_webDeveloper" *ngIf="!isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">MK-Lab</h1>
 
-        <span class="span_webDeveloper" *ngIf="language_english && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Enter the 3rd dimension with MK-Lab</span>
-        <span class="span_webDeveloper" *ngIf="language_french && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Entrez dans la 3ème dimension avec MK-Lab</span>
-        <span class="span_webDeveloper" *ngIf="language_spanish && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Ingrese a la tercera dimensión con MK-Lab</span>
+        <span class="span_webDeveloper" *ngIf="language_english && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Enter the 3rd dimension</span>
+        <span class="span_webDeveloper" *ngIf="language_french && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Entrez dans la 3ème dimension</span>
+        <span class="span_webDeveloper" *ngIf="language_spanish && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Ingrese a la tercera dimensión</span>
 
         <h1 class="h1_webDeveloper" *ngIf="language_english && isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">WEB<br/>DEVELOPER</h1>
         <h1 class="h1_webDeveloper" *ngIf="language_french && isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DEVELOPPEUR<br/>WEB</h1>
@@ -114,7 +114,7 @@
             Liberez votre créativité !<br/>
             Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.<br/>
             Developpement Front-end et Back-end pour une meilleure répartition des fonctionnalités. Gestion des bases de données. Configuration et sécurisation de vos serveurs. Modélisation et programmtion 3D.<br/>
-            Accédez à la rubrique "Dévelopment" pour plus de détails.
+            Accédez à la rubrique "Développement" pour plus de détails.
           </p>
           <p class="text_content" *ngIf="language_spanish">
             ¡Da rienda suelta a tu creatividad!<br/>
@@ -220,7 +220,7 @@
               </p>
               <p class="text_content" *ngIf="language_french">
                 MK-Lab développe des outils de représentation 3D innovants pour une meilleure visualisation et exploitation de vos données.<br/>
-                Améliorez votre expérience utilisateur et gagnez en efficience grâce à nos outils de représentation innovants.
+                Améliorez votre expérience utilisateur et gagnez en efficience grâce à des outils de représentation personnalisables.
               </p>
               <p class="text_content" *ngIf="language_spanish">
                 MK-Lab desarrolla herramientas de representación 3D innovadoras para una mejor visualización y explotación de sus datos.<br/>
@@ -265,15 +265,15 @@
       <div class="col-12" *ngIf="!isCV">
         <p class="text_content" *ngIf="language_english">
           Immerse your community in your universe!<br/>
-          Give your community an unprecedented viewing experience for your products and data using stereoscopy.
+          Give an unprecedented viewing experience for your products and data using stereoscopy.
         </p>
         <p class="text_content" *ngIf="language_french">
           Immergez votre communauté dans votre univers !<br/>
-          Offrez à votre communauté une expérience inédite de visualisation de vos produits et de vos données grâce à la stéréoscopie.
+          Offrez une expérience inédite de visualisation de vos produits et de vos données grâce à la stéréoscopie.
         </p>
         <p class="text_content" *ngIf="language_spanish">
           ¡Sumerja a su comunidad en su universo!<br/>
-          Ofrezca a su comunidad una experiencia de visualización sin precedentes para sus productos y datos mediante estereoscopía.
+          Ofrezca una experiencia de visualización sin precedentes para sus productos y datos mediante estereoscopía.
         </p>
         <p>
           <button id="btn_switch_camera" type="button" class="btn btn-primary" (click)="animation_switch_camera()">
@@ -354,17 +354,17 @@
             <div class="col-12">
                 <p class="text_content" *ngIf="language_english">
                   Street photographer, my desire is to show the beauty of the things that surround us and that the frenzy of our urban lives does not leave us time to contemplate.<br/>
-                  Light and colors at the service of emotions, such is my conception of photography!<br/>
+                  Light and colors at the service of emotions, such is my conception of photography.<br/>
                   Dedicated site to come.
                 </p>
                 <p class="text_content" *ngIf="language_french">
                   Photographe de rue, ma volonté est de montrer la beauté des choses qui nous entourent et que la frénésie de nos vies urbaines ne nous laisse le temps de contempler.<br/>
-                  La lumière et les couleurs aux service des émotions, telle est ma conception de la photographie !<br/>
+                  La lumière et les couleurs aux service des émotions, telle est ma conception de la photographie.<br/>
                   Site dédié à venir.
                 </p>
                 <p class="text_content" *ngIf="language_spanish">
                   Fotografo callejero, mi deseo es mostrar la belleza de las cosas que nos rodean y que el frenesí de nuestra vida urbana no nos deje tiempo para contemplar.<br/>
-                  La luz y los colores al servicio de las emociones, ¡tal es mi concepción de la fotografía!<br/>
+                  La luz y los colores al servicio de las emociones, ¡tal es mi concepción de la fotografía¡.<br/>
                   Sitio dedicado por venir.
                 </p>
                 <div *ngIf="language_english">

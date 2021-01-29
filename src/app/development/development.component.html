@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-8 col-sm-7 col-md-6 col-lg-6 col-xl-6" [@introduction_fadeIn]="introduction_fadeIn">
+      <div class="col-xs-8 col-sm-7 col-md-8 col-lg-8 col-xl-6" *ngIf="!isCV" [@introduction_fadeIn]="introduction_fadeIn">
         <p class="text_introduction pr-3" *ngIf="language_english">
           Unleash your creativity! <br/>
           Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas.<br/>
@@ -32,6 +32,60 @@
           Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.<br/>
           Desarrollo Front-end y Back-end para una mejor distribución de funcionalidades. Gestión de base de datos. Configuración y aseguramiento de sus servidores. Modelado y programación 3D.<br/>
           En esta sección encontrará una descripción de cada idioma, marco o software utilizado.
+        </p>
+        <div *ngIf="language_english">
+          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+        </div>
+        <div *ngIf="language_french">
+          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+        </div>
+        <div *ngIf="language_spanish">
+          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+        </div>
+      </div>
+
+      <div class="col-xs-8 col-sm-7 col-md-8 col-lg-8 col-xl-6" *ngIf="isCV" [@introduction_fadeIn]="introduction_fadeIn">
+        <p class="text_introduction pr-3" *ngIf="language_english">
+          Guided by a desire for independence, I became interested in all aspects of building a website:<br/>
+          Back-office development:<br/>
+          <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
+          Front-office development:<br/>
+          <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
+          Data bases:<br/>
+          <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
+          Configuration and securing of your servers:<br/>
+          <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
+          3D programming and modeling:<br/>
+          <span class="span_development">3Ds Max - Blender - BabylonJS</span>
+        </p>
+        <p class="text_introduction" *ngIf="language_french">
+          Guidé par une volonté d'indépendance, je me suis intéressé à tous les aspects de la réalisation d'un site Web :<br/>
+          Développement Back-office :<br/>
+          <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
+          Développement Front-office :<br/>
+          <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
+          Bases de données :<br/>
+          <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
+          Configuration et sécurisation de vos serveurs :<br/>
+          <span class="span_development">Ubuntu - Apache - Apache Tomcat</span><br/>
+          Programmation et modélisation 3D :<br/>
+          <span class="span_development">3Ds Max - Blender - BabylonJS</span>
+        </p>
+        <p class="text_introduction" *ngIf="language_spanish">
+          Guiado por un deseo de independencia, me interesé en todos los aspectos de la construcción de un website:<br/>
+          Desarrollo de back-office :<br/>
+          <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
+          Front-office (Angular) :<br/>
+          <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
+          Bases de datos :<br/>
+          <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
+          Configuración y protección de sus servidores :<br/>
+          <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
+          Programación y modelado 3D :<br/>
+          <span class="span_development">3Ds Max - Blender - BabylonJS</span>
         </p>
         <div *ngIf="language_english">
           <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>

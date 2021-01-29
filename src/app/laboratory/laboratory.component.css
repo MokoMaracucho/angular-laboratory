@@ -72,7 +72,7 @@
 }
 
 .h1_webDeveloper {
-    font-family: Roboto-Bold;
+    font-family: Montserrat-Black;
     color: #D5CC00CC;
     margin-top: 50px;
 }
@@ -114,7 +114,7 @@
 
 .span_webDeveloper {
     margin-top: -50;
-    font-family: Roboto-Bold;
+    font-family: Montserrat-Black;
     font-size: 24px;
     color: #007CB1CC;
 }
@@ -256,7 +256,7 @@
 }
 
 .h1_card {
-    font-family: Roboto-Bold;
+    font-family: Montserrat-Black;
     font-size: 36px;
     line-height: 35px;
     color: #D5CC00;
