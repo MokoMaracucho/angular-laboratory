@@ -19,6 +19,8 @@ import { LaboratoryService } from './laboratory/services/laboratory.service';
 })
 export class AppComponent {
 
+  public isCV = false;
+
   public isCollapsed = true;
 
   public language_french = false;
@@ -29,6 +31,10 @@ export class AppComponent {
       private developmentService: DevelopmentService,
       private laboratoryService: LaboratoryService
   ) {}
+
+  public set_isCV(isCV): void {
+    this.isCV = isCV;
+  }
 
   public cleanUp_development() {
       this.developmentService.cleanUp();

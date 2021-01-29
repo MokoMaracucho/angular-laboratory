@@ -165,8 +165,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.isCV = this.activatedRoute.snapshot.params.isCV;
       if(!this.isCV) {
         this.isCV = false;
-        // this.appComponent.set_isCV(this.isCV);
       }
+      this.appComponent.set_isCV(this.isCV);
       this.laboratoryService.set_isCV(this.isCV);
 
       this.laboratoryService.createScene(this.rendererCanvas_laboratory);
