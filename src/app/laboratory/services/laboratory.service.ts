@@ -785,11 +785,11 @@ export class LaboratoryService {
 
   this.suzanne_blue_MATERIAL = new BABYLON.StandardMaterial("suzanne_blue_MATERIAL", this.scene);
   this.suzanne_blue_MATERIAL.diffuseColor = new BABYLON.Color3(0, 1, 1);
-  this.suzanne_blue_MATERIAL.alpha = 0.5;
+  this.suzanne_blue_MATERIAL.alpha = 0.7;
 
   this.suzanne_red_MATERIAL = new BABYLON.StandardMaterial("suzanne_red_MATERIAL", this.scene);
   this.suzanne_red_MATERIAL.diffuseColor = new BABYLON.Color3(1, 0, 0);
-  this.suzanne_red_MATERIAL.alpha = 0.5;
+  this.suzanne_red_MATERIAL.alpha = 0.3;
 
   this.suzanne_white_MATERIAL = new BABYLON.StandardMaterial("suzanne_white_MATERIAL", this.scene);
   this.suzanne_white_MATERIAL.diffuseColor = new BABYLON.Color3(1, 1, 1);
@@ -801,18 +801,30 @@ export class LaboratoryService {
     this.suzanne_blue = this.scene.getMeshByName("suzanne_blue");
     this.suzanne_blue.isVisible = false;
     this.suzanne_blue.material = this.suzanne_blue_MATERIAL;
+    this.suzanne_blue.position.x = 2;
+    this.suzanne_blue.position.y = 0;
+    this.suzanne_blue.position.z = 7;
+    this.suzanne_blue.parent = this.universal_camera;
   });
 
   BABYLON.SceneLoader.ImportMeshAsync("suzanne_red", "../../assets/glb/laboratory/", "suzanne_red.glb", this.scene).then((result) => {
     this.suzanne_red = this.scene.getMeshByName("suzanne_red");
     this.suzanne_red.isVisible = false;
     this.suzanne_red.material = this.suzanne_red_MATERIAL;
+    this.suzanne_red.position.x = 2;
+    this.suzanne_red.position.y = 0;
+    this.suzanne_red.position.z = 7;
+    this.suzanne_red.parent = this.universal_camera;
   });
 
   BABYLON.SceneLoader.ImportMeshAsync("suzanne_white", "../../assets/glb/laboratory/", "suzanne_white.glb", this.scene).then((result) => {
     this.suzanne_white = this.scene.getMeshByName("suzanne_white");
     this.suzanne_white.isVisible = false;
     this.suzanne_white.material = this.suzanne_white_MATERIAL;
+    this.suzanne_white.position.x = 2;
+    this.suzanne_white.position.y = 0;
+    this.suzanne_white.position.z = 7;
+    this.suzanne_white.parent = this.universal_camera;
   });
 
   // COMPUTERS
@@ -1242,14 +1254,17 @@ export class LaboratoryService {
 
   BABYLON.SceneLoader.ImportMeshAsync("touch_play", "../../assets/glb/laboratory/", "touch_play.glb").then((result) => {
     this.touch_play = this.scene.getMeshByName("touch_play");
+    this.touch_play.isVisible = false;
   });
 
   BABYLON.SceneLoader.ImportMeshAsync("touch_pause", "../../assets/glb/laboratory/", "touch_pause.glb").then((result) => {
     this.touch_pause = this.scene.getMeshByName("touch_pause");
+    this.touch_pause.isVisible = false;
   });
 
   BABYLON.SceneLoader.ImportMeshAsync("touch_skip_forward", "../../assets/glb/laboratory/", "touch_skip_forward.glb").then((result) => {
     this.touch_skip_forward = this.scene.getMeshByName("touch_skip_forward");
+    this.touch_skip_forward.isVisible = false;
   });
 }
 
@@ -1323,11 +1338,11 @@ private set_chromaticAberration():void {
 // IS LOADED
 
 private sceneIsLoaded() {
-    if(!this.scene_loaded) {
-        this.scene_loaded = true;
-        this.interaction.isLoaded.next();
-        this.addActions_buttons();
-    }
+  if(!this.scene_loaded) {
+    this.scene_loaded = true;
+    this.interaction.isLoaded.next();
+    this.addActions_buttons();
+  }
 }
 
 // ADD ACTIONS
@@ -3532,13 +3547,13 @@ public addActions_buttons() {
         if(this.universal_camera.position.x < -34 && this.scene_loaded) {
           this.projector.isPickable = false;
           this.touch_play.isVisible = false;
-          //this.touch_pause.isVisible = false;
-          //this.touch_skip_forward.isVisible = false;
+          this.touch_pause.isVisible = false;
+          this.touch_skip_forward.isVisible = false;
         } else if(this.universal_camera.position.x >= -34 && this.scene_loaded){
           this.projector.isPickable = true;
           this.touch_play.isVisible = true;
-          //this.touch_pause.isVisible = true;
-          //this.touch_skip_forward.isVisible = true;
+          this.touch_pause.isVisible = true;
+          this.touch_skip_forward.isVisible = true;
         }
         this.emitCameraDatas_loop();
       };

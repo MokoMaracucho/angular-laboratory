@@ -9,14 +9,14 @@
     <ul class="navbar-nav">
       <li class="nav-item" routerLinkActive="active">
         <span *ngIf="!isCV">
-          <a class="nav-link pr-2" [routerLink]="['/laboratory']" (click)="cleanUp_development()">
+          <a class="nav-link pr-2" [routerLink]="['/laboratory']" (click)="goTo_laboratory()">
             <span *ngIf="language_english">Laboratory</span>
             <span *ngIf="language_french">Laboratoire</span>
             <span *ngIf="language_spanish">Laboratorio</span>
           </a>
         </span>
         <span *ngIf="isCV">
-          <a class="nav-link pr-2" [routerLink]="['/laboratory/true']" (click)="cleanUp_development()">
+          <a class="nav-link pr-2" [routerLink]="['/laboratory/true']" (click)="goTo_development()">
             <span *ngIf="language_english">Laboratory</span>
             <span *ngIf="language_french">Laboratoire</span>
             <span *ngIf="language_spanish">Laboratorio</span>

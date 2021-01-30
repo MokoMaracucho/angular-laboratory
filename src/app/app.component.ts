@@ -36,19 +36,29 @@ export class AppComponent {
     this.isCV = isCV;
   }
 
-  public cleanUp_development() {
+  public goTo_laboratory(): void {
+    this.isCollapsed = false;
+    this.cleanUp_development();
+  }
+
+  public cleanUp_development(): void {
       this.developmentService.cleanUp();
   }
 
-  public cleanUp_laboratory() {
+  public goTo_development(): void {
+    this.isCollapsed = false;
+    this.cleanUp_laboratory();
+  }
+
+  public cleanUp_laboratory(): void {
       this.laboratoryService.cleanUp();
   }
 
-  public cleanUp_photography() {
+  public cleanUp_photography(): void {
       // this.photographyService.cleanUp();
   }
 
-  public cleanUp_shareKnowledge() {
+  public cleanUp_shareKnowledge(): void {
       // this.photographyService.cleanUp();
   }
 
