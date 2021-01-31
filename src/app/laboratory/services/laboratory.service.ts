@@ -3,6 +3,7 @@ import { WindowRefService } from '../../shared/services/window-ref.service';
 
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
+import 'pepjs';
 
 import { InteractionService } from './interaction.service';
 
@@ -25,19 +26,14 @@ export class LaboratoryService {
   private universal_camera: BABYLON.UniversalCamera;
   private anaglyph_universal_camera: BABYLON.AnaglyphUniversalCamera;
 
-  private pipeline: BABYLON.DefaultRenderingPipeline;
-  private rotation;
-
   private hemispheric_light: BABYLON.Light;
   private directional_light: BABYLON.DirectionalLight;
 
   private boundary_bottom; boundary_front; boundary_left; boundary_back; boundary_right; boundary_top;
   private wall_left_collision; wall_right_collision;
-  private parquet; persian_carpet
   private leather_armchair;
   private lampshade_tissue;
   private transfert_boxes; transfert_boxes_rings;
-  private grid; graphic;
   private rose_rouge; rose_rouge_frame;
   private verbal_shoota; verbal_shoota_frame;
   private lapin_blanc; lapin_blanc_frame;
@@ -58,7 +54,6 @@ export class LaboratoryService {
   private shelf;
   private dvd_pi; dvd_enter_the_void; dvd_2001_odyssee_espace; dvd_la_haine; dvd_sweet_sixteen; dvd_eternal_sunshine; dvd_zero_theorem; dvd_shining;
   private book_strategie_choc; book_no_logo; book_serpent_cosmique; book_meilleur_mondes; book_dictionnaire_symboles; book_prince; book_ca_I; book_ca_II; book_ca_III; book_sagrada_biblia; book_nuit_enfants_rois;
-  private world_map;
   private twitter;
   private instagram; instagram_lens;
   private youtube; youtube_play;
@@ -172,8 +167,6 @@ export class LaboratoryService {
 
   private fireSystem: BABYLON.ParticleSystem;
 
-  private glow_layer: BABYLON.GlowLayer;
-
   private scene_loaded = false;
   private introduction_closed = false;
 
@@ -221,7 +214,7 @@ export class LaboratoryService {
     // LIGHTS
 
     this.hemispheric_light = new BABYLON.HemisphericLight('hemispheric_light', new BABYLON.Vector3(0, 1, 0), this.scene);
-    this.hemispheric_light.intensity = 0.5;
+    this.hemispheric_light.intensity = 0.7;
 
     this.directional_light = new BABYLON.DirectionalLight("directional_light", new BABYLON.Vector3(1, -5, -2), this.scene);
     this.directional_light.intensity = 0.7;
@@ -298,10 +291,8 @@ export class LaboratoryService {
     // FLOOR
 
     BABYLON.SceneLoader.ImportMeshAsync("parquet", "../../assets/glb/laboratory/", "parquet.glb").then((result) => {
-      this.parquet = this.scene.getMeshByName("parquet");
     });
     BABYLON.SceneLoader.ImportMeshAsync("persian_carpet", "../../assets/glb/laboratory/", "persian_carpet.glb").then((result) => {
-      this.persian_carpet = this.scene.getMeshByName("persian_carpet");
     });
 
     // PEGASUS
@@ -369,17 +360,6 @@ export class LaboratoryService {
     BABYLON.SceneLoader.ImportMeshAsync("transfert_boxes_rings", "../../assets/glb/laboratory/", "transfert_boxes_rings.glb", this.scene).then((result) => {
       this.transfert_boxes_rings = this.scene.getMeshByName("transfert_boxes_rings");
       this.transfert_boxes_rings.checkCollisions = true;
-    });
-
-    BABYLON.SceneLoader.ImportMeshAsync("grid", "../../assets/glb/laboratory/", "grid.glb", this.scene).then((result) => {
-      this.grid = this.scene.getMeshByName("grid");
-      this.grid.isVisible = false;
-    });
-
-    BABYLON.SceneLoader.ImportMeshAsync("graphic", "../../assets/glb/laboratory/", "graphic.glb", this.scene).then((result) => {
-      this.graphic = this.scene.getMeshByName("graphic");
-      this.graphic.alpha = 0.3;
-      this.graphic.isVisible = false;
     });
 
     // PHOTOGRAPHY
@@ -1289,12 +1269,6 @@ public addActions_buttons() {
       this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING_HIGHLIGHT));
       this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING));
 
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.grid.isVisible = true));
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.grid.isVisible = false));
-
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.graphic.isVisible = true));
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.graphic.isVisible = false));
-
       this.transfert_boxes.actionManager.registerAction(new BABYLON.CombineAction(
           {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes},
           [
@@ -1315,12 +1289,6 @@ public addActions_buttons() {
 
     this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING_HIGHLIGHT));
     this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING));
-
-    this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.grid.isVisible = true));
-    this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.grid.isVisible = false));
-
-    this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.graphic.isVisible = true));
-    this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.graphic.isVisible = false));
 
     this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes_rings},
@@ -3265,13 +3233,13 @@ public addActions_buttons() {
         if(this.universal_camera.position.x < -34 && this.scene_loaded) {
           this.projector.isPickable = false;
           this.touch_play.isVisible = false;
-          //this.touch_pause.isVisible = false;
-          //this.touch_skip_forward.isVisible = false;
+          this.touch_pause.isVisible = false;
+          this.touch_skip_forward.isVisible = false;
         } else if(this.universal_camera.position.x >= -34 && this.scene_loaded){
           this.projector.isPickable = true;
           this.touch_play.isVisible = true;
-          //this.touch_pause.isVisible = true;
-          //this.touch_skip_forward.isVisible = true;
+          this.touch_pause.isVisible = true;
+          this.touch_skip_forward.isVisible = true;
         }
         this.emitCameraDatas_loop();
       };
