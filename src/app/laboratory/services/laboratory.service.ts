@@ -3,6 +3,7 @@ import { WindowRefService } from '../../shared/services/window-ref.service';
 
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
+import 'pepjs';
 
 import { InteractionService } from './interaction.service';
 
@@ -37,7 +38,6 @@ export class LaboratoryService {
   private leather_armchair;
   private lampshade_tissue;
   private transfert_boxes; transfert_boxes_rings;
-  private grid; graphic;
   private rose_rouge; rose_rouge_frame;
   private verbal_shoota; verbal_shoota_frame;
   private lapin_blanc; lapin_blanc_frame;
@@ -50,9 +50,7 @@ export class LaboratoryService {
   private desk;
   private via_air_mail;
   private threed_glasses_frame; threed_glass_blue; threed_glass_red;
-  private suzanne_blue; suzanne_red; suzanne_white;
   private keyboard; keyboard_keyboard; mac_mini; laptop; laptop_keyboard; laptop_screen; screen_center; screen_frame_center; screen_right; screen_frame_right;
-  private bulb; bulb_pin; bulb_string; bulb_string_support;
   private glass_left_top; glass_left_bottom; glass_right_top; glass_right_bottom;
   private united_kingdom_blue; united_kingdom_white; united_kingdom_red;
   private france_blue; france_white; france_red;
@@ -62,13 +60,9 @@ export class LaboratoryService {
   private book_strategie_choc; book_no_logo; book_serpent_cosmique; book_meilleur_mondes; book_dictionnaire_symboles; book_prince; book_ca_I; book_ca_II; book_ca_III; book_sagrada_biblia; book_nuit_enfants_rois;
   private world_map;
   private twitter;
-  private cursor_twitter_black; cursor_twitter_white;
   private instagram; instagram_lens;
-  private cursor_instagram_black; cursor_instagram_white;
   private youtube; youtube_play;
-  private cursor_youtube_black; cursor_youtube_white;
   private spotify_green; spotify_black;
-  private cursor_spotify_black; cursor_spotify_white;
   private projector;
   private touch_play; touch_pause; touch_skip_forward;
 
@@ -230,27 +224,6 @@ export class LaboratoryService {
     this.anaglyph_universal_camera.ellipsoid = new BABYLON.Vector3(2, 2, 2);
     this.anaglyph_universal_camera.inputs.addMouseWheel();
 
-    // PIPE
-
-    this.pipeline = new BABYLON.DefaultRenderingPipeline("pipeline", true, this.scene, [this.universal_camera]);
-
-    this.pipeline.samples = 4;
-    this.pipeline.fxaaEnabled = true;
-    this.pipeline.bloomEnabled = true;
-    this.pipeline.bloomKernel = 640;
-    this.pipeline.bloomWeight = 0.1;
-    this.pipeline.bloomThreshold = 0.3;
-    this.pipeline.bloomScale = 0.5;
-
-    this.pipeline.chromaticAberrationEnabled = true;
-    this.set_chromaticAberration();
-    this.rotation = 1;
-    this.pipeline.chromaticAberration.direction.x = Math.sin(this.rotation);
-    this.pipeline.chromaticAberration.direction.y = Math.cos(this.rotation);
-
-    this.pipeline.grainEnabled = true;
-    this.pipeline.grain.intensity = 7;
-
     // LIGHTS
 
     this.hemispheric_light = new BABYLON.HemisphericLight('hemispheric_light', new BABYLON.Vector3(0, 1, 0), this.scene);
@@ -402,17 +375,6 @@ export class LaboratoryService {
     BABYLON.SceneLoader.ImportMeshAsync("transfert_boxes_rings", "../../assets/glb/laboratory/", "transfert_boxes_rings.glb", this.scene).then((result) => {
       this.transfert_boxes_rings = this.scene.getMeshByName("transfert_boxes_rings");
       this.transfert_boxes_rings.checkCollisions = true;
-    });
-
-    BABYLON.SceneLoader.ImportMeshAsync("grid", "../../assets/glb/laboratory/", "grid.glb", this.scene).then((result) => {
-      this.grid = this.scene.getMeshByName("grid");
-      this.grid.isVisible = false;
-    });
-
-    BABYLON.SceneLoader.ImportMeshAsync("graphic", "../../assets/glb/laboratory/", "graphic.glb", this.scene).then((result) => {
-      this.graphic = this.scene.getMeshByName("graphic");
-      this.graphic.alpha = 0.3;
-      this.graphic.isVisible = false;
     });
 
     // PHOTOGRAPHY
@@ -797,24 +759,6 @@ export class LaboratoryService {
 
   this.suzanne_white_MATERIAL = new BABYLON.StandardMaterial("suzanne_white_MATERIAL", this.scene);
 
-  BABYLON.SceneLoader.ImportMeshAsync("suzanne_blue", "../../assets/glb/laboratory/", "suzanne_blue.glb", this.scene).then((result) => {
-    this.suzanne_blue = this.scene.getMeshByName("suzanne_blue");
-    this.suzanne_blue.isVisible = false;
-    this.suzanne_blue.material = this.suzanne_blue_MATERIAL;
-  });
-
-  BABYLON.SceneLoader.ImportMeshAsync("suzanne_red", "../../assets/glb/laboratory/", "suzanne_red.glb", this.scene).then((result) => {
-    this.suzanne_red = this.scene.getMeshByName("suzanne_red");
-    this.suzanne_red.isVisible = false;
-    this.suzanne_red.material = this.suzanne_red_MATERIAL;
-  });
-
-  BABYLON.SceneLoader.ImportMeshAsync("suzanne_white", "../../assets/glb/laboratory/", "suzanne_white.glb", this.scene).then((result) => {
-    this.suzanne_white = this.scene.getMeshByName("suzanne_white");
-    this.suzanne_white.isVisible = false;
-    this.suzanne_white.material = this.suzanne_white_MATERIAL;
-  });
-
   // COMPUTERS
 
   BABYLON.SceneLoader.ImportMeshAsync("support_laptop", "../../assets/glb/laboratory/", "support_laptop.glb", this.scene).then((result) => {
@@ -882,35 +826,6 @@ export class LaboratoryService {
 
   BABYLON.SceneLoader.ImportMeshAsync("screen_right", "../../assets/glb/laboratory/", "screen_right.glb", this.scene).then((result) => {
     this.screen_right = this.scene.getMeshByName("screen_right");
-  });
-
-  BABYLON.SceneLoader.ImportMeshAsync("bulb", "../../assets/glb/laboratory/", "bulb.glb", this.scene).then((result) => {
-    this.bulb = this.scene.getMeshByName("bulb");
-    this.bulb.isVisible = false;
-    this.bulb.material = this.glass_MATERIAL;
-  });
-
-  BABYLON.SceneLoader.ImportMeshAsync("bulb_pin", "../../assets/glb/laboratory/", "bulb_pin.glb", this.scene).then((result) => {
-    this.bulb_pin = this.scene.getMeshByName("bulb_pin");
-    this.bulb_pin.isVisible = false;
-  });
-
-  this.bulb_string_MATERIAL = new BABYLON.StandardMaterial("bulb_string_MATERIAL", this.scene);
-  this.bulb_string_MATERIAL.emissiveColor = new BABYLON.Color3(0.94, 0.86, 0.71);
-
-  this.glow_layer = new BABYLON.GlowLayer("glow", this.scene);
-  this.glow_layer.intensity = 1.5;
-
-  BABYLON.SceneLoader.ImportMeshAsync("bulb_string", "../../assets/glb/laboratory/", "bulb_string.glb", this.scene).then((result) => {
-    this.bulb_string = this.scene.getMeshByName("bulb_string");
-    this.bulb_string.isVisible = false;
-    this.bulb_string.material = this.bulb_string_MATERIAL;
-    this.glow_layer.addIncludedOnlyMesh(this.bulb_string);
-  });
-
-  BABYLON.SceneLoader.ImportMeshAsync("bulb_string_support", "../../assets/glb/laboratory/", "bulb_string_support.glb", this.scene).then((result) => {
-    this.bulb_string_support = this.scene.getMeshByName("bulb_string_support");
-    this.bulb_string_support.isVisible = false;
   });
 
   // WALL RIGHT
@@ -1296,30 +1211,6 @@ private get_initPositionCameraTarget(): BABYLON.Vector3 {
   }
 }
 
-// ABERRATION CHROMATIC AMOUNT
-
-private set_chromaticAberration():void {
-  if(this.innerWidth <= 576) {
-    this.pipeline.chromaticAberration.aberrationAmount = 15;
-    this.pipeline.chromaticAberration.radialIntensity = 1;
-  } else if(this.innerWidth <= 768) {
-    this.pipeline.chromaticAberration.aberrationAmount = 18;
-    this.pipeline.chromaticAberration.radialIntensity = 1;
-  } else if(this.innerWidth <= 960) {
-    this.pipeline.chromaticAberration.aberrationAmount = 21;
-    this.pipeline.chromaticAberration.radialIntensity = 0.9;
-  } else if(this.innerWidth <= 1140) {
-    this.pipeline.chromaticAberration.aberrationAmount = 24;
-    this.pipeline.chromaticAberration.radialIntensity = 0.8;
-  } else if(this.innerWidth <= 1500) {
-    this.pipeline.chromaticAberration.aberrationAmount = 27;
-    this.pipeline.chromaticAberration.radialIntensity = 0.8;
-  } else {
-    this.pipeline.chromaticAberration.aberrationAmount = 30;
-    this.pipeline.chromaticAberration.radialIntensity = 0.8;
-  }
-}
-
 // IS LOADED
 
 private sceneIsLoaded() {
@@ -1409,12 +1300,6 @@ public addActions_buttons() {
       this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING_HIGHLIGHT));
       this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING));
 
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.grid.isVisible = true));
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.grid.isVisible = false));
-
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.graphic.isVisible = true));
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.graphic.isVisible = false));
-
       this.transfert_boxes.actionManager.registerAction(new BABYLON.CombineAction(
           {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes},
           [
@@ -1435,12 +1320,6 @@ public addActions_buttons() {
 
     this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING_HIGHLIGHT));
     this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING));
-
-    this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.grid.isVisible = true));
-    this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.grid.isVisible = false));
-
-    this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.graphic.isVisible = true));
-    this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.graphic.isVisible = false));
 
     this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes_rings},
@@ -2081,15 +1960,6 @@ public addActions_buttons() {
     this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", true));
     this.threed_glasses_frame.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", false));
 
-    this.threed_glasses_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.suzanne_blue.isVisible = true));
-    this.threed_glasses_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.suzanne_blue.isVisible = false));
-
-    this.threed_glasses_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.suzanne_red.isVisible = true));
-    this.threed_glasses_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.suzanne_red.isVisible = false));
-
-    this.threed_glasses_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.suzanne_white.isVisible = true));
-    this.threed_glasses_frame.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.suzanne_white.isVisible = false));
-
     this.threed_glasses_frame.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glasses_frame},
         [
@@ -2113,15 +1983,6 @@ public addActions_buttons() {
     this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", true));
     this.threed_glass_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", false));
 
-    this.threed_glass_blue.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.suzanne_blue.isVisible = true));
-    this.threed_glass_blue.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.suzanne_blue.isVisible = false));
-
-    this.threed_glass_blue.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.suzanne_red.isVisible = true));
-    this.threed_glass_blue.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.suzanne_red.isVisible = false));
-
-    this.threed_glass_blue.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.suzanne_white.isVisible = true));
-    this.threed_glass_blue.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.suzanne_white.isVisible = false));
-
     this.threed_glass_blue.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_blue},
         [
@@ -2144,15 +2005,6 @@ public addActions_buttons() {
 
     this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", true));
     this.threed_glass_red.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_glass_red.material, "useEmissiveAsIllumination", false));
-
-    this.threed_glass_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.suzanne_blue.isVisible = true));
-    this.threed_glass_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.suzanne_blue.isVisible = false));
-
-    this.threed_glass_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.suzanne_red.isVisible = true));
-    this.threed_glass_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.suzanne_red.isVisible = false));
-
-    this.threed_glass_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.suzanne_white.isVisible = true));
-    this.threed_glass_red.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.suzanne_white.isVisible = false));
 
     this.threed_glass_red.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_red},
@@ -2203,18 +2055,6 @@ public addActions_buttons() {
     this.keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
     this.keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
 
-    this.keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb.isVisible = true));
-    this.keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb.isVisible = false));
-
-    this.keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_pin.isVisible = true));
-    this.keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_pin.isVisible = false));
-
-    this.keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string.isVisible = true));
-    this.keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string.isVisible = false));
-
-    this.keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string_support.isVisible = true));
-    this.keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string_support.isVisible = false));
-
     this.keyboard.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.keyboard},
         [
@@ -2246,18 +2086,6 @@ public addActions_buttons() {
 
     this.keyboard_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
     this.keyboard_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
-
-    this.keyboard_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb.isVisible = true));
-    this.keyboard_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb.isVisible = false));
-
-    this.keyboard_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_pin.isVisible = true));
-    this.keyboard_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_pin.isVisible = false));
-
-    this.keyboard_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string.isVisible = true));
-    this.keyboard_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string.isVisible = false));
-
-    this.keyboard_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string_support.isVisible = true));
-    this.keyboard_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string_support.isVisible = false));
 
     this.keyboard_keyboard.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.keyboard_keyboard},
@@ -2291,18 +2119,6 @@ public addActions_buttons() {
     this.mac_mini.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
     this.mac_mini.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
 
-    this.mac_mini.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb.isVisible = true));
-    this.mac_mini.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb.isVisible = false));
-
-    this.mac_mini.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_pin.isVisible = true));
-    this.mac_mini.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_pin.isVisible = false));
-
-    this.mac_mini.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string.isVisible = true));
-    this.mac_mini.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string.isVisible = false));
-
-    this.mac_mini.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string_support.isVisible = true));
-    this.mac_mini.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string_support.isVisible = false));
-
     this.mac_mini.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.mac_mini},
         [
@@ -2334,18 +2150,6 @@ public addActions_buttons() {
 
     this.laptop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
     this.laptop.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
-
-    this.laptop.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb.isVisible = true));
-    this.laptop.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb.isVisible = false));
-
-    this.laptop.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_pin.isVisible = true));
-    this.laptop.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_pin.isVisible = false));
-
-    this.laptop.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string.isVisible = true));
-    this.laptop.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string.isVisible = false));
-
-    this.laptop.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string_support.isVisible = true));
-    this.laptop.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string_support.isVisible = false));
 
     this.laptop.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop},
@@ -2379,18 +2183,6 @@ public addActions_buttons() {
     this.laptop_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
     this.laptop_keyboard.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
 
-    this.laptop_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb.isVisible = true));
-    this.laptop_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb.isVisible = false));
-
-    this.laptop_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_pin.isVisible = true));
-    this.laptop_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_pin.isVisible = false));
-
-    this.laptop_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string.isVisible = true));
-    this.laptop_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string.isVisible = false));
-
-    this.laptop_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string_support.isVisible = true));
-    this.laptop_keyboard.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string_support.isVisible = false));
-
     this.laptop_keyboard.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop_keyboard},
         [
@@ -2422,18 +2214,6 @@ public addActions_buttons() {
 
     this.laptop_screen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
     this.laptop_screen.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
-
-    this.laptop_screen.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb.isVisible = true));
-    this.laptop_screen.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb.isVisible = false));
-
-    this.laptop_screen.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_pin.isVisible = true));
-    this.laptop_screen.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_pin.isVisible = false));
-
-    this.laptop_screen.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string.isVisible = true));
-    this.laptop_screen.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string.isVisible = false));
-
-    this.laptop_screen.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string_support.isVisible = true));
-    this.laptop_screen.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string_support.isVisible = false));
 
     this.laptop_screen.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop_screen},
@@ -2467,18 +2247,6 @@ public addActions_buttons() {
     this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
     this.screen_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
 
-    this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb.isVisible = true));
-    this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb.isVisible = false));
-
-    this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_pin.isVisible = true));
-    this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_pin.isVisible = false));
-
-    this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string.isVisible = true));
-    this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string.isVisible = false));
-
-    this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string_support.isVisible = true));
-    this.screen_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string_support.isVisible = false));
-
     this.screen_center.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_center},
         [
@@ -2510,18 +2278,6 @@ public addActions_buttons() {
 
     this.screen_frame_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
     this.screen_frame_center.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
-
-    this.screen_frame_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb.isVisible = true));
-    this.screen_frame_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb.isVisible = false));
-
-    this.screen_frame_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_pin.isVisible = true));
-    this.screen_frame_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_pin.isVisible = false));
-
-    this.screen_frame_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string.isVisible = true));
-    this.screen_frame_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string.isVisible = false));
-
-    this.screen_frame_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string_support.isVisible = true));
-    this.screen_frame_center.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string_support.isVisible = false));
 
     this.screen_frame_center.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_frame_center},
@@ -2555,18 +2311,6 @@ public addActions_buttons() {
     this.screen_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
     this.screen_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
 
-    this.screen_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb.isVisible = true));
-    this.screen_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb.isVisible = false));
-
-    this.screen_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_pin.isVisible = true));
-    this.screen_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_pin.isVisible = false));
-
-    this.screen_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string.isVisible = true));
-    this.screen_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string.isVisible = false));
-
-    this.screen_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string_support.isVisible = true));
-    this.screen_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string_support.isVisible = false));
-
     this.screen_right.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_right},
         [
@@ -2598,18 +2342,6 @@ public addActions_buttons() {
 
     this.screen_frame_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING_HIGHLIGHT));
     this.screen_frame_right.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.mac_mini.material, "albedoTexture", this.mac_mini_BAKING));
-
-    this.screen_frame_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb.isVisible = true));
-    this.screen_frame_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb.isVisible = false));
-
-    this.screen_frame_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_pin.isVisible = true));
-    this.screen_frame_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_pin.isVisible = false));
-
-    this.screen_frame_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string.isVisible = true));
-    this.screen_frame_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string.isVisible = false));
-
-    this.screen_frame_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,() => this.bulb_string_support.isVisible = true));
-    this.screen_frame_right.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,() => this.bulb_string_support.isVisible = false));
 
     this.screen_frame_right.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_frame_right},
@@ -3557,7 +3289,6 @@ public addActions_buttons() {
           this.universal_camera.position = this.get_initPositionCamera();
           this.universal_camera.target = this.get_initPositionCameraTarget();
         }
-        this.set_chromaticAberration();
       });
     });
   }
