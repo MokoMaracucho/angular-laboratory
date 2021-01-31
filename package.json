@@ -32,6 +32,8 @@
     "meshwriter": "^1.2.4",
     "ngx-device-detector": "^2.0.5",
     "nodemailer": "^6.4.17",
+    "pep": "^1.0.13",
+    "pepjs": "^0.5.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

@@ -1,6 +1,18 @@
-<canvas #rendererCanvas_laboratory id="rendererCanvas_laboratory"></canvas>
+<canvas #rendererCanvas_laboratory id="rendererCanvas_laboratory" touch-action="none"></canvas>
 
 <div id="div_introduction_background" [style.display]="isVisible_introductionBackground ? 'block' : 'none'" [@isLoaded_fadeOut]="isLoaded_fadeOut">
+</div>
+
+<div id="menu">
+  <div>
+    <img src="../../assets/img/menu/development.png">
+  </div>
+  <div>
+    <img src="../../assets/img/menu/datas.png">
+  </div>
+  <div>
+    <img src="../../assets/img/menu/stereoscopy.png">
+  </div>
 </div>
 
 <div id="div_introduction" [style.display]="isVisible_introduction ? 'block' : 'none'" *ngIf="isVisible_introduction">

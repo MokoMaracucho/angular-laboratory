@@ -198,6 +198,20 @@
   background-color: #777777;
 }
 
+/* MENU */
+
+#menu {
+  z-index: 20;
+  position: absolute;
+  top: 200px;
+  left: 20px;
+}
+
+#menu img {
+  width: 100px;
+  height: 100px;
+}
+
 /* CARDS */
 
 .div_card {
