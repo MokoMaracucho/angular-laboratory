@@ -17,7 +17,8 @@
     ],"types": [
       "babylonjs",
       "babylonjs-loaders",
-      "babylonjs-gui"
+      "babylonjs-gui",
+      "pepjs"
     ]
   }
 }

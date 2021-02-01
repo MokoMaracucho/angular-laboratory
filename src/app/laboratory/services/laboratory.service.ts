@@ -3,7 +3,8 @@ import { WindowRefService } from '../../shared/services/window-ref.service';
 
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
-import * as GUI from 'babylonjs-gui';
+
+import 'pepjs';
 
 import { InteractionService } from './interaction.service';
 
@@ -21,11 +22,8 @@ export class LaboratoryService {
   private engine: BABYLON.Engine;
   private scene: BABYLON.Scene;
 
-  private universal_camera: BABYLON.VirtualJoysticksCamera;
+  private universal_camera: BABYLON.UniversalCamera;
   private anaglyph_universal_camera: BABYLON.AnaglyphUniversalCamera;
-
-  private leftJoystick;
-  private rightJoystick;
 
   private hemispheric_light: BABYLON.Light;
   private directional_light: BABYLON.DirectionalLight;
@@ -190,9 +188,9 @@ export class LaboratoryService {
     // CANERAS
 
     this.universal_camera = new BABYLON.UniversalCamera("universal_camera", new BABYLON.Vector3(0, 0, 0), this.scene);
-    this.universal_camera.rotation = new BABYLON.Vector3(0, 0, 0);
     this.universal_camera.position = this.get_initPositionCamera();
     this.universal_camera.target = this.get_initPositionCameraTarget();
+    this.universal_camera.touchAngularSensibility = 10000;
     this.universal_camera.speed = 0.7;
     this.universal_camera.inputs.addMouseWheel();
     this.universal_camera.attachControl(canvas);
@@ -201,28 +199,6 @@ export class LaboratoryService {
     this.anaglyph_universal_camera.target = new BABYLON.Vector3(-16.2, 5, -12);
     this.anaglyph_universal_camera.touchAngularSensibility = 10000;
     this.anaglyph_universal_camera.inputs.addMouseWheel();
-
-    // GUI
-
-    this.leftJoystick = new BABYLON.VirtualJoystick(true);
-    this.rightJoystick = new BABYLON.VirtualJoystick(false);
-    BABYLON.VirtualJoystick.Canvas.style.zIndex = "-1";
-
-    var movespeed = 5
-    this.scene.onBeforeRenderObservable.add(()=>{
-        if(this.leftJoystick.pressed){
-            var moveX = this.leftJoystick.deltaPosition.x * (this.engine.getDeltaTime()/1000) * movespeed;
-            var moveY = this.leftJoystick.deltaPosition.y * (this.engine.getDeltaTime()/1000) * movespeed;
-            this.universal_camera.position.x+=moveX;
-            this.universal_camera.position.z+=moveY;
-        }
-        if(this.rightJoystick.pressed){
-            var moveX = this.rightJoystick.deltaPosition.x * (this.engine.getDeltaTime()/100000) * movespeed;
-            var moveY = this.rightJoystick.deltaPosition.y * (this.engine.getDeltaTime()/100000) * movespeed;
-            this.universal_camera.cameraRotation.y+=moveX;
-            this.universal_camera.cameraRotation.x+=moveY;
-        }
-    });
 
     // LIGHTS
 
@@ -3028,7 +3004,6 @@ public addActions_buttons() {
     this.animation_camera_enterLaboratory();
     this.animation_cameraTarget_enterLaboratory();
     this.introduction_closed = true;
-    BABYLON.VirtualJoystick.Canvas.style.zIndex = "20";
   }
 
   private animation_camera_enterLaboratory() {

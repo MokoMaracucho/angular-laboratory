@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
+import 'pepjs';
+
 import { DevelopmentService } from './development/services/development.service';
 import { LaboratoryService } from './laboratory/services/laboratory.service';
 
