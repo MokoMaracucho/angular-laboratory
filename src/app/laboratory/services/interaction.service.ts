@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { CameraDatas } from '../../shared/models/camera-datas';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -25,10 +23,6 @@ export class InteractionService {
   open_travel = new Subject<boolean>();
 
   open_movies = new Subject<boolean>();
-
-  getCameraDatas_init = new Subject<CameraDatas>();
-
-  getCameraDatas_loop = new Subject<CameraDatas>();
 
   change_language_english = new Subject<boolean>();
 

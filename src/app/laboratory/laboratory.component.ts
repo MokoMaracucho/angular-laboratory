@@ -12,8 +12,6 @@ import { InteractionService } from './services/interaction.service';
 
 import { ConnectionService } from '../shared/services/connection.service';
 
-import { CameraDatas } from '../shared/models/camera-datas';
-
 @Component({
   selector: 'app-laboratory',
   templateUrl: './laboratory.component.html',
@@ -141,9 +139,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  public isVisible_dashBoard = false;
-  public camera_datas: CameraDatas;
-
   @ViewChild('rendererCanvas_laboratory', { static: true })
   public rendererCanvas_laboratory: ElementRef<HTMLCanvasElement>;
 
@@ -189,10 +184,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.subscription = this.interaction.open_photography.subscribe(() => this.open_photography());
       this.subscription = this.interaction.open_contactMe.subscribe(() => this.open_contactMe());
       this.subscription = this.interaction.open_movies.subscribe(() => this.open_movies());
-
-      this.subscription = this.interaction.getCameraDatas_init.subscribe((cameraDatas: CameraDatas) => cameraDatas);
-      this.camera_datas = this.laboratoryService.emitCameraDatas_init();
-      this.subscription = this.interaction.getCameraDatas_loop.subscribe(() => this.getCameraDatas_loop());
   }
 
   ngOnDestroy(): void {
@@ -328,9 +319,5 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
   public cleanUp_laboratory() {
       this.laboratoryService.cleanUp();
-  }
-
-  private getCameraDatas_loop(): void {
-      this.camera_datas = this.laboratoryService.emitCameraDatas_init();
   }
 }

@@ -11,8 +11,6 @@ import { InteractionService } from './services/interaction.service';
 
 import { ConnectionService } from '../shared/services/connection.service';
 
-import { CameraDatas } from '../shared/models/camera-datas';
-
 @Component({
   selector: 'app-development',
   templateUrl: './development.component.html',
@@ -226,9 +224,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
 
   public isVisible_cache = false;
 
-  public isVisible_dashBoard = false;
-  public camera_datas: CameraDatas;
-
   public anaglyph_activated = false;
 
   @ViewChild('rendererCanvas_development', { static: true })
@@ -286,10 +281,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     this.subscription = this.interaction.open_stereoscopy.subscribe(() => this.open_stereoscopy());
     this.subscription = this.interaction.open_ubuntu.subscribe(() => this.open_ubuntu());
     this.subscription = this.interaction.open_apache.subscribe(() => this.open_apache());
-
-    this.subscription = this.interaction.getCameraDatas_init.subscribe((cameraDatas: CameraDatas) => cameraDatas);
-    this.camera_datas = this.developmentService.emitCameraDatas_init();
-    // this.subscription = this.interaction.getCameraDatas_loop.subscribe(() => this.getCameraDatas_loop());
   }
 
   ngOnDestroy(): void {

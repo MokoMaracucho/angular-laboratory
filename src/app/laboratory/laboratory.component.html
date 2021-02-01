@@ -1,6 +1,6 @@
 <canvas #rendererCanvas_laboratory id="rendererCanvas_laboratory" touch-action="none"></canvas>
 
-<div id="div_introduction_background" [style.display]="isVisible_introductionBackground ? 'block' : 'none'" [@isLoaded_fadeOut]="isLoaded_fadeOut">
+<div id="div_introduction_background" [style.display]="isVisible_introductionBackground ? 'block' : 'none'" [@isLoaded_fadeOut]="isLoaded_fadeOut" touch-action="none">
 </div>
 
 <div id="div_introduction" [style.display]="isVisible_introduction ? 'block' : 'none'" *ngIf="isVisible_introduction">
@@ -93,7 +93,7 @@
   </div>
 </div>
 
-<div class="div_card" [style.display]="isVisible_development ? 'block' : 'none'" [@isVisible_development]="isVisible_development">
+<div class="div_card" [style.display]="isVisible_development ? 'block' : 'none'" [@isVisible_development]="isVisible_development" touch-action="none">
   <div class="container_card container">
     <div class="row">
       <div class="col-12">
@@ -102,108 +102,108 @@
         <h1 class="h1_card" *ngIf="language_spanish">DESAROLLO</h1>
       </div>
     </div>
-      <div class="row">
-        <div class="col-12" *ngIf="!isCV">
-          <p class="text_content" *ngIf="language_english">
-            Unleash your creativity!<br/>
-            Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas.<br/>
-            Front-end and Back-end development for a better distribution of functionalities. Database management. Configuration and securing of your servers. 3D modeling and programming.<br/>
-            Go to the "Development" section for more details.
-          </p>
-          <p class="text_content" *ngIf="language_french">
-            Liberez votre créativité !<br/>
-            Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.<br/>
-            Developpement Front-end et Back-end pour une meilleure répartition des fonctionnalités. Gestion des bases de données. Configuration et sécurisation de vos serveurs. Modélisation et programmtion 3D.<br/>
-            Accédez à la rubrique "Développement" pour plus de détails.
-          </p>
-          <p class="text_content" *ngIf="language_spanish">
-            ¡Da rienda suelta a tu creatividad!<br/>
-            Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.<br/>
-            Desarrollo Front-end y Back-end para una mejor distribución de funcionalidades. Gestión de base de datos. Configuración y aseguramiento de sus servidores. Modelado y programación 3D.<br/>
-            Vaya a la sección "Desarrollo" para obtener más detalles.
-          </p>
-          <a type="button" class="btn btn-dark mb-2" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Développement</a>
-          <div *ngIf="language_english">
-            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-          </div>
-          <div *ngIf="language_french">
-            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-          </div>
-          <div *ngIf="language_spanish">
-            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-          </div>
+    <div class="row">
+      <div class="col-12" *ngIf="!isCV">
+        <p class="text_content" *ngIf="language_english">
+          Unleash your creativity!<br/>
+          Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas.<br/>
+          Front-end and Back-end development for a better distribution of functionalities. Database management. Configuration and securing of your servers. 3D modeling and programming.<br/>
+          Go to the "Development" section for more details.
+        </p>
+        <p class="text_content" *ngIf="language_french">
+          Liberez votre créativité !<br/>
+          Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.<br/>
+          Developpement Front-end et Back-end pour une meilleure répartition des fonctionnalités. Gestion des bases de données. Configuration et sécurisation de vos serveurs. Modélisation et programmtion 3D.<br/>
+          Accédez à la rubrique "Développement" pour plus de détails.
+        </p>
+        <p class="text_content" *ngIf="language_spanish">
+          ¡Da rienda suelta a tu creatividad!<br/>
+          Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.<br/>
+          Desarrollo Front-end y Back-end para una mejor distribución de funcionalidades. Gestión de base de datos. Configuración y aseguramiento de sus servidores. Modelado y programación 3D.<br/>
+          Vaya a la sección "Desarrollo" para obtener más detalles.
+        </p>
+        <a type="button" class="btn btn-dark mb-2" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Développement</a>
+        <div *ngIf="language_english">
+          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
         </div>
-        <div class="col-12" *ngIf="isCV">
-          <p class="text_content" *ngIf="language_english">
-            Guided by a desire for independence, I became interested in all aspects of building a website:<br/>
-            Back-office development:<br/>
-            <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
-            Front-office development:<br/>
-            <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
-            Data bases:<br/>
-            <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
-            Configuration and securing of your servers:<br/>
-            <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
-            3D programming and modeling:<br/>
-            <span class="span_development">3Ds Max - Blender - BabylonJS</span>
-          </p>
-          <p class="text_content" *ngIf="language_french">
-            Guidé par une volonté d'indépendance, je me suis intéressé à tous les aspects de la réalisation d'un site Web :<br/>
-            Développement Back-office :<br/>
-            <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
-            Développement Front-office :<br/>
-            <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
-            Bases de données :<br/>
-            <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
-            Configuration et sécurisation de vos serveurs :<br/>
-            <span class="span_development">Ubuntu - Apache - Apache Tomcat</span><br/>
-            Programmation et modélisation 3D :<br/>
-            <span class="span_development">3Ds Max - Blender - BabylonJS</span>
-          </p>
-          <p class="text_content" *ngIf="language_spanish">
-            Guiado por un deseo de independencia, me interesé en todos los aspectos de la construcción de un website:<br/>
-            Desarrollo de back-office :<br/>
-            <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
-            Front-office (Angular) :<br/>
-            <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
-            Bases de datos :<br/>
-            <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
-            Configuración y protección de sus servidores :<br/>
-            <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
-            Programación y modelado 3D :<br/>
-            <span class="span_development">3Ds Max - Blender - BabylonJS</span>
-          </p>
-          <a type="button" class="btn btn-dark mb-2" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Développement</a>
-          <div *ngIf="language_english">
-              <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-              <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-          </div>
-          <div *ngIf="language_french">
-              <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-              <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-          </div>
-          <div *ngIf="language_spanish">
-              <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-              <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-          </div>
+        <div *ngIf="language_french">
+          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+        </div>
+        <div *ngIf="language_spanish">
+          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
         </div>
       </div>
-        <div class="row">
-          <div class="col-12">
-            <button type="button" class="btn btn-primary mt-3" (click)="close_development()">
-              <span *ngIf="language_english">Close</span>
-              <span *ngIf="language_french">Fermer</span>
-              <span *ngIf="language_spanish">Cerrar</span>
-            </button>
-          </div>
+      <div class="col-12" *ngIf="isCV">
+        <p class="text_content" *ngIf="language_english">
+          Guided by a desire for independence, I became interested in all aspects of building a website:<br/>
+          Back-office development:<br/>
+          <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
+          Front-office development:<br/>
+          <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
+          Data bases:<br/>
+          <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
+          Configuration and securing of your servers:<br/>
+          <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
+          3D programming and modeling:<br/>
+          <span class="span_development">3Ds Max - Blender - BabylonJS</span>
+        </p>
+        <p class="text_content" *ngIf="language_french">
+          Guidé par une volonté d'indépendance, je me suis intéressé à tous les aspects de la réalisation d'un site Web :<br/>
+          Développement Back-office :<br/>
+          <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
+          Développement Front-office :<br/>
+          <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
+          Bases de données :<br/>
+          <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
+          Configuration et sécurisation de vos serveurs :<br/>
+          <span class="span_development">Ubuntu - Apache - Apache Tomcat</span><br/>
+          Programmation et modélisation 3D :<br/>
+          <span class="span_development">3Ds Max - Blender - BabylonJS</span>
+        </p>
+        <p class="text_content" *ngIf="language_spanish">
+          Guiado por un deseo de independencia, me interesé en todos los aspectos de la construcción de un website:<br/>
+          Desarrollo de back-office :<br/>
+          <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
+          Front-office (Angular) :<br/>
+          <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
+          Bases de datos :<br/>
+          <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
+          Configuración y protección de sus servidores :<br/>
+          <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
+          Programación y modelado 3D :<br/>
+          <span class="span_development">3Ds Max - Blender - BabylonJS</span>
+        </p>
+        <a type="button" class="btn btn-dark mb-2" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Développement</a>
+        <div *ngIf="language_english">
+            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
         </div>
+        <div *ngIf="language_french">
+            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+        </div>
+        <div *ngIf="language_spanish">
+            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <button type="button" class="btn btn-primary mt-3" (click)="close_development()">
+          <span *ngIf="language_english">Close</span>
+          <span *ngIf="language_french">Fermer</span>
+          <span *ngIf="language_spanish">Cerrar</span>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="div_card" [style.display]="isVisible_datas ? 'block' : 'none'" [@isVisible_datas]="isVisible_datas">
+<div class="div_card" [style.display]="isVisible_datas ? 'block' : 'none'" [@isVisible_datas]="isVisible_datas" touch-action="none">
     <div class="container_card container">
         <div class="row">
             <div class="col-12">
@@ -252,7 +252,7 @@
     </div>
 </div>
 
-<div class="div_card" *ngIf="!isMobileDevice && !isCV" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
+<div class="div_card" *ngIf="!isMobileDevice && !isCV" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy" touch-action="none">
   <div class="container_card container">
     <div class="row">
       <div class="col">
@@ -310,7 +310,8 @@
     </div>
   </div>
 </div>
-<div id="div_cv_stereoscopy" class="d-inline-flex p-2" *ngIf="!isMobileDevice && isCV" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
+
+<div id="div_cv_stereoscopy" class="d-inline-flex p-2" *ngIf="!isMobileDevice && isCV" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy" touch-action="none">
   <button id="btn_switch_camera" type="button" class="btn btn-primary mr-2 mb-2" (click)="animation_switch_camera()">
     <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
     <span *ngIf="language_english && anaglyph_activated">Regular</span>
@@ -325,7 +326,8 @@
       <span *ngIf="language_spanish">Cerrar</span>
   </button>
 </div>
-<div id="div_mobile_stereoscopy" class="d-inline-flex p-2" *ngIf="isMobileDevice" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy">
+
+<div id="div_mobile_stereoscopy" class="d-inline-flex p-2" *ngIf="isMobileDevice" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy" touch-action="none">
   <button id="btn_switch_camera" type="button" class="btn btn-primary mr-2 mb-2" (click)="animation_switch_camera()">
     <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
     <span *ngIf="language_english && anaglyph_activated">Regular</span>
@@ -341,7 +343,7 @@
   </button>
 </div>
 
-<div class="div_card" [style.display]="isVisible_photography ? 'block' : 'none'" [@isVisible_photography]="isVisible_photography">
+<div class="div_card" [style.display]="isVisible_photography ? 'block' : 'none'" [@isVisible_photography]="isVisible_photography" touch-action="none">
     <div class="container_card container">
         <div class="row">
             <div class="col">
@@ -393,33 +395,16 @@
     </div>
 </div>
 
-<button id="btn_close_movies" type="button" class="btn btn-primary mr-2 mb-2" (click)="close_movies()" [style.display]="isVisible_movies ? 'block' : 'none'" [@isVisible_movies]="isVisible_movies">
+<button id="btn_close_movies" type="button" class="btn btn-primary mr-2 mb-2" (click)="close_movies()" [style.display]="isVisible_movies ? 'block' : 'none'" [@isVisible_movies]="isVisible_movies" touch-action="none">
   <span *ngIf="language_english">Close</span>
   <span *ngIf="language_french">Fermer</span>
   <span *ngIf="language_spanish">Cerrar</span>
 </button>
 
-<button id="btn_init_position" type="button" class="d-flex btn btn-secondary mr-2 mb-2" (click)="init_position()" [style.display]="isVisible_initPosition ? 'block' : 'none'" [@isVisible_initPosition]="isVisible_initPosition">
+<button id="btn_init_position" type="button" class="d-flex btn btn-secondary mr-2 mb-2" (click)="init_position()" [style.display]="isVisible_initPosition ? 'block' : 'none'" [@isVisible_initPosition]="isVisible_initPosition" touch-action="none">
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-geo" viewBox="0 0 16 16">
     <path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"/>
   </svg>
   <span class="ml-1" *ngIf="!isMobileDevice">Init Position</span>
 </button>
-
-<div id="divDashBoard" *ngIf="isVisible_dashBoard">
-    <h3>Window</h3>
-    <div>
-        <p>Width : <span>{{ innerWidth }}</span></p>
-        <p>Height : <span>{{ innerHeight }}</span></p>
-    </div>
-    <h3>Camera</h3>
-    <div>
-        <p>Alpha : <span>{{ camera_datas.alpha }}</span></p>
-        <p>Beta : <span>{{ camera_datas.beta }}</span></p>
-        <p>Radius : <span>{{ camera_datas.radius }}</span></p>
-        <p>X : <span>{{ camera_datas.x }}</span></p>
-        <p>Y : <span>{{ camera_datas.y }}</span></p>
-        <p>Z : <span>{{ camera_datas.z }}</span></p>
-    </div>
-</div>
 

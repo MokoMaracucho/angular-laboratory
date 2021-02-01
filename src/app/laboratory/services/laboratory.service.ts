@@ -3,11 +3,9 @@ import { WindowRefService } from '../../shared/services/window-ref.service';
 
 import * as BABYLON from 'babylonjs';
 import 'babylonjs-loaders';
-import 'pepjs';
+import * as GUI from 'babylonjs-gui';
 
 import { InteractionService } from './interaction.service';
-
-import { CameraDatas } from '../../shared/models/camera-datas';
 
 @Injectable({
   providedIn: 'root'
@@ -23,16 +21,16 @@ export class LaboratoryService {
   private engine: BABYLON.Engine;
   private scene: BABYLON.Scene;
 
-  private universal_camera: BABYLON.UniversalCamera;
+  private universal_camera: BABYLON.VirtualJoysticksCamera;
   private anaglyph_universal_camera: BABYLON.AnaglyphUniversalCamera;
+
+  private leftJoystick;
+  private rightJoystick;
 
   private hemispheric_light: BABYLON.Light;
   private directional_light: BABYLON.DirectionalLight;
 
-  private boundary_bottom; boundary_front; boundary_left; boundary_back; boundary_right; boundary_top;
   private wall_left_collision; wall_right_collision;
-  private leather_armchair;
-  private lampshade_tissue;
   private transfert_boxes; transfert_boxes_rings;
   private rose_rouge; rose_rouge_frame;
   private verbal_shoota; verbal_shoota_frame;
@@ -172,8 +170,6 @@ export class LaboratoryService {
 
   private anaglyph_activated = false;
 
-  private dashBoardCameraDatas: CameraDatas;
-
   public constructor(
     private ngZone: NgZone,
     private windowRef: WindowRefService,
@@ -194,91 +190,59 @@ export class LaboratoryService {
     // CANERAS
 
     this.universal_camera = new BABYLON.UniversalCamera("universal_camera", new BABYLON.Vector3(0, 0, 0), this.scene);
+    this.universal_camera.rotation = new BABYLON.Vector3(0, 0, 0);
     this.universal_camera.position = this.get_initPositionCamera();
     this.universal_camera.target = this.get_initPositionCameraTarget();
-    this.universal_camera.touchAngularSensibility = 10000;
     this.universal_camera.speed = 0.7;
-    this.universal_camera.invertRotation = false;
-    this.universal_camera.ellipsoid = new BABYLON.Vector3(2, 2, 2);
     this.universal_camera.inputs.addMouseWheel();
-    this.universal_camera.attachControl(canvas, true);
+    this.universal_camera.attachControl(canvas);
 
     this.anaglyph_universal_camera = new BABYLON.AnaglyphUniversalCamera("anaglyph_universal_camera", new BABYLON.Vector3(0, 0, 0), 0.05, this.scene);
     this.anaglyph_universal_camera.target = new BABYLON.Vector3(-16.2, 5, -12);
     this.anaglyph_universal_camera.touchAngularSensibility = 10000;
-    this.anaglyph_universal_camera.speed = 0.7;
-    this.anaglyph_universal_camera.invertRotation = false;
-    this.anaglyph_universal_camera.ellipsoid = new BABYLON.Vector3(2, 2, 2);
     this.anaglyph_universal_camera.inputs.addMouseWheel();
+
+    // GUI
+
+    this.leftJoystick = new BABYLON.VirtualJoystick(true);
+    this.rightJoystick = new BABYLON.VirtualJoystick(false);
+    BABYLON.VirtualJoystick.Canvas.style.zIndex = "-1";
+
+    var movespeed = 5
+    this.scene.onBeforeRenderObservable.add(()=>{
+        if(this.leftJoystick.pressed){
+            var moveX = this.leftJoystick.deltaPosition.x * (this.engine.getDeltaTime()/1000) * movespeed;
+            var moveY = this.leftJoystick.deltaPosition.y * (this.engine.getDeltaTime()/1000) * movespeed;
+            this.universal_camera.position.x+=moveX;
+            this.universal_camera.position.z+=moveY;
+        }
+        if(this.rightJoystick.pressed){
+            var moveX = this.rightJoystick.deltaPosition.x * (this.engine.getDeltaTime()/100000) * movespeed;
+            var moveY = this.rightJoystick.deltaPosition.y * (this.engine.getDeltaTime()/100000) * movespeed;
+            this.universal_camera.cameraRotation.y+=moveX;
+            this.universal_camera.cameraRotation.x+=moveY;
+        }
+    });
 
     // LIGHTS
 
     this.hemispheric_light = new BABYLON.HemisphericLight('hemispheric_light', new BABYLON.Vector3(0, 1, 0), this.scene);
-    this.hemispheric_light.intensity = 0.7;
+    this.hemispheric_light.intensity = 0.9;
 
     this.directional_light = new BABYLON.DirectionalLight("directional_light", new BABYLON.Vector3(1, -5, -2), this.scene);
     this.directional_light.intensity = 0.7;
     this.directional_light.diffuse = new BABYLON.Color3(0.4, 0, 0.2);
     this.directional_light.specular = new BABYLON.Color3(0, 0, 0);
 
-    // SHADOWS
-
-    var shadowGenerator = new BABYLON.ShadowGenerator(1024, this.directional_light);
-
-    // COLLISIONS
-
-    this.scene.collisionsEnabled = true;
-    this.universal_camera.checkCollisions = true;
-    this.anaglyph_universal_camera.checkCollisions = true;
-
-    // BOUNDARIES
-
-    this.boundary_bottom = BABYLON.Mesh.CreatePlane("boundary_bottom", 150, this.scene);
-    this.boundary_bottom.position = new BABYLON.Vector3(-16.2, 0, -20);
-    this.boundary_bottom.rotation = new BABYLON.Vector3(Math.PI/2, 0, 0);
-    this.boundary_bottom.isVisible = false;
-
-    this.boundary_front = BABYLON.Mesh.CreatePlane("boundary_front", 150, this.scene);
-    this.boundary_front.position = new BABYLON.Vector3(-16.2, 45, 40);
-    this.boundary_front.isVisible = false;
-
-    this.boundary_left = BABYLON.Mesh.CreatePlane("boundary_left", 150, this.scene);
-    this.boundary_left.position = new BABYLON.Vector3(43.8, 45, -20);
-    this.boundary_left.rotation = new BABYLON.Vector3(0, Math.PI/2, 0);
-    this.boundary_left.isVisible = false;
-
-    this.boundary_back = BABYLON.Mesh.CreatePlane("boundary_back", 150, this.scene);
-    this.boundary_back.position = new BABYLON.Vector3(-16.2, 45, -80);
-    this.boundary_back.rotation = new BABYLON.Vector3(0, Math.PI, 0);
-    this.boundary_back.isVisible = false;
-
-    this.boundary_right = BABYLON.Mesh.CreatePlane("boundary_right", 150, this.scene);
-    this.boundary_right.position = new BABYLON.Vector3(-76.2, 45, -20);
-    this.boundary_right.rotation = new BABYLON.Vector3(0, -Math.PI/2, 0);
-    this.boundary_right.isVisible = false;
-
-    this.boundary_top = BABYLON.Mesh.CreatePlane("boundary_top", 150, this.scene);
-    this.boundary_top.position = new BABYLON.Vector3(-16.2, 40, -20);
-    this.boundary_top.rotation = new BABYLON.Vector3(-Math.PI/2, 0, 0);
-    this.boundary_top.isVisible = false;
-
-    this.boundary_bottom.checkCollisions = true;
-    this.boundary_front.checkCollisions = true;
-    this.boundary_left.checkCollisions = true;
-    this.boundary_back.checkCollisions = true;
-    this.boundary_right.checkCollisions = true;
-    this.boundary_top.checkCollisions = true;
 
     BABYLON.SceneLoader.ImportMeshAsync("wall_left_collision", "../../assets/glb/laboratory/", "wall_left_collision.glb").then((result) => {
       this.wall_left_collision = this.scene.getMeshByName("wall_left_collision");
       this.wall_left_collision.isVisible = false;
-      this.wall_left_collision.checkCollisions = true;
     });
 
     BABYLON.SceneLoader.ImportMeshAsync("wall_right_collision", "../../assets/glb/laboratory/", "wall_right_collision.glb").then((result) => {
       this.wall_right_collision = this.scene.getMeshByName("wall_right_collision");
       this.wall_right_collision.isVisible = false;
-      this.wall_right_collision.checkCollisions = true;
     });
 
     // PLANS
@@ -325,8 +289,6 @@ export class LaboratoryService {
     // LEATHER ARMCHAIR
 
     BABYLON.SceneLoader.ImportMeshAsync("leather_armchair", "../../assets/glb/laboratory/", "leather_armchair.glb", this.scene).then((result) => {
-      this.leather_armchair = this.scene.getMeshByName("leather_armchair");
-      this.leather_armchair.checkCollisions = true;
     });
     BABYLON.SceneLoader.ImportMeshAsync("blanket", "../../assets/glb/laboratory/", "blanket.glb", this.scene).then((result) => {
     });
@@ -336,8 +298,6 @@ export class LaboratoryService {
     // LAMP
 
     BABYLON.SceneLoader.ImportMeshAsync("lampshade_tissue", "../../assets/glb/laboratory/", "lampshade_tissue.glb", this.scene).then((result) => {
-      this.lampshade_tissue = this.scene.getMeshByName("lampshade_tissue");
-      this.lampshade_tissue.checkCollisions = true;
     });
     BABYLON.SceneLoader.ImportMeshAsync("lampshade", "../../assets/glb/laboratory/", "lampshade.glb", this.scene).then((result) => {
     });
@@ -354,12 +314,10 @@ export class LaboratoryService {
 
     BABYLON.SceneLoader.ImportMeshAsync("transfert_boxes", "../../assets/glb/laboratory/", "transfert_boxes.glb", this.scene).then((result) => {
       this.transfert_boxes = this.scene.getMeshByName("transfert_boxes");
-      this.transfert_boxes.checkCollisions = true;
     });
 
     BABYLON.SceneLoader.ImportMeshAsync("transfert_boxes_rings", "../../assets/glb/laboratory/", "transfert_boxes_rings.glb", this.scene).then((result) => {
       this.transfert_boxes_rings = this.scene.getMeshByName("transfert_boxes_rings");
-      this.transfert_boxes_rings.checkCollisions = true;
     });
 
     // PHOTOGRAPHY
@@ -455,7 +413,6 @@ export class LaboratoryService {
 
   BABYLON.SceneLoader.ImportMeshAsync("chimney", "../../assets/glb/laboratory/", "chimney.glb", this.scene).then((result) => {
     this.chimney = this.scene.getMeshByName("chimney");
-    this.chimney.checkCollisions = true;
   });
 
   var chimney_back_MATERIAL = new BABYLON.StandardMaterial("myMaterial", this.scene);
@@ -617,12 +574,10 @@ export class LaboratoryService {
 
   BABYLON.SceneLoader.ImportMeshAsync("trestle_left", "../../assets/glb/laboratory/", "trestle_left.glb", this.scene).then((result) => {
     this.trestle_left = this.scene.getMeshByName("trestle_left");
-    this.trestle_left.checkCollisions = true;
   });
 
   BABYLON.SceneLoader.ImportMeshAsync("trestle_right", "../../assets/glb/laboratory/", "trestle_right.glb", this.scene).then((result) => {
     this.trestle_right = this.scene.getMeshByName("trestle_right");
-    this.trestle_right.checkCollisions = true;
   });
 
   this.glass_MATERIAL = new BABYLON.StandardMaterial("desk_MATERIAL", this.scene);
@@ -921,7 +876,6 @@ export class LaboratoryService {
 
   BABYLON.SceneLoader.ImportMeshAsync("shelf", "../../assets/glb/laboratory/", "shelf.glb", this.scene).then((result) => {
     this.shelf = this.scene.getMeshByName("shelf");
-    this.shelf.checkCollisions = true;
   });
 
   // DVDS
@@ -952,89 +906,70 @@ export class LaboratoryService {
 
   BABYLON.SceneLoader.ImportMeshAsync("dvd_pi", "../../assets/glb/laboratory/", "dvd_pi.glb", this.scene).then((result) => {
     this.dvd_pi = this.scene.getMeshByName("dvd_pi");
-    this.dvd_pi.checkCollisions = true;
   });
 
   BABYLON.SceneLoader.ImportMeshAsync("dvd_enter_the_void", "../../assets/glb/laboratory/", "dvd_enter_the_void.glb", this.scene).then((result) => {
     this.dvd_enter_the_void = this.scene.getMeshByName("dvd_enter_the_void");
-    this.dvd_enter_the_void.checkCollisions = true;
   });
 
   BABYLON.SceneLoader.ImportMeshAsync("dvd_2001_odyssee_espace", "../../assets/glb/laboratory/", "dvd_2001_odyssee_espace.glb", this.scene).then((result) => {
     this.dvd_2001_odyssee_espace = this.scene.getMeshByName("dvd_2001_odyssee_espace");
-    this.dvd_2001_odyssee_espace.checkCollisions = true;
   });
 
   BABYLON.SceneLoader.ImportMeshAsync("dvd_la_haine", "../../assets/glb/laboratory/", "dvd_la_haine.glb", this.scene).then((result) => {
     this.dvd_la_haine = this.scene.getMeshByName("dvd_la_haine");
-    this.dvd_la_haine.checkCollisions = true;
   });
 
   BABYLON.SceneLoader.ImportMeshAsync("dvd_sweet_sixteen", "../../assets/glb/laboratory/", "dvd_sweet_sixteen.glb", this.scene).then((result) => {
     this.dvd_sweet_sixteen = this.scene.getMeshByName("dvd_sweet_sixteen");
-    this.dvd_sweet_sixteen.checkCollisions = true;
   });
 
   BABYLON.SceneLoader.ImportMeshAsync("dvd_eternal_sunshine", "../../assets/glb/laboratory/", "dvd_eternal_sunshine.glb", this.scene).then((result) => {
     this.dvd_eternal_sunshine = this.scene.getMeshByName("dvd_eternal_sunshine");
-    this.dvd_eternal_sunshine.checkCollisions = true;
   });
 
   BABYLON.SceneLoader.ImportMeshAsync("dvd_zero_theorem", "../../assets/glb/laboratory/", "dvd_zero_theorem.glb", this.scene).then((result) => {
     this.dvd_zero_theorem = this.scene.getMeshByName("dvd_zero_theorem");
-    this.dvd_zero_theorem.checkCollisions = true;
   });
 
   BABYLON.SceneLoader.ImportMeshAsync("dvd_shining", "../../assets/glb/laboratory/", "dvd_shining.glb", this.scene).then((result) => {
     this.dvd_shining = this.scene.getMeshByName("dvd_shining");
-    this.dvd_shining.checkCollisions = true;
   });
 
   // BOOKS
 
   BABYLON.SceneLoader.ImportMeshAsync("book_strategie_choc", "../../assets/glb/laboratory/", "book_strategie_choc.glb", this.scene).then((result) => {
     this.book_strategie_choc = this.scene.getMeshByName("book_strategie_choc");
-    this.book_strategie_choc.checkCollisions = true;
   });
   BABYLON.SceneLoader.ImportMeshAsync("book_no_logo", "../../assets/glb/laboratory/", "book_no_logo.glb", this.scene).then((result) => {
     this.book_no_logo = this.scene.getMeshByName("book_no_logo");
-    this.book_no_logo.checkCollisions = true;
   });
   BABYLON.SceneLoader.ImportMeshAsync("book_serpent_cosmique", "../../assets/glb/laboratory/", "book_serpent_cosmique.glb", this.scene).then((result) => {
     this.book_serpent_cosmique = this.scene.getMeshByName("book_serpent_cosmique");
-    this.book_serpent_cosmique.checkCollisions = true;
   });
   BABYLON.SceneLoader.ImportMeshAsync("book_meilleur_mondes", "../../assets/glb/laboratory/", "book_meilleur_mondes.glb", this.scene).then((result) => {
     this.book_meilleur_mondes = this.scene.getMeshByName("book_meilleur_mondes");
-    this.book_meilleur_mondes.checkCollisions = true;
   });
   BABYLON.SceneLoader.ImportMeshAsync("book_dictionnaire_symboles", "../../assets/glb/laboratory/", "book_dictionnaire_symboles.glb", this.scene).then((result) => {
     this.book_dictionnaire_symboles = this.scene.getMeshByName("book_dictionnaire_symboles");
-    this.book_dictionnaire_symboles.checkCollisions = true;
   });
   BABYLON.SceneLoader.ImportMeshAsync("book_prince", "../../assets/glb/laboratory/", "book_prince.glb", this.scene).then((result) => {
     this.book_prince = this.scene.getMeshByName("book_prince");
-    this.book_prince.checkCollisions = true;
   });
   BABYLON.SceneLoader.ImportMeshAsync("book_ca_I", "../../assets/glb/laboratory/", "book_ca_I.glb", this.scene).then((result) => {
     this.book_ca_I = this.scene.getMeshByName("book_ca_I");
-    this.book_ca_I.checkCollisions = true;
   });
   BABYLON.SceneLoader.ImportMeshAsync("book_ca_II", "../../assets/glb/laboratory/", "book_ca_II.glb", this.scene).then((result) => {
     this.book_ca_II = this.scene.getMeshByName("book_ca_II");
-    this.book_ca_II.checkCollisions = true;
   });
   BABYLON.SceneLoader.ImportMeshAsync("book_ca_III", "../../assets/glb/laboratory/", "book_ca_III.glb", this.scene).then((result) => {
     this.book_ca_III = this.scene.getMeshByName("book_ca_III");
-    this.book_ca_III.checkCollisions = true;
   });
   BABYLON.SceneLoader.ImportMeshAsync("book_sagrada_biblia", "../../assets/glb/laboratory/", "book_sagrada_biblia.glb", this.scene).then((result) => {
     this.book_sagrada_biblia = this.scene.getMeshByName("book_sagrada_biblia");
-    this.book_sagrada_biblia.checkCollisions = true;
   });
   BABYLON.SceneLoader.ImportMeshAsync("book_nuit_enfants_rois", "../../assets/glb/laboratory/", "book_nuit_enfants_rois.glb", this.scene).then((result) => {
     this.book_nuit_enfants_rois = this.scene.getMeshByName("book_nuit_enfants_rois");
-    this.book_nuit_enfants_rois.checkCollisions = true;
   });
 
   // WORLD MAP
@@ -3093,6 +3028,7 @@ public addActions_buttons() {
     this.animation_camera_enterLaboratory();
     this.animation_cameraTarget_enterLaboratory();
     this.introduction_closed = true;
+    BABYLON.VirtualJoystick.Canvas.style.zIndex = "20";
   }
 
   private animation_camera_enterLaboratory() {
@@ -3172,8 +3108,7 @@ public addActions_buttons() {
       this.anaglyph_universal_camera.position = this.universal_camera.position;
       this.anaglyph_universal_camera.rotation = this.universal_camera.rotation;
       this.universal_camera.detachControl();
-      this.scene.setActiveCameraByName("anaglyph_universal_camera");
-      this.anaglyph_universal_camera.attachControl(this.canvas, true);
+      this.anaglyph_universal_camera.attachControl(this.canvas);
       this.anaglyph_activated = true;
       this.interaction.toogle_anaglyph_activated.next();
       this.hemispheric_light.intensity = 1.5;
@@ -3182,37 +3117,11 @@ public addActions_buttons() {
       this.universal_camera.position = this.anaglyph_universal_camera.position;
       this.universal_camera.rotation = this.anaglyph_universal_camera.rotation;
       this.anaglyph_universal_camera.detachControl();
-      this.scene.setActiveCameraByName("universal_camera");
-      this.universal_camera.attachControl(this.canvas, true);
+      this.universal_camera.attachControl(this.canvas);
       this.anaglyph_activated = false;
       this.interaction.toogle_anaglyph_activated.next();
       this.hemispheric_light.intensity = 1;
       this.activation_buttons();
-    }
-  }
-
-  // DASHBOARD
-
-  public emitCameraDatas_init(): CameraDatas {
-      this.getCameraDatas_dashBoard();
-      this.interaction.getCameraDatas_init.next();
-      return this.dashBoardCameraDatas;
-  }
-
-  public emitCameraDatas_loop(): CameraDatas {
-    this.getCameraDatas_dashBoard();
-    this.interaction.getCameraDatas_loop.next();
-    return this.dashBoardCameraDatas;
-  }
-
-  public getCameraDatas_dashBoard() {
-    this.dashBoardCameraDatas = {
-      x: this.universal_camera.position.x,
-      y: this.universal_camera.position.y,
-      z: this.universal_camera.position.z,
-      target_x: this.universal_camera.target.x,
-      target_y: this.universal_camera.target.y,
-      target_z: this.universal_camera.target.z
     }
   }
 
@@ -3241,7 +3150,6 @@ public addActions_buttons() {
           this.touch_pause.isVisible = true;
           this.touch_skip_forward.isVisible = true;
         }
-        this.emitCameraDatas_loop();
       };
 
       if (this.windowRef.document.readyState !== 'loading') {

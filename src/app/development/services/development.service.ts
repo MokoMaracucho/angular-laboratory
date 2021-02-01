@@ -5,8 +5,6 @@ import * as BABYLON from 'babylonjs';
 
 import { InteractionService } from './interaction.service';
 
-import { CameraDatas } from '../../shared/models/camera-datas';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -91,8 +89,6 @@ export class DevelopmentService {
 
     private anaglyph_activated = false;
 
-    private dashBoardCameraDatas: CameraDatas;
-
     public constructor(
         private ngZone: NgZone,
         private windowRef: WindowRefService,
@@ -130,25 +126,6 @@ export class DevelopmentService {
     this.anaglyph_universal_camera.ellipsoid = new BABYLON.Vector3(2, 2, 2);
     this.anaglyph_universal_camera.inputs.addMouseWheel();
     this.anaglyph_universal_camera.attachControl(canvas, true);
-
-    this.pipeline = new BABYLON.DefaultRenderingPipeline("pipeline", true, this.scene, [this.universal_camera]);
-
-    this.pipeline.samples = 4;
-    this.pipeline.fxaaEnabled = true;
-    this.pipeline.bloomEnabled = true;
-    this.pipeline.bloomKernel = 640;
-    this.pipeline.bloomWeight = 1;
-    this.pipeline.bloomThreshold = 0.3;
-    this.pipeline.bloomScale = 0.5;
-
-    this.pipeline.chromaticAberrationEnabled = true;
-    this.set_chromaticAberration();
-    this.rotation = 1;
-    this.pipeline.chromaticAberration.direction.x = Math.sin(this.rotation);
-    this.pipeline.chromaticAberration.direction.y = Math.cos(this.rotation);
-
-    this.pipeline.grainEnabled = true;
-    this.pipeline.grain.intensity = 7;
 
     // LIGHTS
 
@@ -569,30 +546,6 @@ export class DevelopmentService {
   public set_windowDimensions(width, height) {
     this.innerWidth = width;
     this.innerHeight = height;
-  }
-
-  // ABERRATION CHROMATIC AMOUNT
-
-  private set_chromaticAberration():void {
-    if(this.innerWidth <= 576) {
-      this.pipeline.chromaticAberration.aberrationAmount = 15;
-      this.pipeline.chromaticAberration.radialIntensity = 1;
-    } else if(this.innerWidth <= 768) {
-      this.pipeline.chromaticAberration.aberrationAmount = 18;
-      this.pipeline.chromaticAberration.radialIntensity = 1;
-    } else if(this.innerWidth <= 960) {
-      this.pipeline.chromaticAberration.aberrationAmount = 21;
-      this.pipeline.chromaticAberration.radialIntensity = 0.9;
-    } else if(this.innerWidth <= 1140) {
-      this.pipeline.chromaticAberration.aberrationAmount = 24;
-      this.pipeline.chromaticAberration.radialIntensity = 0.8;
-    } else if(this.innerWidth <= 1500) {
-      this.pipeline.chromaticAberration.aberrationAmount = 27;
-      this.pipeline.chromaticAberration.radialIntensity = 0.8;
-    } else {
-      this.pipeline.chromaticAberration.aberrationAmount = 30;
-      this.pipeline.chromaticAberration.radialIntensity = 0.8;
-    }
   }
 
   // IS LOADED
@@ -1200,31 +1153,6 @@ export class DevelopmentService {
     }
   }
 
-  // DASHBOARD
-
-  public emitCameraDatas_init(): CameraDatas {
-      this.getCameraDatas_dashBoard();
-      this.interaction.getCameraDatas_init.next();
-      return this.dashBoardCameraDatas;
-  }
-
-  public emitCameraDatas_loop(): CameraDatas {
-      this.getCameraDatas_dashBoard();
-      this.interaction.getCameraDatas_loop.next();
-      return this.dashBoardCameraDatas;
-  }
-
-  public getCameraDatas_dashBoard() {
-    // this.dashBoardCameraDatas = {
-        // alpha: this.arc_rotate_camera.alpha,
-        // beta: this.arc_rotate_camera.beta,
-        // radius: this.arc_rotate_camera.radius,
-        // x: this.arc_rotate_camera.position.x,
-        // y: this.arc_rotate_camera.position.y,
-        // z: this.arc_rotate_camera.position.z
-    // }
-  }
-
   // ANIMATE
 
   public animate(): void {
@@ -1232,7 +1160,6 @@ export class DevelopmentService {
       const rendererLoopCallback = () => {
         this.scene.render();
         this.scene.executeWhenReady(() => this.sceneIsLoaded());
-        this.emitCameraDatas_loop();
       };
 
       if (this.windowRef.document.readyState !== 'loading') {
@@ -1249,7 +1176,6 @@ export class DevelopmentService {
           this.animation_cameraPosition_enterDevelopment();
           this.animation_targetScreenOffset_enterDevelopment();
         }
-        this.set_chromaticAberration();
       });
     });
   }

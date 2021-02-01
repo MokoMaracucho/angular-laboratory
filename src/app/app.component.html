@@ -1,5 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light" [@isCollapsed]="isCollapsed">
-  <a class="navbar-brand" href="#"><img id="logo_moko" class="" src="../assets/img/logos/moko/logo_moko.png" alt="logo_moko" height=35></a>
+<nav class="navbar navbar-expand-lg navbar-light" [@isCollapsed]="isCollapsed" touch-action="none">
+
+  <a class="navbar-brand" href="#">
+    <img id="logo_moko" class="" src="../assets/img/logos/moko/logo_moko.png" alt="logo_moko" height=35>
+  </a>
 
   <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="navbarNav">
     <span class="navbar-toggler-icon"></span>
