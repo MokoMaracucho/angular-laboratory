@@ -3114,6 +3114,7 @@ public addActions_buttons() {
       const rendererLoopCallback = () => {
         this.scene.render();
         this.scene.executeWhenReady(() => this.sceneIsLoaded());
+        this.universal_camera.attachControl(this.canvas);
         if(this.universal_camera.position.x < -34 && this.scene_loaded) {
           this.projector.isPickable = false;
           this.touch_play.isVisible = false;
