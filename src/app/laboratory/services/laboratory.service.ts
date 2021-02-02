@@ -45,6 +45,7 @@ export class LaboratoryService {
   private threed_glasses_frame; threed_glass_blue; threed_glass_red;
   private keyboard; keyboard_keyboard; mac_mini; laptop; laptop_keyboard; laptop_screen; screen_center; screen_frame_center; screen_right; screen_frame_right;
   private glass_left_top; glass_left_bottom; glass_right_top; glass_right_bottom;
+  private glass_left_top_reflection; glass_left_bottom_reflection; glass_right_top_reflection; glass_right_bottom_reflection;
   private united_kingdom_blue; united_kingdom_white; united_kingdom_red;
   private france_blue; france_white; france_red;
   private spain_red; spain_yellow;
@@ -159,6 +160,10 @@ export class LaboratoryService {
   private mirror_MATERIAL: BABYLON.StandardMaterial;
   private glass_MATERIAL: BABYLON.StandardMaterial;
   private reflectionDesk_MATERIAL: BABYLON.StandardMaterial;
+  private reflectionGlassLeftTop_MATERIAL: BABYLON.StandardMaterial;
+  private reflectionGlassLeftBottom_MATERIAL: BABYLON.StandardMaterial;
+  private reflectionGlassRightTop_MATERIAL: BABYLON.StandardMaterial;
+  private reflectionGlassRightBottom_MATERIAL: BABYLON.StandardMaterial;
   private glass_blue_MATERIAL: BABYLON.StandardMaterial;
   private glass_red_MATERIAL: BABYLON.StandardMaterial;
   private projector_MATERIAL: BABYLON.StandardMaterial;
@@ -813,9 +818,45 @@ export class LaboratoryService {
     this.glass_left_top.material = this.glass_MATERIAL;
   });
 
+  BABYLON.SceneLoader.ImportMeshAsync("glass_left_top_reflection", "../../assets/glb/laboratory/", "glass_left_top_reflection.glb", this.scene).then((result) => {
+    this.glass_left_top_reflection = this.scene.getMeshByName("glass_left_top_reflection");
+    var reflectionGlassLeftTop_worldMatrix = this.glass_left_top_reflection.getWorldMatrix();
+    var reflectionGlassLeftTop_vertexData = this.glass_left_top_reflection.getVerticesData("normal");
+    var reflectionGlassLeftTop_Normal = new BABYLON.Vector3(reflectionGlassLeftTop_vertexData[0], reflectionGlassLeftTop_vertexData[1], reflectionGlassLeftTop_vertexData[2]);
+    reflectionGlassLeftTop_Normal = BABYLON.Vector3.TransformNormal(reflectionGlassLeftTop_Normal, reflectionGlassLeftTop_worldMatrix);
+    var reflectionGlassLeftTop_reflector = BABYLON.Plane.FromPositionAndNormal(this.glass_left_top_reflection.position, reflectionGlassLeftTop_Normal.scale(-1));
+    this.reflectionGlassLeftTop_MATERIAL = new BABYLON.StandardMaterial("reflectionGlassLeftBottom_MATERIAL", this.scene);
+    this.reflectionGlassLeftTop_MATERIAL.alpha = 0.3;
+    this.reflectionGlassLeftTop_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.10);
+    this.glass_left_top_reflection.material = this.reflectionGlassLeftTop_MATERIAL;
+    var reflectionGlassLeftTop_Texture = new BABYLON.MirrorTexture("reflectionGlassLeftTop_Texture", 1024, this.scene);
+    reflectionGlassLeftTop_Texture.level = 1;
+    reflectionGlassLeftTop_Texture.mirrorPlane = reflectionGlassLeftTop_reflector;
+    reflectionGlassLeftTop_Texture.renderList = this.scene.meshes;
+    this.glass_left_top_reflection.material.reflectionTexture = reflectionGlassLeftTop_Texture;
+  });
+
   BABYLON.SceneLoader.ImportMeshAsync("glass_left_bottom", "../../assets/glb/laboratory/", "glass_left_bottom.glb", this.scene).then((result) => {
     this.glass_left_bottom = this.scene.getMeshByName("glass_left_bottom");
     this.glass_left_bottom.material = this.glass_MATERIAL;
+  });
+
+  BABYLON.SceneLoader.ImportMeshAsync("glass_left_bottom_reflection", "../../assets/glb/laboratory/", "glass_left_bottom_reflection.glb", this.scene).then((result) => {
+    this.glass_left_bottom_reflection = this.scene.getMeshByName("glass_left_bottom_reflection");
+    var reflectionGlassLeftBottom_worldMatrix = this.glass_left_bottom_reflection.getWorldMatrix();
+    var reflectionGlassLeftBottom_vertexData = this.glass_left_bottom_reflection.getVerticesData("normal");
+    var reflectionGlassLeftBottom_Normal = new BABYLON.Vector3(reflectionGlassLeftBottom_vertexData[0], reflectionGlassLeftBottom_vertexData[1], reflectionGlassLeftBottom_vertexData[2]);
+    reflectionGlassLeftBottom_Normal = BABYLON.Vector3.TransformNormal(reflectionGlassLeftBottom_Normal, reflectionGlassLeftBottom_worldMatrix);
+    var reflectionGlassLeftBottom_reflector = BABYLON.Plane.FromPositionAndNormal(this.glass_left_bottom_reflection.position, reflectionGlassLeftBottom_Normal.scale(-1));
+    this.reflectionGlassLeftBottom_MATERIAL = new BABYLON.StandardMaterial("reflectionGlassLeftBottom_MATERIAL", this.scene);
+    this.reflectionGlassLeftBottom_MATERIAL.alpha = 0.3;
+    this.reflectionGlassLeftBottom_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.10);
+    this.glass_left_bottom_reflection.material = this.reflectionGlassLeftBottom_MATERIAL;
+    var reflectionGlassLeftBottom_Texture = new BABYLON.MirrorTexture("reflectionGlassLeftBottom_Texture", 1024, this.scene);
+    reflectionGlassLeftBottom_Texture.level = 1;
+    reflectionGlassLeftBottom_Texture.mirrorPlane = reflectionGlassLeftBottom_reflector;
+    reflectionGlassLeftBottom_Texture.renderList = this.scene.meshes;
+    this.glass_left_bottom_reflection.material.reflectionTexture = reflectionGlassLeftBottom_Texture;
   });
 
   BABYLON.SceneLoader.ImportMeshAsync("glass_right_top", "../../assets/glb/laboratory/", "glass_right_top.glb", this.scene).then((result) => {
@@ -823,9 +864,45 @@ export class LaboratoryService {
     this.glass_right_top.material = this.glass_MATERIAL;
   });
 
+  BABYLON.SceneLoader.ImportMeshAsync("glass_right_top_reflection", "../../assets/glb/laboratory/", "glass_right_top_reflection.glb", this.scene).then((result) => {
+    this.glass_right_top_reflection = this.scene.getMeshByName("glass_right_top_reflection");
+    var reflectionGlassRightTop_worldMatrix = this.glass_right_top_reflection.getWorldMatrix();
+    var reflectionGlassRightTop_vertexData = this.glass_right_top_reflection.getVerticesData("normal");
+    var reflectionGlassRightTop_Normal = new BABYLON.Vector3(reflectionGlassRightTop_vertexData[0], reflectionGlassRightTop_vertexData[1], reflectionGlassRightTop_vertexData[2]);
+    reflectionGlassRightTop_Normal = BABYLON.Vector3.TransformNormal(reflectionGlassRightTop_Normal, reflectionGlassRightTop_worldMatrix);
+    var reflectionGlassRightTop_reflector = BABYLON.Plane.FromPositionAndNormal(this.glass_right_top_reflection.position, reflectionGlassRightTop_Normal.scale(-1));
+    this.reflectionGlassRightTop_MATERIAL = new BABYLON.StandardMaterial("reflectionGlassRightTop_MATERIAL", this.scene);
+    this.reflectionGlassRightTop_MATERIAL.alpha = 0.3;
+    this.reflectionGlassRightTop_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.10);
+    this.glass_right_top_reflection.material = this.reflectionGlassRightTop_MATERIAL;
+    var reflectionGlassRightTop_Texture = new BABYLON.MirrorTexture("reflectionGlassRightTop_Texture", 1024, this.scene);
+    reflectionGlassRightTop_Texture.level = 1;
+    reflectionGlassRightTop_Texture.mirrorPlane = reflectionGlassRightTop_reflector;
+    reflectionGlassRightTop_Texture.renderList = this.scene.meshes;
+    this.glass_right_top_reflection.material.reflectionTexture = reflectionGlassRightTop_Texture;
+  });
+
   BABYLON.SceneLoader.ImportMeshAsync("glass_right_bottom", "../../assets/glb/laboratory/", "glass_right_bottom.glb", this.scene).then((result) => {
     this.glass_right_bottom = this.scene.getMeshByName("glass_right_bottom");
     this.glass_right_bottom.material = this.glass_MATERIAL;
+  });
+
+  BABYLON.SceneLoader.ImportMeshAsync("glass_right_bottom_reflection", "../../assets/glb/laboratory/", "glass_right_bottom_reflection.glb", this.scene).then((result) => {
+    this.glass_right_bottom_reflection = this.scene.getMeshByName("glass_right_bottom_reflection");
+    var reflectionGlassRightBottom_worldMatrix = this.glass_right_bottom_reflection.getWorldMatrix();
+    var reflectionGlassRightBottom_vertexData = this.glass_right_bottom_reflection.getVerticesData("normal");
+    var reflectionGlassRightBottom_Normal = new BABYLON.Vector3(reflectionGlassRightBottom_vertexData[0], reflectionGlassRightBottom_vertexData[1], reflectionGlassRightBottom_vertexData[2]);
+    reflectionGlassRightBottom_Normal = BABYLON.Vector3.TransformNormal(reflectionGlassRightBottom_Normal, reflectionGlassRightBottom_worldMatrix);
+    var reflectionGlassRightBottom_reflector = BABYLON.Plane.FromPositionAndNormal(this.glass_right_bottom_reflection.position, reflectionGlassRightBottom_Normal.scale(-1));
+    this.reflectionGlassRightBottom_MATERIAL = new BABYLON.StandardMaterial("reflectionGlassRightBottom_MATERIAL", this.scene);
+    this.reflectionGlassRightBottom_MATERIAL.alpha = 0.3;
+    this.reflectionGlassRightBottom_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.10);
+    this.glass_right_bottom_reflection.material = this.reflectionGlassRightBottom_MATERIAL;
+    var reflectionGlassRightBottom_Texture = new BABYLON.MirrorTexture("reflectionGlassRightBottom_Texture", 1024, this.scene);
+    reflectionGlassRightBottom_Texture.level = 1;
+    reflectionGlassRightBottom_Texture.mirrorPlane = reflectionGlassRightBottom_reflector;
+    reflectionGlassRightBottom_Texture.renderList = this.scene.meshes;
+    this.glass_right_bottom_reflection.material.reflectionTexture = reflectionGlassRightBottom_Texture;
   });
 
   // NHS RAINBOW
