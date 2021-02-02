@@ -28,6 +28,7 @@ export class LaboratoryService {
   private hemispheric_light: BABYLON.Light;
   private directional_light: BABYLON.DirectionalLight;
 
+  private boundary_bottom; boundary_front; boundary_left; boundary_back; boundary_right; boundary_top;
   private wall_left_collision; wall_right_collision;
   private transfert_boxes; transfert_boxes_rings;
   private rose_rouge; rose_rouge_frame;
@@ -39,7 +40,7 @@ export class LaboratoryService {
   private chimney;
   private mirror;
   private trestle_left; trestle_right;
-  private desk;
+  private desk; reflection_desk;
   private via_air_mail;
   private threed_glasses_frame; threed_glass_blue; threed_glass_red;
   private keyboard; keyboard_keyboard; mac_mini; laptop; laptop_keyboard; laptop_screen; screen_center; screen_frame_center; screen_right; screen_frame_right;
@@ -157,6 +158,7 @@ export class LaboratoryService {
 
   private mirror_MATERIAL: BABYLON.StandardMaterial;
   private glass_MATERIAL: BABYLON.StandardMaterial;
+  private reflectionDesk_MATERIAL: BABYLON.StandardMaterial;
   private glass_blue_MATERIAL: BABYLON.StandardMaterial;
   private glass_red_MATERIAL: BABYLON.StandardMaterial;
   private projector_MATERIAL: BABYLON.StandardMaterial;
@@ -196,30 +198,76 @@ export class LaboratoryService {
     this.universal_camera.attachControl(canvas);
 
     this.anaglyph_universal_camera = new BABYLON.AnaglyphUniversalCamera("anaglyph_universal_camera", new BABYLON.Vector3(0, 0, 0), 0.05, this.scene);
-    this.anaglyph_universal_camera.target = new BABYLON.Vector3(-16.2, 5, -12);
     this.anaglyph_universal_camera.touchAngularSensibility = 10000;
+    this.anaglyph_universal_camera.speed = 0.7;
     this.anaglyph_universal_camera.inputs.addMouseWheel();
 
-    // LIGHTS
+    // COLLISIONS
 
-    this.hemispheric_light = new BABYLON.HemisphericLight('hemispheric_light', new BABYLON.Vector3(0, 1, 0), this.scene);
-    this.hemispheric_light.intensity = 0.9;
+    this.scene.collisionsEnabled = true;
+    this.universal_camera.checkCollisions = true;
+    this.anaglyph_universal_camera.checkCollisions = true;
 
-    this.directional_light = new BABYLON.DirectionalLight("directional_light", new BABYLON.Vector3(1, -5, -2), this.scene);
-    this.directional_light.intensity = 0.7;
-    this.directional_light.diffuse = new BABYLON.Color3(0.4, 0, 0.2);
-    this.directional_light.specular = new BABYLON.Color3(0, 0, 0);
+    // BOUNDARIES
 
+    this.boundary_bottom = BABYLON.Mesh.CreatePlane("boundary_bottom", 200, this.scene);
+    this.boundary_bottom.position = new BABYLON.Vector3(-16.2, 0, -10);
+    this.boundary_bottom.rotation = new BABYLON.Vector3(Math.PI/2, 0, 0);
+    this.boundary_bottom.isVisible = false;
+
+    this.boundary_front = BABYLON.Mesh.CreatePlane("boundary_front", 200, this.scene);
+    this.boundary_front.position = new BABYLON.Vector3(-16.2, 50, 60);
+    this.boundary_front.isVisible = false;
+
+    this.boundary_left = BABYLON.Mesh.CreatePlane("boundary_left", 200, this.scene);
+    this.boundary_left.position = new BABYLON.Vector3(20, 50, 0);
+    this.boundary_left.rotation = new BABYLON.Vector3(0, Math.PI/2, 0);
+    this.boundary_left.isVisible = false;
+
+    this.boundary_back = BABYLON.Mesh.CreatePlane("boundary_back", 200, this.scene);
+    this.boundary_back.position = new BABYLON.Vector3(-16.2, 50, -50);
+    this.boundary_back.rotation = new BABYLON.Vector3(0, Math.PI, 0);
+    this.boundary_back.isVisible = false;
+
+    this.boundary_right = BABYLON.Mesh.CreatePlane("boundary_right", 200, this.scene);
+    this.boundary_right.position = new BABYLON.Vector3(-90, 50, 0);
+    this.boundary_right.rotation = new BABYLON.Vector3(0, -Math.PI/2, 0);
+    this.boundary_right.isVisible = false;
+
+    this.boundary_top = BABYLON.Mesh.CreatePlane("boundary_top", 200, this.scene);
+    this.boundary_top.position = new BABYLON.Vector3(-16.2, 60, 0);
+    this.boundary_top.rotation = new BABYLON.Vector3(-Math.PI/2, 0, 0);
+    this.boundary_top.isVisible = false;
+
+    this.boundary_bottom.checkCollisions = true;
+    this.boundary_front.checkCollisions = true;
+    this.boundary_left.checkCollisions = true;
+    this.boundary_back.checkCollisions = true;
+    this.boundary_right.checkCollisions = true;
+    this.boundary_top.checkCollisions = true;
 
     BABYLON.SceneLoader.ImportMeshAsync("wall_left_collision", "../../assets/glb/laboratory/", "wall_left_collision.glb").then((result) => {
       this.wall_left_collision = this.scene.getMeshByName("wall_left_collision");
       this.wall_left_collision.isVisible = false;
+      this.wall_left_collision.checkCollisions = true;
     });
 
     BABYLON.SceneLoader.ImportMeshAsync("wall_right_collision", "../../assets/glb/laboratory/", "wall_right_collision.glb").then((result) => {
       this.wall_right_collision = this.scene.getMeshByName("wall_right_collision");
       this.wall_right_collision.isVisible = false;
+      this.wall_right_collision.checkCollisions = true;
     });
+
+
+    // LIGHTS
+
+    this.hemispheric_light = new BABYLON.HemisphericLight('hemispheric_light', new BABYLON.Vector3(0, 1, 0), this.scene);
+    this.hemispheric_light.intensity = 1.3;
+
+    this.directional_light = new BABYLON.DirectionalLight("directional_light", new BABYLON.Vector3(1, -5, -2), this.scene);
+    this.directional_light.intensity = 0.7;
+    this.directional_light.diffuse = new BABYLON.Color3(0.4, 0, 0.2);
+    this.directional_light.specular = new BABYLON.Color3(0, 0, 0);
 
     // PLANS
 
@@ -555,6 +603,25 @@ export class LaboratoryService {
   BABYLON.SceneLoader.ImportMeshAsync("trestle_right", "../../assets/glb/laboratory/", "trestle_right.glb", this.scene).then((result) => {
     this.trestle_right = this.scene.getMeshByName("trestle_right");
   });
+
+  this.reflection_desk = BABYLON.MeshBuilder.CreatePlane("mirror", {width: 7.5, height: 16.22}, this.scene);
+  this.reflection_desk.position = new BABYLON.Vector3(-16.35, 5.3, -14.8);
+  this.reflection_desk.rotation = new BABYLON.Vector3(Math.PI/2, 1.57, 0);
+  this.reflection_desk.computeWorldMatrix(true);
+  var reflectionDesk_worldMatrix = this.reflection_desk.getWorldMatrix();
+  var reflectionDesk_vertexData = this.reflection_desk.getVerticesData("normal");
+  var reflectionDesk_Normal = new BABYLON.Vector3(reflectionDesk_vertexData[0], reflectionDesk_vertexData[1], reflectionDesk_vertexData[2]);
+  reflectionDesk_Normal = BABYLON.Vector3.TransformNormal(reflectionDesk_Normal, reflectionDesk_worldMatrix);
+  var reflectionDesk_reflector = BABYLON.Plane.FromPositionAndNormal(this.reflection_desk.position, reflectionDesk_Normal.scale(-1));
+  this.reflectionDesk_MATERIAL = new BABYLON.StandardMaterial("reflectionDesk_MATERIAL", this.scene);
+  this.reflectionDesk_MATERIAL.alpha = 0.3;
+  this.reflectionDesk_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.10);
+  this.reflection_desk.material = this.reflectionDesk_MATERIAL;
+  var reflectionDesk_Texture = new BABYLON.MirrorTexture("reflectionDesk_Texture", 1024, this.scene);
+  reflectionDesk_Texture.level = 1;
+  reflectionDesk_Texture.mirrorPlane = reflectionDesk_reflector;
+  reflectionDesk_Texture.renderList = this.scene.meshes;
+  this.reflection_desk.material.reflectionTexture = reflectionDesk_Texture;
 
   this.glass_MATERIAL = new BABYLON.StandardMaterial("desk_MATERIAL", this.scene);
   this.glass_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 0);
@@ -3086,7 +3153,6 @@ public addActions_buttons() {
       this.anaglyph_universal_camera.attachControl(this.canvas);
       this.anaglyph_activated = true;
       this.interaction.toogle_anaglyph_activated.next();
-      this.hemispheric_light.intensity = 1.5;
       this.desactivation_buttons();
     } else {
       this.universal_camera.position = this.anaglyph_universal_camera.position;
@@ -3095,7 +3161,6 @@ public addActions_buttons() {
       this.universal_camera.attachControl(this.canvas);
       this.anaglyph_activated = false;
       this.interaction.toogle_anaglyph_activated.next();
-      this.hemispheric_light.intensity = 1;
       this.activation_buttons();
     }
   }
@@ -3105,6 +3170,8 @@ public addActions_buttons() {
   public init_position(): void {
     this.animation_camera_enterLaboratory();
     this.animation_cameraTarget_enterLaboratory();
+    this.universal_camera.detachControl();
+    this.universal_camera.attachControl(this.canvas);
   }
 
   // ANIMATE

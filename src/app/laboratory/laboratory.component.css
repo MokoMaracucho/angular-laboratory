@@ -22,7 +22,7 @@
 /* INTRODUCTION */
 
 #div_introduction {
-  z-index: 2;
+  z-index: 3;
   position: absolute;
 }
 
@@ -114,7 +114,7 @@
 
 .span_webDeveloper {
   margin-top: -50;
-  font-family: Montserrat-Black;
+  font-family: Roboto-Bold;
   font-size: 24px;
   color: #007CB1CC;
 }
@@ -201,10 +201,10 @@
 /* MENU */
 
 #menu {
-  z-index: 6;
+  z-index: 5;
   position: absolute;
-  top: 200px;
-  margin-left: 10px;
+  margin-top: 65px;
+  right: 10px;
 }
 
 .menu_icons:hover {
@@ -225,6 +225,7 @@
     transform: translateY(-50%);
     left: 10px;
     width: auto;
+    margin-right: 70px;
   }
 }
 
@@ -235,6 +236,7 @@
     transform: translateY(-50%);
     left: 20px;
     width: auto;
+    margin-left: 70px;
   }
 }
 
@@ -270,9 +272,42 @@
 
 .h1_card {
   font-family: Montserrat-Black;
-  font-size: 36px;
-  line-height: 35px;
   color: #D5CC00;
+}
+
+@media (min-width: 10px) {
+  .h1_card {
+    font-size: 30px;
+    line-height: 35px;
+  }
+}
+
+@media (min-width: 576px) {
+  .h1_card {
+    font-size: 30px;
+    line-height: 35px;
+  }
+}
+
+@media (min-width: 768px) {
+  .h1_card {
+    font-size: 36px;
+    line-height: 35px;
+  }
+}
+
+@media (min-width: 960px) {
+  .h1_card {
+    font-size: 36px;
+    line-height: 35px;
+  }
+}
+
+@media (min-width: 1140px) {
+  .h1_card {
+    font-size: 36px;
+    line-height: 35px;
+  }
 }
 
 .text_content {
@@ -351,32 +386,44 @@
 #init_position {
   position: absolute;
   bottom: 20px;
-  left: 10px;
+  right: 10px;
   cursor: pointer;
-}
-
-/* DASH BOARD */
-
-#divDashBoard {
-  z-index: 5;
-  position: absolute;
-  background-color: #00000088;
-  color: #D3D3D3;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  left: 85%;
-  width: 200px;
-  padding: 10px;
-  font-size: 12px;
-  border-radius: 10px;
 }
 
 /* SCROLLBAR */
 
 ::-webkit-scrollbar {
-  padding-left: 10px;
   width: 6px;
+}
+
+@media (min-width: 10px) {
+  ::-webkit-scrollbar {
+    padding-left: 5px;
+  }
+}
+
+@media (min-width: 576px) {
+  ::-webkit-scrollbar {
+    padding-left: 5px;
+  }
+}
+
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    padding-left: 10px;
+  }
+}
+
+@media (min-width: 960px) {
+  ::-webkit-scrollbar {
+    padding-left: 10px;
+  }
+}
+
+@media (min-width: 1140px) {
+  ::-webkit-scrollbar {
+    padding-left: 10px;
+  }
 }
 
 ::-webkit-scrollbar-track {
@@ -387,4 +434,13 @@
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #ffffff44;
+}
+
+/* CACHE */
+
+#cache_mobileDevice {
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }

@@ -93,16 +93,25 @@
   </div>
 </div>
 
-<div id="menu">
+<div id="menu" [style.display]="isVisible_menu ? 'block' : 'none'" [@isVisible_menu]="isVisible_menu">
   <div>
-    <img id="menu_development" class="menu_icons" src="../assets/img/menu/development_70x70.png" alt="development" (click)="open_development()">
+    <img id="menu_development" class="menu_icons"  *ngIf="isDesktopDevice" src="../assets/img/menu/development_70x70.png" alt="development" (click)="open_development()">
+    <img id="menu_development" class="menu_icons"  *ngIf="isMobileDevice || isTabletDevice" src="../assets/img/menu/development_50x50.png" alt="development" (click)="open_development()">
   </div>
   <div>
-    <img id="menu_datas" class="menu_icons" src="../assets/img/menu/datas_70x70.png" alt="datas">
+    <img id="menu_datas" class="menu_icons"  *ngIf="isDesktopDevice" src="../assets/img/menu/datas_70x70.png" alt="datas" (click)="open_datas()">
+    <img id="menu_datas" class="menu_icons"  *ngIf="isMobileDevice || isTabletDevice" src="../assets/img/menu/datas_50x50.png" alt="datas" (click)="open_datas()">
   </div>
   <div>
-    <img id="menu_stereoscopy" class="menu_icons" src="../assets/img/menu/stereoscopy_70x70.png" alt="stereoscopy">
+    <img id="menu_stereoscopy" class="menu_icons"  *ngIf="isDesktopDevice" src="../assets/img/menu/stereoscopy_70x70.png" alt="stereoscopy" (click)="open_stereoscopy()">
+    <img id="menu_stereoscopy" class="menu_icons"  *ngIf="isMobileDevice || isTabletDevice" src="../assets/img/menu/stereoscopy_50x50.png" alt="stereoscopy" (click)="open_stereoscopy()">
   </div>
+  <!--
+  <div>
+    <img id="menu_stereoscopy" class="menu_icons"  *ngIf="isDesktopDevice" src="../assets/img/menu/photography_70x70.png" alt="stereoscopy" (click)="open_stereoscopy()">
+    <img id="menu_stereoscopy" class="menu_icons"  *ngIf="isMobileDevice || isTabletDevice" src="../assets/img/menu/photography_50x50.png" alt="stereoscopy" (click)="open_stereoscopy()">
+  </div>
+  -->
 </div>
 
 <div class="div_card" [style.display]="isVisible_development ? 'block' : 'none'" [@isVisible_development]="isVisible_development" touch-action="none">
@@ -414,6 +423,9 @@
 </button>
 
 <div>
-  <img id="init_position" class="menu_icons" src="../assets/img/menu/init_position_70x70.png" alt="init_position" (click)="init_position()" [style.display]="isVisible_initPosition ? 'block' : 'none'" [@isVisible_initPosition]="isVisible_initPosition">
+  <img id="init_position" *ngIf="isDesktopDevice" src="../assets/img/menu/init_position_70x70.png" alt="init_position" (click)="init_position()" [style.display]="isVisible_initPosition ? 'block' : 'none'" [@isVisible_initPosition]="isVisible_initPosition">
+  <img id="init_position" *ngIf="isMobileDevice || isTabletDevice" src="../assets/img/menu/init_position_50x50.png" alt="init_position" (click)="init_position()" [style.display]="isVisible_initPosition ? 'block' : 'none'" [@isVisible_initPosition]="isVisible_initPosition">
 </div>
+
+<div *ngIf="isMobileDevice" id="cache_mobileDevice" [style.display]="isVisible_cacheMobileDevice ? 'block' : 'none'" [@isVisible_cacheMobileDevice]="isVisible_cacheMobileDevice" touch-action="none"></div>
 
