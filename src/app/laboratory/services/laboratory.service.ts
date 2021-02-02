@@ -604,8 +604,8 @@ export class LaboratoryService {
     this.trestle_right = this.scene.getMeshByName("trestle_right");
   });
 
-  this.reflection_desk = BABYLON.MeshBuilder.CreatePlane("mirror", {width: 7.5, height: 16.22}, this.scene);
-  this.reflection_desk.position = new BABYLON.Vector3(-16.35, 5.3, -14.8);
+  this.reflection_desk = BABYLON.MeshBuilder.CreatePlane("mirror", {width: 7.2, height: 16.22}, this.scene);
+  this.reflection_desk.position = new BABYLON.Vector3(-16.35, 5.25, -15);
   this.reflection_desk.rotation = new BABYLON.Vector3(Math.PI/2, 1.57, 0);
   this.reflection_desk.computeWorldMatrix(true);
   var reflectionDesk_worldMatrix = this.reflection_desk.getWorldMatrix();

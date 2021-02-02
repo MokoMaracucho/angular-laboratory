@@ -26,7 +26,7 @@ export class DevelopmentService {
     private hemispheric_light: BABYLON.Light;
 
     private boundary_bottom; boundary_front; boundary_left; boundary_back; boundary_right; boundary_top;
-    private desk;
+    private desk; reflection_desk;
     private threed_glasses_frame; threed_glass_blue; threed_glass_red;
     private server_glass;
     private arrow_top; arrow_bottom;
@@ -80,6 +80,7 @@ export class DevelopmentService {
     private threed_glasses_frame_BAKING_HIGHLIGHT: BABYLON.Texture;
 
     private glass_MATERIAL: BABYLON.StandardMaterial;
+    private reflectionDesk_MATERIAL: BABYLON.StandardMaterial;
     private glass_blue_MATERIAL: BABYLON.StandardMaterial;
     private glass_red_MATERIAL: BABYLON.StandardMaterial;
     private arrows_MATERIAL: BABYLON.StandardMaterial;
@@ -138,36 +139,34 @@ export class DevelopmentService {
     this.universal_camera.checkCollisions = true;
     this.anaglyph_universal_camera.checkCollisions = true;
 
-    // BOUNDARIES
-
     this.boundary_bottom = BABYLON.Mesh.CreatePlane("boundary_bottom", 200, this.scene);
-    this.boundary_bottom.position = new BABYLON.Vector3(-16.2, 0, -20);
+    this.boundary_bottom.position = new BABYLON.Vector3(-16.2, 0, -10);
     this.boundary_bottom.rotation = new BABYLON.Vector3(Math.PI/2, 0, 0);
     this.boundary_bottom.isVisible = false;
 
     this.boundary_front = BABYLON.Mesh.CreatePlane("boundary_front", 200, this.scene);
-    this.boundary_front.position = new BABYLON.Vector3(-16.2, 65, 100);
-    // this.boundary_front.isVisible = false;
+    this.boundary_front.position = new BABYLON.Vector3(-16.2, 50, 60);
+    this.boundary_front.isVisible = false;
 
     this.boundary_left = BABYLON.Mesh.CreatePlane("boundary_left", 200, this.scene);
-    this.boundary_left.position = new BABYLON.Vector3(63.8, 65, 0);
+    this.boundary_left.position = new BABYLON.Vector3(50, 50, 0);
     this.boundary_left.rotation = new BABYLON.Vector3(0, Math.PI/2, 0);
-    // this.boundary_left.isVisible = false;
+    this.boundary_left.isVisible = false;
 
     this.boundary_back = BABYLON.Mesh.CreatePlane("boundary_back", 200, this.scene);
-    this.boundary_back.position = new BABYLON.Vector3(-16.2, 65, -80);
+    this.boundary_back.position = new BABYLON.Vector3(-16.2, 50, -50);
     this.boundary_back.rotation = new BABYLON.Vector3(0, Math.PI, 0);
-    // this.boundary_back.isVisible = false;
+    this.boundary_back.isVisible = false;
 
     this.boundary_right = BABYLON.Mesh.CreatePlane("boundary_right", 200, this.scene);
-    this.boundary_right.position = new BABYLON.Vector3(-96.2, 65, 0);
+    this.boundary_right.position = new BABYLON.Vector3(-90, 50, 0);
     this.boundary_right.rotation = new BABYLON.Vector3(0, -Math.PI/2, 0);
-    // this.boundary_right.isVisible = false;
+    this.boundary_right.isVisible = false;
 
     this.boundary_top = BABYLON.Mesh.CreatePlane("boundary_top", 200, this.scene);
-    this.boundary_top.position = new BABYLON.Vector3(-16.2, 50, -20);
-    this.boundary_top.rotation = new BABYLON.Vector3(Math.PI/2, 0, 0);
-    // this.boundary_top.isVisible = false;
+    this.boundary_top.position = new BABYLON.Vector3(-16.2, 60, 0);
+    this.boundary_top.rotation = new BABYLON.Vector3(-Math.PI/2, 0, 0);
+    this.boundary_top.isVisible = false;
 
     this.boundary_bottom.checkCollisions = true;
     this.boundary_front.checkCollisions = true;
@@ -196,6 +195,25 @@ export class DevelopmentService {
     });
 
     // DESK
+
+    this.reflection_desk = BABYLON.MeshBuilder.CreatePlane("mirror", {width: 7.2, height: 16.22}, this.scene);
+    this.reflection_desk.position = new BABYLON.Vector3(-9, 5.35, -2.8);
+    this.reflection_desk.rotation = new BABYLON.Vector3(Math.PI/2, 1.57, 0);
+    this.reflection_desk.computeWorldMatrix(true);
+    var reflectionDesk_worldMatrix = this.reflection_desk.getWorldMatrix();
+    var reflectionDesk_vertexData = this.reflection_desk.getVerticesData("normal");
+    var reflectionDesk_Normal = new BABYLON.Vector3(reflectionDesk_vertexData[0], reflectionDesk_vertexData[1], reflectionDesk_vertexData[2]);
+    reflectionDesk_Normal = BABYLON.Vector3.TransformNormal(reflectionDesk_Normal, reflectionDesk_worldMatrix);
+    var reflectionDesk_reflector = BABYLON.Plane.FromPositionAndNormal(this.reflection_desk.position, reflectionDesk_Normal.scale(-1));
+    this.reflectionDesk_MATERIAL = new BABYLON.StandardMaterial("reflectionDesk_MATERIAL", this.scene);
+    this.reflectionDesk_MATERIAL.alpha = 0.3;
+    this.reflectionDesk_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.10);
+    this.reflection_desk.material = this.reflectionDesk_MATERIAL;
+    var reflectionDesk_Texture = new BABYLON.MirrorTexture("reflectionDesk_Texture", 1024, this.scene);
+    reflectionDesk_Texture.level = 1;
+    reflectionDesk_Texture.mirrorPlane = reflectionDesk_reflector;
+    reflectionDesk_Texture.renderList = this.scene.meshes;
+    this.reflection_desk.material.reflectionTexture = reflectionDesk_Texture;
 
     this.glass_MATERIAL = new BABYLON.StandardMaterial("desk_MATERIAL", this.scene);
     this.glass_MATERIAL.diffuseColor = new BABYLON.Color3(0, 0, 0);

@@ -331,10 +331,11 @@ background-color: #777777;
 
 /* INIT POSITION */
 
-#btn_init_position {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
+#init_position {
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  cursor: pointer;
 }
 
 /* SPANS DEVELOPMENT */
