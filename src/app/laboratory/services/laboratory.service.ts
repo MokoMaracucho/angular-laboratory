@@ -3160,7 +3160,8 @@ public addActions_buttons() {
       this.anaglyph_universal_camera.position = this.universal_camera.position;
       this.anaglyph_universal_camera.rotation = this.universal_camera.rotation;
       this.universal_camera.detachControl();
-      this.anaglyph_universal_camera.attachControl(this.canvas);
+      this.scene.activeCamera = this.anaglyph_universal_camera;
+      this.anaglyph_universal_camera.attachControl(this.canvas, true);
       this.anaglyph_activated = true;
       this.interaction.toogle_anaglyph_activated.next();
       this.desactivation_buttons();
@@ -3168,7 +3169,8 @@ public addActions_buttons() {
       this.universal_camera.position = this.anaglyph_universal_camera.position;
       this.universal_camera.rotation = this.anaglyph_universal_camera.rotation;
       this.anaglyph_universal_camera.detachControl();
-      this.universal_camera.attachControl(this.canvas);
+      this.scene.activeCamera = this.universal_camera;
+      this.universal_camera.attachControl(this.canvas, true);
       this.anaglyph_activated = false;
       this.interaction.toogle_anaglyph_activated.next();
       this.activation_buttons();
