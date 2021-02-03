@@ -160,6 +160,12 @@ import { ConnectionService } from '../shared/services/connection.service';
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('2s')])
+    ]),
+    trigger('isVisible_cacheMobileDevice', [
+      state('false', style({background: '#00000000'})),
+      state('true', style({background: '#00000066'})),
+      transition('false => true', [animate('2s')]),
+      transition('true => false', [animate('1s')])
     ])
   ]
 })
@@ -191,6 +197,8 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
   public btnCloseIntroduction_fadeIn = false;
 
   public isVisible_initPosition = false;
+
+  public card_open = false;
 
   public isVisible_postgresql = false;
   public isVisible_java = false;
@@ -225,6 +233,8 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
   public isVisible_cache = false;
 
   public anaglyph_activated = false;
+
+  public isVisible_cacheMobileDevice = false;
 
   @ViewChild('rendererCanvas_development', { static: true })
   public rendererCanvas_development: ElementRef<HTMLCanvasElement>;
@@ -347,181 +357,373 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
   }
 
   private open_postgresql(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_postgresql = true;
   }
 
   public close_postgresql(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_postgresql = false;
   }
 
   private open_java(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_java = true;
   }
 
   public close_java(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_java = false;
   }
 
   private open_spring_framework(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_spring_framework = true;
   }
 
   public close_spring_framework(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_spring_framework = false;
   }
 
   private open_maven(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_maven = true;
   }
 
   public close_maven(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_maven = false;
   }
 
   private open_css(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_css = true;
   }
 
   public close_css(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_css = false;
   }
 
   private open_html(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_html = true;
   }
 
   public close_html(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_html = false;
   }
 
   private open_bootstrap(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_bootstrap = true;
   }
 
   public close_bootstrap(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_bootstrap = false;
   }
 
   private open_angular(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_angular = true;
   }
 
   public close_angular(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_angular = false;
   }
 
   private open_typescript(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_typescript = true;
   }
 
   public close_typescript(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_typescript = false;
   }
 
   private open_postman(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_postman = true;
   }
 
   public close_postman(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_postman = false;
   }
 
   private open_docker(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_docker = true;
   }
 
   public close_docker(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_docker = false;
   }
 
   private open_git(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_git = true;
   }
 
   public close_git(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_git = false;
   }
 
   private open_blender(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_blender = true;
   }
 
   public close_blender(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_blender = false;
   }
 
   private open_babylon(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_babylon = true;
   }
 
   public close_babylon(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_babylon = false;
   }
 
   private open_photoshop(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_photoshop = true;
   }
 
   public close_photoshop(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_photoshop = false;
   }
 
   private open_illustrator(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_illustrator = true;
   }
 
   public close_illustrator(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_illustrator = false;
   }
 
   private open_contactMe(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_contactMe = true;
   }
 
   public close_contactMe(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_contactMe = false;
   }
 
   private open_ubuntu(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_ubuntu = true;
   }
 
   public close_ubuntu(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_ubuntu = false;
   }
 
   private open_apache(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_apache = true;
   }
 
   public close_apache(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_apache = false;
   }
 
-  public init_position(): void {
-    this.developmentService.init_position();
-  }
-
   private open_stereoscopy(): void {
+    if(this.card_open) {
+      this.close_openedCard();
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
     this.isVisible_stereoscopy = true;
   }
 
@@ -535,7 +737,78 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
   }
 
   public close_stereoscopy(): void {
+    if(this.isMobileDevice && this.card_open) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+    this.card_open = false;
     this.developmentService.activation_buttons();
     this.isVisible_stereoscopy = false;
+  }
+
+  public init_position(): void {
+    this.developmentService.init_position();
+  }
+
+  private close_openedCard(): void {
+    if(this.isVisible_postgresql) {
+      this.close_postgresql();
+    }
+    else if(this.isVisible_java) {
+      this.close_java();
+    }
+    else if(this.isVisible_stereoscopy) {
+      this.close_stereoscopy();
+    }
+    else if(this.isVisible_spring_framework) {
+      this.close_spring_framework();
+    }
+    else if(this.isVisible_maven) {
+      this.close_maven();
+    }
+    else if(this.isVisible_css) {
+      this.close_css();
+    }
+    else if(this.isVisible_html) {
+      this.close_html();
+    }
+    else if(this.isVisible_bootstrap) {
+      this.close_bootstrap();
+    }
+    else if(this.isVisible_angular) {
+      this.close_angular();
+    }
+    else if(this.isVisible_typescript) {
+      this.close_typescript();
+    }
+    else if(this.isVisible_postman) {
+      this.close_postman();
+    }
+    else if(this.isVisible_docker) {
+      this.close_docker();
+    }
+    else if(this.isVisible_git) {
+      this.close_git();
+    }
+    else if(this.isVisible_blender) {
+      this.close_blender();
+    }
+    else if(this.isVisible_photoshop) {
+      this.close_photoshop();
+    }
+    else if(this.isVisible_illustrator) {
+      this.close_illustrator();
+    }
+    else if(this.isVisible_contactMe) {
+      this.close_contactMe();
+    }
+    else if(this.isVisible_stereoscopy) {
+      this.close_stereoscopy();
+    }
+    else if(this.isVisible_ubuntu) {
+      this.close_ubuntu();
+    }
+    else if(this.isVisible_apache) {
+      this.close_apache();
+    }
   }
 }

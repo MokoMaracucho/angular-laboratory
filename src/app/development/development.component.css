@@ -362,3 +362,12 @@ background-color: #777777;
   background-color: #ffffff44;
 }
 
+/* CACHE */
+
+#cache_mobileDevice {
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+

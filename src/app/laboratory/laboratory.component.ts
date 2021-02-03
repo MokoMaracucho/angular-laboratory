@@ -393,9 +393,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     if(this.isMobileDevice && this.card_open) {
       this.isVisible_cacheMobileDevice = false;;
     }
+    this.card_open = false;
     this.laboratoryService.animation_closeMovies();
     this.isVisible_movies = false;
-    this.card_open = false;
   }
 
   private close_openedCard(): void {
