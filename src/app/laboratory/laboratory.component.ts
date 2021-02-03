@@ -96,6 +96,12 @@ import { ConnectionService } from '../shared/services/connection.service';
       state('true', style({background: '#00000066'})),
       transition('false => true', [animate('2s')]),
       transition('true => false', [animate('1s')])
+    ]),
+    trigger('isVisible_moviesButton', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')]),
+      transition('true => false', [animate('1s')])
     ])
   ]
 })
@@ -139,6 +145,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   public isVisible_movies = false;
 
   public anaglyph_activated = false;
+  public isVisible_moviesButton = false;
 
   public isVisible_cacheMobileDevice = false;
 
@@ -382,20 +389,18 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     if(this.card_open) {
       this.close_openedCard();
     }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
     this.isVisible_movies = true;
     this.card_open = true;
+    this.isVisible_moviesButton = true;
+    this.laboratoryService.desactivation_moviesButtons();
   }
 
   public close_movies(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
     this.card_open = false;
     this.laboratoryService.animation_closeMovies();
     this.isVisible_movies = false;
+    this.isVisible_moviesButton = false;
+    this.laboratoryService.activation_moviesButtons();
   }
 
   private close_openedCard(): void {

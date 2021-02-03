@@ -106,12 +106,10 @@
     <img id="menu_stereoscopy" class="menu_icons"  *ngIf="isDesktopDevice" src="../assets/img/menu/stereoscopy_70x70.png" alt="stereoscopy" (click)="open_stereoscopy()">
     <img id="menu_stereoscopy" class="menu_icons"  *ngIf="isMobileDevice || isTabletDevice" src="../assets/img/menu/stereoscopy_50x50.png" alt="stereoscopy" (click)="open_stereoscopy()">
   </div>
-  <!--
-  <div>
-    <img id="menu_stereoscopy" class="menu_icons"  *ngIf="isDesktopDevice" src="../assets/img/menu/photography_70x70.png" alt="stereoscopy" (click)="open_stereoscopy()">
-    <img id="menu_stereoscopy" class="menu_icons"  *ngIf="isMobileDevice || isTabletDevice" src="../assets/img/menu/photography_50x50.png" alt="stereoscopy" (click)="open_stereoscopy()">
+  <div [style.display]="isVisible_moviesButton ? 'block' : 'none'" [@isVisible_moviesButton]="isVisible_moviesButton">
+    <img id="menu_movies" class="menu_icons"  *ngIf="isDesktopDevice" src="../assets/img/menu/movies_70x70.png" alt="movies" (click)="close_movies()">
+    <img id="menu_movies" class="menu_icons"  *ngIf="isMobileDevice || isTabletDevice" src="../assets/img/menu/movies_50x50.png" alt="movies" (click)="close_movies()">
   </div>
-  -->
 </div>
 
 <div class="div_card" [style.display]="isVisible_development ? 'block' : 'none'" [@isVisible_development]="isVisible_development" touch-action="none">
@@ -415,12 +413,6 @@
         </div>
     </div>
 </div>
-
-<button id="btn_close_movies" type="button" class="btn btn-primary mr-2 mb-2" (click)="close_movies()" [style.display]="isVisible_movies ? 'block' : 'none'" [@isVisible_movies]="isVisible_movies" touch-action="none">
-  <span *ngIf="language_english">Close</span>
-  <span *ngIf="language_french">Fermer</span>
-  <span *ngIf="language_spanish">Cerrar</span>
-</button>
 
 <div>
   <img id="init_position" *ngIf="isDesktopDevice" src="../assets/img/menu/init_position_70x70.png" alt="init_position" (click)="init_position()" [style.display]="isVisible_initPosition ? 'block' : 'none'" [@isVisible_initPosition]="isVisible_initPosition">

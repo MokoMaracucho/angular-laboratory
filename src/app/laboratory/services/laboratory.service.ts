@@ -45,7 +45,7 @@ export class LaboratoryService {
   private threed_glasses_frame; threed_glass_blue; threed_glass_red;
   private keyboard; keyboard_keyboard; mac_mini; laptop; laptop_keyboard; laptop_screen; screen_center; screen_frame_center; screen_right; screen_frame_right;
   private glass_left_top; glass_left_bottom; glass_right_top; glass_right_bottom;
-  private glass_left_top_reflection; glass_left_bottom_reflection; glass_right_top_reflection; glass_right_bottom_reflection;
+  private glass_top_reflection; glass_bottom_reflection;
   private united_kingdom_blue; united_kingdom_white; united_kingdom_red;
   private france_blue; france_white; france_red;
   private spain_red; spain_yellow;
@@ -160,10 +160,8 @@ export class LaboratoryService {
   private mirror_MATERIAL: BABYLON.StandardMaterial;
   private glass_MATERIAL: BABYLON.StandardMaterial;
   private reflectionDesk_MATERIAL: BABYLON.StandardMaterial;
-  private reflectionGlassLeftTop_MATERIAL: BABYLON.StandardMaterial;
-  private reflectionGlassLeftBottom_MATERIAL: BABYLON.StandardMaterial;
-  private reflectionGlassRightTop_MATERIAL: BABYLON.StandardMaterial;
-  private reflectionGlassRightBottom_MATERIAL: BABYLON.StandardMaterial;
+  private reflectionGlassTop_MATERIAL: BABYLON.StandardMaterial;
+  private reflectionGlassBottom_MATERIAL: BABYLON.StandardMaterial;
   private glass_blue_MATERIAL: BABYLON.StandardMaterial;
   private glass_red_MATERIAL: BABYLON.StandardMaterial;
   private projector_MATERIAL: BABYLON.StandardMaterial;
@@ -267,7 +265,7 @@ export class LaboratoryService {
     // LIGHTS
 
     this.hemispheric_light = new BABYLON.HemisphericLight('hemispheric_light', new BABYLON.Vector3(0, 1, 0), this.scene);
-    this.hemispheric_light.intensity = 1.3;
+    this.hemispheric_light.intensity = 1.1;
 
     this.directional_light = new BABYLON.DirectionalLight("directional_light", new BABYLON.Vector3(1, -5, -2), this.scene);
     this.directional_light.intensity = 0.7;
@@ -818,45 +816,9 @@ export class LaboratoryService {
     this.glass_left_top.material = this.glass_MATERIAL;
   });
 
-  BABYLON.SceneLoader.ImportMeshAsync("glass_left_top_reflection", "../../assets/glb/laboratory/", "glass_left_top_reflection.glb", this.scene).then((result) => {
-    this.glass_left_top_reflection = this.scene.getMeshByName("glass_left_top_reflection");
-    var reflectionGlassLeftTop_worldMatrix = this.glass_left_top_reflection.getWorldMatrix();
-    var reflectionGlassLeftTop_vertexData = this.glass_left_top_reflection.getVerticesData("normal");
-    var reflectionGlassLeftTop_Normal = new BABYLON.Vector3(reflectionGlassLeftTop_vertexData[0], reflectionGlassLeftTop_vertexData[1], reflectionGlassLeftTop_vertexData[2]);
-    reflectionGlassLeftTop_Normal = BABYLON.Vector3.TransformNormal(reflectionGlassLeftTop_Normal, reflectionGlassLeftTop_worldMatrix);
-    var reflectionGlassLeftTop_reflector = BABYLON.Plane.FromPositionAndNormal(this.glass_left_top_reflection.position, reflectionGlassLeftTop_Normal.scale(-1));
-    this.reflectionGlassLeftTop_MATERIAL = new BABYLON.StandardMaterial("reflectionGlassLeftBottom_MATERIAL", this.scene);
-    this.reflectionGlassLeftTop_MATERIAL.alpha = 0.3;
-    this.reflectionGlassLeftTop_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.10);
-    this.glass_left_top_reflection.material = this.reflectionGlassLeftTop_MATERIAL;
-    var reflectionGlassLeftTop_Texture = new BABYLON.MirrorTexture("reflectionGlassLeftTop_Texture", 1024, this.scene);
-    reflectionGlassLeftTop_Texture.level = 1;
-    reflectionGlassLeftTop_Texture.mirrorPlane = reflectionGlassLeftTop_reflector;
-    reflectionGlassLeftTop_Texture.renderList = this.scene.meshes;
-    this.glass_left_top_reflection.material.reflectionTexture = reflectionGlassLeftTop_Texture;
-  });
-
   BABYLON.SceneLoader.ImportMeshAsync("glass_left_bottom", "../../assets/glb/laboratory/", "glass_left_bottom.glb", this.scene).then((result) => {
     this.glass_left_bottom = this.scene.getMeshByName("glass_left_bottom");
     this.glass_left_bottom.material = this.glass_MATERIAL;
-  });
-
-  BABYLON.SceneLoader.ImportMeshAsync("glass_left_bottom_reflection", "../../assets/glb/laboratory/", "glass_left_bottom_reflection.glb", this.scene).then((result) => {
-    this.glass_left_bottom_reflection = this.scene.getMeshByName("glass_left_bottom_reflection");
-    var reflectionGlassLeftBottom_worldMatrix = this.glass_left_bottom_reflection.getWorldMatrix();
-    var reflectionGlassLeftBottom_vertexData = this.glass_left_bottom_reflection.getVerticesData("normal");
-    var reflectionGlassLeftBottom_Normal = new BABYLON.Vector3(reflectionGlassLeftBottom_vertexData[0], reflectionGlassLeftBottom_vertexData[1], reflectionGlassLeftBottom_vertexData[2]);
-    reflectionGlassLeftBottom_Normal = BABYLON.Vector3.TransformNormal(reflectionGlassLeftBottom_Normal, reflectionGlassLeftBottom_worldMatrix);
-    var reflectionGlassLeftBottom_reflector = BABYLON.Plane.FromPositionAndNormal(this.glass_left_bottom_reflection.position, reflectionGlassLeftBottom_Normal.scale(-1));
-    this.reflectionGlassLeftBottom_MATERIAL = new BABYLON.StandardMaterial("reflectionGlassLeftBottom_MATERIAL", this.scene);
-    this.reflectionGlassLeftBottom_MATERIAL.alpha = 0.3;
-    this.reflectionGlassLeftBottom_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.10);
-    this.glass_left_bottom_reflection.material = this.reflectionGlassLeftBottom_MATERIAL;
-    var reflectionGlassLeftBottom_Texture = new BABYLON.MirrorTexture("reflectionGlassLeftBottom_Texture", 1024, this.scene);
-    reflectionGlassLeftBottom_Texture.level = 1;
-    reflectionGlassLeftBottom_Texture.mirrorPlane = reflectionGlassLeftBottom_reflector;
-    reflectionGlassLeftBottom_Texture.renderList = this.scene.meshes;
-    this.glass_left_bottom_reflection.material.reflectionTexture = reflectionGlassLeftBottom_Texture;
   });
 
   BABYLON.SceneLoader.ImportMeshAsync("glass_right_top", "../../assets/glb/laboratory/", "glass_right_top.glb", this.scene).then((result) => {
@@ -864,45 +826,45 @@ export class LaboratoryService {
     this.glass_right_top.material = this.glass_MATERIAL;
   });
 
-  BABYLON.SceneLoader.ImportMeshAsync("glass_right_top_reflection", "../../assets/glb/laboratory/", "glass_right_top_reflection.glb", this.scene).then((result) => {
-    this.glass_right_top_reflection = this.scene.getMeshByName("glass_right_top_reflection");
-    var reflectionGlassRightTop_worldMatrix = this.glass_right_top_reflection.getWorldMatrix();
-    var reflectionGlassRightTop_vertexData = this.glass_right_top_reflection.getVerticesData("normal");
-    var reflectionGlassRightTop_Normal = new BABYLON.Vector3(reflectionGlassRightTop_vertexData[0], reflectionGlassRightTop_vertexData[1], reflectionGlassRightTop_vertexData[2]);
-    reflectionGlassRightTop_Normal = BABYLON.Vector3.TransformNormal(reflectionGlassRightTop_Normal, reflectionGlassRightTop_worldMatrix);
-    var reflectionGlassRightTop_reflector = BABYLON.Plane.FromPositionAndNormal(this.glass_right_top_reflection.position, reflectionGlassRightTop_Normal.scale(-1));
-    this.reflectionGlassRightTop_MATERIAL = new BABYLON.StandardMaterial("reflectionGlassRightTop_MATERIAL", this.scene);
-    this.reflectionGlassRightTop_MATERIAL.alpha = 0.3;
-    this.reflectionGlassRightTop_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.10);
-    this.glass_right_top_reflection.material = this.reflectionGlassRightTop_MATERIAL;
-    var reflectionGlassRightTop_Texture = new BABYLON.MirrorTexture("reflectionGlassRightTop_Texture", 1024, this.scene);
-    reflectionGlassRightTop_Texture.level = 1;
-    reflectionGlassRightTop_Texture.mirrorPlane = reflectionGlassRightTop_reflector;
-    reflectionGlassRightTop_Texture.renderList = this.scene.meshes;
-    this.glass_right_top_reflection.material.reflectionTexture = reflectionGlassRightTop_Texture;
-  });
-
   BABYLON.SceneLoader.ImportMeshAsync("glass_right_bottom", "../../assets/glb/laboratory/", "glass_right_bottom.glb", this.scene).then((result) => {
     this.glass_right_bottom = this.scene.getMeshByName("glass_right_bottom");
     this.glass_right_bottom.material = this.glass_MATERIAL;
   });
 
-  BABYLON.SceneLoader.ImportMeshAsync("glass_right_bottom_reflection", "../../assets/glb/laboratory/", "glass_right_bottom_reflection.glb", this.scene).then((result) => {
-    this.glass_right_bottom_reflection = this.scene.getMeshByName("glass_right_bottom_reflection");
-    var reflectionGlassRightBottom_worldMatrix = this.glass_right_bottom_reflection.getWorldMatrix();
-    var reflectionGlassRightBottom_vertexData = this.glass_right_bottom_reflection.getVerticesData("normal");
-    var reflectionGlassRightBottom_Normal = new BABYLON.Vector3(reflectionGlassRightBottom_vertexData[0], reflectionGlassRightBottom_vertexData[1], reflectionGlassRightBottom_vertexData[2]);
-    reflectionGlassRightBottom_Normal = BABYLON.Vector3.TransformNormal(reflectionGlassRightBottom_Normal, reflectionGlassRightBottom_worldMatrix);
-    var reflectionGlassRightBottom_reflector = BABYLON.Plane.FromPositionAndNormal(this.glass_right_bottom_reflection.position, reflectionGlassRightBottom_Normal.scale(-1));
-    this.reflectionGlassRightBottom_MATERIAL = new BABYLON.StandardMaterial("reflectionGlassRightBottom_MATERIAL", this.scene);
-    this.reflectionGlassRightBottom_MATERIAL.alpha = 0.3;
-    this.reflectionGlassRightBottom_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.10);
-    this.glass_right_bottom_reflection.material = this.reflectionGlassRightBottom_MATERIAL;
-    var reflectionGlassRightBottom_Texture = new BABYLON.MirrorTexture("reflectionGlassRightBottom_Texture", 1024, this.scene);
-    reflectionGlassRightBottom_Texture.level = 1;
-    reflectionGlassRightBottom_Texture.mirrorPlane = reflectionGlassRightBottom_reflector;
-    reflectionGlassRightBottom_Texture.renderList = this.scene.meshes;
-    this.glass_right_bottom_reflection.material.reflectionTexture = reflectionGlassRightBottom_Texture;
+  BABYLON.SceneLoader.ImportMeshAsync("glass_top_reflection", "../../assets/glb/laboratory/", "glass_top_reflection.glb", this.scene).then((result) => {
+    this.glass_top_reflection = this.scene.getMeshByName("glass_top_reflection");
+    var reflectionGlassTop_worldMatrix = this.glass_top_reflection.getWorldMatrix();
+    var reflectionGlassTop_vertexData = this.glass_top_reflection.getVerticesData("normal");
+    var reflectionGlassTop_Normal = new BABYLON.Vector3(reflectionGlassTop_vertexData[0], reflectionGlassTop_vertexData[1], reflectionGlassTop_vertexData[2]);
+    reflectionGlassTop_Normal = BABYLON.Vector3.TransformNormal(reflectionGlassTop_Normal, reflectionGlassTop_worldMatrix);
+    var reflectionGlassTop_reflector = BABYLON.Plane.FromPositionAndNormal(this.glass_top_reflection.position, reflectionGlassTop_Normal.scale(-1));
+    this.reflectionGlassTop_MATERIAL = new BABYLON.StandardMaterial("reflectionGlassBottom_MATERIAL", this.scene);
+    this.reflectionGlassTop_MATERIAL.alpha = 0.3;
+    this.reflectionGlassTop_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.10);
+    this.glass_top_reflection.material = this.reflectionGlassTop_MATERIAL;
+    var reflectionGlassTop_Texture = new BABYLON.MirrorTexture("reflectionGlassTop_Texture", 1024, this.scene);
+    reflectionGlassTop_Texture.level = 1;
+    reflectionGlassTop_Texture.mirrorPlane = reflectionGlassTop_reflector;
+    reflectionGlassTop_Texture.renderList = this.scene.meshes;
+    this.glass_top_reflection.material.reflectionTexture = reflectionGlassTop_Texture;
+  });
+
+  BABYLON.SceneLoader.ImportMeshAsync("glass_bottom_reflection", "../../assets/glb/laboratory/", "glass_bottom_reflection.glb", this.scene).then((result) => {
+    this.glass_bottom_reflection = this.scene.getMeshByName("glass_bottom_reflection");
+    var reflectionGlassBottom_worldMatrix = this.glass_bottom_reflection.getWorldMatrix();
+    var reflectionGlassBottom_vertexData = this.glass_bottom_reflection.getVerticesData("normal");
+    var reflectionGlassBottom_Normal = new BABYLON.Vector3(reflectionGlassBottom_vertexData[0], reflectionGlassBottom_vertexData[1], reflectionGlassBottom_vertexData[2]);
+    reflectionGlassBottom_Normal = BABYLON.Vector3.TransformNormal(reflectionGlassBottom_Normal, reflectionGlassBottom_worldMatrix);
+    var reflectionGlassBottom_reflector = BABYLON.Plane.FromPositionAndNormal(this.glass_bottom_reflection.position, reflectionGlassBottom_Normal.scale(-1));
+    this.reflectionGlassBottom_MATERIAL = new BABYLON.StandardMaterial("reflectionGlassBottom_MATERIAL", this.scene);
+    this.reflectionGlassBottom_MATERIAL.alpha = 0.3;
+    this.reflectionGlassBottom_MATERIAL.diffuseColor = new BABYLON.Color3(0.10, 0.10, 0.10);
+    this.glass_bottom_reflection.material = this.reflectionGlassBottom_MATERIAL;
+    var reflectionGlassBottom_Texture = new BABYLON.MirrorTexture("reflectionGlassBottom_Texture", 1024, this.scene);
+    reflectionGlassBottom_Texture.level = 1;
+    reflectionGlassBottom_Texture.mirrorPlane = reflectionGlassBottom_reflector;
+    reflectionGlassBottom_Texture.renderList = this.scene.meshes;
+    this.glass_bottom_reflection.material.reflectionTexture = reflectionGlassBottom_Texture;
   });
 
   // NHS RAINBOW
@@ -1290,7 +1252,6 @@ public addActions_buttons() {
     this.instagram.isPickable = true; this.instagram_lens.isPickable = true;
     this.youtube.isPickable = true; this.youtube_play.isPickable = true;
     this.spotify_green.isPickable = true; this.spotify_black.isPickable = true;
-    this.projector.isPickable = true;
   }
 
   private desactivation_buttons() {
@@ -1311,6 +1272,7 @@ public addActions_buttons() {
     this.youtube.isPickable = false; this.youtube_play.isPickable = false;
     this.spotify_green.isPickable = false; this.spotify_black.isPickable = false;
     this.projector.isPickable = false;
+    this.dvd_pi.isPickable = false; this.dvd_enter_the_void.isPickable = false; this.dvd_2001_odyssee_espace.isPickable = false; this.dvd_la_haine.isPickable = false, this.dvd_sweet_sixteen.isPickable = false; this.dvd_eternal_sunshine.isPickable = false; this.dvd_zero_theorem.isPickable = false; this.dvd_shining.isPickable = false;
   }
 
   private addActions_TransfertBoxes() {
@@ -1327,8 +1289,7 @@ public addActions_buttons() {
       this.transfert_boxes.actionManager.registerAction(new BABYLON.CombineAction(
           {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes},
           [
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next()),
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next())
           ]
         )
       );
@@ -1348,8 +1309,7 @@ public addActions_buttons() {
     this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes_rings},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next())
         ]
       )
     );
@@ -1389,8 +1349,7 @@ public addActions_buttons() {
     this.rose_rouge.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.rose_rouge},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1430,8 +1389,7 @@ public addActions_buttons() {
     this.rose_rouge_frame.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.rose_rouge_frame},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1471,8 +1429,7 @@ public addActions_buttons() {
     this.verbal_shoota.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.verbal_shoota},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1512,8 +1469,7 @@ public addActions_buttons() {
     this.verbal_shoota_frame.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.verbal_shoota_frame},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1553,8 +1509,7 @@ public addActions_buttons() {
     this.lapin_blanc.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.lapin_blanc},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1594,8 +1549,7 @@ public addActions_buttons() {
     this.lapin_blanc_frame.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.lapin_blanc_frame},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1635,8 +1589,7 @@ public addActions_buttons() {
     this.fourty_four.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1676,8 +1629,7 @@ public addActions_buttons() {
     this.fourty_four_marie_louise.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four_marie_louise},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1717,8 +1669,7 @@ public addActions_buttons() {
     this.fourty_four_frame.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.fourty_four_frame},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1758,8 +1709,7 @@ public addActions_buttons() {
     this.brique.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1799,8 +1749,7 @@ public addActions_buttons() {
     this.brique_marie_louise.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique_marie_louise},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1840,8 +1789,7 @@ public addActions_buttons() {
     this.brique_frame.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.brique_frame},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1881,8 +1829,7 @@ public addActions_buttons() {
     this.tofu.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1923,8 +1870,7 @@ public addActions_buttons() {
     this.tofu_marie_louise.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu_marie_louise},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1964,8 +1910,7 @@ public addActions_buttons() {
     this.tofu_frame.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.tofu_frame},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photography.next())
         ]
       )
     );
@@ -1987,8 +1932,7 @@ public addActions_buttons() {
     this.threed_glasses_frame.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glasses_frame},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
         ]
       )
     );
@@ -2010,8 +1954,7 @@ public addActions_buttons() {
     this.threed_glass_blue.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_blue},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
         ]
       )
     );
@@ -2033,8 +1976,7 @@ public addActions_buttons() {
     this.threed_glass_red.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_red},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
         ]
       )
     );
@@ -2050,8 +1992,7 @@ public addActions_buttons() {
     this.via_air_mail.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.via_air_mail},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_contactMe.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_contactMe.next())
         ]
       )
     );
@@ -2082,8 +2023,7 @@ public addActions_buttons() {
     this.keyboard.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.keyboard},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2114,8 +2054,7 @@ public addActions_buttons() {
     this.keyboard_keyboard.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.keyboard_keyboard},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2146,8 +2085,7 @@ public addActions_buttons() {
     this.mac_mini.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.mac_mini},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2178,8 +2116,7 @@ public addActions_buttons() {
     this.laptop.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2210,8 +2147,7 @@ public addActions_buttons() {
     this.laptop_keyboard.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop_keyboard},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2242,8 +2178,7 @@ public addActions_buttons() {
     this.laptop_screen.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop_screen},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2274,8 +2209,7 @@ public addActions_buttons() {
     this.screen_center.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_center},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2306,8 +2240,7 @@ public addActions_buttons() {
     this.screen_frame_center.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_frame_center},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2338,8 +2271,7 @@ public addActions_buttons() {
     this.screen_right.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_right},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2370,8 +2302,7 @@ public addActions_buttons() {
     this.screen_frame_right.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_frame_right},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2408,8 +2339,7 @@ public addActions_buttons() {
     this.dvd_pi.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_pi},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next())
         ]
       )
     );
@@ -2446,8 +2376,7 @@ public addActions_buttons() {
     this.dvd_enter_the_void.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_enter_the_void},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next())
         ]
       )
     );
@@ -2484,8 +2413,7 @@ public addActions_buttons() {
     this.dvd_2001_odyssee_espace.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_2001_odyssee_espace},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next())
         ]
       )
     );
@@ -2522,8 +2450,7 @@ public addActions_buttons() {
     this.dvd_la_haine.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_la_haine},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next())
         ]
       )
     );
@@ -2560,8 +2487,7 @@ public addActions_buttons() {
     this.dvd_sweet_sixteen.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_sweet_sixteen},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next())
         ]
       )
     );
@@ -2598,8 +2524,7 @@ public addActions_buttons() {
     this.dvd_eternal_sunshine.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_eternal_sunshine},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next())
         ]
       )
     );
@@ -2636,8 +2561,7 @@ public addActions_buttons() {
     this.dvd_zero_theorem.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_zero_theorem},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next())
         ]
       )
     );
@@ -2674,8 +2598,7 @@ public addActions_buttons() {
     this.dvd_shining.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_shining},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next())
         ]
       )
     );
@@ -2977,6 +2900,16 @@ public addActions_buttons() {
         ]
       )
     );
+  }
+
+  public activation_moviesButtons(): void {
+    this.projector.isPickable = true;
+    this.dvd_pi.isPickable = true; this.dvd_enter_the_void.isPickable = true; this.dvd_2001_odyssee_espace.isPickable = true; this.dvd_la_haine.isPickable = true, this.dvd_sweet_sixteen.isPickable = true; this.dvd_eternal_sunshine.isPickable = true; this.dvd_zero_theorem.isPickable = true; this.dvd_shining.isPickable = true;
+  }
+
+  public desactivation_moviesButtons(): void {
+    this.projector.isPickable = false;
+    this.dvd_pi.isPickable = false; this.dvd_enter_the_void.isPickable = false; this.dvd_2001_odyssee_espace.isPickable = false; this.dvd_la_haine.isPickable = false, this.dvd_sweet_sixteen.isPickable = false; this.dvd_eternal_sunshine.isPickable = false; this.dvd_zero_theorem.isPickable = false; this.dvd_shining.isPickable = false;
   }
 
   private addActions_TouchPlay() {
