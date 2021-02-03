@@ -14,9 +14,9 @@
    height="288"
    viewBox="0 0 288 288"
    sodipodi:docname="logo_moko.svg"
-   inkscape:export-filename="/Users/moko/Desktop/angular-laboratory/src/assets/img/logos/moko/logo_moko.png"
-   inkscape:export-xdpi="25"
-   inkscape:export-ydpi="25"
+   inkscape:export-filename="/Users/moko/angular-workspace/angular-laboratory/src/assets/img/logos/moko/logo_moko.png"
+   inkscape:export-xdpi="23.333334"
+   inkscape:export-ydpi="23.333334"
    inkscape:version="1.0.1 (c497b03c, 2020-09-10)">
   <metadata
      id="metadata1057">
@@ -55,8 +55,7 @@
   <g
      inkscape:groupmode="layer"
      inkscape:label="Image"
-     id="g1059"
-     sodipodi:insensitive="true">
+     id="g1059">
     <image
        width="288"
        height="288"
@@ -717,14 +716,14 @@ zkOL4yNf3Jq+V1jfU42H2urET5qzJl8sNl75q0NzlW+P+uKplUMer3yWF8Od55UPbbgxPY+z/v8C
      inkscape:label="lab">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:64.1438px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.60359"
-       x="41.707512"
-       y="274.82507"
+       style="font-style:normal;font-weight:normal;font-size:73.89419999999999789px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.84735;"
+       x="26.2607"
+       y="286.82507"
        id="text1065"><tspan
          sodipodi:role="line"
          id="tspan1063"
-         x="41.707512"
-         y="274.82507"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'.SF NS Mono';-inkscape-font-specification:'.SF NS Mono';fill:#000000;stroke-width:1.60359">L A B</tspan></text>
+         x="26.2607"
+         y="286.82507"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'.SF NS Mono';-inkscape-font-specification:'.SF NS Mono';fill:#ffffff;stroke-width:1.84735;">L A B</tspan></text>
   </g>
 </svg>

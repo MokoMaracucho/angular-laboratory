@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
+import { AppComponent } from '../app.component';
 import { DevelopmentService } from './services/development.service';
 import { InteractionService } from './services/interaction.service';
 
@@ -243,6 +244,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private deviceService: DeviceDetectorService,
     private connectionService: ConnectionService,
+    private appComponent: AppComponent,
     private developmentService: DevelopmentService,
     readonly interaction: InteractionService
   ) {}
@@ -330,18 +332,21 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     this.language_english = true;
     this.language_french = false;
     this.language_spanish = false;
+    this.appComponent.change_language_english();
   }
 
   private change_language_french(): void {
     this.language_english = false;
     this.language_french = true;
     this.language_spanish = false;
+    this.appComponent.change_language_french();
   }
 
   private change_language_spanish(): void {
     this.language_english = false;
     this.language_french = false;
     this.language_spanish = true;
+    this.appComponent.change_language_spanish();
   }
 
   private isLoaded_function(): void {
