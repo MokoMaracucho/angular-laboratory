@@ -68,14 +68,14 @@ export class AppComponent implements OnInit {
 
   public isCollapsed = false;
   public isOpen_navBarMenu = false;
-  private open_menuNavBar_item1 = false;
-  private open_menuNavBar_laboratory = false;
-  private open_menuNavBar_item2 = false;
-  private open_menuNavBar_development = false;
-  private open_menuNavBar_item3 = false;
-  private open_menuNavBar_tutorials = false;
-  private open_menuNavBar_item4 = false;
-  private open_menuNavBar_photography = false;
+  public open_menuNavBar_item1 = false;
+  public open_menuNavBar_laboratory = false;
+  public open_menuNavBar_item2 = false;
+  public open_menuNavBar_development = false;
+  public open_menuNavBar_item3 = false;
+  public open_menuNavBar_tutorials = false;
+  public open_menuNavBar_item4 = false;
+  public open_menuNavBar_photography = false;
 
   public language_french = false;
   public language_english = true;
