@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import 'pepjs';
@@ -19,11 +19,14 @@ import { LaboratoryService } from './laboratory/services/laboratory.service';
       ])
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  public innerWidth: any;
+  public innerHeight: any;
 
   public isCV = false;
 
-  public isCollapsed = true;
+  public isCollapsed = false;
 
   public language_french = false;
   public language_english = true;
@@ -33,6 +36,29 @@ export class AppComponent {
       private developmentService: DevelopmentService,
       private laboratoryService: LaboratoryService
   ) {}
+
+  ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
+    if(this.innerWidth <= 799) {
+      this.isCollapsed = true;
+    }
+    else {
+      this.isCollapsed = false;
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+      this.innerWidth = window.innerWidth;
+      this.innerHeight = window.innerHeight;
+      if(this.innerWidth <= 799) {
+        this.isCollapsed = true;
+      }
+      else {
+        this.isCollapsed = false;
+      }
+  }
 
   public set_isCV(isCV): void {
     this.isCV = isCV;

@@ -69,17 +69,12 @@
   .linkedIn {
     grid-area: row-navBar-start / separator-socNet-3 / row-navBar-end / col-navBar-end;
   }
-
-  .socNet-navBar {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 799px) {
   .container_navBar {
-    grid-template-columns: [col-navBar-start] 70px [col-navBar-logo-stop] 1fr [col-navBar-socNet-start] 40px [separator-socNet-1] 40px [separator-socNet-2] 40px [separator-socNet-3] 40px [col-navBar-end];
-    grid-template-rows: [row-navBar-start] 60px [row-navBar-navItems-start] 60px [separator-navItems-1] 60px [separator-navItems-2] 60px [separator-navItems-3] 60px [row-navBar-navItems-stop] 60px [row-navBar-stop];
+    grid-template-columns: [col-navBar-start] 70px [col-navBar-logo-stop] 1fr [col-navBar-socNet-start] 40px [separator-socNet-1] 40px [separator-socNet-2] 40px [separator-socNet-3] 40px [col-navBar-menu_start] auto [col-navBar-end];
+    grid-template-rows: [row-navBar-start] 60px [row-navBar-navItems-start] 60px [separator-navItems-1] 60px [separator-navItems-2] 60px [separator-navItems-3] 60px [row-navBar-stop];
   }
 
   .navBar {
@@ -96,15 +91,20 @@
   }
 
   .instagram {
-    grid-area: row-navBar-start  / separator-socNet-1 / row-navBar-navItems-start / row-navBar-stop;
+    grid-area: row-navBar-start  / separator-socNet-1 / row-navBar-navItems-start / separator-socNet-2;
   }
 
   .youtube {
-    grid-area: row-navBar-start  / separator-socNet-2 / row-navBar-navItems-start / row-navBar-stop;
+    grid-area: row-navBar-start  / separator-socNet-2 / row-navBar-navItems-start / separator-socNet-3;
   }
 
   .linkedIn {
-    grid-area: row-navBar-start  / separator-socNet-3 / row-navBar-navItems-start / row-navBar-stop;
+    grid-area: row-navBar-start  / separator-socNet-3 / row-navBar-navItems-start / col-navBar-menu_start;
+  }
+
+  .menu {
+    grid-area: row-navBar-start  / col-navBar-menu_start / row-navBar-navItems-start / col-navBar-end;
+    margin-right: 10px;
   }
 
   .laboratory {
@@ -123,7 +123,7 @@
   }
 
   .photography {
-    grid-area: separator-navItems-3 / col-navBar-start / row-navBar-navItems-stop / col-navBar-end;
+    grid-area: separator-navItems-3 / col-navBar-start / row-navBar-stop / col-navBar-end;
     grid-auto-rows: auto;
   }
 }
@@ -145,4 +145,9 @@ a.active span {
 a:hover {
   text-decoration: none;
   cursor: pointer;
+}
+
+.socNet-navBar {
+  padding-left: 5px;
+  padding-right: 5px;
 }
