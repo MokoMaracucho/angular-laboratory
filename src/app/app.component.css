@@ -108,6 +108,7 @@
     display: grid;
     align-items: center;
     z-index: 10;
+    background-color: #000000;
     position: absolute;
     top: 60px;
     width: 100%;

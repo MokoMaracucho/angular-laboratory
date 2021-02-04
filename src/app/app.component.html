@@ -60,7 +60,7 @@
   </a>
 </div>
 
-<div *ngIf="isCollapsed" class="container_navBar" [@isOpen_menuNavBar_2]="isOpen_menuNavBar_2">
+<div *ngIf="isCollapsed" class="container_navBar" [@isOpen_menuNavBar]="isOpen_menuNavBar">
   <img class="logo_moko" src="../assets/img/logos/moko/logo_moko_40x40.png" alt="logo_moko">
 
   <a class="twitter socNet-navBar" href="https://twitter.com/FedericoMoko" target="_blank">
@@ -94,7 +94,7 @@
   </a>
 </div>
 
-<div *ngIf="isCollapsed && isOpen_menuNavBar" class="container_menuNavBar" [@isOpen_menuNavBar]="isOpen_menuNavBar">
+<div *ngIf="isCollapsed && isOpen_menuNavBar" class="container_menuNavBar">
   <a *ngIf="!isCV" class="laboratory items_navBar" [routerLink]="['/laboratory']" routerLinkActive="active" (click)="cleanUp_development()">
     <span *ngIf="language_english">Laboratory</span>
     <span *ngIf="language_french">Laboratoire</span>

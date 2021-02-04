@@ -12,14 +12,9 @@ import { LaboratoryService } from './laboratory/services/laboratory.service';
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('isOpen_menuNavBar', [
-      state('false', style({background: '#00000000'})),
-      state('true', style({background: '#000000FF'})),
-      transition('false => true', [animate('0.2s')])
-    ]),
-    trigger('isOpen_menuNavBar_2', [
       state('false', style({background: '#00000088'})),
       state('true', style({background: '#000000FF'})),
-      transition('false => true', [animate('0.1s')])
+      transition('false => true', [animate('0.01s')])
     ])
   ]
 })
@@ -73,8 +68,8 @@ export class AppComponent implements OnInit {
   }
 
   public openClose_navBar_menu(): void {
-    this.isOpen_menuNavBar = !this.isOpen_menuNavBar;
     this.isOpen_menuNavBar_2 = !this.isOpen_menuNavBar_2;
+    this.isOpen_menuNavBar = !this.isOpen_menuNavBar;
   }
 
   public cleanUp_development() {
