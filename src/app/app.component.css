@@ -1,8 +1,10 @@
 .container_navBar {
   z-index: 10;
   position: absolute;
+  width: 100%;
   display: grid;
-  grid-template-columns: [col-navBar-start] 70px [col-navBar-navItems-start] 1fr 1fr 1fr [col-navBar-navItems-stop] auto [col-navBar-socNet-start] 40px 40px 40px 40px [col-navBar-end];
+  align-items: center;
+  grid-template-columns: [col-navBar-start] 70px [col-navBar-navItems-start] auto [separator-items-1] auto [separator-items-2] auto [separator-items-3] auto [col-navBar-navItems-stop] 1fr [col-navBar-socNet-start] 40px [separator-socNet-1] 40px [separator-socNet-2] 40px [separator-socNet-3] 40px [col-navBar-end];
   grid-template-rows: [row-navBar-start] 60px [row-navBar-end];
   background-color: #00000088;
 }
@@ -13,6 +15,76 @@
 
 .logo_moko {
   grid-area: row-navBar-start / col-navBar-start / row-navBar-end / col-navBar-navItems-start;
-  padding: 10px;
   padding-left: 20px;
+}
+
+.laboratory {
+  grid-area: row-navBar-start / col-navBar-navItems-start / row-navBar-end / separator-items-1;
+  grid-auto-rows: auto;
+  font-family: Roboto-Regular;
+  font-size: 20px;
+  color: #C1C1C177;
+  opacity: 0.8;
+}
+
+.laboratory span {
+  margin-left: 10px;
+}
+
+.development {
+  grid-area: row-navBar-start / separator-items-1 / row-navBar-end / separator-items-2;
+  grid-auto-rows: auto;
+  font-family: Roboto-Regular;
+  font-size: 20px;
+  color: #C1C1C177;
+  opacity: 0.8;
+}
+
+.tutorials {
+  grid-area: row-navBar-start / separator-items-2 / row-navBar-end / separator-items-3;
+  grid-auto-rows: auto;
+  font-family: Roboto-Regular;
+  font-size: 20px;
+  color: #C1C1C177;
+  opacity: 0.8;
+}
+
+.photography {
+  grid-area: row-navBar-start / separator-items-3 / row-navBar-end / col-navBar-navItems-stop;
+  grid-auto-rows: auto;
+  font-family: Roboto-Regular;
+  font-size: 20px;
+  color: #C1C1C177;
+  opacity: 0.8;
+}
+
+a.active span {
+  font-family: Roboto-Bold;
+  color: white;
+}
+
+.items_navBar {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.twitter {
+  grid-area: row-navBar-start / col-navBar-socNet-start / row-navBar-end / separator-socNet-1;
+}
+
+.instagram {
+  grid-area: row-navBar-start / separator-socNet-1 / row-navBar-end / separator-socNet-2;
+}
+
+.youtube {
+  grid-area: row-navBar-start / separator-socNet-2 / row-navBar-end / separator-socNet-3;
+}
+
+.linkedIn {
+  grid-area: row-navBar-start / separator-socNet-3 / row-navBar-end / col-navBar-end;
+}
+
+.socNet-navBar {
+  padding-left: 5px;
+  padding-right: 5px;
 }
