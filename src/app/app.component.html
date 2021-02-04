@@ -1,4 +1,4 @@
-<div class="container_navBar navBar">
+<div class="container_navBar">
   <img class="logo_moko" src="../assets/img/logos/moko/logo_moko_40x40.png" alt="logo_moko">
 
   <div class="menuNavBar-item-1" *ngIf="!isCollapsed">
@@ -13,13 +13,13 @@
       <span *ngIf="language_spanish">Laboratorio</span>
     </a>
   </div>
-  <div class="menuNavBar-item-1" *ngIf="isCollapsed && isOpen_navBarMenu" [@open_menuNavBar_item1]="open_menuNavBar_item1">
-    <a *ngIf="!isCV" class="laboratory items_navBar" [routerLink]="['/laboratory']" routerLinkActive="active" (click)="cleanUp_development()" [@open_menuNavBar_laboratory]="open_menuNavBar_laboratory">
+  <div class="menuNavBar-item-1" *ngIf="isCollapsed && isOpen_navBarMenu">
+    <a *ngIf="!isCV" class="laboratory items_navBar" [routerLink]="['/laboratory']" routerLinkActive="active" (click)="cleanUp_development()">
       <span *ngIf="language_english">Laboratory</span>
       <span *ngIf="language_french">Laboratoire</span>
       <span *ngIf="language_spanish">Laboratorio</span>
     </a>
-    <a *ngIf="isCV" class="laboratory items_navBar" [routerLink]="['/laboratory/true']" routerLinkActive="active" (click)="cleanUp_development()" [@open_menuNavBar_laboratory]="open_menuNavBar_laboratory">
+    <a *ngIf="isCV" class="laboratory items_navBar" [routerLink]="['/laboratory/true']" routerLinkActive="active" (click)="cleanUp_development()">
       <span *ngIf="language_english">Laboratory</span>
       <span *ngIf="language_french">Laboratoire</span>
       <span *ngIf="language_spanish">Laboratorio</span>
@@ -38,13 +38,13 @@
       <span *ngIf="language_spanish">Desarollo</span>
     </a>
   </div>
-  <div class="menuNavBar-item-2" *ngIf="isCollapsed && isOpen_navBarMenu" [@open_menuNavBar_item2]="open_menuNavBar_item2">
-    <a *ngIf="!isCV" class="development items_navBar" [routerLink]="['/development']" routerLinkActive="active" (click)="cleanUp_laboratory()" [@open_menuNavBar_development]="open_menuNavBar_development">
+  <div class="menuNavBar-item-2" *ngIf="isCollapsed && isOpen_navBarMenu">
+    <a *ngIf="!isCV" class="development items_navBar" [routerLink]="['/development']" routerLinkActive="active" (click)="cleanUp_laboratory()">
       <span *ngIf="language_english">Development</span>
       <span *ngIf="language_french">Développement</span>
       <span *ngIf="language_spanish">Desarollo</span>
     </a>
-    <a *ngIf="isCV" class="development items_navBar" [routerLink]="['/development/true']" routerLinkActive="active" (click)="cleanUp_laboratory()" [@open_menuNavBar_development]="open_menuNavBar_development">
+    <a *ngIf="isCV" class="development items_navBar" [routerLink]="['/development/true']" routerLinkActive="active" (click)="cleanUp_laboratory()">
       <span *ngIf="language_english">Development</span>
       <span *ngIf="language_french">Développement</span>
       <span *ngIf="language_spanish">Desarollo</span>
@@ -58,8 +58,8 @@
       <span *ngIf="language_spanish">Tutoriales</span>
     </a>
   </div>
-  <div class="menuNavBar-item-3" *ngIf="isCollapsed && isOpen_navBarMenu" [@open_menuNavBar_item3]="open_menuNavBar_item3">
-    <a class="tutorials items_navBar disable" [routerLink]="['/tutorials']" routerLinkActive="active" [@open_menuNavBar_tutorials]="open_menuNavBar_tutorials">
+  <div class="menuNavBar-item-3" *ngIf="isCollapsed && isOpen_navBarMenu">
+    <a class="tutorials items_navBar disable" [routerLink]="['/tutorials']" routerLinkActive="active">
       <span *ngIf="language_english">Tutorials</span>
       <span *ngIf="language_french">Tutoriaux</span>
       <span *ngIf="language_spanish">Tutoriales</span>
@@ -73,8 +73,8 @@
       <span *ngIf="language_spanish">Fotografía</span>
     </a>
   </div>
-  <div class="menuNavBar-item-4" *ngIf="isCollapsed && isOpen_navBarMenu" [@open_menuNavBar_item4]="open_menuNavBar_item4">
-    <a class="photography items_navBar menuNavBar-items disable" [routerLink]="['/photography']" routerLinkActive="active" [style.color]="'#C1C1C144'" [@open_menuNavBar_photography]="open_menuNavBar_photography">
+  <div class="menuNavBar-item-4" *ngIf="isCollapsed && isOpen_navBarMenu">
+    <a class="photography items_navBar menuNavBar-items disable" [routerLink]="['/photography']" routerLinkActive="active">
       <span *ngIf="language_english">Photography</span>
       <span *ngIf="language_french">Photographie</span>
       <span *ngIf="language_spanish">Fotografía</span>
