@@ -127,12 +127,12 @@ export class AppComponent implements OnInit {
     if(this.isOpen_navBarMenu) {
       setTimeout(() => {this.open_menuNavBar_item1 = true}, 100);
       setTimeout(() => {this.open_menuNavBar_laboratory = true}, 100);
-      setTimeout(() => {this.open_menuNavBar_item2 = true}, 200);
-      setTimeout(() => {this.open_menuNavBar_development = true}, 200);
-      setTimeout(() => {this.open_menuNavBar_item3 = true}, 300);
-      setTimeout(() => {this.open_menuNavBar_tutorials = true}, 300);
-      setTimeout(() => {this.open_menuNavBar_item4 = true}, 400);
-      setTimeout(() => {this.open_menuNavBar_photography = true}, 400);
+      setTimeout(() => {this.open_menuNavBar_item2 = true}, 100);
+      setTimeout(() => {this.open_menuNavBar_development = true}, 100);
+      setTimeout(() => {this.open_menuNavBar_item3 = true}, 100);
+      setTimeout(() => {this.open_menuNavBar_tutorials = true}, 100);
+      setTimeout(() => {this.open_menuNavBar_item4 = true}, 100);
+      setTimeout(() => {this.open_menuNavBar_photography = true}, 100);
     } else {
       this.open_menuNavBar_item1 = false;
       this.open_menuNavBar_laboratory = false;
