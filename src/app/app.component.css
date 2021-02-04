@@ -63,97 +63,77 @@
   }
 
   .linkedIn {
-    grid-area: row-start / col-9 / row-stop / col-10;
+    grid-area: row-start / col-9 / row-stop / col-stop;
   }
 }
 
 @media (max-width: 799px) {
   .container_navBar {
-    grid-template-columns: [col-navBar-start] 70px [col-navBar-logo-stop] 1fr [col-navBar-socNet-start] 40px [separator-socNet-1] 40px [separator-socNet-2] 40px [separator-socNet-3] 40px [col-navBar-menu_start] auto [col-navBar-stop];
-    grid-template-rows: [row-navBar-start] 60px [row-navBar-navItems-start] 40px [separator-navItems-1] 40px [separator-navItems-2] 40px [separator-navItems-3] 40px [row-navBar-stop];
-  }
-
-  .navBar {
-    grid-area: row-navBar-start / col-navBar-start / row-navBar-stop / col-navBar-stop;
-  }
-
-  .background_navBar_collapsed {
-    z-index: 9;
-    position: absolute;
-    width: 100%;
-    height: 60px;
-    grid-area: row-navBar-start / col-navBar-start / rrow-navBar-navItems-start / col-navBar-stop;
+    grid-template-columns: [col-start-navBar] 70px [col-1-navBar] 1fr [col-2-navBar] 40px [col-3-navBar] 40px [col-4-navBar] 40px [col-5-navBar] 40px [col-6-navBar] auto [col-stop-navBar];
+    grid-template-rows: [row-start-navBar] 60px [row-stop-navBar];
     background-color: #00000088;
   }
 
   .logo_moko {
-    grid-area: row-navBar-start / col-navBar-start / row-navBar-navItems-start / col-navBar-navItems-start;
+    grid-area: row-start-navBar / col-start-navBar / row-stop-navBar / col-1-navBar;
     padding-left: 10px;
   }
 
   .twitter {
-    grid-area:row-navBar-start  / col-navBar-socNet-start / row-navBar-navItems-start / separator-socNet-1;
+    grid-area: row-start-navBar / col-2-navBar / row-stop-navBar / col-3-navBar;
   }
 
   .instagram {
-    grid-area: row-navBar-start  / separator-socNet-1 / row-navBar-navItems-start / separator-socNet-2;
+    grid-area: row-start-navBar / col-3-navBar / row-stop-navBar / col-4-navBar;
   }
 
   .youtube {
-    grid-area: row-navBar-start  / separator-socNet-2 / row-navBar-navItems-start / separator-socNet-3;
+    grid-area: row-start-navBar / col-4-navBar / row-stop-navBar / col-5-navBar;
   }
 
   .linkedIn {
-    grid-area: row-navBar-start  / separator-socNet-3 / row-navBar-navItems-start / col-navBar-menu_start;
+    grid-area: row-start-navBar / col-5-navBar / row-stop-navBar / col-6-navBar;
   }
 
   .menu {
-    grid-area: row-navBar-start  / col-navBar-menu_start / row-navBar-navItems-start / col-navBar-stop;
+    grid-area: row-start-navBar / col-6-navBar / row-stop-navBar / col-stop-navBar;
     margin-right: 10px;
   }
+}
 
-  .menuNavBar-item-1 {
-    grid-area: row-navBar-navItems-start / col-navBar-start / separator-navItems-1 / col-navBar-stop;
-    height: 40px;
+@media (max-width: 799px) {
+  .container_menuNavBar {
+    grid-template-columns: [col-start-menuNavBar] 1fr [col-stop-menuNavBar];
+    grid-template-rows: [row-start-menuNavBar] 40px [row-1-menuNavBar] 40px [row-2-menuNavBar] 40px [row-3-menuNavBar] 40px [row-stop-menuNavBar];
+    display: grid;
+    align-items: center;
+    z-index: 10;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    height: 160px;
+    display: grid;
+    align-items: center;
   }
 
   .laboratory {
-    grid-area: row-navBar-navItems-start / col-navBar-start / separator-navItems-1 / col-navBar-stop;
+    grid-area: row-start-menuNavBar / col-start-menuNavBar / row-1-menuNavBar / col-stop-menuNavBar;
     grid-auto-rows: auto;
-  }
-
-  .menuNavBar-item-2 {
-    grid-area: separator-navItems-1 / col-navBar-start / separator-navItems-2 / col-navBar-stop;
-    height: 40px;
   }
 
   .development {
-    grid-area: separator-navItems-1 / col-navBar-start / separator-navItems-2 / col-navBar-stop;
+    grid-area: row-1-menuNavBar / col-start-menuNavBar / row-2-menuNavBar / col-stop-menuNavBar;
     grid-auto-rows: auto;
-  }
-
-  .menuNavBar-item-3 {
-    grid-area: separator-navItems-2 / col-navBar-start / separator-navItems-3 / col-navBar-stop;
-    height: 40px;
   }
 
   .tutorials {
-    grid-area: separator-navItems-2 / col-navBar-start / separator-navItems-3 / col-navBar-stop;
+    grid-area: row-2-menuNavBar / col-start-menuNavBar / row-3-menuNavBar / col-stop-menuNavBar;
     grid-auto-rows: auto;
-  }
-
-  .menuNavBar-item-4 {
-    grid-area: separator-navItems-3 / col-navBar-start / row-navBar-stop / col-navBar-stop;
-    height: 40px;
   }
 
   .photography {
-    grid-area: separator-navItems-3 / col-navBar-start / row-navBar-stop / col-navBar-stop;
+    grid-area: row-3-menuNavBar / col-start-menuNavBar / row-stop-menuNavBar / col-stop-menuNavBar;
     grid-auto-rows: auto;
-  }
-
-  .span-menuNavBar-items {
-    padding-top: 15px;
   }
 }
 
@@ -161,7 +141,6 @@
   font-family: Roboto-Regular;
   font-size: 20px;
   color: #C1C1C177;
-  opacity: 0.8;
   padding-left: 10px;
   padding-right: 10px;
 }
