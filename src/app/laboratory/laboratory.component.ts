@@ -232,15 +232,16 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.laboratoryService.set_windowDimensions(window.innerWidth, window.innerHeight);
   }
 
+  @HostListener('window:orientationchange', ['$event'])
+  onOrientationChange(event) {
+    alert('orientationChanged');
+  }
+
   private epicFunction() {
     this.deviceInfo = this.deviceService.getDeviceInfo();
     this.isMobileDevice = this.deviceService.isMobile();
     this.isTabletDevice = this.deviceService.isTablet();
     this.isDesktopDevice = this.deviceService.isDesktop();
-    // console.log(this.deviceInfo);
-    // console.log(this.isMobileDevice);
-    // console.log(this.isTabletDevice);
-    // console.log(this.isDesktopDevice);
   }
 
   private isLoaded_function(): void {

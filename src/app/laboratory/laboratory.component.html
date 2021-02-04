@@ -7,15 +7,16 @@
   <div id="container_introduction" class="container">
     <div class="row">
       <div class="col-md-8 col-lg-12 col-xl-12">
-        <h1 class="h1_webDeveloper" *ngIf="!isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">MK-Lab</h1>
-
-        <span class="span_webDeveloper" *ngIf="language_english && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Enter the 3rd dimension</span>
-        <span class="span_webDeveloper" *ngIf="language_french && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Entrez dans la 3ème dimension</span>
-        <span class="span_webDeveloper" *ngIf="language_spanish && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Ingrese a la tercera dimensión</span>
-
-        <h1 class="h1_webDeveloper" *ngIf="language_english && isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">WEB<br/>DEVELOPER</h1>
-        <h1 class="h1_webDeveloper" *ngIf="language_french && isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DEVELOPPEUR<br/>WEB</h1>
-        <h1 class="h1_webDeveloper" *ngIf="language_spanish && isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DESARROLADOR<br/>WEB</h1>
+        <div class="row">
+          <div class="col-xl-1 mb-4">
+            <img src="../assets/img/logos/moko/logo_moko_introduction.png" alt="logo_moko_introduction">
+          </div>
+          <div class="col-xl-6">
+            <span class="span_webDeveloper d-flex" *ngIf="language_english && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">ENTER<br/>THE THIRD DIMENSION</span>
+            <span class="span_webDeveloper" *ngIf="language_french && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Entrez dans la 3ème dimension</span>
+            <span class="span_webDeveloper" *ngIf="language_spanish && !isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">Ingrese a la tercera dimensión</span>
+          </div>
+        </div>
 
         <span class="span_webDeveloper" *ngIf="isCV" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">SPRING - ANGULAR - BABYLONJS</span>
       </div>
