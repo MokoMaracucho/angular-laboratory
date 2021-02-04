@@ -4,13 +4,13 @@
   width: 100%;
   display: grid;
   align-items: center;
-  background-color: #00000088;
 }
 
 @media (min-width: 800px) {
   .container_navBar {
     grid-template-columns: [col-navBar-start] 70px [col-navBar-navItems-start] auto [separator-items-1] auto [separator-items-2] auto [separator-items-3] auto [col-navBar-navItems-stop] 1fr [col-navBar-socNet-start] 40px [separator-socNet-1] 40px [separator-socNet-2] 40px [separator-socNet-3] 40px [col-navBar-end];
     grid-template-rows: [row-navBar-start] 60px [row-navBar-end];
+    background-color: #00000088;
   }
 
   .navBar {
@@ -73,12 +73,21 @@
 
 @media (max-width: 799px) {
   .container_navBar {
-    grid-template-columns: [col-navBar-start] 70px [col-navBar-logo-stop] 1fr [col-navBar-socNet-start] 40px [separator-socNet-1] 40px [separator-socNet-2] 40px [separator-socNet-3] 40px [col-navBar-menu_start] auto [col-navBar-end];
-    grid-template-rows: [row-navBar-start] 60px [row-navBar-navItems-start] 60px [separator-navItems-1] 60px [separator-navItems-2] 60px [separator-navItems-3] 60px [row-navBar-stop];
+    grid-template-columns: [col-navBar-start] 70px [col-navBar-logo-stop] 1fr [col-navBar-socNet-start] 40px [separator-socNet-1] 40px [separator-socNet-2] 40px [separator-socNet-3] 40px [col-navBar-menu_start] auto [col-navBar-stop];
+    grid-template-rows: [row-navBar-start] 60px [row-navBar-navItems-start] 40px [separator-navItems-1] 40px [separator-navItems-2] 40px [separator-navItems-3] 40px [row-navBar-stop];
   }
 
   .navBar {
-    grid-area: row-navBar-start / col-navBar-start / row-navBar-end / col-navBar-end;
+    grid-area: row-navBar-start / col-navBar-start / row-navBar-stop / col-navBar-stop;
+  }
+
+  .background_navBar_collapsed {
+    z-index: 9;
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    grid-area: row-navBar-start / col-navBar-start / rrow-navBar-navItems-start / col-navBar-stop;
+    background-color: #00000088;
   }
 
   .logo_moko {
@@ -87,7 +96,7 @@
   }
 
   .twitter {
-    grid-area:row-navBar-start  / col-navBar-socNet-start / row-navBar-navItems-start / row-navBar-stop;
+    grid-area:row-navBar-start  / col-navBar-socNet-start / row-navBar-navItems-start / separator-socNet-1;
   }
 
   .instagram {
@@ -103,28 +112,52 @@
   }
 
   .menu {
-    grid-area: row-navBar-start  / col-navBar-menu_start / row-navBar-navItems-start / col-navBar-end;
+    grid-area: row-navBar-start  / col-navBar-menu_start / row-navBar-navItems-start / col-navBar-stop;
     margin-right: 10px;
   }
 
+  .menuNavBar-item-1 {
+    grid-area: row-navBar-navItems-start / col-navBar-start / separator-navItems-1 / col-navBar-stop;
+    height: 40px;
+  }
+
   .laboratory {
-    grid-area: row-navBar-navItems-start / col-navBar-start / separator-navItems-1 / col-navBar-end;
+    grid-area: row-navBar-navItems-start / col-navBar-start / separator-navItems-1 / col-navBar-stop;
     grid-auto-rows: auto;
+  }
+
+  .menuNavBar-item-2 {
+    grid-area: separator-navItems-1 / col-navBar-start / separator-navItems-2 / col-navBar-stop;
+    height: 40px;
   }
 
   .development {
-    grid-area: separator-navItems-1 / col-navBar-start / separator-navItems-2 / col-navBar-end;
+    grid-area: separator-navItems-1 / col-navBar-start / separator-navItems-2 / col-navBar-stop;
     grid-auto-rows: auto;
+  }
+
+  .menuNavBar-item-3 {
+    grid-area: separator-navItems-2 / col-navBar-start / separator-navItems-3 / col-navBar-stop;
+    height: 40px;
   }
 
   .tutorials {
-    grid-area: separator-navItems-2 / col-navBar-start / separator-navItems-3 / col-navBar-end;
+    grid-area: separator-navItems-2 / col-navBar-start / separator-navItems-3 / col-navBar-stop;
     grid-auto-rows: auto;
   }
 
+  .menuNavBar-item-4 {
+    grid-area: separator-navItems-3 / col-navBar-start / row-navBar-stop / col-navBar-stop;
+    height: 40px;
+  }
+
   .photography {
-    grid-area: separator-navItems-3 / col-navBar-start / row-navBar-stop / col-navBar-end;
+    grid-area: separator-navItems-3 / col-navBar-start / row-navBar-stop / col-navBar-stop;
     grid-auto-rows: auto;
+  }
+
+  .span-menuNavBar-items {
+    padding-top: 15px;
   }
 }
 
@@ -150,4 +183,8 @@ a:hover {
 .socNet-navBar {
   padding-left: 5px;
   padding-right: 5px;
+}
+
+.disable {
+  color: #C1C1C144;
 }

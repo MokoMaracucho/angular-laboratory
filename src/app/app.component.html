@@ -1,39 +1,85 @@
 <div class="container_navBar navBar">
   <img class="logo_moko" src="../assets/img/logos/moko/logo_moko_40x40.png" alt="logo_moko">
 
-  <a *ngIf="!isCV" class="laboratory items_navBar" [routerLink]="['/laboratory']" routerLinkActive="active" (click)="cleanUp_development()">
-    <span *ngIf="language_english">Laboratory</span>
-    <span *ngIf="language_french">Laboratoire</span>
-    <span *ngIf="language_spanish">Laboratorio</span>
-  </a>
-  <a *ngIf="isCV" class="laboratory items_navBar" [routerLink]="['/laboratory/true']" routerLinkActive="active" (click)="cleanUp_development()">
-    <span *ngIf="language_english">Laboratory</span>
-    <span *ngIf="language_french">Laboratoire</span>
-    <span *ngIf="language_spanish">Laboratorio</span>
-  </a>
+  <div class="menuNavBar-item-1" *ngIf="!isCollapsed">
+    <a *ngIf="!isCV" class="laboratory items_navBar" [routerLink]="['/laboratory']" routerLinkActive="active" (click)="cleanUp_development()">
+      <span *ngIf="language_english">Laboratory</span>
+      <span *ngIf="language_french">Laboratoire</span>
+      <span *ngIf="language_spanish">Laboratorio</span>
+    </a>
+    <a *ngIf="isCV" class="laboratory items_navBar" [routerLink]="['/laboratory/true']" routerLinkActive="active" (click)="cleanUp_development()">
+      <span *ngIf="language_english">Laboratory</span>
+      <span *ngIf="language_french">Laboratoire</span>
+      <span *ngIf="language_spanish">Laboratorio</span>
+    </a>
+  </div>
+  <div class="menuNavBar-item-1" *ngIf="isCollapsed && isOpen_navBarMenu" [@open_menuNavBar_item1]="open_menuNavBar_item1">
+    <a *ngIf="!isCV" class="laboratory items_navBar" [routerLink]="['/laboratory']" routerLinkActive="active" (click)="cleanUp_development()" [@open_menuNavBar_laboratory]="open_menuNavBar_laboratory">
+      <span *ngIf="language_english">Laboratory</span>
+      <span *ngIf="language_french">Laboratoire</span>
+      <span *ngIf="language_spanish">Laboratorio</span>
+    </a>
+    <a *ngIf="isCV" class="laboratory items_navBar" [routerLink]="['/laboratory/true']" routerLinkActive="active" (click)="cleanUp_development()" [@open_menuNavBar_laboratory]="open_menuNavBar_laboratory">
+      <span *ngIf="language_english">Laboratory</span>
+      <span *ngIf="language_french">Laboratoire</span>
+      <span *ngIf="language_spanish">Laboratorio</span>
+    </a>
+  </div>
 
-  <a *ngIf="!isCV" class="development items_navBar" [routerLink]="['/development']" routerLinkActive="active" (click)="cleanUp_laboratory()">
-    <span *ngIf="language_english">Development</span>
-    <span *ngIf="language_french">Développement</span>
-    <span *ngIf="language_spanish">Desarollo</span>
-  </a>
-  <a *ngIf="isCV" class="development items_navBar" [routerLink]="['/development/true']" routerLinkActive="active" (click)="cleanUp_laboratory()">
-    <span *ngIf="language_english">Development</span>
-    <span *ngIf="language_french">Développement</span>
-    <span *ngIf="language_spanish">Desarollo</span>
-  </a>
+  <div class="menuNavBar-item-2" *ngIf="!isCollapsed">
+    <a *ngIf="!isCV" class="development items_navBar" [routerLink]="['/development']" routerLinkActive="active" (click)="cleanUp_laboratory()">
+      <span *ngIf="language_english">Development</span>
+      <span *ngIf="language_french">Développement</span>
+      <span *ngIf="language_spanish">Desarollo</span>
+    </a>
+    <a *ngIf="isCV" class="development items_navBar" [routerLink]="['/development/true']" routerLinkActive="active" (click)="cleanUp_laboratory()">
+      <span *ngIf="language_english">Development</span>
+      <span *ngIf="language_french">Développement</span>
+      <span *ngIf="language_spanish">Desarollo</span>
+    </a>
+  </div>
+  <div class="menuNavBar-item-2" *ngIf="isCollapsed && isOpen_navBarMenu" [@open_menuNavBar_item2]="open_menuNavBar_item2">
+    <a *ngIf="!isCV" class="development items_navBar" [routerLink]="['/development']" routerLinkActive="active" (click)="cleanUp_laboratory()" [@open_menuNavBar_development]="open_menuNavBar_development">
+      <span *ngIf="language_english">Development</span>
+      <span *ngIf="language_french">Développement</span>
+      <span *ngIf="language_spanish">Desarollo</span>
+    </a>
+    <a *ngIf="isCV" class="development items_navBar" [routerLink]="['/development/true']" routerLinkActive="active" (click)="cleanUp_laboratory()" [@open_menuNavBar_development]="open_menuNavBar_development">
+      <span *ngIf="language_english">Development</span>
+      <span *ngIf="language_french">Développement</span>
+      <span *ngIf="language_spanish">Desarollo</span>
+    </a>
+  </div>
 
-  <a class="tutorials items_navBar disable" [routerLink]="['/tutorials']" routerLinkActive="active" [style.color]="'#C1C1C144'">
-    <span *ngIf="language_english">Tutorials</span>
-    <span *ngIf="language_french">Tutoriaux</span>
-    <span *ngIf="language_spanish">Tutoriales</span>
-  </a>
+  <div class="menuNavBar-item-3" *ngIf="!isCollapsed">
+    <a  class="tutorials items_navBar disable" [routerLink]="['/tutorials']" routerLinkActive="active" [style.color]="'#C1C1C144'">
+      <span *ngIf="language_english">Tutorials</span>
+      <span *ngIf="language_french">Tutoriaux</span>
+      <span *ngIf="language_spanish">Tutoriales</span>
+    </a>
+  </div>
+  <div class="menuNavBar-item-3" *ngIf="isCollapsed && isOpen_navBarMenu" [@open_menuNavBar_item3]="open_menuNavBar_item3">
+    <a class="tutorials items_navBar disable" [routerLink]="['/tutorials']" routerLinkActive="active" [@open_menuNavBar_tutorials]="open_menuNavBar_tutorials">
+      <span *ngIf="language_english">Tutorials</span>
+      <span *ngIf="language_french">Tutoriaux</span>
+      <span *ngIf="language_spanish">Tutoriales</span>
+    </a>
+  </div>
 
-  <a class="photography items_navBar disable" [routerLink]="['/photography']" routerLinkActive="active" [style.color]="'#C1C1C144'">
-    <span *ngIf="language_english">Photography</span>
-    <span *ngIf="language_french">Photographie</span>
-    <span *ngIf="language_spanish">Fotografía</span>
-  </a>
+  <div class="menuNavBar-item-4" *ngIf="!isCollapsed">
+    <a class="photography items_navBar disable" [routerLink]="['/photography']" routerLinkActive="active">
+      <span *ngIf="language_english">Photography</span>
+      <span *ngIf="language_french">Photographie</span>
+      <span *ngIf="language_spanish">Fotografía</span>
+    </a>
+  </div>
+  <div class="menuNavBar-item-4" *ngIf="isCollapsed && isOpen_navBarMenu" [@open_menuNavBar_item4]="open_menuNavBar_item4">
+    <a class="photography items_navBar menuNavBar-items disable" [routerLink]="['/photography']" routerLinkActive="active" [style.color]="'#C1C1C144'" [@open_menuNavBar_photography]="open_menuNavBar_photography">
+      <span *ngIf="language_english">Photography</span>
+      <span *ngIf="language_french">Photographie</span>
+      <span *ngIf="language_spanish">Fotografía</span>
+    </a>
+  </div>
 
   <a class="twitter socNet-navBar" href="https://twitter.com/FedericoMoko" target="_blank">
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-twitter" viewBox="0 0 16 16">
@@ -59,7 +105,13 @@
     </svg>
   </a>
 
-  <img *ngIf="isCollapsed" class="menu" src="../assets/img/icons/menu.png" alt="logo_moko">
+  <a *ngIf="isCollapsed" class="menu socNet-navBar" (click)="openClose_navBar_menu()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" class="bi bi-menu-app" viewBox="0 0 16 16">
+      <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h2A1.5 1.5 0 0 1 5 1.5v2A1.5 1.5 0 0 1 3.5 5h-2A1.5 1.5 0 0 1 0 3.5v-2zM1.5 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-2zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
+    </svg>
+  </a>
 </div>
+
+<div *ngIf="isCollapsed" class="background_navBar_collapsed" [@isOpen_navBarMenu]="isOpen_navBarMenu"></div>
 
 <router-outlet></router-outlet>
