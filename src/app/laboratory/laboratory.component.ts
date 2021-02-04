@@ -276,6 +276,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.laboratoryService.animation_enterLaboratory();
       this.isVisible_menu = true;
       this.isVisible_initPosition = true;
+      this.appComponent.close_navBar_menu();
   }
 
   public open_development(): void {

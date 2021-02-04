@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
 
   public isCollapsed = false;
   public isOpen_menuNavBar = false;
-  public isOpen_menuNavBar_2 = false;
 
   public language_french = false;
   public language_english = true;
@@ -58,8 +57,7 @@ export class AppComponent implements OnInit {
     }
     else {
       this.isCollapsed = false;
-      this.isOpen_menuNavBar = false;
-      this.isOpen_menuNavBar_2 = false;
+      this.close_navBar_menu();
     }
   }
 
@@ -68,20 +66,23 @@ export class AppComponent implements OnInit {
   }
 
   public openClose_navBar_menu(): void {
-    this.isOpen_menuNavBar_2 = !this.isOpen_menuNavBar_2;
     this.isOpen_menuNavBar = !this.isOpen_menuNavBar;
+  }
+
+  public close_navBar_menu(): void {
+    if(this.isOpen_menuNavBar) {
+      this.isOpen_menuNavBar = false;
+    }
   }
 
   public cleanUp_development() {
       this.developmentService.cleanUp();
-      this.isOpen_menuNavBar = false;
-      this.isOpen_menuNavBar_2 = false;
+      this.close_navBar_menu();
   }
 
   public cleanUp_laboratory() {
       this.laboratoryService.cleanUp();
-      this.isOpen_menuNavBar = false;
-      this.isOpen_menuNavBar_2 = false;
+      this.close_navBar_menu();
   }
 
   public cleanUp_photography() {

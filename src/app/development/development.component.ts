@@ -359,6 +359,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     this.isVisible_introduction = false;
     this.developmentService.animation_enterDevelopment();
     this.isVisible_initPosition = true;
+    this.appComponent.close_navBar_menu();
   }
 
   private open_postgresql(): void {
