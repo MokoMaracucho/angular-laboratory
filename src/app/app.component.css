@@ -87,7 +87,6 @@
     width: 100%;
     height: 60px;
     grid-area: row-navBar-start / col-navBar-start / rrow-navBar-navItems-start / col-navBar-stop;
-    background-color: #00000088;
   }
 
   .logo_moko {
@@ -113,12 +112,6 @@
 
   .menu {
     grid-area: row-navBar-start  / col-navBar-menu_start / row-navBar-navItems-start / col-navBar-stop;
-    margin-right: 10px;
-  }
-
-  .menuNavBar-item-1 {
-    grid-area: row-navBar-navItems-start / col-navBar-start / separator-navItems-1 / col-navBar-stop;
-    height: 40px;
   }
 
   .laboratory {
@@ -126,19 +119,9 @@
     grid-auto-rows: auto;
   }
 
-  .menuNavBar-item-2 {
-    grid-area: separator-navItems-1 / col-navBar-start / separator-navItems-2 / col-navBar-stop;
-    height: 40px;
-  }
-
   .development {
     grid-area: separator-navItems-1 / col-navBar-start / separator-navItems-2 / col-navBar-stop;
     grid-auto-rows: auto;
-  }
-
-  .menuNavBar-item-3 {
-    grid-area: separator-navItems-2 / col-navBar-start / separator-navItems-3 / col-navBar-stop;
-    height: 40px;
   }
 
   .tutorials {
@@ -146,14 +129,18 @@
     grid-auto-rows: auto;
   }
 
-  .menuNavBar-item-4 {
-    grid-area: separator-navItems-3 / col-navBar-start / row-navBar-stop / col-navBar-stop;
-    height: 40px;
-  }
-
   .photography {
     grid-area: separator-navItems-3 / col-navBar-start / row-navBar-stop / col-navBar-stop;
     grid-auto-rows: auto;
+  }
+
+  .menuNavBar-items {
+    z-index: 8;
+    grid-area: row-navBar-navItems-start / col-navBar-start / row-navBar-stop / col-navBar-stop;
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    height: 160px;
   }
 
   .span-menuNavBar-items {

@@ -11,52 +11,12 @@ import { LaboratoryService } from './laboratory/services/laboratory.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
-      trigger('isOpen_navBarMenu', [
-        state('false', style({background: '#00000088'})),
-        state('true', style({background: '#000000DD'})),
-        transition('false => true', [animate('0.5s')]),
-        transition('true => false', [animate('0.2s')])
-      ]),
-      trigger('open_menuNavBar_item1', [
-        state('false', style({background: '#00000000'})),
-        state('true', style({background: '#000000DD'})),
-        transition('false => true', [animate('0.2s')])
-      ]),
-      trigger('open_menuNavBar_laboratory', [
-        state('false', style({opacity: '0'})),
-        state('true', style({opacity: '1'})),
-        transition('false => true', [animate('0.2s')])
-      ]),
-      trigger('open_menuNavBar_item2', [
-        state('false', style({background: '#00000000'})),
-        state('true', style({background: '#000000DD'})),
-        transition('false => true', [animate('0.2s')])
-      ]),
-      trigger('open_menuNavBar_development', [
-        state('false', style({opacity: '0'})),
-        state('true', style({opacity: '1'})),
-        transition('false => true', [animate('0.2s')])
-      ]),
-      trigger('open_menuNavBar_item3', [
-        state('false', style({background: '#00000000'})),
-        state('true', style({background: '#000000DD'})),
-        transition('false => true', [animate('0.2s')])
-      ]),
-      trigger('open_menuNavBar_tutorials', [
-        state('false', style({opacity: '0'})),
-        state('true', style({opacity: '1'})),
-        transition('false => true', [animate('0.2s')])
-      ]),
-      trigger('open_menuNavBar_item4', [
-        state('false', style({background: '#00000000'})),
-        state('true', style({background: '#000000DD'})),
-        transition('false => true', [animate('0.2s')])
-      ]),
-      trigger('open_menuNavBar_photography', [
-        state('false', style({opacity: '0'})),
-        state('true', style({opacity: '1'})),
-        transition('false => true', [animate('0.2s')])
-      ])
+    trigger('isOpen_navBarMenu', [
+      state('false', style({background: '#00000088'})),
+      state('true', style({background: '#000000'})),
+      transition('false => true', [animate('0.5s')]),
+      transition('true => false', [animate('0.2s')])
+    ])
   ]
 })
 export class AppComponent implements OnInit {
@@ -68,14 +28,12 @@ export class AppComponent implements OnInit {
 
   public isCollapsed = false;
   public isOpen_navBarMenu = false;
-  private open_menuNavBar_item1 = false;
-  private open_menuNavBar_laboratory = false;
-  private open_menuNavBar_item2 = false;
-  private open_menuNavBar_development = false;
-  private open_menuNavBar_item3 = false;
-  private open_menuNavBar_tutorials = false;
-  private open_menuNavBar_item4 = false;
-  private open_menuNavBar_photography = false;
+  public isOpen_navBarItems = false;
+  public open_menuNavBar_laboratory = false;
+  public open_menuNavBar_development = false;
+  public open_menuNavBar_tutorials = false;
+  public open_menuNavBar_photography = false;
+  public open_menuNavBar_items = false;
 
   public language_french = false;
   public language_english = true;
@@ -107,14 +65,12 @@ export class AppComponent implements OnInit {
     else {
       this.isCollapsed = false;
       this.isOpen_navBarMenu = false;
-      this.open_menuNavBar_item1 = false;
+      this.isOpen_navBarItems = false;
       this.open_menuNavBar_laboratory = false;
-      this.open_menuNavBar_item2 = false;
       this.open_menuNavBar_development = false;
-      this.open_menuNavBar_item3 = false;
       this.open_menuNavBar_tutorials = false;
-      this.open_menuNavBar_item4 = false;
       this.open_menuNavBar_photography = false;
+      this.open_menuNavBar_items = false;
     }
   }
 
@@ -125,23 +81,19 @@ export class AppComponent implements OnInit {
   public openClose_navBar_menu(): void {
     this.isOpen_navBarMenu = !this.isOpen_navBarMenu;
     if(this.isOpen_navBarMenu) {
-      setTimeout(() => {this.open_menuNavBar_item1 = true}, 100);
-      setTimeout(() => {this.open_menuNavBar_laboratory = true}, 100);
-      setTimeout(() => {this.open_menuNavBar_item2 = true}, 100);
-      setTimeout(() => {this.open_menuNavBar_development = true}, 100);
-      setTimeout(() => {this.open_menuNavBar_item3 = true}, 100);
-      setTimeout(() => {this.open_menuNavBar_tutorials = true}, 100);
-      setTimeout(() => {this.open_menuNavBar_item4 = true}, 100);
-      setTimeout(() => {this.open_menuNavBar_photography = true}, 100);
+      this.isOpen_navBarItems = true;
+      this.open_menuNavBar_laboratory = true;
+      this.open_menuNavBar_development = true;
+      this.open_menuNavBar_tutorials = true;
+      this.open_menuNavBar_photography = true;
+      this.open_menuNavBar_items = true;
     } else {
-      this.open_menuNavBar_item1 = false;
+      this.isOpen_navBarItems = false;
       this.open_menuNavBar_laboratory = false;
-      this.open_menuNavBar_item2 = false;
       this.open_menuNavBar_development = false;
-      this.open_menuNavBar_item3 = false;
       this.open_menuNavBar_tutorials = false;
-      this.open_menuNavBar_item4 = false;
       this.open_menuNavBar_photography = false;
+      this.open_menuNavBar_items = false;
     }
 
   }
@@ -149,27 +101,21 @@ export class AppComponent implements OnInit {
   public cleanUp_development() {
       this.developmentService.cleanUp();
       this.isOpen_navBarMenu = false;
-      this.open_menuNavBar_item1 = false;
       this.open_menuNavBar_laboratory = false;
-      this.open_menuNavBar_item2 = false;
       this.open_menuNavBar_development = false;
-      this.open_menuNavBar_item3 = false;
       this.open_menuNavBar_tutorials = false;
-      this.open_menuNavBar_item4 = false;
       this.open_menuNavBar_photography = false;
+      this.open_menuNavBar_items = false;
   }
 
   public cleanUp_laboratory() {
       this.laboratoryService.cleanUp();
       this.isOpen_navBarMenu = false;
-      this.open_menuNavBar_item1 = false;
       this.open_menuNavBar_laboratory = false;
-      this.open_menuNavBar_item2 = false;
       this.open_menuNavBar_development = false;
-      this.open_menuNavBar_item3 = false;
       this.open_menuNavBar_tutorials = false;
-      this.open_menuNavBar_item4 = false;
       this.open_menuNavBar_photography = false;
+      this.open_menuNavBar_items = false;
   }
 
   public cleanUp_photography() {
