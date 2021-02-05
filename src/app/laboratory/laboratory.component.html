@@ -3,12 +3,12 @@
 <div id="div_introduction_background" [style.display]="isVisible_introductionBackground ? 'block' : 'none'" [@isLoaded_fadeOut]="isLoaded_fadeOut" touch-action="none">
 </div>
 
-<div *ngIf="!isCV" class="container_introduction">
+<div *ngIf="!isCV && isVisible_introduction" class="container_introduction">
   <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction.png" alt="logo_moko_introduction">
 
-  <span *ngIf="language_english" class="span_logo_introduction" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">ENTER<br/>THE THIRD DIMENSION</span>
-  <span *ngIf="language_french" class="span_logo_introduction" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">ENTREZ DANS<br/>LA TROISIÈME DIMENSION</span>
-  <span *ngIf="language_spanish" class="span_logo_introduction" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">INGRESE<br/>A LA TERCERA DIMENSÍON</span>
+  <h1 *ngIf="language_english" class="h1s-language h1-english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">ENTER<br/>THE THIRD DIMENSION</h1>
+  <h1 *ngIf="language_french" class="h1s-language h1-french" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">ENTREZ DANS<br/>LA TROISIÈME DIMENSION</h1>
+  <h1 *ngIf="language_spanish" class="h1s-language h1-spanish" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">INGRESE<br/>A LA TERCERA DIMENSÍON</h1>
 
   <p class="text_introduction" *ngIf="language_english">
     Give yourself a powerful digital identity and offer your users a unique experience based on innovative technologies that will be part of the web for a long time.<br/>
@@ -36,9 +36,11 @@
     <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
-  <img class="enter_arrows" src="../assets/img/icons/enter_arrows.png" alt="logo_moko_introduction">
-
-  <span class="span_letsGo">LET'S GO</span>
+  <button type="button" class="btn-enter btn btn-primary mt-3" [disabled]="isLoaded == false" [@btnCloseIntroduction_fadeIn]="btnCloseIntroduction_fadeIn" (click)="close_introduction()">
+    <span *ngIf="language_english">Enter</span>
+    <span *ngIf="language_french">Entrer</span>
+    <span *ngIf="language_spanish">Entrar</span>
+  </button>
 </div>
 
 <div id="menu" [style.display]="isVisible_menu ? 'block' : 'none'" [@isVisible_menu]="isVisible_menu">
