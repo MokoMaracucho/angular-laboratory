@@ -505,8 +505,8 @@ export class LaboratoryService {
   this.fireSystem.emitter = fire_source;
   this.fireSystem.minEmitBox = new BABYLON.Vector3(-0.6, 1, -0.6);
   this.fireSystem.maxEmitBox = new BABYLON.Vector3(0.6, 1, 0.6);
-  this.fireSystem.color1 = new BABYLON.Color4(1, 0.5, 0, 1.0);
-  this.fireSystem.color2 = new BABYLON.Color4(1, 0.5, 0, 1.0);
+  this.fireSystem.color1 = new BABYLON.Color4(1, 0.5, 0, 0.6);
+  this.fireSystem.color2 = new BABYLON.Color4(1, 0.5, 0, 0.6);
   this.fireSystem.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
   this.fireSystem.minSize = 0.3;
   this.fireSystem.maxSize = 1;

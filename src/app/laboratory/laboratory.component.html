@@ -97,131 +97,16 @@
   </button>
 </div>
 
-<div id="menu" [style.display]="isVisible_menu ? 'block' : 'none'" [@isVisible_menu]="isVisible_menu">
-  <div>
-    <img id="menu_development" class="menu_icons"  *ngIf="isDesktopDevice" src="../assets/img/menu/development_70x70.png" alt="development" (click)="open_development()">
-    <img id="menu_development" class="menu_icons"  *ngIf="isMobileDevice || isTabletDevice" src="../assets/img/menu/development_50x50.png" alt="development" (click)="open_development()">
-  </div>
-  <div>
-    <img id="menu_datas" class="menu_icons"  *ngIf="isDesktopDevice" src="../assets/img/menu/datas_70x70.png" alt="datas" (click)="open_datas()">
-    <img id="menu_datas" class="menu_icons"  *ngIf="isMobileDevice || isTabletDevice" src="../assets/img/menu/datas_50x50.png" alt="datas" (click)="open_datas()">
-  </div>
-  <div>
-    <img id="menu_stereoscopy" class="menu_icons"  *ngIf="isDesktopDevice" src="../assets/img/menu/stereoscopy_70x70.png" alt="stereoscopy" (click)="open_stereoscopy()">
-    <img id="menu_stereoscopy" class="menu_icons"  *ngIf="isMobileDevice || isTabletDevice" src="../assets/img/menu/stereoscopy_50x50.png" alt="stereoscopy" (click)="open_stereoscopy()">
-  </div>
-  <div [style.display]="isVisible_moviesButton ? 'block' : 'none'" [@isVisible_moviesButton]="isVisible_moviesButton">
-    <img id="menu_movies" class="menu_icons"  *ngIf="isDesktopDevice" src="../assets/img/menu/movies_70x70.png" alt="movies" (click)="close_movies()">
-    <img id="menu_movies" class="menu_icons"  *ngIf="isMobileDevice || isTabletDevice" src="../assets/img/menu/movies_50x50.png" alt="movies" (click)="close_movies()">
-  </div>
-</div>
+<!-- DEVELOPMENT !isCV -->
 
-<div class="div_card" [style.display]="isVisible_development ? 'block' : 'none'" [@isVisible_development]="isVisible_development" touch-action="none">
-  <div class="container_card container">
-    <div class="row">
-      <div class="col-12">
-        <h1 class="h1_card" *ngIf="language_english">DEVELOPMENT</h1>
-        <h1 class="h1_card" *ngIf="language_french">DÉVELOPPEMENT</h1>
-        <h1 class="h1_card" *ngIf="language_spanish">DESAROLLO</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12" *ngIf="!isCV">
-        <p class="text_content" *ngIf="language_english">
-          Unleash your creativity!<br/>
-          Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas.<br/>
-          Front-end and Back-end development for a better distribution of functionalities. Database management. Configuration and securing of your servers. 3D modeling and programming.<br/>
-          Go to the "Development" section for more details.
-        </p>
-        <p class="text_content" *ngIf="language_french">
-          Liberez votre créativité !<br/>
-          Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.<br/>
-          Developpement Front-end et Back-end pour une meilleure répartition des fonctionnalités. Gestion des bases de données. Configuration et sécurisation de vos serveurs. Modélisation et programmtion 3D.<br/>
-          Accédez à la rubrique "Développement" pour plus de détails.
-        </p>
-        <p class="text_content" *ngIf="language_spanish">
-          ¡Da rienda suelta a tu creatividad!<br/>
-          Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.<br/>
-          Desarrollo Front-end y Back-end para una mejor distribución de funcionalidades. Gestión de base de datos. Configuración y aseguramiento de sus servidores. Modelado y programación 3D.<br/>
-          Vaya a la sección "Desarrollo" para obtener más detalles.
-        </p>
-        <a type="button" class="btn btn-dark mb-2" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Développement</a>
-        <div *ngIf="language_english">
-          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-        </div>
-        <div *ngIf="language_french">
-          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-        </div>
-        <div *ngIf="language_spanish">
-          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-        </div>
-      </div>
-      <div class="col-12" *ngIf="isCV">
-        <p class="text_content" *ngIf="language_english">
-          Guided by a desire for independence, I became interested in all aspects of building a website:<br/>
-          Back-office development:<br/>
-          <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
-          Front-office development:<br/>
-          <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
-          Data bases:<br/>
-          <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
-          Configuration and securing of your servers:<br/>
-          <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
-          3D programming and modeling:<br/>
-          <span class="span_development">3Ds Max - Blender - BabylonJS</span>
-        </p>
-        <p class="text_content" *ngIf="language_french">
-          Guidé par une volonté d'indépendance, je me suis intéressé à tous les aspects de la réalisation d'un site Web :<br/>
-          Développement Back-office :<br/>
-          <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
-          Développement Front-office :<br/>
-          <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
-          Bases de données :<br/>
-          <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
-          Configuration et sécurisation de vos serveurs :<br/>
-          <span class="span_development">Ubuntu - Apache - Apache Tomcat</span><br/>
-          Programmation et modélisation 3D :<br/>
-          <span class="span_development">3Ds Max - Blender - BabylonJS</span>
-        </p>
-        <p class="text_content" *ngIf="language_spanish">
-          Guiado por un deseo de independencia, me interesé en todos los aspectos de la construcción de un website:<br/>
-          Desarrollo de back-office :<br/>
-          <span class="span_development">Java - Spring - Maven - Hibernate</span><br/>
-          Front-office (Angular) :<br/>
-          <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
-          Bases de datos :<br/>
-          <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
-          Configuración y protección de sus servidores :<br/>
-          <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
-          Programación y modelado 3D :<br/>
-          <span class="span_development">3Ds Max - Blender - BabylonJS</span>
-        </p>
-        <a type="button" class="btn btn-dark mb-2" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Développement</a>
-        <div *ngIf="language_english">
-            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-        </div>
-        <div *ngIf="language_french">
-            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-        </div>
-        <div *ngIf="language_spanish">
-            <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-            <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <button type="button" class="btn btn-primary mt-3" (click)="close_development()">
-          <span *ngIf="language_english">Close</span>
-          <span *ngIf="language_french">Fermer</span>
-          <span *ngIf="language_spanish">Cerrar</span>
-        </button>
-      </div>
+<div *ngIf="!isCV && isVisible_development" class="container_cards">
+  <div class="card">
+    <div class="card_title">
+      <img class="icon_development" src="../assets/img/icons/icon_development.png" alt="icon_development">
+
+      <h1 class="h1_card" *ngIf="language_english">DEVELOPMENT</h1>
+      <h1 class="h1_card" *ngIf="language_french">DÉVELOPPEMENT</h1>
+      <h1 class="h1_card" *ngIf="language_spanish">DESAROLLO</h1>
     </div>
   </div>
 </div>
@@ -418,9 +303,19 @@
     </div>
 </div>
 
-<div>
-  <img id="init_position" *ngIf="isDesktopDevice" src="../assets/img/menu/init_position_70x70.png" alt="init_position" (click)="init_position()" [style.display]="isVisible_initPosition ? 'block' : 'none'" [@isVisible_initPosition]="isVisible_initPosition">
-  <img id="init_position" *ngIf="isMobileDevice || isTabletDevice" src="../assets/img/menu/init_position_50x50.png" alt="init_position" (click)="init_position()" [style.display]="isVisible_initPosition ? 'block' : 'none'" [@isVisible_initPosition]="isVisible_initPosition">
+<!-- MENU -->
+
+<div class="menu_container">
+  <div class="menu">
+    <img class="menu_icon_development menu_icons" src="../assets/img/menu/development_50x50.png" alt="development" (click)="open_development()">
+    <img class="menu_icon_datas menu_icons" src="../assets/img/menu/datas_50x50.png" alt="datas" (click)="open_datas()">
+    <img class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/stereoscopy_50x50.png" alt="stereoscopy" (click)="open_stereoscopy()">
+    <img class="menu_icon_movies menu_icons" src="../assets/img/menu/movies_50x50.png" alt="movies" (click)="open_movies()">
+  </div>
+</div>
+
+<div class="initPosition_container">
+  <img class="icon_initPosition" src="../assets/img/menu/init_position_50x50.png" alt="init_position" (click)="init_position()">
 </div>
 
 <div *ngIf="isMobileDevice" id="cache_mobileDevice" [style.display]="isVisible_cacheMobileDevice ? 'block' : 'none'" [@isVisible_cacheMobileDevice]="isVisible_cacheMobileDevice" touch-action="none"></div>
