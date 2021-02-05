@@ -434,7 +434,7 @@
 
 .menu_container {
   grid-template-columns: [col-start-menu] 50px [col-stop-menu];
-  grid-template-rows: [row-start-menu] 150px [row-1-menu] 50px [row-2-menu] 50px [row-3-menu] 50px [row-4-menu] 1fr [row-5-menu] 50px [row-stop-menu];
+  grid-template-rows: [row-start-menu] 150px [row-1-menu] 50px [row-2-menu] 50px [row-3-menu] 50px [row-4-menu] 1fr [row-5-menu] 60px [row-stop-menu];
   display: grid;
   z-index: 5;
   position: absolute;
@@ -467,23 +467,20 @@
 
 .initPosition_container {
   grid-template-columns: [col-start-menu] 50px [col-stop-menu];
-  grid-template-rows: [row-start-menu] 50px [row-stop-menu];
+  grid-template-rows: [row-start-menu] 60px [row-1-menu] 10px [row-stop-menu];
   display: grid;
   z-index: 6;
   position: absolute;
   right: 0px;
   bottom:0px;
   width: 50px;
-  height: 50px;
+  height: 60px;
   background-color: #00000066;
 }
 
 .icon_initPosition {
-  grid-area: row-start-menu / col-start-menu / row-stop-menu / col-stop-menu;
+  grid-area: row-start-menu / col-start-menu / row-1-menu / col-stop-menu;
   grid-auto-rows: auto;
-  width: 40px;
-  height: 40px;
-  margin: 5px;
 }
 
 /* BADGES */
