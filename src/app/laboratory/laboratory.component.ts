@@ -117,6 +117,12 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   public innerWidth: any;
   public innerHeight: any;
 
+  public isMax576 = false;
+  public isMin576 = false;
+  public isMin768 = false;
+  public isMin960 = false;
+  public isMin1140 = false;
+
   public language_french = false;
   public language_english = true;
   public language_spanish = false;
@@ -181,6 +187,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.innerWidth = window.innerWidth;
       this.innerHeight = window.innerHeight;
       this.laboratoryService.set_windowDimensions(this.innerWidth, this.innerHeight);
+      this.defineWidthRange();
 
       this.isCV = this.activatedRoute.snapshot.params.isCV;
       if(!this.isCV) {
@@ -230,6 +237,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.innerWidth = window.innerWidth;
       this.innerHeight = window.innerHeight;
       this.laboratoryService.set_windowDimensions(window.innerWidth, window.innerHeight);
+      this.defineWidthRange();
   }
 
   @HostListener('window:orientationchange', ['$event'])
@@ -242,6 +250,45 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     this.isMobileDevice = this.deviceService.isMobile();
     this.isTabletDevice = this.deviceService.isTablet();
     this.isDesktopDevice = this.deviceService.isDesktop();
+  }
+
+  private defineWidthRange(): void {
+    if(this.innerWidth < 576) {
+      this.isMax576 = true;
+      this.isMin576 = false;
+      this.isMin768 = false;
+      this.isMin960 = false;
+      this.isMin1140 = false;
+      console.log("isMax576");
+    } else if(this.innerWidth < 768) {
+      this.isMax576 = false;
+      this.isMin576 = true;
+      this.isMin768 = false;
+      this.isMin960 = false;
+      this.isMin1140 = false;
+      console.log("isMin576");
+    } else if(this.innerWidth < 960) {
+      this.isMax576 = false;
+      this.isMin576 = false;
+      this.isMin768 = true;
+      this.isMin960 = false;
+      this.isMin1140 = false;
+      console.log("isMin768");
+    } else if(this.innerWidth < 1140) {
+      this.isMax576 = false;
+      this.isMin576 = false;
+      this.isMin768 = false;
+      this.isMin960 = true;
+      this.isMin1140 = false;
+      console.log("isMin960");
+    } else {
+      this.isMax576 = false;
+      this.isMin576 = false;
+      this.isMin768 = false;
+      this.isMin960 = false;
+      this.isMin1140 = true;
+      console.log("isMin1140");
+    }
   }
 
   private isLoaded_function(): void {

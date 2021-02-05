@@ -1,14 +1,20 @@
+<!-- CANVAS -->
+
 <canvas #rendererCanvas_laboratory id="rendererCanvas_laboratory" touch-action="none"></canvas>
+
+<!-- INTRODUCTION BACKGROUND -->
 
 <div id="div_introduction_background" [style.display]="isVisible_introductionBackground ? 'block' : 'none'" [@isLoaded_fadeOut]="isLoaded_fadeOut" touch-action="none">
 </div>
 
-<div *ngIf="!isCV && isVisible_introduction" class="container_introduction">
-  <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction.png" alt="logo_moko_introduction">
+<!-- INTRODUCTION !isCV -->
 
-  <h1 *ngIf="language_english" class="h1s-language h1-english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">ENTER<br/>THE THIRD DIMENSION</h1>
-  <h1 *ngIf="language_french" class="h1s-language h1-french" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">ENTREZ DANS<br/>LA TROISIÈME DIMENSION</h1>
-  <h1 *ngIf="language_spanish" class="h1s-language h1-spanish" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">INGRESE<br/>A LA TERCERA DIMENSÍON</h1>
+<div *ngIf="!isCV && isVisible_introduction" class="container_introduction">
+  <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo_moko_introduction">
+
+  <h1 *ngIf="language_english" class="h1s-introduction h1-english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">ENTER<br/>THE THIRD DIMENSION</h1>
+  <h1 *ngIf="language_french" class="h1s-introduction h1-french" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">ENTREZ DANS<br/>LA TROISIÈME DIMENSION</h1>
+  <h1 *ngIf="language_spanish" class="h1s-introduction h1-spanish" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">INGRESE<br/>A LA TERCERA DIMENSÍON</h1>
 
   <p class="text_introduction" *ngIf="language_english">
     Give yourself a powerful digital identity and offer your users a unique experience based on innovative technologies that will be part of the web for a long time.<br/>
@@ -21,6 +27,54 @@
   <p class="text_introduction" *ngIf="language_spanish">
     Date una poderosa identidad digital y ofrece a tus usuarios una experiencia única basada en tecnologías innovadoras que serán parte de la web durante mucho tiempo.<br/>
     La web 3D ofrece soluciones de marketing digital que revolucionan sus interacciones con su comunidad, una presentación sin precedentes de sus productos, clasificación eficiente de sus datos, personalización ilimitada de sus interfaces.
+  </p>
+
+  <div *ngIf="language_english" class="spans_language">
+    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+  </div>
+  <div *ngIf="language_french" class="spans_language">
+    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  </div>
+  <div *ngIf="language_spanish" class="spans_language">
+    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  </div>
+
+  <button type="button" class="btn-enter btn btn-primary mt-3" [disabled]="isLoaded == false" [@btnCloseIntroduction_fadeIn]="btnCloseIntroduction_fadeIn" (click)="close_introduction()">
+    <span *ngIf="language_english">Enter</span>
+    <span *ngIf="language_french">Entrer</span>
+    <span *ngIf="language_spanish">Entrar</span>
+  </button>
+</div>
+
+<!-- INTRODUCTION isCV -->
+
+<div *ngIf="isCV && isVisible_introduction" class="container_introduction">
+  <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo_moko_introduction">
+
+  <h1 *ngIf="language_english" class="h1s-introduction h1s-introduction-isCV h1-english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">WEB<br/>DEVELOPER</h1>
+  <h1 *ngIf="language_french" class="h1s-introduction h1s-introduction-isCV h1-french" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DÉVELOPPEUR<br/>WEB</h1>
+  <h1 *ngIf="language_spanish" class="h1s-introduction h1s-introduction-isCV h1-spanish" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">DESAROLLADOR<br/>WEB</h1>
+
+  <p class="text_introduction" *ngIf="language_english">
+    Following a course as a Java application developer with OpenClassrooms, I am looking for a 4-month operational internship.<br/>
+    Passionate about IT, I fell into the Web very early on. I trained in a self-taught way in Front-end development and in 3D modeling and programming.<br/>
+    In order to validate and complete my knowledge, I decided to acquire a Back-end developer diploma.<br/>
+    Open the door of my laboratory and discover my universe !
+  </p>
+  <p class="text_introduction" *ngIf="language_french">
+    Suivant un cursus de développeur d'applications Java avec OpenClassrooms, je suis à la recherche d'un stage opérationnel de 4 mois.<br/>
+    Passionné d'informatique, je suis très tôt tombé dans le Web. Je me suis formé de manière autodidacte au développement Front-end et à la modélisation et la programmation 3D.<br/>
+    Dans l'objectif de valider et de compléter mes acquis, j'ai décidé d'acquérir un diplôme de développeur Back-end.<br/>
+    Poussez la porte de mon laboratoire et découvrez mon univers !
+  </p>
+  <p class="text_introduction" *ngIf="language_spanish">
+    Después de un curso como desarrollador de aplicaciones Java con OpenClassrooms, estoy buscando una práctica operativa de 4 meses.<br/>
+    Apasionado por las tecnologías de la información, entré en la Web desde el principio. Me formé de forma autodidacta en desarrollo Front-end y en modelización y programación 3D.<br/>
+    Para validar y completar mis conocimientos, decidí adquirir un diploma de desarrollador back-end.<br/>
+    Abre la puerta de mi laboratorio y descubre mi universo !
   </p>
 
   <div *ngIf="language_english" class="spans_language">
