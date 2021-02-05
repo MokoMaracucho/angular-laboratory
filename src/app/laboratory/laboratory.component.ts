@@ -434,7 +434,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     this.card_open = false;
   }
 
-  private open_movies(): void {
+  public open_movies(): void {
     if(this.card_open) {
       this.close_openedCard();
     }
