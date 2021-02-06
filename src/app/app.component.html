@@ -1,23 +1,23 @@
 <div *ngIf="!isCollapsed" class="container_navBar">
   <img class="logo_moko" src="../assets/img/logos/moko/logo_moko_40x40.png" alt="logo_moko">
 
-  <a class="laboratory items_navBar" [routerLink]="['/laboratory']" routerLinkActive="active" (click)="cleanUp_development()">
+  <a *ngIf="!isCV" class="laboratory items_navBar" [routerLink]="['/laboratory']" routerLinkActive="active" (click)="cleanUp_development()">
     <span *ngIf="language_english">Laboratory</span>
     <span *ngIf="language_french">Laboratoire</span>
     <span *ngIf="language_spanish">Laboratorio</span>
   </a>
-  <a class="laboratory items_navBar" [routerLink]="['/laboratory/true']" routerLinkActive="active" (click)="cleanUp_development()">
+  <a *ngIf="isCV" class="laboratory items_navBar" [routerLink]="['/laboratory/true']" routerLinkActive="active" (click)="cleanUp_development()">
     <span *ngIf="language_english">Laboratory</span>
     <span *ngIf="language_french">Laboratoire</span>
     <span *ngIf="language_spanish">Laboratorio</span>
   </a>
 
-  <a class="development items_navBar" [routerLink]="['/development']" routerLinkActive="active" (click)="cleanUp_laboratory()">
+  <a *ngIf="!isCV" class="development items_navBar" [routerLink]="['/development']" routerLinkActive="active" (click)="cleanUp_laboratory()">
     <span *ngIf="language_english">Development</span>
     <span *ngIf="language_french">Développement</span>
     <span *ngIf="language_spanish">Desarollo</span>
   </a>
-  <a class="development items_navBar" [routerLink]="['/development/true']" routerLinkActive="active" (click)="cleanUp_laboratory()">
+  <a *ngIf="isCV" class="development items_navBar" [routerLink]="['/development/true']" routerLinkActive="active" (click)="cleanUp_laboratory()">
     <span *ngIf="language_english">Development</span>
     <span *ngIf="language_french">Développement</span>
     <span *ngIf="language_spanish">Desarollo</span>

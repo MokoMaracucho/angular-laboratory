@@ -390,8 +390,8 @@
 /* CARDS */
 
 .container_cards {
-  grid-template-columns: [col-start-cards] auto [col-stop-cards];
-  grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] auto [row-stop-cards];
+  grid-template-columns: [col-start-cards] 400px [col-stop-cards];
+  grid-template-rows: [row-start-cards] 134px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-stop-cards];
   display: grid;
   z-index: 3;
   position: absolute;
@@ -410,41 +410,36 @@
   }
 }
 
-.icon_development {
+.title_development {
   grid-area: row-start-cards / col-start-cards / row-1-cards / col-1-cards;
   grid-auto-rows: auto;
-  width: 100px;
-  height: 100px;
-}
-
-.h1s-card {
-  grid-area: row-1-cards / col-start-cards / row-2-cards / col-stop-cards;
-  grid-auto-rows: auto;
-  font-family: Montserrat-Black;
-  font-size: 28px;
-  color: white;
-  padding-top: 10px;
+  width: 384px;
+  height: 134px;
 }
 
 .texts-card {
-  grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
+  grid-area: row-1-cards / col-start-cards / row-2-cards / col-stop-cards;
   grid-auto-rows: auto;
   max-width: 400px;
   color: #D3D3D3;
   text-align: justify;
   overflow-x: hidden;
   overflow-y: none;
-  border-top: 1px solid white;
   padding-top: 10px;
 }
 
+.text-bold {
+  font-family: Roboto-Bold;
+  font-size: 26px;
+}
+
 .spans_language_cards {
-  grid-area: row-3-cards / col-start-cards / row-4-cards / col-stop-cards;
+  grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
   grid-auto-rows: auto;
 }
 
 .btn-close {
-  grid-area: row-4-cards / col-start-cards / row-stop-cards / col-stop-cards;
+  grid-area: row-3-cards / col-start-cards / row-stop-cards / col-stop-cards;
   grid-auto-rows: auto;
   margin-top: 20px;
   width: 75px;
@@ -581,6 +576,15 @@
   background-color: #777777;
 }
 
+/* CACHE */
+
+#cache_mobileDevice {
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
 /* SCROLLBAR */
 
 ::-webkit-scrollbar {
@@ -627,13 +631,4 @@
   scroll-margin-left: 20px;
   border-radius: 10px;
   background-color: #ffffff44;
-}
-
-/* CACHE */
-
-#cache_mobileDevice {
-  z-index: 2;
-  position: absolute;
-  width: 100%;
-  height: 100%;
 }
