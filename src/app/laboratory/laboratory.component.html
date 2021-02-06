@@ -100,15 +100,49 @@
 <!-- DEVELOPMENT !isCV -->
 
 <div *ngIf="!isCV && isVisible_development" class="container_cards">
-  <div class="card">
-    <div class="card_title">
-      <img class="icon_development" src="../assets/img/icons/icon_development.png" alt="icon_development">
+  <img class="icon_development" src="../assets/img/icons/icon_development.png" alt="icon_development">
 
-      <h1 class="h1_card" *ngIf="language_english">DEVELOPMENT</h1>
-      <h1 class="h1_card" *ngIf="language_french">DÉVELOPPEMENT</h1>
-      <h1 class="h1_card" *ngIf="language_spanish">DESAROLLO</h1>
-    </div>
+  <h1 class="h1s-card" *ngIf="language_english">DEVELOPMENT</h1>
+  <h1 class="h1s-card" *ngIf="language_french">DÉVELOPPEMENT</h1>
+  <h1 class="h1s-card" *ngIf="language_spanish">DESAROLLO</h1>
+
+  <p class="texts-card" *ngIf="language_english">
+    Unleash your creativity!<br/>
+    Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas.<br/>
+    Front-end and Back-end development for a better distribution of functionalities. Database management. Configuration and securing of your servers. 3D modeling and programming.<br/>
+    Go to the "Development" section for more details.
+  </p>
+  <p class="texts-card" *ngIf="language_french">
+    Liberez votre créativité !<br/>
+    Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.<br/>
+    Developpement Front-end et Back-end pour une meilleure répartition des fonctionnalités. Gestion des bases de données. Configuration et sécurisation de vos serveurs. Modélisation et programmtion 3D.<br/>
+    Accédez à la rubrique "Développement" pour plus de détails.
+  </p>
+  <p class="texts-card" *ngIf="language_spanish">
+    ¡Da rienda suelta a tu creatividad!<br/>
+    Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.<br/>
+    Desarrollo Front-end y Back-end para una mejor distribución de funcionalidades. Gestión de base de datos. Configuración y aseguramiento de sus servidores. Modelado y programación 3D.<br/>
+    Vaya a la sección "Desarrollo" para obtener más detalles.
+  </p>
+
+  <div *ngIf="language_english" class="spans_language_cards">
+    <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+    <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
   </div>
+  <div *ngIf="language_french" class="spans_language_cards">
+    <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+    <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  </div>
+  <div *ngIf="language_spanish" class="spans_language_cards">
+    <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+    <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  </div>
+
+  <button type="button" class="btn-close btn btn-primary mt-3" [disabled]="isLoaded == false" [@btnCloseDevelopment_fadeIn]="btnCloseDevelopment_fadeIn" (click)="close_development()">
+    <span *ngIf="language_english">Close</span>
+    <span *ngIf="language_french">Fermer</span>
+    <span *ngIf="language_spanish">Cerrar</span>
+  </button>
 </div>
 
 <div class="div_card" [style.display]="isVisible_datas ? 'block' : 'none'" [@isVisible_datas]="isVisible_datas" touch-action="none">

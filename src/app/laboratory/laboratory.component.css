@@ -390,44 +390,64 @@
 /* CARDS */
 
 .container_cards {
-  grid-template-columns: [col-start-cards] 70px [col-1-cards] auto [col-stop-cards];
-  grid-template-rows: [row-start-cards] 60px [row-1-cards] 70px [row-2-cards] auto [row-3-cards] auto [row-4-cards] auto [row-5-cards] 1fr [row-stop-cards];
+  grid-template-columns: [col-start-cards] auto [col-stop-cards];
+  grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] auto [row-stop-cards];
   display: grid;
   z-index: 3;
   position: absolute;
-  width: 20%;
-  height: 100%;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  max-width: 400px;
+  margin-left: 100px;
+  padding: 10px;
+  padding-bottom: 20px;
 }
 
-.card {
-  grid-area: row-1-cards / col-start-cards / row-stop-cards / col-stop-cards;
-  grid-auto-rows: auto;
-  background-color: #00000088;
-}
-
-.card_title {
-  grid-area: row-1-cards / col-start-cards / row-stop-cards / col-1-cards;
-  grid-auto-rows: auto;
-  background-color: #000000;
+@media (min-width: 1400px) {
+  .container_cards {
+    margin-left: 150px;
+  }
 }
 
 .icon_development {
-  grid-area: row-1-cards / col-start-cards / row-2-cards / col-1-cards;
+  grid-area: row-start-cards / col-start-cards / row-1-cards / col-1-cards;
   grid-auto-rows: auto;
-  width: 50px;
-  height: 50px;
-  padding: 10px;
+  width: 100px;
+  height: 100px;
 }
 
-.h1_card {
-  grid-area: row-1-cards / col-1-cards / row-2-cards / col-stop-cards;
+.h1s-card {
+  grid-area: row-1-cards / col-start-cards / row-2-cards / col-stop-cards;
   grid-auto-rows: auto;
-  position: relative;
   font-family: Montserrat-Black;
-  font-size: 26px;
-  display: inline;
-  padding-top: 15px;
-  color: #3086ff;
+  font-size: 28px;
+  color: white;
+  padding-top: 10px;
+}
+
+.texts-card {
+  grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
+  grid-auto-rows: auto;
+  max-width: 400px;
+  color: #D3D3D3;
+  text-align: justify;
+  overflow-x: hidden;
+  overflow-y: none;
+  border-top: 1px solid white;
+  padding-top: 10px;
+}
+
+.spans_language_cards {
+  grid-area: row-3-cards / col-start-cards / row-4-cards / col-stop-cards;
+  grid-auto-rows: auto;
+}
+
+.btn-close {
+  grid-area: row-4-cards / col-start-cards / row-stop-cards / col-stop-cards;
+  grid-auto-rows: auto;
+  margin-top: 20px;
+  width: 75px;
 }
 
 /* MENU */
