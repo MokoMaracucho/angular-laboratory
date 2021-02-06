@@ -390,6 +390,65 @@
 
 /* CARDS */
 
+@media (min-width: 576px) {
+  .container_cards {
+    grid-template-columns: [col-start-cards] 350px [col-stop-cards];
+    grid-template-rows: [row-start-cards] 105px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] auto [row-stop-cards];
+    display: grid;
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    max-width: 350px;
+    margin-left: 20px;
+    padding-bottom: 20px;
+  }
+
+  .title_development {
+    grid-area: row-start-cards / col-start-cards / row-1-cards / col-1-cards;
+    grid-auto-rows: auto;
+    font-size: 16px;
+    width: 300px;
+    height: 105px;
+  }
+
+  .h1_card {
+    grid-area: row-1-cards / col-start-cards / row-2-cards / col-stop-cards;
+    grid-auto-rows: auto;
+    margin-top: 10px;
+    font-family: Roboto-Bold;
+    font-size: 22px;
+    color: #D3D3D3;
+  }
+
+  .texts-card {
+    grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
+    grid-auto-rows: auto;
+    max-width: 400px;
+    max-height: 200px;
+    color: #D3D3D3;
+    font-size: 16px;
+    text-align: justify;
+    overflow-x: hidden;
+    overflow-y: none;
+    padding-top: 10px;
+    padding-right: 20px;
+  }
+
+  .spans_language_cards {
+    grid-area: row-3-cards / col-start-cards / row-4-cards / col-stop-cards;
+    grid-auto-rows: auto;
+  }
+
+  .btn-close {
+    grid-area: row-4-cards / col-start-cards / row-stop-cards / col-stop-cards;
+    grid-auto-rows: auto;
+    margin-top: 20px;
+    width: 75px;
+  }
+}
+
 @media (min-width: 768px) {
   .container_cards {
     grid-template-columns: [col-start-cards] 350px [col-stop-cards];
@@ -402,7 +461,6 @@
     transform: translateY(-50%);
     max-width: 350px;
     margin-left: 20px;
-    padding: 10px;
     padding-bottom: 20px;
   }
 
@@ -462,7 +520,6 @@
     transform: translateY(-50%);
     max-width: 400px;
     margin-left: 50px;
-    padding: 10px;
     padding-bottom: 20px;
   }
 
@@ -520,7 +577,6 @@
     transform: translateY(-50%);
     max-width: 400px;
     margin-left: 100px;
-    padding: 10px;
     padding-bottom: 20px;
   }
 
