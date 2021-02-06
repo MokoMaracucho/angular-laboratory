@@ -820,19 +820,11 @@
 /* CACHE */
 
 .cacheMobileDevice_container {
-  grid-template-columns: [col-start-cacheMobileDevice] auto [col-stop-cacheMobileDevice];
-  grid-template-rows: [row-start-cacheMobileDevice] auto [row-stop-cacheMobileDevice];
-  display: grid;
   z-index: 2;
   position: absolute;
+  top: 0px;
   width: 100%;
   height: 100%;
-}
-
-.cache_mobileDevice {
-  grid-area: row-start-cacheMobileDevice / col-start-cacheMobileDevice / row-stop-cacheMobileDevice / col-stop-cacheMobileDevice;
-  grid-auto-rows: auto;
-  background-color: red;
 }
 
 /* SCROLLBAR */
