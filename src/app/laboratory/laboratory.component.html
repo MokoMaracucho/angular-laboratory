@@ -102,19 +102,20 @@
 <div *ngIf="!isCV && isVisible_development" class="container_cards">
   <img class="title_development" src="../assets/img/titles/title_development.png" alt="title_development">
 
+  <h1 *ngIf="language_english" class="h1_card">Unleash your creativity!</h1>
+  <h1 *ngIf="language_french" class="h1_card">Liberez votre créativité !</h1>
+  <h1 *ngIf="language_spanish" class="h1_card">¡Da rienda suelta a tu creatividad!</h1>
+
   <p class="texts-card" *ngIf="language_english">
-    <span class="text-bold">Unleash your creativity!</span>
-    <br/>
-    <br/>
     Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas.
     <br/><br/>
     Front-end and Back-end development for a better distribution of functionalities. Database management. Configuration and securing of your servers. 3D modeling and programming.
     <br/>
     <br/>
-    Go to the "Development" section for more details.
+    Go to the "<a *ngIf="!isCV" [routerLink]="['/laboratory']" (click)="cleanUp_development()">Development</a><a *ngIf="isCV" [routerLink]="['/laboratory/true']" (click)="cleanUp_development()">Development</a>" section for more details.
   </p>
   <p class="texts-card" *ngIf="language_french">
-    <span class="text-bold">Liberez votre créativité !</span>
+    <span class="text-bold"></span>
     <br/>
     <br/>
     Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.
@@ -126,7 +127,7 @@
     Accédez à la rubrique "Développement" pour plus de détails.
   </p>
   <p class="texts-card" *ngIf="language_spanish">
-    <span class="text-bold">¡Da rienda suelta a tu creatividad!</span>
+    <span class="text-bold"></span>
     <br/>
     <br/>
     Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.
