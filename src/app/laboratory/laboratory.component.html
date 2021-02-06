@@ -202,7 +202,7 @@
 
 <!-- STEREOSCOPY !isCV -->
 
-<div *ngIf="!isCV && isVisible_stereoscopy" class="container_cards" touch-action="none">
+<div *ngIf="!isMobileDevice && !isCV && isVisible_stereoscopy" class="container_cards" touch-action="none">
   <img class="title_card" src="../assets/img/titles/title_stereoscopy.png" alt="title_stereoscopy">
 
   <h1 *ngIf="language_english" class="h1_card">Immerse your community in your universe!</h1>
@@ -236,6 +236,29 @@
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>
   </button>
+</div>
+
+<div class="switchCamera_container">
+  <div class="switch_camera">
+    <span *ngIf="language_english" class="span_switchCamera">Switch camera</span>
+    <span *ngIf="language_french" class="span_switchCamera">Changer de caméra</span>
+    <span *ngIf="language_spanish" class="span_switchCamera">Cambiar de cámara</span>
+
+    <img class="img_cameraRegular imgs_camera" src="../assets/img/icons/camera_regular.png" alt="camera_regular">
+    <img class="img_cameraAnaglyph imgs_camera" src="../assets/img/icons/camera_anaglyph.png" alt="camera_anaglyph">
+
+    <div class="div_cameraRegular">
+      <span *ngIf="language_english" class="span_cameraRegular spans_camera">Regular</span>
+      <span *ngIf="language_french" class="span_cameraRegular spans_camera">Normale</span>
+      <span *ngIf="language_spanish" class="span_cameraRegular spans_camera">Regular</span>
+    </div>
+
+    <div class="div_cameraAnaglyph">
+      <span *ngIf="language_english" class="span_cameraAnaglyph spans_camera">Anaglyph</span>
+      <span *ngIf="language_french" class="span_cameraAnaglyph spans_camera">Anaglyphe</span>
+      <span *ngIf="language_spanish" class="span_cameraAnaglyph spans_camera">Anaglifo</span>
+    </div>
+  </div>
 </div>
 
 <div id="div_cv_stereoscopy" class="d-inline-flex p-2" *ngIf="!isMobileDevice && isCV" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy" touch-action="none">

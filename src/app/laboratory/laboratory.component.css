@@ -7,6 +7,8 @@
   height: 100%;
   margin: 0;
   touch-action: none;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
 /* BACKGROUND */
@@ -757,7 +759,7 @@
 @media (min-width: 800px) {
   .menu_container {
     grid-template-columns: [col-start-menu] 50px [col-stop-menu];
-    grid-template-rows: [row-start-menu] 150px [row-1-menu] 50px [row-2-menu] 50px [row-3-menu] 50px [row-4-menu] 1fr [row-5-menu] 60px [row-stop-menu];
+    grid-template-rows: [row-start-menu] 250px [row-1-menu] 50px [row-2-menu] 50px [row-3-menu] 50px [row-4-menu] 1fr [row-5-menu] 60px [row-stop-menu];
     display: grid;
     z-index: 5;
     position: absolute;
@@ -815,6 +817,74 @@
 
 .badge {
   background-color: #777777;
+}
+
+/* SWITCH CAMERA */
+
+.switchCamera_container {
+  grid-template-columns: [col-start-switchCamera] 90px [col-1-switchCamera] 90px [col-stop-switchCamera];
+  grid-template-rows: [row-start-switchCamera] auto [row-1-switchCamera] 80px [row-2-switchCamera] 30px [row-stop-switchCamera];
+  display: grid;
+  z-index: 7;
+  position: absolute;
+  top: 80px;
+  right: 0px;
+  width: 180px;
+}
+
+.switch_camera {
+  grid-area: row-start-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+  grid-auto-rows: auto;
+  background-color: #00000088;
+}
+
+.span_switchCamera {
+  grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+  grid-auto-rows: auto;
+  font-family: Roboto-Bold;
+  color: white;
+  margin: 10px;
+}
+
+.img_cameraRegular {
+  grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-1-switchCamera;
+  grid-auto-rows: auto;
+}
+
+.img_cameraAnaglyph {
+  grid-area: row-1-switchCamera / col-1-switchCamera / row-2-switchCamera / col-stop-switchCamera;
+  grid-auto-rows: auto;
+}
+
+.imgs_camera {
+  width: 70px;
+  height: 70px;
+  margin: 10px;
+  margin-bottom: 0px;
+}
+
+.div_cameraRegular {
+  grid-area: row-2-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
+  grid-auto-rows: auto;
+  width: 90px;
+  height: 30px;
+  display: inline-block;
+  text-align: center;
+}
+
+.div_cameraAnaglyph {
+  grid-area: row-2-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+  grid-auto-rows: auto;
+  width: 90px;
+  height:20px;
+  display: inline-block;
+  text-align: center;
+}
+
+.spans_camera {
+  font-family: Roboto-Regular;
+  font-size: 12px;
+  color: grey;
 }
 
 /* CACHE */
