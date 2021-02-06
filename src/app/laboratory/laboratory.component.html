@@ -9,7 +9,7 @@
 
 <!-- INTRODUCTION !isCV -->
 
-<div *ngIf="!isCV && isVisible_introduction" class="container_introduction">
+<div *ngIf="!isCV && isVisible_introduction" class="container_introduction" touch-action="none">
   <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo_moko_introduction">
 
   <h1 *ngIf="language_english" class="h1s-introduction h1-english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">ENTER<br/>THE THIRD DIMENSION</h1>
@@ -17,15 +17,21 @@
   <h1 *ngIf="language_spanish" class="h1s-introduction h1-spanish" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">INGRESE<br/>A LA TERCERA DIMENSÍON</h1>
 
   <p class="text_introduction" *ngIf="language_english">
-    Give yourself a powerful digital identity and offer your users a unique experience based on innovative technologies that will be part of the web for a long time.<br/>
+    Give yourself a powerful digital identity and offer your users a unique experience based on innovative technologies that will be part of the web for a long time.
+    <br/>
+    <br/>
     The 3D web offers digital marketing solutions revolutionizing your interactions with your community, an unprecedented presentation of your products, efficient classification of your data, unlimited customization of your interfaces.
   </p>
   <p class="text_introduction" *ngIf="language_french">
-    Dotez-vous d'une identité numérique puissante et proposez à vos utilisateurs une expérience unique reposant sur des technologies novatrices qui s'inscriront durablement dans le web.<br/>
+    Dotez-vous d'une identité numérique puissante et proposez à vos utilisateurs une expérience unique reposant sur des technologies novatrices qui s'inscriront durablement dans le web.
+    <br/>
+    <br/>
     Le web 3D offre des solutions de marketing digital révolutionnant vos interactions avec votre communauté, une présentation inédite de vos produits, une classification efficace de vos données, une customisation illimitée de vos interfaces.
   </p>
   <p class="text_introduction" *ngIf="language_spanish">
-    Date una poderosa identidad digital y ofrece a tus usuarios una experiencia única basada en tecnologías innovadoras que serán parte de la web durante mucho tiempo.<br/>
+    Date una poderosa identidad digital y ofrece a tus usuarios una experiencia única basada en tecnologías innovadoras que serán parte de la web durante mucho tiempo.
+    <br/>
+    <br/>
     La web 3D ofrece soluciones de marketing digital que revolucionan sus interacciones con su comunidad, una presentación sin precedentes de sus productos, clasificación eficiente de sus datos, personalización ilimitada de sus interfaces.
   </p>
 
@@ -51,7 +57,7 @@
 
 <!-- INTRODUCTION isCV -->
 
-<div *ngIf="isCV && isVisible_introduction" class="container_introduction">
+<div *ngIf="isCV && isVisible_introduction" class="container_introduction" touch-action="none">
   <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo_moko_introduction">
 
   <h1 *ngIf="language_english" class="h1s-introduction h1s-introduction-isCV h1-english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">WEB<br/>DEVELOPER</h1>
@@ -99,8 +105,8 @@
 
 <!-- DEVELOPMENT !isCV -->
 
-<div *ngIf="!isCV && isVisible_development" class="container_cards">
-  <img class="title_development" src="../assets/img/titles/title_development.png" alt="title_development">
+<div *ngIf="!isCV && isVisible_development" class="container_cards" touch-action="none">
+  <img class="title_card" src="../assets/img/titles/title_development.png" alt="title_development">
 
   <h1 *ngIf="language_english" class="h1_card">Unleash your creativity!</h1>
   <h1 *ngIf="language_french" class="h1_card">Liberez votre créativité !</h1>
@@ -115,9 +121,6 @@
     Go to the "<a *ngIf="!isCV" [routerLink]="['/laboratory']" (click)="cleanUp_development()">Development</a><a *ngIf="isCV" [routerLink]="['/laboratory/true']" (click)="cleanUp_development()">Development</a>" section for more details.
   </p>
   <p class="texts-card" *ngIf="language_french">
-    <span class="text-bold"></span>
-    <br/>
-    <br/>
     Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.
     <br/>
     <br/>
@@ -127,9 +130,6 @@
     Accédez à la rubrique "Développement" pour plus de détails.
   </p>
   <p class="texts-card" *ngIf="language_spanish">
-    <span class="text-bold"></span>
-    <br/>
-    <br/>
     Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.
     <br/>
     <br/>
@@ -152,119 +152,90 @@
     <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
-  <button type="button" class="btn-close btn btn-primary mt-3" [disabled]="isLoaded == false" [@btnCloseDevelopment_fadeIn]="btnCloseDevelopment_fadeIn" (click)="close_development()">
+  <button type="button" class="btn-close btn btn-primary mt-3" [@btnCloseDevelopment_fadeIn]="btnCloseDevelopment_fadeIn" (click)="close_development()">
     <span *ngIf="language_english">Close</span>
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>
   </button>
 </div>
 
-<div class="div_card" [style.display]="isVisible_datas ? 'block' : 'none'" [@isVisible_datas]="isVisible_datas" touch-action="none">
-    <div class="container_card container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="h1_card" *ngIf="language_english">DATAS</h1>
-                <h1 class="h1_card" *ngIf="language_french">DONNÉES</h1>
-                <h1 class="h1_card" *ngIf="language_spanish">DATOS</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12" *ngIf="!isCV">
-              <p class="text_content" *ngIf="language_english">
-                MK-Lab develops innovative 3D representation tools for better visualization and exploitation of your data.<br/>
-                Improve your user experience and gain efficiency with our innovative representation tools.
-              </p>
-              <p class="text_content" *ngIf="language_french">
-                MK-Lab développe des outils de représentation 3D innovants pour une meilleure visualisation et exploitation de vos données.<br/>
-                Améliorez votre expérience utilisateur et gagnez en efficience grâce à des outils de représentation personnalisables.
-              </p>
-              <p class="text_content" *ngIf="language_spanish">
-                MK-Lab desarrolla herramientas de representación 3D innovadoras para una mejor visualización y explotación de sus datos.<br/>
-                Mejore su experiencia de usuario y gane eficiencia con nuestras innovadoras herramientas de representación.
-              </p>
-              <div *ngIf="language_english">
-                  <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                  <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-              </div>
-              <div *ngIf="language_french">
-                  <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                  <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-              </div>
-              <div *ngIf="language_spanish">
-                  <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                  <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-              </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <button type="button" class="btn btn-primary mt-3" (click)="close_datas()">
-                    <span *ngIf="language_english">Close</span>
-                    <span *ngIf="language_french">Fermer</span>
-                    <span *ngIf="language_spanish">Cerrar</span>
-                </button>
-            </div>
-        </div>
-    </div>
+<!-- DATAS !isCV -->
+
+<div *ngIf="!isCV && isVisible_datas" class="container_cards" touch-action="none">
+  <img class="title_card" src="../assets/img/titles/title_datas.png" alt="title_datas">
+
+  <h1 *ngIf="language_english" class="h1_card">Unleash your creativity!</h1>
+  <h1 *ngIf="language_french" class="h1_card">Liberez votre créativité !</h1>
+  <h1 *ngIf="language_spanish" class="h1_card">¡Da rienda suelta a tu creatividad!</h1>
+
+  <p class="texts-card" *ngIf="language_english">
+    MK-Lab develops innovative 3D representation tools for better visualization and exploitation of your data.<br/>
+    Improve your user experience and gain efficiency with our innovative representation tools.
+  </p>
+  <p class="texts-card" *ngIf="language_french">
+    MK-Lab développe des outils de représentation 3D innovants pour une meilleure visualisation et exploitation de vos données.<br/>
+    Améliorez votre expérience utilisateur et gagnez en efficience grâce à des outils de représentation personnalisables.
+  </p>
+  <p class="texts-card" *ngIf="language_spanish">
+    MK-Lab desarrolla herramientas de representación 3D innovadoras para una mejor visualización y explotación de sus datos.<br/>
+    Mejore su experiencia de usuario y gane eficiencia con nuestras innovadoras herramientas de representación.
+  </p>
+  <div *ngIf="language_english" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+  </div>
+  <div *ngIf="language_french" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  </div>
+  <div *ngIf="language_spanish" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  </div>
+
+  <button type="button" class="btn-close btn btn-primary mt-3" [@btnCloseDatas_fadeIn]="btnCloseDatas_fadeIn" (click)="close_datas()">
+    <span *ngIf="language_english">Close</span>
+    <span *ngIf="language_french">Fermer</span>
+    <span *ngIf="language_spanish">Cerrar</span>
+  </button>
 </div>
 
-<div class="div_card" *ngIf="!isMobileDevice && !isCV" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy" touch-action="none">
-  <div class="container_card container">
-    <div class="row">
-      <div class="col">
-        <h1 class="h1_card" *ngIf="language_english">STEREOSCOPY</h1>
-        <h1 class="h1_card" *ngIf="language_french">STEREOSCOPIE</h1>
-        <h1 class="h1_card" *ngIf="language_spanish">ESTEREOSCOPIA</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12" *ngIf="!isCV">
-        <p class="text_content" *ngIf="language_english">
-          Immerse your community in your universe!<br/>
-          Give an unprecedented viewing experience for your products and data using stereoscopy.
-        </p>
-        <p class="text_content" *ngIf="language_french">
-          Immergez votre communauté dans votre univers !<br/>
-          Offrez une expérience inédite de visualisation de vos produits et de vos données grâce à la stéréoscopie.
-        </p>
-        <p class="text_content" *ngIf="language_spanish">
-          ¡Sumerja a su comunidad en su universo!<br/>
-          Ofrezca una experiencia de visualización sin precedentes para sus productos y datos mediante estereoscopía.
-        </p>
-        <p>
-          <button id="btn_switch_camera" type="button" class="btn btn-primary" (click)="animation_switch_camera()">
-            <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
-            <span *ngIf="language_english && anaglyph_activated">Regular</span>
-            <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
-            <span *ngIf="language_french && anaglyph_activated">Normale</span>
-            <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
-            <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
-          </button>
-        </p>
-        <div *ngIf="language_english">
-          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-        </div>
-        <div *ngIf="language_french">
-          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-        </div>
-        <div *ngIf="language_spanish">
-          <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-          <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <button id="btn_close_stereoscopy" type="button" class="btn btn-primary mt-3" (click)="close_stereoscopy()" [disabled]="anaglyph_activated == true">
-          <span *ngIf="language_english">Close</span>
-          <span *ngIf="language_french">Fermer</span>
-          <span *ngIf="language_spanish">Cerrar</span>
-        </button>
-      </div>
-    </div>
+<!-- STEREOSCOPY !isCV -->
+
+<div *ngIf="!isCV && isVisible_stereoscopy" class="container_cards" touch-action="none">
+  <img class="title_card" src="../assets/img/titles/title_stereoscopy.png" alt="title_stereoscopy">
+
+  <h1 *ngIf="language_english" class="h1_card">Immerse your community in your universe!</h1>
+  <h1 *ngIf="language_french" class="h1_card">Immergez votre communauté dans votre univers !</h1>
+  <h1 *ngIf="language_spanish" class="h1_card">¡Sumerja a su comunidad en su universo!</h1>
+
+  <p class="texts-card" *ngIf="language_english">
+    Give an unprecedented viewing experience for your products and data using stereoscopy.
+  </p>
+  <p class="texts-card" *ngIf="language_french">
+    Offrez une expérience inédite de visualisation de vos produits et de vos données grâce à la stéréoscopie.
+  </p>
+  <p class="texts-card" *ngIf="language_spanish">
+    Ofrezca una experiencia de visualización sin precedentes para sus productos y datos mediante estereoscopía.
+  </p>
+  <div *ngIf="language_english" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
   </div>
+  <div *ngIf="language_french" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  </div>
+  <div *ngIf="language_spanish" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  </div>
+
+  <button type="button" class="btn-close btn btn-primary mt-3" [@btnCloseStereoscopy_fadeIn]="btnCloseStereoscopy_fadeIn" (click)="close_stereoscopy()">
+    <span *ngIf="language_english">Close</span>
+    <span *ngIf="language_french">Fermer</span>
+    <span *ngIf="language_spanish">Cerrar</span>
+  </button>
 </div>
 
 <div id="div_cv_stereoscopy" class="d-inline-flex p-2" *ngIf="!isMobileDevice && isCV" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy" touch-action="none">
@@ -299,61 +270,65 @@
   </button>
 </div>
 
-<div class="div_card" [style.display]="isVisible_photography ? 'block' : 'none'" [@isVisible_photography]="isVisible_photography" touch-action="none">
-    <div class="container_card container">
-        <div class="row">
-            <div class="col">
-                <h1 class="h1_card" *ngIf="language_english">PHOTOGRAPHY</h1>
-                <h1 class="h1_card" *ngIf="language_french">PHOTOGRAPHIE</h1>
-                <h1 class="h1_card" *ngIf="language_spanish">FOTOGRAFÍA</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <p class="text_content" *ngIf="language_english">
-                  Street photographer, my desire is to show the beauty of the things that surround us and that the frenzy of our urban lives does not leave us time to contemplate.<br/>
-                  Light and colors at the service of emotions, such is my conception of photography.<br/>
-                  Dedicated site to come.
-                </p>
-                <p class="text_content" *ngIf="language_french">
-                  Photographe de rue, ma volonté est de montrer la beauté des choses qui nous entourent et que la frénésie de nos vies urbaines ne nous laisse le temps de contempler.<br/>
-                  La lumière et les couleurs aux service des émotions, telle est ma conception de la photographie.<br/>
-                  Site dédié à venir.
-                </p>
-                <p class="text_content" *ngIf="language_spanish">
-                  Fotografo callejero, mi deseo es mostrar la belleza de las cosas que nos rodean y que el frenesí de nuestra vida urbana no nos deje tiempo para contemplar.<br/>
-                  La luz y los colores al servicio de las emociones, ¡tal es mi concepción de la fotografía¡.<br/>
-                  Sitio dedicado por venir.
-                </p>
-                <div *ngIf="language_english">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-                </div>
-                <div *ngIf="language_french">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-                </div>
-                <div *ngIf="language_spanish">
-                    <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-                    <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <button id="btn_close_photography" type="button" class="btn btn-primary mt-3" (click)="close_photography()">
-                    <span *ngIf="language_french">Fermer</span>
-                    <span *ngIf="language_english">Close</span>
-                    <span *ngIf="language_spanish">Cerrar</span>
-                </button>
-            </div>
-        </div>
-    </div>
+<!-- PHOTOGRAPHY !isCV -->
+
+<div *ngIf="!isCV && isVisible_photography" class="container_cards" touch-action="none">
+  <img class="title_card" src="../assets/img/titles/title_photography.png" alt="title_photography">
+
+  <h1 *ngIf="language_english" class="h1_card">Immerse your community in your universe!</h1>
+  <h1 *ngIf="language_french" class="h1_card">Immergez votre communauté dans votre univers !</h1>
+  <h1 *ngIf="language_spanish" class="h1_card">¡Sumerja a su comunidad en su universo!</h1>
+
+  <p class="texts-card" *ngIf="language_english">
+    Street photographer, my desire is to show the beauty of the things that surround us and that the frenzy of our urban lives does not leave us time to contemplate.
+    <br/>
+    <br/>
+    Light and colors at the service of emotions, such is my conception of photography.
+    <br/>
+    <br/>
+    Dedicated site to come.
+  </p>
+  <p class="texts-card" *ngIf="language_french">
+    Photographe de rue, ma volonté est de montrer la beauté des choses qui nous entourent et que la frénésie de nos vies urbaines ne nous laisse le temps de contempler.
+    <br/>
+    <br/>
+    La lumière et les couleurs aux service des émotions, telle est ma conception de la photographie.
+    <br/>
+    <br/>
+    Site dédié à venir.
+  </p>
+  <p class="texts-card" *ngIf="language_spanish">
+    Fotografo callejero, mi deseo es mostrar la belleza de las cosas que nos rodean y que el frenesí de nuestra vida urbana no nos deje tiempo para contemplar.
+    <br/>
+    <br/>
+    La luz y los colores al servicio de las emociones, ¡tal es mi concepción de la fotografía¡.
+    <br/>
+    <br/>
+    Sitio dedicado por venir.
+  </p>
+  <div *ngIf="language_english" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+  </div>
+  <div *ngIf="language_french" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  </div>
+  <div *ngIf="language_spanish" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  </div>
+
+  <button type="button" class="btn-close btn btn-primary mt-3" [@btnClosePhotography_fadeIn]="btnClosePhotography_fadeIn" (click)="close_photography()">
+    <span *ngIf="language_english">Close</span>
+    <span *ngIf="language_french">Fermer</span>
+    <span *ngIf="language_spanish">Cerrar</span>
+  </button>
 </div>
 
 <!-- MENU -->
 
-<div class="menu_container">
+<div class="menu_container" touch-action="none">
   <div class="menu">
     <img class="menu_icon_development menu_icons" src="../assets/img/menu/development_50x50.png" alt="development" (click)="open_development()">
     <img class="menu_icon_datas menu_icons" src="../assets/img/menu/datas_50x50.png" alt="datas" (click)="open_datas()">
@@ -362,9 +337,18 @@
   </div>
 </div>
 
+<!-- INIT POSITION -->
+
 <div class="initPosition_container">
   <img class="icon_initPosition" src="../assets/img/menu/init_position_50x50.png" alt="init_position" (click)="init_position()">
 </div>
 
-<div *ngIf="isMobileDevice" id="cache_mobileDevice" [style.display]="isVisible_cacheMobileDevice ? 'block' : 'none'" [@isVisible_cacheMobileDevice]="isVisible_cacheMobileDevice" touch-action="none"></div>
+<!-- CACHE MOBILE DEVICE -->
+
+<div class="cacheMobileDevice_container" [style.display]="isVisible_cacheMobileDevice ? 'block' : 'none'" [@isVisible_cacheMobileDevice]="isVisible_cacheMobileDevice" touch-action="none">
+  <div class="cache_mobileDevice"></div>
+</div>
+<!--
+  <div *ngIf="isMobileDevice" class="cacheMobileDevice_container" [style.display]="isVisible_cacheMobileDevice ? 'block' : 'none'" [@isVisible_cacheMobileDevice]="isVisible_cacheMobileDevice" touch-action="none">
+-->
 

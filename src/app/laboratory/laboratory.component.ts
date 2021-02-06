@@ -94,8 +94,7 @@ import { ConnectionService } from '../shared/services/connection.service';
     trigger('isVisible_cacheMobileDevice', [
       state('false', style({background: '#00000000'})),
       state('true', style({background: '#00000066'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
+      transition('false => true', [animate('0.5s')])
     ]),
     trigger('isVisible_moviesButton', [
       state('false', style({opacity: '0'})),
@@ -330,17 +329,17 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     if(this.card_open) {
       this.close_openedCard();
     }
-    if(this.isMobileDevice) {
+    // if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-    }
+    // }
     this.isVisible_development = true;
     this.card_open = true;
   }
 
   public close_development(): void {
-    if(this.isMobileDevice && this.card_open) {
+    // if(this.isMobileDevice && this.card_open) {
       this.isVisible_cacheMobileDevice = false;;
-    }
+    // }
     this.laboratoryService.activation_buttons();
     this.isVisible_development = false;
     this.card_open = false;

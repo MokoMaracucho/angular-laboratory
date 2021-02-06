@@ -1289,7 +1289,8 @@ public addActions_buttons() {
       this.transfert_boxes.actionManager.registerAction(new BABYLON.CombineAction(
           {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes},
           [
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next())
+            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next()),
+            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
           ]
         )
       );
@@ -1309,7 +1310,8 @@ public addActions_buttons() {
     this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes_rings},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next()),
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
         ]
       )
     );
@@ -1932,7 +1934,8 @@ public addActions_buttons() {
     this.threed_glasses_frame.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glasses_frame},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
         ]
       )
     );
@@ -1954,7 +1957,8 @@ public addActions_buttons() {
     this.threed_glass_blue.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_blue},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
         ]
       )
     );
@@ -1976,7 +1980,8 @@ public addActions_buttons() {
     this.threed_glass_red.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_red},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
         ]
       )
     );
