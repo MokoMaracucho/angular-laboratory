@@ -3128,7 +3128,7 @@ public addActions_buttons() {
 
   // OPEN CARDS
 
-  private open_card(): void {
+  public open_card(): void {
     this.animation_camera_openCard();
     this.animation_cameraTarget_openCard();
   }

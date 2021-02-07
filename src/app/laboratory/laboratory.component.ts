@@ -19,17 +19,27 @@ import { ConnectionService } from '../shared/services/connection.service';
   templateUrl: './laboratory.component.html',
   styleUrls: ['./laboratory.component.css'],
   animations: [
-    trigger('isLoaded_fadeOut', [
+    trigger('fadeOut_background', [
       state('false', style({background: '#160130'})),
       state('true', style({background: '#16013066'})),
       transition('false => true', [animate('2s')])
     ]),
-    trigger('webDeveloper_fadeIn', [
+    trigger('logoIntroduction_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('2s')])
     ]),
-    trigger('introduction_fadeIn', [
+    trigger('h1Introduction_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('textIntroduction_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('spanLanguageIntroduction_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('2s')])
@@ -106,12 +116,14 @@ import { ConnectionService } from '../shared/services/connection.service';
 })
 export class LaboratoryComponent implements OnInit, OnDestroy {
 
-  public isCV: boolean;
+  // DEVICE
 
+  private deviceInfo = null;
   public isMobileDevice;
   public isTabletDevice;
   public isDesktopDevice;
-  private deviceInfo = null;
+
+  // WINDOW
 
   public innerWidth: any;
   public innerHeight: any;
@@ -122,19 +134,33 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   public isMin960 = false;
   public isMin1140 = false;
 
+  // CV
+
+  public isCV: boolean;
+
+  // LANGUAGE
+
   public language_french = false;
   public language_english = true;
   public language_spanish = false;
 
+  // INTERACTION
+
   private subscription: Subscription;
   private readonly destroy = new Subject<boolean>();
 
+  // IS LOADED
+
   public isLoaded = false;
-  public isLoaded_fadeOut = false;
+  public fadeOut_background = false;
+
   public isVisible_introductionBackground = true;
   public isVisible_introduction = true;
-  public webDeveloper_fadeIn = false;
-  public introduction_fadeIn = false;
+
+  public logoIntroduction_fadeIn = false;
+  public h1Introduction_fadeIn = false;
+  public textIntroduction_fadeIn = false;
+  public spanLanguageIntroduction_fadeIn = false;
   public btnCloseIntroduction_fadeIn = false;
 
   public isVisible_menu = false;
@@ -200,9 +226,10 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
       this.subscription = this.interaction.isLoaded.subscribe(() => this.isLoaded_function());
 
-      setTimeout(() => {this.webDeveloper_fadeIn = true}, 500);
-      setTimeout(() => {this.introduction_fadeIn = true}, 1000);
-      setTimeout(() => {this.btnCloseIntroduction_fadeIn = true}, 1500);
+      setTimeout(() => {this.logoIntroduction_fadeIn = true}, 1000);
+      setTimeout(() => {this.h1Introduction_fadeIn = true}, 1000);
+      setTimeout(() => {this.textIntroduction_fadeIn = true}, 2000);
+      setTimeout(() => {this.spanLanguageIntroduction_fadeIn = true}, 2000);
 
       this.subscription = this.interaction.change_language_english.subscribe(() => this.change_language_english());
       this.subscription = this.interaction.change_language_french.subscribe(() => this.change_language_french());
@@ -292,7 +319,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
   private isLoaded_function(): void {
       this.isLoaded = true;
-      this.isLoaded_fadeOut = true;
+      this.btnCloseIntroduction_fadeIn = true;
+      this.fadeOut_background = true;
   }
 
   private change_language_english(): void {
@@ -333,6 +361,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.isVisible_cacheMobileDevice = true;
     }
     this.isVisible_development = true;
+    this.laboratoryService.open_card();
     this.card_open = true;
   }
 

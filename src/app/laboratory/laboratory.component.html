@@ -4,46 +4,46 @@
 
 <!-- INTRODUCTION BACKGROUND -->
 
-<div id="div_introduction_background" [style.display]="isVisible_introductionBackground ? 'block' : 'none'" [@isLoaded_fadeOut]="isLoaded_fadeOut" touch-action="none">
+<div id="div_introduction_background" [style.display]="isVisible_introductionBackground ? 'block' : 'none'" [@fadeOut_background]="fadeOut_background" touch-action="none">
 </div>
 
 <!-- INTRODUCTION !isCV -->
 
 <div *ngIf="!isCV && isVisible_introduction" class="container_introduction" touch-action="none">
-  <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo_moko_introduction">
+  <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo_moko_introduction" [@logoIntroduction_fadeIn]="logoIntroduction_fadeIn">
 
-  <h1 *ngIf="language_english" class="h1s-introduction h1-english" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">ENTER<br/>THE THIRD DIMENSION</h1>
-  <h1 *ngIf="language_french" class="h1s-introduction h1-french" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">ENTREZ DANS<br/>LA TROISIÈME DIMENSION</h1>
-  <h1 *ngIf="language_spanish" class="h1s-introduction h1-spanish" [@webDeveloper_fadeIn]="webDeveloper_fadeIn">INGRESE<br/>A LA TERCERA DIMENSÍON</h1>
+  <h1 *ngIf="language_english" class="h1s-introduction h1-english" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">ENTER<br/>THE THIRD DIMENSION</h1>
+  <h1 *ngIf="language_french" class="h1s-introduction h1-french" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">ENTREZ DANS<br/>LA TROISIÈME DIMENSION</h1>
+  <h1 *ngIf="language_spanish" class="h1s-introduction h1-spanish" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">INGRESE<br/>A LA TERCERA DIMENSÍON</h1>
 
-  <p class="text_introduction" *ngIf="language_english">
+  <p *ngIf="language_english" class="text_introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
     Give yourself a powerful digital identity and offer your users a unique experience based on innovative technologies that will be part of the web for a long time.
     <br/>
     <br/>
     The 3D web offers digital marketing solutions revolutionizing your interactions with your community, an unprecedented presentation of your products, efficient classification of your data, unlimited customization of your interfaces.
   </p>
-  <p class="text_introduction" *ngIf="language_french">
+  <p *ngIf="language_french" class="text_introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
     Dotez-vous d'une identité numérique puissante et proposez à vos utilisateurs une expérience unique reposant sur des technologies novatrices qui s'inscriront durablement dans le web.
     <br/>
     <br/>
     Le web 3D offre des solutions de marketing digital révolutionnant vos interactions avec votre communauté, une présentation inédite de vos produits, une classification efficace de vos données, une customisation illimitée de vos interfaces.
   </p>
-  <p class="text_introduction" *ngIf="language_spanish">
+  <p *ngIf="language_spanish" class="text_introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
     Date una poderosa identidad digital y ofrece a tus usuarios una experiencia única basada en tecnologías innovadoras que serán parte de la web durante mucho tiempo.
     <br/>
     <br/>
     La web 3D ofrece soluciones de marketing digital que revolucionan sus interacciones con su comunidad, una presentación sin precedentes de sus productos, clasificación eficiente de sus datos, personalización ilimitada de sus interfaces.
   </p>
 
-  <div *ngIf="language_english" class="spans_language">
+  <div *ngIf="language_english" class="spans_language" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
     <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
     <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
   </div>
-  <div *ngIf="language_french" class="spans_language">
+  <div *ngIf="language_french" class="spans_language" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
     <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
     <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
   </div>
-  <div *ngIf="language_spanish" class="spans_language">
+  <div *ngIf="language_spanish" class="spans_language" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
     <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
     <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
@@ -103,6 +103,45 @@
   </button>
 </div>
 
+<!-- MENU -->
+
+<div class="menu_container" touch-action="none">
+  <div class="menu">
+    <img class="menu_icon_development menu_icons" src="../assets/img/menu/development_50x50.png" alt="development" (click)="open_development()">
+    <img class="menu_icon_datas menu_icons" src="../assets/img/menu/datas_50x50.png" alt="datas" (click)="open_datas()">
+    <img class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/stereoscopy_50x50.png" alt="stereoscopy" (click)="open_stereoscopy()">
+    <img class="menu_icon_movies menu_icons" src="../assets/img/menu/movies_50x50.png" alt="movies" (click)="open_movies()">
+  </div>
+</div>
+
+<!-- MENU MOVIES -->
+
+<div class="menuMovies_container">
+  <div class="menu_movies">
+    <span class="buttons_movies material-icons">
+      play_arrow
+    </span>
+    <span class="buttons_movies material-icons">
+      pause
+    </span>
+    <span class="buttons_movies material-icons">
+      skip_next
+    </span>
+    <span class="buttons_movies material-icons">
+      volume_up
+    </span>
+    <span class="buttons_movies material-icons">
+      volume_off
+    </span>
+  </div>
+</div>
+
+<!-- INIT POSITION -->
+
+<div class="initPosition_container">
+  <img class="icon_initPosition" src="../assets/img/menu/init_position_50x50.png" alt="init_position" (click)="init_position()">
+</div>
+
 <!-- DEVELOPMENT !isCV -->
 
 <div *ngIf="!isCV && isVisible_development" class="container_cards" touch-action="none">
@@ -152,7 +191,7 @@
     <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
-  <button type="button" class="btn-close btn btn-primary mt-3" [@btnCloseDevelopment_fadeIn]="btnCloseDevelopment_fadeIn" (click)="close_development()">
+  <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_development()">
     <span *ngIf="language_english">Close</span>
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>
@@ -193,7 +232,7 @@
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
-  <button type="button" class="btn-close btn btn-primary mt-3" [@btnCloseDatas_fadeIn]="btnCloseDatas_fadeIn" (click)="close_datas()">
+  <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_datas()">
     <span *ngIf="language_english">Close</span>
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>
@@ -231,7 +270,7 @@
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
-  <button type="button" class="btn-close btn btn-primary mt-3" [@btnCloseStereoscopy_fadeIn]="btnCloseStereoscopy_fadeIn" (click)="close_stereoscopy()">
+  <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_stereoscopy()">
     <span *ngIf="language_english">Close</span>
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>
@@ -262,38 +301,6 @@
       <div *ngIf="language_spanish" class="span_cameraAnaglyph spans_camera">Anaglifo</div>
     </div>
   </div>
-</div>
-
-<div id="div_cv_stereoscopy" class="d-inline-flex p-2" *ngIf="!isMobileDevice && isCV" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy" touch-action="none">
-  <button id="btn_switch_camera" type="button" class="btn btn-primary mr-2 mb-2" (click)="animation_switch_camera()">
-    <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
-    <span *ngIf="language_english && anaglyph_activated">Regular</span>
-    <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
-    <span *ngIf="language_french && anaglyph_activated">Normale</span>
-    <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
-    <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
-  </button>
-  <button id="btn_close_stereoscopy" type="button" class="btn btn-primary mr-2 mb-2" (click)="close_stereoscopy()" [disabled]="anaglyph_activated == true">
-      <span *ngIf="language_english">Close</span>
-      <span *ngIf="language_french">Fermer</span>
-      <span *ngIf="language_spanish">Cerrar</span>
-  </button>
-</div>
-
-<div id="div_mobile_stereoscopy" class="d-inline-flex p-2" *ngIf="isMobileDevice" [style.display]="isVisible_stereoscopy ? 'block' : 'none'" [@isVisible_stereoscopy]="isVisible_stereoscopy" touch-action="none">
-  <button id="btn_switch_camera" type="button" class="btn btn-primary mr-2 mb-2" (click)="animation_switch_camera()">
-    <span *ngIf="language_english && !anaglyph_activated">Anaglyph</span>
-    <span *ngIf="language_english && anaglyph_activated">Regular</span>
-    <span *ngIf="language_french && !anaglyph_activated">Anaglyphe</span>
-    <span *ngIf="language_french && anaglyph_activated">Normale</span>
-    <span *ngIf="language_spanish && !anaglyph_activated">Anaglifo</span>
-    <span *ngIf="language_spanish && anaglyph_activated">Normale</span>
-  </button>
-  <button id="btn_close_stereoscopy" type="button" class="btn btn-primary mr-2 mb-2" *ngIf="isMobileDevice" (click)="close_stereoscopy()">
-      <span *ngIf="language_english">Close</span>
-      <span *ngIf="language_french">Fermer</span>
-      <span *ngIf="language_spanish">Cerrar</span>
-  </button>
 </div>
 
 <!-- PHOTOGRAPHY !isCV -->
@@ -350,45 +357,6 @@
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>
   </button>
-</div>
-
-<!-- MENU -->
-
-<div class="menu_container" touch-action="none">
-  <div class="menu">
-    <img class="menu_icon_development menu_icons" src="../assets/img/menu/development_50x50.png" alt="development" (click)="open_development()">
-    <img class="menu_icon_datas menu_icons" src="../assets/img/menu/datas_50x50.png" alt="datas" (click)="open_datas()">
-    <img class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/stereoscopy_50x50.png" alt="stereoscopy" (click)="open_stereoscopy()">
-    <img class="menu_icon_movies menu_icons" src="../assets/img/menu/movies_50x50.png" alt="movies" (click)="open_movies()">
-  </div>
-</div>
-
-<!-- MENU MOVIES -->
-
-<div class="menuMovies_container">
-  <div class="menu_movies">
-    <span class="buttons_movies material-icons">
-      play_arrow
-    </span>
-    <span class="buttons_movies material-icons">
-      pause
-    </span>
-    <span class="buttons_movies material-icons">
-      skip_next
-    </span>
-    <span class="buttons_movies material-icons">
-      volume_up
-    </span>
-    <span class="buttons_movies material-icons">
-      volume_off
-    </span>
-  </div>
-</div>
-
-<!-- INIT POSITION -->
-
-<div class="initPosition_container">
-  <img class="icon_initPosition" src="../assets/img/menu/init_position_50x50.png" alt="init_position" (click)="init_position()">
 </div>
 
 <!-- CACHE MOBILE DEVICE -->
