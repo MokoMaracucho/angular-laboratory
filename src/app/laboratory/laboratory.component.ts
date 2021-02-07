@@ -371,6 +371,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
     this.laboratoryService.activation_buttons();
     this.isVisible_development = false;
+    this.laboratoryService.close_card();
     this.card_open = false;
   }
 
@@ -382,6 +383,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.isVisible_cacheMobileDevice = true;
     }
     this.isVisible_datas = true;
+    this.laboratoryService.open_card();
     this.card_open = true;
   }
 
@@ -402,6 +404,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.isVisible_cacheMobileDevice = true;
     }
     this.isVisible_stereoscopy = true;
+    this.laboratoryService.open_card();
     this.card_open = true;
   }
 
@@ -430,6 +433,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.isVisible_cacheMobileDevice = true;
     }
     this.isVisible_photography = true;
+    this.laboratoryService.open_card();
     this.card_open = true;
   }
 
@@ -450,6 +454,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.isVisible_cacheMobileDevice = true;
     }
     this.isVisible_contactMe = true;
+    this.laboratoryService.open_card();
     this.card_open = true;
   }
 

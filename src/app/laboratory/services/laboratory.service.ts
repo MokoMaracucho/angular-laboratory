@@ -25,6 +25,9 @@ export class LaboratoryService {
   private universal_camera: BABYLON.UniversalCamera;
   private anaglyph_universal_camera: BABYLON.AnaglyphUniversalCamera;
 
+  private universalCameraPosition_clone;
+  private universalCameraTargetPosition_clone;
+
   private hemispheric_light: BABYLON.Light;
   private directional_light: BABYLON.DirectionalLight;
 
@@ -3129,6 +3132,8 @@ public addActions_buttons() {
   // OPEN CARDS
 
   public open_card(): void {
+    this.universalCameraPosition_clone = this.universal_camera.position;
+    this.universalCameraTargetPosition_clone = this.universal_camera.target.clone();
     this.animation_camera_openCard();
     this.animation_cameraTarget_openCard();
   }
@@ -3143,6 +3148,25 @@ public addActions_buttons() {
     const ease = new BABYLON.CubicEase();
     ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
     BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_openCard', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-12, 10, 5), 0, ease);
+  }
+
+  // CLOSE CARDS
+
+  public close_card(): void {
+    this.animation_camera_closeCard();
+    this.animation_cameraTarget_closeCard();
+  }
+
+  private animation_camera_closeCard() {
+    const ease = new BABYLON.CubicEase();
+    ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+    BABYLON.Animation.CreateAndStartAnimation('animation_camera_closeCard', this.universal_camera, 'position', 15, 30, this.universal_camera.position, this.universalCameraPosition_clone, 0, ease);
+  }
+
+  private animation_cameraTarget_closeCard() {
+    const ease = new BABYLON.CubicEase();
+    ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+    BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_closeCard', this.universal_camera, 'target', 15, 30, this.universal_camera.target, this.universalCameraTargetPosition_clone, 0, ease);
   }
 
   // OPEN MOVIES
