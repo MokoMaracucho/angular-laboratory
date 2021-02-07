@@ -518,7 +518,7 @@
 @media (max-width: 576px) {
   .switchCamera_container {
     grid-template-columns: [col-start-switchCamera] 70px [col-stop-switchCamera];
-    grid-template-rows: [row-start-switchCamera] auto [row-1-switchCamera] 60px [row-2-switchCamera] auto [row-3-switchCamera] 60px [row-4-switchCamera] auto [row-stop-switchCamera];
+    grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 60px [row-3-switchCamera] auto [row-4-switchCamera] 60px [row-5-switchCamera] auto [row-stop-switchCamera];
     display: grid;
     z-index: 4;
     position: absolute;
@@ -527,8 +527,18 @@
     width: 70px;
   }
 
+  /* RED CROSS */
+
+  .red_cross {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    width: 15px;
+    height: 15px;
+    margin-bottom: 5px;
+  }
+
   .switch_camera {
-    grid-area: row-start-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     background-color: #00000088;
   }
@@ -536,7 +546,7 @@
   /* SPAN SWITCH CAMERA */
 
   .span_switchCamera {
-    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     font-family: Roboto-Regular;
     font-size: 12px;
@@ -548,36 +558,36 @@
   /* CAMERA REGULAR */
 
   .div_cameraRegular {
-    grid-area: row-1-switchCamera / col-start-switchCamera / row-3-switchCamera / col-stop-switchCamera;
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-4-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     display: inline-block;
   }
 
   .img_cameraRegular {
-    grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-stop-switchCamera;
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-3-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
   }
 
   .span_cameraRegular {
-    grid-area: row-2-switchCamera / col-start-switchCamera / row-3-switchCamera / col-stop-switchCamera;
+    grid-area: row-3-switchCamera / col-start-switchCamera / row-4-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
   }
 
   /* CAMERA ANAGLYPH */
 
   .div_cameraAnaglyph {
-    grid-area: row-3-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row-4-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     display: inline-block;
   }
 
   .img_cameraAnaglyph {
-    grid-area: row-3-switchCamera / col-start-switchCamera / row-4-switchCamera / col-stop-switchCamera;
+    grid-area: row-4-switchCamera / col-start-switchCamera / row-5-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
   }
 
   .span_cameraAnaglyph {
-    grid-area: row-4-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row-5-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
   }
 
@@ -605,7 +615,7 @@
 @media (min-width: 576px) {
   .switchCamera_container {
     grid-template-columns: [col-start-switchCamera] 70px [col-stop-switchCamera];
-    grid-template-rows: [row-start-switchCamera] auto [row-1-switchCamera] 60px [row-2-switchCamera] auto [row-3-switchCamera] 60px [row-4-switchCamera] auto [row-stop-switchCamera];
+    grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 60px [row-3-switchCamera] auto [row-4-switchCamera] 60px [row-5-switchCamera] auto [row-stop-switchCamera];
     display: grid;
     z-index: 4;
     position: absolute;
@@ -614,8 +624,18 @@
     width: 70px;
   }
 
+  /* RED CROSS */
+
+  .red_cross {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    width: 15px;
+    height: 15px;
+    margin-bottom: 5px;
+  }
+
   .switch_camera {
-    grid-area: row-start-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     background-color: #00000088;
   }
@@ -623,7 +643,7 @@
   /* SPAN SWITCH CAMERA */
 
   .span_switchCamera {
-    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     font-family: Roboto-Regular;
     font-size: 12px;
@@ -635,36 +655,36 @@
   /* CAMERA REGULAR */
 
   .div_cameraRegular {
-    grid-area: row-1-switchCamera / col-start-switchCamera / row-3-switchCamera / col-stop-switchCamera;
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-4-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     display: inline-block;
   }
 
   .img_cameraRegular {
-    grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-stop-switchCamera;
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-3-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
   }
 
   .span_cameraRegular {
-    grid-area: row-2-switchCamera / col-start-switchCamera / row-3-switchCamera / col-stop-switchCamera;
+    grid-area: row-3-switchCamera / col-start-switchCamera / row-4-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
   }
 
   /* CAMERA ANAGLYPH */
 
   .div_cameraAnaglyph {
-    grid-area: row-3-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row-4-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     display: inline-block;
   }
 
   .img_cameraAnaglyph {
-    grid-area: row-3-switchCamera / col-start-switchCamera / row-4-switchCamera / col-stop-switchCamera;
+    grid-area: row-4-switchCamera / col-start-switchCamera / row-5-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
   }
 
   .span_cameraAnaglyph {
-    grid-area: row-4-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row-5-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
   }
 
@@ -692,7 +712,7 @@
 @media (min-width: 768px) {
   .switchCamera_container {
     grid-template-columns: [col-start-switchCamera] 70px [col-1-switchCamera] 70px [col-stop-switchCamera];
-    grid-template-rows: [row-start-switchCamera] auto [row-1-switchCamera] 60px [row-2-switchCamera] auto [row-stop-switchCamera];
+    grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 60px [row-3-switchCamera] auto [row-stop-switchCamera];
     display: grid;
     z-index: 4;
     position: absolute;
@@ -701,8 +721,20 @@
     width: 140px;
   }
 
+  /* RED CROSS */
+
+  .red_cross {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    width: 15px;
+    height: 15px;
+    margin-bottom: 5px;
+  }
+
+  /* SWITCH CAMERA */
+
   .switch_camera {
-    grid-area: row-start-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     background-color: #00000088;
   }
@@ -710,7 +742,7 @@
   /* SPAN SWITCH CAMERA */
 
   .span_switchCamera {
-    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-area: row-s1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     font-family: Roboto-Bold;
     color: white;
@@ -720,36 +752,36 @@
   /* CAMERA REGULAR */
 
   .div_cameraRegular {
-    grid-area: row-1-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
     grid-auto-rows: auto;
     display: inline-block;
   }
 
   .img_cameraRegular {
-    grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-1-switchCamera;
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-3-switchCamera / col-1-switchCamera;
     grid-auto-rows: auto;
   }
 
   .span_cameraRegular {
-    grid-area: row-2-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
+    grid-area: row-3-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
     grid-auto-rows: auto;
   }
 
   /* CAMERA ANAGLYPH */
 
   .div_cameraAnaglyph {
-    grid-area: row-1-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row2-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     display: inline-block;
   }
 
   .img_cameraAnaglyph {
-    grid-area: row-1-switchCamera / col-1-switchCamera / row-2-switchCamera / col-stop-switchCamera;
+    grid-area: row-2-switchCamera / col-1-switchCamera / row-3-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
   }
 
   .span_cameraAnaglyph {
-    grid-area: row-2-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row-3-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
   }
 
@@ -761,12 +793,12 @@
   }
 
   .spans_camera {
-    padding: 8px;
-    padding-bottom: 5px;
     font-family: Roboto-Regular;
     font-size: 12px;
-    text-align: center;
     color: grey;
+    padding: 10px;
+    text-align: center;
+    padding-bottom: 5px;
   }
 
   .isActive_spansCamera {
@@ -777,7 +809,7 @@
 @media (min-width: 960px) {
   .switchCamera_container {
     grid-template-columns: [col-start-switchCamera] 80px [col-1-switchCamera] 80px [col-stop-switchCamera];
-    grid-template-rows: [row-start-switchCamera] auto [row-1-switchCamera] 70px [row-2-switchCamera] auto [row-stop-switchCamera];
+    grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 70px [row-3-switchCamera] auto [row-stop-switchCamera];
     display: grid;
     z-index: 4;
     position: absolute;
@@ -786,8 +818,20 @@
     width: 160px;
   }
 
+  /* RED CROSS */
+
+  .red_cross {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    width: 15px;
+    height: 15px;
+    margin-bottom: 5px;
+  }
+
+  /* SWITCH CAMERA */
+
   .switch_camera {
-    grid-area: row-start-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     background-color: #00000088;
   }
@@ -795,7 +839,7 @@
   /* SPAN SWITCH CAMERA */
 
   .span_switchCamera {
-    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-area: row-s1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     font-family: Roboto-Bold;
     color: white;
@@ -805,36 +849,36 @@
   /* CAMERA REGULAR */
 
   .div_cameraRegular {
-    grid-area: row-1-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
     grid-auto-rows: auto;
     display: inline-block;
   }
 
   .img_cameraRegular {
-    grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-1-switchCamera;
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-3-switchCamera / col-1-switchCamera;
     grid-auto-rows: auto;
   }
 
   .span_cameraRegular {
-    grid-area: row-2-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
+    grid-area: row-3-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
     grid-auto-rows: auto;
   }
 
   /* CAMERA ANAGLYPH */
 
   .div_cameraAnaglyph {
-    grid-area: row-1-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row2-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     display: inline-block;
   }
 
   .img_cameraAnaglyph {
-    grid-area: row-1-switchCamera / col-1-switchCamera / row-2-switchCamera / col-stop-switchCamera;
+    grid-area: row-2-switchCamera / col-1-switchCamera / row-3-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
   }
 
   .span_cameraAnaglyph {
-    grid-area: row-2-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row-3-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
   }
 
@@ -846,12 +890,12 @@
   }
 
   .spans_camera {
-    padding: 8px;
-    padding-bottom: 5px;
     font-family: Roboto-Regular;
     font-size: 12px;
-    text-align: center;
     color: grey;
+    padding: 10px;
+    text-align: center;
+    padding-bottom: 5px;
   }
 
   .isActive_spansCamera {
@@ -862,7 +906,7 @@
 @media (min-width: 1140px) {
   .switchCamera_container {
     grid-template-columns: [col-start-switchCamera] 90px [col-1-switchCamera] 90px [col-stop-switchCamera];
-    grid-template-rows: [row-start-switchCamera] auto [row-1-switchCamera] 80px [row-2-switchCamera] auto [row-stop-switchCamera];
+    grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 80px [row-3-switchCamera] auto [row-stop-switchCamera];
     display: grid;
     z-index: 4;
     position: absolute;
@@ -871,8 +915,20 @@
     width: 180px;
   }
 
+  /* RED CROSS */
+
+  .red_cross {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-1-switchCamera;
+    grid-auto-rows: auto;
+    width: 15px;
+    height: 15px;
+    margin-bottom: 5px;
+  }
+
+  /* SWITCH CAMERA */
+
   .switch_camera {
-    grid-area: row-start-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     background-color: #00000088;
   }
@@ -880,7 +936,7 @@
   /* SPAN SWITCH CAMERA */
 
   .span_switchCamera {
-    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-area: row-s1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     font-family: Roboto-Bold;
     color: white;
@@ -890,36 +946,36 @@
   /* CAMERA REGULAR */
 
   .div_cameraRegular {
-    grid-area: row-1-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
     grid-auto-rows: auto;
     display: inline-block;
   }
 
   .img_cameraRegular {
-    grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-1-switchCamera;
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-3-switchCamera / col-1-switchCamera;
     grid-auto-rows: auto;
   }
 
   .span_cameraRegular {
-    grid-area: row-2-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
+    grid-area: row-3-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
     grid-auto-rows: auto;
   }
 
   /* CAMERA ANAGLYPH */
 
   .div_cameraAnaglyph {
-    grid-area: row-1-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row2-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     display: inline-block;
   }
 
   .img_cameraAnaglyph {
-    grid-area: row-1-switchCamera / col-1-switchCamera / row-2-switchCamera / col-stop-switchCamera;
+    grid-area: row-2-switchCamera / col-1-switchCamera / row-3-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
   }
 
   .span_cameraAnaglyph {
-    grid-area: row-2-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-area: row-3-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
   }
 

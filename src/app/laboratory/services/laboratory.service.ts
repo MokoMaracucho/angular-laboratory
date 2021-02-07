@@ -1937,8 +1937,7 @@ public addActions_buttons() {
     this.threed_glasses_frame.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glasses_frame},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
         ]
       )
     );
@@ -1960,8 +1959,7 @@ public addActions_buttons() {
     this.threed_glass_blue.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_blue},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
         ]
       )
     );
@@ -1983,8 +1981,7 @@ public addActions_buttons() {
     this.threed_glass_red.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_red},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
         ]
       )
     );
@@ -3228,7 +3225,7 @@ public addActions_buttons() {
       this.anaglyph_universal_camera.detachControl();
       this.scene.activeCamera = this.universal_camera;
       this.universal_camera.attachControl(this.canvas, true);
-      this.desactivation_buttons();
+      this.activation_buttons();
       this.isActive_cameraAnaglyph = false;
     }
   }

@@ -285,13 +285,15 @@
 
 <!-- SWITCH CAMERA -->
 
-<div class="switchCamera_container" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
+<div class="switchCamera_container" [style.display]="isOpen_switchCamera ? 'block' : 'none'" [@switchCamera_fadeIn]="switchCamera_fadeIn">
+  <img class="red_cross" src="../assets/img/icons/red_cross.png" alt="red_cross" (click)="close_switchCamera()">
+
   <div class="switch_camera">
       <span *ngIf="language_english && !isMax576 && !isMin576" class="span_switchCamera">Switch camera</span>
       <span *ngIf="language_french && !isMax576 && !isMin576" class="span_switchCamera">Changer de caméra</span>
       <span *ngIf="language_spanish && !isMax576 && !isMin576" class="span_switchCamera">Cambiar de cámara</span>
 
-    <div class="div_cameraRegular" (click)="switch_camera()">
+    <div class="div_cameraRegular" (click)="switch_cameraRegular()">
       <img class="img_cameraRegular imgs_camera" src="../assets/img/icons/camera_regular.png" alt="camera_regular">
 
       <div *ngIf="language_english && isActive_cameraRegular" class="span_cameraRegular spans_camera isActive_spansCamera">Regular</div>
@@ -304,7 +306,7 @@
       <div *ngIf="language_spanish && !isActive_cameraRegular" class="span_cameraRegular spans_camera">Regular</div>
     </div>
 
-    <div class="div_cameraAnaglyph" (click)="switch_camera()">
+    <div class="div_cameraAnaglyph" (click)="switch_cameraAnaglyph()">
       <img class="img_cameraAnaglyph imgs_camera" src="../assets/img/icons/camera_anaglyph.png" alt="camera_anaglyph">
 
       <div *ngIf="language_english && isActive_cameraAnaglyph" class="span_cameraRegular spans_camera isActive_spansCamera">Anaglyph</div>

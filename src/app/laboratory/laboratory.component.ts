@@ -60,7 +60,12 @@ import { ConnectionService } from '../shared/services/connection.service';
     trigger('stereoscopy_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')])
+      transition('false => true', [animate('1s')])
+    ]),,
+    trigger('switchCamera_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('1s')])
     ]),
     trigger('photography_fadeIn', [
       state('false', style({opacity: '0'})),
@@ -146,6 +151,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
   public isOpen_stereoscopy = false;
   public stereoscopy_fadeIn = false;
+  public isOpen_switchCamera = false;
+  public switchCamera_fadeIn = false;
 
   public isActive_cameraRegular = true;
   public isActive_cameraAnaglyph = false;
@@ -353,6 +360,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   public open_stereoscopy(): void {
     this.isOpen_stereoscopy = true;
     this.stereoscopy_fadeIn = true;
+    this.isOpen_switchCamera = true;
+    this.switchCamera_fadeIn = true;
   }
 
   public close_stereoscopy(): void {
@@ -360,10 +369,31 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     this.stereoscopy_fadeIn = false;
   }
 
-  public switch_camera(): void {
+  public close_switchCamera(): void {
+    this.isOpen_switchCamera = false;
+    if(this.isOpen_stereoscopy && !this.isMobileDevice) {
+      this.close_stereoscopy();
+    }
+    if(this.isMobileDevice) {
+      this.isOpen_stereoscopy = false;
+      this.stereoscopy_fadeIn = false;
+    }
+  }
+
+  public switch_cameraRegular(): void {
+    if(!this.isActive_cameraRegular) {
       this.laboratoryService.switch_camera();
       this.isActive_cameraRegular = !this.isActive_cameraRegular;
       this.isActive_cameraAnaglyph = !this.isActive_cameraAnaglyph;
+    }
+  }
+
+  public switch_cameraAnaglyph(): void {
+    if(!this.isActive_cameraAnaglyph) {
+      this.laboratoryService.switch_camera();
+      this.isActive_cameraRegular = !this.isActive_cameraRegular;
+      this.isActive_cameraAnaglyph = !this.isActive_cameraAnaglyph;
+    }
   }
 
   // PHOTOGRAPHIE
