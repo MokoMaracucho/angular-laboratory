@@ -60,7 +60,6 @@ export class LaboratoryService {
   private youtube; youtube_play;
   private spotify_green; spotify_black;
   private projector;
-  private touch_play; touch_pause; touch_skip_forward;
 
   private transfert_boxes_BAKING: BABYLON.Texture;
   private transfert_boxes_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -1132,29 +1131,6 @@ export class LaboratoryService {
   this.projector_MATERIAL.alpha = 0.3;
 
   this.projector.material = this.projector_MATERIAL;
-
-  // PROJECTOR BUTTONS
-
-  this.touch_play_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_play_BAKING.jpg", this.scene, false, false);
-  this.touch_play_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_play_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-  this.touch_pause_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_pause_BAKING.jpg", this.scene, false, false);
-  this.touch_pause_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_pause_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-  this.touch_skip_forward_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_forward_BAKING.jpg", this.scene, false, false);
-  this.touch_skip_forward_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/touch_skip_forward_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
-
-  BABYLON.SceneLoader.ImportMeshAsync("touch_play", "../../assets/glb/laboratory/", "touch_play.glb").then((result) => {
-    this.touch_play = this.scene.getMeshByName("touch_play");
-  });
-
-  BABYLON.SceneLoader.ImportMeshAsync("touch_pause", "../../assets/glb/laboratory/", "touch_pause.glb").then((result) => {
-    this.touch_pause = this.scene.getMeshByName("touch_pause");
-  });
-
-  BABYLON.SceneLoader.ImportMeshAsync("touch_skip_forward", "../../assets/glb/laboratory/", "touch_skip_forward.glb").then((result) => {
-    this.touch_skip_forward = this.scene.getMeshByName("touch_skip_forward");
-  });
 }
 
 // IS CV
@@ -1235,7 +1211,6 @@ public addActions_buttons() {
     this.addActions_FranceBlue(); this.addActions_FranceWhite(); this.addActions_FranceRed();
     this.addActions_SpainRed(); this.addActions_SpainYellow();
     this.addActions_Projector();
-    this.addActions_TouchPlay(); this.addActions_TouchPause(); this.addActions_TouchSkipForward();
 }
 
   public activation_buttons() {
@@ -2865,18 +2840,6 @@ public addActions_buttons() {
     this.spain_yellow.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger,() => this.interaction.change_language_spanish.next()));
   }
 
-  private activation_buttonsProjector() {
-      this.touch_play.isPickable = true;
-      this.touch_pause.isPickable = true;
-      this.touch_skip_forward.isPickable = true;
-  }
-
-  private desactivation_buttonsProjector() {
-      this.touch_play.isPickable = false;
-      this.touch_pause.isPickable = false;
-      this.touch_skip_forward.isPickable = false;
-  }
-
   private addActions_Projector() {
     this.projector.isPickable = true;
     this.projector.actionManager = new BABYLON.ActionManager(this.scene);
@@ -2908,10 +2871,7 @@ public addActions_buttons() {
     this.projector.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.projector},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.animation_openMovies())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next())
         ]
       )
     );
@@ -2927,54 +2887,40 @@ public addActions_buttons() {
     this.dvd_pi.isPickable = false; this.dvd_enter_the_void.isPickable = false; this.dvd_2001_odyssee_espace.isPickable = false; this.dvd_la_haine.isPickable = false, this.dvd_sweet_sixteen.isPickable = false; this.dvd_eternal_sunshine.isPickable = false; this.dvd_zero_theorem.isPickable = false; this.dvd_shining.isPickable = false;
   }
 
-  private addActions_TouchPlay() {
-    this.touch_play.isPickable = false;
-    this.touch_play.actionManager = new BABYLON.ActionManager(this.scene);
-
-    this.touch_play.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_play.material, "albedoTexture", this.touch_play_BAKING_HIGHLIGHT));
-    this.touch_play.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_play.material, "albedoTexture", this.touch_play_BAKING));
-
-    this.touch_play.actionManager.registerAction(new BABYLON.CombineAction(
-        {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.touch_play},
-        [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.play_videoTexture(this.trailer_position))
-        ]
-      )
-    );
-  }
-
-  private play_videoTexture(trailer_position) {
-    switch(trailer_position) {
+  public play_videoTexture() {
+    switch(this.trailer_position) {
       case 1:
         if(!this.all_video_textures_loaded) {
-          this.enter_the_void_TEXTURE = new BABYLON.VideoTexture("videoTexture","../../assets/videos/enter_the_void.mp4", this.scene);
+          this.enter_the_void_TEXTURE = new BABYLON.VideoTexture("enter_the_void_TEXTURE","../../assets/videos/enter_the_void.mp4", this.scene);
         }
         this.projector_MATERIAL.diffuseTexture = this.enter_the_void_TEXTURE;
         this.projector_MATERIAL.emissiveColor = BABYLON.Color3.White();
         this.projector.material = this.projector_MATERIAL;
         this.enter_the_void_TEXTURE.video.play();
         break;
+      case 2:
+        this.pi_TEXTURE.video.play();
+        break;
+      case 3:
+        this.eternal_sunshine_TEXTURE.video.play();
+        break;
+      case 4:
+        this.odyssee_espace_TEXTURE.video.play();
+        break;
+      case 5:
+        this.zero_theorem_TEXTURE.video.play();
+        break;
+      case 6:
+        this.shining_TEXTURE.video.play();
+        break;
+      case 7:
+        this.la_haine_TEXTURE.video.play();
+        break;
     }
   }
 
-  private addActions_TouchPause() {
-      this.touch_pause.isPickable = false;
-      this.touch_pause.actionManager = new BABYLON.ActionManager(this.scene);
-
-      this.touch_pause.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_pause.material, "albedoTexture", this.touch_pause_BAKING_HIGHLIGHT));
-      this.touch_pause.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_pause.material, "albedoTexture", this.touch_pause_BAKING));
-
-      this.touch_pause.actionManager.registerAction(new BABYLON.CombineAction(
-              {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.touch_pause},
-              [
-                  new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.pause_videoTexture(this.trailer_position))
-              ]
-          )
-      );
-  }
-
-  private pause_videoTexture(trailer_position) {
-    switch(trailer_position) {
+  public pause_videoTexture() {
+    switch(this.trailer_position) {
       case 1:
         this.enter_the_void_TEXTURE.video.pause();
         break;
@@ -2999,32 +2945,17 @@ public addActions_buttons() {
     }
   }
 
-  private addActions_TouchSkipForward() {
-      this.touch_skip_forward.isPickable = false;
-      this.touch_skip_forward.actionManager = new BABYLON.ActionManager(this.scene);
-
-      this.touch_skip_forward.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.touch_skip_forward.material, "albedoTexture", this.touch_skip_forward_BAKING_HIGHLIGHT));
-      this.touch_skip_forward.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.touch_skip_forward.material, "albedoTexture", this.touch_skip_forward_BAKING));
-
-      this.touch_skip_forward.actionManager.registerAction(new BABYLON.CombineAction(
-              {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.touch_skip_forward},
-              [
-                  new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.switch_trailer_forward(this.trailer_position))
-              ]
-          )
-      );
-  }
-
-  private switch_trailer_forward(trailer_position) {
-    switch(trailer_position) {
+  public skipForward_videoTexture() {
+    this.trailer_position++;
+    if(this.trailer_position == 8) {
+      this.trailer_position = 1;
+    }
+    switch(this.trailer_position) {
       case 1:
-        if(this.all_video_textures_loaded) {
-          this.la_haine_TEXTURE.video.pause();
-        }
+        this.la_haine_TEXTURE.video.pause();
         this.projector_MATERIAL.diffuseTexture = this.enter_the_void_TEXTURE;
         this.projector.material = this.projector_MATERIAL;
         this.enter_the_void_TEXTURE.video.play();
-        this.trailer_position++;
         break;
       case 2:
         if(!this.all_video_textures_loaded) {
@@ -3034,7 +2965,6 @@ public addActions_buttons() {
         this.projector_MATERIAL.diffuseTexture = this.pi_TEXTURE;
         this.projector.material = this.projector_MATERIAL;
         this.pi_TEXTURE.video.play();
-        this.trailer_position++;
         break;
       case 3:
         if(!this.all_video_textures_loaded) {
@@ -3044,7 +2974,6 @@ public addActions_buttons() {
         this.projector_MATERIAL.diffuseTexture = this.eternal_sunshine_TEXTURE;
         this.projector.material = this.projector_MATERIAL;
         this.eternal_sunshine_TEXTURE.video.play();
-        this.trailer_position++;
         break;
       case 4:
         if(!this.all_video_textures_loaded) {
@@ -3054,7 +2983,6 @@ public addActions_buttons() {
         this.projector_MATERIAL.diffuseTexture = this.odyssee_espace_TEXTURE;
         this.projector.material = this.projector_MATERIAL;
         this.odyssee_espace_TEXTURE.video.play();
-        this.trailer_position++;
         break;
       case 5:
         if(!this.all_video_textures_loaded) {
@@ -3064,7 +2992,6 @@ public addActions_buttons() {
         this.projector_MATERIAL.diffuseTexture = this.zero_theorem_TEXTURE;
         this.projector.material = this.projector_MATERIAL;
         this.zero_theorem_TEXTURE.video.play();
-        this.trailer_position++;
         break;
       case 6:
         if(!this.all_video_textures_loaded) {
@@ -3074,7 +3001,6 @@ public addActions_buttons() {
         this.projector_MATERIAL.diffuseTexture = this.shining_TEXTURE;
         this.projector.material = this.projector_MATERIAL;
         this.shining_TEXTURE.video.play();
-        this.trailer_position++;
         break;
       case 7:
         if(!this.all_video_textures_loaded) {
@@ -3084,7 +3010,6 @@ public addActions_buttons() {
         this.projector_MATERIAL.diffuseTexture = this.la_haine_TEXTURE;
         this.projector.material = this.projector_MATERIAL;
         this.la_haine_TEXTURE.video.play();
-        this.trailer_position = 1;
         this.all_video_textures_loaded = true;
         break;
     }
@@ -3171,8 +3096,6 @@ public addActions_buttons() {
   public animation_openMovies() {
     this.animation_camera_openMovies();
     this.animation_cameraTarget_openMovies();
-    this.desactivation_buttons();
-    this.activation_buttonsProjector();
   }
 
   private animation_camera_openMovies() {
@@ -3192,8 +3115,6 @@ public addActions_buttons() {
   public animation_closeMovies() {
     this.animation_camera_closeMovies();
     this.animation_targetCamera_closeMovies();
-    this.activation_buttons();
-    this.desactivation_buttonsProjector();
   }
 
   private animation_camera_closeMovies() {
@@ -3249,14 +3170,8 @@ public addActions_buttons() {
         this.universal_camera.attachControl(this.canvas);
         if(this.universal_camera.position.x < -34 && this.scene_loaded) {
           this.projector.isPickable = false;
-          this.touch_play.isVisible = false;
-          this.touch_pause.isVisible = false;
-          this.touch_skip_forward.isVisible = false;
         } else if(this.universal_camera.position.x >= -34 && this.scene_loaded){
           this.projector.isPickable = true;
-          this.touch_play.isVisible = true;
-          this.touch_pause.isVisible = true;
-          this.touch_skip_forward.isVisible = true;
         }
       };
 

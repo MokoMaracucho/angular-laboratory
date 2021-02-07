@@ -396,7 +396,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  // PHOTOGRAPHIE
+  // PHOTOGRAPHY
 
   public open_photography(): void {
     this.isOpen_photography = true;
@@ -428,6 +428,18 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     this.laboratoryService.animation_closeMovies();
     this.isOpen_movies = false;
     this.movies_fadeIn = false;
+  }
+
+  public play_videoTexture(): void {
+    this.laboratoryService.play_videoTexture();
+  }
+
+  public pause_videoTexture(): void {
+    this.laboratoryService.pause_videoTexture();
+  }
+
+  public skipForward_videoTexture(): void {
+    this.laboratoryService.skipForward_videoTexture();
   }
 
   // CONTACT ME

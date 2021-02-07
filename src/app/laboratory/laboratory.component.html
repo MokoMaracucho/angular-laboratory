@@ -116,21 +116,21 @@
     <img *ngIf="!isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/stereoscopy_menu.png" alt="stereoscopy" (click)="open_stereoscopy()">
     <img *ngIf="isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/close_stereoscopy_menu.png" alt="stereoscopy" (click)="close_stereoscopy()">
 
-    <img class="menu_icon_movies menu_icons" src="../assets/img/menu/movies_50x50.png" alt="movies" (click)="open_movies()">
+    <img *ngIf="isOpen_movies" class="menu_icon_movies menu_icons" src="../assets/img/menu/movies_menu.png" alt="movies" (click)="close_movies()">
   </div>
 </div>
 
 <!-- MENU MOVIES -->
 
-<div class="menuMovies_container">
+<div *ngIf="isOpen_movies" class="menuMovies_container">
   <div class="menu_movies">
-    <span class="buttons_movies material-icons">
+    <span class="buttons_movies material-icons" (click)="play_videoTexture()">
       play_arrow
     </span>
-    <span class="buttons_movies material-icons">
+    <span class="buttons_movies material-icons" (click)="pause_videoTexture()">
       pause
     </span>
-    <span class="buttons_movies material-icons">
+    <span class="buttons_movies material-icons" (click)="skipForward_videoTexture()">
       skip_next
     </span>
     <span class="buttons_movies material-icons">
@@ -370,7 +370,7 @@
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
-  <button type="button" class="btn-close btn btn-primary mt-3" [@btnClosePhotography_fadeIn]="btnClosePhotography_fadeIn" (click)="close_photography()">
+  <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_photography()">
     <span *ngIf="language_english">Close</span>
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>

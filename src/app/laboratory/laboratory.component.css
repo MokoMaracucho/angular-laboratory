@@ -1040,6 +1040,11 @@
   color: grey;
 }
 
+.buttons_movies:hover {
+  color: white;
+  cursor: pointer;
+}
+
 /* CARDS */
 
 @media (max-width: 576px) {
