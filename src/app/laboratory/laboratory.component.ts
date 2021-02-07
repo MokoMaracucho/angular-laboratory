@@ -6,8 +6,6 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 
 import 'pepjs';
 
-import { FormGroup, FormControl } from '@angular/forms';
-
 import { AppComponent } from '../app.component';
 import { LaboratoryService } from './services/laboratory.service';
 import { InteractionService } from './services/interaction.service';
@@ -49,68 +47,40 @@ import { ConnectionService } from '../shared/services/connection.service';
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('2s')])
     ]),
-    trigger('isVisible_menu', [
+    trigger('development_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('2s')])
     ]),
-    trigger('isVisible_initPosition', [
+    trigger('datas_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('2s')])
     ]),
-    trigger('isVisible_stereoscopy', [
+    trigger('stereoscopy_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
+      transition('false => true', [animate('2s')])
     ]),
-    trigger('isVisible_datas', [
+    trigger('photography_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
+      transition('false => true', [animate('2s')])
     ]),
-    trigger('isVisible_photography', [
+    trigger('movies_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
+      transition('false => true', [animate('2s')])
     ]),
-    trigger('isVisible_stereoscopy', [
+    trigger('contactMe_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_contactMe', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_development', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_movies', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
+      transition('false => true', [animate('2s')])
     ]),
     trigger('isVisible_cacheMobileDevice', [
       state('false', style({background: '#00000000'})),
-      state('true', style({background: '#00000066'})),
-      transition('false => true', [animate('0.5s')])
-    ]),
-    trigger('isVisible_moviesButton', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
+      state('true', style({background: '#00000088'})),
+      transition('false => true', [animate('2s')])
     ])
   ]
 })
@@ -168,32 +138,28 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
   public card_open = false;
 
-  public isVisible_development = false;
-  public isVisible_datas = false;
-  public isVisible_stereoscopy = false;
-  public isVisible_photography = false;
-  public isVisible_contactMe = false;
-  public isVisible_movies = false;
+  public isOpen_development = false;
+  public development_fadeIn = false;
 
-  public anaglyph_activated = false;
-  public isVisible_moviesButton = false;
+  public isOpen_datas = false;
+  public datas_fadeIn = false;
+
+  public isOpen_stereoscopy = false;
+  public stereoscopy_fadeIn = false;
+
+  public isActive_cameraRegular = true;
+  public isActive_cameraAnaglyph = false;
+
+  public isOpen_photography = false;
+  public photography_fadeIn = false;
+
+  public isOpen_movies = false;
+  public movies_fadeIn = false;
+
+  public isOpen_contactMe = false;
+  public contactMe_fadeIn = false;
 
   public isVisible_cacheMobileDevice = false;
-
-  public contactForm = new FormGroup({
-    contactFormName: new FormControl(''),
-    contactFormEmail: new FormControl(''),
-    contactFormSubjects: new FormControl(''),
-    contactFormMessage: new FormControl('')
-  });
-
-  public disabledSubmitButton: boolean = true;
-
-  @HostListener('input') oninput() {
-    if (this.contactForm.valid) {
-      this.disabledSubmitButton = false;
-    }
-  }
 
   @ViewChild('rendererCanvas_laboratory', { static: true })
   public rendererCanvas_laboratory: ElementRef<HTMLCanvasElement>;
@@ -238,7 +204,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.subscription = this.interaction.open_development.subscribe(() => this.open_development());
       this.subscription = this.interaction.open_datas.subscribe(() => this.open_datas());
       this.subscription = this.interaction.open_stereoscopy.subscribe(() => this.open_stereoscopy());
-      this.subscription = this.interaction.toogle_anaglyph_activated.subscribe(() => this.toogle_anaglyph_activated());
       this.subscription = this.interaction.open_photography.subscribe(() => this.open_photography());
       this.subscription = this.interaction.open_contactMe.subscribe(() => this.open_contactMe());
       this.subscription = this.interaction.open_movies.subscribe(() => this.open_movies());
@@ -246,16 +211,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
       this.subscription.unsubscribe();
-  }
-
-  onSubmit() {
-    this.connectionService.sendMessage(this.contactForm.value).subscribe(() => {
-      alert('Your message has been sent.');
-      this.contactForm.reset();
-      this.disabledSubmitButton = true;
-    }, error => {
-      console.log('Error', error);
-    });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -353,156 +308,135 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.appComponent.close_navBar_menu();
   }
 
+  // DEVELOPPEMENT
+
   public open_development(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
+    this.isOpen_development = true;
+    this.development_fadeIn = true;
+    this.laboratoryService.open_card();
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
     }
-    this.isVisible_development = true;
-    this.laboratoryService.open_card();
-    this.card_open = true;
   }
 
   public close_development(): void {
-    if(this.isMobileDevice && this.card_open) {
+    this.isOpen_development = false;
+    this.development_fadeIn = false;
+    this.laboratoryService.close_card();
+    if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = false;;
     }
-    this.laboratoryService.activation_buttons();
-    this.isVisible_development = false;
-    this.laboratoryService.close_card();
-    this.card_open = false;
   }
 
+  // DATAS
+
   public open_datas(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
+    this.isOpen_datas = true;
+    this.datas_fadeIn = true;
+    this.laboratoryService.open_card();
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
     }
-    this.isVisible_datas = true;
-    this.laboratoryService.open_card();
-    this.card_open = true;
   }
 
   public close_datas(): void {
-    if(this.isMobileDevice && this.card_open) {
+    this.isOpen_datas = false;
+    this.datas_fadeIn = false;
+    this.laboratoryService.close_card();
+    if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = false;;
     }
-    this.laboratoryService.activation_buttons();
-    this.isVisible_datas = false;
-    this.card_open = false;
   }
 
+  // STEREOSCOPY
+
   public open_stereoscopy(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_stereoscopy = true;
-    this.laboratoryService.open_card();
-    this.card_open = true;
+    this.isOpen_stereoscopy = true;
+    this.stereoscopy_fadeIn = true;
   }
 
   public close_stereoscopy(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.laboratoryService.activation_buttons();
-    this.isVisible_stereoscopy = false;
-    this.card_open = false;
+    this.isOpen_stereoscopy = false;
+    this.stereoscopy_fadeIn = false;
   }
 
-  private toogle_anaglyph_activated() {
-      this.anaglyph_activated = !this.anaglyph_activated;
+  public switch_camera(): void {
+      this.laboratoryService.switch_camera();
+      this.isActive_cameraRegular = !this.isActive_cameraRegular;
+      this.isActive_cameraAnaglyph = !this.isActive_cameraAnaglyph;
   }
 
-  public animation_switch_camera(): void {
-      this.laboratoryService.animation_switch_camera();
-  }
+  // PHOTOGRAPHIE
 
   public open_photography(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
+    this.isOpen_photography = true;
+    this.photography_fadeIn = true;
+    this.laboratoryService.open_card();
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
     }
-    this.isVisible_photography = true;
-    this.laboratoryService.open_card();
-    this.card_open = true;
   }
 
   public close_photography(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.laboratoryService.activation_buttons();
-    this.isVisible_photography = false;
-    this.card_open = false;
-  }
-
-  public open_contactMe(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
+    this.isOpen_photography = false;
+    this.photography_fadeIn = false;
+    this.laboratoryService.close_card();
     if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_contactMe = true;
-    this.laboratoryService.open_card();
-    this.card_open = true;
-  }
-
-  public close_contactMe(): void {
-    if(this.isMobileDevice && this.card_open) {
       this.isVisible_cacheMobileDevice = false;;
     }
-    this.laboratoryService.activation_buttons();
-    this.isVisible_contactMe = false;
-    this.card_open = false;
   }
+
+  // MOVIES
 
   public open_movies(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    this.isVisible_movies = true;
-    this.card_open = true;
-    this.isVisible_moviesButton = true;
-    this.laboratoryService.desactivation_moviesButtons();
+    this.isOpen_movies = true;
+    this.movies_fadeIn = true;
+    this.laboratoryService.animation_openMovies();
   }
 
   public close_movies(): void {
-    this.card_open = false;
     this.laboratoryService.animation_closeMovies();
-    this.isVisible_movies = false;
-    this.isVisible_moviesButton = false;
-    this.laboratoryService.activation_moviesButtons();
+    this.isOpen_movies = false;
+    this.movies_fadeIn = false;
+  }
+
+  // CONTACT ME
+
+  public open_contactMe(): void {
+    this.isOpen_contactMe = true;
+    this.contactMe_fadeIn = true;
+    this.laboratoryService.open_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
+  }
+
+  public close_contactMe(): void {
+    this.isOpen_contactMe = false;
+    this.contactMe_fadeIn = false;
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
   }
 
   private close_openedCard(): void {
-    if(this.isVisible_development) {
+    if(this.isOpen_development) {
       this.close_development();
     }
-    else if(this.isVisible_datas) {
+    else if(this.isOpen_datas) {
       this.close_datas();
     }
-    else if(this.isVisible_stereoscopy) {
+    else if(this.isOpen_stereoscopy) {
       this.close_stereoscopy();
     }
-    else if(this.isVisible_photography) {
+    else if(this.isOpen_photography) {
       this.close_photography();
     }
-    else if(this.isVisible_contactMe) {
-      this.close_contactMe();
-    }
-    else if(this.isVisible_movies) {
+    else if(this.isOpen_movies) {
       this.close_movies();
+    }
+    else if(this.isOpen_contactMe) {
+      this.close_contactMe();
     }
   }
 

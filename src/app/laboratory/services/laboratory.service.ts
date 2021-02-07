@@ -174,7 +174,7 @@ export class LaboratoryService {
   private scene_loaded = false;
   private introduction_closed = false;
 
-  private anaglyph_activated = false;
+  private isActive_cameraAnaglyph = false;
 
   public constructor(
     private ngZone: NgZone,
@@ -3213,25 +3213,23 @@ public addActions_buttons() {
 
   // SWITCH CAMERA
 
-  public animation_switch_camera() {
-    if(!this.anaglyph_activated) {
+  public switch_camera() {
+    if(!this.isActive_cameraAnaglyph) {
       this.anaglyph_universal_camera.position = this.universal_camera.position;
       this.anaglyph_universal_camera.rotation = this.universal_camera.rotation;
       this.universal_camera.detachControl();
       this.scene.activeCamera = this.anaglyph_universal_camera;
       this.anaglyph_universal_camera.attachControl(this.canvas, true);
-      this.anaglyph_activated = true;
-      this.interaction.toogle_anaglyph_activated.next();
       this.desactivation_buttons();
+      this.isActive_cameraAnaglyph = true;
     } else {
       this.universal_camera.position = this.anaglyph_universal_camera.position;
       this.universal_camera.rotation = this.anaglyph_universal_camera.rotation;
       this.anaglyph_universal_camera.detachControl();
       this.scene.activeCamera = this.universal_camera;
       this.universal_camera.attachControl(this.canvas, true);
-      this.anaglyph_activated = false;
-      this.interaction.toogle_anaglyph_activated.next();
-      this.activation_buttons();
+      this.desactivation_buttons();
+      this.isActive_cameraAnaglyph = false;
     }
   }
 

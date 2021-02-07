@@ -4,12 +4,12 @@
 
 <!-- INTRODUCTION BACKGROUND -->
 
-<div id="div_introduction_background" [style.display]="isVisible_introductionBackground ? 'block' : 'none'" [@fadeOut_background]="fadeOut_background" touch-action="none">
+<div id="div_introduction_background" [style.display]="isVisible_introductionBackground ? 'block' : 'none'" [@fadeOut_background]="fadeOut_background">
 </div>
 
 <!-- INTRODUCTION !isCV -->
 
-<div *ngIf="!isCV && isVisible_introduction" class="container_introduction" touch-action="none">
+<div *ngIf="!isCV && isVisible_introduction" class="container_introduction">
   <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo_moko_introduction" [@logoIntroduction_fadeIn]="logoIntroduction_fadeIn">
 
   <h1 *ngIf="language_english" class="h1s-introduction h1-english" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">ENTER<br/>THE THIRD DIMENSION</h1>
@@ -57,7 +57,7 @@
 
 <!-- INTRODUCTION isCV -->
 
-<div *ngIf="isCV && isVisible_introduction" class="container_introduction" touch-action="none">
+<div *ngIf="isCV && isVisible_introduction" class="container_introduction">
   <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo_moko_introduction" [@logoIntroduction_fadeIn]="logoIntroduction_fadeIn">
 
   <h1 *ngIf="language_english" class="h1s-introduction h1s-introduction-isCV h1-english" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">WEB<br/>DEVELOPER</h1>
@@ -105,11 +105,17 @@
 
 <!-- MENU -->
 
-<div class="menu_container" touch-action="none">
+<div class="menu_container">
   <div class="menu">
-    <img class="menu_icon_development menu_icons" src="../assets/img/menu/development_50x50.png" alt="development" (click)="open_development()">
-    <img class="menu_icon_datas menu_icons" src="../assets/img/menu/datas_50x50.png" alt="datas" (click)="open_datas()">
-    <img class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/stereoscopy_50x50.png" alt="stereoscopy" (click)="open_stereoscopy()">
+    <img *ngIf="!isOpen_development" class="menu_icon_development menu_icons" src="../assets/img/menu/development_menu.png" alt="development" (click)="open_development()">
+    <img *ngIf="isOpen_development" class="menu_icon_development menu_icons" src="../assets/img/menu/close_development_menu.png" alt="development" (click)="close_development()">
+
+    <img *ngIf="!isOpen_datas" class="menu_icon_datas menu_icons" src="../assets/img/menu/datas_menu.png" alt="datas" (click)="open_datas()">
+    <img *ngIf="isOpen_datas" class="menu_icon_datas menu_icons" src="../assets/img/menu/close_datas_menu.png" alt="datas" (click)="close_datas()">
+
+    <img *ngIf="!isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/stereoscopy_menu.png" alt="stereoscopy" (click)="open_stereoscopy()">
+    <img *ngIf="isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/close_stereoscopy_menu.png" alt="stereoscopy" (click)="close_stereoscopy()">
+
     <img class="menu_icon_movies menu_icons" src="../assets/img/menu/movies_50x50.png" alt="movies" (click)="open_movies()">
   </div>
 </div>
@@ -144,7 +150,7 @@
 
 <!-- DEVELOPMENT !isCV -->
 
-<div *ngIf="!isCV && isVisible_development" class="container_cards" touch-action="none">
+<div *ngIf="!isCV" class="container_cards" [style.display]="isOpen_development ? 'block' : 'none'" [@development_fadeIn]="development_fadeIn">
   <img class="title_card" src="../assets/img/titles/title_development.png" alt="title_development">
 
   <h1 *ngIf="language_english" class="h1_card">Unleash your creativity!</h1>
@@ -157,7 +163,7 @@
     Front-end and Back-end development for a better distribution of functionalities. Database management. Configuration and securing of your servers. 3D modeling and programming.
     <br/>
     <br/>
-    Go to the '<a *ngIf="!isCV" [routerLink]="['/laboratory']" (click)="cleanUp_development()">Development</a><a *ngIf="isCV" [routerLink]="['/laboratory/true']" (click)="cleanUp_development()">Development</a>' section for more details.
+    Go to the '<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Development</a>' section for more details.
   </p>
   <p class="texts-card" *ngIf="language_french">
     Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.
@@ -166,7 +172,7 @@
     Developpement Front-end et Back-end pour une meilleure répartition des fonctionnalités. Gestion des bases de données. Configuration et sécurisation de vos serveurs. Modélisation et programmtion 3D.
     <br/>
     <br/>
-    Accédez à la rubrique <a *ngIf="!isCV" [routerLink]="['/laboratory']" (click)="cleanUp_development()">Développement</a><a *ngIf="isCV" [routerLink]="['/laboratory/true']" (click)="cleanUp_development()">Développement</a> pour plus de détails.
+    Accédez à la rubrique "<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Développement</a>" pour plus de détails.
   </p>
   <p class="texts-card" *ngIf="language_spanish">
     Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.
@@ -175,7 +181,7 @@
     Desarrollo Front-end y Back-end para una mejor distribución de funcionalidades. Gestión de base de datos. Configuración y aseguramiento de sus servidores. Modelado y programación 3D.
     <br/>
     <br/>
-    Vaya a la sección <a *ngIf="!isCV" [routerLink]="['/laboratory']" (click)="cleanUp_development()">Desarollo</a><a *ngIf="isCV" [routerLink]="['/laboratory/true']" (click)="cleanUp_development()">Desarollo</a> para obtener más detalles.
+    Vaya a la sección "<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Desarollo</a>" para obtener más detalles.
   </p>
 
   <div *ngIf="language_english" class="spans_language_cards">
@@ -200,7 +206,7 @@
 
 <!-- DATAS !isCV -->
 
-<div *ngIf="!isCV && isVisible_datas" class="container_cards" touch-action="none">
+<div *ngIf="!isCV" class="container_cards" [style.display]="isOpen_datas ? 'block' : 'none'" [@datas_fadeIn]="datas_fadeIn">
   <img class="title_card" src="../assets/img/titles/title_datas.png" alt="title_datas">
 
   <h1 *ngIf="language_english" class="h1_card">Unleash your creativity!</h1>
@@ -241,7 +247,7 @@
 
 <!-- STEREOSCOPY !isCV -->
 
-<div *ngIf="!isMobileDevice && !isCV && isVisible_stereoscopy" class="container_cards" touch-action="none">
+<div *ngIf="!isCV && !isMobileDevice" class="container_cards" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
   <img class="title_card" src="../assets/img/titles/title_stereoscopy.png" alt="title_stereoscopy">
 
   <h1 *ngIf="language_english" class="h1_card">Immerse your community in your universe!</h1>
@@ -279,33 +285,43 @@
 
 <!-- SWITCH CAMERA -->
 
-<div class="switchCamera_container">
+<div class="switchCamera_container" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
   <div class="switch_camera">
       <span *ngIf="language_english && !isMax576 && !isMin576" class="span_switchCamera">Switch camera</span>
       <span *ngIf="language_french && !isMax576 && !isMin576" class="span_switchCamera">Changer de caméra</span>
       <span *ngIf="language_spanish && !isMax576 && !isMin576" class="span_switchCamera">Cambiar de cámara</span>
 
-    <div class="div_cameraRegular">
+    <div class="div_cameraRegular" (click)="switch_camera()">
       <img class="img_cameraRegular imgs_camera" src="../assets/img/icons/camera_regular.png" alt="camera_regular">
 
-      <div *ngIf="language_english" class="span_cameraRegular spans_camera">Regular</div>
-      <div *ngIf="language_french" class="span_cameraRegular spans_camera">Normale</div>
-      <div *ngIf="language_spanish" class="span_cameraRegular spans_camera">Regular</div>
+      <div *ngIf="language_english && isActive_cameraRegular" class="span_cameraRegular spans_camera isActive_spansCamera">Regular</div>
+      <div *ngIf="language_english && !isActive_cameraRegular" class="span_cameraRegular spans_camera">Regular</div>
+
+      <div *ngIf="language_french && isActive_cameraRegular" class="span_cameraRegular spans_camera isActive_spansCamera">Normale</div>
+      <div *ngIf="language_french && !isActive_cameraRegular" class="span_cameraRegular spans_camera">Normale</div>
+
+      <div *ngIf="language_spanish && isActive_cameraRegular" class="span_cameraRegular spans_camera isActive_spansCamera">Regular</div>
+      <div *ngIf="language_spanish && !isActive_cameraRegular" class="span_cameraRegular spans_camera">Regular</div>
     </div>
 
-    <div class="div_cameraAnaglyph">
+    <div class="div_cameraAnaglyph" (click)="switch_camera()">
       <img class="img_cameraAnaglyph imgs_camera" src="../assets/img/icons/camera_anaglyph.png" alt="camera_anaglyph">
 
-      <div *ngIf="language_english" class="span_cameraAnaglyph spans_camera">Anaglyph</div>
-      <div *ngIf="language_french" class="span_cameraAnaglyph spans_camera">Anaglyphe</div>
-      <div *ngIf="language_spanish" class="span_cameraAnaglyph spans_camera">Anaglifo</div>
+      <div *ngIf="language_english && isActive_cameraAnaglyph" class="span_cameraRegular spans_camera isActive_spansCamera">Anaglyph</div>
+      <div *ngIf="language_english && !isActive_cameraAnaglyph" class="span_cameraRegular spans_camera">Anaglyph</div>
+
+      <div *ngIf="language_french && isActive_cameraAnaglyph" class="span_cameraRegular spans_camera isActive_spansCamera">Anaglyphe</div>
+      <div *ngIf="language_french && !isActive_cameraAnaglyph" class="span_cameraRegular spans_camera">Anaglyphe</div>
+
+      <div *ngIf="language_spanish && isActive_cameraAnaglyph" class="span_cameraRegular spans_camera isActive_spansCamera">Anaglifo</div>
+      <div *ngIf="language_spanish && !isActive_cameraAnaglyph" class="span_cameraRegular spans_camera">Anaglifo</div>
     </div>
   </div>
 </div>
 
 <!-- PHOTOGRAPHY !isCV -->
 
-<div *ngIf="!isCV && isVisible_photography" class="container_cards" touch-action="none">
+<div *ngIf="!isCV" class="container_cards" [style.display]="isOpen_photography ? 'block' : 'none'" [@photography_fadeIn]="photography_fadeIn">
   <img class="title_card" src="../assets/img/titles/title_photography.png" alt="title_photography">
 
   <h1 *ngIf="language_english" class="h1_card">Immerse your community in your universe!</h1>
@@ -361,7 +377,7 @@
 
 <!-- CACHE MOBILE DEVICE -->
 
-<div class="cacheMobileDevice_container" [style.display]="isVisible_cacheMobileDevice ? 'block' : 'none'" [@isVisible_cacheMobileDevice]="isVisible_cacheMobileDevice" touch-action="none">
+<div class="cacheMobileDevice_container" [style.display]="isVisible_cacheMobileDevice ? 'block' : 'none'" [@isVisible_cacheMobileDevice]="isVisible_cacheMobileDevice">
 </div>
 <!--
   <div *ngIf="isMobileDevice" class="cacheMobileDevice_container" [style.display]="isVisible_cacheMobileDevice ? 'block' : 'none'" [@isVisible_cacheMobileDevice]="isVisible_cacheMobileDevice" touch-action="none">
