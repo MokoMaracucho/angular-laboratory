@@ -809,6 +809,46 @@
   }
 }
 
+/* MENU MOVIES */
+
+@media (max-width: 800px) {
+  .menuMovies_container {
+    grid-template-columns: [col-start-menu] auto [col-1-menu] auto [col-2-menu] auto [col-stop-menu];
+    grid-template-rows: [row-start-menu] auto [row-stop-menu];
+    display: grid;
+    z-index: 11;
+    position: absolute;
+    left: 127px;
+    bottom: 55px;
+    background-color: #00000066;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+  }
+}
+
+@media (min-width: 800px) {
+  .menuMovies_container {
+    grid-template-columns: [col-start-menu] auto [col-1-menu] auto [col-2-menu] auto [col-stop-menu];
+    grid-template-rows: [row-start-menu] auto [row-stop-menu];
+    display: grid;
+    z-index: 11;
+    position: absolute;
+    top: 407px;
+    right: 60px;
+    background-color: #00000066;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+  }
+}
+
+.buttons_movies {
+  color: grey;
+}
+
 /* BADGES */
 
 .span_language {
@@ -821,70 +861,413 @@
 
 /* SWITCH CAMERA */
 
-.switchCamera_container {
-  grid-template-columns: [col-start-switchCamera] 90px [col-1-switchCamera] 90px [col-stop-switchCamera];
-  grid-template-rows: [row-start-switchCamera] auto [row-1-switchCamera] 80px [row-2-switchCamera] 30px [row-stop-switchCamera];
-  display: grid;
-  z-index: 7;
-  position: absolute;
-  top: 80px;
-  right: 0px;
-  width: 180px;
+@media (max-width: 576px) {
+  .switchCamera_container {
+    grid-template-columns: [col-start-switchCamera] 70px [col-stop-switchCamera];
+    grid-template-rows: [row-start-switchCamera] auto [row-1-switchCamera] 60px [row-2-switchCamera] auto [row-3-switchCamera] 60px [row-4-switchCamera] auto [row-stop-switchCamera];
+    display: grid;
+    z-index: 7;
+    position: absolute;
+    top: 80px;
+    right: 0px;
+    width: 70px;
+  }
+
+  .switch_camera {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    background-color: #00000088;
+  }
+
+  /* SPAN SWITCH CAMERA */
+
+  .span_switchCamera {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    font-family: Roboto-Regular;
+    font-size: 12px;
+    text-align: center;
+    color: white;
+    margin: 10px;
+  }
+
+  /* CAMERA REGULAR */
+
+  .div_cameraRegular {
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-3-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    display: inline-block;
+  }
+
+  .img_cameraRegular {
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .span_cameraRegular {
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-3-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  /* CAMERA ANAGLYPH */
+
+  .div_cameraAnaglyph {
+    grid-area: row-3-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    display: inline-block;
+  }
+
+  .img_cameraAnaglyph {
+    grid-area: row-3-switchCamera / col-start-switchCamera / row-4-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .span_cameraAnaglyph {
+    grid-area: row-4-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .imgs_camera {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    margin-bottom: 0px;
+  }
+
+  .spans_camera {
+    padding: 8px;
+    padding-bottom: 5px;
+    font-family: Roboto-Regular;
+    font-size: 12px;
+    text-align: center;
+    color: grey;
+  }
 }
 
-.switch_camera {
-  grid-area: row-start-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
-  grid-auto-rows: auto;
-  background-color: #00000088;
+@media (min-width: 576px) {
+  .switchCamera_container {
+    grid-template-columns: [col-start-switchCamera] 70px [col-stop-switchCamera];
+    grid-template-rows: [row-start-switchCamera] auto [row-1-switchCamera] 60px [row-2-switchCamera] auto [row-3-switchCamera] 60px [row-4-switchCamera] auto [row-stop-switchCamera];
+    display: grid;
+    z-index: 7;
+    position: absolute;
+    top: 80px;
+    right: 0px;
+    width: 70px;
+  }
+
+  .switch_camera {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    background-color: #00000088;
+  }
+
+  /* SPAN SWITCH CAMERA */
+
+  .span_switchCamera {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    font-family: Roboto-Regular;
+    font-size: 12px;
+    text-align: center;
+    color: white;
+    margin: 10px;
+  }
+
+  /* CAMERA REGULAR */
+
+  .div_cameraRegular {
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-3-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    display: inline-block;
+  }
+
+  .img_cameraRegular {
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .span_cameraRegular {
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-3-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  /* CAMERA ANAGLYPH */
+
+  .div_cameraAnaglyph {
+    grid-area: row-3-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    display: inline-block;
+  }
+
+  .img_cameraAnaglyph {
+    grid-area: row-3-switchCamera / col-start-switchCamera / row-4-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .span_cameraAnaglyph {
+    grid-area: row-4-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .imgs_camera {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    margin-bottom: 0px;
+  }
+
+  .spans_camera {
+    padding: 8px;
+    padding-bottom: 5px;
+    font-family: Roboto-Regular;
+    font-size: 12px;
+    text-align: center;
+    color: grey;
+  }
 }
 
-.span_switchCamera {
-  grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
-  grid-auto-rows: auto;
-  font-family: Roboto-Bold;
-  color: white;
-  margin: 10px;
+@media (min-width: 768px) {
+  .switchCamera_container {
+    grid-template-columns: [col-start-switchCamera] 70px [col-1-switchCamera] 70px [col-stop-switchCamera];
+    grid-template-rows: [row-start-switchCamera] auto [row-1-switchCamera] 60px [row-2-switchCamera] auto [row-stop-switchCamera];
+    display: grid;
+    z-index: 7;
+    position: absolute;
+    top: 80px;
+    right: 0px;
+    width: 140px;
+  }
+
+  .switch_camera {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    background-color: #00000088;
+  }
+
+  /* SPAN SWITCH CAMERA */
+
+  .span_switchCamera {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    font-family: Roboto-Bold;
+    color: white;
+    margin: 10px;
+  }
+
+  /* CAMERA REGULAR */
+
+  .div_cameraRegular {
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
+    grid-auto-rows: auto;
+    display: inline-block;
+  }
+
+  .img_cameraRegular {
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-1-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .span_cameraRegular {
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  /* CAMERA ANAGLYPH */
+
+  .div_cameraAnaglyph {
+    grid-area: row-1-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    display: inline-block;
+  }
+
+  .img_cameraAnaglyph {
+    grid-area: row-1-switchCamera / col-1-switchCamera / row-2-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .span_cameraAnaglyph {
+    grid-area: row-2-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .imgs_camera {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    margin-bottom: 0px;
+  }
+
+  .spans_camera {
+    padding: 8px;
+    padding-bottom: 5px;
+    font-family: Roboto-Regular;
+    font-size: 12px;
+    text-align: center;
+    color: grey;
+  }
 }
 
-.img_cameraRegular {
-  grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-1-switchCamera;
-  grid-auto-rows: auto;
+@media (min-width: 960px) {
+  .switchCamera_container {
+    grid-template-columns: [col-start-switchCamera] 80px [col-1-switchCamera] 80px [col-stop-switchCamera];
+    grid-template-rows: [row-start-switchCamera] auto [row-1-switchCamera] 70px [row-2-switchCamera] auto [row-stop-switchCamera];
+    display: grid;
+    z-index: 7;
+    position: absolute;
+    top: 80px;
+    right: 0px;
+    width: 160px;
+  }
+
+  .switch_camera {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    background-color: #00000088;
+  }
+
+  /* SPAN SWITCH CAMERA */
+
+  .span_switchCamera {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    font-family: Roboto-Bold;
+    color: white;
+    margin: 10px;
+  }
+
+  /* CAMERA REGULAR */
+
+  .div_cameraRegular {
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
+    grid-auto-rows: auto;
+    display: inline-block;
+  }
+
+  .img_cameraRegular {
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-1-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .span_cameraRegular {
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  /* CAMERA ANAGLYPH */
+
+  .div_cameraAnaglyph {
+    grid-area: row-1-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    display: inline-block;
+  }
+
+  .img_cameraAnaglyph {
+    grid-area: row-1-switchCamera / col-1-switchCamera / row-2-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .span_cameraAnaglyph {
+    grid-area: row-2-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .imgs_camera {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    margin-bottom: 0px;
+  }
+
+  .spans_camera {
+    padding: 8px;
+    padding-bottom: 5px;
+    font-family: Roboto-Regular;
+    font-size: 12px;
+    text-align: center;
+    color: grey;
+  }
 }
 
-.img_cameraAnaglyph {
-  grid-area: row-1-switchCamera / col-1-switchCamera / row-2-switchCamera / col-stop-switchCamera;
-  grid-auto-rows: auto;
-}
+@media (min-width: 1140px) {
+  .switchCamera_container {
+    grid-template-columns: [col-start-switchCamera] 90px [col-1-switchCamera] 90px [col-stop-switchCamera];
+    grid-template-rows: [row-start-switchCamera] auto [row-1-switchCamera] 80px [row-2-switchCamera] auto [row-stop-switchCamera];
+    display: grid;
+    z-index: 7;
+    position: absolute;
+    top: 80px;
+    right: 0px;
+    width: 180px;
+  }
 
-.imgs_camera {
-  width: 70px;
-  height: 70px;
-  margin: 10px;
-  margin-bottom: 0px;
-}
+  .switch_camera {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    background-color: #00000088;
+  }
 
-.div_cameraRegular {
-  grid-area: row-2-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
-  grid-auto-rows: auto;
-  width: 90px;
-  height: 30px;
-  display: inline-block;
-  text-align: center;
-}
+  /* SPAN SWITCH CAMERA */
 
-.div_cameraAnaglyph {
-  grid-area: row-2-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
-  grid-auto-rows: auto;
-  width: 90px;
-  height:20px;
-  display: inline-block;
-  text-align: center;
-}
+  .span_switchCamera {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    font-family: Roboto-Bold;
+    color: white;
+    margin: 10px;
+  }
 
-.spans_camera {
-  font-family: Roboto-Regular;
-  font-size: 12px;
-  color: grey;
+  /* CAMERA REGULAR */
+
+  .div_cameraRegular {
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
+    grid-auto-rows: auto;
+    display: inline-block;
+  }
+
+  .img_cameraRegular {
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-1-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .span_cameraRegular {
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  /* CAMERA ANAGLYPH */
+
+  .div_cameraAnaglyph {
+    grid-area: row-1-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    display: inline-block;
+  }
+
+  .img_cameraAnaglyph {
+    grid-area: row-1-switchCamera / col-1-switchCamera / row-2-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .span_cameraAnaglyph {
+    grid-area: row-2-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .imgs_camera {
+    width: 70px;
+    height: 70px;
+    margin: 10px;
+    margin-bottom: 0px;
+  }
+
+  .spans_camera {
+    font-family: Roboto-Regular;
+    font-size: 12px;
+    color: grey;
+    padding: 10px;
+    text-align: center;
+    padding-bottom: 5px;
+  }
 }
 
 /* CACHE */

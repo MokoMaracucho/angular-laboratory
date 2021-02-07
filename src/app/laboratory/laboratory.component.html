@@ -118,7 +118,7 @@
     Front-end and Back-end development for a better distribution of functionalities. Database management. Configuration and securing of your servers. 3D modeling and programming.
     <br/>
     <br/>
-    Go to the "<a *ngIf="!isCV" [routerLink]="['/laboratory']" (click)="cleanUp_development()">Development</a><a *ngIf="isCV" [routerLink]="['/laboratory/true']" (click)="cleanUp_development()">Development</a>" section for more details.
+    Go to the '<a *ngIf="!isCV" [routerLink]="['/laboratory']" (click)="cleanUp_development()">Development</a><a *ngIf="isCV" [routerLink]="['/laboratory/true']" (click)="cleanUp_development()">Development</a>' section for more details.
   </p>
   <p class="texts-card" *ngIf="language_french">
     Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.
@@ -127,7 +127,7 @@
     Developpement Front-end et Back-end pour une meilleure répartition des fonctionnalités. Gestion des bases de données. Configuration et sécurisation de vos serveurs. Modélisation et programmtion 3D.
     <br/>
     <br/>
-    Accédez à la rubrique "Développement" pour plus de détails.
+    Accédez à la rubrique <a *ngIf="!isCV" [routerLink]="['/laboratory']" (click)="cleanUp_development()">Développement</a><a *ngIf="isCV" [routerLink]="['/laboratory/true']" (click)="cleanUp_development()">Développement</a> pour plus de détails.
   </p>
   <p class="texts-card" *ngIf="language_spanish">
     Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.
@@ -136,7 +136,7 @@
     Desarrollo Front-end y Back-end para una mejor distribución de funcionalidades. Gestión de base de datos. Configuración y aseguramiento de sus servidores. Modelado y programación 3D.
     <br/>
     <br/>
-    Vaya a la sección "Desarrollo" para obtener más detalles.
+    Vaya a la sección <a *ngIf="!isCV" [routerLink]="['/laboratory']" (click)="cleanUp_development()">Desarollo</a><a *ngIf="isCV" [routerLink]="['/laboratory/true']" (click)="cleanUp_development()">Desarollo</a> para obtener más detalles.
   </p>
 
   <div *ngIf="language_english" class="spans_language_cards">
@@ -238,25 +238,28 @@
   </button>
 </div>
 
+<!-- SWITCH CAMERA -->
+
 <div class="switchCamera_container">
   <div class="switch_camera">
-    <span *ngIf="language_english" class="span_switchCamera">Switch camera</span>
-    <span *ngIf="language_french" class="span_switchCamera">Changer de caméra</span>
-    <span *ngIf="language_spanish" class="span_switchCamera">Cambiar de cámara</span>
-
-    <img class="img_cameraRegular imgs_camera" src="../assets/img/icons/camera_regular.png" alt="camera_regular">
-    <img class="img_cameraAnaglyph imgs_camera" src="../assets/img/icons/camera_anaglyph.png" alt="camera_anaglyph">
+      <span *ngIf="language_english && !isMax576 && !isMin576" class="span_switchCamera">Switch camera</span>
+      <span *ngIf="language_french && !isMax576 && !isMin576" class="span_switchCamera">Changer de caméra</span>
+      <span *ngIf="language_spanish && !isMax576 && !isMin576" class="span_switchCamera">Cambiar de cámara</span>
 
     <div class="div_cameraRegular">
-      <span *ngIf="language_english" class="span_cameraRegular spans_camera">Regular</span>
-      <span *ngIf="language_french" class="span_cameraRegular spans_camera">Normale</span>
-      <span *ngIf="language_spanish" class="span_cameraRegular spans_camera">Regular</span>
+      <img class="img_cameraRegular imgs_camera" src="../assets/img/icons/camera_regular.png" alt="camera_regular">
+
+      <div *ngIf="language_english" class="span_cameraRegular spans_camera">Regular</div>
+      <div *ngIf="language_french" class="span_cameraRegular spans_camera">Normale</div>
+      <div *ngIf="language_spanish" class="span_cameraRegular spans_camera">Regular</div>
     </div>
 
     <div class="div_cameraAnaglyph">
-      <span *ngIf="language_english" class="span_cameraAnaglyph spans_camera">Anaglyph</span>
-      <span *ngIf="language_french" class="span_cameraAnaglyph spans_camera">Anaglyphe</span>
-      <span *ngIf="language_spanish" class="span_cameraAnaglyph spans_camera">Anaglifo</span>
+      <img class="img_cameraAnaglyph imgs_camera" src="../assets/img/icons/camera_anaglyph.png" alt="camera_anaglyph">
+
+      <div *ngIf="language_english" class="span_cameraAnaglyph spans_camera">Anaglyph</div>
+      <div *ngIf="language_french" class="span_cameraAnaglyph spans_camera">Anaglyphe</div>
+      <div *ngIf="language_spanish" class="span_cameraAnaglyph spans_camera">Anaglifo</div>
     </div>
   </div>
 </div>
@@ -357,6 +360,28 @@
     <img class="menu_icon_datas menu_icons" src="../assets/img/menu/datas_50x50.png" alt="datas" (click)="open_datas()">
     <img class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/stereoscopy_50x50.png" alt="stereoscopy" (click)="open_stereoscopy()">
     <img class="menu_icon_movies menu_icons" src="../assets/img/menu/movies_50x50.png" alt="movies" (click)="open_movies()">
+  </div>
+</div>
+
+<!-- MENU MOVIES -->
+
+<div class="menuMovies_container">
+  <div class="menu_movies">
+    <span class="buttons_movies material-icons">
+      play_arrow
+    </span>
+    <span class="buttons_movies material-icons">
+      pause
+    </span>
+    <span class="buttons_movies material-icons">
+      skip_next
+    </span>
+    <span class="buttons_movies material-icons">
+      volume_up
+    </span>
+    <span class="buttons_movies material-icons">
+      volume_off
+    </span>
   </div>
 </div>
 
