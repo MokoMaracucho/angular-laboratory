@@ -122,7 +122,7 @@ export class DevelopmentService {
     this.anaglyph_universal_camera = new BABYLON.AnaglyphUniversalCamera("anaglyph_universal_camera", new BABYLON.Vector3(0, 0, 0), 0.05, this.scene);
     this.anaglyph_universal_camera.target = new BABYLON.Vector3(-4, 10, 5);
     this.anaglyph_universal_camera.touchAngularSensibility = 10000;
-    this.anaglyph_universal_camera.speed = 0.7;
+    this.anaglyph_universal_camera.speed = 0.9;
     this.anaglyph_universal_camera.invertRotation = false;
     this.anaglyph_universal_camera.ellipsoid = new BABYLON.Vector3(2, 2, 2);
     this.anaglyph_universal_camera.inputs.addMouseWheel();

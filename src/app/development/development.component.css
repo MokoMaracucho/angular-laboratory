@@ -12,7 +12,7 @@
 /* BACKGROUND */
 
 #div_introduction_background {
-  z-index: 1;
+  z-index: 8;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -304,12 +304,12 @@
 /* MENU */
 
 .menu_container {
-  z-index: 6;
+  z-index: 5;
   position: absolute;
 }
 
 .initPosition_container {
-  z-index: 7;
+  z-index: 6;
   position: absolute;
 }
 
@@ -386,6 +386,7 @@
     width: 40px;
     height: 40px;
     margin: 5px;
+    cursor: pointer;
   }
 
   .initPosition_container {
@@ -408,7 +409,7 @@
 /* SWITCH CAMERA */
 
 .switchCamera_container {
-  z-index: 5;
+  z-index: 7;
   position: absolute;
 }
 
@@ -810,6 +811,7 @@
     width: 15px;
     height: 15px;
     margin-bottom: 5px;
+    cursor: pointer;
   }
 
   /* SWITCH CAMERA */
@@ -836,6 +838,7 @@
     grid-area: row-2-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
     grid-auto-rows: auto;
     display: inline-block;
+    cursor: pointer;
   }
 
   .img_cameraRegular {
@@ -854,6 +857,7 @@
     grid-area: row2-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
     grid-auto-rows: auto;
     display: inline-block;
+    cursor: pointer;
   }
 
   .img_cameraAnaglyph {
@@ -894,7 +898,7 @@
     grid-template-columns: [col-start-cards] 1fr [col-stop-cards];
     grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] 40px [row-stop-cards];
     display: grid;
-    z-index: 8;
+    z-index: 3;
     position: absolute;
     top: 70px;
     width: 100%;
@@ -994,7 +998,7 @@
     grid-template-columns: [col-start-cards] 350px [col-stop-cards];
     grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] 40px [row-stop-cards];
     display: grid;
-    z-index: 8;
+    z-index: 3;
     position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
@@ -1045,7 +1049,7 @@
     grid-template-columns: [col-start-cards] 400px [col-stop-cards];
     grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] 40px [row-stop-cards];
     display: grid;
-    z-index: 8;
+    z-index: 3;
     position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
@@ -1094,7 +1098,7 @@
     grid-template-columns: [col-start-cards] 400px [col-stop-cards];
     grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] 40px [row-stop-cards];
     display: grid;
-    z-index: 8;
+    z-index: 3;
     position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
@@ -1152,20 +1156,21 @@
 background-color: #777777;
 }
 
-/* INIT POSITION */
-
-#init_position {
-  position: absolute;
-  bottom: 20px;
-  right: 10px;
-  cursor: pointer;
-}
-
 /* SPANS DEVELOPMENT */
 
 .span_development {
     font-size: 12px;
     padding-left: 20px;
+}
+
+/* CACHE */
+
+.cacheMobileDevice_container {
+  z-index: 2;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
 }
 
 /* SCROLLBAR */
@@ -1183,14 +1188,5 @@ background-color: #777777;
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #ffffff44;
-}
-
-/* CACHE */
-
-#cache_mobileDevice {
-  z-index: 2;
-  position: absolute;
-  width: 100%;
-  height: 100%;
 }
 

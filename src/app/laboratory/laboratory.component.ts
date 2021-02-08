@@ -61,7 +61,7 @@ import { ConnectionService } from '../shared/services/connection.service';
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('1s')])
-    ]),,
+    ]),
     trigger('switchCamera_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),

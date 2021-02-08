@@ -107,8 +107,8 @@
 
 <div class="menu_container">
   <div class="menu">
-    <img *ngIf="!isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/stereoscopy_menu.png" alt="stereoscopy" (click)="open_stereoscopy()">
-    <img *ngIf="isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/close_stereoscopy_menu.png" alt="stereoscopy" (click)="close_stereoscopy(true)">
+    <img *ngIf="!isOpen_switchCamera" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/stereoscopy_menu.png" alt="stereoscopy" (click)="open_stereoscopy()">
+    <img *ngIf="isOpen_switchCamera" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/close_stereoscopy_menu.png" alt="stereoscopy" (click)="close_stereoscopy(true)">
   </div>
 </div>
 
@@ -855,3 +855,8 @@
   </button>
 </div>
 <!-- <button type="button" class="btn btn-primary mb-2" onclick="window.open('https://www.adobe.com/fr/products/illustrator.html', '_blank'); return false;">Illustrator</button><br/> -->
+
+<!-- CACHE MOBILE DEVICE -->
+
+<div class="cacheMobileDevice_container" [style.display]="isVisible_cacheMobileDevice ? 'block' : 'none'" [@isVisible_cacheMobileDevice]="isVisible_cacheMobileDevice">
+</div>

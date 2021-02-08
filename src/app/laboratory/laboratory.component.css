@@ -389,12 +389,12 @@
 /* MENU */
 
 .menu_container {
-  z-index: 6;
+  z-index: 5;
   position: absolute;
 }
 
 .initPosition_container {
-  z-index: 7;
+  z-index: 6;
   position: absolute;
 }
 
@@ -501,6 +501,7 @@
     width: 40px;
     height: 40px;
     margin: 5px;
+    cursor: pointer;
   }
 
   .initPosition_container {
@@ -523,7 +524,7 @@
 /* SWITCH CAMERA */
 
 .switchCamera_container {
-  z-index: 5;
+  z-index: 7;
   position: absolute;
 }
 
