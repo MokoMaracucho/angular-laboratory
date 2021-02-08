@@ -353,7 +353,7 @@
 @media (max-width: 576px) {
   .container_cards {
     grid-template-columns: [col-start-cards] 1fr [col-stop-cards];
-    grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
+    grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] 40px [row-stop-cards];
     display: grid;
     z-index: 8;
     position: absolute;
@@ -367,21 +367,12 @@
     grid-area: row-start-cards / col-start-cards / row-1-cards / col-1-cards;
     grid-auto-rows: auto;
     font-size: 16px;
-    width: 100px;
+    width: 300px;
     height: 100px;
   }
 
-  .h1_card {
-    grid-area: row-1-cards / col-start-cards / row-2-cards / col-stop-cards;
-    grid-auto-rows: auto;
-    margin-top: 10px;
-    font-family: Roboto-Bold;
-    font-size: 20px;
-    color: #D3D3D3;
-  }
-
   .texts-card {
-    grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
+    grid-area: row-1-cards / col-start-cards / row-2-cards / col-stop-cards;
     grid-auto-rows: auto;
     width: auto;
     max-height: 200px;
@@ -395,12 +386,12 @@
   }
 
   .spans_language_cards {
-    grid-area: row-3-cards / col-start-cards / row-4-cards / col-stop-cards;
+    grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
     grid-auto-rows: auto;
   }
 
   .btn-close {
-    grid-area: row-4-cards / col-start-cards / row-stop-cards / col-stop-cards;
+    grid-area: row-3-cards / col-start-cards / row-stop-cards / col-stop-cards;
     grid-auto-rows: auto;
     margin-top: 20px;
     width: 75px;
@@ -411,7 +402,7 @@
 @media (min-width: 576px) {
   .container_cards {
     grid-template-columns: [col-start-cards] 350px [col-stop-cards];
-    grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
+    grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] 40px [row-stop-cards];
     display: grid;
     z-index: 8;
     position: absolute;
@@ -427,21 +418,12 @@
     grid-area: row-start-cards / col-start-cards / row-1-cards / col-1-cards;
     grid-auto-rows: auto;
     font-size: 16px;
-    width: 100px;
+    width: 300px;
     height: 100px;
   }
 
-  .h1_card {
-    grid-area: row-1-cards / col-start-cards / row-2-cards / col-stop-cards;
-    grid-auto-rows: auto;
-    margin-top: 10px;
-    font-family: Roboto-Bold;
-    font-size: 22px;
-    color: #D3D3D3;
-  }
-
   .texts-card {
-    grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
+    grid-area: row-1-cards / col-start-cards / row-2-cards / col-stop-cards;
     grid-auto-rows: auto;
     max-width: 400px;
     max-height: 200px;
@@ -455,12 +437,12 @@
   }
 
   .spans_language_cards {
-    grid-area: row-3-cards / col-start-cards / row-4-cards / col-stop-cards;
+    grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
     grid-auto-rows: auto;
   }
 
   .btn-close {
-    grid-area: row-4-cards / col-start-cards / row-stop-cards / col-stop-cards;
+    grid-area: row-3-cards / col-start-cards / row-stop-cards / col-stop-cards;
     grid-auto-rows: auto;
     margin-top: 20px;
     width: 75px;
@@ -471,7 +453,7 @@
 @media (min-width: 768px) {
   .container_cards {
     grid-template-columns: [col-start-cards] 350px [col-stop-cards];
-    grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
+    grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] 40px [row-stop-cards];
     display: grid;
     z-index: 8;
     position: absolute;
@@ -487,21 +469,12 @@
     grid-area: row-start-cards / col-start-cards / row-1-cards / col-1-cards;
     grid-auto-rows: auto;
     font-size: 16px;
-    width: 100px;
+    width: 300px;
     height: 100px;
   }
 
-  .h1_card {
-    grid-area: row-1-cards / col-start-cards / row-2-cards / col-stop-cards;
-    grid-auto-rows: auto;
-    margin-top: 10px;
-    font-family: Roboto-Bold;
-    font-size: 22px;
-    color: #D3D3D3;
-  }
-
   .texts-card {
-    grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
+    grid-area: row-1-cards / col-start-cards / row-2-cards / col-stop-cards;
     grid-auto-rows: auto;
     max-width: 400px;
     max-height: 300px;
@@ -515,12 +488,12 @@
   }
 
   .spans_language_cards {
-    grid-area: row-3-cards / col-start-cards / row-4-cards / col-stop-cards;
+    grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
     grid-auto-rows: auto;
   }
 
   .btn-close {
-    grid-area: row-4-cards / col-start-cards / row-stop-cards / col-stop-cards;
+    grid-area: row-3-cards / col-start-cards / row-stop-cards / col-stop-cards;
     grid-auto-rows: auto;
     margin-top: 20px;
     width: 75px;
@@ -531,7 +504,7 @@
 @media (min-width: 960px) {
   .container_cards {
     grid-template-columns: [col-start-cards] 400px [col-stop-cards];
-    grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
+    grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] 40px [row-stop-cards];
     display: grid;
     z-index: 8;
     position: absolute;
@@ -547,21 +520,12 @@
     grid-area: row-start-cards / col-start-cards / row-1-cards / col-1-cards;
     grid-auto-rows: auto;
     font-size: 16px;
-    width: 100px;
+    width: 300px;
     height: 100px;
   }
 
-  .h1_card {
-    grid-area: row-1-cards / col-start-cards / row-2-cards / col-stop-cards;
-    grid-auto-rows: auto;
-    margin-top: 10px;
-    font-family: Roboto-Bold;
-    font-size: 22px;
-    color: #D3D3D3;
-  }
-
   .texts-card {
-    grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
+    grid-area: row-1-cards / col-start-cards / row-2-cards / col-stop-cards;
     grid-auto-rows: auto;
     max-width: 400px;
     color: #D3D3D3;
@@ -573,12 +537,12 @@
   }
 
   .spans_language_cards {
-    grid-area: row-3-cards / col-start-cards / row-4-cards / col-stop-cards;
+    grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
     grid-auto-rows: auto;
   }
 
   .btn-close {
-    grid-area: row-4-cards / col-start-cards / row-stop-cards / col-stop-cards;
+    grid-area: row-3-cards / col-start-cards / row-stop-cards / col-stop-cards;
     grid-auto-rows: auto;
     margin-top: 20px;
     width: 75px;
@@ -589,7 +553,7 @@
 @media (min-width: 1140px) {
   .container_cards {
     grid-template-columns: [col-start-cards] 400px [col-stop-cards];
-    grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
+    grid-template-rows: [row-start-cards] 100px [row-1-cards] auto [row-2-cards] auto [row-3-cards] 40px [row-stop-cards];
     display: grid;
     z-index: 8;
     position: absolute;
@@ -610,21 +574,12 @@
   .title_card {
     grid-area: row-start-cards / col-start-cards / row-1-cards / col-1-cards;
     grid-auto-rows: auto;
-    width: 100px;
+    width: 300px;
     height: 100px;
   }
 
-  .h1_card {
-    grid-area: row-1-cards / col-start-cards / row-2-cards / col-stop-cards;
-    grid-auto-rows: auto;
-    margin-top: 10px;
-    font-family: Roboto-Bold;
-    font-size: 22px;
-    color: #D3D3D3;
-  }
-
   .texts-card {
-    grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
+    grid-area: row-1-cards / col-start-cards / row-2-cards / col-stop-cards;
     grid-auto-rows: auto;
     max-width: 400px;
     color: #D3D3D3;
@@ -635,12 +590,12 @@
   }
 
   .spans_language_cards {
-    grid-area: row-3-cards / col-start-cards / row-4-cards / col-stop-cards;
+    grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
     grid-auto-rows: auto;
   }
 
   .btn-close {
-    grid-area: row-4-cards / col-start-cards / row-stop-cards / col-stop-cards;
+    grid-area: row-3-cards / col-start-cards / row-stop-cards / col-stop-cards;
     grid-auto-rows: auto;
     margin-top: 20px;
     width: 75px;
