@@ -578,7 +578,7 @@ export class DevelopmentService {
 
   // ADD ACTIONS
 
-  public addActions_buttons() {
+  public addActions_buttons():void {
       this.addActions_IconPostgresql();
       this.addActions_IconMavenLeft();
       this.addActions_IconMavenRight();
@@ -605,7 +605,7 @@ export class DevelopmentService {
       this.addActions_ThreedGlassRed();
   }
 
-  public activation_buttons() {
+  public activation_buttons():void {
       this.icon_postgresql.isPickable = true;
       this.icon_maven_left.isPickable = true;
       this.icon_maven_right.isPickable = true;
@@ -632,7 +632,81 @@ export class DevelopmentService {
       this.threed_glass_red.isPickable = true;
   }
 
-  private desactivation_buttons() {
+  public activation_buttonsPostgresql():void {
+    this.icon_postgresql.isPickable = true;
+  }
+
+  public activation_buttonsMaven():void {
+    this.icon_maven_left.isPickable = true;
+    this.icon_maven_right.isPickable = true;
+  }
+
+  public activation_buttonsSpringFramework():void {
+    this.icon_spring_framework.isPickable = true;
+  }
+
+  public activation_buttonsJava():void {
+    this.icon_java.isPickable = true;
+  }
+
+  public activation_buttonsUbuntu():void {
+    this.icon_ubuntu_orange.isPickable = true;
+    this.icon_ubuntu_white.isPickable = true;
+  }
+
+  public activation_buttonsApache():void {
+    this.icon_apache.isPickable = true;
+  }
+
+  public activation_buttonsCss():void {
+    this.icon_css.isPickable = true;
+  }
+
+  public activation_buttonsHtml():void {
+    this.icon_html.isPickable = true;
+  }
+
+  public activation_buttonsBootstrap():void {
+    this.icon_bootstrap.isPickable = true;
+  }
+
+  public activation_buttonsAngular():void {
+    this.icon_angular.isPickable = true;
+  }
+
+  public activation_buttonsTypescript():void {
+    this.icon_typescript.isPickable = true;
+  }
+
+  public activation_buttonsPostman():void {
+    this.icon_postman.isPickable = true;
+  }
+
+  public activation_buttonsDocker():void {
+    this.icon_docker.isPickable = true;
+  }
+
+  public activation_buttonsGit():void {
+    this.icon_git.isPickable = true;
+  }
+
+  public activation_buttonsBlender():void {
+    this.icon_blender.isPickable = true;
+  }
+
+  public activation_buttonsBabylon():void {
+    this.icon_babylon.isPickable = true;
+  }
+
+  public activation_buttonsPhotoshop():void {
+    this.icon_photoshop.isPickable = true;
+  }
+
+  public activation_buttonsIllustrator():void {
+    this.icon_illustrator.isPickable = true;
+  }
+
+  private desactivation_buttons():void {
       this.icon_postgresql.isPickable = false;
       this.icon_maven_left.isPickable = false;
       this.icon_maven_right.isPickable = false;
@@ -659,7 +733,81 @@ export class DevelopmentService {
       this.threed_glass_red.isPickable = false;
   }
 
-  private addActions_IconPostgresql() {
+  public desactivation_buttonsPostgresql():void {
+    this.icon_postgresql.isPickable = false;
+  }
+
+  public desactivation_buttonsMaven():void {
+    this.icon_maven_left.isPickable = false;
+    this.icon_maven_right.isPickable = false;
+  }
+
+  public desactivation_buttonsSpringFramework():void {
+    this.icon_spring_framework.isPickable = false;
+  }
+
+  public desactivation_buttonsJava():void {
+    this.icon_java.isPickable = false;
+  }
+
+  public desactivation_buttonsUbuntu():void {
+    this.icon_ubuntu_orange.isPickable = false;
+    this.icon_ubuntu_white.isPickable = false;
+  }
+
+  public desactivation_buttonsApache():void {
+    this.icon_apache.isPickable = false;
+  }
+
+  public desactivation_buttonsCss():void {
+    this.icon_css.isPickable = false;
+  }
+
+  public desactivation_buttonsHtml():void {
+    this.icon_html.isPickable = false;
+  }
+
+  public desactivation_buttonsBootstrap():void {
+    this.icon_bootstrap.isPickable = false;
+  }
+
+  public desactivation_buttonsAngular():void {
+    this.icon_angular.isPickable = false;
+  }
+
+  public desactivation_buttonsTypescript():void {
+    this.icon_typescript.isPickable = false;
+  }
+
+  public desactivation_buttonsPostman():void {
+    this.icon_postman.isPickable = false;
+  }
+
+  public desactivation_buttonsDocker():void {
+    this.icon_docker.isPickable = false;
+  }
+
+  public desactivation_buttonsGit():void {
+    this.icon_git.isPickable = false;
+  }
+
+  public desactivation_buttonsBlender():void {
+    this.icon_blender.isPickable = false;
+  }
+
+  public desactivation_buttonsBabylon():void {
+    this.icon_babylon.isPickable = false;
+  }
+
+  public desactivation_buttonsPhotoshop():void {
+    this.icon_photoshop.isPickable = false;
+  }
+
+  public desactivation_buttonsIllustrator():void {
+    this.icon_illustrator.isPickable = false;
+  }
+
+  private addActions_IconPostgresql():void {
     this.icon_postgresql.isPickable = true;
     this.icon_postgresql.actionManager = new BABYLON.ActionManager(this.scene);
 
@@ -675,7 +823,7 @@ export class DevelopmentService {
     );
   }
 
-  private addActions_IconMavenLeft() {
+  private addActions_IconMavenLeft():void {
     this.icon_maven_left.isPickable = true;
     this.icon_maven_left.actionManager = new BABYLON.ActionManager(this.scene);
 

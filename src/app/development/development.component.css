@@ -23,7 +23,7 @@
 
 @media (max-width: 576px) {
   .container_introduction {
-    grid-template-columns: [col-start] 84px [col-1] auto [col-stop];
+    grid-template-columns: [col-start] auto [col-stop];
     grid-template-rows: [row-start] 100px [row-1] auto [row-2] auto [row-3] auto [row-4] 40px [row-stop];
     display: grid;
     z-index: 9;
@@ -34,26 +34,16 @@
   }
 
   .logo_introductionDevelopment {
-    grid-area: row-start / col-start / row-1 / col-1;
+    grid-area: row-start / col-start / row-1 / col-stop;
     grid-auto-rows: auto;
-    width: 84px;
+    width: 300px;
     height: 100px;
-  }
-
-  .title_development {
-    grid-area: row-start / col-1 / row-1 / col-stop;
-    grid-auto-rows: auto;
-    font-family: Montserrat-Black;
-    font-size: 26px;
-    color: white;
-    padding-top: 34px;
-    padding-left: 20px;
   }
 
   .h1_introduction {
     grid-area: row-1 / col-start / row-2 / col-stop;
     grid-auto-rows: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     font-family: Roboto-Bold;
     font-size: 20px;
     color: #D3D3D3;
@@ -88,7 +78,7 @@
 
 @media (min-width: 576px) {
   .container_introduction {
-    grid-template-columns: [col-start] 84px [col-1] 344px [col-stop];
+    grid-template-columns: [col-start] auto [col-stop];
     grid-template-rows: [row-start] 100px [row-1] auto [row-2] auto [row-3] auto [row-4] 40px [row-stop];
     display: grid;
     z-index: 9;
@@ -101,26 +91,16 @@
   }
 
   .logo_introductionDevelopment {
-    grid-area: row-start / col-start / row-1 / col-1;
+    grid-area: row-start / col-start / row-1 / col-stop;
     grid-auto-rows: auto;
-    width: 84px;
+    width: 300px;
     height: 100px;
-  }
-
-  .title_development {
-    grid-area: row-start / col-1 / row-1 / col-stop;
-    grid-auto-rows: auto;
-    font-family: Montserrat-Black;
-    font-size: 30px;
-    color: white;
-    padding-top: 30px;
-    padding-left: 20px;
   }
 
   .h1_introduction {
     grid-area: row-1 / col-start / row-2 / col-stop;
     grid-auto-rows: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     font-family: Roboto-Bold;
     font-size: 22px;
     color: #D3D3D3;
@@ -155,8 +135,8 @@
 
 @media (min-width: 768px) {
   .container_introduction {
-    grid-template-columns: [col-start] 106px [col-1] 400px [col-stop];
-    grid-template-rows: [row-start] 120px [row-1] auto [row-2] auto [row-3] auto [row-4] 40px [row-stop];
+    grid-template-columns: [col-start] auto [col-stop];
+    grid-template-rows: [row-start] 100px [row-1] auto [row-2] auto [row-3] auto [row-4] 40px [row-stop];
     display: grid;
     z-index: 9;
     position: absolute;
@@ -167,25 +147,16 @@
   }
 
   .logo_introductionDevelopment {
-    grid-area: row-start / col-start / row-1 / col-1;
+    grid-area: row-start / col-start / row-1 / col-stop;
     grid-auto-rows: auto;
-    width: 106px;
-    height: 120px;
-  }
-
-  .title_development {
-    grid-area: row-start / col-1 / row-1 / col-stop;
-    grid-auto-rows: auto;
-    font-family: Montserrat-Black;
-    color: white;
-    padding-top: 35px;
-    padding-left: 20px;
+    width: 300px;
+    height: 100px;
   }
 
   .h1_introduction {
     grid-area: row-1 / col-start / row-2 / col-stop;
     grid-auto-rows: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     font-family: Roboto-Bold;
     font-size: 22px;
     color: #D3D3D3;
@@ -218,8 +189,8 @@
 
 @media (min-width: 960px) {
   .container_introduction {
-    grid-template-columns: [col-start] 106px [col-1] 400px [col-stop];
-    grid-template-rows: [row-start] 120px [row-1] auto [row-2] auto [row-3] auto [row-4] 40px [row-stop];
+    grid-template-columns: [col-start] auto [col-stop];
+    grid-template-rows: [row-start] 135px [row-1] auto [row-2] auto [row-3] auto [row-4] 40px [row-stop];
     display: grid;
     z-index: 9;
     position: absolute;
@@ -230,25 +201,16 @@
   }
 
   .logo_introductionDevelopment {
-    grid-area: row-start / col-start / row-1 / col-1;
+    grid-area: row-start / col-start / row-1 / col-stop;
     grid-auto-rows: auto;
-    width: 106px;
-    height: 120px;
-  }
-
-  .title_development {
-    grid-area: row-start / col-1 / row-1 / col-stop;
-    grid-auto-rows: auto;
-    font-family: Montserrat-Black;
-    color: white;
-    padding-top: 35px;
-    padding-left: 20px;
+    width: 400px;
+    height: 135px;
   }
 
   .h1_introduction {
     grid-area: row-1 / col-start / row-2 / col-stop;
     grid-auto-rows: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     font-family: Roboto-Bold;
     font-size: 22px;
     color: #D3D3D3;
@@ -281,8 +243,8 @@
 
 @media (min-width: 1140px) {
   .container_introduction {
-    grid-template-columns: [col-start] 106px [col-1] 400px [col-stop];
-    grid-template-rows: [row-start] 120px [row-1] auto [row-2] auto [row-3] auto [row-4] 40px [row-stop];
+    grid-template-columns: [col-start] auto [col-stop];
+    grid-template-rows: [row-start] 135px [row-1] auto [row-2] auto [row-3] auto [row-4] 40px [row-stop];
     display: grid;
     z-index: 9;
     position: absolute;
@@ -299,25 +261,16 @@
   }
 
   .logo_introductionDevelopment {
-    grid-area: row-start / col-start / row-1 / col-1;
+    grid-area: row-start / col-start / row-1 / col-stop;
     grid-auto-rows: auto;
-    width: 106px;
-    height: 120px;
-  }
-
-  .title_development {
-    grid-area: row-start / col-1 / row-1 / col-stop;
-    grid-auto-rows: auto;
-    font-family: Montserrat-Black;
-    color: white;
-    padding-top: 35px;
-    padding-left: 20px;
+    width: 400px;
+    height: 135px;
   }
 
   .h1_introduction {
     grid-area: row-1 / col-start / row-2 / col-stop;
     grid-auto-rows: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     font-family: Roboto-Bold;
     font-size: 22px;
     color: #D3D3D3;
