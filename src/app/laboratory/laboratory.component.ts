@@ -331,6 +331,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
+      if(this.isOpen_stereoscopy) {
+        this.close_switchCamera();
+      }
     }
   }
 
@@ -363,6 +366,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
+      if(this.isOpen_stereoscopy) {
+        this.close_switchCamera();
+      }
     }
   }
 
@@ -391,13 +397,15 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     this.stereoscopy_fadeIn = true;
     this.isOpen_switchCamera = true;
     this.switchCamera_fadeIn = true;
-    if(!this.isCard_open) {
+    if(!this.isCard_open && !this.isMobileDevice) {
       this.laboratoryService.open_card();
       this.isCard_open = true;
       // this.laboratoryService.set_isOpenCard(this.isCard_open);
     }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
+    if(this.isMobileDevice && this.isCard_open) {
+      this.isVisible_cacheMobileDevice = false;
+      this.laboratoryService.init_position();
+      this.isCard_open = false;
     }
   }
 
@@ -461,6 +469,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
+      if(this.isOpen_stereoscopy) {
+        this.close_switchCamera();
+      }
     }
   }
 
@@ -488,6 +499,11 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     this.isOpen_movies = true;
     this.movies_fadeIn = true;
     this.laboratoryService.animation_openMovies();
+    if(this.isMobileDevice) {
+      if(this.isOpen_stereoscopy) {
+        this.close_switchCamera();
+      }
+    }
   }
 
   public close_movies(): void {
@@ -495,6 +511,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     this.laboratoryService.animation_closeMovies();
     this.isOpen_movies = false;
     this.movies_fadeIn = false;
+    this.laboratoryService.pause_videoTexture();
   }
 
   public play_videoTexture(): void {
@@ -525,6 +542,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
+      if(this.isOpen_stereoscopy) {
+        this.close_switchCamera();
+      }
     }
   }
 

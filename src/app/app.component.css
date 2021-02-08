@@ -69,7 +69,7 @@
 
 @media (max-width: 799px) {
   .container_navBar {
-    grid-template-columns: [col-start-navBar] 70px [col-1-navBar] auto [col-2-navBar] 40px [col-stop-navBar];
+    grid-template-columns: [col-start-navBar] 70px [col-1-navBar] auto [col-2-navBar] 50px [col-stop-navBar];
     grid-template-rows: [row-start-navBar] 60px [row-stop-navBar];
     background-color: #00000088;
   }
@@ -81,7 +81,12 @@
 
   .menu {
     grid-area: row-start-navBar / col-2-navBar / row-stop-navBar / col-stop-navBar;
-    margin-right: 10px;
+    margin-right: 20px;
+  }
+
+  .icon_menu {
+    width: 30px;
+    height: 30px;
   }
 }
 

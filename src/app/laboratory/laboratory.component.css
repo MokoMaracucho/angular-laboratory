@@ -14,7 +14,7 @@
 /* BACKGROUND */
 
 #div_introductionBackground {
-  z-index: 6;
+  z-index: 8;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -23,13 +23,16 @@
 
 /* INTRODUCTION */
 
+.container_introduction {
+  z-index: 9;
+  position: absolute;
+}
+
 @media (max-width: 576px) {
   .container_introduction {
     grid-template-columns: [col-start] 43px [col-1] 41px [col-2] auto [col-stop];
     grid-template-rows: [row-start] 100px [row-1] auto [row-2] auto [row-3] 40px [row-stop];
     display: grid;
-    z-index: 9;
-    position: absolute;
     top: 70px;
     padding-left: 20px;
     padding-right: 10px;
@@ -124,8 +127,6 @@
     grid-template-columns: [col-start] 43px [col-1] 41px [col-2] 344px [col-stop];
     grid-template-rows: [row-start] 100px [row-1] auto [row-2] auto [row-3] 40px [row-stop];
     display: grid;
-    z-index: 9;
-    position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -198,8 +199,6 @@
     grid-template-columns: [col-start] 65px [col-1] 41px [col-2] 300px [col-stop];
     grid-template-rows: [row-start] 120px [row-1] auto [row-2] auto [row-3] 40px [row-stop];
     display: grid;
-    z-index: 9;
-    position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -258,8 +257,6 @@
     grid-template-columns: [col-start] 65px [col-1] 41px [col-2] 300px [col-stop];
     grid-template-rows: [row-start] 120px [row-1] auto [row-2] auto [row-3] 40px [row-stop];
     display: grid;
-    z-index: 9;
-    position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -319,8 +316,6 @@
     grid-template-columns: [col-start] 65px [col-1] 41px [col-2] 400px [col-stop];
     grid-template-rows: [row-start] 120px [row-1] auto [row-2] auto [row-3] 40px [row-stop];
     display: grid;
-    z-index: 9;
-    position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -393,13 +388,21 @@
 
 /* MENU */
 
+.menu_container {
+  z-index: 6;
+  position: absolute;
+}
+
+.initPosition_container {
+  z-index: 7;
+  position: absolute;
+}
+
 @media (max-width: 799px) {
   .menu_container {
     grid-template-columns: [col-start-menu] 50px [col-1-menu] 50px [col-2-menu] 50px [col-3-menu] 50px [col-4-menu] auto [col-5-menu] 50px [col-stop-menu];
     grid-template-rows: [row-start-menu] 50px [row-stop-menu];
     display: grid;
-    z-index: 1;
-    position: absolute;
     bottom: 0px;
     width: 100%;
     height: 50px;
@@ -442,8 +445,6 @@
     grid-template-columns: [col-start-menu] 50px [col-stop-menu];
     grid-template-rows: [row-start-menu] 50px [row-stop-menu];
     display: grid;
-    z-index: 2;
-    position: absolute;
     right: 0px;
     bottom:0px;
     width: 50px;
@@ -465,8 +466,6 @@
     grid-template-columns: [col-start-menu] 50px [col-stop-menu];
     grid-template-rows: [row-start-menu] 250px [row-1-menu] 50px [row-2-menu] 50px [row-3-menu] 50px [row-4-menu] 1fr [row-5-menu] 60px [row-stop-menu];
     display: grid;
-    z-index: 1;
-    position: absolute;
     right: 0px;
     width: 50px;
     height: 100%;
@@ -498,8 +497,6 @@
     grid-template-columns: [col-start-menu] 50px [col-stop-menu];
     grid-template-rows: [row-start-menu] 60px [row-1-menu] 10px [row-stop-menu];
     display: grid;
-    z-index: 2;
-    position: absolute;
     right: 0px;
     bottom:0px;
     width: 50px;
@@ -515,13 +512,16 @@
 
 /* SWITCH CAMERA */
 
+.switchCamera_container {
+  z-index: 5;
+  position: absolute;
+}
+
 @media (max-width: 576px) {
   .switchCamera_container {
     grid-template-columns: [col-start-switchCamera] 70px [col-stop-switchCamera];
     grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 60px [row-3-switchCamera] auto [row-4-switchCamera] 60px [row-5-switchCamera] auto [row-stop-switchCamera];
     display: grid;
-    z-index: 4;
-    position: absolute;
     top: 80px;
     right: 0px;
     width: 70px;
@@ -617,8 +617,6 @@
     grid-template-columns: [col-start-switchCamera] 70px [col-stop-switchCamera];
     grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 60px [row-3-switchCamera] auto [row-4-switchCamera] 60px [row-5-switchCamera] auto [row-stop-switchCamera];
     display: grid;
-    z-index: 4;
-    position: absolute;
     top: 80px;
     right: 0px;
     width: 70px;
@@ -714,8 +712,6 @@
     grid-template-columns: [col-start-switchCamera] 70px [col-1-switchCamera] 70px [col-stop-switchCamera];
     grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 60px [row-3-switchCamera] auto [row-stop-switchCamera];
     display: grid;
-    z-index: 4;
-    position: absolute;
     top: 80px;
     right: 0px;
     width: 140px;
@@ -811,8 +807,6 @@
     grid-template-columns: [col-start-switchCamera] 80px [col-1-switchCamera] 80px [col-stop-switchCamera];
     grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 70px [row-3-switchCamera] auto [row-stop-switchCamera];
     display: grid;
-    z-index: 4;
-    position: absolute;
     top: 80px;
     right: 0px;
     width: 160px;
@@ -908,8 +902,6 @@
     grid-template-columns: [col-start-switchCamera] 90px [col-1-switchCamera] 90px [col-stop-switchCamera];
     grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 80px [row-3-switchCamera] auto [row-stop-switchCamera];
     display: grid;
-    z-index: 4;
-    position: absolute;
     top: 80px;
     right: 0px;
     width: 180px;
@@ -1002,13 +994,16 @@
 
 /* MENU MOVIES */
 
+.menuMovies_container {
+  z-index: 4;
+  position: absolute;
+}
+
 @media (max-width: 799px) {
   .menuMovies_container {
     grid-template-columns: [col-start-menu] auto [col-1-menu] auto [col-2-menu] auto [col-stop-menu];
     grid-template-rows: [row-start-menu] auto [row-stop-menu];
     display: grid;
-    z-index: 2;
-    position: absolute;
     left: 127px;
     bottom: 55px;
     background-color: #00000066;
@@ -1024,8 +1019,6 @@
     grid-template-columns: [col-start-menu] auto [col-1-menu] auto [col-2-menu] auto [col-stop-menu];
     grid-template-rows: [row-start-menu] auto [row-stop-menu];
     display: grid;
-    z-index: 2;
-    position: absolute;
     top: 407px;
     right: 60px;
     background-color: #00000066;
@@ -1047,13 +1040,16 @@
 
 /* CARDS */
 
+.container_cards {
+  z-index: 3;
+  position: absolute;
+}
+
 @media (max-width: 576px) {
   .container_cards {
     grid-template-columns: [col-start-cards] 1fr [col-stop-cards];
     grid-template-rows: [row-start-cards] 87px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
     display: grid;
-    z-index: 8;
-    position: absolute;
     top: 70px;
     width: 100%;
     padding-left: 20px;
@@ -1110,8 +1106,6 @@
     grid-template-columns: [col-start-cards] 350px [col-stop-cards];
     grid-template-rows: [row-start-cards] 105px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
     display: grid;
-    z-index: 8;
-    position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -1170,8 +1164,6 @@
     grid-template-columns: [col-start-cards] 350px [col-stop-cards];
     grid-template-rows: [row-start-cards] 105px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
     display: grid;
-    z-index: 8;
-    position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -1230,8 +1222,6 @@
     grid-template-columns: [col-start-cards] 400px [col-stop-cards];
     grid-template-rows: [row-start-cards] 105px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
     display: grid;
-    z-index: 8;
-    position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -1288,8 +1278,6 @@
     grid-template-columns: [col-start-cards] 400px [col-stop-cards];
     grid-template-rows: [row-start-cards] 134px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
     display: grid;
-    z-index: 8;
-    position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -1358,7 +1346,7 @@
 /* CACHE */
 
 .cacheMobileDevice_container {
-  z-index: 5;
+  z-index: 2;
   position: absolute;
   top: 0px;
   width: 100%;
