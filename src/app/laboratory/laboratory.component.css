@@ -487,6 +487,16 @@
     grid-auto-rows: auto;
   }
 
+  .menu_icon_stereoscopy {
+    grid-area: row-3-menu / col-start-menu / row-4-menu / col-stop-menu;
+    grid-auto-rows: auto;
+  }
+
+  .menu_icon_movies {
+    grid-area: row-4-menu / col-start-menu / row-5-menu / col-stop-menu;
+    grid-auto-rows: auto;
+  }
+
   .menu_icons {
     width: 40px;
     height: 40px;

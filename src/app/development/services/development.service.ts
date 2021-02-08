@@ -88,7 +88,7 @@ export class DevelopmentService {
     private scene_loaded = false;
     private introduction_closed = false;
 
-    private anaglyph_activated = false;
+    private isActive_cameraAnaglyph = false;
 
     public constructor(
         private ngZone: NgZone,
@@ -706,6 +706,10 @@ export class DevelopmentService {
     this.icon_illustrator.isPickable = true;
   }
 
+  public activation_buttonsStereoscopy(): void {
+    this.threed_glasses_frame.isPickable = true; this.threed_glass_blue.isPickable = true; this.threed_glass_red.isPickable = true;
+  }
+
   private desactivation_buttons():void {
       this.icon_postgresql.isPickable = false;
       this.icon_maven_left.isPickable = false;
@@ -731,6 +735,10 @@ export class DevelopmentService {
       this.threed_glasses_frame.isPickable = false;
       this.threed_glass_blue.isPickable = false;
       this.threed_glass_red.isPickable = false;
+  }
+
+  public desactivation_buttonsStereoscopy(): void {
+    this.threed_glasses_frame.isPickable = false; this.threed_glass_blue.isPickable = false; this.threed_glass_red.isPickable = false;
   }
 
   public desactivation_buttonsPostgresql():void {
@@ -1313,25 +1321,23 @@ export class DevelopmentService {
 
   // SWITCH CAMERA
 
-  public animation_switch_camera() {
-    if(!this.anaglyph_activated) {
+  public switch_camera() {
+    if(!this.isActive_cameraAnaglyph) {
       this.anaglyph_universal_camera.position = this.universal_camera.position;
       this.anaglyph_universal_camera.rotation = this.universal_camera.rotation;
       this.universal_camera.detachControl();
-      this.scene.setActiveCameraByName("anaglyph_universal_camera");
+      this.scene.activeCamera = this.anaglyph_universal_camera;
       this.anaglyph_universal_camera.attachControl(this.canvas, true);
-      this.anaglyph_activated = true;
-      this.interaction.toogle_anaglyph_activated.next();
       this.desactivation_buttons();
+      this.isActive_cameraAnaglyph = true;
     } else {
       this.universal_camera.position = this.anaglyph_universal_camera.position;
       this.universal_camera.rotation = this.anaglyph_universal_camera.rotation;
       this.anaglyph_universal_camera.detachControl();
-      this.scene.setActiveCameraByName("universal_camera");
+      this.scene.activeCamera = this.universal_camera;
       this.universal_camera.attachControl(this.canvas, true);
-      this.anaglyph_activated = false;
-      this.interaction.toogle_anaglyph_activated.next();
       this.activation_buttons();
+      this.isActive_cameraAnaglyph = false;
     }
   }
 

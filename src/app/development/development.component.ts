@@ -156,6 +156,12 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
   public innerWidth: any;
   public innerHeight: any;
 
+  public isMax576 = false;
+  public isMin576 = false;
+  public isMin768 = false;
+  public isMin960 = false;
+  public isMin1140 = false;
+
   // CV
 
   public isCV: boolean;
@@ -189,6 +195,14 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
   public isVisible_initPosition = false;
 
   public isCard_open = false;
+
+  public isOpen_stereoscopy = false;
+  public stereoscopy_fadeIn = false;
+  public isOpen_switchCamera = false;
+  public switchCamera_fadeIn = false;
+
+  public isActive_cameraRegular = true;
+  public isActive_cameraAnaglyph = false;
 
   public isOpen_postgresql = false;
   public postgresql_fadeIn = false;
@@ -247,9 +261,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
   public isOpen_contactMe = false;
   public contactMe_fadeIn = false;
 
-  public isOpen_stereoscopy = false;
-  public stereoscopy_fadeIn = false;
-
   public disabledSubmitButton: boolean = true;
 
   public isVisible_cache = false;
@@ -274,6 +285,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
     this.developmentService.set_windowDimensions(this.innerWidth, this.innerHeight);
+    this.defineWidthRange();
 
     this.isCV = this.activatedRoute.snapshot.params.isCV;
     if(!this.isCV) {
@@ -335,6 +347,46 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
     this.developmentService.set_windowDimensions(window.innerWidth, window.innerHeight);
+    this.defineWidthRange();
+  }
+
+  private defineWidthRange(): void {
+    if(this.innerWidth < 576) {
+      this.isMax576 = true;
+      this.isMin576 = false;
+      this.isMin768 = false;
+      this.isMin960 = false;
+      this.isMin1140 = false;
+      console.log("isMax576");
+    } else if(this.innerWidth < 768) {
+      this.isMax576 = false;
+      this.isMin576 = true;
+      this.isMin768 = false;
+      this.isMin960 = false;
+      this.isMin1140 = false;
+      console.log("isMin576");
+    } else if(this.innerWidth < 960) {
+      this.isMax576 = false;
+      this.isMin576 = false;
+      this.isMin768 = true;
+      this.isMin960 = false;
+      this.isMin1140 = false;
+      console.log("isMin768");
+    } else if(this.innerWidth < 1140) {
+      this.isMax576 = false;
+      this.isMin576 = false;
+      this.isMin768 = false;
+      this.isMin960 = true;
+      this.isMin1140 = false;
+      console.log("isMin960");
+    } else {
+      this.isMax576 = false;
+      this.isMin576 = false;
+      this.isMin768 = false;
+      this.isMin960 = false;
+      this.isMin1140 = true;
+      console.log("isMin1140");
+    }
   }
 
   private change_language_english(): void {
@@ -370,6 +422,71 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     this.developmentService.animation_enterDevelopment();
     this.isVisible_initPosition = true;
     this.appComponent.close_navBar_menu();
+  }
+
+  // STEREOSCOPY
+
+  public open_stereoscopy(): void {
+    this.developmentService.desactivation_buttonsStereoscopy();
+    if(this.isCard_open) {
+      this.close_openedCard();
+    }
+    this.isOpen_switchCamera = true;
+    this.switchCamera_fadeIn = true;
+    if(!this.isCard_open && !this.isMobileDevice) {
+      this.developmentService.open_card();
+      this.isCard_open = true;
+      // this.laboratoryService.set_isOpenCard(this.isCard_open);
+    }
+    if(this.isMobileDevice && this.isCard_open) {
+      this.isVisible_cacheMobileDevice = false;
+      this.developmentService.init_position();
+      this.isCard_open = false;
+    }
+  }
+
+  public close_stereoscopy(close_clicked): void {
+    this.developmentService.activation_buttonsStereoscopy();
+    this.isOpen_stereoscopy = false;
+    this.stereoscopy_fadeIn = false;
+    if(close_clicked) {
+      this.developmentService.close_card();
+      this.isCard_open = false;
+      // this.laboratoryService.set_isOpenCard(this.isCard_open);
+      if(this.isMobileDevice) {
+        this.isVisible_cacheMobileDevice = false;
+      }
+    }
+    if(this.isMobileDevice) {
+      this.close_switchCamera();
+    }
+  }
+
+  public close_switchCamera(): void {
+    this.isOpen_switchCamera = false;
+    if(this.isOpen_stereoscopy && !this.isMobileDevice) {
+      this.close_stereoscopy(true);
+    }
+    if(this.isMobileDevice) {
+      this.isOpen_stereoscopy = false;
+      this.stereoscopy_fadeIn = false;
+    }
+  }
+
+  public switch_cameraRegular(): void {
+    if(!this.isActive_cameraRegular) {
+      this.developmentService.switch_camera();
+      this.isActive_cameraRegular = !this.isActive_cameraRegular;
+      this.isActive_cameraAnaglyph = !this.isActive_cameraAnaglyph;
+    }
+  }
+
+  public switch_cameraAnaglyph(): void {
+    if(!this.isActive_cameraAnaglyph) {
+      this.developmentService.switch_camera();
+      this.isActive_cameraRegular = !this.isActive_cameraRegular;
+      this.isActive_cameraAnaglyph = !this.isActive_cameraAnaglyph;
+    }
   }
 
   // POSTGRESQL
