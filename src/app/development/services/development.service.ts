@@ -20,8 +20,8 @@ export class DevelopmentService {
     private universal_camera: BABYLON.UniversalCamera;
     private anaglyph_universal_camera: BABYLON.AnaglyphUniversalCamera;
 
-    private pipeline: BABYLON.DefaultRenderingPipeline;
-    private rotation;
+    private universalCameraPosition_clone;
+    private universalCameraTargetPosition_clone;
 
     private hemispheric_light: BABYLON.Light;
 
@@ -669,8 +669,7 @@ export class DevelopmentService {
     this.icon_postgresql.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_postgresql},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_postgresql.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_postgresql.next())
         ]
       )
     );
@@ -689,8 +688,7 @@ export class DevelopmentService {
     this.icon_maven_left.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_maven_left},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_maven.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_maven.next())
         ]
       )
     );
@@ -709,8 +707,7 @@ export class DevelopmentService {
     this.icon_maven_right.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_maven_right},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_maven.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_maven.next())
         ]
       )
     );
@@ -726,8 +723,7 @@ export class DevelopmentService {
     this.icon_java.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_java},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_java.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_java.next())
         ]
       )
     );
@@ -743,8 +739,7 @@ export class DevelopmentService {
     this.icon_spring_framework.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_spring_framework},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_spring_framework.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_springFramework.next())
         ]
       )
     );
@@ -763,8 +758,7 @@ export class DevelopmentService {
     this.icon_ubuntu_orange.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_ubuntu_orange},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_ubuntu.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_ubuntu.next())
         ]
       )
     );
@@ -783,8 +777,7 @@ export class DevelopmentService {
     this.icon_ubuntu_white.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_ubuntu_white},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_ubuntu.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_ubuntu.next())
         ]
       )
     );
@@ -800,8 +793,7 @@ export class DevelopmentService {
     this.icon_apache.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_apache},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_apache.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_apache.next())
         ]
       )
     );
@@ -817,8 +809,7 @@ export class DevelopmentService {
     this.icon_css.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_css},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_css.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_css.next())
         ]
       )
     );
@@ -834,8 +825,7 @@ export class DevelopmentService {
     this.icon_html.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_html},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_html.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_html.next())
         ]
       )
     );
@@ -851,8 +841,7 @@ export class DevelopmentService {
     this.icon_bootstrap.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_bootstrap},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_bootstrap.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_bootstrap.next())
         ]
       )
     );
@@ -868,8 +857,7 @@ export class DevelopmentService {
     this.icon_angular.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_angular},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_angular.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_angular.next())
         ]
       )
     );
@@ -885,8 +873,7 @@ export class DevelopmentService {
     this.icon_typescript.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_typescript},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_typescript.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_typescript.next())
         ]
       )
     );
@@ -902,8 +889,7 @@ export class DevelopmentService {
     this.icon_postman.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_postman},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_postman.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_postman.next())
         ]
       )
     );
@@ -919,8 +905,7 @@ export class DevelopmentService {
     this.icon_docker.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_docker},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_docker.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_docker.next())
         ]
       )
     );
@@ -936,8 +921,7 @@ export class DevelopmentService {
     this.icon_git.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_git},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_git.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_git.next())
         ]
       )
     );
@@ -953,8 +937,7 @@ export class DevelopmentService {
     this.icon_blender.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_blender},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_blender.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_blender.next())
         ]
       )
     );
@@ -970,8 +953,7 @@ export class DevelopmentService {
     this.icon_babylon.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_babylon},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_babylon.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_babylon.next())
         ]
       )
     );
@@ -987,8 +969,7 @@ export class DevelopmentService {
       this.icon_photoshop.actionManager.registerAction(new BABYLON.CombineAction(
           {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_photoshop},
           [
-              new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photoshop.next()),
-              new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons()),
+              new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_photoshop.next())
           ]
         )
       );
@@ -1004,8 +985,7 @@ export class DevelopmentService {
     this.icon_illustrator.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.icon_illustrator},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_illustrator.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_illustrator.next())
         ]
       )
     );
@@ -1021,8 +1001,7 @@ export class DevelopmentService {
     this.via_air_mail.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.via_air_mail},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_contactMe.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_contactMe.next())
         ]
       )
     );
@@ -1044,8 +1023,7 @@ export class DevelopmentService {
     this.threed_glasses_frame.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glasses_frame},
         [
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
         ]
       )
     );
@@ -1067,8 +1045,7 @@ export class DevelopmentService {
     this.threed_glass_blue.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_blue},
         [
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
         ]
       )
     );
@@ -1090,8 +1067,7 @@ export class DevelopmentService {
     this.threed_glass_red.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_red},
         [
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next()),
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.desactivation_buttons())
+            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
         ]
       )
     );
@@ -1145,6 +1121,46 @@ export class DevelopmentService {
     const ease = new BABYLON.CubicEase();
     ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
     BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterDevelopment', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(0, 10, 0), 0, ease);
+  }
+
+  // OPEN CARDS
+
+  public open_card(): void {
+    this.universalCameraPosition_clone = this.universal_camera.position;
+    this.universalCameraTargetPosition_clone = this.universal_camera.target.clone();
+    this.animation_camera_openCard();
+    this.animation_cameraTarget_openCard();
+  }
+
+  private animation_camera_openCard() {
+    const ease = new BABYLON.CubicEase();
+    ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+    BABYLON.Animation.CreateAndStartAnimation('animation_camera_openCard', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(-48, 35, 35), 0, ease);
+  }
+
+  private animation_cameraTarget_openCard() {
+    const ease = new BABYLON.CubicEase();
+    ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+    BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_openCard', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-12, 10, 5), 0, ease);
+  }
+
+  // CLOSE CARDS
+
+  public close_card(): void {
+    this.animation_camera_closeCard();
+    this.animation_cameraTarget_closeCard();
+  }
+
+  private animation_camera_closeCard() {
+    const ease = new BABYLON.CubicEase();
+    ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+    BABYLON.Animation.CreateAndStartAnimation('animation_camera_closeCard', this.universal_camera, 'position', 15, 30, this.universal_camera.position, this.universalCameraPosition_clone, 0, ease);
+  }
+
+  private animation_cameraTarget_closeCard() {
+    const ease = new BABYLON.CubicEase();
+    ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+    BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_closeCard', this.universal_camera, 'target', 15, 30, this.universal_camera.target, this.universalCameraTargetPosition_clone, 0, ease);
   }
 
   // SWITCH CAMERA

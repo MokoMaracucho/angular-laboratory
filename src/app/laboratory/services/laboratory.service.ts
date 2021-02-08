@@ -173,6 +173,8 @@ export class LaboratoryService {
   private scene_loaded = false;
   private introduction_closed = false;
 
+  private isCard_open = false;
+
   private isActive_cameraAnaglyph = false;
 
   public constructor(
@@ -1188,11 +1190,9 @@ private sceneIsLoaded() {
 
 // ADD ACTIONS
 
-public addActions_buttons() {
-    if(!this.isCV) {
-      this.addActions_TransfertBoxes();
-      this.addActions_TransfertBoxesRings();
-    }
+public addActions_buttons(): void {
+    this.addActions_TransfertBoxes();
+    this.addActions_TransfertBoxesRings();
     this.addActions_RoseRouge(); this.addActions_RoseRougeFrame();
     this.addActions_VerbalShoota(); this.addActions_VerbalShootaFrame();
     this.addActions_LapinBlanc(); this.addActions_LapinBlancFrame();
@@ -1213,11 +1213,8 @@ public addActions_buttons() {
     this.addActions_Projector();
 }
 
-  public activation_buttons() {
-    if(!this.isCV) {
-      this.transfert_boxes.isPickable = true;
-      this.transfert_boxes_rings.isPickable = true;
-    }
+  public activation_buttons(): void {
+    this.transfert_boxes.isPickable = true; this.transfert_boxes_rings.isPickable = true;
     this.rose_rouge.isPickable = true; this.rose_rouge_frame.isPickable = true;
     this.verbal_shoota.isPickable = true; this.verbal_shoota_frame.isPickable = true;
     this.lapin_blanc.isPickable = true;  this.lapin_blanc_frame.isPickable = true;
@@ -1226,17 +1223,45 @@ public addActions_buttons() {
     this.tofu.isPickable = true; this.tofu_marie_louise.isPickable = true; this.tofu_frame.isPickable = true;
     this.threed_glasses_frame.isPickable = true; this.threed_glass_blue.isPickable = true; this.threed_glass_red.isPickable = true;
     this.mac_mini.isPickable = true; this.laptop.isPickable = true; this.laptop_keyboard.isPickable = true; this.laptop_screen.isPickable = true; this.screen_center.isPickable = true; this.screen_frame_center.isPickable = true; this.screen_right.isPickable = true; this.screen_frame_right.isPickable = true;
+    this.dvd_pi.isPickable = true; this.dvd_enter_the_void.isPickable = true; this.dvd_2001_odyssee_espace.isPickable = true; this.dvd_la_haine.isPickable = true; this.dvd_sweet_sixteen.isPickable = true; this.dvd_eternal_sunshine.isPickable = true; this.dvd_zero_theorem.isPickable = true; this.dvd_shining.isPickable = true;
     this.twitter.isPickable = true;
     this.instagram.isPickable = true; this.instagram_lens.isPickable = true;
     this.youtube.isPickable = true; this.youtube_play.isPickable = true;
     this.spotify_green.isPickable = true; this.spotify_black.isPickable = true;
   }
 
-  private desactivation_buttons() {
-    if(!this.isCV) {
-      this.transfert_boxes.isPickable = false;
-      this.transfert_boxes_rings.isPickable = false;
-    }
+  public activation_buttonsDevelopment(): void {
+    this.mac_mini.isPickable = true; this.laptop.isPickable = true; this.laptop_keyboard.isPickable = true; this.laptop_screen.isPickable = true; this.screen_center.isPickable = true; this.screen_frame_center.isPickable = true; this.screen_right.isPickable = true; this.screen_frame_right.isPickable = true;
+  }
+
+  public activation_buttonsDatas(): void {
+    this.transfert_boxes.isPickable = true; this.transfert_boxes_rings.isPickable = true;
+  }
+
+  public activation_buttonsStereoscopy(): void {
+    this.threed_glasses_frame.isPickable = true; this.threed_glass_blue.isPickable = true; this.threed_glass_red.isPickable = true;
+  }
+
+  public activation_buttonsPhotography(): void {
+    this.rose_rouge.isPickable = true; this.rose_rouge_frame.isPickable = true;
+    this.verbal_shoota.isPickable = true; this.verbal_shoota_frame.isPickable = true;
+    this.lapin_blanc.isPickable = true;  this.lapin_blanc_frame.isPickable = true;
+    this.fourty_four.isPickable = true; this.fourty_four_marie_louise.isPickable = true; this.fourty_four_frame.isPickable = true;
+    this.brique.isPickable = true; this.brique_marie_louise.isPickable = true; this.brique_frame.isPickable = true;
+    this.tofu.isPickable = true; this.tofu_marie_louise.isPickable = true; this.tofu_frame.isPickable = true;
+  }
+
+  public activation_buttonsMovies(): void {
+    this.dvd_pi.isPickable = true; this.dvd_enter_the_void.isPickable = true; this.dvd_2001_odyssee_espace.isPickable = true; this.dvd_la_haine.isPickable = true; this.dvd_sweet_sixteen.isPickable = true; this.dvd_eternal_sunshine.isPickable = true; this.dvd_zero_theorem.isPickable = true; this.dvd_shining.isPickable = true;
+  }
+
+  public activation_buttonsContactMe(): void {
+
+  }
+
+  private desactivation_buttons(): void {
+    this.transfert_boxes.isPickable = false;
+    this.transfert_boxes_rings.isPickable = false;
     this.rose_rouge.isPickable = false; this.rose_rouge_frame.isPickable = false;
     this.verbal_shoota.isPickable = false; this.verbal_shoota_frame.isPickable = false;
     this.lapin_blanc.isPickable = false; this.lapin_blanc_frame.isPickable = false;
@@ -1244,13 +1269,41 @@ public addActions_buttons() {
     this.brique.isPickable = false; this.brique_marie_louise.isPickable = false; this.brique_frame.isPickable = false;
     this.tofu.isPickable = false; this.tofu_marie_louise.isPickable = false; this.tofu_frame.isPickable = false;
     this.threed_glasses_frame.isPickable = false; this.threed_glass_blue.isPickable = false; this.threed_glass_red.isPickable = false;
-    this.mac_mini.isPickable = false; this.laptop.isPickable = false; this.laptop_keyboard.isPickable = false; this.laptop_screen.isPickable = false; this.screen_center.isPickable = false; this.screen_frame_center.isPickable = false; this.screen_right.isPickable = false; this.screen_frame_right.isPickable = false;
     this.twitter.isPickable = false;
     this.instagram.isPickable = false; this.instagram_lens.isPickable = false;
     this.youtube.isPickable = false; this.youtube_play.isPickable = false;
     this.spotify_green.isPickable = false; this.spotify_black.isPickable = false;
     this.projector.isPickable = false;
     this.dvd_pi.isPickable = false; this.dvd_enter_the_void.isPickable = false; this.dvd_2001_odyssee_espace.isPickable = false; this.dvd_la_haine.isPickable = false, this.dvd_sweet_sixteen.isPickable = false; this.dvd_eternal_sunshine.isPickable = false; this.dvd_zero_theorem.isPickable = false; this.dvd_shining.isPickable = false;
+  }
+
+  public desactivation_buttonsDevelopment(): void {
+    this.mac_mini.isPickable = false; this.laptop.isPickable = false; this.laptop_keyboard.isPickable = false; this.laptop_screen.isPickable = false; this.screen_center.isPickable = false; this.screen_frame_center.isPickable = false; this.screen_right.isPickable = false; this.screen_frame_right.isPickable = false;
+  }
+
+  public desactivation_buttonsDatas(): void {
+    this.transfert_boxes.isPickable = false; this.transfert_boxes_rings.isPickable = false;
+  }
+
+  public desactivation_buttonsStereoscopy(): void {
+    this.threed_glasses_frame.isPickable = false; this.threed_glass_blue.isPickable = false; this.threed_glass_red.isPickable = false;
+  }
+
+  public desactivation_buttonsPhotography(): void {
+    this.rose_rouge.isPickable = false; this.rose_rouge_frame.isPickable = false;
+    this.verbal_shoota.isPickable = false; this.verbal_shoota_frame.isPickable = false;
+    this.lapin_blanc.isPickable = false;  this.lapin_blanc_frame.isPickable = false;
+    this.fourty_four.isPickable = false; this.fourty_four_marie_louise.isPickable = false; this.fourty_four_frame.isPickable = false;
+    this.brique.isPickable = false; this.brique_marie_louise.isPickable = false; this.brique_frame.isPickable = false;
+    this.tofu.isPickable = false; this.tofu_marie_louise.isPickable = false; this.tofu_frame.isPickable = false;
+  }
+
+  public desactivation_buttonsMovies(): void {
+    this.dvd_pi.isPickable = false; this.dvd_enter_the_void.isPickable = false; this.dvd_2001_odyssee_espace.isPickable = false; this.dvd_la_haine.isPickable = false; this.dvd_sweet_sixteen.isPickable = false; this.dvd_eternal_sunshine.isPickable = false; this.dvd_zero_theorem.isPickable = false; this.dvd_shining.isPickable = false;
+  }
+
+  public desactivation_buttonsContactMe(): void {
+
   }
 
   private addActions_TransfertBoxes() {
@@ -1267,8 +1320,7 @@ public addActions_buttons() {
       this.transfert_boxes.actionManager.registerAction(new BABYLON.CombineAction(
           {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes},
           [
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next()),
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next())
           ]
         )
       );
@@ -1288,8 +1340,7 @@ public addActions_buttons() {
     this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes_rings},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next())
         ]
       )
     );
@@ -2003,8 +2054,7 @@ public addActions_buttons() {
     this.keyboard.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.keyboard},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2035,8 +2085,7 @@ public addActions_buttons() {
     this.keyboard_keyboard.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.keyboard_keyboard},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2067,8 +2116,7 @@ public addActions_buttons() {
     this.mac_mini.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.mac_mini},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2099,8 +2147,7 @@ public addActions_buttons() {
     this.laptop.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2131,8 +2178,7 @@ public addActions_buttons() {
     this.laptop_keyboard.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop_keyboard},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2163,8 +2209,7 @@ public addActions_buttons() {
     this.laptop_screen.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.laptop_screen},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2195,8 +2240,7 @@ public addActions_buttons() {
     this.screen_center.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_center},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2227,8 +2271,7 @@ public addActions_buttons() {
     this.screen_frame_center.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_frame_center},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2259,8 +2302,7 @@ public addActions_buttons() {
     this.screen_right.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_right},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -2291,8 +2333,7 @@ public addActions_buttons() {
     this.screen_frame_right.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.screen_frame_right},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next()),
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.open_card())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_development.next())
         ]
       )
     );
@@ -3051,13 +3092,21 @@ public addActions_buttons() {
     BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_enterLaboratory', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-16.5, 5, -12), 0, ease);
   }
 
+  // SET OPEN CARD
+
+  public set_isOpenCard(isOpen_card) {
+    this.isCard_open = isOpen_card;
+  }
+
   // OPEN CARDS
 
   public open_card(): void {
-    this.universalCameraPosition_clone = this.universal_camera.position;
-    this.universalCameraTargetPosition_clone = this.universal_camera.target.clone();
-    this.animation_camera_openCard();
-    this.animation_cameraTarget_openCard();
+    // if(!this.isCard_open) {
+      this.universalCameraPosition_clone = this.universal_camera.position;
+      this.universalCameraTargetPosition_clone = this.universal_camera.target.clone();
+      this.animation_camera_openCard();
+      this.animation_cameraTarget_openCard();
+    // }
   }
 
   private animation_camera_openCard() {

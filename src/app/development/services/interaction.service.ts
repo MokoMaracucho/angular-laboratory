@@ -18,9 +18,9 @@ export class InteractionService {
 
     open_maven = new Subject<boolean>();
 
-    open_java = new Subject<boolean>();
+    open_springFramework = new Subject<boolean>();
 
-    open_spring_framework = new Subject<boolean>();
+    open_java = new Subject<boolean>();
 
     open_ubuntu = new Subject<boolean>();
 

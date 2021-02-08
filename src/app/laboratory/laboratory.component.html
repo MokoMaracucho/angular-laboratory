@@ -4,12 +4,12 @@
 
 <!-- INTRODUCTION BACKGROUND -->
 
-<div id="div_introduction_background" [style.display]="isVisible_introductionBackground ? 'block' : 'none'" [@fadeOut_background]="fadeOut_background">
+<div id="div_introductionBackground" [style.display]="isOpen_introductionBackground ? 'block' : 'none'" [@fadeOut_backgroundIntroduction]="fadeOut_backgroundIntroduction">
 </div>
 
 <!-- INTRODUCTION !isCV -->
 
-<div *ngIf="!isCV && isVisible_introduction" class="container_introduction">
+<div #container_introduction *ngIf="!isCV && isOpen_introduction" class="container_introduction">
   <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo_moko_introduction" [@logoIntroduction_fadeIn]="logoIntroduction_fadeIn">
 
   <h1 *ngIf="language_english" class="h1s-introduction h1-english" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">ENTER<br/>THE THIRD DIMENSION</h1>
@@ -57,7 +57,7 @@
 
 <!-- INTRODUCTION isCV -->
 
-<div *ngIf="isCV && isVisible_introduction" class="container_introduction">
+<div *ngIf="isCV && isOpen_introduction" class="container_introduction">
   <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo_moko_introduction" [@logoIntroduction_fadeIn]="logoIntroduction_fadeIn">
 
   <h1 *ngIf="language_english" class="h1s-introduction h1s-introduction-isCV h1-english" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">WEB<br/>DEVELOPER</h1>
@@ -108,15 +108,15 @@
 <div class="menu_container">
   <div class="menu">
     <img *ngIf="!isOpen_development" class="menu_icon_development menu_icons" src="../assets/img/menu/development_menu.png" alt="development" (click)="open_development()">
-    <img *ngIf="isOpen_development" class="menu_icon_development menu_icons" src="../assets/img/menu/close_development_menu.png" alt="development" (click)="close_development()">
+    <img *ngIf="isOpen_development" class="menu_icon_development menu_icons" src="../assets/img/menu/close_development_menu.png" alt="development" (click)="close_development(true)">
 
     <img *ngIf="!isOpen_datas" class="menu_icon_datas menu_icons" src="../assets/img/menu/datas_menu.png" alt="datas" (click)="open_datas()">
-    <img *ngIf="isOpen_datas" class="menu_icon_datas menu_icons" src="../assets/img/menu/close_datas_menu.png" alt="datas" (click)="close_datas()">
+    <img *ngIf="isOpen_datas" class="menu_icon_datas menu_icons" src="../assets/img/menu/close_datas_menu.png" alt="datas" (click)="close_datas(true)">
 
     <img *ngIf="!isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/stereoscopy_menu.png" alt="stereoscopy" (click)="open_stereoscopy()">
-    <img *ngIf="isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/close_stereoscopy_menu.png" alt="stereoscopy" (click)="close_stereoscopy()">
+    <img *ngIf="isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/close_stereoscopy_menu.png" alt="stereoscopy" (click)="close_stereoscopy(true)">
 
-    <img *ngIf="isOpen_movies" class="menu_icon_movies menu_icons" src="../assets/img/menu/movies_menu.png" alt="movies" (click)="close_movies()">
+    <img *ngIf="isOpen_movies" class="menu_icon_movies menu_icons" src="../assets/img/menu/movies_menu.png" alt="movies" (click)="close_movies(true)">
   </div>
 </div>
 
@@ -197,7 +197,7 @@
     <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
-  <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_development()">
+  <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_development(true)">
     <span *ngIf="language_english">Close</span>
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>
@@ -238,7 +238,7 @@
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
-  <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_datas()">
+  <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_datas(true)">
     <span *ngIf="language_english">Close</span>
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>
@@ -276,7 +276,7 @@
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
-  <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_stereoscopy()">
+  <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_stereoscopy(true)">
     <span *ngIf="language_english">Close</span>
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>
@@ -370,7 +370,7 @@
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
-  <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_photography()">
+  <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_photography(true)">
     <span *ngIf="language_english">Close</span>
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>

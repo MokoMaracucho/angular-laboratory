@@ -17,7 +17,7 @@ import { ConnectionService } from '../shared/services/connection.service';
   templateUrl: './laboratory.component.html',
   styleUrls: ['./laboratory.component.css'],
   animations: [
-    trigger('fadeOut_background', [
+    trigger('fadeOut_backgroundIntroduction', [
       state('false', style({background: '#160130'})),
       state('true', style({background: '#16013066'})),
       transition('false => true', [animate('2s')])
@@ -127,10 +127,10 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   // IS LOADED
 
   public isLoaded = false;
-  public fadeOut_background = false;
+  public fadeOut_backgroundIntroduction = false;
 
-  public isVisible_introductionBackground = true;
-  public isVisible_introduction = true;
+  public isOpen_introductionBackground = true;
+  public isOpen_introduction = true;
 
   public logoIntroduction_fadeIn = false;
   public h1Introduction_fadeIn = false;
@@ -141,7 +141,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   public isVisible_menu = false;
   public isVisible_initPosition = false;
 
-  public card_open = false;
+  public isCard_open = false;
 
   public isOpen_development = false;
   public development_fadeIn = false;
@@ -171,10 +171,11 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   @ViewChild('rendererCanvas_laboratory', { static: true })
   public rendererCanvas_laboratory: ElementRef<HTMLCanvasElement>;
 
+  public container_introduction
+
   public constructor(
       private activatedRoute: ActivatedRoute,
       private deviceService: DeviceDetectorService,
-      private connectionService: ConnectionService,
       private appComponent: AppComponent,
       private laboratoryService: LaboratoryService,
       readonly interaction: InteractionService
@@ -230,7 +231,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
   @HostListener('window:orientationchange', ['$event'])
   onOrientationChange(event) {
-    alert('orientationChanged');
+    // alert('orientationChanged');
   }
 
   private epicFunction() {
@@ -282,7 +283,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   private isLoaded_function(): void {
       this.isLoaded = true;
       this.btnCloseIntroduction_fadeIn = true;
-      this.fadeOut_background = true;
+      this.fadeOut_backgroundIntroduction = true;
   }
 
   private change_language_english(): void {
@@ -307,8 +308,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   }
 
   public close_introduction(): void {
-      this.isVisible_introductionBackground = false;
-      this.isVisible_introduction = false;
+      this.isOpen_introductionBackground = false;
+      this.isOpen_introduction = false;
       this.laboratoryService.animation_enterLaboratory();
       this.isVisible_menu = true;
       this.isVisible_initPosition = true;
@@ -318,61 +319,109 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   // DEVELOPPEMENT
 
   public open_development(): void {
+    this.laboratoryService.desactivation_buttonsDevelopment();
+    if(this.isCard_open) {
+      this.close_openedCard();
+    }
     this.isOpen_development = true;
     this.development_fadeIn = true;
-    this.laboratoryService.open_card();
+    if(!this.isCard_open) {
+      this.laboratoryService.open_card();
+      this.isCard_open = true;
+    }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
     }
   }
 
-  public close_development(): void {
+  public close_development(close_clicked): void {
+    this.laboratoryService.activation_buttonsDevelopment();
     this.isOpen_development = false;
     this.development_fadeIn = false;
-    this.laboratoryService.close_card();
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = false;;
+    if(close_clicked) {
+      this.laboratoryService.close_card();
+      this.isCard_open = false;
+      if(this.isMobileDevice) {
+        this.isVisible_cacheMobileDevice = false;
+      }
     }
   }
 
   // DATAS
 
   public open_datas(): void {
+    this.laboratoryService.desactivation_buttonsDatas();
+    if(this.isCard_open) {
+      this.close_openedCard();
+    }
     this.isOpen_datas = true;
     this.datas_fadeIn = true;
-    this.laboratoryService.open_card();
+    if(!this.isCard_open) {
+      this.laboratoryService.open_card();
+      this.isCard_open = true;
+      // this.laboratoryService.set_isOpenCard(this.isCard_open);
+    }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
     }
   }
 
-  public close_datas(): void {
+  public close_datas(close_clicked): void {
+    this.laboratoryService.activation_buttonsDatas();
     this.isOpen_datas = false;
     this.datas_fadeIn = false;
-    this.laboratoryService.close_card();
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = false;;
+    if(close_clicked) {
+      this.laboratoryService.close_card();
+      this.isCard_open = false;
+      // this.laboratoryService.set_isOpenCard(this.isCard_open);
+      if(this.isMobileDevice) {
+        this.isVisible_cacheMobileDevice = false;
+      }
     }
   }
 
   // STEREOSCOPY
 
   public open_stereoscopy(): void {
+    this.laboratoryService.desactivation_buttonsStereoscopy();
+    if(this.isCard_open) {
+      this.close_openedCard();
+    }
     this.isOpen_stereoscopy = true;
     this.stereoscopy_fadeIn = true;
     this.isOpen_switchCamera = true;
     this.switchCamera_fadeIn = true;
+    if(!this.isCard_open) {
+      this.laboratoryService.open_card();
+      this.isCard_open = true;
+      // this.laboratoryService.set_isOpenCard(this.isCard_open);
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
   }
 
-  public close_stereoscopy(): void {
+  public close_stereoscopy(close_clicked): void {
+    this.laboratoryService.activation_buttonsStereoscopy();
     this.isOpen_stereoscopy = false;
     this.stereoscopy_fadeIn = false;
+    if(close_clicked) {
+      this.laboratoryService.close_card();
+      this.isCard_open = false;
+      // this.laboratoryService.set_isOpenCard(this.isCard_open);
+      if(this.isMobileDevice) {
+        this.isVisible_cacheMobileDevice = false;
+      }
+    }
+    if(this.isMobileDevice) {
+      this.close_switchCamera();
+    }
   }
 
   public close_switchCamera(): void {
     this.isOpen_switchCamera = false;
     if(this.isOpen_stereoscopy && !this.isMobileDevice) {
-      this.close_stereoscopy();
+      this.close_stereoscopy(true);
     }
     if(this.isMobileDevice) {
       this.isOpen_stereoscopy = false;
@@ -399,32 +448,50 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   // PHOTOGRAPHY
 
   public open_photography(): void {
+    this.laboratoryService.desactivation_buttonsPhotography();
+    if(this.isCard_open) {
+      this.close_openedCard();
+    }
     this.isOpen_photography = true;
     this.photography_fadeIn = true;
-    this.laboratoryService.open_card();
+    if(!this.isCard_open) {
+      this.laboratoryService.open_card();
+      this.isCard_open = true;
+      // this.laboratoryService.set_isOpenCard(this.isCard_open);
+    }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
     }
   }
 
-  public close_photography(): void {
+  public close_photography(close_clicked): void {
+    this.laboratoryService.activation_buttonsPhotography();
     this.isOpen_photography = false;
     this.photography_fadeIn = false;
-    this.laboratoryService.close_card();
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = false;;
+    if(close_clicked) {
+      this.laboratoryService.close_card();
+      this.isCard_open = false;
+      // this.laboratoryService.set_isOpenCard(this.isCard_open);
+      if(this.isMobileDevice) {
+        this.isVisible_cacheMobileDevice = false;
+      }
     }
   }
 
   // MOVIES
 
   public open_movies(): void {
+    this.laboratoryService.desactivation_buttonsMovies();
+    if(this.isCard_open) {
+      this.close_openedCard();
+    }
     this.isOpen_movies = true;
     this.movies_fadeIn = true;
     this.laboratoryService.animation_openMovies();
   }
 
   public close_movies(): void {
+    this.laboratoryService.activation_buttonsMovies();
     this.laboratoryService.animation_closeMovies();
     this.isOpen_movies = false;
     this.movies_fadeIn = false;
@@ -445,46 +512,66 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   // CONTACT ME
 
   public open_contactMe(): void {
+    this.laboratoryService.desactivation_buttonsContactMe();
+    if(this.isCard_open) {
+      this.close_openedCard();
+    }
     this.isOpen_contactMe = true;
     this.contactMe_fadeIn = true;
-    this.laboratoryService.open_card();
+    if(!this.isCard_open) {
+      this.laboratoryService.open_card();
+      this.isCard_open = true;
+      // this.laboratoryService.set_isOpenCard(this.isCard_open);
+    }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
     }
   }
 
-  public close_contactMe(): void {
+  public close_contactMe(close_clicked): void {
+    this.laboratoryService.activation_buttonsContactMe();
     this.isOpen_contactMe = false;
     this.contactMe_fadeIn = false;
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = false;;
+    if(close_clicked) {
+      this.laboratoryService.close_card();
+      this.isCard_open = false;
+      // this.laboratoryService.set_isOpenCard(this.isCard_open);
+      if(this.isMobileDevice) {
+        this.isVisible_cacheMobileDevice = false;
+      }
     }
   }
 
+  // CLOSE OPENED CARD
+
   private close_openedCard(): void {
     if(this.isOpen_development) {
-      this.close_development();
+      this.close_development(false);
     }
     else if(this.isOpen_datas) {
-      this.close_datas();
+      this.close_datas(false);
     }
     else if(this.isOpen_stereoscopy) {
-      this.close_stereoscopy();
+      this.close_stereoscopy(false);
     }
     else if(this.isOpen_photography) {
-      this.close_photography();
+      this.close_photography(false);
     }
     else if(this.isOpen_movies) {
       this.close_movies();
     }
     else if(this.isOpen_contactMe) {
-      this.close_contactMe();
+      this.close_contactMe(false);
     }
   }
+
+  // INIT POSITION
 
   public init_position(): void {
     this.laboratoryService.init_position();
   }
+
+  // CLEAN UP
 
   public cleanUp_laboratory() {
       this.laboratoryService.cleanUp();

@@ -10,24 +10,37 @@ import { AppComponent } from '../app.component';
 import { DevelopmentService } from './services/development.service';
 import { InteractionService } from './services/interaction.service';
 
-import { ConnectionService } from '../shared/services/connection.service';
-
 @Component({
   selector: 'app-development',
   templateUrl: './development.component.html',
   styleUrls: ['./development.component.css'],
   animations: [
-    trigger('isLoaded_fadeOut', [
+    trigger('fadeOut_backgroundIntroduction', [
       state('false', style({background: '#002486'})),
       state('true', style({background: '#00248666'})),
       transition('false => true', [animate('2s')])
     ]),
-    trigger('webDeveloper_fadeIn', [
+    trigger('logoDevelopment_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('2s')])
     ]),
-    trigger('introduction_fadeIn', [
+    trigger('titleDevelopment_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('h1Introduction_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('textIntroduction_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('spanLanguageIntroduction_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('2s')])
@@ -37,197 +50,205 @@ import { ConnectionService } from '../shared/services/connection.service';
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('2s')])
     ]),
-    trigger('isVisible_postgresql', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_java', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_spring_framework', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_maven', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_css', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_html', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_bootstrap', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_angular', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_typescript', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_postman', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_docker', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_git', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_blender', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_babylon', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_photoshop', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_illustrator', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_contactMe', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_ubuntu', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_apache', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_stereoscopy', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
-    ]),
-    trigger('isVisible_initPosition', [
+    trigger('postgresql_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('2s')])
     ]),
-    trigger('isVisible_cacheMobileDevice', [
-      state('false', style({background: '#00000000'})),
-      state('true', style({background: '#00000066'})),
-      transition('false => true', [animate('2s')]),
-      transition('true => false', [animate('1s')])
+    trigger('maven_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('springFramework_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('java_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('ubuntu_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('apache_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('css_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('html_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('bootstrap_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('angular_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('typescript_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('postman_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('docker_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('git_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('blender_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('babylon_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('photoshop_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
+    trigger('illustrator_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
     ])
   ]
 })
 export class DevelopmentComponent implements OnInit, OnDestroy {
 
-  private isCV: boolean;
+  // DEVICE
 
+  private deviceInfo = null;
   public isMobileDevice;
   public isTabletDevice;
   public isDesktopDevice;
-  private deviceInfo = null;
+
+  // WINDOW
 
   public innerWidth: any;
   public innerHeight: any;
+
+  // CV
+
+  public isCV: boolean;
+
+  // LANGUAGE
 
   public language_french = false;
   public language_english = true;
   public language_spanish = false;
 
+  // INTERACTION
+
   private subscription: Subscription;
   private readonly destroy = new Subject<boolean>();
 
+  // IS LOADED
+
   public isLoaded = false;
-  public isLoaded_fadeOut = false;
-  public isVisible_introductionBackground = true;
-  public isVisible_introduction = true;
-  public webDeveloper_fadeIn = false;
-  public introduction_fadeIn = false;
+  public fadeOut_backgroundIntroduction = false;
+
+  public isOpen_introductionBackground = true;
+  public isOpen_introduction = true;
+
+  public logoDevelopment_fadeIn = false;
+  public titleDevelopment_fadeIn = false;
+  public h1Introduction_fadeIn = false;
+  public textIntroduction_fadeIn = false;
+  public spanLanguageIntroduction_fadeIn = false;
   public btnCloseIntroduction_fadeIn = false;
 
   public isVisible_initPosition = false;
 
   public card_open = false;
 
-  public isVisible_postgresql = false;
-  public isVisible_java = false;
-  public isVisible_spring_framework = false;
-  public isVisible_maven = false;
-  public isVisible_css = false;
-  public isVisible_html = false;
-  public isVisible_bootstrap = false;
-  public isVisible_angular = false;
-  public isVisible_typescript = false;
-  public isVisible_postman = false;
-  public isVisible_docker = false;
-  public isVisible_git = false;
-  public isVisible_blender = false;
-  public isVisible_babylon = false;
-  public isVisible_photoshop = false;
-  public isVisible_illustrator = false;
-  public isVisible_contactMe = false;
-  public isVisible_stereoscopy = false;
-  public isVisible_ubuntu = false;
-  public isVisible_apache = false;
+  public isOpen_postgresql = false;
+  public postgresql_fadeIn = false;
 
-  public contactForm = new FormGroup({
-    contactFormName: new FormControl(''),
-    contactFormEmail: new FormControl(''),
-    contactFormSubjects: new FormControl(''),
-    contactFormMessage: new FormControl('')
-  });
+  public isOpen_maven = false;
+  public maven_fadeIn = false;
+
+  public isOpen_springFramework = false;
+  public springFramework_fadeIn = false;
+
+  public isOpen_java = false;
+  public java_fadeIn = false;
+
+  public isOpen_ubuntu = false;
+  public ubuntu_fadeIn = false;
+
+  public isOpen_apache = false;
+  public apache_fadeIn = false;
+
+  public isOpen_css = false;
+  public css_fadeIn = false;
+
+  public isOpen_html = false;
+  public html_fadeIn = false;
+
+  public isOpen_bootstrap = false;
+  public bootstrap_fadeIn = false;
+
+  public isOpen_angular = false;
+  public angular_fadeIn = false;
+
+  public isOpen_typescript = false;
+  public typescript_fadeIn = false;
+
+  public isOpen_postman = false;
+  public postman_fadeIn = false;
+
+  public isOpen_docker = false;
+  public docker_fadeIn = false;
+
+  public isOpen_git = false;
+  public git_fadeIn = false;
+
+  public isOpen_blender = false;
+  public blender_fadeIn = false;
+
+  public isOpen_babylon = false;
+  public babylon_fadeIn = false;
+
+  public isOpen_photoshop = false;
+  public photoshop_fadeIn = false;
+
+  public isOpen_illustrator = false;
+  public illustrator_fadeIn = false;
+
+  public isOpen_contactMe = false;
+  public contactMe_fadeIn = false;
+
+  public isOpen_stereoscopy = false;
+  public stereoscopy_fadeIn = false;
 
   public disabledSubmitButton: boolean = true;
 
@@ -243,7 +264,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
   public constructor(
     private activatedRoute: ActivatedRoute,
     private deviceService: DeviceDetectorService,
-    private connectionService: ConnectionService,
     private appComponent: AppComponent,
     private developmentService: DevelopmentService,
     readonly interaction: InteractionService
@@ -265,9 +285,11 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
 
     this.subscription = this.interaction.isLoaded.subscribe(() => this.isLoaded_function());
 
-    setTimeout(() => {this.webDeveloper_fadeIn = true}, 500);
-    setTimeout(() => {this.introduction_fadeIn = true}, 1000);
-    setTimeout(() => {this.btnCloseIntroduction_fadeIn = true}, 1500);
+    setTimeout(() => {this.logoDevelopment_fadeIn = true}, 1000);
+    setTimeout(() => {this.titleDevelopment_fadeIn = true}, 1000);
+    setTimeout(() => {this.h1Introduction_fadeIn = true}, 2000);
+    setTimeout(() => {this.textIntroduction_fadeIn = true}, 2000);
+    setTimeout(() => {this.spanLanguageIntroduction_fadeIn = true}, 3000);
 
     this.subscription = this.interaction.change_language_english.subscribe(() => this.change_language_english());
     this.subscription = this.interaction.change_language_french.subscribe(() => this.change_language_french());
@@ -275,7 +297,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
 
     this.subscription = this.interaction.open_postgresql.subscribe(() => this.open_postgresql());
     this.subscription = this.interaction.open_java.subscribe(() => this.open_java());
-    this.subscription = this.interaction.open_spring_framework.subscribe(() => this.open_spring_framework());
+    this.subscription = this.interaction.open_springFramework.subscribe(() => this.open_springFramework());
     this.subscription = this.interaction.open_maven.subscribe(() => this.open_maven());
     this.subscription = this.interaction.open_css.subscribe(() => this.open_css());
     this.subscription = this.interaction.open_html.subscribe(() => this.open_html());
@@ -289,8 +311,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     this.subscription = this.interaction.open_babylon.subscribe(() => this.open_babylon());
     this.subscription = this.interaction.open_photoshop.subscribe(() => this.open_photoshop());
     this.subscription = this.interaction.open_illustrator.subscribe(() => this.open_illustrator());
-    this.subscription = this.interaction.open_contactMe.subscribe(() => this.open_contactMe());
-    this.subscription = this.interaction.open_stereoscopy.subscribe(() => this.open_stereoscopy());
     this.subscription = this.interaction.open_ubuntu.subscribe(() => this.open_ubuntu());
     this.subscription = this.interaction.open_apache.subscribe(() => this.open_apache());
   }
@@ -299,18 +319,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onSubmit() {
-    this.connectionService.sendMessage(this.contactForm.value).subscribe(() => {
-      alert('Your message has been sent.');
-      this.contactForm.reset();
-      this.disabledSubmitButton = true;
-    }, error => {
-      console.log('Error', error);
-    });
-  }
-
   private epicFunction() {
-    console.log('hello `Home` component');
     this.deviceInfo = this.deviceService.getDeviceInfo();
     this.isMobileDevice = this.deviceService.isMobile();
     this.isTabletDevice = this.deviceService.isTablet();
@@ -351,404 +360,376 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
 
   private isLoaded_function(): void {
     this.isLoaded = true;
-    this.isLoaded_fadeOut = true;
+    this.btnCloseIntroduction_fadeIn = true;
+    this.fadeOut_backgroundIntroduction = true;
   }
 
   public close_introduction(): void {
-    this.isVisible_introductionBackground = false;
-    this.isVisible_introduction = false;
+    this.isOpen_introductionBackground = false;
+    this.isOpen_introduction = false;
     this.developmentService.animation_enterDevelopment();
     this.isVisible_initPosition = true;
     this.appComponent.close_navBar_menu();
   }
 
-  private open_postgresql(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
+  // POSTGRESQL
+
+  public open_postgresql(): void {
+    this.isOpen_postgresql = true;
+    this.postgresql_fadeIn = true;
+    this.developmentService.open_card();
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
     }
-    this.isVisible_postgresql = true;
   }
 
   public close_postgresql(): void {
-    if(this.isMobileDevice && this.card_open) {
+    this.isOpen_postgresql = false;
+    this.postgresql_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = false;;
     }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_postgresql = false;
   }
 
-  private open_java(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
+  // MAVEN
+
+  public open_maven(): void {
+    this.isOpen_maven = true;
+    this.maven_fadeIn = true;
+    this.developmentService.open_card();
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
     }
-    this.isVisible_java = true;
-  }
-
-  public close_java(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_java = false;
-  }
-
-  private open_spring_framework(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_spring_framework = true;
-  }
-
-  public close_spring_framework(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_spring_framework = false;
-  }
-
-  private open_maven(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_maven = true;
   }
 
   public close_maven(): void {
-    if(this.isMobileDevice && this.card_open) {
+    this.isOpen_maven = false;
+    this.maven_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = false;;
     }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_maven = false;
   }
 
-  private open_css(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
+  // SPRING FRAMEWORK
+
+  public open_springFramework(): void {
+    this.isOpen_springFramework = true;
+    this.springFramework_fadeIn = true;
+    this.developmentService.open_card();
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
     }
-    this.isVisible_css = true;
   }
 
-  public close_css(): void {
-    if(this.isMobileDevice && this.card_open) {
+  public close_springFramework(): void {
+    this.isOpen_springFramework = false;
+    this.springFramework_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = false;;
     }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_css = false;
   }
 
-  private open_html(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
+  // JAVA
+
+  public open_java(): void {
+    this.isOpen_java = true;
+    this.java_fadeIn = true;
+    this.developmentService.open_card();
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
     }
-    this.isVisible_html = true;
   }
 
-  public close_html(): void {
-    if(this.isMobileDevice && this.card_open) {
+  public close_java(): void {
+    this.isOpen_java = false;
+    this.java_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = false;;
     }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_html = false;
   }
 
-  private open_bootstrap(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
+  // UBUNTU
+
+  public open_ubuntu(): void {
+    this.isOpen_ubuntu = true;
+    this.ubuntu_fadeIn = true;
+    this.developmentService.open_card();
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
     }
-    this.isVisible_bootstrap = true;
-  }
-
-  public close_bootstrap(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_bootstrap = false;
-  }
-
-  private open_angular(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_angular = true;
-  }
-
-  public close_angular(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_angular = false;
-  }
-
-  private open_typescript(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_typescript = true;
-  }
-
-  public close_typescript(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_typescript = false;
-  }
-
-  private open_postman(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_postman = true;
-  }
-
-  public close_postman(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_postman = false;
-  }
-
-  private open_docker(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_docker = true;
-  }
-
-  public close_docker(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_docker = false;
-  }
-
-  private open_git(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_git = true;
-  }
-
-  public close_git(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_git = false;
-  }
-
-  private open_blender(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_blender = true;
-  }
-
-  public close_blender(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_blender = false;
-  }
-
-  private open_babylon(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_babylon = true;
-  }
-
-  public close_babylon(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_babylon = false;
-  }
-
-  private open_photoshop(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_photoshop = true;
-  }
-
-  public close_photoshop(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_photoshop = false;
-  }
-
-  private open_illustrator(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_illustrator = true;
-  }
-
-  public close_illustrator(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_illustrator = false;
-  }
-
-  private open_contactMe(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_contactMe = true;
-  }
-
-  public close_contactMe(): void {
-    if(this.isMobileDevice && this.card_open) {
-      this.isVisible_cacheMobileDevice = false;;
-    }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_contactMe = false;
-  }
-
-  private open_ubuntu(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
-    if(this.isMobileDevice) {
-      this.isVisible_cacheMobileDevice = true;
-    }
-    this.isVisible_ubuntu = true;
   }
 
   public close_ubuntu(): void {
-    if(this.isMobileDevice && this.card_open) {
+    this.isOpen_ubuntu = false;
+    this.ubuntu_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = false;;
     }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_ubuntu = false;
   }
 
-  private open_apache(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
+  // APACHE
+
+  public open_apache(): void {
+    this.isOpen_apache = true;
+    this.apache_fadeIn = true;
+    this.developmentService.open_card();
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
     }
-    this.isVisible_apache = true;
   }
 
   public close_apache(): void {
-    if(this.isMobileDevice && this.card_open) {
+    this.isOpen_apache = false;
+    this.apache_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = false;;
     }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_apache = false;
   }
 
-  private open_stereoscopy(): void {
-    if(this.card_open) {
-      this.close_openedCard();
-    }
+  // CSS
+
+  public open_css(): void {
+    this.isOpen_css = true;
+    this.css_fadeIn = true;
+    this.developmentService.open_card();
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
     }
-    this.isVisible_stereoscopy = true;
   }
 
-  public animation_switch_camera(): void {
-    this.developmentService.animation_switch_camera();
-    this.toogle_anaglyph_activated();
-  }
-
-  private toogle_anaglyph_activated() {
-    this.anaglyph_activated = !this.anaglyph_activated;
-  }
-
-  public close_stereoscopy(): void {
-    if(this.isMobileDevice && this.card_open) {
+  public close_css(): void {
+    this.isOpen_css = false;
+    this.css_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = false;;
     }
-    this.card_open = false;
-    this.developmentService.activation_buttons();
-    this.isVisible_stereoscopy = false;
+  }
+
+  // HTML
+
+  public open_html(): void {
+    this.isOpen_html = true;
+    this.html_fadeIn = true;
+    this.developmentService.open_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
+  }
+
+  public close_html(): void {
+    this.isOpen_html = false;
+    this.html_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+  }
+
+  // BOOTSTRAP
+
+  public open_bootstrap(): void {
+    this.isOpen_bootstrap = true;
+    this.bootstrap_fadeIn = true;
+    this.developmentService.open_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
+  }
+
+  public close_bootstrap(): void {
+    this.isOpen_bootstrap = false;
+    this.bootstrap_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+  }
+
+  // ANGULAR
+
+  public open_angular(): void {
+    this.isOpen_angular = true;
+    this.angular_fadeIn = true;
+    this.developmentService.open_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
+  }
+
+  public close_angular(): void {
+    this.isOpen_angular = false;
+    this.angular_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+  }
+
+  // TYPESCRIPT
+
+  public open_typescript(): void {
+    this.isOpen_typescript = true;
+    this.typescript_fadeIn = true;
+    this.developmentService.open_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
+  }
+
+  public close_typescript(): void {
+    this.isOpen_typescript = false;
+    this.typescript_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+  }
+
+  // POSTMAN
+
+  public open_postman(): void {
+    this.isOpen_postman = true;
+    this.postman_fadeIn = true;
+    this.developmentService.open_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
+  }
+
+  public close_postman(): void {
+    this.isOpen_postman = false;
+    this.postman_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+  }
+
+  // DOCKER
+
+  public open_docker(): void {
+    this.isOpen_docker = true;
+    this.docker_fadeIn = true;
+    this.developmentService.open_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
+  }
+
+  public close_docker(): void {
+    this.isOpen_docker = false;
+    this.docker_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+  }
+
+  // GIT
+
+  public open_git(): void {
+    this.isOpen_git = true;
+    this.git_fadeIn = true;
+    this.developmentService.open_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
+  }
+
+  public close_git(): void {
+    this.isOpen_git = false;
+    this.git_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+  }
+
+  // BLENDER
+
+  public open_blender(): void {
+    this.isOpen_blender = true;
+    this.blender_fadeIn = true;
+    this.developmentService.open_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
+  }
+
+  public close_blender(): void {
+    this.isOpen_blender = false;
+    this.blender_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+  }
+
+  // BABYLON
+
+  public open_babylon(): void {
+    this.isOpen_babylon = true;
+    this.babylon_fadeIn = true;
+    this.developmentService.open_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
+  }
+
+  public close_babylon(): void {
+    this.isOpen_babylon = false;
+    this.babylon_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+  }
+
+  // PHOTOSHOP
+
+  public open_photoshop(): void {
+    this.isOpen_photoshop = true;
+    this.photoshop_fadeIn = true;
+    this.developmentService.open_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
+  }
+
+  public close_photoshop(): void {
+    this.isOpen_photoshop = false;
+    this.photoshop_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
+  }
+
+  // ILLUSTRATOR
+
+  public open_illustrator(): void {
+    this.isOpen_illustrator = true;
+    this.illustrator_fadeIn = true;
+    this.developmentService.open_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+    }
+  }
+
+  public close_illustrator(): void {
+    this.isOpen_illustrator = false;
+    this.illustrator_fadeIn = false;
+    this.developmentService.close_card();
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = false;;
+    }
   }
 
   public init_position(): void {
@@ -756,65 +737,59 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
   }
 
   private close_openedCard(): void {
-    if(this.isVisible_postgresql) {
+    if(this.isOpen_postgresql) {
       this.close_postgresql();
     }
-    else if(this.isVisible_java) {
-      this.close_java();
-    }
-    else if(this.isVisible_stereoscopy) {
-      this.close_stereoscopy();
-    }
-    else if(this.isVisible_spring_framework) {
-      this.close_spring_framework();
-    }
-    else if(this.isVisible_maven) {
+    else if(this.isOpen_maven) {
       this.close_maven();
     }
-    else if(this.isVisible_css) {
-      this.close_css();
+    else if(this.isOpen_springFramework) {
+      this.close_springFramework();
     }
-    else if(this.isVisible_html) {
-      this.close_html();
+    else if(this.isOpen_java) {
+      this.close_java();
     }
-    else if(this.isVisible_bootstrap) {
-      this.close_bootstrap();
-    }
-    else if(this.isVisible_angular) {
-      this.close_angular();
-    }
-    else if(this.isVisible_typescript) {
-      this.close_typescript();
-    }
-    else if(this.isVisible_postman) {
-      this.close_postman();
-    }
-    else if(this.isVisible_docker) {
-      this.close_docker();
-    }
-    else if(this.isVisible_git) {
-      this.close_git();
-    }
-    else if(this.isVisible_blender) {
-      this.close_blender();
-    }
-    else if(this.isVisible_photoshop) {
-      this.close_photoshop();
-    }
-    else if(this.isVisible_illustrator) {
-      this.close_illustrator();
-    }
-    else if(this.isVisible_contactMe) {
-      this.close_contactMe();
-    }
-    else if(this.isVisible_stereoscopy) {
-      this.close_stereoscopy();
-    }
-    else if(this.isVisible_ubuntu) {
+    else if(this.isOpen_ubuntu) {
       this.close_ubuntu();
     }
-    else if(this.isVisible_apache) {
+    else if(this.isOpen_apache) {
       this.close_apache();
+    }
+    else if(this.isOpen_css) {
+      this.close_css();
+    }
+    else if(this.isOpen_html) {
+      this.close_html();
+    }
+    else if(this.isOpen_bootstrap) {
+      this.close_bootstrap();
+    }
+    else if(this.isOpen_angular) {
+      this.close_angular();
+    }
+    else if(this.isOpen_typescript) {
+      this.close_typescript();
+    }
+    else if(this.isOpen_postman) {
+      this.close_postman();
+    }
+    else if(this.isOpen_docker) {
+      this.close_docker();
+    }
+    else if(this.isOpen_git) {
+      this.close_git();
+    }
+    else if(this.isOpen_blender) {
+      this.close_blender();
+    }
+    else if(this.isOpen_babylon) {
+      this.close_babylon();
+    }
+    else if(this.isOpen_photoshop) {
+      this.close_photoshop();
+    }
+    else if(this.isOpen_illustrator) {
+      this.close_illustrator();
     }
   }
 }

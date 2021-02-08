@@ -13,7 +13,7 @@
 
 /* BACKGROUND */
 
-#div_introduction_background {
+#div_introductionBackground {
   z-index: 6;
   position: absolute;
   width: 100%;
@@ -136,7 +136,7 @@
   .logo_moko_introduction {
     grid-area: row-start / col-start / row-1 / col-2;
     grid-auto-rows: auto;
-    width: 88px;
+    width: 84px;
     height: 100px;
   }
 
