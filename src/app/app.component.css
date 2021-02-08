@@ -69,7 +69,7 @@
 
 @media (max-width: 799px) {
   .container_navBar {
-    grid-template-columns: [col-start-navBar] 70px [col-1-navBar] auto [col-2-navBar] 50px [col-stop-navBar];
+    grid-template-columns: [col-start-navBar] 70px [col-1-navBar] auto [col-2-navBar] 45px [col-stop-navBar];
     grid-template-rows: [row-start-navBar] 60px [row-stop-navBar];
     background-color: #00000088;
   }
@@ -85,14 +85,14 @@
   }
 
   .icon_menu {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
 }
 
 @media (max-width: 799px) {
   .container_menuNavBar {
-    grid-template-columns: [col-start-menuNavBar] auto [col-1-menuNavBar] 40px [col-2-menuNavBar] 40px [col-3-menuNavBar] 40px [col-4-menuNavBar] 40px [col-stop-menuNavBar];
+    grid-template-columns: [col-start-menuNavBar] auto [col-1-menuNavBar] 35px [col-2-menuNavBar] 35px [col-3-menuNavBar] 35px [col-4-menuNavBar] 40px [col-stop-menuNavBar];
     grid-template-rows: [row-start-menuNavBar] 40px [row-1-menuNavBar] 40px [row-2-menuNavBar] 40px [row-3-menuNavBar] 40px [row-4-menuNavBar] 40px [row-stop-menuNavBar];
     display: grid;
     align-items: center;
@@ -145,6 +145,7 @@
 
   .linkedIn {
     grid-area: row-4-menuNavBar / col-4-menuNavBar / row-stop-menuNavBar / col-stop-menuNavBar;
+    margin-right: 20px;
   }
 }
 
