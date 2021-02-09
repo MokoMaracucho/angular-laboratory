@@ -156,10 +156,10 @@
     <span class="buttons_movies material-icons" (click)="skipForward_videoTexture()">
       skip_next
     </span>
-    <span class="buttons_movies material-icons">
+    <span *ngIf="isMuted" class="buttons_movies material-icons" (click)="mute_videoTexture()">
       volume_up
     </span>
-    <span class="buttons_movies material-icons">
+    <span *ngIf="!isMuted" class="buttons_movies material-icons" (click)="mute_videoTexture()">
       volume_off
     </span>
   </div>

@@ -171,6 +171,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   public isOpen_movies = false;
   public movies_fadeIn = false;
 
+  public isMuted = false;
+
   public isOpen_contactMe = false;
   public contactMe_fadeIn = false;
 
@@ -345,7 +347,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       }
     }
     if(this.isOpen_movies) {
-      this.close_movies();
+      this.close_movies(false);
     }
   }
 
@@ -374,7 +376,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     if(!this.isCard_open) {
       this.laboratoryService.open_card();
       this.isCard_open = true;
-      // this.laboratoryService.set_isOpenCard(this.isCard_open);
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
@@ -383,7 +384,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       }
     }
     if(this.isOpen_movies) {
-      this.close_movies();
+      this.close_movies(false);
     }
   }
 
@@ -394,7 +395,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     if(close_clicked) {
       this.laboratoryService.close_card();
       this.isCard_open = false;
-      // this.laboratoryService.set_isOpenCard(this.isCard_open);
       if(this.isMobileDevice) {
         this.isVisible_cacheMobileDevice = false;
       }
@@ -415,7 +415,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     if(!this.isCard_open && !this.isMobileDevice) {
       this.laboratoryService.open_card();
       this.isCard_open = true;
-      // this.laboratoryService.set_isOpenCard(this.isCard_open);
     }
     if(this.isMobileDevice && this.isCard_open) {
       this.isVisible_cacheMobileDevice = false;
@@ -431,7 +430,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     if(close_clicked) {
       this.laboratoryService.close_card();
       this.isCard_open = false;
-      // this.laboratoryService.set_isOpenCard(this.isCard_open);
       if(this.isMobileDevice) {
         this.isVisible_cacheMobileDevice = false;
       }
@@ -480,7 +478,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     if(!this.isCard_open) {
       this.laboratoryService.open_card();
       this.isCard_open = true;
-      this.laboratoryService.set_isOpenCard(this.isCard_open);
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
@@ -489,7 +486,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       }
     }
     if(this.isOpen_movies) {
-      this.close_movies();
+      this.close_movies(false);
     }
   }
 
@@ -519,7 +516,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     if(!this.isCard_open) {
       this.laboratoryService.open_card();
       this.isCard_open = true;
-      // this.laboratoryService.set_isOpenCard(this.isCard_open);
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
@@ -528,7 +524,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       }
     }
     if(this.isOpen_movies) {
-      this.close_movies();
+      this.close_movies(false);
     }
   }
 
@@ -539,7 +535,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     if(close_clicked) {
       this.laboratoryService.close_card();
       this.isCard_open = false;
-      // this.laboratoryService.set_isOpenCard(this.isCard_open);
       if(this.isMobileDevice) {
         this.isVisible_cacheMobileDevice = false;
       }
@@ -563,9 +558,11 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  public close_movies(): void {
+  public close_movies(close_clicked): void {
     this.laboratoryService.activation_buttonsMovies();
-    this.laboratoryService.animation_closeMovies();
+    if(close_clicked) {
+      this.laboratoryService.animation_closeMovies();
+    }
     this.isOpen_movies = false;
     this.movies_fadeIn = false;
     this.laboratoryService.pause_videoTexture();
@@ -583,6 +580,11 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     this.laboratoryService.skipForward_videoTexture();
   }
 
+  public mute_videoTexture(): void {
+    this.isMuted = !this.isMuted;
+    this.laboratoryService.mute_videoTexture();
+  }
+
   // CONTACT ME
 
   public open_contactMe(): void {
@@ -595,7 +597,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     if(!this.isCard_open) {
       this.laboratoryService.open_card();
       this.isCard_open = true;
-      // this.laboratoryService.set_isOpenCard(this.isCard_open);
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
@@ -604,7 +605,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       }
     }
     if(this.isOpen_movies) {
-      this.close_movies();
+      this.close_movies(false);
     }
   }
 
@@ -615,7 +616,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     if(close_clicked) {
       this.laboratoryService.close_card();
       this.isCard_open = false;
-      // this.laboratoryService.set_isOpenCard(this.isCard_open);
       if(this.isMobileDevice) {
         this.isVisible_cacheMobileDevice = false;
       }
@@ -641,7 +641,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.close_photography(false);
     }
     else if(this.isOpen_movies) {
-      this.close_movies();
+      this.close_movies(false);
     }
     else if(this.isOpen_contactMe) {
       this.close_contactMe(false);

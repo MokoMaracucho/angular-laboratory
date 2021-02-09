@@ -3109,6 +3109,32 @@ public addActions_buttons(): void {
     }
   }
 
+  public mute_videoTexture():void {
+    switch(this.trailer_position) {
+      case 1:
+        this.enter_the_void_TEXTURE.video.muted = !this.enter_the_void_TEXTURE.video.muted;
+        break;
+      case 2:
+        this.pi_TEXTURE.video.muted = !this.pi_TEXTURE.video.muted;
+        break;
+      case 3:
+        this.eternal_sunshine_TEXTURE.video.muted = !this.eternal_sunshine_TEXTURE.video.muted;
+        break;
+      case 4:
+        this.odyssee_espace_TEXTURE.video.muted = !this.odyssee_espace_TEXTURE.video.muted;
+        break;
+      case 5:
+        this.zero_theorem_TEXTURE.video.muted = !this.zero_theorem_TEXTURE.video.muted;
+        break;
+      case 6:
+        this.shining_TEXTURE.video.muted = !this.shining_TEXTURE.video.muted;
+        break;
+      case 7:
+        this.la_haine_TEXTURE.video.muted = !this.la_haine_TEXTURE.video.muted;
+        break;
+    }
+  }
+
   // INITIAL POSITION CAMERA
 
   private get_initPositionCamera(): BABYLON.Vector3 {
@@ -3157,55 +3183,63 @@ public addActions_buttons(): void {
     BABYLON.Animation.CreateAndStartAnimation('animation_camera_enterLaboratory', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(-16.5, 14, 15), 0, ease);
   }
 
-  // private get_positionCamera_enterLaboratory(): BABYLON.Vector3 {
-      // if(this.innerWidth <= 576) {
-          // return new BABYLON.Vector3(-57.00209934436164, 60.54865740597145, 45.78183748516181);
-      // } else if(this.innerWidth <= 768) {
-          // return new BABYLON.Vector3(-23.233695295682036, 42.938761097973696, 46.381247278745704);
-      // } else if(this.innerWidth <= 960) {
-          // return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
-      // } else if(this.innerWidth <= 1140) {
-          // return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
-      // } else if(this.innerWidth <= 1500) {
-          // return new BABYLON.Vector3(-22.23060056370895, 37.5282094895858, 38.05533619936204);
-      // } else {
-          // return new BABYLON.Vector3(-20.220454501261877, 26.68576493813795, 21.37067338632216);
-      // }
-  // }
-
   private animation_cameraTarget_enterLaboratory() {
     const ease = new BABYLON.CubicEase();
     ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
     BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_enterLaboratory', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-16.5, 5, -12), 0, ease);
   }
 
-  // SET OPEN CARD
-
-  public set_isOpenCard(isOpen_card) {
-    this.isCard_open = isOpen_card;
-  }
-
   // OPEN CARDS
 
   public open_card(): void {
-    // if(!this.isCard_open) {
-      this.universalCameraPosition_clone = this.universal_camera.position;
-      this.universalCameraTargetPosition_clone = this.universal_camera.target.clone();
-      this.animation_camera_openCard();
-      this.animation_cameraTarget_openCard();
-    // }
+    this.universalCameraPosition_clone = this.universal_camera.position;
+    this.universalCameraTargetPosition_clone = this.universal_camera.target.clone();
+    this.animation_camera_openCard();
+    this.animation_cameraTarget_openCard();
   }
 
   private animation_camera_openCard() {
     const ease = new BABYLON.CubicEase();
     ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-    BABYLON.Animation.CreateAndStartAnimation('animation_camera_openCard', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(-48, 35, 35), 0, ease);
+    BABYLON.Animation.CreateAndStartAnimation('animation_camera_openCard', this.universal_camera, 'position', 15, 30, this.universal_camera.position, this.get_positionCamera_openCard(), 0, ease);
+  }
+
+  private get_positionCamera_openCard(): BABYLON.Vector3 {
+    if(this.innerWidth <= 576) {
+      return new BABYLON.Vector3(-50, 35, 35);
+    } else if(this.innerWidth <= 768) {
+      return new BABYLON.Vector3(-50, 35, 35);
+    } else if(this.innerWidth <= 960) {
+      return new BABYLON.Vector3(-50, 35, 35);
+    } else if(this.innerWidth <= 1140) {
+      return new BABYLON.Vector3(-50, 35, 35);
+    } else if(this.innerWidth <= 1400) {
+      return new BABYLON.Vector3(-50, 35, 35);
+    } else {
+      return new BABYLON.Vector3(-50, 35, 35);
+    }
   }
 
   private animation_cameraTarget_openCard() {
     const ease = new BABYLON.CubicEase();
     ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-    BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_openCard', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-12, 10, 5), 0, ease);
+    BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_openCard', this.universal_camera, 'target', 15, 30, this.universal_camera.target, this.get_positionCameraTarget_openCard(), 0, ease);
+  }
+
+  private get_positionCameraTarget_openCard(): BABYLON.Vector3 {
+    if(this.innerWidth <= 576) {
+      return new BABYLON.Vector3(-16, 11, 2);
+    } else if(this.innerWidth <= 768) {
+      return new BABYLON.Vector3(-16, 11, 2);
+    } else if(this.innerWidth <= 960) {
+      return new BABYLON.Vector3(-16, 11, 2);
+    } else if(this.innerWidth <= 1140) {
+      return new BABYLON.Vector3(-14, 11, 2);
+    } else if(this.innerWidth <= 1400) {
+      return new BABYLON.Vector3(-14, 11, 2);
+    } else {
+      return new BABYLON.Vector3(-14, 11, 2);
+    }
   }
 
   // CLOSE CARDS

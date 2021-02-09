@@ -1033,7 +1033,7 @@
     grid-template-columns: [col-start-menu] auto [col-1-menu] auto [col-2-menu] auto [col-stop-menu];
     grid-template-rows: [row-start-menu] auto [row-stop-menu];
     display: grid;
-    left: 127px;
+    left: 202px;
     bottom: 55px;
     background-color: #00000066;
     padding-top: 5px;
@@ -1048,7 +1048,7 @@
     grid-template-columns: [col-start-menu] auto [col-1-menu] auto [col-2-menu] auto [col-stop-menu];
     grid-template-rows: [row-start-menu] auto [row-stop-menu];
     display: grid;
-    top: 407px;
+    top: 457px;
     right: 60px;
     background-color: #00000066;
     padding-top: 5px;
