@@ -1321,13 +1321,45 @@ export class DevelopmentService {
   private animation_camera_openCard() {
     const ease = new BABYLON.CubicEase();
     ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-    BABYLON.Animation.CreateAndStartAnimation('animation_camera_openCard', this.universal_camera, 'position', 15, 30, this.universal_camera.position, new BABYLON.Vector3(-48, 35, 35), 0, ease);
+    BABYLON.Animation.CreateAndStartAnimation('animation_camera_openCard', this.universal_camera, 'position', 15, 30, this.universal_camera.position, this.get_initPositionCamera_openCard(), 0, ease);
+  }
+
+  private get_initPositionCamera_openCard(): BABYLON.Vector3 {
+    if(this.innerWidth <= 576) {
+      return new BABYLON.Vector3(-40, 20, 45);
+    } else if(this.innerWidth <= 768) {
+      return new BABYLON.Vector3(-40, 20, 45);
+    } else if(this.innerWidth <= 960) {
+      return new BABYLON.Vector3(-40, 20, 50);
+    } else if(this.innerWidth <= 1140) {
+      return new BABYLON.Vector3(-33, 20, 40);
+    } else if(this.innerWidth <= 1400) {
+      return new BABYLON.Vector3(-33, 20, 35);
+    } else {
+      return new BABYLON.Vector3(-33, 20, 35);
+    }
   }
 
   private animation_cameraTarget_openCard() {
     const ease = new BABYLON.CubicEase();
     ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-    BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_openCard', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-12, 10, 5), 0, ease);
+    BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_openCard', this.universal_camera, 'target', 15, 30, this.universal_camera.target, this.get_initPositionCameraTarget_openCard(), 0, ease);
+  }
+
+  private get_initPositionCameraTarget_openCard(): BABYLON.Vector3 {
+    if(this.innerWidth <= 576) {
+      return new BABYLON.Vector3(-4, 15, 0);
+    } else if(this.innerWidth <= 768) {
+      return new BABYLON.Vector3(-4, 8, 0);
+    } else if(this.innerWidth <= 960) {
+      return new BABYLON.Vector3(-1, 8, 0);
+    } else if(this.innerWidth <= 1140) {
+      return new BABYLON.Vector3(-1, 8, 0);
+    } else if(this.innerWidth <= 1400) {
+      return new BABYLON.Vector3(1, 7, 0);
+    } else {
+      return new BABYLON.Vector3(3, 7, 0);
+    }
   }
 
   // CLOSE CARDS

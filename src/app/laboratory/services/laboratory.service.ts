@@ -33,7 +33,7 @@ export class LaboratoryService {
 
   private boundary_bottom; boundary_front; boundary_left; boundary_back; boundary_right; boundary_top;
   private wall_left_collision; wall_right_collision;
-  private transfert_boxes; transfert_boxes_rings;
+  private graphic; transfert_boxes; transfert_boxes_rings;
   private rose_rouge; rose_rouge_frame;
   private verbal_shoota; verbal_shoota_frame;
   private lapin_blanc; lapin_blanc_frame;
@@ -62,6 +62,8 @@ export class LaboratoryService {
   private spotify_green; spotify_black;
   private projector;
 
+  private graphic_BAKING: BABYLON.Texture;
+  private graphic_BAKING_HIGHLIGHT: BABYLON.Texture;
   private transfert_boxes_BAKING: BABYLON.Texture;
   private transfert_boxes_BAKING_HIGHLIGHT: BABYLON.Texture;
   private transfert_boxes_rings_BAKING: BABYLON.Texture;
@@ -340,11 +342,18 @@ export class LaboratoryService {
 
     // TRANSFERT BOXES
 
+    this.graphic_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/graphic_BAKING.jpg", this.scene, false, false);
+    this.graphic_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/graphic_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
     this.transfert_boxes_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_BAKING.jpg", this.scene, false, false);
     this.transfert_boxes_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
 
     this.transfert_boxes_rings_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_rings_BAKING.jpg", this.scene, false, false);
     this.transfert_boxes_rings_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/transfert_boxes_rings_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+    BABYLON.SceneLoader.ImportMeshAsync("graphic", "../../assets/glb/laboratory/", "graphic.glb", this.scene).then((result) => {
+      this.graphic = this.scene.getMeshByName("graphic");
+    });
 
     BABYLON.SceneLoader.ImportMeshAsync("transfert_boxes", "../../assets/glb/laboratory/", "transfert_boxes.glb", this.scene).then((result) => {
       this.transfert_boxes = this.scene.getMeshByName("transfert_boxes");
@@ -1173,30 +1182,32 @@ private sceneIsLoaded() {
 // ADD ACTIONS
 
 public addActions_buttons(): void {
-    this.addActions_TransfertBoxes();
-    this.addActions_TransfertBoxesRings();
-    this.addActions_RoseRouge(); this.addActions_RoseRougeFrame();
-    this.addActions_VerbalShoota(); this.addActions_VerbalShootaFrame();
-    this.addActions_LapinBlanc(); this.addActions_LapinBlancFrame();
-    this.addActions_FourtyFour(); this.addActions_FourtyFourMarieLouise(); this.addActions_FourtyFourFrame();
-    this.addActions_Brique(); this.addActions_BriqueMarieLouise(); this.addActions_BriqueFrame();
-    this.addActions_Tofu(); this.addActions_TofuMarieLouise(); this.addActions_TofuFrame();
-    this.addActions_ThreedGlassesFrame(); this.addActions_ThreedGlassBlue(); this.addActions_ThreedGlassRed();
-    this.addActions_Keyboard(); this.addActions_KeyboardKeyboard();
-    this.addActions_MacMini(); this.addActions_Laptop(); this.addActions_LaptopKeyboard(); this.addActions_LaptopScreen(); this.addActions_ScreenCenter(); this.addActions_ScreenFrameCenter(); this.addActions_ScreenRight(); this.addActions_ScreenFrameRight();
-    this.addActions_DvdPi(); this.addActions_DvdEnterTheVoid(); this.addActions_Dvd2001OdysseeEspace(); this.addActions_DvdLaHaine(); this.addActions_DvdSweetSixteen(); this.addActions_DvdEternalSunshine(); this.addActions_DvdZeroTheorem(); this.addActions_DvdShining();
-    this.addActions_SocialNetworks();
-    this.addActions_Twitter();
-    this.addActions_Instagram(); this.addActions_InstagramLens();
-    this.addActions_Youtube(); this.addActions_YoutubePlay();
-    this.addActions_SpotifyGreen(); this.addActions_SpotifyBlack();
-    this.addActions_UnitedKingdomRed(); this.addActions_UnitedKingdomWhite(); this.addActions_UnitedKingdomBlue();
-    this.addActions_FranceBlue(); this.addActions_FranceWhite(); this.addActions_FranceRed();
-    this.addActions_SpainRed(); this.addActions_SpainYellow();
-    this.addActions_Projector();
+  this.addActions_Graphic();
+  this.addActions_TransfertBoxes();
+  this.addActions_TransfertBoxesRings();
+  this.addActions_RoseRouge(); this.addActions_RoseRougeFrame();
+  this.addActions_VerbalShoota(); this.addActions_VerbalShootaFrame();
+  this.addActions_LapinBlanc(); this.addActions_LapinBlancFrame();
+  this.addActions_FourtyFour(); this.addActions_FourtyFourMarieLouise(); this.addActions_FourtyFourFrame();
+  this.addActions_Brique(); this.addActions_BriqueMarieLouise(); this.addActions_BriqueFrame();
+  this.addActions_Tofu(); this.addActions_TofuMarieLouise(); this.addActions_TofuFrame();
+  this.addActions_ThreedGlassesFrame(); this.addActions_ThreedGlassBlue(); this.addActions_ThreedGlassRed();
+  this.addActions_Keyboard(); this.addActions_KeyboardKeyboard();
+  this.addActions_MacMini(); this.addActions_Laptop(); this.addActions_LaptopKeyboard(); this.addActions_LaptopScreen(); this.addActions_ScreenCenter(); this.addActions_ScreenFrameCenter(); this.addActions_ScreenRight(); this.addActions_ScreenFrameRight();
+  this.addActions_DvdPi(); this.addActions_DvdEnterTheVoid(); this.addActions_Dvd2001OdysseeEspace(); this.addActions_DvdLaHaine(); this.addActions_DvdSweetSixteen(); this.addActions_DvdEternalSunshine(); this.addActions_DvdZeroTheorem(); this.addActions_DvdShining();
+  this.addActions_SocialNetworks();
+  this.addActions_Twitter();
+  this.addActions_Instagram(); this.addActions_InstagramLens();
+  this.addActions_Youtube(); this.addActions_YoutubePlay();
+  this.addActions_SpotifyGreen(); this.addActions_SpotifyBlack();
+  this.addActions_UnitedKingdomRed(); this.addActions_UnitedKingdomWhite(); this.addActions_UnitedKingdomBlue();
+  this.addActions_FranceBlue(); this.addActions_FranceWhite(); this.addActions_FranceRed();
+  this.addActions_SpainRed(); this.addActions_SpainYellow();
+  this.addActions_Projector();
 }
 
   public activation_buttons(): void {
+    this.graphic.isPickable = true;
     this.transfert_boxes.isPickable = true; this.transfert_boxes_rings.isPickable = true;
     this.rose_rouge.isPickable = true; this.rose_rouge_frame.isPickable = true;
     this.verbal_shoota.isPickable = true; this.verbal_shoota_frame.isPickable = true;
@@ -1219,6 +1230,7 @@ public addActions_buttons(): void {
   }
 
   public activation_buttonsDatas(): void {
+    this.graphic.isPickable = true;
     this.transfert_boxes.isPickable = true; this.transfert_boxes_rings.isPickable = true;
   }
 
@@ -1248,6 +1260,7 @@ public addActions_buttons(): void {
   }
 
   private desactivation_buttons(): void {
+    this.graphic.isPickable = false;
     this.transfert_boxes.isPickable = false;
     this.transfert_boxes_rings.isPickable = false;
     this.rose_rouge.isPickable = false; this.rose_rouge_frame.isPickable = false;
@@ -1271,6 +1284,7 @@ public addActions_buttons(): void {
   }
 
   public desactivation_buttonsDatas(): void {
+    this.graphic.isPickable = false;
     this.transfert_boxes.isPickable = false; this.transfert_boxes_rings.isPickable = false;
   }
 
@@ -1299,10 +1313,37 @@ public addActions_buttons(): void {
 
   }
 
+  private addActions_Graphic() {
+    if(!this.isCV) {
+      this.graphic.isPickable = true;
+      this.graphic.actionManager = new BABYLON.ActionManager(this.scene);
+
+      this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.graphic.material, "albedoTexture", this.graphic_BAKING_HIGHLIGHT));
+      this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.graphic.material, "albedoTexture", this.graphic_BAKING));
+
+      this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING_HIGHLIGHT));
+      this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING));
+
+      this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING_HIGHLIGHT));
+      this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING));
+
+      this.graphic.actionManager.registerAction(new BABYLON.CombineAction(
+          {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.graphic},
+          [
+            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next())
+          ]
+        )
+      );
+    }
+  }
+
   private addActions_TransfertBoxes() {
     if(!this.isCV) {
       this.transfert_boxes.isPickable = true;
       this.transfert_boxes.actionManager = new BABYLON.ActionManager(this.scene);
+
+      this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.graphic.material, "albedoTexture", this.graphic_BAKING_HIGHLIGHT));
+      this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.graphic.material, "albedoTexture", this.graphic_BAKING));
 
       this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING_HIGHLIGHT));
       this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING));
@@ -1323,6 +1364,9 @@ public addActions_buttons(): void {
   private addActions_TransfertBoxesRings() {
     this.transfert_boxes_rings.isPickable = true;
     this.transfert_boxes_rings.actionManager = new BABYLON.ActionManager(this.scene);
+
+    this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.graphic.material, "albedoTexture", this.graphic_BAKING_HIGHLIGHT));
+    this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.graphic.material, "albedoTexture", this.graphic_BAKING));
 
     this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING_HIGHLIGHT));
     this.transfert_boxes_rings.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING));
