@@ -69,7 +69,7 @@
 
 @media (max-width: 799px) {
   .container_navBar {
-    grid-template-columns: [col-start-navBar] 70px [col-1-navBar] auto [col-2-navBar] 45px [col-stop-navBar];
+    grid-template-columns: [col-start-navBar] 70px [col-1-navBar] auto [col-2-navBar] 40px [col-stop-navBar];
     grid-template-rows: [row-start-navBar] 60px [row-stop-navBar];
     background-color: #00000088;
   }

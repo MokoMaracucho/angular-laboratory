@@ -127,9 +127,7 @@
     grid-template-columns: [col-start] 43px [col-1] 41px [col-2] 344px [col-stop];
     grid-template-rows: [row-start] 100px [row-1] auto [row-2] auto [row-3] 40px [row-stop];
     display: grid;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    top: 70px;
     margin-left: 20px;
     margin-right: 20px;
   }
@@ -199,9 +197,7 @@
     grid-template-columns: [col-start] 65px [col-1] 41px [col-2] 300px [col-stop];
     grid-template-rows: [row-start] 120px [row-1] auto [row-2] auto [row-3] 40px [row-stop];
     display: grid;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    top: 100px;
     margin-left: 50px;
   }
 
@@ -344,21 +340,21 @@
   }
 
   .h1-english {
-    font-size: 28px;
-    line-height: 28px;
-    padding-top: 42px;
+    font-size: 26px;
+    line-height: 26px;
+    padding-top: 46px;
   }
 
   .h1-french {
-    font-size: 25px;
-    line-height: 27px;
-    padding-top: 46px;
+    font-size: 23px;
+    line-height: 25px;
+    padding-top: 49px;
   }
 
   .h1-spanish {
-    font-size: 25px;
-    line-height: 27px;
-    padding-top: 46px;
+    font-size: 22px;
+    line-height: 24px;
+    padding-top: 52px;
   }
 
   .text_introduction {
@@ -400,7 +396,7 @@
 
 @media (max-width: 799px) {
   .menu_container {
-    grid-template-columns: [col-start-menu] 50px [col-1-menu] 50px [col-2-menu] 50px [col-3-menu] 50px [col-4-menu] auto [col-5-menu] 50px [col-stop-menu];
+    grid-template-columns: [col-start-menu] 50px [col-1-menu] 50px [col-2-menu] 50px [col-3-menu] 50px [col-4-menu] 50px [col-5-menu] auto [col-6-menu] 50px [col-stop-menu];
     grid-template-rows: [row-start-menu] 50px [row-stop-menu];
     display: grid;
     bottom: 0px;
@@ -409,7 +405,7 @@
   }
 
   .menu {
-    grid-area: row-start-menu / col-start-menu / row-stop-menu / col-5-menu;
+    grid-area: row-start-menu / col-start-menu / row-stop-menu / col-6-menu;
     grid-auto-rows: auto;
     background-color: #00000066;
   }
@@ -429,8 +425,13 @@
     grid-auto-rows: auto;
   }
 
-  .menu_icon_movies {
+  .menu_icon_photography {
     grid-area: row-start-menu / col-4-menu / row-stop-menu / col-5-menu;
+    grid-auto-rows: auto;
+  }
+
+  .menu_icon_movies {
+    grid-area: row-start-menu / col-5-menu / row-stop-menu / col-6-menu;
     grid-auto-rows: auto;
   }
 
@@ -530,12 +531,12 @@
 
 @media (max-width: 576px) {
   .switchCamera_container {
-    grid-template-columns: [col-start-switchCamera] 70px [col-stop-switchCamera];
+    grid-template-columns: [col-start-switchCamera] 60px [col-stop-switchCamera];
     grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 60px [row-3-switchCamera] auto [row-4-switchCamera] 60px [row-5-switchCamera] auto [row-stop-switchCamera];
     display: grid;
-    top: 80px;
+    top: 70px;
     right: 0px;
-    width: 70px;
+    width: 60px;
   }
 
   /* RED CROSS */
@@ -605,7 +606,7 @@
   .imgs_camera {
     width: 50px;
     height: 50px;
-    margin: 10px;
+    margin: 5px;
     margin-bottom: 0px;
   }
 
@@ -613,7 +614,7 @@
     padding: 8px;
     padding-bottom: 5px;
     font-family: Roboto-Regular;
-    font-size: 12px;
+    font-size: 11px;
     text-align: center;
     color: grey;
   }
@@ -625,12 +626,12 @@
 
 @media (min-width: 576px) {
   .switchCamera_container {
-    grid-template-columns: [col-start-switchCamera] 70px [col-stop-switchCamera];
+    grid-template-columns: [col-start-switchCamera] 60px [col-stop-switchCamera];
     grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 60px [row-3-switchCamera] auto [row-4-switchCamera] 60px [row-5-switchCamera] auto [row-stop-switchCamera];
     display: grid;
-    top: 80px;
+    top: 70px;
     right: 0px;
-    width: 70px;
+    width: 60px;
   }
 
   /* RED CROSS */
@@ -700,7 +701,7 @@
   .imgs_camera {
     width: 50px;
     height: 50px;
-    margin: 10px;
+    margin: 5px;
     margin-bottom: 0px;
   }
 
@@ -708,7 +709,7 @@
     padding: 8px;
     padding-bottom: 5px;
     font-family: Roboto-Regular;
-    font-size: 12px;
+    font-size: 11px;
     text-align: center;
     color: grey;
   }

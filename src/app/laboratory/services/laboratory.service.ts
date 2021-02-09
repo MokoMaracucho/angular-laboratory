@@ -1148,36 +1148,6 @@ public set_windowDimensions(width, height) {
   this.innerHeight = height;
 }
 
-// INITIAL POSITION CAMERA
-
-private get_initPositionCamera(): BABYLON.Vector3 {
-  if(this.innerWidth <= 576) {
-    return new BABYLON.Vector3(-50, 50, 15);
-  } else if(this.innerWidth <= 768) {
-    return new BABYLON.Vector3(-50, 50, 15);
-  } else if(this.innerWidth <= 960) {
-    return new BABYLON.Vector3(-60, 35, 25);
-  } else if(this.innerWidth <= 1140) {
-    return new BABYLON.Vector3(-40, 22, 35);
-  } else {
-    return new BABYLON.Vector3(-50, 22, 19);
-  }
-}
-
-private get_initPositionCameraTarget(): BABYLON.Vector3 {
-  if(this.innerWidth <= 576) {
-    return new BABYLON.Vector3(-8, 2, -12);
-  } else if(this.innerWidth <= 768) {
-    return new BABYLON.Vector3(-10, 2, -12);
-  } else if(this.innerWidth <= 960) {
-    return new BABYLON.Vector3(-4, 2, -12);
-  } else if(this.innerWidth <= 1140) {
-    return new BABYLON.Vector3(-8, 5, -12);
-  } else {
-    return new BABYLON.Vector3(0, -1, -12);
-  }
-}
-
 // IS LOADED
 
 private sceneIsLoaded() {
@@ -3053,6 +3023,40 @@ public addActions_buttons(): void {
         this.la_haine_TEXTURE.video.play();
         this.all_video_textures_loaded = true;
         break;
+    }
+  }
+
+  // INITIAL POSITION CAMERA
+
+  private get_initPositionCamera(): BABYLON.Vector3 {
+    if(this.innerWidth <= 576) {
+      return new BABYLON.Vector3(-60, 35, 25);
+    } else if(this.innerWidth <= 768) {
+      return new BABYLON.Vector3(-60, 35, 25);
+    } else if(this.innerWidth <= 960) {
+      return new BABYLON.Vector3(-60, 35, 25);
+    } else if(this.innerWidth <= 1140) {
+      return new BABYLON.Vector3(-55, 30, 25);
+    } else if(this.innerWidth <= 1400) {
+      return new BABYLON.Vector3(-50, 30, 25);
+    } else {
+      return new BABYLON.Vector3(-50, 22, 25);
+    }
+  }
+
+  private get_initPositionCameraTarget(): BABYLON.Vector3 {
+    if(this.innerWidth <= 576) {
+      return new BABYLON.Vector3(-8, 7, -12);
+    } else if(this.innerWidth <= 768) {
+      return new BABYLON.Vector3(-8, 10, -12);
+    } else if(this.innerWidth <= 960) {
+      return new BABYLON.Vector3(-8, 10, -12);
+    } else if(this.innerWidth <= 1140) {
+      return new BABYLON.Vector3(-4, 3, -12);
+    } else if(this.innerWidth <= 1400) {
+      return new BABYLON.Vector3(0, -1, -12);
+    } else {
+      return new BABYLON.Vector3(0, 0, -12);
     }
   }
 

@@ -134,6 +134,8 @@
     <img *ngIf="!isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/stereoscopy_menu.png" alt="stereoscopy" (click)="open_stereoscopy()">
     <img *ngIf="isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/close_stereoscopy_menu.png" alt="stereoscopy" (click)="close_stereoscopy(true)">
 
+    <img *ngIf="isOpen_photography" class="menu_icon_photography menu_icons" src="../assets/img/menu/photography_menu.png" alt="photography" (click)="close_photography(true)">
+
     <img *ngIf="isOpen_movies" class="menu_icon_movies menu_icons" src="../assets/img/menu/movies_menu.png" alt="movies" (click)="close_movies(true)">
   </div>
 </div>
@@ -258,6 +260,14 @@
     <span class="span_development">3Ds Max - Blender - BabylonJS</span>
   </p>
   <p class="texts-card" *ngIf="language_french">
+    Deux objectifs ont guidé mon apprentissage :
+    - La première, intégrer la 3D temps-réel dans les navigateurs web
+      Faire profiter navigation de la troisème dimesion ≠ jeux videos -> experience utilisateur
+    - La seconde, contrôler les données de la scène jusqu'à la base de donnée.
+      3D comme une surcouche au dessus du front en gardant les mêmes fonctionnalités + tirer parti pour visualiser et manipuler les données.
+
+
+
     Guidé par une volonté d'indépendance, je me suis intéressé à tous les aspects de la réalisation d'un site Web :<br/>
     Développement Back-office :<br/>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
@@ -339,9 +349,9 @@
 <div *ngIf="!isCV" class="container_cards" [style.display]="isOpen_datas ? 'block' : 'none'" [@datas_fadeIn]="datas_fadeIn">
   <img class="title_card" src="../assets/img/titles/title_datas.png" alt="title_datas">
 
-  <h1 *ngIf="language_english" class="h1_card">Unleash your creativity!</h1>
-  <h1 *ngIf="language_french" class="h1_card">Liberez votre créativité !</h1>
-  <h1 *ngIf="language_spanish" class="h1_card">¡Da rienda suelta a tu creatividad!</h1>
+  <h1 *ngIf="language_english" class="h1_card"></h1>
+  <h1 *ngIf="language_french" class="h1_card"></h1>
+  <h1 *ngIf="language_spanish" class="h1_card"></h1>
 
   <p class="texts-card" *ngIf="language_english">
     MK-Lab develops innovative 3D representation tools for better visualization and exploitation of your data.<br/>
@@ -388,6 +398,8 @@
 
   </p>
   <p class="texts-card" *ngIf="language_french">
+    Nombreuses sont les données qui nous entourent et qui peuvent être classées
+    Classer / visualiser / contrôler
 
   </p>
   <p class="texts-card" *ngIf="language_spanish">
