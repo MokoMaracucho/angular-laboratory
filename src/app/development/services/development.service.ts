@@ -105,13 +105,13 @@ export class DevelopmentService {
     this.engine = new BABYLON.Engine(this.canvas, true, { stencil: true });
 
     this.scene = new BABYLON.Scene(this.engine);
-    this.scene.clearColor = new BABYLON.Color4(0.0035, 0.0035, 0.0095, 0.8);
+    this.scene.clearColor = BABYLON.Color4.FromHexString('#181837FF');
 
     // CANERAS
 
     this.universal_camera = new BABYLON.UniversalCamera("universal_camera", new BABYLON.Vector3(0, 0, 0), this.scene);
     this.universal_camera.position = this.get_initPositionCamera();
-    this.universal_camera.target = new BABYLON.Vector3(-4, 10, 5);
+    this.universal_camera.target = this.get_initPositionCameraTarget();
     this.universal_camera.touchAngularSensibility = 10000;
     this.universal_camera.speed = 0.7;
     this.universal_camera.invertRotation = false;
@@ -178,8 +178,6 @@ export class DevelopmentService {
     // PLANS
 
     BABYLON.SceneLoader.ImportMeshAsync("plan_inside", "../../assets/glb/development/", "plan_inside.glb").then((result) => {
-    });
-    BABYLON.SceneLoader.ImportMeshAsync("plan_outside", "../../assets/glb/development/", "plan_outside.glb").then((result) => {
     });
 
     // PERSIAN CARPET
@@ -1233,15 +1231,29 @@ export class DevelopmentService {
 
   private get_initPositionCamera(): BABYLON.Vector3 {
     if(this.innerWidth <= 576) {
-        return new BABYLON.Vector3(-30, 20, 20);
+      return new BABYLON.Vector3(-45, 25, 55);
     } else if(this.innerWidth <= 768) {
-      return new BABYLON.Vector3(-40, 30, 30);
+      return new BABYLON.Vector3(-45, 25, 40);
     } else if(this.innerWidth <= 960) {
-      return new BABYLON.Vector3(-40, 15, 25);
+      return new BABYLON.Vector3(-45, 25, 35);
     } else if(this.innerWidth <= 1140) {
-      return new BABYLON.Vector3(-40, 15, 25);
+      return new BABYLON.Vector3(-38, 20, 30);
     } else {
-      return new BABYLON.Vector3(-30, 15, 30);
+      return new BABYLON.Vector3(-32, 15, 30);
+    }
+  }
+
+  private get_initPositionCameraTarget(): BABYLON.Vector3 {
+    if(this.innerWidth <= 576) {
+      return new BABYLON.Vector3(-8, 15, 2);
+    } else if(this.innerWidth <= 768) {
+      return new BABYLON.Vector3(-6, 18, 2);
+    } else if(this.innerWidth <= 960) {
+      return new BABYLON.Vector3(-2, 16, 2);
+    } else if(this.innerWidth <= 1140) {
+      return new BABYLON.Vector3(-4, 8, 5);
+    } else {
+      return new BABYLON.Vector3(-4, 8, 5);
     }
   }
 
@@ -1361,8 +1373,8 @@ export class DevelopmentService {
       this.windowRef.window.addEventListener('resize', () => {
         this.engine.resize();
         if(!this.introduction_closed) {
-          this.animation_cameraPosition_enterDevelopment();
-          this.animation_targetScreenOffset_enterDevelopment();
+          this.universal_camera.position = this.get_initPositionCamera();
+          this.universal_camera.target = this.get_initPositionCameraTarget();
         }
       });
     });

@@ -192,7 +192,7 @@ export class LaboratoryService {
     this.engine = new BABYLON.Engine(this.canvas, true, { stencil: true });
 
     this.scene = new BABYLON.Scene(this.engine);
-    this.scene.clearColor = new BABYLON.Color4(0.0035, 0.0035, 0.0035, 1);
+    this.scene.clearColor = BABYLON.Color4.FromHexString('#1c191bFF');
 
     // CANERAS
 
@@ -280,8 +280,6 @@ export class LaboratoryService {
 
     BABYLON.SceneLoader.ImportMeshAsync("plan_inside", "../../assets/glb/laboratory/", "plan_inside.glb").then((result) => {
     });
-    BABYLON.SceneLoader.ImportMeshAsync("plan_outside", "../../assets/glb/laboratory/", "plan_outside.glb").then((result) => {
-    });
 
     // FLOOR
 
@@ -333,6 +331,8 @@ export class LaboratoryService {
     BABYLON.SceneLoader.ImportMeshAsync("lampshade", "../../assets/glb/laboratory/", "lampshade.glb", this.scene).then((result) => {
     });
     BABYLON.SceneLoader.ImportMeshAsync("lamp_base", "../../assets/glb/laboratory/", "lamp_base.glb", this.scene).then((result) => {
+    });
+    BABYLON.SceneLoader.ImportMeshAsync("lamp_base_bar", "../../assets/glb/laboratory/", "lamp_base_bar.glb", this.scene).then((result) => {
     });
 
     // TRANSFERT BOXES

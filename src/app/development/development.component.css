@@ -83,9 +83,7 @@
     display: grid;
     z-index: 9;
     position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    top: 80px;
     margin-left: 20px;
     margin-right: 20px;
   }
@@ -112,7 +110,7 @@
     margin-top: 10px;
     padding-right: 20px;
     width: 450px;
-    max-height: 200px;
+    max-height: 300px;
     color: #D3D3D3;
     text-align: justify;
     overflow-x: hidden;
@@ -140,9 +138,7 @@
     display: grid;
     z-index: 9;
     position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    top: 120px;
     margin-left: 50px;
   }
 
@@ -167,6 +163,7 @@
     grid-auto-rows: auto;
     margin-top: 10px;
     width: 506px;
+    max-height: 300px;
     color: #D3D3D3;
     text-align: justify;
     overflow-x: hidden;
@@ -221,6 +218,7 @@
     grid-auto-rows: auto;
     margin-top: 10px;
     width: 506px;
+    max-height: 400px;
     color: #D3D3D3;
     text-align: justify;
     overflow-x: hidden;
