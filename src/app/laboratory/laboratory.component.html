@@ -329,7 +329,9 @@
 <!-- DATAS !isCV -->
 
 <div *ngIf="!isCV" class="container_cards" [style.display]="isOpen_datas ? 'block' : 'none'" [@datas_fadeIn]="datas_fadeIn">
-  <img class="title_card" src="../assets/img/titles/title_datas.png" alt="datas">
+  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_datas_en.png" alt="datas">
+  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_datas_fr.png" alt="datas">
+  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_datas_es.png" alt="datas">
 
   <h1 *ngIf="language_english" class="h1_card"></h1>
   <h1 *ngIf="language_french" class="h1_card"></h1>
@@ -370,7 +372,9 @@
 <!-- DATAS isCV -->
 
 <div *ngIf="isCV" class="container_cards" [style.display]="isOpen_datas ? 'block' : 'none'" [@datas_fadeIn]="datas_fadeIn">
-  <img class="title_card" src="../assets/img/titles/title_datas.png" alt="datas">
+  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_datas_en.png" alt="datas">
+  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_datas_fr.png" alt="datas">
+  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_datas_es.png" alt="datas">
 
   <h1 *ngIf="language_english" class="h1_card"></h1>
   <h1 *ngIf="language_french" class="h1_card"></h1>
@@ -608,7 +612,9 @@
 <!-- PHOTOGRAPHY !isCV -->
 
 <div *ngIf="!isCV" class="container_cards" [style.display]="isOpen_photography ? 'block' : 'none'" [@photography_fadeIn]="photography_fadeIn">
-  <img class="title_card" src="../assets/img/titles/title_photography.png" alt="title_photography">
+  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_photography_en.png" alt="photography">
+  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_photography_fr.png" alt="photography">
+  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_photography_es.png" alt="photography">
 
   <h1 *ngIf="language_english" class="h1_card">Immerse your community in your universe!</h1>
   <h1 *ngIf="language_french" class="h1_card">Immergez votre communauté dans votre univers !</h1>
@@ -664,7 +670,9 @@
 <!-- PHOTOGRAPHY isCV -->
 
 <div *ngIf="isCV" class="container_cards" [style.display]="isOpen_photography ? 'block' : 'none'" [@photography_fadeIn]="photography_fadeIn">
-  <img class="title_card" src="../assets/img/titles/title_photography.png" alt="title_photography">
+  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_photography_en.png" alt="photography">
+  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_photography_fr.png" alt="photography">
+  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_photography_es.png" alt="photography">
 
   <h1 *ngIf="language_english" class="h1_card"></h1>
   <h1 *ngIf="language_french" class="h1_card"></h1>
