@@ -10,7 +10,7 @@
 <!-- INTRODUCTION !isCV -->
 
 <div #container_introduction *ngIf="!isCV && isOpen_introduction" class="container_introduction">
-  <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo_moko_introduction" [@logoIntroduction_fadeIn]="logoIntroduction_fadeIn">
+  <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo moko" [@logoIntroduction_fadeIn]="logoIntroduction_fadeIn">
 
   <h1 *ngIf="language_english" class="h1s-introduction h1-english" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">ENTER<br/>THE THIRD DIMENSION</h1>
   <h1 *ngIf="language_french" class="h1s-introduction h1-french" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">ENTREZ DANS<br/>LA TROISIÈME DIMENSION</h1>
@@ -58,11 +58,11 @@
 <!-- INTRODUCTION isCV -->
 
 <div *ngIf="isCV && isOpen_introduction" class="container_introduction">
-  <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo_moko_introduction" [@logoIntroduction_fadeIn]="logoIntroduction_fadeIn">
+  <img class="logo_moko_introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo moko" [@logoIntroduction_fadeIn]="logoIntroduction_fadeIn">
 
-  <h1 *ngIf="language_english" class="h1s-introduction h1s-introduction-isCV h1-english" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">WEB<br/>DEVELOPER</h1>
-  <h1 *ngIf="language_french" class="h1s-introduction h1s-introduction-isCV h1-french" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">DÉVELOPPEUR<br/>WEB</h1>
-  <h1 *ngIf="language_spanish" class="h1s-introduction h1s-introduction-isCV h1-spanish" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">DESAROLLADOR<br/>WEB</h1>
+  <h1 *ngIf="language_english" class="h1s-introduction h1s-introduction-isCV h1-english" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">JAVA<br/>DEVELOPER</h1>
+  <h1 *ngIf="language_french" class="h1s-introduction h1s-introduction-isCV h1-french" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">DÉVELOPPEUR<br/>JAVA</h1>
+  <h1 *ngIf="language_spanish" class="h1s-introduction h1s-introduction-isCV h1-spanish" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">DESAROLLADOR<br/>JAVA</h1>
 
   <p *ngIf="language_english" class="text_introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
     Following a course as a Java application developer with OpenClassrooms, I am looking for a 4-month operational internship.
@@ -134,6 +134,9 @@
     <img *ngIf="!isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/stereoscopy_menu.png" alt="stereoscopy" (click)="open_stereoscopy()">
     <img *ngIf="isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/close_stereoscopy_menu.png" alt="stereoscopy" (click)="close_stereoscopy(true)">
 
+    <img *ngIf="!isOpen_socNet" class="menu_icon_socNet menu_icons" src="../assets/img/menu/socNet_menu.png" alt="social networks" (click)="open_socNet()">
+    <img *ngIf="isOpen_socNet" class="menu_icon_socNet menu_icons" src="../assets/img/menu/close_socNet_menu.png" alt="social networks" (click)="close_socNet(true)">
+
     <img *ngIf="isOpen_photography" class="menu_icon_photography menu_icons" src="../assets/img/menu/photography_menu.png" alt="photography" (click)="close_photography(true)">
 
     <img *ngIf="isOpen_movies" class="menu_icon_movies menu_icons" src="../assets/img/menu/movies_menu.png" alt="movies" (click)="close_movies(true)">
@@ -171,7 +174,9 @@
 <!-- DEVELOPMENT !isCV -->
 
 <div *ngIf="!isCV" class="container_cards" [style.display]="isOpen_development ? 'block' : 'none'" [@development_fadeIn]="development_fadeIn">
-  <img class="title_card" src="../assets/img/titles/title_development.png" alt="title_development">
+  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_development_en.png" alt="development">
+  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_development_fr.png" alt="development">
+  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_development_es.png" alt="development">
 
   <h1 *ngIf="language_english" class="h1_card">Unleash your creativity!</h1>
   <h1 *ngIf="language_french" class="h1_card">Liberez votre créativité !</h1>
@@ -227,7 +232,9 @@
 <!-- DEVELOPMENT isCV -->
 
 <div *ngIf="isCV" class="container_cards" [style.display]="isOpen_development ? 'block' : 'none'" [@development_fadeIn]="development_fadeIn">
-  <img class="title_card" src="../assets/img/titles/title_development.png" alt="title_development">
+  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_development_en.png" alt="development">
+  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_development_fr.png" alt="development">
+  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_development_es.png" alt="development">
 
   <h1 class="h1_card">SPRING - ANGULAR - BABYLONJS</h1>
 
@@ -261,39 +268,14 @@
   </p>
   <p class="texts-card" *ngIf="language_french">
     Deux objectifs ont guidé mon apprentissage :
-    - La première, intégrer la 3D temps-réel dans les navigateurs web
+    <br/>
+    - Pouvoir naviguer sur / dans un espace en 3 dimensions.
+      La première, intégrer la 3D temps-réel dans les navigateurs web
       Faire profiter navigation de la troisème dimesion ≠ jeux videos -> experience utilisateur
+      Certainement les conséquences d'une consommation démesurée de Légo et de Sim City,
+    <br/>
     - La seconde, contrôler les données de la scène jusqu'à la base de donnée.
       3D comme une surcouche au dessus du front en gardant les mêmes fonctionnalités + tirer parti pour visualiser et manipuler les données.
-
-
-
-    Guidé par une volonté d'indépendance, je me suis intéressé à tous les aspects de la réalisation d'un site Web :<br/>
-    Développement Back-office :<br/>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
-      <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
-    </svg>
-    <span class="span_development">Java - Spring - Maven</span><br/>
-    Développement Front-office :<br/>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
-      <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
-    </svg>
-    <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
-    Bases de données :<br/>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
-      <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
-    </svg>
-    <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
-    Configuration et sécurisation de vos serveurs :<br/>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
-      <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
-    </svg>
-    <span class="span_development">Ubuntu - Apache - Apache Tomcat</span><br/>
-    Programmation et modélisation 3D :<br/>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
-      <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
-    </svg>
-    <span class="span_development">3Ds Max - Blender - BabylonJS</span>
   </p>
   <p class="texts-card" *ngIf="language_spanish">
     Guiado por un deseo de independencia, me interesé en todos los aspectos de la construcción de un website:<br/>
@@ -347,7 +329,7 @@
 <!-- DATAS !isCV -->
 
 <div *ngIf="!isCV" class="container_cards" [style.display]="isOpen_datas ? 'block' : 'none'" [@datas_fadeIn]="datas_fadeIn">
-  <img class="title_card" src="../assets/img/titles/title_datas.png" alt="title_datas">
+  <img class="title_card" src="../assets/img/titles/title_datas.png" alt="datas">
 
   <h1 *ngIf="language_english" class="h1_card"></h1>
   <h1 *ngIf="language_french" class="h1_card"></h1>
@@ -388,7 +370,7 @@
 <!-- DATAS isCV -->
 
 <div *ngIf="isCV" class="container_cards" [style.display]="isOpen_datas ? 'block' : 'none'" [@datas_fadeIn]="datas_fadeIn">
-  <img class="title_card" src="../assets/img/titles/title_datas.png" alt="title_datas">
+  <img class="title_card" src="../assets/img/titles/title_datas.png" alt="datas">
 
   <h1 *ngIf="language_english" class="h1_card"></h1>
   <h1 *ngIf="language_french" class="h1_card"></h1>
@@ -400,7 +382,8 @@
   <p class="texts-card" *ngIf="language_french">
     Nombreuses sont les données qui nous entourent et qui peuvent être classées
     Classer / visualiser / contrôler
-
+    Volume / Geolocalisation /
+    Logistique / architecture - immobilier / Géolocalisation - données environementales /
   </p>
   <p class="texts-card" *ngIf="language_spanish">
 
@@ -428,7 +411,7 @@
 <!-- STEREOSCOPY !isCV -->
 
 <div *ngIf="!isCV && !isMobileDevice" class="container_cards" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
-  <img class="title_card" src="../assets/img/titles/title_stereoscopy.png" alt="title_stereoscopy">
+  <img class="title_card" src="../assets/img/titles/title_stereoscopy.png" alt="stereoscopy">
 
   <h1 *ngIf="language_english" class="h1_card">Immerse your community in your universe!</h1>
   <h1 *ngIf="language_french" class="h1_card">Immergez votre communauté dans votre univers !</h1>
@@ -465,7 +448,7 @@
   <!-- STEREOSCOPY isCV -->
 
   <div *ngIf="isCV && !isMobileDevice" class="container_cards" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
-    <img class="title_card" src="../assets/img/titles/title_stereoscopy.png" alt="title_stereoscopy">
+    <img class="title_card" src="../assets/img/titles/title_stereoscopy.png" alt="steresoscopy">
 
     <h1 *ngIf="language_english" class="h1_card"></h1>
     <h1 *ngIf="language_french" class="h1_card"></h1>
@@ -475,7 +458,10 @@
 
     </p>
     <p class="texts-card" *ngIf="language_french">
-
+      > visualiser en relief à partir d'un écran
+      > technologie occulus / immersion
+      > Realité augmentée
+      -> Fusion de réel et du virtuel
     </p>
     <p class="texts-card" *ngIf="language_spanish">
 
@@ -501,10 +487,90 @@
   </div>
 </div>
 
+<!-- SOCIAL NETWORKS !isCV -->
+
+<div *ngIf="!isCV" class="container_cards" [style.display]="isOpen_socNet ? 'block' : 'none'" [@socNet_fadeIn]="socNet_fadeIn">
+  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_socNet_en.png" alt="social networks">
+  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_socNet_fr.png" alt="social networks">
+  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_socNet_es.png" alt="social networks">
+
+  <h1 *ngIf="language_english" class="h1_card"></h1>
+  <h1 *ngIf="language_french" class="h1_card"></h1>
+  <h1 *ngIf="language_spanish" class="h1_card"></h1>
+
+  <p class="texts-card" *ngIf="language_english">
+
+  </p>
+  <p class="texts-card" *ngIf="language_french">
+
+  </p>
+  <p class="texts-card" *ngIf="language_spanish">
+
+  </p>
+  <div *ngIf="language_english" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+  </div>
+  <div *ngIf="language_french" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  </div>
+  <div *ngIf="language_spanish" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  </div>
+
+  <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_socNet(true)">
+    <span *ngIf="language_english">Close</span>
+    <span *ngIf="language_french">Fermer</span>
+    <span *ngIf="language_spanish">Cerrar</span>
+  </button>
+</div>
+
+<!-- SOCIAL NETWORKS isCV -->
+
+<div *ngIf="isCV" class="container_cards" [style.display]="isOpen_socNet ? 'block' : 'none'" [@socNet_fadeIn]="socNet_fadeIn">
+  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_socNet_en.png" alt="social networks">
+  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_socNet_fr.png" alt="social networks">
+  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_socNet_es.png" alt="social networks">
+
+  <h1 *ngIf="language_english" class="h1_card"></h1>
+  <h1 *ngIf="language_french" class="h1_card"></h1>
+  <h1 *ngIf="language_spanish" class="h1_card"></h1>
+
+  <p class="texts-card" *ngIf="language_english">
+
+  </p>
+  <p class="texts-card" *ngIf="language_french">
+
+  </p>
+  <p class="texts-card" *ngIf="language_spanish">
+
+  </p>
+  <div *ngIf="language_english" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+  </div>
+  <div *ngIf="language_french" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  </div>
+  <div *ngIf="language_spanish" class="spans_language_cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  </div>
+
+  <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_socNet(true)">
+    <span *ngIf="language_english">Close</span>
+    <span *ngIf="language_french">Fermer</span>
+    <span *ngIf="language_spanish">Cerrar</span>
+  </button>
+</div>
+
 <!-- SWITCH CAMERA -->
 
 <div class="switchCamera_container" [style.display]="isOpen_switchCamera ? 'block' : 'none'" [@switchCamera_fadeIn]="switchCamera_fadeIn">
-  <img class="red_cross" src="../assets/img/icons/red_cross.png" alt="red_cross" (click)="close_switchCamera()">
+  <img class="red_cross" src="../assets/img/icons/red_cross.png" alt="close" (click)="close_switchCamera()">
 
   <div class="switch_camera">
       <span *ngIf="language_english && !isMax576 && !isMin576" class="span_switchCamera">Switch camera</span>

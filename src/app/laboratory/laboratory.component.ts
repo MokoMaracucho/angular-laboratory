@@ -67,6 +67,11 @@ import { ConnectionService } from '../shared/services/connection.service';
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('1s')])
     ]),
+    trigger('socNet_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('1s')])
+    ]),
     trigger('photography_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
@@ -153,6 +158,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   public stereoscopy_fadeIn = false;
   public isOpen_switchCamera = false;
   public switchCamera_fadeIn = false;
+
+  public isOpen_socNet = false;
+  public socNet_fadeIn = false;
 
   public isActive_cameraRegular = true;
   public isActive_cameraAnaglyph = false;
@@ -453,6 +461,42 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
   }
 
+  // SOCIAL NETWORKS
+
+  public open_socNet(): void {
+    // this.laboratoryService.desactivation_buttonsSocNet();
+    if(this.isCard_open) {
+      this.close_openedCard();
+    }
+    this.isOpen_socNet = true;
+    this.socNet_fadeIn = true;
+    if(!this.isCard_open) {
+      this.laboratoryService.open_card();
+      this.isCard_open = true;
+      // this.laboratoryService.set_isOpenCard(this.isCard_open);
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+      if(this.isOpen_stereoscopy) {
+        this.close_switchCamera();
+      }
+    }
+  }
+
+  public close_socNet(close_clicked): void {
+    // this.laboratoryService.activation_buttonsSocNet();
+    this.isOpen_socNet = false;
+    this.socNet_fadeIn = false;
+    if(close_clicked) {
+      this.laboratoryService.close_card();
+      this.isCard_open = false;
+      // this.laboratoryService.set_isOpenCard(this.isCard_open);
+      if(this.isMobileDevice) {
+        this.isVisible_cacheMobileDevice = false;
+      }
+    }
+  }
+
   // PHOTOGRAPHY
 
   public open_photography(): void {
@@ -573,6 +617,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
     else if(this.isOpen_stereoscopy) {
       this.close_stereoscopy(false);
+    }
+    else if(this.isOpen_socNet) {
+      this.close_socNet(false);
     }
     else if(this.isOpen_photography) {
       this.close_photography(false);
