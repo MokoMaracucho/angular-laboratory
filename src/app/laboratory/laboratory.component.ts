@@ -344,6 +344,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.close_switchCamera();
       }
     }
+    if(this.isOpen_movies) {
+      this.close_movies();
+    }
   }
 
   public close_development(close_clicked): void {
@@ -378,6 +381,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       if(this.isOpen_stereoscopy) {
         this.close_switchCamera();
       }
+    }
+    if(this.isOpen_movies) {
+      this.close_movies();
     }
   }
 
@@ -464,7 +470,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
   // SOCIAL NETWORKS
 
-  public open_socNet(): void {
+  public open_socialNetworks(): void {
     this.laboratoryService.desactivation_buttonsSocialNetworks();
     if(this.isCard_open) {
       this.close_openedCard();
@@ -482,9 +488,12 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.close_switchCamera();
       }
     }
+    if(this.isOpen_movies) {
+      this.close_movies();
+    }
   }
 
-  public close_socNet(close_clicked): void {
+  public close_socialNetworks(close_clicked): void {
     this.laboratoryService.activation_buttonsSocialNetworks();
     this.isOpen_socNet = false;
     this.socNet_fadeIn = false;
@@ -517,6 +526,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       if(this.isOpen_stereoscopy) {
         this.close_switchCamera();
       }
+    }
+    if(this.isOpen_movies) {
+      this.close_movies();
     }
   }
 
@@ -591,6 +603,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
         this.close_switchCamera();
       }
     }
+    if(this.isOpen_movies) {
+      this.close_movies();
+    }
   }
 
   public close_contactMe(close_clicked): void {
@@ -620,7 +635,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.close_stereoscopy(false);
     }
     else if(this.isOpen_socNet) {
-      this.close_socNet(false);
+      this.close_socialNetworks(false);
     }
     else if(this.isOpen_photography) {
       this.close_photography(false);

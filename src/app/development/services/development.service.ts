@@ -1239,7 +1239,7 @@ export class DevelopmentService {
     } else if(this.innerWidth <= 1140) {
       return new BABYLON.Vector3(-38, 20, 30);
     } else {
-      return new BABYLON.Vector3(-32, 15, 30);
+      return new BABYLON.Vector3(-37, 20, 35);
     }
   }
 
@@ -1253,7 +1253,7 @@ export class DevelopmentService {
     } else if(this.innerWidth <= 1140) {
       return new BABYLON.Vector3(-4, 8, 5);
     } else {
-      return new BABYLON.Vector3(-4, 8, 5);
+      return new BABYLON.Vector3(5, 7, 0);
     }
   }
 
@@ -1273,22 +1273,40 @@ export class DevelopmentService {
 
   private get_initPositionCamera_enterLaboratory(): BABYLON.Vector3 {
     if(this.innerWidth <= 576) {
-      return new BABYLON.Vector3(60, 20, 60);
+      return new BABYLON.Vector3(19, 32, 20);
     } else if(this.innerWidth <= 768) {
-      return new BABYLON.Vector3(50, 30, 50);
+      return new BABYLON.Vector3(17, 30, 20);
     } else if(this.innerWidth <= 960) {
-      return new BABYLON.Vector3(0, 30, 70);
+      return new BABYLON.Vector3(10, 30, 15);
     } else if(this.innerWidth <= 1140) {
-      return new BABYLON.Vector3(0, 20, 60);
+      return new BABYLON.Vector3(-1, 20, 63);
+    } else if(this.innerWidth <= 1400) {
+      return new BABYLON.Vector3(-1, 20, 55);
     } else {
-      return new BABYLON.Vector3(0, 20, 55);
+      return new BABYLON.Vector3(-1, 20, 45);
     }
   }
 
   private animation_targetScreenOffset_enterDevelopment() {
     const ease = new BABYLON.CubicEase();
     ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-    BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterDevelopment', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(0, 10, 0), 0, ease);
+    BABYLON.Animation.CreateAndStartAnimation('animation_targetScreenOffset_enterDevelopment', this.universal_camera, 'target', 15, 30, this.universal_camera.target, this.get_initPositionCameraTarget_enterLaboratory(), 0, ease);
+  }
+
+  private get_initPositionCameraTarget_enterLaboratory(): BABYLON.Vector3 {
+    if(this.innerWidth <= 576) {
+      return new BABYLON.Vector3(-10, 8, -2);
+    } else if(this.innerWidth <= 768) {
+      return new BABYLON.Vector3(-10, 10, -1);
+    } else if(this.innerWidth <= 960) {
+      return new BABYLON.Vector3(-10, 10, -1);
+    } else if(this.innerWidth <= 1140) {
+      return new BABYLON.Vector3(-1, 10, 0);
+    } else if(this.innerWidth <= 1400) {
+      return new BABYLON.Vector3(-1, 10, 0);
+    } else {
+      return new BABYLON.Vector3(-1, 10, 0);
+    }
   }
 
   // OPEN CARDS
