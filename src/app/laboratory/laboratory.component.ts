@@ -220,6 +220,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.subscription = this.interaction.open_development.subscribe(() => this.open_development());
       this.subscription = this.interaction.open_datas.subscribe(() => this.open_datas());
       this.subscription = this.interaction.open_stereoscopy.subscribe(() => this.open_stereoscopy());
+      this.subscription = this.interaction.open_socialNetworks.subscribe(() => this.open_socialNetworks());
       this.subscription = this.interaction.open_photography.subscribe(() => this.open_photography());
       this.subscription = this.interaction.open_contactMe.subscribe(() => this.open_contactMe());
       this.subscription = this.interaction.open_movies.subscribe(() => this.open_movies());
@@ -464,7 +465,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   // SOCIAL NETWORKS
 
   public open_socNet(): void {
-    // this.laboratoryService.desactivation_buttonsSocNet();
+    this.laboratoryService.desactivation_buttonsSocialNetworks();
     if(this.isCard_open) {
       this.close_openedCard();
     }
@@ -473,7 +474,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     if(!this.isCard_open) {
       this.laboratoryService.open_card();
       this.isCard_open = true;
-      // this.laboratoryService.set_isOpenCard(this.isCard_open);
+      this.laboratoryService.set_isOpenCard(this.isCard_open);
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
@@ -484,7 +485,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   }
 
   public close_socNet(close_clicked): void {
-    // this.laboratoryService.activation_buttonsSocNet();
+    this.laboratoryService.activation_buttonsSocialNetworks();
     this.isOpen_socNet = false;
     this.socNet_fadeIn = false;
     if(close_clicked) {

@@ -415,7 +415,9 @@
 <!-- STEREOSCOPY !isCV -->
 
 <div *ngIf="!isCV && !isMobileDevice" class="container_cards" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
-  <img class="title_card" src="../assets/img/titles/title_stereoscopy.png" alt="stereoscopy">
+  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_stereoscopy_en.png" alt="stereoscopy">
+  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_stereoscopy_fr.png" alt="stereoscopy">
+  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_stereoscopy_es.png" alt="stereoscopy">
 
   <h1 *ngIf="language_english" class="h1_card">Immerse your community in your universe!</h1>
   <h1 *ngIf="language_french" class="h1_card">Immergez votre communauté dans votre univers !</h1>
@@ -452,7 +454,9 @@
   <!-- STEREOSCOPY isCV -->
 
   <div *ngIf="isCV && !isMobileDevice" class="container_cards" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
-    <img class="title_card" src="../assets/img/titles/title_stereoscopy.png" alt="steresoscopy">
+    <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_stereoscopy_en.png" alt="stereoscopy">
+    <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_stereoscopy_fr.png" alt="stereoscopy">
+    <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_stereoscopy_es.png" alt="stereoscopy">
 
     <h1 *ngIf="language_english" class="h1_card"></h1>
     <h1 *ngIf="language_french" class="h1_card"></h1>
@@ -609,9 +613,9 @@
   </div>
 </div>
 
-<!-- PHOTOGRAPHY !isCV -->
+<!-- PHOTOGRAPHY -->
 
-<div *ngIf="!isCV" class="container_cards" [style.display]="isOpen_photography ? 'block' : 'none'" [@photography_fadeIn]="photography_fadeIn">
+<div class="container_cards" [style.display]="isOpen_photography ? 'block' : 'none'" [@photography_fadeIn]="photography_fadeIn">
   <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_photography_en.png" alt="photography">
   <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_photography_fr.png" alt="photography">
   <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_photography_es.png" alt="photography">
@@ -646,46 +650,6 @@
     <br/>
     <br/>
     Sitio dedicado por venir.
-  </p>
-  <div *ngIf="language_english" class="spans_language_cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-  </div>
-  <div *ngIf="language_french" class="spans_language_cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-  </div>
-  <div *ngIf="language_spanish" class="spans_language_cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-  </div>
-
-  <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_photography(true)">
-    <span *ngIf="language_english">Close</span>
-    <span *ngIf="language_french">Fermer</span>
-    <span *ngIf="language_spanish">Cerrar</span>
-  </button>
-</div>
-
-<!-- PHOTOGRAPHY isCV -->
-
-<div *ngIf="isCV" class="container_cards" [style.display]="isOpen_photography ? 'block' : 'none'" [@photography_fadeIn]="photography_fadeIn">
-  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_photography_en.png" alt="photography">
-  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_photography_fr.png" alt="photography">
-  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_photography_es.png" alt="photography">
-
-  <h1 *ngIf="language_english" class="h1_card"></h1>
-  <h1 *ngIf="language_french" class="h1_card"></h1>
-  <h1 *ngIf="language_spanish" class="h1_card"></h1>
-
-  <p class="texts-card" *ngIf="language_english">
-
-  </p>
-  <p class="texts-card" *ngIf="language_french">
-
-  </p>
-  <p class="texts-card" *ngIf="language_spanish">
-
   </p>
   <div *ngIf="language_english" class="spans_language_cards">
       <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>

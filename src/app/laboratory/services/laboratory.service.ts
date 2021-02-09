@@ -55,6 +55,7 @@ export class LaboratoryService {
   private shelf;
   private dvd_pi; dvd_enter_the_void; dvd_2001_odyssee_espace; dvd_la_haine; dvd_sweet_sixteen; dvd_eternal_sunshine; dvd_zero_theorem; dvd_shining;
   private book_strategie_choc; book_no_logo; book_serpent_cosmique; book_meilleur_mondes; book_dictionnaire_symboles; book_prince; book_ca_I; book_ca_II; book_ca_III; book_sagrada_biblia; book_nuit_enfants_rois;
+  private social_networks;
   private twitter;
   private instagram; instagram_lens;
   private youtube; youtube_play;
@@ -131,6 +132,8 @@ export class LaboratoryService {
   private spain_red_BAKING_HIGHLIGHT: BABYLON.Texture;
   private spain_yellow_BAKING: BABYLON.Texture;
   private spain_yellow_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private social_networks_BAKING: BABYLON.Texture;
+  private social_networks_BAKING_HIGHLIGHT: BABYLON.Texture;
   private twitter_BAKING: BABYLON.Texture;
   private twitter_BAKING_HIGHLIGHT: BABYLON.Texture;
   private instagram_BAKING: BABYLON.Texture;
@@ -1069,6 +1072,15 @@ export class LaboratoryService {
   BABYLON.SceneLoader.ImportMeshAsync("world_map_basement_marble", "../../assets/glb/laboratory/", "world_map_basement_marble.glb", this.scene).then((result) => {
   });
 
+  // SOCIAL NETWORKS
+
+  this.social_networks_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/social_networks_BAKING.jpg", this.scene, false, false);
+  this.social_networks_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/social_networks_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+  BABYLON.SceneLoader.ImportMeshAsync("social_networks", "../../assets/glb/laboratory/", "social_networks.glb").then((result) => {
+    this.social_networks = this.scene.getMeshByName("social_networks");
+  });
+
   // TWITTER
 
   this.twitter_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/twitter_BAKING.jpg", this.scene, false, false);
@@ -1173,6 +1185,7 @@ public addActions_buttons(): void {
     this.addActions_Keyboard(); this.addActions_KeyboardKeyboard();
     this.addActions_MacMini(); this.addActions_Laptop(); this.addActions_LaptopKeyboard(); this.addActions_LaptopScreen(); this.addActions_ScreenCenter(); this.addActions_ScreenFrameCenter(); this.addActions_ScreenRight(); this.addActions_ScreenFrameRight();
     this.addActions_DvdPi(); this.addActions_DvdEnterTheVoid(); this.addActions_Dvd2001OdysseeEspace(); this.addActions_DvdLaHaine(); this.addActions_DvdSweetSixteen(); this.addActions_DvdEternalSunshine(); this.addActions_DvdZeroTheorem(); this.addActions_DvdShining();
+    this.addActions_SocialNetworks();
     this.addActions_Twitter();
     this.addActions_Instagram(); this.addActions_InstagramLens();
     this.addActions_Youtube(); this.addActions_YoutubePlay();
@@ -1194,6 +1207,7 @@ public addActions_buttons(): void {
     this.threed_glasses_frame.isPickable = true; this.threed_glass_blue.isPickable = true; this.threed_glass_red.isPickable = true;
     this.mac_mini.isPickable = true; this.laptop.isPickable = true; this.laptop_keyboard.isPickable = true; this.laptop_screen.isPickable = true; this.screen_center.isPickable = true; this.screen_frame_center.isPickable = true; this.screen_right.isPickable = true; this.screen_frame_right.isPickable = true;
     this.dvd_pi.isPickable = true; this.dvd_enter_the_void.isPickable = true; this.dvd_2001_odyssee_espace.isPickable = true; this.dvd_la_haine.isPickable = true; this.dvd_sweet_sixteen.isPickable = true; this.dvd_eternal_sunshine.isPickable = true; this.dvd_zero_theorem.isPickable = true; this.dvd_shining.isPickable = true;
+    this.social_networks.isPickable = true;
     this.twitter.isPickable = true;
     this.instagram.isPickable = true; this.instagram_lens.isPickable = true;
     this.youtube.isPickable = true; this.youtube_play.isPickable = true;
@@ -1210,6 +1224,10 @@ public addActions_buttons(): void {
 
   public activation_buttonsStereoscopy(): void {
     this.threed_glasses_frame.isPickable = true; this.threed_glass_blue.isPickable = true; this.threed_glass_red.isPickable = true;
+  }
+
+  public activation_buttonsSocialNetworks(): void {
+    this.social_networks.isPickable = true;
   }
 
   public activation_buttonsPhotography(): void {
@@ -1239,6 +1257,7 @@ public addActions_buttons(): void {
     this.brique.isPickable = false; this.brique_marie_louise.isPickable = false; this.brique_frame.isPickable = false;
     this.tofu.isPickable = false; this.tofu_marie_louise.isPickable = false; this.tofu_frame.isPickable = false;
     this.threed_glasses_frame.isPickable = false; this.threed_glass_blue.isPickable = false; this.threed_glass_red.isPickable = false;
+    this.social_networks.isPickable = false;
     this.twitter.isPickable = false;
     this.instagram.isPickable = false; this.instagram_lens.isPickable = false;
     this.youtube.isPickable = false; this.youtube_play.isPickable = false;
@@ -1257,6 +1276,10 @@ public addActions_buttons(): void {
 
   public desactivation_buttonsStereoscopy(): void {
     this.threed_glasses_frame.isPickable = false; this.threed_glass_blue.isPickable = false; this.threed_glass_red.isPickable = false;
+  }
+
+  public desactivation_buttonsSocialNetworks(): void {
+    this.social_networks.isPickable = false;
   }
 
   public desactivation_buttonsPhotography(): void {
@@ -2600,6 +2623,22 @@ public addActions_buttons(): void {
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.dvd_shining},
         [
           new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_movies.next())
+        ]
+      )
+    );
+  }
+
+  private addActions_SocialNetworks() {
+    this.social_networks.isPickable = true;
+    this.social_networks.actionManager = new BABYLON.ActionManager(this.scene);
+
+    this.social_networks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.social_networks.material, "albedoTexture", this.social_networks_BAKING_HIGHLIGHT));
+    this.social_networks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.social_networks.material, "albedoTexture", this.social_networks_BAKING));
+
+    this.social_networks.actionManager.registerAction(new BABYLON.CombineAction(
+        {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.social_networks},
+        [
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_socialNetworks.next())
         ]
       )
     );
