@@ -115,6 +115,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   public isMin1140 = false;
 
   public isLandscape;
+  public isMini = true;
 
   // CV
 
@@ -199,6 +200,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.innerHeight = window.innerHeight;
       this.laboratoryService.set_windowDimensions(this.innerWidth, this.innerHeight);
       this.defineWidthRange();
+      //this.fetch_isMini();
 
       this.isCV = this.activatedRoute.snapshot.params.isCV;
       if(!this.isCV) {
@@ -240,10 +242,25 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.innerHeight = window.innerHeight;
       this.laboratoryService.set_windowDimensions(window.innerWidth, window.innerHeight);
       this.defineWidthRange();
+      //this.fetch_isMini();
   }
 
   @HostListener('window:orientationchange', ['$event'])
   onOrientationChange(event) {
+    //this.fetch_isMini();
+  }
+
+  private fetch_isMini():void {
+    this.fetch_isLandscape();
+    if(this.isLandscape && this.isMobileDevice) {
+      this.isMini = true;
+    } else {
+      this.isMini = false;
+    }
+    this.appComponent.set_isMini(this.isMini);
+  }
+
+  private fetch_isLandscape():void {
     if (window.innerHeight > window.innerWidth) {
       this.isLandscape = false;
     } else {
@@ -251,14 +268,14 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  private epicFunction() {
+  private epicFunction():void {
     this.deviceInfo = this.deviceService.getDeviceInfo();
     this.isMobileDevice = this.deviceService.isMobile();
     this.isTabletDevice = this.deviceService.isTablet();
     this.isDesktopDevice = this.deviceService.isDesktop();
   }
 
-  private defineWidthRange(): void {
+  private defineWidthRange():void {
     if(this.innerWidth < 576) {
       this.isMax576 = true;
       this.isMin576 = false;

@@ -25,6 +25,10 @@
 
 /* BODY */
 
-html {
+html, body {
   font-family: Roboto-Regular;
+  touch-action: none;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
 }

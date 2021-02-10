@@ -23,87 +23,88 @@
 
 /* INTRODUCTION */
 
-.container_introduction {
+.container-introduction-mini {
   z-index: 9;
   position: absolute;
 }
 
-@media (max-height: 499px) {
-  .container_introduction {
-    grid-template-columns: [col-start] 50px [col-1] 80px [col-2] auto [col-stop];
-    grid-template-rows: [row-start] 60px [row-1] auto [row-2] 40px [row-stop];
-    display: grid;
-    top: 60px;
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
-  .logo_moko_introduction {
-    grid-area: row-start / col-start / row-1 / col-2;
-    grid-auto-rows: auto;
-    width: 50px;
-    height: 60px;
-  }
-
-  .h1s-introduction {
-    grid-area: row-start / col-1 / row-1 / col-stop;
-    grid-auto-rows: auto;
-    font-family: Montserrat-Black;
-    color: white;
-    padding-left: 20px;
-  }
-
-  .h1-english {
-    font-size: 24px;
-    line-height: 26px;
-  }
-
-  .h1-french {
-    font-size: 20px;
-    line-height: 22px;
-    padding-top: 7px;
-  }
-
-  .h1-spanish {
-    font-size: 20px;
-    line-height: 22px;
-    padding-top: 7px;
-  }
-
-  .text_introduction {
-    grid-area: row-1 / col-start / row-2 / col-stop;
-    grid-auto-rows: auto;
-    margin-top: 10px;
-    font-size: 15px;
-    padding-right: 20px;
-    margin-bottom: 0px;
-    width: 500px;
-    max-height: 100px;
-    color: #D3D3D3;
-    text-align: justify;
-    overflow-x: hidden;
-    overflow-y: none;
-  }
-
-  .spans_language {
-    grid-area: row-2 / col-start / row-stop / col-2;
-    grid-auto-rows: auto;
-    margin-top: 10px;
-  }
-
-  .btn-enter {
-    grid-area: row-2 / col-2 / row-stop / col-stop;
-    grid-auto-rows: auto;
-    width: 75px;
-    height: 40px;
-    margin-top: -10px;
-    margin-left: 275px;
-    align-items: center;
-  }
+.container-introduction-mini {
+  grid-template-columns: [col-start-mini] 50px [col-1-mini] 80px [col-2-mini] auto [col-stop-mini];
+  grid-template-rows: [row-start-mini] 55px [row-1-mini] 60px [row-2-mini] auto [row-3-mini] 40px [row-4-mini] 20px [row-stop-mini];
+  display: grid;
+  height: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-@media (max-width: 576px) and (min-height: 500px) {
-  .container_introduction {
+.logo-moko-introduction-mini {
+  grid-area: row-1-mini / col-start-mini / row-2-mini / col-2-mini;
+  grid-auto-rows: auto;
+  width: 50px;
+  height: 60px;
+}
+
+.h1s-introduction-mini {
+  grid-area: row-1-mini / col-1-mini / row-2-mini / col-stop-mini;
+  grid-auto-rows: auto;
+  font-family: Montserrat-Black;
+  color: white;
+  padding-left: 20px;
+}
+
+.h1-english-mini {
+  font-size: 24px;
+  line-height: 26px;
+}
+
+.h1-french-mini {
+  font-size: 20px;
+  line-height: 22px;
+  padding-top: 7px;
+}
+
+.h1-spanish-mini {
+  font-size: 20px;
+  line-height: 22px;
+  padding-top: 7px;
+}
+
+.text-introduction-mini {
+  grid-area: row-2-mini / col-start-mini / row-3-mini / col-stop-mini;
+  grid-auto-rows: auto;
+  margin-top: 10px;
+  font-size: 15px;
+  padding-right: 20px;
+  margin-bottom: 0px;
+  width: 500px;
+  color: #D3D3D3;
+  text-align: justify;
+  overflow-x: hidden;
+  overflow-y: none;
+}
+
+.btn-enter-mini {
+  grid-area: row-3-mini / col-start-mini / row-4-mini / col-2-mini;
+  grid-auto-rows: auto;
+  width: 75px;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.spans-language-mini {
+  grid-area: row-3-mini / col-2-mini / row-4-mini / col-stop-mini;
+  grid-auto-rows: auto;
+  margin-top: 10px;
+  margin-left: 230px;
+}
+
+.container-introduction {
+  z-index: 9;
+  position: absolute;
+}
+
+@media (max-width: 576px) {
+  .container-introduction {
     grid-template-columns: [col-start] 43px [col-1] 36px [col-2] auto [col-stop];
     grid-template-rows: [row-start] 90px [row-1] auto [row-2] auto [row-3] 40px [row-stop];
     display: grid;
@@ -112,7 +113,7 @@
     padding-right: 10px;
   }
 
-  .logo_moko_introduction {
+  .logo-moko-introduction {
     grid-area: row-start / col-start / row-1 / col-2;
     grid-auto-rows: auto;
     width: 79px;
@@ -170,7 +171,7 @@
     }
   }
 
-  .text_introduction {
+  .text-introduction {
     grid-area: row-1 / col-start / row-2 / col-stop;
     grid-auto-rows: auto;
     margin-top: 20px;
@@ -183,7 +184,7 @@
     overflow-y: none;
   }
 
-  .spans_language {
+  .spans-language {
     grid-area: row-2 / col-start / row-3 / col-stop;
     grid-auto-rows: auto;
   }
@@ -197,8 +198,8 @@
   }
 }
 
-@media (min-width: 576px) and (min-height: 500px) {
-  .container_introduction {
+@media (min-width: 576px) {
+  .container-introduction {
     grid-template-columns: [col-start] 43px [col-1] 41px [col-2] 344px [col-stop];
     grid-template-rows: [row-start] 100px [row-1] auto [row-2] auto [row-3] 40px [row-stop];
     display: grid;
@@ -207,7 +208,7 @@
     margin-right: 20px;
   }
 
-  .logo_moko_introduction {
+  .logo-moko-introduction {
     grid-area: row-start / col-start / row-1 / col-2;
     grid-auto-rows: auto;
     width: 84px;
@@ -240,7 +241,7 @@
     padding-top: 38px;
   }
 
-  .text_introduction {
+  .text-introduction {
     grid-area: row-1 / col-start / row-2 / col-stop;
     grid-auto-rows: auto;
     margin-top: 20px;
@@ -253,7 +254,7 @@
     overflow-y: none;
   }
 
-  .spans_language {
+  .spans-language {
     grid-area: row-2 / col-start / row-3 / col-stop;
     grid-auto-rows: auto;
   }
@@ -267,8 +268,8 @@
   }
 }
 
-@media (min-width: 768px) and (min-height: 500px) {
-  .container_introduction {
+@media (min-width: 768px) {
+  .container-introduction {
     grid-template-columns: [col-start] 65px [col-1] 41px [col-2] 300px [col-stop];
     grid-template-rows: [row-start] 120px [row-1] auto [row-2] auto [row-3] 40px [row-stop];
     display: grid;
@@ -276,7 +277,7 @@
     margin-left: 50px;
   }
 
-  .logo_moko_introduction {
+  .logo-moko-introduction {
     grid-area: row-start / col-start / row-1 / col-2;
     grid-auto-rows: auto;
     width: 106px;
@@ -298,7 +299,7 @@
     padding-top: 47px;
   }
 
-  .text_introduction {
+  .text-introduction {
     grid-area: row-1 / col-start / row-2 / col-stop;
     grid-auto-rows: auto;
     margin-top: 20px;
@@ -309,7 +310,7 @@
     overflow-y: none;
   }
 
-  .spans_language {
+  .spans-language {
     grid-area: row-2 / col-start / row-3 / col-stop;
     grid-auto-rows: auto;
   }
@@ -323,8 +324,8 @@
   }
 }
 
-@media (min-width: 960px) and (min-height: 500px) {
-  .container_introduction {
+@media (min-width: 960px) {
+  .container-introduction {
     grid-template-columns: [col-start] 65px [col-1] 41px [col-2] 320px [col-stop];
     grid-template-rows: [row-start] 120px [row-1] auto [row-2] auto [row-3] 40px [row-stop];
     display: grid;
@@ -334,7 +335,7 @@
     margin-left: 50px;
   }
 
-  .logo_moko_introduction {
+  .logo-moko-introduction {
     grid-area: row-start / col-start / row-1 / col-2;
     grid-auto-rows: auto;
     width: 106px;
@@ -356,7 +357,7 @@
     padding-top: 47px;
   }
 
-  .text_introduction {
+  .text-introduction {
     grid-area: row-1 / col-start / row-2 / col-stop;
     grid-auto-rows: auto;
     margin-top: 20px;
@@ -369,7 +370,7 @@
     overflow-y: none;
   }
 
-  .spans_language {
+  .spans-language {
     grid-area: row-2 / col-start / row-3 / col-stop;
     grid-auto-rows: auto;
   }
@@ -383,8 +384,8 @@
   }
 }
 
-@media (min-width: 1140px) and (min-height: 500px) {
-  .container_introduction {
+@media (min-width: 1140px) {
+  .container-introduction {
     grid-template-columns: [col-start] 65px [col-1] 41px [col-2] 400px [col-stop];
     grid-template-rows: [row-start] 120px [row-1] auto [row-2] auto [row-3] 40px [row-stop];
     display: grid;
@@ -395,12 +396,12 @@
   }
 
   @media (min-width: 1400px) {
-    .container_introduction {
+    .container-introduction {
       margin-left: 150px;
     }
   }
 
-  .logo_moko_introduction {
+  .logo-moko-introduction {
     grid-area: row-start / col-start / row-1 / col-2;
     grid-auto-rows: auto;
     width: 106px;
@@ -433,7 +434,7 @@
     padding-top: 52px;
   }
 
-  .text_introduction {
+  .text-introduction {
     grid-area: row-1 / col-start / row-2 / col-stop;
     grid-auto-rows: auto;
     margin-top: 20px;
@@ -445,7 +446,7 @@
     overflow-y: none;
   }
 
-  .spans_language {
+  .spans-language {
     grid-area: row-2 / col-start / row-3 / col-stop;
     grid-auto-rows: auto;
   }
@@ -602,7 +603,7 @@
     grid-template-rows: [row-start-menu] 60px [row-1-menu] 10px [row-stop-menu];
     display: grid;
     right: 0px;
-    bottom:0px;
+    bottom: 0px;
     width: 50px;
     height: 60px;
     background-color: #00000066;
@@ -617,7 +618,7 @@
 @media (max-height: 500px) {
   .menu_container {
     grid-template-columns: [col-start-menu] 40px [col-stop-menu];
-    grid-template-rows: [row-start-menu] 60px [row-1-menu] 40px [row-2-menu] 40px [row-3-menu] 40px [row-4-menu] 40px [row-5-menu] 40px [row-6-menu] 1fr [row-7-menu] 40px [row-stop-menu];
+    grid-template-rows: [row-start-menu] 60px [row-1-menu] 40px [row-2-menu] 40px [row-3-menu] 40px [row-4-menu] 40px [row-5-menu] 40px [row-6-menu] 1fr [row-7-menu] 45px [row-stop-menu];
     display: grid;
     right: 0px;
     width: 40px;
@@ -669,20 +670,20 @@
 
   .initPosition_container {
     grid-template-columns: [col-start-menu] 50px [col-stop-menu];
-    grid-template-rows: [row-start-menu] 60px [row-1-menu] 10px [row-stop-menu];
+    grid-template-rows: [row-start-menu] 45px [row-1-menu] 5px [row-stop-menu];
     display: grid;
     right: 0px;
     bottom:0px;
     width: 40px;
-    height: 40px;
+    height: 45px;
     background-color: #00000066;
   }
 
   .icon_initPosition {
     grid-area: row-start-menu / col-start-menu / row-1-menu / col-stop-menu;
     grid-auto-rows: auto;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -1333,7 +1334,7 @@
   position: absolute;
 }
 
-@media (max-width: 576px) and (orientation: portrait) {
+@media (max-width: 576px) {
   .container_cards {
     grid-template-columns: [col-start-cards] 1fr [col-stop-cards];
     grid-template-rows: [row-start-cards] 87px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
@@ -1389,7 +1390,62 @@
   }
 }
 
-@media (min-width: 576px) and (orientation: portrait) {
+@media (max-height: 500px) {
+  .container_cards {
+    grid-template-columns: [col-start-cards] 220px [col-1-cards] 300px [col-stop-cards];
+    grid-template-rows: [row-start-cards] auto [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-stop-cards];
+    display: grid;
+    top: 60px;
+    -ms-transform: 0;
+    transform: 0;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 70px;
+  }
+
+  .title_card {
+    grid-area: row-start-cards / col-start-cards / row-2-cards / col-1-cards;
+    grid-auto-rows: auto;
+    font-size: 16px;
+    width: 200px;
+    height: 70px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+
+  .h1_card {
+    grid-area: row-start-cards / col-1-cards / row-1-cards / col-stop-cards;
+    grid-auto-rows: auto;
+    font-family: Roboto-Bold;
+    font-size: 20px;
+    color: #D3D3D3;
+    display: inline-block;
+  }
+
+  .texts-card {
+    grid-area: row-1-cards / col-1-cards / row-stop-cards / col-stop-cards;
+    grid-auto-rows: auto;
+    max-height: 250px;
+    color: #D3D3D3;
+    width: 500px;
+    font-size: 15px;
+    text-align: justify;
+    overflow-x: hidden;
+    overflow-y: none;
+    padding-top: 10px;
+    padding-right: 20px;
+    display: inline-block;
+  }
+
+  .spans_language_cards {
+    grid-area: row-2-cards / col-start-cards / row-3-cards / col-1-cards;
+    grid-auto-rows: auto;
+    display: inline-block;
+  }
+}
+
+@media (min-width: 576px) {
   .container_cards {
     grid-template-columns: [col-start-cards] 350px [col-stop-cards];
     grid-template-rows: [row-start-cards] 105px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
@@ -1447,7 +1503,7 @@
   }
 }
 
-@media (min-width: 768px) and (orientation: portrait) {
+@media (min-width: 768px) {
   .container_cards {
     grid-template-columns: [col-start-cards] 350px [col-stop-cards];
     grid-template-rows: [row-start-cards] 105px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
@@ -1505,7 +1561,7 @@
   }
 }
 
-@media (min-width: 960px) and (orientation: portrait) {
+@media (min-width: 960px) {
   .container_cards {
     grid-template-columns: [col-start-cards] 400px [col-stop-cards];
     grid-template-rows: [row-start-cards] 105px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
@@ -1561,7 +1617,7 @@
   }
 }
 
-@media (min-width: 1140px) and (orientation: portrait) {
+@media (min-width: 1140px) {
   .container_cards {
     grid-template-columns: [col-start-cards] 400px [col-stop-cards];
     grid-template-rows: [row-start-cards] 134px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
@@ -1618,58 +1674,6 @@
     margin-top: 20px;
     width: 75px;
     height: 40px;
-  }
-}
-
-@media (orientation: landscape) {
-  .container_cards {
-    grid-template-columns: [col-start-cards] 220px [col-1-cards] 300px [col-stop-cards];
-    grid-template-rows: [row-start-cards] auto [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-stop-cards];
-    display: grid;
-    top: 60px;
-    width: 100%;
-    padding-left: 20px;
-    padding-right: 70px;
-  }
-
-  .title_card {
-    grid-area: row-start-cards / col-start-cards / row-2-cards / col-1-cards;
-    grid-auto-rows: auto;
-    font-size: 16px;
-    width: 200px;
-    height: 70px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    display: inline-block;
-  }
-
-  .h1_card {
-    grid-area: row-start-cards / col-1-cards / row-1-cards / col-stop-cards;
-    grid-auto-rows: auto;
-    font-family: Roboto-Bold;
-    font-size: 20px;
-    color: #D3D3D3;
-    display: inline-block;
-  }
-
-  .texts-card {
-    grid-area: row-1-cards / col-1-cards / row-stop-cards / col-stop-cards;
-    grid-auto-rows: auto;
-    max-height: 300px;
-    color: #D3D3D3;
-    font-size: 15px;
-    text-align: justify;
-    overflow-x: hidden;
-    overflow-y: none;
-    padding-top: 10px;
-    padding-right: 20px;
-    display: inline-block;
-  }
-
-  .spans_language_cards {
-    grid-area: row-2-cards / col-start-cards / row-3-cards / col-1-cards;
-    grid-auto-rows: auto;
-    display: inline-block;
   }
 }
 

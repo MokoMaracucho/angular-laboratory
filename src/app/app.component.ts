@@ -23,6 +23,8 @@ export class AppComponent implements OnInit {
   public innerWidth: any;
   public innerHeight: any;
 
+  public isMini;
+
   public isCV = false;
 
   public isCollapsed = false;
@@ -59,6 +61,10 @@ export class AppComponent implements OnInit {
       this.isCollapsed = false;
       this.close_navBar_menu();
     }
+  }
+
+  public set_isMini(isMini):void {
+    this.isMini = isMini;
   }
 
   public set_isCV(isCV): void {
