@@ -938,6 +938,11 @@
     width: 75px;
     height: 40px;
   }
+
+  .videos {
+    margin-right: 20px;
+    width: 320px;
+  }
 }
 
 @media (min-width: 576px) {
@@ -988,6 +993,11 @@
     margin-top: 20px;
     width: 75px;
     height: 40px;
+  }
+
+  .videos {
+    margin-right: 20px;
+    width: 320px;
   }
 }
 
@@ -1040,6 +1050,11 @@
     width: 75px;
     height: 40px;
   }
+
+  .videos {
+    margin-right: 20px;
+    width: 330px;
+  }
 }
 
 @media (min-width: 960px) {
@@ -1088,6 +1103,11 @@
     margin-top: 20px;
     width: 75px;
     height: 40px;
+  }
+
+  .videos {
+    margin-right: 20px;
+    width: 380px;
   }
 }
 
@@ -1142,6 +1162,13 @@
     width: 75px;
     height: 40px;
   }
+
+  /* VIDEOS */
+
+  .videos {
+    margin-right: 20px;
+    width: 380px;
+  }
 }
 
 /* BADGES */
@@ -1188,3 +1215,8 @@ background-color: #777777;
   background-color: #ffffff44;
 }
 
+/* LINKS */
+
+.links {
+  cursor: pointer;
+}

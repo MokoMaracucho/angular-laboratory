@@ -6,7 +6,91 @@
   align-items: center;
 }
 
-@media (min-width: 800px) {
+@media (max-height: 549px) {
+  .container_navBar {
+    grid-template-columns: [col-start-navBar] 50px [col-1-navBar] auto [col-2-navBar] 40px [col-stop-navBar];
+    grid-template-rows: [row-start-navBar] 50px [row-stop-navBar];
+    background-color: #00000088;
+  }
+
+  .logo_moko {
+    grid-area: row-start-navBar / col-start-navBar / row-stop-navBar / col-1-navBar;
+    padding-left: 10px;
+    width: 40px;
+    height: 30px;
+  }
+
+  .menu {
+    grid-area: row-start-navBar / col-2-navBar / row-stop-navBar / col-stop-navBar;
+    margin-right: 20px;
+  }
+
+  .icon_menu {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-height: 549px) {
+  .container_menuNavBar {
+    grid-template-columns: [col-start-menuNavBar] auto [col-1-menuNavBar] 35px [col-2-menuNavBar] 35px [col-3-menuNavBar] 35px [col-4-menuNavBar] 40px [col-stop-menuNavBar];
+    grid-template-rows: [row-start-menuNavBar] 40px [row-1-menuNavBar] 40px [row-2-menuNavBar] 40px [row-3-menuNavBar] 40px [row-4-menuNavBar] 40px [row-stop-menuNavBar];
+    display: grid;
+    align-items: center;
+    z-index: 10;
+    background-color: #000000;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    height: 200px;
+    display: grid;
+    align-items: center;
+  }
+
+  .laboratory {
+    grid-area: row-start-menuNavBar / col-start-menuNavBar / row-1-menuNavBar / col-stop-menuNavBar;
+    grid-auto-rows: auto;
+  }
+
+  .development {
+    grid-area: row-1-menuNavBar / col-start-menuNavBar / row-2-menuNavBar / col-stop-menuNavBar;
+    grid-auto-rows: auto;
+  }
+
+  .tutorials {
+    grid-area: row-2-menuNavBar / col-start-menuNavBar / row-3-menuNavBar / col-stop-menuNavBar;
+    grid-auto-rows: auto;
+  }
+
+  .photography {
+    grid-area: row-3-menuNavBar / col-start-menuNavBar / row-4-menuNavBar / col-stop-menuNavBar;
+    grid-auto-rows: auto;
+  }
+
+  .items_socNet {
+    grid-area: row-4-menuNavBar / col-start-menuNavBar / row-stop-menuNavBar / col-stop-menuNavBar;
+    grid-auto-rows: auto;
+  }
+
+  .twitter {
+    grid-area: row-4-menuNavBar / col-1-menuNavBar / row-stop-menuNavBar / col-2-menuNavBar;
+  }
+
+  .instagram {
+    grid-area: row-4-menuNavBar / col-2-menuNavBar / row-stop-menuNavBar / col-3-menuNavBar;
+  }
+
+  .youtube {
+    grid-area: row-4-menuNavBar / col-3-menuNavBar / row-stop-menuNavBar / col-4-menuNavBar;
+  }
+
+  .linkedIn {
+    grid-area: row-4-menuNavBar / col-4-menuNavBar / row-stop-menuNavBar / col-stop-menuNavBar;
+    margin-right: 20px;
+  }
+}
+
+@media (min-width: 800px) and (min-height: 550px) {
   .container_navBar {
     grid-template-columns: [col-start] 70px [col-1] auto [col-2] auto [col-3] auto [col-4] auto [col-5] 1fr [col-6] 40px [col-7] 40px [col-8] 40px [col-9] 40px [col-stop];
     grid-template-rows: [row-start] 60px [row-stop];
@@ -67,7 +151,7 @@
   }
 }
 
-@media (max-width: 799px) {
+@media (max-width: 799px) and (min-height: 550px) {
   .container_navBar {
     grid-template-columns: [col-start-navBar] 70px [col-1-navBar] auto [col-2-navBar] 40px [col-stop-navBar];
     grid-template-rows: [row-start-navBar] 60px [row-stop-navBar];
@@ -90,7 +174,7 @@
   }
 }
 
-@media (max-width: 799px) {
+@media (max-width: 799px) and (min-height: 550px) {
   .container_menuNavBar {
     grid-template-columns: [col-start-menuNavBar] auto [col-1-menuNavBar] 35px [col-2-menuNavBar] 35px [col-3-menuNavBar] 35px [col-4-menuNavBar] 40px [col-stop-menuNavBar];
     grid-template-rows: [row-start-menuNavBar] 40px [row-1-menuNavBar] 40px [row-2-menuNavBar] 40px [row-3-menuNavBar] 40px [row-4-menuNavBar] 40px [row-stop-menuNavBar];

@@ -114,6 +114,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   public isMin960 = false;
   public isMin1140 = false;
 
+  public isLandscape;
+
   // CV
 
   public isCV: boolean;
@@ -242,7 +244,11 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
   @HostListener('window:orientationchange', ['$event'])
   onOrientationChange(event) {
-    // alert('orientationChanged');
+    if (window.innerHeight > window.innerWidth) {
+      this.isLandscape = false;
+    } else {
+      this.isLandscape = true;
+    }
   }
 
   private epicFunction() {
