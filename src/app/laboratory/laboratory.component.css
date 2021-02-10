@@ -1168,6 +1168,101 @@
   }
 }
 
+@media (max-height: 500px) {
+  .switchCamera_container {
+    grid-template-columns: [col-start-switchCamera] 60px [col-stop-switchCamera];
+    grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 60px [row-3-switchCamera] auto [row-4-switchCamera] 60px [row-5-switchCamera] auto [row-stop-switchCamera];
+    display: grid;
+    top: 70px;
+    right: 45px;
+    width: 60px;
+  }
+
+  /* RED CROSS */
+
+  .red_cross {
+    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    width: 15px;
+    height: 15px;
+    margin-bottom: 5px;
+  }
+
+  .switch_camera {
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    background-color: #00000088;
+  }
+
+  /* SPAN SWITCH CAMERA */
+
+  .span_switchCamera {
+    grid-area: row-1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    font-family: Roboto-Regular;
+    font-size: 12px;
+    text-align: center;
+    color: white;
+    margin: 10px;
+  }
+
+  /* CAMERA REGULAR */
+
+  .div_cameraRegular {
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-4-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    display: inline-block;
+  }
+
+  .img_cameraRegular {
+    grid-area: row-2-switchCamera / col-start-switchCamera / row-3-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .span_cameraRegular {
+    grid-area: row-3-switchCamera / col-start-switchCamera / row-4-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  /* CAMERA ANAGLYPH */
+
+  .div_cameraAnaglyph {
+    grid-area: row-4-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+    display: inline-block;
+  }
+
+  .img_cameraAnaglyph {
+    grid-area: row-4-switchCamera / col-start-switchCamera / row-5-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .span_cameraAnaglyph {
+    grid-area: row-5-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
+    grid-auto-rows: auto;
+  }
+
+  .imgs_camera {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    margin-bottom: 0px;
+  }
+
+  .spans_camera {
+    padding: 8px;
+    padding-bottom: 5px;
+    font-family: Roboto-Regular;
+    font-size: 11px;
+    text-align: center;
+    color: grey;
+  }
+
+  .isActive_spansCamera {
+    color: #017bff;
+  }
+}
+
 /* MENU MOVIES */
 
 .menuMovies_container {
@@ -1205,14 +1300,14 @@
   }
 }
 
-@media (orientation: landscape) {
+@media (max-height: 500px) {
   .menuMovies_container {
     grid-template-columns: [col-start-menu] auto [col-1-menu] auto [col-2-menu] auto [col-stop-menu];
     grid-template-rows: [row-start-menu] auto [row-stop-menu];
     display: grid;
     left: auto;
     bottom: auto;
-    top: 233px;
+    top: 223px;
     right: 45px;
     background-color: #00000066;
     padding-top: 5px;
