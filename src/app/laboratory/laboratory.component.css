@@ -74,6 +74,7 @@
     grid-area: row-1 / col-start / row-2 / col-stop;
     grid-auto-rows: auto;
     margin-top: 10px;
+    font-size: 15px;
     padding-right: 20px;
     margin-bottom: 0px;
     width: 500px;
@@ -106,7 +107,7 @@
     grid-template-columns: [col-start] 43px [col-1] 36px [col-2] auto [col-stop];
     grid-template-rows: [row-start] 90px [row-1] auto [row-2] auto [row-3] 40px [row-stop];
     display: grid;
-    top: 70px;
+    top: 65px;
     padding-left: 20px;
     padding-right: 10px;
   }
@@ -470,14 +471,14 @@
   position: absolute;
 }
 
-@media (max-width: 799px) {
+@media (max-width: 599px) {
   .menu_container {
-    grid-template-columns: [col-start-menu] 50px [col-1-menu] 50px [col-2-menu] 50px [col-3-menu] 50px [col-4-menu] 50px [col-5-menu] 50px [col-6-menu] auto [col-7-menu] 50px [col-stop-menu];
-    grid-template-rows: [row-start-menu] 50px [row-stop-menu];
+    grid-template-columns: [col-start-menu] 40px [col-1-menu] 40px [col-2-menu] 40px [col-3-menu] 40px [col-4-menu] 40px [col-5-menu] 40px [col-6-menu] auto [col-7-menu] 40px [col-stop-menu];
+    grid-template-rows: [row-start-menu] 40px [row-stop-menu];
     display: grid;
     bottom: 0px;
     width: 100%;
-    height: 50px;
+    height: 40px;
   }
 
   .menu {
@@ -517,33 +518,33 @@
   }
 
   .menu_icons {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     margin: 5px;
     cursor: pointer;
   }
 
   .initPosition_container {
-    grid-template-columns: [col-start-menu] 50px [col-stop-menu];
-    grid-template-rows: [row-start-menu] 50px [row-stop-menu];
+    grid-template-columns: [col-start-menu] 40px [col-stop-menu];
+    grid-template-rows: [row-start-menu] 40px [row-stop-menu];
     display: grid;
     right: 0px;
     bottom: 0px;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-color: #00000066;
   }
 
   .icon_initPosition {
     grid-area: row-start-menu / col-start-menu / row-1-menu / col-stop-menu;
     grid-auto-rows: auto;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     margin: 5px;
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 600px) {
   .menu_container {
     grid-template-columns: [col-start-menu] 50px [col-stop-menu];
     grid-template-rows: [row-start-menu] 250px [row-1-menu] 50px [row-2-menu] 50px [row-3-menu] 50px [row-4-menu] 50px [row-5-menu] 50px [row-6-menu] 1fr [row-7-menu] 60px [row-stop-menu];
@@ -613,7 +614,7 @@
   }
 }
 
-@media (orientation: landscape) {
+@media (max-height: 500px) {
   .menu_container {
     grid-template-columns: [col-start-menu] 40px [col-stop-menu];
     grid-template-rows: [row-start-menu] 60px [row-1-menu] 40px [row-2-menu] 40px [row-3-menu] 40px [row-4-menu] 40px [row-5-menu] 40px [row-6-menu] 1fr [row-7-menu] 40px [row-stop-menu];
