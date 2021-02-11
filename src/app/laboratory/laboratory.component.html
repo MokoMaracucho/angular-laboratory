@@ -4,10 +4,10 @@
 
 <!-- INTRODUCTION BACKGROUND -->
 
-<div id="div_introductionBackground" [style.display]="isOpen_introductionBackground ? 'block' : 'none'" [@fadeOut_backgroundIntroduction]="fadeOut_backgroundIntroduction">
+<div id="div-introductionBackground" [style.display]="isOpen_introductionBackground ? 'block' : 'none'" [@fadeOut_backgroundIntroduction]="fadeOut_backgroundIntroduction">
 </div>
 
-<!-- INTRODUCTION !isCV -->
+<!-- INTRODUCTION !isCV && !isMini -->
 
 <div #container_introduction *ngIf="!isCV && isOpen_introduction && !isMini" class="container-introduction">
   <img class="logo-moko-introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo moko" [@logoIntroduction_fadeIn]="logoIntroduction_fadeIn">
@@ -55,6 +55,8 @@
   </button>
 </div>
 
+<!-- INTRODUCTION !isCV && isMini -->
+
 <div #container_introduction *ngIf="!isCV && isOpen_introduction && isMini" class="container-introduction-mini">
   <img class="logo-moko-introduction-mini" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo moko" [@logoIntroduction_fadeIn]="logoIntroduction_fadeIn">
 
@@ -82,16 +84,16 @@
   </p>
 
   <div *ngIf="language_english" class="spans-language-mini" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
-    <span class="span_language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-    <span class="span_language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+    <span class="span-language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+    <span class="span-language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
   </div>
   <div *ngIf="language_french" class="spans-language-mini" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
-    <span class="span_language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-    <span class="span_language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+    <span class="span-language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+    <span class="span-language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
   </div>
   <div *ngIf="language_spanish" class="spans-language-mini" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
-    <span class="span_language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-    <span class="span_language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+    <span class="span-language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+    <span class="span-language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
   <button type="button" class="btn-enter-mini btn btn-primary mt-3" [disabled]="isLoaded == false" [@btnCloseIntroduction_fadeIn]="btnCloseIntroduction_fadeIn" (click)="close_introduction()">
@@ -101,7 +103,7 @@
   </button>
 </div>
 
-<!-- INTRODUCTION isCV -->
+<!-- INTRODUCTION isCV && !isMini -->
 
 <div *ngIf="isCV && isOpen_introduction && !isMini" class="container-introduction">
   <img class="logo-moko-introduction" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo moko" [@logoIntroduction_fadeIn]="logoIntroduction_fadeIn">
@@ -167,6 +169,8 @@
   </button>
 </div>
 
+<!-- INTRODUCTION isCV && isMini -->
+
 <div #container_introduction *ngIf="isCV && isOpen_introduction && isMini" class="container-introduction-mini">
   <img class="logo-moko-introduction-mini" src="../assets/img/logos/moko/logo_moko_introduction_106x120.png" alt="logo moko" [@logoIntroduction_fadeIn]="logoIntroduction_fadeIn">
 
@@ -212,16 +216,16 @@
   </p>
 
   <div *ngIf="language_english" class="spans-language-mini" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
-    <span class="span_language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-    <span class="span_language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+    <span class="span-language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+    <span class="span-language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
   </div>
   <div *ngIf="language_french" class="spans-language-mini" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
-    <span class="span_language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-    <span class="span_language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+    <span class="span-language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+    <span class="span-language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
   </div>
   <div *ngIf="language_spanish" class="spans-language-mini" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
-    <span class="span_language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-    <span class="span_language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+    <span class="span-language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+    <span class="span-language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
   <button type="button" class="btn-enter-mini btn btn-primary mt-3" [disabled]="isLoaded == false" [@btnCloseIntroduction_fadeIn]="btnCloseIntroduction_fadeIn" (click)="close_introduction()">
@@ -233,43 +237,81 @@
 
 <!-- MENU -->
 
-<div class="menu_container">
+<div class="menu-container">
   <div class="menu">
-    <img *ngIf="!isOpen_development" class="menu_icon_development menu_icons" src="../assets/img/menu/development_menu.png" alt="development" (click)="open_development()">
-    <img *ngIf="isOpen_development" class="menu_icon_development menu_icons" src="../assets/img/menu/close_development_menu.png" alt="development" (click)="close_development(true)">
+    <img *ngIf="!isOpen_development" class="menu-icon-development menu-icons" src="../assets/img/menu/development_menu.png" alt="development" (click)="open_development()">
+    <img *ngIf="isOpen_development" class="menu-icon-development menu-icons" src="../assets/img/menu/close_development_menu.png" alt="development" (click)="close_development(true)">
 
-    <img *ngIf="!isOpen_datas" class="menu_icon_datas menu_icons" src="../assets/img/menu/datas_menu.png" alt="datas" (click)="open_datas()">
-    <img *ngIf="isOpen_datas" class="menu_icon_datas menu_icons" src="../assets/img/menu/close_datas_menu.png" alt="datas" (click)="close_datas(true)">
+    <img *ngIf="!isOpen_datas" class="menu-icon-datas menu-icons" src="../assets/img/menu/datas_menu.png" alt="datas" (click)="open_datas()">
+    <img *ngIf="isOpen_datas" class="menu-icon-datas menu-icons" src="../assets/img/menu/close_datas_menu.png" alt="datas" (click)="close_datas(true)">
 
-    <img *ngIf="!isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/stereoscopy_menu.png" alt="stereoscopy" (click)="open_stereoscopy()">
-    <img *ngIf="isOpen_stereoscopy" class="menu_icon_stereoscopy menu_icons" src="../assets/img/menu/close_stereoscopy_menu.png" alt="stereoscopy" (click)="close_stereoscopy(true)">
+    <img *ngIf="!isOpen_stereoscopy" class="menu-icon-stereoscopy menu-icons" src="../assets/img/menu/stereoscopy_menu.png" alt="stereoscopy" (click)="open_stereoscopy()">
+    <img *ngIf="isOpen_stereoscopy" class="menu-icon-stereoscopy menu-icons" src="../assets/img/menu/close_stereoscopy_menu.png" alt="stereoscopy" (click)="close_stereoscopy(true)">
 
-    <img *ngIf="!isOpen_socNet" class="menu_icon_socNet menu_icons" src="../assets/img/menu/socNet_menu.png" alt="social networks" (click)="open_socialNetworks()">
-    <img *ngIf="isOpen_socNet" class="menu_icon_socNet menu_icons" src="../assets/img/menu/close_socNet_menu.png" alt="social networks" (click)="close_socialNetworks(true)">
+    <img *ngIf="!isOpen_socNet" class="menu-icon-socNet menu-icons" src="../assets/img/menu/socNet_menu.png" alt="social networks" (click)="open_socialNetworks()">
+    <img *ngIf="isOpen_socNet" class="menu-icon-socNet menu-icons" src="../assets/img/menu/close_socNet_menu.png" alt="social networks" (click)="close_socialNetworks(true)">
 
-    <img *ngIf="isOpen_photography" class="menu_icon_photography menu_icons" src="../assets/img/menu/photography_menu.png" alt="photography" (click)="close_photography(true)">
+    <img *ngIf="isOpen_photography" class="menu-icon-photography menu-icons" src="../assets/img/menu/photography_menu.png" alt="photography" (click)="close_photography(true)">
 
-    <img *ngIf="isOpen_movies" class="menu_icon_movies menu_icons" src="../assets/img/menu/movies_menu.png" alt="movies" (click)="close_movies(true)">
+    <img *ngIf="isOpen_movies" class="menu-icon-movies menu-icons" src="../assets/img/menu/movies_menu.png" alt="movies" (click)="close_movies(true)">
+  </div>
+</div>
+
+<!-- SWITCH CAMERA -->
+
+<div class="switchCamera-container" [style.display]="isOpen_switchCamera ? 'block' : 'none'" [@switchCamera_fadeIn]="switchCamera_fadeIn">
+  <img class="red-cross" src="../assets/img/icons/red_cross.png" alt="close" (click)="close_switchCamera()">
+
+  <div class="switch-camera">
+      <span *ngIf="language_english && !isMax576 && !isMin576" class="span-switchCamera">Switch camera</span>
+      <span *ngIf="language_french && !isMax576 && !isMin576" class="span-switchCamera">Changer de caméra</span>
+      <span *ngIf="language_spanish && !isMax576 && !isMin576" class="span-switchCamera">Cambiar de cámara</span>
+
+    <div class="div-cameraRegular" (click)="switch_cameraRegular()">
+      <img class="img-cameraRegular imgs-camera" src="../assets/img/icons/camera_regular.png" alt="camera regular">
+
+      <div *ngIf="language_english && isActive_cameraRegular" class="span-cameraRegular spans-camera isActive-spansCamera">Regular</div>
+      <div *ngIf="language_english && !isActive_cameraRegular" class="span-cameraRegular spans-camera">Regular</div>
+
+      <div *ngIf="language_french && isActive_cameraRegular" class="span-cameraRegular spans-camera isActive-spansCamera">Normale</div>
+      <div *ngIf="language_french && !isActive_cameraRegular" class="span-cameraRegular spans-camera">Normale</div>
+
+      <div *ngIf="language_spanish && isActive_cameraRegular" class="span-cameraRegular spans-camera isActive-spansCamera">Regular</div>
+      <div *ngIf="language_spanish && !isActive_cameraRegular" class="span-cameraRegular spans-camera">Regular</div>
+    </div>
+
+    <div class="div-cameraAnaglyph" (click)="switch_cameraAnaglyph()">
+      <img class="img-cameraAnaglyph imgs-camera" src="../assets/img/icons/camera_anaglyph.png" alt="camera anaglyph">
+
+      <div *ngIf="language_english && isActive_cameraAnaglyph" class="span-cameraRegular spans-camera isActive-spansCamera">Anaglyph</div>
+      <div *ngIf="language_english && !isActive_cameraAnaglyph" class="span-cameraRegular spans-camera">Anaglyph</div>
+
+      <div *ngIf="language_french && isActive_cameraAnaglyph" class="span-cameraRegular spans-camera isActive-spansCamera">Anaglyphe</div>
+      <div *ngIf="language_french && !isActive_cameraAnaglyph" class="span-cameraRegular spans-camera">Anaglyphe</div>
+
+      <div *ngIf="language_spanish && isActive_cameraAnaglyph" class="span-cameraRegular spans-camera isActive-spansCamera">Anaglifo</div>
+      <div *ngIf="language_spanish && !isActive_cameraAnaglyph" class="span-cameraRegular spans-camera">Anaglifo</div>
+    </div>
   </div>
 </div>
 
 <!-- MENU MOVIES -->
 
-<div *ngIf="isOpen_movies" class="menuMovies_container">
-  <div class="menu_movies">
-    <span class="buttons_movies material-icons" (click)="play_videoTexture()">
+<div *ngIf="isOpen_movies" class="menuMovies-container">
+  <div class="menu_-ovies">
+    <span class="buttons-movies material-icons" (click)="play_videoTexture()">
       play_arrow
     </span>
-    <span class="buttons_movies material-icons" (click)="pause_videoTexture()">
+    <span class="buttons-movies material-icons" (click)="pause_videoTexture()">
       pause
     </span>
-    <span class="buttons_movies material-icons" (click)="skipForward_videoTexture()">
+    <span class="buttons-movies material-icons" (click)="skipForward_videoTexture()">
       skip_next
     </span>
-    <span *ngIf="isMuted" class="buttons_movies material-icons" (click)="mute_videoTexture()">
+    <span *ngIf="isMuted" class="buttons-movies material-icons" (click)="mute_videoTexture()">
       volume_up
     </span>
-    <span *ngIf="!isMuted" class="buttons_movies material-icons" (click)="mute_videoTexture()">
+    <span *ngIf="!isMuted" class="buttons-movies material-icons" (click)="mute_videoTexture()">
       volume_off
     </span>
   </div>
@@ -277,20 +319,20 @@
 
 <!-- INIT POSITION -->
 
-<div class="initPosition_container">
-  <img class="icon_initPosition" src="../assets/img/menu/init_position_50x50.png" alt="init_position" (click)="init_position()">
+<div class="initPosition-container">
+  <img class="icon-initPosition" src="../assets/img/menu/init_position_50x50.png" alt="init position" (click)="init_position()">
 </div>
 
-<!-- DEVELOPMENT !isCV -->
+<!-- DEVELOPMENT !isCV && !isMini -->
 
-<div *ngIf="!isCV" class="container_cards" [style.display]="isOpen_development ? 'block' : 'none'" [@development_fadeIn]="development_fadeIn">
-  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_development_en.png" alt="development">
-  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_development_fr.png" alt="development">
-  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_development_es.png" alt="development">
+<div *ngIf="!isCV && !isMini" class="container-cards" [style.display]="isOpen_development ? 'block' : 'none'" [@development_fadeIn]="development_fadeIn">
+  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_development_en.png" alt="development">
+  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_development_fr.png" alt="development">
+  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_development_es.png" alt="development">
 
-  <h1 *ngIf="language_english" class="h1_card">Unleash your creativity!</h1>
-  <h1 *ngIf="language_french" class="h1_card">Liberez votre créativité !</h1>
-  <h1 *ngIf="language_spanish" class="h1_card">¡Da rienda suelta a tu creatividad!</h1>
+  <h1 *ngIf="language_english" class="h1-card">Unleash your creativity!</h1>
+  <h1 *ngIf="language_french" class="h1-card">Liberez votre créativité !</h1>
+  <h1 *ngIf="language_spanish" class="h1-card">¡Da rienda suelta a tu creatividad!</h1>
 
   <p class="texts-card" *ngIf="language_english">
     Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas.
@@ -319,15 +361,15 @@
     Vaya a la sección "<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Desarollo</a>" para obtener más detalles.
   </p>
 
-  <div *ngIf="language_english" class="spans_language_cards">
+  <div *ngIf="language_english" class="spans-language-cards">
     <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
     <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
   </div>
-  <div *ngIf="language_french" class="spans_language_cards">
+  <div *ngIf="language_french" class="spans-language-cards">
     <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
     <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
   </div>
-  <div *ngIf="language_spanish" class="spans_language_cards">
+  <div *ngIf="language_spanish" class="spans-language-cards">
     <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
     <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
@@ -339,12 +381,68 @@
   </button>
 </div>
 
-<!-- DEVELOPMENT isCV -->
+<!-- DEVELOPMENT !isCV && isMini -->
 
-<div *ngIf="isCV" class="container_cards" [style.display]="isOpen_development ? 'block' : 'none'" [@development_fadeIn]="development_fadeIn">
-  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_development_en.png" alt="development">
-  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_development_fr.png" alt="development">
-  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_development_es.png" alt="development">
+<div *ngIf="!isCV && isMini" class="container-cards-mini" [style.display]="isOpen_development ? 'block' : 'none'" [@development_fadeIn]="development_fadeIn">
+  <div class="card-left-mini">
+    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_development_en.png" alt="development">
+    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_development_fr.png" alt="development">
+    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_development_es.png" alt="development">
+
+    <div *ngIf="language_english" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+    </div>
+    <div *ngIf="language_french" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+    </div>
+    <div *ngIf="language_spanish" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+    </div>
+  </div>
+
+  <div class="card-right-mini">
+    <h1 *ngIf="language_english" class="h1-card-mini">Unleash your creativity!</h1>
+    <h1 *ngIf="language_french" class="h1-card-mini">Liberez votre créativité !</h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini">¡Da rienda suelta a tu creatividad!</h1>
+
+    <p *ngIf="language_english" class="texts-card-mini">
+      Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas.
+      <br/><br/>
+      Front-end and Back-end development for a better distribution of functionalities. Database management. Configuration and securing of your servers. 3D modeling and programming.
+      <br/>
+      <br/>
+      Go to the '<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Development</a>' section for more details.
+    </p>
+    <p *ngIf="language_french" class="texts-card-mini">
+      Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.
+      <br/>
+      <br/>
+      Developpement Front-end et Back-end pour une meilleure répartition des fonctionnalités. Gestion des bases de données. Configuration et sécurisation de vos serveurs. Modélisation et programmtion 3D.
+      <br/>
+      <br/>
+      Accédez à la rubrique "<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Développement</a>" pour plus de détails.
+    </p>
+    <p *ngIf="language_spanish" class="texts-card-mini">
+      Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.
+      <br/>
+      <br/>
+      Desarrollo Front-end y Back-end para una mejor distribución de funcionalidades. Gestión de base de datos. Configuración y aseguramiento de sus servidores. Modelado y programación 3D.
+      <br/>
+      <br/>
+      Vaya a la sección "<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Desarollo</a>" para obtener más detalles.
+    </p>
+  </div>
+</div>
+
+<!-- DEVELOPMENT isCV  && !isMini -->
+
+<div *ngIf="isCV && !isMini" class="container-cards" [style.display]="isOpen_development ? 'block' : 'none'" [@development_fadeIn]="development_fadeIn">
+  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_development_en.png" alt="development">
+  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_development_fr.png" alt="development">
+  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_development_es.png" alt="development">
 
   <h1 class="h1_card">SPRING - ANGULAR - BABYLONJS</h1>
 
@@ -354,27 +452,27 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
       <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
     </svg>
-    <span class="span_development">Java - Spring - Maven</span><br/>
+    <span class="span-development">Java - Spring - Maven</span><br/>
     Front-office development:<br/>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
       <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
     </svg>
-    <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
+    <span class="span-development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
     Data bases:<br/>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
       <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
     </svg>
-    <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
+    <span class="span-development">PostgreSQL - MySQL - Hibernate</span><br/>
     Configuration and securing of your servers:<br/>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
       <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
     </svg>
-    <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
+    <span class="span-development">Ubuntu - Apache - Tomcat</span><br/>
     3D programming and modeling:<br/>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
       <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
     </svg>
-    <span class="span_development">3Ds Max - Blender - BabylonJS</span>
+    <span class="span-development">3Ds Max - Blender - BabylonJS</span>
   </p>
   <p class="texts-card" *ngIf="language_french">
     Deux objectifs ont guidé mon apprentissage :
@@ -393,22 +491,22 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
       <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
     </svg>
-    <span class="span_development">Java - Spring - Maven</span><br/>
+    <span class="span-development">Java - Spring - Maven</span><br/>
     Front-office (Angular) :<br/>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
       <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
     </svg>
-    <span class="span_development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
+    <span class="span-development">HTML - CSS - Bootstrap - Typescript - Angular</span><br/>
     Bases de datos :<br/>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
       <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
     </svg>
-    <span class="span_development">PostgreSQL - MySQL - Hibernate</span><br/>
+    <span class="span-development">PostgreSQL - MySQL - Hibernate</span><br/>
     Configuración y protección de sus servidores :<br/>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
       <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
     </svg>
-    <span class="span_development">Ubuntu - Apache - Tomcat</span><br/>
+    <span class="span-development">Ubuntu - Apache - Tomcat</span><br/>
     Programación y modelado 3D :<br/>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
       <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753l5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
@@ -416,15 +514,15 @@
     <span class="span_development">3Ds Max - Blender - BabylonJS</span>
   </p>
 
-  <div *ngIf="language_english" class="spans_language_cards">
+  <div *ngIf="language_english" class="spans-language-cards">
     <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
     <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
   </div>
-  <div *ngIf="language_french" class="spans_language_cards">
+  <div *ngIf="language_french" class="spans-language-cards">
     <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
     <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
   </div>
-  <div *ngIf="language_spanish" class="spans_language_cards">
+  <div *ngIf="language_spanish" class="spans-language-cards">
     <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
     <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
@@ -436,16 +534,70 @@
   </button>
 </div>
 
-<!-- DATAS !isCV -->
+<!-- DEVELOPMENT isCV && isMini -->
 
-<div *ngIf="!isCV" class="container_cards" [style.display]="isOpen_datas ? 'block' : 'none'" [@datas_fadeIn]="datas_fadeIn">
-  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_datas_en.png" alt="datas">
-  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_datas_fr.png" alt="datas">
-  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_datas_es.png" alt="datas">
+<div *ngIf="isCV && isMini" class="container-cards-mini" [style.display]="isOpen_development ? 'block' : 'none'" [@development_fadeIn]="development_fadeIn">
+  <div class="card-left-mini">
+    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_development_en.png" alt="development">
+    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_development_fr.png" alt="development">
+    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_development_es.png" alt="development">
 
-  <h1 *ngIf="language_english" class="h1_card"></h1>
-  <h1 *ngIf="language_french" class="h1_card">Reprenez le contrôle de vos données</h1>
-  <h1 *ngIf="language_spanish" class="h1_card"></h1>
+    <div *ngIf="language_english" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+    </div>
+    <div *ngIf="language_french" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+    </div>
+    <div *ngIf="language_spanish" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+    </div>
+  </div>
+
+  <div class="card-right-mini">
+    <h1 class="h1-card-mini">SPRING - ANGULAR - BABYLONJS</h1>
+
+    <p *ngIf="language_english" class="texts-card-mini">
+      Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas.
+      <br/><br/>
+      Front-end and Back-end development for a better distribution of functionalities. Database management. Configuration and securing of your servers. 3D modeling and programming.
+      <br/>
+      <br/>
+      Go to the '<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Development</a>' section for more details.
+    </p>
+    <p *ngIf="language_french" class="texts-card-mini">
+      Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.
+      <br/>
+      <br/>
+      Developpement Front-end et Back-end pour une meilleure répartition des fonctionnalités. Gestion des bases de données. Configuration et sécurisation de vos serveurs. Modélisation et programmtion 3D.
+      <br/>
+      <br/>
+      Accédez à la rubrique "<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Développement</a>" pour plus de détails.
+    </p>
+    <p *ngIf="language_spanish" class="texts-card-mini">
+      Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.
+      <br/>
+      <br/>
+      Desarrollo Front-end y Back-end para una mejor distribución de funcionalidades. Gestión de base de datos. Configuración y aseguramiento de sus servidores. Modelado y programación 3D.
+      <br/>
+      <br/>
+      Vaya a la sección "<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Desarollo</a>" para obtener más detalles.
+    </p>
+  </div>
+</div>
+
+<!-- DATAS !isCV && !isMini -->
+
+<div *ngIf="!isCV && !isMini" class="container-cards" [style.display]="isOpen_datas ? 'block' : 'none'" [@datas_fadeIn]="datas_fadeIn">
+  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_datas_en.png" alt="datas">
+  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_datas_fr.png" alt="datas">
+  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_datas_es.png" alt="datas">
+
+  <h1 *ngIf="language_english" class="h1-card"></h1>
+  <h1 *ngIf="language_french" class="h1-card">Reprenez le contrôle de vos données</h1>
+  <h1 *ngIf="language_spanish" class="h1-card"></h1>
 
   <p class="texts-card" *ngIf="language_english">
     MK-Lab develops innovative 3D representation tools for better visualization and exploitation of your data.<br/>
@@ -459,17 +611,17 @@
     MK-Lab desarrolla herramientas de representación 3D innovadoras para una mejor visualización y explotación de sus datos.<br/>
     Mejore su experiencia de usuario y gane eficiencia con nuestras innovadoras herramientas de representación.
   </p>
-  <div *ngIf="language_english" class="spans_language_cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+  <div *ngIf="language_english" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
   </div>
-  <div *ngIf="language_french" class="spans_language_cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  <div *ngIf="language_french" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
   </div>
-  <div *ngIf="language_spanish" class="spans_language_cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  <div *ngIf="language_spanish" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
   <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_datas(true)">
@@ -479,16 +631,58 @@
   </button>
 </div>
 
-<!-- DATAS isCV -->
+<!-- DATA !isCV && isMini -->
 
-<div *ngIf="isCV" class="container_cards" [style.display]="isOpen_datas ? 'block' : 'none'" [@datas_fadeIn]="datas_fadeIn">
-  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_datas_en.png" alt="datas">
-  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_datas_fr.png" alt="datas">
-  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_datas_es.png" alt="datas">
+<div *ngIf="!isCV && isMini" class="container-cards-mini" [style.display]="isOpen_datas ? 'block' : 'none'" [@data_fadeIn]="datas_fadeIn">
+  <div class="card-left-mini">
+    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_datas_en.png" alt="development">
+    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_datas_fr.png" alt="development">
+    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_datas_es.png" alt="development">
 
-  <h1 *ngIf="language_english" class="h1_card"></h1>
-  <h1 *ngIf="language_french" class="h1_card"></h1>
-  <h1 *ngIf="language_spanish" class="h1_card"></h1>
+    <div *ngIf="language_english" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+    </div>
+    <div *ngIf="language_french" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+    </div>
+    <div *ngIf="language_spanish" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+    </div>
+  </div>
+
+  <div class="card-right-mini">
+    <h1 *ngIf="language_english" class="h1-card-mini">Take back control of your data!</h1>
+    <h1 *ngIf="language_french" class="h1-card-mini">Reprenez le contrôle de vos données</h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini">¡Recupere el control de sus datos!</h1>
+
+    <p *ngIf="language_english" class="texts-card-mini">
+      MK-Lab develops innovative 3D representation tools for better visualization and exploitation of your data.<br/>
+      Improve your user experience and gain efficiency with our innovative representation tools.
+    </p>
+    <p *ngIf="language_french" class="texts-card-mini">
+      MK-Lab développe des outils de représentation 3D innovants pour une meilleure visualisation et exploitation de vos données.<br/>
+      Améliorez votre expérience utilisateur et gagnez en efficience grâce à des outils de représentation personnalisables.
+    </p>
+    <p *ngIf="language_spanish" class="texts-card-mini">
+      MK-Lab desarrolla herramientas de representación 3D innovadoras para una mejor visualización y explotación de sus datos.<br/>
+      Mejore su experiencia de usuario y gane eficiencia con nuestras innovadoras herramientas de representación.
+    </p>
+  </div>
+</div>
+
+<!-- DATAS isCV && !isMini -->
+
+<div *ngIf="isCV && !isMini" class="container-cards" [style.display]="isOpen_datas ? 'block' : 'none'" [@datas_fadeIn]="datas_fadeIn">
+  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_datas_en.png" alt="datas">
+  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_datas_fr.png" alt="datas">
+  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_datas_es.png" alt="datas">
+
+  <h1 *ngIf="language_english" class="h1-card"></h1>
+  <h1 *ngIf="language_french" class="h1-card"></h1>
+  <h1 *ngIf="language_spanish" class="h1-card"></h1>
 
   <p class="texts-card" *ngIf="language_english">
 
@@ -502,17 +696,17 @@
   <p class="texts-card" *ngIf="language_spanish">
 
   </p>
-  <div *ngIf="language_english" class="spans_language_cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+  <div *ngIf="language_english" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
   </div>
-  <div *ngIf="language_french" class="spans_language_cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  <div *ngIf="language_french" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
   </div>
-  <div *ngIf="language_spanish" class="spans_language_cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  <div *ngIf="language_spanish" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
   <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_datas(true)">
@@ -522,16 +716,55 @@
   </button>
 </div>
 
-<!-- STEREOSCOPY !isCV -->
+<!-- DATA isCV && isMini -->
 
-<div *ngIf="!isCV && !isMobileDevice" class="container_cards" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
-  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_stereoscopy_en.png" alt="stereoscopy">
-  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_stereoscopy_fr.png" alt="stereoscopy">
-  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_stereoscopy_es.png" alt="stereoscopy">
+<div *ngIf="isCV && isMini" class="container-cards-mini" [style.display]="isOpen_datas ? 'block' : 'none'" [@data_fadeIn]="datas_fadeIn">
+  <div class="card-left-mini">
+    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_datas_en.png" alt="development">
+    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_datas_fr.png" alt="development">
+    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_datas_es.png" alt="development">
 
-  <h1 *ngIf="language_english" class="h1_card">Immerse your community in your universe!</h1>
-  <h1 *ngIf="language_french" class="h1_card">Immergez votre communauté dans votre univers !</h1>
-  <h1 *ngIf="language_spanish" class="h1_card">¡Sumerja a su comunidad en su universo!</h1>
+    <div *ngIf="language_english" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+    </div>
+    <div *ngIf="language_french" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+    </div>
+    <div *ngIf="language_spanish" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+    </div>
+  </div>
+
+  <div class="card-right-mini">
+    <h1 *ngIf="language_english" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_french" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
+
+    <p *ngIf="language_english" class="texts-card-mini">
+
+    </p>
+    <p *ngIf="language_french" class="texts-card-mini">
+
+    </p>
+    <p *ngIf="language_spanish" class="texts-card-mini">
+
+    </p>
+  </div>
+</div>
+
+<!-- STEREOSCOPY !isCV && !isMini -->
+
+<div *ngIf="!isCV && !isMobileDevice && !isMini" class="container-cards" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
+  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_stereoscopy_en.png" alt="stereoscopy">
+  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_stereoscopy_fr.png" alt="stereoscopy">
+  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_stereoscopy_es.png" alt="stereoscopy">
+
+  <h1 *ngIf="language_english" class="h1-card">Immerse your community in your universe!</h1>
+  <h1 *ngIf="language_french" class="h1-card">Immergez votre communauté dans votre univers !</h1>
+  <h1 *ngIf="language_spanish" class="h1-card">¡Sumerja a su comunidad en su universo!</h1>
 
   <p class="texts-card" *ngIf="language_english">
     Give an unprecedented viewing experience for your products and data using stereoscopy.
@@ -542,17 +775,17 @@
   <p class="texts-card" *ngIf="language_spanish">
     Ofrezca una experiencia de visualización sin precedentes para sus productos y datos mediante estereoscopía.
   </p>
-  <div *ngIf="language_english" class="spans_language_cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+  <div *ngIf="language_english" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
   </div>
-  <div *ngIf="language_french" class="spans_language_cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  <div *ngIf="language_french" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
   </div>
-  <div *ngIf="language_spanish" class="spans_language_cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  <div *ngIf="language_spanish" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
   <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_stereoscopy(true)">
@@ -561,16 +794,55 @@
     <span *ngIf="language_spanish">Cerrar</span>
   </button>
 
-  <!-- STEREOSCOPY isCV -->
+  <!-- STEREOSCOPY !isCV && isMini -->
 
-  <div *ngIf="isCV && !isMobileDevice" class="container_cards" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
-    <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_stereoscopy_en.png" alt="stereoscopy">
-    <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_stereoscopy_fr.png" alt="stereoscopy">
-    <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_stereoscopy_es.png" alt="stereoscopy">
+  <div *ngIf="!isCV && !isMobileDevice && isMini" class="container-cards-mini" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
+    <div class="card-left-mini">
+      <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_en.png" alt="development">
+      <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_fr.png" alt="development">
+      <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_es.png" alt="development">
 
-    <h1 *ngIf="language_english" class="h1_card"></h1>
-    <h1 *ngIf="language_french" class="h1_card"></h1>
-    <h1 *ngIf="language_spanish" class="h1_card"></h1>
+      <div *ngIf="language_english" class="spans-language-cards-mini">
+        <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+        <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+      </div>
+      <div *ngIf="language_french" class="spans-language-cards-mini">
+        <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+        <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+      </div>
+      <div *ngIf="language_spanish" class="spans-language-cards-mini">
+        <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+        <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+      </div>
+    </div>
+
+    <div class="card-right-mini">
+      <h1 *ngIf="language_english" class="h1-card-mini"></h1>
+      <h1 *ngIf="language_french" class="h1-card-mini"></h1>
+      <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
+
+      <p *ngIf="language_english" class="texts-card-mini">
+        Give an unprecedented viewing experience for your products and data using stereoscopy.
+      </p>
+      <p *ngIf="language_french" class="texts-card-mini">
+        Offrez une expérience inédite de visualisation de vos produits et de vos données grâce à la stéréoscopie.
+      </p>
+      <p *ngIf="language_spanish" class="texts-card-mini">
+        Ofrezca una experiencia de visualización sin precedentes para sus productos y datos mediante estereoscopía.
+      </p>
+    </div>
+  </div>
+
+  <!-- STEREOSCOPY isCV && !isMini -->
+
+  <div *ngIf="isCV && !isMobileDevice && !isMini" class="container-cards" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
+    <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_stereoscopy_en.png" alt="stereoscopy">
+    <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_stereoscopy_fr.png" alt="stereoscopy">
+    <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_stereoscopy_es.png" alt="stereoscopy">
+
+    <h1 *ngIf="language_english" class="h1-card"></h1>
+    <h1 *ngIf="language_french" class="h1-card"></h1>
+    <h1 *ngIf="language_spanish" class="h1-card"></h1>
 
     <p class="texts-card" *ngIf="language_english">
 
@@ -584,15 +856,15 @@
     <p class="texts-card" *ngIf="language_spanish">
 
     </p>
-    <div *ngIf="language_english" class="spans_language_cards">
+    <div *ngIf="language_english" class="spans-language-cards">
         <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
         <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
     </div>
-    <div *ngIf="language_french" class="spans_language_cards">
+    <div *ngIf="language_french" class="spans-language-cards">
         <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
         <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
     </div>
-    <div *ngIf="language_spanish" class="spans_language_cards">
+    <div *ngIf="language_spanish" class="spans-language-cards">
         <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
         <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
     </div>
@@ -605,16 +877,55 @@
   </div>
 </div>
 
-<!-- SOCIAL NETWORKS !isCV -->
+<!-- STEREOSCOPY isCV && isMini -->
 
-<div *ngIf="!isCV" class="container_cards" [style.display]="isOpen_socNet ? 'block' : 'none'" [@socNet_fadeIn]="socNet_fadeIn">
-  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_socNet_en.png" alt="social networks">
-  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_socNet_fr.png" alt="social networks">
-  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_socNet_es.png" alt="social networks">
+<div *ngIf="isCV && !isMobileDevice && isMini" class="container-cards-mini" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
+  <div class="card-left-mini">
+    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_en.png" alt="development">
+    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_fr.png" alt="development">
+    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_es.png" alt="development">
 
-  <h1 *ngIf="language_english" class="h1_card"></h1>
-  <h1 *ngIf="language_french" class="h1_card"></h1>
-  <h1 *ngIf="language_spanish" class="h1_card"></h1>
+    <div *ngIf="language_english" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+    </div>
+    <div *ngIf="language_french" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+    </div>
+    <div *ngIf="language_spanish" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+    </div>
+  </div>
+
+  <div class="card-right-mini">
+    <h1 *ngIf="language_english" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_french" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
+
+    <p *ngIf="language_english" class="texts-card-mini">
+
+    </p>
+    <p *ngIf="language_french" class="texts-card-mini">
+
+    </p>
+    <p *ngIf="language_spanish" class="texts-card-mini">
+
+    </p>
+  </div>
+</div>
+
+<!-- SOCIAL NETWORKS !isCV && !isMini -->
+
+<div *ngIf="!isCV && !isMini" class="container-cards" [style.display]="isOpen_socNet ? 'block' : 'none'" [@socNet_fadeIn]="socNet_fadeIn">
+  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_socNet_en.png" alt="social networks">
+  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_socNet_fr.png" alt="social networks">
+  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_socNet_es.png" alt="social networks">
+
+  <h1 *ngIf="language_english" class="h1-card"></h1>
+  <h1 *ngIf="language_french" class="h1-card"></h1>
+  <h1 *ngIf="language_spanish" class="h1-card"></h1>
 
   <p class="texts-card" *ngIf="language_english">
 
@@ -625,15 +936,15 @@
   <p class="texts-card" *ngIf="language_spanish">
 
   </p>
-  <div *ngIf="language_english" class="spans_language_cards">
+  <div *ngIf="language_english" class="spans-language-cards">
       <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
   </div>
-  <div *ngIf="language_french" class="spans_language_cards">
+  <div *ngIf="language_french" class="spans-language-cards">
       <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
   </div>
-  <div *ngIf="language_spanish" class="spans_language_cards">
+  <div *ngIf="language_spanish" class="spans-language-cards">
       <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
@@ -645,16 +956,55 @@
   </button>
 </div>
 
-<!-- SOCIAL NETWORKS isCV -->
+<!-- SOCIAL NETWORKS !isCV && isMini -->
 
-<div *ngIf="isCV" class="container_cards" [style.display]="isOpen_socNet ? 'block' : 'none'" [@socNet_fadeIn]="socNet_fadeIn">
-  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_socNet_en.png" alt="social networks">
-  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_socNet_fr.png" alt="social networks">
-  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_socNet_es.png" alt="social networks">
+<div *ngIf="!isCV && isMini" class="container-cards-mini" [style.display]="isOpen_socNet ? 'block' : 'none'" [@socNet_fadeIn]="socNet_fadeIn">
+  <div class="card-left-mini">
+    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_socNet_en.png" alt="development">
+    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_socNet_fr.png" alt="development">
+    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_socNet_es.png" alt="development">
 
-  <h1 *ngIf="language_english" class="h1_card"></h1>
-  <h1 *ngIf="language_french" class="h1_card"></h1>
-  <h1 *ngIf="language_spanish" class="h1_card"></h1>
+    <div *ngIf="language_english" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+    </div>
+    <div *ngIf="language_french" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+    </div>
+    <div *ngIf="language_spanish" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+    </div>
+  </div>
+
+  <div class="card-right-mini">
+    <h1 *ngIf="language_english" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_french" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
+
+    <p *ngIf="language_english" class="texts-card-mini">
+
+    </p>
+    <p *ngIf="language_french" class="texts-card-mini">
+
+    </p>
+    <p *ngIf="language_spanish" class="texts-card-mini">
+
+    </p>
+  </div>
+</div>
+
+<!-- SOCIAL NETWORKS isCV && !isMini -->
+
+<div *ngIf="isCV && !isMini" class="container-cards" [style.display]="isOpen_socNet ? 'block' : 'none'" [@socNet_fadeIn]="socNet_fadeIn">
+  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_socNet_en.png" alt="social networks">
+  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_socNet_fr.png" alt="social networks">
+  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_socNet_es.png" alt="social networks">
+
+  <h1 *ngIf="language_english" class="h1-card"></h1>
+  <h1 *ngIf="language_french" class="h1-card"></h1>
+  <h1 *ngIf="language_spanish" class="h1-card"></h1>
 
   <p class="texts-card" *ngIf="language_english">
 
@@ -665,15 +1015,15 @@
   <p class="texts-card" *ngIf="language_spanish">
 
   </p>
-  <div *ngIf="language_english" class="spans_language_cards">
+  <div *ngIf="language_english" class="spans-language-cards">
       <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
   </div>
-  <div *ngIf="language_french" class="spans_language_cards">
+  <div *ngIf="language_french" class="spans-language-cards">
       <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
   </div>
-  <div *ngIf="language_spanish" class="spans_language_cards">
+  <div *ngIf="language_spanish" class="spans-language-cards">
       <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
@@ -685,54 +1035,55 @@
   </button>
 </div>
 
-<!-- SWITCH CAMERA -->
+<!-- SOCIAL NETWORKS isCV && isMini -->
 
-<div class="switchCamera_container" [style.display]="isOpen_switchCamera ? 'block' : 'none'" [@switchCamera_fadeIn]="switchCamera_fadeIn">
-  <img class="red_cross" src="../assets/img/icons/red_cross.png" alt="close" (click)="close_switchCamera()">
+<div *ngIf="isCV && isMini" class="container-cards-mini" [style.display]="isOpen_socNet ? 'block' : 'none'" [@socNet_fadeIn]="socNet_fadeIn">
+  <div class="card-left-mini">
+    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_socNet_en.png" alt="development">
+    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_socNet_fr.png" alt="development">
+    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_socNet_es.png" alt="development">
 
-  <div class="switch_camera">
-      <span *ngIf="language_english && !isMax576 && !isMin576" class="span_switchCamera">Switch camera</span>
-      <span *ngIf="language_french && !isMax576 && !isMin576" class="span_switchCamera">Changer de caméra</span>
-      <span *ngIf="language_spanish && !isMax576 && !isMin576" class="span_switchCamera">Cambiar de cámara</span>
-
-    <div class="div_cameraRegular" (click)="switch_cameraRegular()">
-      <img class="img_cameraRegular imgs_camera" src="../assets/img/icons/camera_regular.png" alt="camera_regular">
-
-      <div *ngIf="language_english && isActive_cameraRegular" class="span_cameraRegular spans_camera isActive_spansCamera">Regular</div>
-      <div *ngIf="language_english && !isActive_cameraRegular" class="span_cameraRegular spans_camera">Regular</div>
-
-      <div *ngIf="language_french && isActive_cameraRegular" class="span_cameraRegular spans_camera isActive_spansCamera">Normale</div>
-      <div *ngIf="language_french && !isActive_cameraRegular" class="span_cameraRegular spans_camera">Normale</div>
-
-      <div *ngIf="language_spanish && isActive_cameraRegular" class="span_cameraRegular spans_camera isActive_spansCamera">Regular</div>
-      <div *ngIf="language_spanish && !isActive_cameraRegular" class="span_cameraRegular spans_camera">Regular</div>
+    <div *ngIf="language_english" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
     </div>
-
-    <div class="div_cameraAnaglyph" (click)="switch_cameraAnaglyph()">
-      <img class="img_cameraAnaglyph imgs_camera" src="../assets/img/icons/camera_anaglyph.png" alt="camera_anaglyph">
-
-      <div *ngIf="language_english && isActive_cameraAnaglyph" class="span_cameraRegular spans_camera isActive_spansCamera">Anaglyph</div>
-      <div *ngIf="language_english && !isActive_cameraAnaglyph" class="span_cameraRegular spans_camera">Anaglyph</div>
-
-      <div *ngIf="language_french && isActive_cameraAnaglyph" class="span_cameraRegular spans_camera isActive_spansCamera">Anaglyphe</div>
-      <div *ngIf="language_french && !isActive_cameraAnaglyph" class="span_cameraRegular spans_camera">Anaglyphe</div>
-
-      <div *ngIf="language_spanish && isActive_cameraAnaglyph" class="span_cameraRegular spans_camera isActive_spansCamera">Anaglifo</div>
-      <div *ngIf="language_spanish && !isActive_cameraAnaglyph" class="span_cameraRegular spans_camera">Anaglifo</div>
+    <div *ngIf="language_french" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
     </div>
+    <div *ngIf="language_spanish" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+    </div>
+  </div>
+
+  <div class="card-right-mini">
+    <h1 *ngIf="language_english" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_french" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
+
+    <p *ngIf="language_english" class="texts-card-mini">
+
+    </p>
+    <p *ngIf="language_french" class="texts-card-mini">
+
+    </p>
+    <p *ngIf="language_spanish" class="texts-card-mini">
+
+    </p>
   </div>
 </div>
 
-<!-- PHOTOGRAPHY -->
+<!-- PHOTOGRAPHY !isCV && !isMini -->
 
-<div class="container_cards" [style.display]="isOpen_photography ? 'block' : 'none'" [@photography_fadeIn]="photography_fadeIn">
-  <img *ngIf="language_english" class="title_card" src="../assets/img/titles/title_photography_en.png" alt="photography">
-  <img *ngIf="language_french" class="title_card" src="../assets/img/titles/title_photography_fr.png" alt="photography">
-  <img *ngIf="language_spanish" class="title_card" src="../assets/img/titles/title_photography_es.png" alt="photography">
+<div *ngIf="!isCV && !isMini" class="container-cards" [style.display]="isOpen_photography ? 'block' : 'none'" [@photography_fadeIn]="photography_fadeIn">
+  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_photography_en.png" alt="photography">
+  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_photography_fr.png" alt="photography">
+  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_photography_es.png" alt="photography">
 
-  <h1 *ngIf="language_english" class="h1_card">Immerse your community in your universe!</h1>
-  <h1 *ngIf="language_french" class="h1_card">Immergez votre communauté dans votre univers !</h1>
-  <h1 *ngIf="language_spanish" class="h1_card">¡Sumerja a su comunidad en su universo!</h1>
+  <h1 *ngIf="language_english" class="h1-card">Immerse your community in your universe!</h1>
+  <h1 *ngIf="language_french" class="h1-card">Immergez votre communauté dans votre univers !</h1>
+  <h1 *ngIf="language_spanish" class="h1-card">¡Sumerja a su comunidad en su universo!</h1>
 
   <p class="texts-card" *ngIf="language_english">
     Street photographer, my desire is to show the beauty of the things that surround us and that the frenzy of our urban lives does not leave us time to contemplate.
@@ -761,15 +1112,15 @@
     <br/>
     Sitio dedicado por venir.
   </p>
-  <div *ngIf="language_english" class="spans_language_cards">
+  <div *ngIf="language_english" class="spans-language-cards">
       <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
   </div>
-  <div *ngIf="language_french" class="spans_language_cards">
+  <div *ngIf="language_french" class="spans-language-cards">
       <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
   </div>
-  <div *ngIf="language_spanish" class="spans_language_cards">
+  <div *ngIf="language_spanish" class="spans-language-cards">
       <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
@@ -781,9 +1132,181 @@
   </button>
 </div>
 
+<!-- Photography !isCV && isMini -->
+
+<div *ngIf="!isCV && isMini" class="container-cards-mini" [style.display]="isOpen_photography ? 'block' : 'none'" [@photography_fadeIn]="photography_fadeIn">
+  <div class="card-left-mini">
+    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_photography_en.png" alt="development">
+    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_photography_fr.png" alt="development">
+    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_photography_es.png" alt="development">
+
+    <div *ngIf="language_english" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+    </div>
+    <div *ngIf="language_french" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+    </div>
+    <div *ngIf="language_spanish" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+    </div>
+  </div>
+
+  <div class="card-right-mini">
+    <h1 *ngIf="language_english" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_french" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
+
+    <p *ngIf="language_english" class="texts-card-mini">
+      Street photographer, my desire is to show the beauty of the things that surround us and that the frenzy of our urban lives does not leave us time to contemplate.
+      <br/>
+      <br/>
+      Light and colors at the service of emotions, such is my conception of photography.
+      <br/>
+      <br/>
+      Dedicated site to come.
+    </p>
+    <p *ngIf="language_french" class="texts-card-mini">
+      Photographe de rue, ma volonté est de montrer la beauté des choses qui nous entourent et que la frénésie de nos vies urbaines ne nous laisse le temps de contempler.
+      <br/>
+      <br/>
+      La lumière et les couleurs aux service des émotions, telle est ma conception de la photographie.
+      <br/>
+      <br/>
+      Site dédié à venir.
+    </p>
+    <p *ngIf="language_spanish" class="texts-card-mini">
+      Fotografo callejero, mi deseo es mostrar la belleza de las cosas que nos rodean y que el frenesí de nuestra vida urbana no nos deje tiempo para contemplar.
+      <br/>
+      <br/>
+      La luz y los colores al servicio de las emociones, ¡tal es mi concepción de la fotografía¡.
+      <br/>
+      <br/>
+      Sitio dedicado por venir.
+    </p>
+  </div>
+</div>
+
+<!-- PHOTOGRAPHY isCV && !isMini -->
+
+<div *ngIf="isCV && !isMini" class="container-cards" [style.display]="isOpen_photography ? 'block' : 'none'" [@photography_fadeIn]="photography_fadeIn">
+  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_photography_en.png" alt="photography">
+  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_photography_fr.png" alt="photography">
+  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_photography_es.png" alt="photography">
+
+  <h1 *ngIf="language_english" class="h1-card">Immerse your community in your universe!</h1>
+  <h1 *ngIf="language_french" class="h1-card">Immergez votre communauté dans votre univers !</h1>
+  <h1 *ngIf="language_spanish" class="h1-card">¡Sumerja a su comunidad en su universo!</h1>
+
+  <p class="texts-card" *ngIf="language_english">
+    Street photographer, my desire is to show the beauty of the things that surround us and that the frenzy of our urban lives does not leave us time to contemplate.
+    <br/>
+    <br/>
+    Light and colors at the service of emotions, such is my conception of photography.
+    <br/>
+    <br/>
+    Dedicated site to come.
+  </p>
+  <p class="texts-card" *ngIf="language_french">
+    Photographe de rue, ma volonté est de montrer la beauté des choses qui nous entourent et que la frénésie de nos vies urbaines ne nous laisse le temps de contempler.
+    <br/>
+    <br/>
+    La lumière et les couleurs aux service des émotions, telle est ma conception de la photographie.
+    <br/>
+    <br/>
+    Site dédié à venir.
+  </p>
+  <p class="texts-card" *ngIf="language_spanish">
+    Fotografo callejero, mi deseo es mostrar la belleza de las cosas que nos rodean y que el frenesí de nuestra vida urbana no nos deje tiempo para contemplar.
+    <br/>
+    <br/>
+    La luz y los colores al servicio de las emociones, ¡tal es mi concepción de la fotografía¡.
+    <br/>
+    <br/>
+    Sitio dedicado por venir.
+  </p>
+  <div *ngIf="language_english" class="spans-language-cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+  </div>
+  <div *ngIf="language_french" class="spans-language-cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  </div>
+  <div *ngIf="language_spanish" class="spans-language-cards">
+      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  </div>
+
+  <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_photography(true)">
+    <span *ngIf="language_english">Close</span>
+    <span *ngIf="language_french">Fermer</span>
+    <span *ngIf="language_spanish">Cerrar</span>
+  </button>
+</div>
+
+<!-- Photography isCV && isMini -->
+
+<div *ngIf="isCV && isMini" class="container-cards-mini" [style.display]="isOpen_photography ? 'block' : 'none'" [@photography_fadeIn]="photography_fadeIn">
+  <div class="card-left-mini">
+    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_photography_en.png" alt="development">
+    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_photography_fr.png" alt="development">
+    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_photography_es.png" alt="development">
+
+    <div *ngIf="language_english" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+    </div>
+    <div *ngIf="language_french" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+    </div>
+    <div *ngIf="language_spanish" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+    </div>
+  </div>
+
+  <div class="card-right-mini">
+    <h1 *ngIf="language_english" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_french" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
+
+    <p *ngIf="language_english" class="texts-card-mini">
+      Street photographer, my desire is to show the beauty of the things that surround us and that the frenzy of our urban lives does not leave us time to contemplate.
+      <br/>
+      <br/>
+      Light and colors at the service of emotions, such is my conception of photography.
+      <br/>
+      <br/>
+      Dedicated site to come.
+    </p>
+    <p *ngIf="language_french" class="texts-card-mini">
+      Photographe de rue, ma volonté est de montrer la beauté des choses qui nous entourent et que la frénésie de nos vies urbaines ne nous laisse le temps de contempler.
+      <br/>
+      <br/>
+      La lumière et les couleurs aux service des émotions, telle est ma conception de la photographie.
+      <br/>
+      <br/>
+      Site dédié à venir.
+    </p>
+    <p *ngIf="language_spanish" class="texts-card-mini">
+      Fotografo callejero, mi deseo es mostrar la belleza de las cosas que nos rodean y que el frenesí de nuestra vida urbana no nos deje tiempo para contemplar.
+      <br/>
+      <br/>
+      La luz y los colores al servicio de las emociones, ¡tal es mi concepción de la fotografía¡.
+      <br/>
+      <br/>
+      Sitio dedicado por venir.
+    </p>
+  </div>
+</div>
+
 <!-- CACHE MOBILE DEVICE -->
 
-<div class="cacheMobileDevice_container" [style.display]="isVisible_cacheMobileDevice ? 'block' : 'none'" [@isVisible_cacheMobileDevice]="isVisible_cacheMobileDevice">
+<div class="cacheMobileDevice-container" [style.display]="isVisible_cacheMobileDevice ? 'block' : 'none'" [@isVisible_cacheMobileDevice]="isVisible_cacheMobileDevice">
 </div>
 <!--
   <div *ngIf="isMobileDevice" class="cacheMobileDevice_container" [style.display]="isVisible_cacheMobileDevice ? 'block' : 'none'" [@isVisible_cacheMobileDevice]="isVisible_cacheMobileDevice" touch-action="none">

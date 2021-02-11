@@ -92,7 +92,7 @@
     height: 20px;
   }
 
-  .container_menuNavBar-mini {
+  .container-menuNavBar-mini {
     grid-template-columns: [col-start-menuNavBar-mini] auto [col-1-menuNavBar-mini] 35px [col-2-menuNavBar-mini] 35px [col-3-menuNavBar-mini] 35px [col-4-menuNavBar-mini] 40px [col-stop-menuNavBar-mini];
     grid-template-rows: [row-start-menuNavBar-mini] 40px [row-1-menuNavBar-mini] 40px [row-2-menuNavBar-mini] 40px [row-3-menuNavBar-mini] 40px [row-4-menuNavBar-mini] 40px [row-stop-menuNavBar-mini];
     display: grid;

@@ -115,7 +115,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   public isMin1140 = false;
 
   public isLandscape;
-  public isMini = true;
+  public isMini;
 
   // CV
 
@@ -200,7 +200,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.innerHeight = window.innerHeight;
       this.laboratoryService.set_windowDimensions(this.innerWidth, this.innerHeight);
       this.defineWidthRange();
-      //this.fetch_isMini();
+      this.fetch_isMini();
 
       this.isCV = this.activatedRoute.snapshot.params.isCV;
       if(!this.isCV) {
@@ -242,12 +242,12 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.innerHeight = window.innerHeight;
       this.laboratoryService.set_windowDimensions(window.innerWidth, window.innerHeight);
       this.defineWidthRange();
-      //this.fetch_isMini();
+      this.fetch_isMini();
   }
 
   @HostListener('window:orientationchange', ['$event'])
   onOrientationChange(event) {
-    //this.fetch_isMini();
+    this.fetch_isMini();
   }
 
   private fetch_isMini():void {

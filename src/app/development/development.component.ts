@@ -172,6 +172,9 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
   public isMin960 = false;
   public isMin1140 = false;
 
+  public isLandscape;
+  public isMini;
+
   // CV
 
   public isCV: boolean;
@@ -296,6 +299,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     this.innerHeight = window.innerHeight;
     this.developmentService.set_windowDimensions(this.innerWidth, this.innerHeight);
     this.defineWidthRange();
+    this.fetch_isMini();
 
     this.isCV = this.activatedRoute.snapshot.params.isCV;
     if(!this.isCV) {
@@ -360,6 +364,30 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     this.innerHeight = window.innerHeight;
     this.developmentService.set_windowDimensions(window.innerWidth, window.innerHeight);
     this.defineWidthRange();
+    this.fetch_isMini();
+  }
+
+  @HostListener('window:orientationchange', ['$event'])
+  onOrientationChange(event) {
+    this.fetch_isMini();
+  }
+
+  private fetch_isMini():void {
+    this.fetch_isLandscape();
+    if(this.isLandscape && this.isMobileDevice) {
+      this.isMini = true;
+    } else {
+      this.isMini = false;
+    }
+    this.appComponent.set_isMini(this.isMini);
+  }
+
+  private fetch_isLandscape():void {
+    if (window.innerHeight > window.innerWidth) {
+      this.isLandscape = false;
+    } else {
+      this.isLandscape = true;
+    }
   }
 
   private defineWidthRange(): void {

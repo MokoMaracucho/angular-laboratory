@@ -31,4 +31,5 @@ html, body {
   margin: 0px;
   padding: 0px;
   overflow: hidden;
+  padding: env(safe-area-inset);
 }
