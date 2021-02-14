@@ -61,6 +61,7 @@ export class LaboratoryService {
   private youtube; youtube_play;
   private spotify_green; spotify_black;
   private projector;
+  private threed_cube; threed_scale; threed_faces;
 
   private graphic_BAKING: BABYLON.Texture;
   private graphic_BAKING_HIGHLIGHT: BABYLON.Texture;
@@ -144,14 +145,12 @@ export class LaboratoryService {
   private youtube_BAKING_HIGHLIGHT: BABYLON.Texture;
   private youtube_play_BAKING: BABYLON.Texture;
   private youtube_play_BAKING_HIGHLIGHT: BABYLON.Texture;
-  private touch_play_BAKING: BABYLON.Texture;
-  private touch_play_BAKING_HIGHLIGHT: BABYLON.Texture;
-  private touch_pause_BAKING: BABYLON.Texture;
-  private touch_pause_BAKING_HIGHLIGHT: BABYLON.Texture;
-  private touch_skip_forward_BAKING: BABYLON.Texture;
-  private touch_skip_forward_BAKING_HIGHLIGHT: BABYLON.Texture;
   private spotify_green_BAKING: BABYLON.Texture;
   private spotify_green_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private threed_cube_BAKING: BABYLON.Texture;
+  private threed_cube_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private threed_scale_BAKING: BABYLON.Texture;
+  private threed_scale_BAKING_HIGHLIGHT: BABYLON.Texture;
 
   private odyssee_espace_TEXTURE: BABYLON.VideoTexture;
   private enter_the_void_TEXTURE: BABYLON.VideoTexture;
@@ -172,6 +171,7 @@ export class LaboratoryService {
   private glass_blue_MATERIAL: BABYLON.StandardMaterial;
   private glass_red_MATERIAL: BABYLON.StandardMaterial;
   private projector_MATERIAL: BABYLON.StandardMaterial;
+  private threed_faces_MATERIAL: BABYLON.StandardMaterial;
 
   private fireSystem: BABYLON.ParticleSystem;
 
@@ -1141,6 +1141,32 @@ export class LaboratoryService {
     this.spotify_black = this.scene.getMeshByName("spotify_black");
   });
 
+  // 3D
+
+  this.threed_cube_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/threed_cube_BAKING.jpg", this.scene, false, false);
+  this.threed_cube_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/threed_cube_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+  this.threed_scale_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/threed_scale_BAKING.jpg", this.scene, false, false);
+  this.threed_scale_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/threed_scale_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+  BABYLON.SceneLoader.ImportMeshAsync("threed_cube", "../../assets/glb/laboratory/", "threed_cube.glb").then((result) => {
+    this.threed_cube = this.scene.getMeshByName("threed_cube");
+  });
+
+  BABYLON.SceneLoader.ImportMeshAsync("threed_scale", "../../assets/glb/laboratory/", "threed_scale.glb").then((result) => {
+    this.threed_scale = this.scene.getMeshByName("threed_scale");
+  });
+
+  this.threed_faces_MATERIAL = new BABYLON.StandardMaterial("threed_faces_MATERIAL", this.scene);
+  this.threed_faces_MATERIAL.diffuseColor = new BABYLON.Color3(1, 1, 1);
+  this.threed_faces_MATERIAL.specularColor = new BABYLON.Color3(1, 1, 1);
+  this.threed_faces_MATERIAL.alpha = 0.3;
+
+  BABYLON.SceneLoader.ImportMeshAsync("threed_faces", "../../assets/glb/laboratory/", "threed_faces.glb").then((result) => {
+    this.threed_faces = this.scene.getMeshByName("threed_faces");
+    this.threed_faces.material = this.threed_faces_MATERIAL;
+  });
+
   // PROJECTOR
 
   this.projector = BABYLON.MeshBuilder.CreatePlane("projector", {width: 12, height: 6.75}, this.scene);
@@ -1314,51 +1340,47 @@ public addActions_buttons(): void {
   }
 
   private addActions_Graphic() {
-    if(!this.isCV) {
-      this.graphic.isPickable = true;
-      this.graphic.actionManager = new BABYLON.ActionManager(this.scene);
+    this.graphic.isPickable = true;
+    this.graphic.actionManager = new BABYLON.ActionManager(this.scene);
 
-      this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.graphic.material, "albedoTexture", this.graphic_BAKING_HIGHLIGHT));
-      this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.graphic.material, "albedoTexture", this.graphic_BAKING));
+    this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.graphic.material, "albedoTexture", this.graphic_BAKING_HIGHLIGHT));
+    this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.graphic.material, "albedoTexture", this.graphic_BAKING));
 
-      this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING_HIGHLIGHT));
-      this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING));
+    this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING_HIGHLIGHT));
+    this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING));
 
-      this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING_HIGHLIGHT));
-      this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING));
+    this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING_HIGHLIGHT));
+    this.graphic.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING));
 
-      this.graphic.actionManager.registerAction(new BABYLON.CombineAction(
-          {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.graphic},
-          [
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next())
-          ]
-        )
-      );
-    }
+    this.graphic.actionManager.registerAction(new BABYLON.CombineAction(
+        {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.graphic},
+        [
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next())
+        ]
+      )
+    );
   }
 
   private addActions_TransfertBoxes() {
-    if(!this.isCV) {
-      this.transfert_boxes.isPickable = true;
-      this.transfert_boxes.actionManager = new BABYLON.ActionManager(this.scene);
+    this.transfert_boxes.isPickable = true;
+    this.transfert_boxes.actionManager = new BABYLON.ActionManager(this.scene);
 
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.graphic.material, "albedoTexture", this.graphic_BAKING_HIGHLIGHT));
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.graphic.material, "albedoTexture", this.graphic_BAKING));
+    this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.graphic.material, "albedoTexture", this.graphic_BAKING_HIGHLIGHT));
+    this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.graphic.material, "albedoTexture", this.graphic_BAKING));
 
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING_HIGHLIGHT));
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING));
+    this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING_HIGHLIGHT));
+    this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes.material, "albedoTexture", this.transfert_boxes_BAKING));
 
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING_HIGHLIGHT));
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING));
+    this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING_HIGHLIGHT));
+    this.transfert_boxes.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.transfert_boxes_rings.material, "albedoTexture", this.transfert_boxes_rings_BAKING));
 
-      this.transfert_boxes.actionManager.registerAction(new BABYLON.CombineAction(
-          {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes},
-          [
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next())
-          ]
-        )
-      );
-    }
+    this.transfert_boxes.actionManager.registerAction(new BABYLON.CombineAction(
+        {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.transfert_boxes},
+        [
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_datas.next())
+        ]
+      )
+    );
   }
 
   private addActions_TransfertBoxesRings() {

@@ -57,6 +57,11 @@ import { ConnectionService } from '../shared/services/connection.service';
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('2s')])
     ]),
+    trigger('threed_fadeIn', [
+      state('false', style({opacity: '0'})),
+      state('true', style({opacity: '1'})),
+      transition('false => true', [animate('2s')])
+    ]),
     trigger('stereoscopy_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
@@ -157,6 +162,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   public isOpen_datas = false;
   public datas_fadeIn = false;
 
+  public isOpen_threed = false;
+  public threed_fadeIn = false;
+
   public isOpen_stereoscopy = false;
   public stereoscopy_fadeIn = false;
   public isOpen_switchCamera = false;
@@ -225,6 +233,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
       this.subscription = this.interaction.open_development.subscribe(() => this.open_development());
       this.subscription = this.interaction.open_datas.subscribe(() => this.open_datas());
+      this.subscription = this.interaction.open_threed.subscribe(() => this.open_threed());
       this.subscription = this.interaction.open_stereoscopy.subscribe(() => this.open_stereoscopy());
       this.subscription = this.interaction.open_socialNetworks.subscribe(() => this.open_socialNetworks());
       this.subscription = this.interaction.open_photography.subscribe(() => this.open_photography());
@@ -415,6 +424,43 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     this.laboratoryService.activation_buttonsDatas();
     this.isOpen_datas = false;
     this.datas_fadeIn = false;
+    if(close_clicked) {
+      this.laboratoryService.close_card();
+      this.isCard_open = false;
+      if(this.isMobileDevice) {
+        this.isVisible_cacheMobileDevice = false;
+      }
+    }
+  }
+
+  // 3D
+
+  public open_threed(): void {
+    this.laboratoryService.desactivation_buttonsDatas();
+    if(this.isCard_open) {
+      this.close_openedCard();
+    }
+    this.isOpen_threed = true;
+    this.threed_fadeIn = true;
+    if(!this.isCard_open) {
+      this.laboratoryService.open_card();
+      this.isCard_open = true;
+    }
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+      if(this.isOpen_stereoscopy) {
+        this.close_switchCamera();
+      }
+    }
+    if(this.isOpen_movies) {
+      this.close_movies(false);
+    }
+  }
+
+  public close_threed(close_clicked): void {
+    this.laboratoryService.activation_buttonsDatas();
+    this.isOpen_threed = false;
+    this.threed_fadeIn = false;
     if(close_clicked) {
       this.laboratoryService.close_card();
       this.isCard_open = false;
@@ -653,6 +699,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
     else if(this.isOpen_datas) {
       this.close_datas(false);
+    }
+    else if(this.isOpen_threed) {
+      this.close_threed(false);
     }
     else if(this.isOpen_stereoscopy) {
       this.close_stereoscopy(false);
