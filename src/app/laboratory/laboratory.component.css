@@ -1758,3 +1758,9 @@
   border-radius: 10px;
   background-color: #ffffff44;
 }
+
+/* LINKS */
+
+.links {
+  cursor: pointer;
+}

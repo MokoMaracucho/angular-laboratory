@@ -241,24 +241,24 @@
 
 <div class="menu-container">
   <div class="menu">
-    <img *ngIf="!isOpen_development" class="menu-icon-development menu-icons" src="../assets/img/menu/development_menu.png" alt="development" (click)="open_development()">
-    <img *ngIf="isOpen_development" class="menu-icon-development menu-icons" src="../assets/img/menu/close_development_menu.png" alt="development" (click)="close_development(true)">
+    <img *ngIf="!isOpen_development" class="menu-icon-development menu-icons" src="../assets/img/menu/development_menu.png" alt="development" title="Development" (click)="open_development()">
+    <img *ngIf="isOpen_development" class="menu-icon-development menu-icons" src="../assets/img/menu/close_development_menu.png" alt="development" title="Development"  (click)="close_development(true)">
 
-    <img *ngIf="!isOpen_datas" class="menu-icon-datas menu-icons" src="../assets/img/menu/datas_menu.png" alt="datas" (click)="open_datas()">
-    <img *ngIf="isOpen_datas" class="menu-icon-datas menu-icons" src="../assets/img/menu/close_datas_menu.png" alt="datas" (click)="close_datas(true)">
+    <img *ngIf="!isOpen_datas" class="menu-icon-datas menu-icons" src="../assets/img/menu/datas_menu.png" alt="datas" title="Datas" (click)="open_datas()">
+    <img *ngIf="isOpen_datas" class="menu-icon-datas menu-icons" src="../assets/img/menu/close_datas_menu.png" alt="datas" title="Datas" (click)="close_datas(true)">
 
-    <img *ngIf="!isOpen_threed" class="menu-icon-threed menu-icons" src="../assets/img/menu/threed_menu.png" alt="3D" (click)="open_threed()">
-    <img *ngIf="isOpen_threed" class="menu-icon-threed menu-icons" src="../assets/img/menu/close_threed_menu.png" alt="3D" (click)="close_threed(true)">
+    <img *ngIf="!isOpen_threed" class="menu-icon-threed menu-icons" src="../assets/img/menu/threed_menu.png" alt="3D" title="3D" (click)="open_threed()">
+    <img *ngIf="isOpen_threed" class="menu-icon-threed menu-icons" src="../assets/img/menu/close_threed_menu.png" alt="3D" title="3D" (click)="close_threed(true)">
 
-    <img *ngIf="!isOpen_stereoscopy" class="menu-icon-stereoscopy menu-icons" src="../assets/img/menu/stereoscopy_menu.png" alt="stereoscopy" (click)="open_stereoscopy()">
-    <img *ngIf="isOpen_stereoscopy" class="menu-icon-stereoscopy menu-icons" src="../assets/img/menu/close_stereoscopy_menu.png" alt="stereoscopy" (click)="close_stereoscopy(true)">
+    <img *ngIf="!isOpen_stereoscopy" class="menu-icon-stereoscopy menu-icons" src="../assets/img/menu/stereoscopy_menu.png" alt="stereoscopy" title="Stereoscopy" (click)="open_stereoscopy()">
+    <img *ngIf="isOpen_stereoscopy" class="menu-icon-stereoscopy menu-icons" src="../assets/img/menu/close_stereoscopy_menu.png" alt="stereoscopy" title="Stereoscopy" (click)="close_stereoscopy(true)">
 
-    <img *ngIf="!isOpen_socNet" class="menu-icon-socNet menu-icons" src="../assets/img/menu/socNet_menu.png" alt="social networks" (click)="open_socialNetworks()">
-    <img *ngIf="isOpen_socNet" class="menu-icon-socNet menu-icons" src="../assets/img/menu/close_socNet_menu.png" alt="social networks" (click)="close_socialNetworks(true)">
+    <img *ngIf="!isOpen_socNet" class="menu-icon-socNet menu-icons" src="../assets/img/menu/socNet_menu.png" alt="social networks" title="Social networks" (click)="open_socialNetworks()">
+    <img *ngIf="isOpen_socNet" class="menu-icon-socNet menu-icons" src="../assets/img/menu/close_socNet_menu.png" alt="social networks" title="Social networks" (click)="close_socialNetworks(true)">
 
-    <img *ngIf="isOpen_photography" class="menu-icon-photography menu-icons" src="../assets/img/menu/photography_menu.png" alt="photography" (click)="close_photography(true)">
+    <img *ngIf="isOpen_photography" class="menu-icon-photography menu-icons" src="../assets/img/menu/photography_menu.png" alt="photography" title="Photography" (click)="close_photography(true)">
 
-    <img *ngIf="isOpen_movies" class="menu-icon-movies menu-icons" src="../assets/img/menu/movies_menu.png" alt="movies" (click)="close_movies(true)">
+    <img *ngIf="isOpen_movies" class="menu-icon-movies menu-icons" src="../assets/img/menu/movies_menu.png" alt="movies" title="Movies" (click)="close_movies(true)">
   </div>
 </div>
 
@@ -710,6 +710,121 @@
 </div>
 
 <!-- DATA isCV && isMini -->
+
+<div *ngIf="isCV && isMini" class="container-cards-mini" [style.display]="isOpen_datas ? 'block' : 'none'" [@data_fadeIn]="datas_fadeIn">
+  <div class="card-left-mini">
+    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_datas_en.png" alt="development">
+    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_datas_fr.png" alt="development">
+    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_datas_es.png" alt="development">
+
+    <div *ngIf="language_english" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+    </div>
+    <div *ngIf="language_french" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+    </div>
+    <div *ngIf="language_spanish" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+    </div>
+  </div>
+
+  <div class="card-right-mini">
+    <h1 *ngIf="language_english" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_french" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
+
+    <p *ngIf="language_english" class="texts-card-mini">
+
+    </p>
+    <p *ngIf="language_french" class="texts-card-mini">
+
+    </p>
+    <p *ngIf="language_spanish" class="texts-card-mini">
+
+    </p>
+  </div>
+</div>
+
+<!-- 3D isCV && !isMini -->
+
+<div *ngIf="isCV && !isMini" class="container-cards" [style.display]="isOpen_threed ? 'block' : 'none'" [@datas_fadeIn]="threed_fadeIn">
+  <img class="title-card" src="../assets/img/titles/title_threed.png" alt="3D">
+
+  <h1 *ngIf="language_english" class="h1-card"></h1>
+  <h1 *ngIf="language_french" class="h1-card"></h1>
+  <h1 *ngIf="language_spanish" class="h1-card"></h1>
+
+  <p class="texts-card" *ngIf="language_english">
+    Certainly the Lego's excess being small and too many nights spent playing Sim City, but I've always felt cramped while surfing the internet.
+    <br/>
+    <br/>
+    And that feeling is at the root of my attention to programming and modeling in recent years.
+    <br/>
+    <br/>
+    The integration of WebGl by HTML5 opened the door to this three-dimensional world, thus pushing the boundaries of interaction with applications.
+    <br/>
+    <br/>
+    This technology, with its still untapped potential, will gradually shake up the codes of linear navigation, replacing it with a unique and ultra-personalized experience.
+    <br/>
+    <br/>
+    The design of <a class="links" (click)="open_datas()">three-dimensional tools</a> that will result from it will push us to rethink UX and UI. And these upheavals will accelerate with the popularization of augmented reality and virtual reality.
+  </p>
+  <p class="texts-card" *ngIf="language_french">
+    Certainement l’excès de Lego étant petit et de trop de nuits passées à jouer à Sim City, mais je me suis toujours senti à l'étroit en naviguant sur Internet.
+    <br/>
+    <br/>
+    Et ce sentiment est à la racine de l'attention que j'ai portée ces dernières années à la programmation et à la modélisation.
+    <br/>
+    <br/>
+    L'intégration de WebGl par HTML5 a ouvert la porte de cet univers en trois dimensions, repoussant ainsi les frontières de l'interaction avec les applications.
+    <br/>
+    <br/>
+    Cette technologie au potentiel encore inexploité, va progressivement bousculer les codes de la navigation linéaire, lui substituant une expérience inédite et ultra personnalisée.
+    <br/>
+    <br/>
+    La conception d'<a class="links" (click)="open_datas()">outils tridimensionnels</a> qui en découleront nous poussera à repenser l'UX et l'UI. Et ces bouleversements iront s'accélérant avec la popularisation de la réalité augmentée et de la réalité virtuelle.
+    <br/>
+    <br/>
+  </p>
+  <p class="texts-card" *ngIf="language_spanish">
+    Ciertamente, el exceso de Lego chiquito y demasiadas noches jugando a Sim City, pero siempre me he sentido agobiado mientras navegaba por Internet.
+    <br/>
+    <br/>
+    Y ese sentimiento está en la raíz de mi atención a la programación y el modelado en los últimos años.
+    <br/>
+    <br/>
+    La integración de WebGl por HTML5 abrió la puerta a este mundo tridimensional, empujando así los límites de la interacción con las aplicaciones.
+    <br/>
+    <br/>
+    Esta tecnología, con su potencial aún sin explotar, revolucionará gradualmente los códigos de la navegación lineal, reemplazándola por una experiencia única y ultrapersonalizada.
+    <br/>
+    <br/>
+    El diseño de <a class="links" (click)="open_datas()">herramientas tridimensionales</a> que resultará de él nos empujará a repensar UX y UI. Y estos trastornos se acelerarán con la popularización de la realidad aumentada y la realidad virtual.
+  </p>
+  <div *ngIf="language_english" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+  </div>
+  <div *ngIf="language_french" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  </div>
+  <div *ngIf="language_spanish" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  </div>
+
+  <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_threed(true)">
+    <span *ngIf="language_english">Close</span>
+    <span *ngIf="language_french">Fermer</span>
+    <span *ngIf="language_spanish">Cerrar</span>
+  </button>
+</div>
+
+<!-- 3D isCV && isMini -->
 
 <div *ngIf="isCV && isMini" class="container-cards-mini" [style.display]="isOpen_datas ? 'block' : 'none'" [@data_fadeIn]="datas_fadeIn">
   <div class="card-left-mini">
