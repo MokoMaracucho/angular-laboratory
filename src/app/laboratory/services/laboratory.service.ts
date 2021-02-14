@@ -1226,6 +1226,7 @@ public addActions_buttons(): void {
   this.addActions_Instagram(); this.addActions_InstagramLens();
   this.addActions_Youtube(); this.addActions_YoutubePlay();
   this.addActions_SpotifyGreen(); this.addActions_SpotifyBlack();
+  this.addActions_threeDCube(); this.addActions_threeDScale(); this.addActions_threeDFaces();
   this.addActions_UnitedKingdomRed(); this.addActions_UnitedKingdomWhite(); this.addActions_UnitedKingdomBlue();
   this.addActions_FranceBlue(); this.addActions_FranceWhite(); this.addActions_FranceRed();
   this.addActions_SpainRed(); this.addActions_SpainYellow();
@@ -1249,6 +1250,7 @@ public addActions_buttons(): void {
     this.instagram.isPickable = true; this.instagram_lens.isPickable = true;
     this.youtube.isPickable = true; this.youtube_play.isPickable = true;
     this.spotify_green.isPickable = true; this.spotify_black.isPickable = true;
+    this.threed_cube.isPickable = true; this.threed_scale.isPickable = true; this.threed_faces.isPickable = true;
   }
 
   public activation_buttonsDevelopment(): void {
@@ -1258,6 +1260,10 @@ public addActions_buttons(): void {
   public activation_buttonsDatas(): void {
     this.graphic.isPickable = true;
     this.transfert_boxes.isPickable = true; this.transfert_boxes_rings.isPickable = true;
+  }
+
+  public activation_buttonsThreed(): void {
+    this.threed_cube.isPickable = true; this.threed_scale.isPickable = true; this.threed_faces.isPickable = true;
   }
 
   public activation_buttonsStereoscopy(): void {
@@ -1312,6 +1318,10 @@ public addActions_buttons(): void {
   public desactivation_buttonsDatas(): void {
     this.graphic.isPickable = false;
     this.transfert_boxes.isPickable = false; this.transfert_boxes_rings.isPickable = false;
+  }
+
+  public desactivation_buttonsThreed(): void {
+    this.threed_cube.isPickable = false; this.threed_scale.isPickable = false; this.threed_faces.isPickable = false;
   }
 
   public desactivation_buttonsStereoscopy(): void {
@@ -2830,6 +2840,63 @@ public addActions_buttons(): void {
           var pickedMesh = event.meshUnderPointer;
           window.open("https://open.spotify.com/user/21g42fpdhcs6if5nooxgivpsq?si=VFoLaPHTRZSTdEEIb4d0Qw");
         }
+      )
+    );
+  }
+
+  private addActions_threeDCube() {
+    this.threed_cube.isPickable = true;
+    this.threed_cube.actionManager = new BABYLON.ActionManager(this.scene);
+
+    this.threed_cube.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_cube.material, "albedoTexture", this.threed_cube_BAKING_HIGHLIGHT));
+    this.threed_cube.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_cube.material, "albedoTexture", this.threed_cube_BAKING));
+
+    this.threed_cube.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_scale.material, "albedoTexture", this.threed_scale_BAKING_HIGHLIGHT));
+    this.threed_cube.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_scale.material, "albedoTexture", this.threed_scale_BAKING));
+
+    this.threed_cube.actionManager.registerAction(new BABYLON.CombineAction(
+        {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_cube},
+        [
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_threed.next())
+        ]
+      )
+    );
+  }
+
+  private addActions_threeDScale() {
+    this.threed_scale.isPickable = true;
+    this.threed_scale.actionManager = new BABYLON.ActionManager(this.scene);
+
+    this.threed_scale.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_cube.material, "albedoTexture", this.threed_cube_BAKING_HIGHLIGHT));
+    this.threed_scale.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_cube.material, "albedoTexture", this.threed_cube_BAKING));
+
+    this.threed_scale.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_scale.material, "albedoTexture", this.threed_scale_BAKING_HIGHLIGHT));
+    this.threed_scale.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_scale.material, "albedoTexture", this.threed_scale_BAKING));
+
+    this.threed_scale.actionManager.registerAction(new BABYLON.CombineAction(
+        {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_scale},
+        [
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_threed.next())
+        ]
+      )
+    );
+  }
+
+  private addActions_threeDFaces() {
+    this.threed_faces.isPickable = true;
+    this.threed_faces.actionManager = new BABYLON.ActionManager(this.scene);
+
+    this.threed_faces.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_cube.material, "albedoTexture", this.threed_cube_BAKING_HIGHLIGHT));
+    this.threed_faces.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_cube.material, "albedoTexture", this.threed_cube_BAKING));
+
+    this.threed_faces.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.threed_scale.material, "albedoTexture", this.threed_scale_BAKING_HIGHLIGHT));
+    this.threed_faces.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.threed_scale.material, "albedoTexture", this.threed_scale_BAKING));
+
+    this.threed_faces.actionManager.registerAction(new BABYLON.CombineAction(
+        {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_faces},
+        [
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_threed.next())
+        ]
       )
     );
   }

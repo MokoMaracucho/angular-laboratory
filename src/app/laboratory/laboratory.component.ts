@@ -436,7 +436,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   // 3D
 
   public open_threed(): void {
-    this.laboratoryService.desactivation_buttonsDatas();
+    this.laboratoryService.desactivation_buttonsThreed();
     if(this.isCard_open) {
       this.close_openedCard();
     }
@@ -458,7 +458,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   }
 
   public close_threed(close_clicked): void {
-    this.laboratoryService.activation_buttonsDatas();
+    this.laboratoryService.activation_buttonsThreed();
     this.isOpen_threed = false;
     this.threed_fadeIn = false;
     if(close_clicked) {

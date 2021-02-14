@@ -475,7 +475,7 @@
 
 @media (max-width: 599px) {
   .menu-container {
-    grid-template-columns: [col-start-menu] 40px [col-1-menu] 40px [col-2-menu] 40px [col-3-menu] 40px [col-4-menu] 40px [col-5-menu] 40px [col-6-menu] auto [col-7-menu] 40px [col-stop-menu];
+    grid-template-columns: [col-start-menu] 40px [col-1-menu] 40px [col-2-menu] 40px [col-3-menu] 40px [col-4-menu] 40px [col-5-menu] 40px [col-6-menu] 40px [col-7-menu] auto [col-8-menu] 40px [col-stop-menu];
     grid-template-rows: [row-start-menu] 40px [row-stop-menu];
     display: grid;
     bottom: 0px;
@@ -484,7 +484,7 @@
   }
 
   .menu {
-    grid-area: row-start-menu / col-start-menu / row-stop-menu / col-7-menu;
+    grid-area: row-start-menu / col-start-menu / row-stop-menu / col-8-menu;
     grid-auto-rows: auto;
     background-color: #00000066;
   }
@@ -496,6 +496,11 @@
 
   .menu-icon-datas {
     grid-area: row-start-menu / col-1-menu / row-stop-menu / col-2-menu;
+    grid-auto-rows: auto;
+  }
+
+  .menu-icon-threed {
+    grid-area: row-start-menu / col-2-menu / row-stop-menu / col-3-menu;
     grid-auto-rows: auto;
   }
 
@@ -549,7 +554,7 @@
 @media (min-width: 600px) {
   .menu-container {
     grid-template-columns: [col-start-menu] 50px [col-stop-menu];
-    grid-template-rows: [row-start-menu] 250px [row-1-menu] 50px [row-2-menu] 50px [row-3-menu] 50px [row-4-menu] 50px [row-5-menu] 50px [row-6-menu] 1fr [row-7-menu] 60px [row-stop-menu];
+    grid-template-rows: [row-start-menu] 250px [row-1-menu] 50px [row-2-menu] 50px [row-3-menu] 50px [row-4-menu] 50px [row-5-menu] 50px [row-6-menu] 50px [row-7-menu] 1fr [row-8-menu] 60px [row-stop-menu];
     display: grid;
     right: 0px;
     width: 50px;
@@ -557,7 +562,7 @@
   }
 
   .menu {
-    grid-area: row-1-menu / col-start-menu / row-7-menu / col-stop-menu;
+    grid-area: row-1-menu / col-start-menu / row-8-menu / col-stop-menu;
     grid-auto-rows: auto;
     background-color: #00000066;
   }
@@ -572,23 +577,28 @@
     grid-auto-rows: auto;
   }
 
-  .menu-icon-stereoscopy {
+  .menu-icon-threed {
     grid-area: row-3-menu / col-start-menu / row-4-menu / col-stop-menu;
     grid-auto-rows: auto;
   }
 
-  .menu-icon-socNet {
+  .menu-icon-stereoscopy {
     grid-area: row-4-menu / col-start-menu / row-5-menu / col-stop-menu;
     grid-auto-rows: auto;
   }
 
-  .menu-icon-photography {
+  .menu-icon-socNet {
     grid-area: row-5-menu / col-start-menu / row-6-menu / col-stop-menu;
     grid-auto-rows: auto;
   }
 
-  .menu-icon-movies {
+  .menu-icon-photography {
     grid-area: row-6-menu / col-start-menu / row-7-menu / col-stop-menu;
+    grid-auto-rows: auto;
+  }
+
+  .menu-icon-movies {
+    grid-area: row-7-menu / col-start-menu / row-8-menu / col-stop-menu;
     grid-auto-rows: auto;
   }
 
@@ -619,7 +629,7 @@
 @media (max-height: 500px) {
   .menu-container {
     grid-template-columns: [col-start-menu] 40px [col-stop-menu];
-    grid-template-rows: [row-start-menu] 60px [row-1-menu] 40px [row-2-menu] 40px [row-3-menu] 40px [row-4-menu] 40px [row-5-menu] 40px [row-6-menu] 1fr [row-7-menu] 45px [row-stop-menu];
+    grid-template-rows: [row-start-menu] 60px [row-1-menu] 40px [row-2-menu] 40px [row-3-menu] 40px [row-4-menu] 40px [row-5-menu] 40px [row-6-menu] 40px [row-7-menu] 40px [row-8-menu] 1fr [row-9-menu] 45px [row-stop-menu];
     display: grid;
     right: 0px;
     width: 40px;
@@ -627,7 +637,7 @@
   }
 
   .menu {
-    grid-area: row-1-menu / col-start-menu / row-7-menu / col-stop-menu;
+    grid-area: row-1-menu / col-start-menu / row-9-menu / col-stop-menu;
     grid-auto-rows: auto;
     background-color: #00000066;
   }
@@ -642,23 +652,28 @@
     grid-auto-rows: auto;
   }
 
-  .menu-icon-stereoscopy {
+  .menu-icon-threed {
     grid-area: row-3-menu / col-start-menu / row-4-menu / col-stop-menu;
     grid-auto-rows: auto;
   }
 
-  .menu-icon-socNet {
+  .menu-icon-stereoscopy {
     grid-area: row-4-menu / col-start-menu / row-5-menu / col-stop-menu;
     grid-auto-rows: auto;
   }
 
-  .menu-icon-photography {
+  .menu-icon-socNet {
     grid-area: row-5-menu / col-start-menu / row-6-menu / col-stop-menu;
     grid-auto-rows: auto;
   }
 
-  .menu-icon-movies {
+  .menu-icon-photography {
     grid-area: row-6-menu / col-start-menu / row-7-menu / col-stop-menu;
+    grid-auto-rows: auto;
+  }
+
+  .menu-icon-movies {
+    grid-area: row-7-menu / col-start-menu / row-8-menu / col-stop-menu;
     grid-auto-rows: auto;
   }
 
