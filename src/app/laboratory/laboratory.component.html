@@ -201,6 +201,8 @@
     <br/>
     <br/>
     Poussez la porte de mon laboratoire et découvrez mon univers !
+    <br/>
+
   </p>
   <p *ngIf="language_spanish" class="text-introduction-mini" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
     Siguiendo un curso como desarrollador de aplicaciones Java EE con <a class="links" onclick="window.open('https://openclassrooms.com/en/', '_blank'); return false;">OpenClassrooms</a>, estoy buscando una pasantía operativa de 4 meses.
@@ -459,6 +461,9 @@
     Master the tools necessary for the development of robust, secure and scalable applications.
     <br/>
     <br/>
+    This laboratory is intended to serve as a “playground” for my experiments! ⚗️🧪
+    <br/>
+    <br/>
     To know more ! 👉🏼 "<a [routerLink]="['/development/true']" (click)="cleanUp_laboratory()">Development</a>".
   </p>
   <p class="texts-card" *ngIf="language_french">
@@ -474,6 +479,9 @@
     Maîtriser les outils nécessaires au développement d'applications robustes, sécurisées et évolutives.
     <br/>
     <br/>
+    Ce laboratoire a vocation à servir de « playground » à mes expériences ! ⚗️🧪
+    <br/>
+    <br/>
     Pour en savoir plus ! 👉🏼 "<a [routerLink]="['/development/true']" (click)="cleanUp_laboratory()">Développement</a>".
   </p>
   <p class="texts-card" *ngIf="language_spanish">
@@ -487,6 +495,9 @@
     <br/>
     <br/>
     Dominar las herramientas necesarias para el desarrollo de aplicaciones robustas, seguras y escalables.
+    <br/>
+    <br/>
+    ¡Este laboratorio está destinado a servir como un "playground" para mis experimentos! ⚗️🧪
     <br/>
     <br/>
     Para saber más ! 👉🏼 "<a [routerLink]="['/development/true']" (click)="cleanUp_laboratory()">Desarrollo</a>".
@@ -643,18 +654,37 @@
   <h1 *ngIf="language_spanish" class="h1-card"></h1>
 
   <p class="texts-card" *ngIf="language_english">
-
+    The most precious resources in the digital world, data is at the center of my work.
+    <br/>
+    <br/>
+    By setting-up and controlling the "pipe" connecting the 3D scene to the database on the one hand.
+    <br/>
+    <br/>
+    On the other hand, by researching innovative strategies for classifying, visualizing and exploiting information.
+    <br/>
+    <br/>
   </p>
   <p class="texts-card" *ngIf="language_french">
-    Ressources les plus précieuses du monde digital, je place au centre de mon travail la recherche de nouveaux modes de classifications, de visualisation et d'exploitation des données.
+    Ressources les plus précieuses du monde digital, les données sont au centre mon travail.
     <br/>
     <br/>
-    Les domaines d'application sont nombreux : logistique, cartographie, architecture, environnement...
+    Par la mise-en-place et le contrôle du « pipe » reliant la scène 3D à la base de données d'une part.
+    <br/>
+    <br/>
+    D'autre part, par la recherche de stratégies novatrices de classement, de visualisation et d'exploitation de l'information.
     <br/>
     <br/>
   </p>
   <p class="texts-card" *ngIf="language_spanish">
-
+    Recursos más preciados del mundo digital, los datos están en el centro de mi trabajo.
+    <br/>
+    <br/>
+    Configurando y controlando la "pipe" que conecta la escena 3D a la base de datos por un lado.
+    <br/>
+    <br/>
+    Por otro lado, investigando estrategias innovadoras para clasificar, visualizar y explotar la información.
+    <br/>
+    <br/>
   </p>
   <div *ngIf="language_english" class="spans-language-cards">
       <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
