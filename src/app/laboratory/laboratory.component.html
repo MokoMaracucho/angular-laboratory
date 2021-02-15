@@ -455,7 +455,7 @@
     In the years to come, our way of interacting with applications will experience major changes, requiring that we rethink their development.
     <br/>
     <br/>
-    My learning is therefore guided by two objectives:
+    My learning was therefore guided by two objectives:
     <br/>
     <br/>
     Offer the user a richer and more stimulating experience through a three-dimensional interface.
@@ -473,7 +473,7 @@
     Dans les années à venir, notre manière d'interagir avec les applications va connaître de grands changements, exigeant que l'on repense leur développement.
     <br/>
     <br/>
-    Mon apprentissage est donc guidé par deux objectifs :
+    Mon apprentissage a donc été guidé par deux objectifs :
     <br/>
     <br/>
     Offrir à l'utilisateur une expérience plus riche et stimulante au travers d'une interface tridimensionnelle.
@@ -491,7 +491,7 @@
     En los próximos años, nuestra forma de interactuar con las aplicaciones experimentará cambios importantes, por lo que es necesario repensar su desarrollo.
     <br/>
     <br/>
-    Por tanto, mi aprendizaje se guía por dos objetivos:
+    Por tanto, mi aprendizaje se guió por dos objetivos:
     <br/>
     <br/>
     Ofrecer al usuario una experiencia más rica y estimulante a través de una interfaz tridimensional.
@@ -770,7 +770,7 @@
     This technology, with its still untapped potential, will gradually shake up the codes of linear navigation, replacing it with a unique and ultra-personalized experience.
     <br/>
     <br/>
-    The design of <a class="links" (click)="open_datas()">three-dimensional tools</a> that will result from it will push us to rethink UX and UI. And these upheavals will accelerate with the popularization of augmented reality and virtual reality.
+    The design of <a class="links" (click)="open_datas()">three-dimensional tools</a> that will result from it will push us to rethink UX and UI. And these upheavals will accelerate with the popularization of <a class="links" (click)="open_stereoscopy()">augmented reality and virtual reality</a>.
   </p>
   <p class="texts-card" *ngIf="language_french">
     Certainement l’excès de Lego étant petit et de trop de nuits passées à jouer à Sim City, mais je me suis toujours senti à l'étroit en naviguant sur Internet.
@@ -785,7 +785,7 @@
     Cette technologie au potentiel encore inexploité, va progressivement bousculer les codes de la navigation linéaire, lui substituant une expérience inédite et ultra personnalisée.
     <br/>
     <br/>
-    La conception d'<a class="links" (click)="open_datas()">outils tridimensionnels</a> qui en découleront nous poussera à repenser l'UX et l'UI. Et ces bouleversements iront s'accélérant avec la popularisation de la réalité augmentée et de la réalité virtuelle.
+    La conception d'<a class="links" (click)="open_datas()">outils tridimensionnels</a> qui en découleront nous poussera à repenser l'UX et l'UI. Et ces bouleversements iront s'accélérant avec la popularisation de <a class="links" (click)="open_stereoscopy()">la réalité augmentée et de la réalité virtuelle.</a>
     <br/>
     <br/>
   </p>
@@ -802,7 +802,7 @@
     Esta tecnología, con su potencial aún sin explotar, revolucionará gradualmente los códigos de la navegación lineal, reemplazándola por una experiencia única y ultrapersonalizada.
     <br/>
     <br/>
-    El diseño de <a class="links" (click)="open_datas()">herramientas tridimensionales</a> que resultará de él nos empujará a repensar UX y UI. Y estos trastornos se acelerarán con la popularización de la realidad aumentada y la realidad virtual.
+    El diseño de <a class="links" (click)="open_datas()">herramientas tridimensionales</a> que resultará de él nos empujará a repensar UX y UI. Y estos trastornos se acelerarán con la popularización de <a class="links" (click)="open_stereoscopy()">la realidad aumentada y la realidad virtual.</a>
   </p>
   <div *ngIf="language_english" class="spans-language-cards">
       <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -852,13 +852,49 @@
     <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
 
     <p *ngIf="language_english" class="texts-card-mini">
-
+      Certainly the Lego's excess being small and too many nights spent playing Sim City, but I've always felt cramped while surfing the internet.
+      <br/>
+      <br/>
+      And that feeling is at the root of my attention to programming and modeling in recent years.
+      <br/>
+      <br/>
+      The integration of WebGl by HTML5 opened the door to this three-dimensional world, thus pushing the boundaries of interaction with applications.
+      <br/>
+      <br/>
+      This technology, with its still untapped potential, will gradually shake up the codes of linear navigation, replacing it with a unique and ultra-personalized experience.
+      <br/>
+      <br/>
+      The design of <a class="links" (click)="open_datas()">three-dimensional tools</a> that will result from it will push us to rethink UX and UI. And these upheavals will accelerate with the popularization of augmented reality and virtual reality.
     </p>
     <p *ngIf="language_french" class="texts-card-mini">
-
+      Certainement l’excès de Lego étant petit et de trop de nuits passées à jouer à Sim City, mais je me suis toujours senti à l'étroit en naviguant sur Internet.
+      <br/>
+      <br/>
+      Et ce sentiment est à la racine de l'attention que j'ai portée ces dernières années à la programmation et à la modélisation.
+      <br/>
+      <br/>
+      L'intégration de WebGl par HTML5 a ouvert la porte de cet univers en trois dimensions, repoussant ainsi les frontières de l'interaction avec les applications.
+      <br/>
+      <br/>
+      Cette technologie au potentiel encore inexploité, va progressivement bousculer les codes de la navigation linéaire, lui substituant une expérience inédite et ultra personnalisée.
+      <br/>
+      <br/>
+      La conception d'<a class="links" (click)="open_datas()">outils tridimensionnels</a> qui en découleront nous poussera à repenser l'UX et l'UI. Et ces bouleversements iront s'accélérant avec la popularisation de la réalité augmentée et de la réalité virtuelle.
     </p>
     <p *ngIf="language_spanish" class="texts-card-mini">
-
+      Ciertamente, el exceso de Lego chiquito y demasiadas noches jugando a Sim City, pero siempre me he sentido agobiado mientras navegaba por Internet.
+      <br/>
+      <br/>
+      Y ese sentimiento está en la raíz de mi atención a la programación y el modelado en los últimos años.
+      <br/>
+      <br/>
+      La integración de WebGl por HTML5 abrió la puerta a este mundo tridimensional, empujando así los límites de la interacción con las aplicaciones.
+      <br/>
+      <br/>
+      Esta tecnología, con su potencial aún sin explotar, revolucionará gradualmente los códigos de la navegación lineal, reemplazándola por una experiencia única y ultrapersonalizada.
+      <br/>
+      <br/>
+      El diseño de <a class="links" (click)="open_datas()">herramientas tridimensionales</a> que resultará de él nos empujará a repensar UX y UI. Y estos trastornos se acelerarán con la popularización de la realidad aumentada y la realidad virtual.
     </p>
   </div>
 </div>
@@ -901,91 +937,115 @@
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>
   </button>
+</div>
 
-  <!-- STEREOSCOPY !isCV && isMini -->
+<!-- STEREOSCOPY !isCV && isMini -->
 
-  <div *ngIf="!isCV && !isMobileDevice && isMini" class="container-cards-mini" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
-    <div class="card-left-mini">
-      <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_en.png" alt="development">
-      <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_fr.png" alt="development">
-      <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_es.png" alt="development">
+<div *ngIf="!isCV && !isMobileDevice && isMini" class="container-cards-mini" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
+  <div class="card-left-mini">
+    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_en.png" alt="stereoscopy">
+    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_fr.png" alt="stereoscopy">
+    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_es.png" alt="stereoscopy">
 
-      <div *ngIf="language_english" class="spans-language-cards-mini">
-        <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-        <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-      </div>
-      <div *ngIf="language_french" class="spans-language-cards-mini">
-        <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-        <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-      </div>
-      <div *ngIf="language_spanish" class="spans-language-cards-mini">
-        <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-        <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-      </div>
+    <div *ngIf="language_english" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
     </div>
-
-    <div class="card-right-mini">
-      <h1 *ngIf="language_english" class="h1-card-mini"></h1>
-      <h1 *ngIf="language_french" class="h1-card-mini"></h1>
-      <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
-
-      <p *ngIf="language_english" class="texts-card-mini">
-        Give an unprecedented viewing experience for your products and data using stereoscopy.
-      </p>
-      <p *ngIf="language_french" class="texts-card-mini">
-        Offrez une expérience inédite de visualisation de vos produits et de vos données grâce à la stéréoscopie.
-      </p>
-      <p *ngIf="language_spanish" class="texts-card-mini">
-        Ofrezca una experiencia de visualización sin precedentes para sus productos y datos mediante estereoscopía.
-      </p>
+    <div *ngIf="language_french" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+    </div>
+    <div *ngIf="language_spanish" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
     </div>
   </div>
 
-  <!-- STEREOSCOPY isCV && !isMini -->
+  <div class="card-right-mini">
+    <h1 *ngIf="language_english" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_french" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
 
-  <div *ngIf="isCV && !isMobileDevice && !isMini" class="container-cards" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
-    <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_stereoscopy_en.png" alt="stereoscopy">
-    <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_stereoscopy_fr.png" alt="stereoscopy">
-    <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_stereoscopy_es.png" alt="stereoscopy">
-
-    <h1 *ngIf="language_english" class="h1-card"></h1>
-    <h1 *ngIf="language_french" class="h1-card"></h1>
-    <h1 *ngIf="language_spanish" class="h1-card"></h1>
-
-    <p class="texts-card" *ngIf="language_english">
-
+    <p *ngIf="language_english" class="texts-card-mini">
+      Give an unprecedented viewing experience for your products and data using stereoscopy.
     </p>
-    <p class="texts-card" *ngIf="language_french">
-      Dans un monde qui tend vers une fusion du réel et du virtuel, le contenu va petit à petit sortir de l'écran.
-      La troisième dimension dans les navigateurs n'est qu'une étape. La stérescopie permet depuis longtemps de donner du relief. Et l'arrivée des casques de réalité virtuelle immerge l'utilisateur dans le contenu.
-      Tendance evolution a suivre..
-
-
-      l'écran sera mené petit à petit disparaître. Et cette fusion ne sera pas sans la 3D.
-      Cette transition se fera par l'adoption par l'utilisateur de nouvelles manières d'interagir avec le digital.
+    <p *ngIf="language_french" class="texts-card-mini">
+      Offrez une expérience inédite de visualisation de vos produits et de vos données grâce à la stéréoscopie.
     </p>
-    <p class="texts-card" *ngIf="language_spanish">
-
+    <p *ngIf="language_spanish" class="texts-card-mini">
+      Ofrezca una experiencia de visualización sin precedentes para sus productos y datos mediante estereoscopía.
     </p>
-    <div *ngIf="language_english" class="spans-language-cards">
-        <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-        <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-    </div>
-    <div *ngIf="language_french" class="spans-language-cards">
-        <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-        <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-    </div>
-    <div *ngIf="language_spanish" class="spans-language-cards">
-        <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-        <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-    </div>
-
-    <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_stereoscopy(true)">
-      <span *ngIf="language_english">Close</span>
-      <span *ngIf="language_french">Fermer</span>
-      <span *ngIf="language_spanish">Cerrar</span>
-    </button>
   </div>
+</div>
+
+<!-- STEREOSCOPY isCV && !isMini -->
+
+<div *ngIf="isCV && !isMobileDevice && !isMini" class="container-cards" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
+  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_stereoscopy_en.png" alt="stereoscopy">
+  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_stereoscopy_fr.png" alt="stereoscopy">
+  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_stereoscopy_es.png" alt="stereoscopy">
+
+  <h1 *ngIf="language_english" class="h1-card"></h1>
+  <h1 *ngIf="language_french" class="h1-card"></h1>
+  <h1 *ngIf="language_spanish" class="h1-card"></h1>
+
+  <p class="texts-card" *ngIf="language_english">
+    Based on 3D, virtual reality (VR) and augmented reality (AR) are two emerging technologies.
+    Beyond a trend, they have become a major axis of development and have acquired the reputation of being capable of profoundly transforming the way we live and work.
+    <br/>
+    <br/>
+    The way in which we can usefully navigate and interact in virtual or augmented environments will evolve, leading us to imagine more natural methods of interacting and exploring virtual space as well as solutions tailored to the entertainment and industries.
+    <br/>
+    <br/>
+    I must admit that this is the aspect of the job that seems to me to be the most attractive!
+    <br/>
+    <br/>
+    <img class="gif-card" src="../assets/gif/virtual_reality.gif" alt="virtual reality" />
+  </p>
+  <p class="texts-card" *ngIf="language_french">
+    Reposant sur la 3D, la réalité virtuelle (VR) et la réalité augmentée (AR) sont deux technologies émergentes.
+    Au-delà d’une tendance, elle sont devenues un axe de développement majeur et ont acquis la réputation d'être susceptibles de transformer profondément nos modes de vie et de travail.
+    <br/>
+    <br/>
+    La façon dont nous pouvons utilement naviguer et interagir dans des environnements virtuels ou augmentés évoluera, nous conduisant à imaginer des méthodes plus naturelles d’interaction et d’exploration de l’espace virtuel ainsi que des solutions adaptées aux secteurs du divertissement et de l’industrie.
+    <br/>
+    <br/>
+    Je dois avouer que c'est l'aspect du métier qui me paraît être le plus attrayant !
+    <br/>
+    <br/>
+    <img src="../assets/gif/virtual_reality.gif" alt="virtual reality" />
+  </p>
+  <p class="texts-card" *ngIf="language_spanish">
+    Basado en 3D, la realidad virtual (VR) y la realidad aumentada (AR) son dos tecnologías emergentes.
+    Más allá de una tendencia, se han convertido en un gran eje de desarrollo y han adquirido la reputación de ser capaces de transformar profundamente la forma en que vivimos y trabajamos.
+    <br/>
+    <br/>
+    La forma en que podemos navegar e interactuar de manera útil en entornos virtuales o aumentados evolucionará, lo que nos llevará a imaginar métodos más naturales de interactuar y explorar el espacio virtual, así como soluciones adaptadas a las industrias del entretenimiento y la industria.
+    <br/>
+    <br/>
+    ¡Debo admitir que este es el aspecto del trabajo que me parece más atractivo!
+    <br/>
+    <br/>
+    <img src="../assets/gif/virtual_reality.gif" alt="virtual reality" />
+  </p>
+  <div *ngIf="language_english" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+  </div>
+  <div *ngIf="language_french" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  </div>
+  <div *ngIf="language_spanish" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  </div>
+
+  <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_stereoscopy(true)">
+    <span *ngIf="language_english">Close</span>
+    <span *ngIf="language_french">Fermer</span>
+    <span *ngIf="language_spanish">Cerrar</span>
+  </button>
 </div>
 
 <!-- STEREOSCOPY isCV && isMini -->
@@ -1060,7 +1120,7 @@
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
-  <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_socNet(true)">
+  <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_socialNetworks(true)">
     <span *ngIf="language_english">Close</span>
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>
@@ -1139,7 +1199,7 @@
       <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
-  <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_socNet(true)">
+  <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_socialNetworks(true)">
     <span *ngIf="language_english">Close</span>
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>

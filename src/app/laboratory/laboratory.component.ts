@@ -10,8 +10,6 @@ import { AppComponent } from '../app.component';
 import { LaboratoryService } from './services/laboratory.service';
 import { InteractionService } from './services/interaction.service';
 
-import { ConnectionService } from '../shared/services/connection.service';
-
 @Component({
   selector: 'app-laboratory',
   templateUrl: './laboratory.component.html',
@@ -50,17 +48,17 @@ import { ConnectionService } from '../shared/services/connection.service';
     trigger('development_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')])
+      transition('false => true', [animate('1s')])
     ]),
     trigger('datas_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')])
+      transition('false => true', [animate('1s')])
     ]),
     trigger('threed_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')])
+      transition('false => true', [animate('1s')])
     ]),
     trigger('stereoscopy_fadeIn', [
       state('false', style({opacity: '0'})),
@@ -195,63 +193,63 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   public container_introduction
 
   public constructor(
-      private activatedRoute: ActivatedRoute,
-      private deviceService: DeviceDetectorService,
-      private appComponent: AppComponent,
-      private laboratoryService: LaboratoryService,
-      readonly interaction: InteractionService
+    private activatedRoute: ActivatedRoute,
+    private deviceService: DeviceDetectorService,
+    private appComponent: AppComponent,
+    private laboratoryService: LaboratoryService,
+    readonly interaction: InteractionService
   ) {}
 
   ngOnInit(): void {
-      this.epicFunction();
-      this.innerWidth = window.innerWidth;
-      this.innerHeight = window.innerHeight;
-      this.laboratoryService.set_windowDimensions(this.innerWidth, this.innerHeight);
-      this.defineWidthRange();
-      this.fetch_isMini();
+    this.epicFunction();
+    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
+    this.laboratoryService.set_windowDimensions(this.innerWidth, this.innerHeight);
+    this.defineWidthRange();
+    this.fetch_isMini();
 
-      this.isCV = this.activatedRoute.snapshot.params.isCV;
-      if(!this.isCV) {
-        this.isCV = false;
-      }
-      this.appComponent.set_isCV(this.isCV);
-      this.laboratoryService.set_isCV(this.isCV);
+    this.isCV = this.activatedRoute.snapshot.params.isCV;
+    if(!this.isCV) {
+      this.isCV = false;
+    }
+    this.appComponent.set_isCV(this.isCV);
+    this.laboratoryService.set_isCV(this.isCV);
 
-      this.laboratoryService.createScene(this.rendererCanvas_laboratory);
-      this.laboratoryService.animate();
+    this.laboratoryService.createScene(this.rendererCanvas_laboratory);
+    this.laboratoryService.animate();
 
-      this.subscription = this.interaction.isLoaded.subscribe(() => this.isLoaded_function());
+    this.subscription = this.interaction.isLoaded.subscribe(() => this.isLoaded_function());
 
-      setTimeout(() => {this.logoIntroduction_fadeIn = true}, 1000);
-      setTimeout(() => {this.h1Introduction_fadeIn = true}, 1000);
-      setTimeout(() => {this.textIntroduction_fadeIn = true}, 2000);
-      setTimeout(() => {this.spanLanguageIntroduction_fadeIn = true}, 2000);
+    setTimeout(() => {this.logoIntroduction_fadeIn = true}, 1000);
+    setTimeout(() => {this.h1Introduction_fadeIn = true}, 1000);
+    setTimeout(() => {this.textIntroduction_fadeIn = true}, 2000);
+    setTimeout(() => {this.spanLanguageIntroduction_fadeIn = true}, 2000);
 
-      this.subscription = this.interaction.change_language_english.subscribe(() => this.change_language_english());
-      this.subscription = this.interaction.change_language_french.subscribe(() => this.change_language_french());
-      this.subscription = this.interaction.change_language_spanish.subscribe(() => this.change_language_spanish());
+    this.subscription = this.interaction.change_language_english.subscribe(() => this.change_language_english());
+    this.subscription = this.interaction.change_language_french.subscribe(() => this.change_language_french());
+    this.subscription = this.interaction.change_language_spanish.subscribe(() => this.change_language_spanish());
 
-      this.subscription = this.interaction.open_development.subscribe(() => this.open_development());
-      this.subscription = this.interaction.open_datas.subscribe(() => this.open_datas());
-      this.subscription = this.interaction.open_threed.subscribe(() => this.open_threed());
-      this.subscription = this.interaction.open_stereoscopy.subscribe(() => this.open_stereoscopy());
-      this.subscription = this.interaction.open_socialNetworks.subscribe(() => this.open_socialNetworks());
-      this.subscription = this.interaction.open_photography.subscribe(() => this.open_photography());
-      this.subscription = this.interaction.open_contactMe.subscribe(() => this.open_contactMe());
-      this.subscription = this.interaction.open_movies.subscribe(() => this.open_movies());
+    this.subscription = this.interaction.open_development.subscribe(() => this.open_development());
+    this.subscription = this.interaction.open_datas.subscribe(() => this.open_datas());
+    this.subscription = this.interaction.open_threed.subscribe(() => this.open_threed());
+    this.subscription = this.interaction.open_stereoscopy.subscribe(() => this.open_stereoscopy());
+    this.subscription = this.interaction.open_socialNetworks.subscribe(() => this.open_socialNetworks());
+    this.subscription = this.interaction.open_photography.subscribe(() => this.open_photography());
+    this.subscription = this.interaction.open_contactMe.subscribe(() => this.open_contactMe());
+    this.subscription = this.interaction.open_movies.subscribe(() => this.open_movies());
   }
 
   ngOnDestroy(): void {
-      this.subscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-      this.innerWidth = window.innerWidth;
-      this.innerHeight = window.innerHeight;
-      this.laboratoryService.set_windowDimensions(window.innerWidth, window.innerHeight);
-      this.defineWidthRange();
-      this.fetch_isMini();
+    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
+    this.laboratoryService.set_windowDimensions(window.innerWidth, window.innerHeight);
+    this.defineWidthRange();
+    this.fetch_isMini();
   }
 
   @HostListener('window:orientationchange', ['$event'])
@@ -324,39 +322,39 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   }
 
   private isLoaded_function(): void {
-      this.isLoaded = true;
-      this.btnCloseIntroduction_fadeIn = true;
-      this.fadeOut_backgroundIntroduction = true;
+    this.isLoaded = true;
+    this.btnCloseIntroduction_fadeIn = true;
+    this.fadeOut_backgroundIntroduction = true;
   }
 
   private change_language_english(): void {
-      this.language_english = true;
-      this.language_french = false;
-      this.language_spanish = false;
-      this.appComponent.change_language_english();
+    this.language_english = true;
+    this.language_french = false;
+    this.language_spanish = false;
+    this.appComponent.change_language_english();
   }
 
   private change_language_french(): void {
-      this.language_english = false;
-      this.language_french = true;
-      this.language_spanish = false;
-      this.appComponent.change_language_french();
+    this.language_english = false;
+    this.language_french = true;
+    this.language_spanish = false;
+    this.appComponent.change_language_french();
   }
 
   private change_language_spanish(): void {
-      this.language_english = false;
-      this.language_french = false;
-      this.language_spanish = true;
-      this.appComponent.change_language_spanish();
+    this.language_english = false;
+    this.language_french = false;
+    this.language_spanish = true;
+    this.appComponent.change_language_spanish();
   }
 
   public close_introduction(): void {
-      this.isOpen_introductionBackground = false;
-      this.isOpen_introduction = false;
-      this.laboratoryService.animation_enterLaboratory();
-      this.isVisible_menu = true;
-      this.isVisible_initPosition = true;
-      this.appComponent.close_navBar_menu();
+    this.isOpen_introductionBackground = false;
+    this.isOpen_introduction = false;
+    this.laboratoryService.animation_enterLaboratory();
+    this.isVisible_menu = true;
+    this.isVisible_initPosition = true;
+    this.appComponent.close_navBar_menu();
   }
 
   // DEVELOPPEMENT

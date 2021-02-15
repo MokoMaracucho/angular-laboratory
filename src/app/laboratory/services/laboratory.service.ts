@@ -60,6 +60,8 @@ export class LaboratoryService {
   private instagram; instagram_lens;
   private youtube; youtube_play;
   private spotify_green; spotify_black;
+  private linkedin_blue; linkedin_white;
+  private fiverr_green; fiverr_white;
   private projector;
   private threed_cube; threed_scale; threed_faces;
 
@@ -147,6 +149,14 @@ export class LaboratoryService {
   private youtube_play_BAKING_HIGHLIGHT: BABYLON.Texture;
   private spotify_green_BAKING: BABYLON.Texture;
   private spotify_green_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private linkedin_blue_BAKING: BABYLON.Texture;
+  private linkedin_blue_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private linkedin_white_BAKING: BABYLON.Texture;
+  private linkedin_white_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private fiverr_green_BAKING: BABYLON.Texture;
+  private fiverr_green_BAKING_HIGHLIGHT: BABYLON.Texture;
+  private fiverr_white_BAKING: BABYLON.Texture;
+  private fiverr_white_BAKING_HIGHLIGHT: BABYLON.Texture;
   private threed_cube_BAKING: BABYLON.Texture;
   private threed_cube_BAKING_HIGHLIGHT: BABYLON.Texture;
   private threed_scale_BAKING: BABYLON.Texture;
@@ -1139,6 +1149,38 @@ export class LaboratoryService {
 
   BABYLON.SceneLoader.ImportMeshAsync("spotify_black", "../../assets/glb/laboratory/", "spotify_black.glb").then((result) => {
     this.spotify_black = this.scene.getMeshByName("spotify_black");
+  });
+
+  // LINKEDIN
+
+  this.linkedin_blue_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/linkedin_blue_BAKING.jpg", this.scene, false, false);
+  this.linkedin_blue_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/linkedin_blue_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+  this.linkedin_white_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/linkedin_white_BAKING.jpg", this.scene, false, false);
+  this.linkedin_white_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/linkedin_white_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+  BABYLON.SceneLoader.ImportMeshAsync("linkedin_blue", "../../assets/glb/laboratory/", "linkedin_blue.glb").then((result) => {
+      this.linkedin_blue = this.scene.getMeshByName("linkedin_blue");
+  });
+
+  BABYLON.SceneLoader.ImportMeshAsync("linkedin_white", "../../assets/glb/laboratory/", "linkedin_white.glb").then((result) => {
+    this.linkedin_white = this.scene.getMeshByName("linkedin_white");
+  });
+
+  // FIVERR
+
+  this.fiverr_green_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/fiverr_green_BAKING.jpg", this.scene, false, false);
+  this.fiverr_green_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/fiverr_green_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+  this.fiverr_white_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/fiverr_white_BAKING.jpg", this.scene, false, false);
+  this.fiverr_white_BAKING_HIGHLIGHT = new BABYLON.Texture("../../assets/glb/laboratory/baking/fiverr_white_BAKING_HIGHLIGHT.jpg", this.scene, false, false);
+
+  BABYLON.SceneLoader.ImportMeshAsync("fiverr_green", "../../assets/glb/laboratory/", "fiverr_green.glb").then((result) => {
+      this.fiverr_green = this.scene.getMeshByName("fiverr_green");
+  });
+
+  BABYLON.SceneLoader.ImportMeshAsync("fiverr_white", "../../assets/glb/laboratory/", "fiverr_white.glb").then((result) => {
+    this.fiverr_white = this.scene.getMeshByName("fiverr_white");
   });
 
   // 3D
