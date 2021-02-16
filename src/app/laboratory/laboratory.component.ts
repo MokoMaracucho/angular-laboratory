@@ -65,11 +65,6 @@ import { InteractionService } from './services/interaction.service';
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('1s')])
     ]),
-    trigger('switchCamera_fadeIn', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('1s')])
-    ]),
     trigger('socialNetworks_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
@@ -165,9 +160,6 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
   public isOpen_arvr = false;
   public arvr_fadeIn = false;
-
-  public isOpen_switchCamera = false;
-  public switchCamera_fadeIn = false;
 
   public isOpen_socialNetworks = false;
   public socialNetworks_fadeIn = false;

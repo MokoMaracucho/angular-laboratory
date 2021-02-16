@@ -690,7 +690,7 @@
 
 <!-- DATA !isCV && isMini -->
 
-<div *ngIf="!isCV && isMini" class="container-cards-mini" [style.display]="isOpen_datas ? 'block' : 'none'" [@data_fadeIn]="datas_fadeIn">
+<div *ngIf="!isCV && isMini" class="container-cards-mini" [style.display]="isOpen_datas ? 'block' : 'none'" [@datas_fadeIn]="datas_fadeIn">
   <div class="card-left-mini">
     <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_datas_en.png" alt="development">
     <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_datas_fr.png" alt="development">
@@ -805,7 +805,7 @@
 
 <!-- DATA isCV && isMini -->
 
-<div *ngIf="isCV && isMini" class="container-cards-mini" [style.display]="isOpen_datas ? 'block' : 'none'" [@data_fadeIn]="datas_fadeIn">
+<div *ngIf="isCV && isMini" class="container-cards-mini" [style.display]="isOpen_datas ? 'block' : 'none'" [@datas_fadeIn]="datas_fadeIn">
   <div class="card-left-mini">
     <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_datas_en.png" alt="datas">
     <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_datas_fr.png" alt="datas">
@@ -871,7 +871,7 @@
 
 <!-- 3D !isCV && !isMini -->
 
-<div *ngIf="!isCV && !isMini" class="container-cards" [style.display]="isOpen_threed ? 'block' : 'none'" [@datas_fadeIn]="threed_fadeIn">
+<div *ngIf="!isCV && !isMini" class="container-cards" [style.display]="isOpen_threed ? 'block' : 'none'" [@threed_fadeIn]="threed_fadeIn">
   <img class="title-card" src="../assets/img/titles/title_threed.png" alt="3D">
 
   <h1 *ngIf="language_english" class="h1-card"></h1>
@@ -941,7 +941,7 @@
 
 <!-- 3D isCV && !isMini -->
 
-<div *ngIf="isCV && !isMini" class="container-cards" [style.display]="isOpen_threed ? 'block' : 'none'" [@datas_fadeIn]="threed_fadeIn">
+<div *ngIf="isCV && !isMini" class="container-cards" [style.display]="isOpen_threed ? 'block' : 'none'" [@threed_fadeIn]="threed_fadeIn">
   <img class="title-card" src="../assets/img/titles/title_threed.png" alt="3D">
 
   <h1 *ngIf="language_english" class="h1-card">Three-dimensional interface</h1>
@@ -1019,7 +1019,7 @@
 
 <div *ngIf="isCV && isMini" class="container-cards-mini" [style.display]="isOpen_threed ? 'block' : 'none'" [@threed_fadeIn]="threed_fadeIn">
   <div class="card-left-mini">
-    <img class="title-card" src="../assets/img/titles/title_threed.png" alt="3D">
+    <img class="title-card-mini" src="../assets/img/titles/title_threed.png" alt="3D">
 
     <div *ngIf="language_english" class="spans-language-cards-mini">
       <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
