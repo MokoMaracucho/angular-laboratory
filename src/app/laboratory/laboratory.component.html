@@ -277,6 +277,11 @@
 <!-- INIT POSITION !isMini -->
 
 <div *ngIf="!isMini" class="initPosition-container">
+  <img *ngIf="isActive_cameraRegular" class="menu-icon-cameraAnaglyph menu-icons" src="../assets/img/menu/camera_anaglyph.png" alt="camera anaglyph" title="Camera anaglyph" (click)="switch_cameraAnaglyph()">
+  <img *ngIf="isActive_cameraAnaglyph" class="menu-icon-cameraAnaglyph menu-icons" src="../assets/img/menu/close_camera_anaglyph.png" alt="camera anaglyph" title="Camera anaglyph" (click)="switch_cameraRegular()">
+
+  <img class="menu-icon-cameraVR menu-icons" src="../assets/img/menu/camera_VR.png" alt="camera VR" title="Camera VR">
+
   <img class="icon-initPosition" src="../assets/img/menu/init_position_50x50.png" alt="init position" (click)="init_position()">
 </div>
 
