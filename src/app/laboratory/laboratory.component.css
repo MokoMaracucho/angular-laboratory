@@ -475,7 +475,7 @@
 
 @media (max-width: 599px) {
   .menu-container {
-    grid-template-columns: [col-start-menu] 40px [col-1-menu] 40px [col-2-menu] 40px [col-3-menu] 40px [col-4-menu] 40px [col-5-menu] 40px [col-6-menu] 40px [col-7-menu] auto [col-8-menu] 120px [col-stop-menu];
+    grid-template-columns: [col-start-menu] 40px [col-1-menu] 40px [col-2-menu] 40px [col-3-menu] 40px [col-4-menu] 40px [col-5-menu] 40px [col-6-menu] 40px [col-7-menu] auto [col-8-menu] 80px [col-stop-menu];
     grid-template-rows: [row-start-menu] 40px [row-stop-menu];
     display: grid;
     bottom: 0px;
@@ -532,12 +532,12 @@
   }
 
   .initPosition-container {
-    grid-template-columns: [col-start-menu] 40px [col-1-menu] 40px [col-2-menu] 40px [col-stop-menu];
+    grid-template-columns: [col-start-menu] 40px [col-1-menu] 40px [col-stop-menu];
     grid-template-rows: [row-start-menu] 40px [row-stop-menu];
     display: grid;
     right: 0px;
     bottom: 0px;
-    width: 120px;
+    width: 80px;
     height: 40px;
     background-color: #00000066;
   }
@@ -547,13 +547,8 @@
     grid-auto-rows: auto;
   }
 
-  .menu-icon-cameraVR {
-    grid-area: row-start-menu / col-1-menu / row-stop-menu / col-2-menu;
-    grid-auto-rows: auto;
-  }
-
   .icon-initPosition {
-    grid-area: row-start-menu / col-2-menu / row-1-menu / col-stop-menu;
+    grid-area: row-start-menu / col-1-menu / row-1-menu / col-stop-menu;
     grid-auto-rows: auto;
     width: 30px;
     height: 30px;
@@ -564,7 +559,7 @@
 @media (min-width: 600px) {
   .menu-container {
     grid-template-columns: [col-start-menu] 50px [col-stop-menu];
-    grid-template-rows: [row-start-menu] 270px [row-1-menu] 50px [row-2-menu] 50px [row-3-menu] 50px [row-4-menu] 50px [row-5-menu] 50px [row-6-menu] 50px [row-7-menu] 1fr [row-8-menu] 160px [row-stop-menu];
+    grid-template-rows: [row-start-menu] 270px [row-1-menu] 50px [row-2-menu] 50px [row-3-menu] 50px [row-4-menu] 50px [row-5-menu] 50px [row-6-menu] 50px [row-7-menu] 1fr [row-8-menu] 110px [row-stop-menu];
     display: grid;
     right: 0px;
     width: 50px;
@@ -621,12 +616,12 @@
 
   .initPosition-container {
     grid-template-columns: [col-start-menu] 50px [col-stop-menu];
-    grid-template-rows: [row-start-menu] 50px [row-1-menu] 50px [row-2-menu] 60px [row-3-menu] 10px [row-stop-menu];
+    grid-template-rows: [row-start-menu] 50px [row-1-menu] 60px [row-2-menu] 10px [row-stop-menu];
     display: grid;
     right: 0px;
     bottom: 0px;
     width: 50px;
-    height: 160px;
+    height: 110px;
     background-color: #00000066;
   }
 
@@ -635,13 +630,8 @@
     grid-auto-rows: auto;
   }
 
-  .menu-icon-cameraVR  {
-    grid-area: row-1-menu / col-start-menu / row-2-menu / col-stop-menu;
-    grid-auto-rows: auto;
-  }
-
   .icon-initPosition {
-    grid-area: row-2-menu / col-start-menu / row-3-menu / col-stop-menu;
+    grid-area: row-1-menu / col-start-menu / row-2-menu / col-stop-menu;
     grid-auto-rows: auto;
   }
 }
@@ -662,7 +652,7 @@
 
 .menu-container-left-mini {
   grid-template-columns: [col-start-menu-left-mini] 40px [col-stop-menu-left-mini];
-  grid-template-rows: [row-start-menu-left-mini] 60px [row-1-menu-left-mini] 40px [row-2-menu-left-mini] 40px [row-3-menu-left-mini] 1fr [row-stop-menu-left-mini];
+  grid-template-rows: [row-start-menu-left-mini] 60px [row-1-menu-left-mini] 40px [row-2-menu-left-mini] 40px [row-3-menu-left-mini] 40px [row-4-menu-left-mini] 1fr [row-stop-menu-left-mini];
   display: grid;
   left: 0px;
   width: 40px;
@@ -680,18 +670,13 @@
   grid-auto-rows: auto;
 }
 
-.menu-icon-cameraVR-mini {
+.menu-icon-photography-mini {
   grid-area: row-2-menu-left-mini / col-start-menu-left-mini / row-3-menu-left-mini / col-stop-menu-left-mini;
   grid-auto-rows: auto;
 }
 
-.menu-icon-photography-mini {
-  grid-area: row-3-menu-left-mini / col-start-menu-left-mini / row-4-menu-left-mini / col-stop-menu-left-mini;
-  grid-auto-rows: auto;
-}
-
 .menu-icon-movies-mini {
-  grid-area: row-4-menu-left-mini / col-start-menu-left-mini / row-5-menu-left-mini / col-stop-menu-left-mini;
+  grid-area: row-3-menu-left-mini / col-start-menu-left-mini / row-4-menu-left-mini / col-stop-menu-left-mini;
   grid-auto-rows: auto;
 }
 
