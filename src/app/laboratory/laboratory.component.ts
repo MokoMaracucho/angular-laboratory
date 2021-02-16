@@ -60,7 +60,7 @@ import { InteractionService } from './services/interaction.service';
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('1s')])
     ]),
-    trigger('stereoscopy_fadeIn', [
+    trigger('arvr_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('1s')])
@@ -70,7 +70,7 @@ import { InteractionService } from './services/interaction.service';
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('1s')])
     ]),
-    trigger('socNet_fadeIn', [
+    trigger('socialNetworks_fadeIn', [
       state('false', style({opacity: '0'})),
       state('true', style({opacity: '1'})),
       transition('false => true', [animate('1s')])
@@ -163,13 +163,14 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   public isOpen_threed = false;
   public threed_fadeIn = false;
 
-  public isOpen_stereoscopy = false;
-  public stereoscopy_fadeIn = false;
+  public isOpen_arvr = false;
+  public arvr_fadeIn = false;
+
   public isOpen_switchCamera = false;
   public switchCamera_fadeIn = false;
 
-  public isOpen_socNet = false;
-  public socNet_fadeIn = false;
+  public isOpen_socialNetworks = false;
+  public socialNetworks_fadeIn = false;
 
   public isActive_cameraRegular = true;
   public isActive_cameraAnaglyph = false;
@@ -232,7 +233,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     this.subscription = this.interaction.open_development.subscribe(() => this.open_development());
     this.subscription = this.interaction.open_datas.subscribe(() => this.open_datas());
     this.subscription = this.interaction.open_threed.subscribe(() => this.open_threed());
-    this.subscription = this.interaction.open_stereoscopy.subscribe(() => this.open_stereoscopy());
+    this.subscription = this.interaction.open_arvr.subscribe(() => this.open_arvr());
     this.subscription = this.interaction.open_socialNetworks.subscribe(() => this.open_socialNetworks());
     this.subscription = this.interaction.open_photography.subscribe(() => this.open_photography());
     this.subscription = this.interaction.open_contactMe.subscribe(() => this.open_contactMe());
@@ -372,9 +373,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_stereoscopy) {
-        this.close_switchCamera();
-      }
+      //if(this.isOpen_stereoscopy) {
+        //this.close_switchCamera();
+      //}
     }
     if(this.isOpen_movies) {
       this.close_movies(false);
@@ -409,9 +410,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_stereoscopy) {
-        this.close_switchCamera();
-      }
+      //if(this.isOpen_stereoscopy) {
+        //this.close_switchCamera();
+      //}
     }
     if(this.isOpen_movies) {
       this.close_movies(false);
@@ -446,9 +447,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_stereoscopy) {
-        this.close_switchCamera();
-      }
+      //if(this.isOpen_stereoscopy) {
+        //this.close_switchCamera();
+      //}
     }
     if(this.isOpen_movies) {
       this.close_movies(false);
@@ -468,68 +469,40 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  // STEREOSCOPY
+  // AR / VR
 
-  public open_stereoscopy(): void {
-    this.laboratoryService.desactivation_buttonsStereoscopy();
+  public open_arvr(): void {
+    this.laboratoryService.desactivation_buttonsARVR();
     if(this.isCard_open) {
       this.close_openedCard();
     }
-    this.isOpen_stereoscopy = true;
-    this.stereoscopy_fadeIn = true;
-    this.isOpen_switchCamera = true;
-    this.switchCamera_fadeIn = true;
-    if(!this.isCard_open && !this.isMobileDevice) {
+    this.isOpen_arvr = true;
+    this.arvr_fadeIn = true;
+    if(!this.isCard_open) {
       this.laboratoryService.open_card();
       this.isCard_open = true;
     }
-    if(this.isMobileDevice && this.isCard_open) {
-      this.isVisible_cacheMobileDevice = false;
-      this.laboratoryService.init_position();
-      this.isCard_open = false;
+    if(this.isMobileDevice) {
+      this.isVisible_cacheMobileDevice = true;
+      //if(this.isOpen_stereoscopy) {
+        //this.close_switchCamera();
+      //}
+    }
+    if(this.isOpen_movies) {
+      this.close_movies(false);
     }
   }
 
-  public close_stereoscopy(close_clicked): void {
-    this.laboratoryService.activation_buttonsStereoscopy();
-    this.isOpen_stereoscopy = false;
-    this.stereoscopy_fadeIn = false;
+  public close_arvr(close_clicked): void {
+    this.laboratoryService.activation_buttonsARVR();
+    this.isOpen_arvr = false;
+    this.arvr_fadeIn = false;
     if(close_clicked) {
       this.laboratoryService.close_card();
       this.isCard_open = false;
       if(this.isMobileDevice) {
         this.isVisible_cacheMobileDevice = false;
       }
-    }
-    if(this.isMobileDevice) {
-      this.close_switchCamera();
-    }
-  }
-
-  public close_switchCamera(): void {
-    this.isOpen_switchCamera = false;
-    if(this.isOpen_stereoscopy && !this.isMobileDevice) {
-      this.close_stereoscopy(true);
-    }
-    if(this.isMobileDevice) {
-      this.isOpen_stereoscopy = false;
-      this.stereoscopy_fadeIn = false;
-    }
-  }
-
-  public switch_cameraRegular(): void {
-    if(!this.isActive_cameraRegular) {
-      this.laboratoryService.switch_camera();
-      this.isActive_cameraRegular = !this.isActive_cameraRegular;
-      this.isActive_cameraAnaglyph = !this.isActive_cameraAnaglyph;
-    }
-  }
-
-  public switch_cameraAnaglyph(): void {
-    if(!this.isActive_cameraAnaglyph) {
-      this.laboratoryService.switch_camera();
-      this.isActive_cameraRegular = !this.isActive_cameraRegular;
-      this.isActive_cameraAnaglyph = !this.isActive_cameraAnaglyph;
     }
   }
 
@@ -540,17 +513,17 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     if(this.isCard_open) {
       this.close_openedCard();
     }
-    this.isOpen_socNet = true;
-    this.socNet_fadeIn = true;
+    this.isOpen_socialNetworks = true;
+    this.socialNetworks_fadeIn = true;
     if(!this.isCard_open) {
       this.laboratoryService.open_card();
       this.isCard_open = true;
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_stereoscopy) {
-        this.close_switchCamera();
-      }
+      //if(this.isOpen_stereoscopy) {
+        //this.close_switchCamera();
+      //}
     }
     if(this.isOpen_movies) {
       this.close_movies(false);
@@ -559,12 +532,11 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
 
   public close_socialNetworks(close_clicked): void {
     this.laboratoryService.activation_buttonsSocialNetworks();
-    this.isOpen_socNet = false;
-    this.socNet_fadeIn = false;
+    this.isOpen_socialNetworks = false;
+    this.socialNetworks_fadeIn = false;
     if(close_clicked) {
       this.laboratoryService.close_card();
       this.isCard_open = false;
-      // this.laboratoryService.set_isOpenCard(this.isCard_open);
       if(this.isMobileDevice) {
         this.isVisible_cacheMobileDevice = false;
       }
@@ -586,9 +558,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_stereoscopy) {
-        this.close_switchCamera();
-      }
+      //if(this.isOpen_stereoscopy) {
+        //this.close_switchCamera();
+      //}
     }
     if(this.isOpen_movies) {
       this.close_movies(false);
@@ -619,9 +591,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     this.movies_fadeIn = true;
     this.laboratoryService.animation_openMovies();
     if(this.isMobileDevice) {
-      if(this.isOpen_stereoscopy) {
-        this.close_switchCamera();
-      }
+      //if(this.isOpen_stereoscopy) {
+        //this.close_switchCamera();
+      //}
     }
   }
 
@@ -667,9 +639,9 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_stereoscopy) {
-        this.close_switchCamera();
-      }
+      //if(this.isOpen_stereoscopy) {
+        //this.close_switchCamera();
+      //}
     }
     if(this.isOpen_movies) {
       this.close_movies(false);
@@ -701,10 +673,10 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     else if(this.isOpen_threed) {
       this.close_threed(false);
     }
-    else if(this.isOpen_stereoscopy) {
-      this.close_stereoscopy(false);
+    else if(this.isOpen_arvr) {
+      this.close_arvr(false);
     }
-    else if(this.isOpen_socNet) {
+    else if(this.isOpen_socialNetworks) {
       this.close_socialNetworks(false);
     }
     else if(this.isOpen_photography) {
@@ -715,6 +687,24 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     }
     else if(this.isOpen_contactMe) {
       this.close_contactMe(false);
+    }
+  }
+
+  // SWITCH CAMERA
+
+  public switch_cameraRegular(): void {
+    if(!this.isActive_cameraRegular) {
+      this.laboratoryService.switch_camera();
+      this.isActive_cameraRegular = !this.isActive_cameraRegular;
+      this.isActive_cameraAnaglyph = !this.isActive_cameraAnaglyph;
+    }
+  }
+
+  public switch_cameraAnaglyph(): void {
+    if(!this.isActive_cameraAnaglyph) {
+      this.laboratoryService.switch_camera();
+      this.isActive_cameraRegular = !this.isActive_cameraRegular;
+      this.isActive_cameraAnaglyph = !this.isActive_cameraAnaglyph;
     }
   }
 

@@ -17,22 +17,28 @@
   <h1 *ngIf="language_spanish" class="h1s-introduction h1-spanish" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">INGRESE<br/>A LA TERCERA DIMENSÍON</h1>
 
   <p *ngIf="language_english" class="text-introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
+    <!--
     Give yourself a powerful digital identity and offer your users a unique experience based on innovative technologies that will be part of the web for a long time.
     <br/>
     <br/>
     The 3D web offers digital marketing solutions revolutionizing your interactions with your community, an unprecedented presentation of your products, efficient classification of your data, unlimited customization of your interfaces.
+    -->
   </p>
   <p *ngIf="language_french" class="text-introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
+    <!--
     Dotez-vous d'une identité numérique puissante et proposez à vos utilisateurs une expérience unique reposant sur des technologies novatrices qui s'inscriront durablement dans le web.
     <br/>
     <br/>
     Le web 3D offre des solutions de marketing digital révolutionnant vos interactions avec votre communauté, une présentation inédite de vos produits, une classification efficace de vos données, une customisation illimitée de vos interfaces.
+    -->
   </p>
   <p *ngIf="language_spanish" class="text-introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
+    <!--
     Date una poderosa identidad digital y ofrece a tus usuarios una experiencia única basada en tecnologías innovadoras que serán parte de la web durante mucho tiempo.
     <br/>
     <br/>
     La web 3D ofrece soluciones de marketing digital que revolucionan sus interacciones con su comunidad, una presentación sin precedentes de sus productos, clasificación eficiente de sus datos, personalización ilimitada de sus interfaces.
+    -->
   </p>
 
   <div *ngIf="language_english" class="spans-language" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
@@ -65,22 +71,28 @@
   <h1 *ngIf="language_spanish" class="h1s-introduction-mini h1-spanish-mini" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">INGRESE<br/>A LA TERCERA DIMENSÍON</h1>
 
   <p *ngIf="language_english" class="text-introduction-mini" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
+    <!--
     Give yourself a powerful digital identity and offer your users a unique experience based on innovative technologies that will be part of the web for a long time.
     <br/>
     <br/>
     The 3D web offers digital marketing solutions revolutionizing your interactions with your community, an unprecedented presentation of your products, efficient classification of your data, unlimited customization of your interfaces.
+    -->
   </p>
   <p *ngIf="language_french" class="text-introduction-mini" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
+    <!--
     Dotez-vous d'une identité numérique puissante et proposez à vos utilisateurs une expérience unique reposant sur des technologies novatrices qui s'inscriront durablement dans le web.
     <br/>
     <br/>
     Le web 3D offre des solutions de marketing digital révolutionnant vos interactions avec votre communauté, une présentation inédite de vos produits, une classification efficace de vos données, une customisation illimitée de vos interfaces.
+    -->
   </p>
   <p *ngIf="language_spanish" class="text-introduction-mini" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
+    <!--
     Date una poderosa identidad digital y ofrece a tus usuarios una experiencia única basada en tecnologías innovadoras que serán parte de la web durante mucho tiempo.
     <br/>
     <br/>
     La web 3D ofrece soluciones de marketing digital que revolucionan sus interacciones con su comunidad, una presentación sin precedentes de sus productos, clasificación eficiente de sus datos, personalización ilimitada de sus interfaces.
+    -->
   </p>
 
   <div *ngIf="language_english" class="spans-language-mini" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
@@ -128,7 +140,7 @@
     Suivant un cursus de développeur d'applications Java EE avec <a class="links" onclick="window.open('https://openclassrooms.com/fr/', '_blank'); return false;">OpenClassrooms</a>, je suis à la recherche d'un stage opérationnel de 4 mois.
     <br/>
     <br/>
-    Passionné par l'image et captivé par les nouvelles technologies, j'ai très vite pris conscience des bouleversements qu'engendreront la démocratisation de la réalité virtuelle et augmentée.
+    Passionné par l'image et captivé par les nouvelles technologies de l'information, j'ai très vite pris conscience des bouleversements qu'engendreront la démocratisation de la réalité virtuelle et augmentée.
     <br/>
     <br/>
     La maîtrise de la programmation et de la modélisation 3D m'est donc apparue comme étant indispensable pour devenir acteur dans ce domaine.
@@ -140,7 +152,7 @@
     Siguiendo un curso como desarrollador de aplicaciones Java EE con <a class="links" onclick="window.open('https://openclassrooms.com/en/', '_blank'); return false;">OpenClassrooms</a>, estoy buscando una pasantía operativa de 4 meses.
     <br/>
     <br/>
-    Apasionado por las imágenes y cautivado por las nuevas tecnologías, rápidamente me di cuenta de los trastornos que generará la democratización de la realidad virtual y aumentada.
+    Apasionado por las imágenes y cautivado por las nuevas tecnologías de la información, rápidamente me di cuenta de los trastornos que generará la democratización de la realidad virtual y aumentada.
     <br/>
     <br/>
     Por lo tanto, dominar la programación y el modelado 3D me parecía esencial para convertirme en actor en este campo.
@@ -237,9 +249,9 @@
   </button>
 </div>
 
-<!-- MENU -->
+<!-- MENU !isMini -->
 
-<div class="menu-container">
+<div *ngIf="!isMini" class="menu-container">
   <div class="menu">
     <img *ngIf="!isOpen_development" class="menu-icon-development menu-icons" src="../assets/img/menu/development_menu.png" alt="development" title="Development" (click)="open_development()">
     <img *ngIf="isOpen_development" class="menu-icon-development menu-icons" src="../assets/img/menu/close_development_menu.png" alt="development" title="Development"  (click)="close_development(true)">
@@ -250,11 +262,11 @@
     <img *ngIf="!isOpen_threed" class="menu-icon-threed menu-icons" src="../assets/img/menu/threed_menu.png" alt="3D" title="3D" (click)="open_threed()">
     <img *ngIf="isOpen_threed" class="menu-icon-threed menu-icons" src="../assets/img/menu/close_threed_menu.png" alt="3D" title="3D" (click)="close_threed(true)">
 
-    <img *ngIf="!isOpen_stereoscopy" class="menu-icon-stereoscopy menu-icons" src="../assets/img/menu/stereoscopy_menu.png" alt="stereoscopy" title="Stereoscopy" (click)="open_stereoscopy()">
-    <img *ngIf="isOpen_stereoscopy" class="menu-icon-stereoscopy menu-icons" src="../assets/img/menu/close_stereoscopy_menu.png" alt="stereoscopy" title="Stereoscopy" (click)="close_stereoscopy(true)">
+    <img *ngIf="!isOpen_arvr" class="menu-icon-arvr menu-icons" src="../assets/img/menu/arvr_menu.png" alt="AR VR" title="AR VR" (click)="open_arvr()">
+    <img *ngIf="isOpen_arvr" class="menu-icon-arvr menu-icons" src="../assets/img/menu/close_arvr_menu.png" alt="AR VR" title="AR VR" (click)="close_arvr(true)">
 
-    <img *ngIf="!isOpen_socNet" class="menu-icon-socNet menu-icons" src="../assets/img/menu/socNet_menu.png" alt="social networks" title="Social networks" (click)="open_socialNetworks()">
-    <img *ngIf="isOpen_socNet" class="menu-icon-socNet menu-icons" src="../assets/img/menu/close_socNet_menu.png" alt="social networks" title="Social networks" (click)="close_socialNetworks(true)">
+    <img *ngIf="!isCV && !isOpen_socialNetworks" class="menu-icon-socialNetworks menu-icons" src="../assets/img/menu/socialNetworks_menu.png" alt="social networks" title="Social networks" (click)="open_socialNetworks()">
+    <img *ngIf="!isCV && isOpen_socialNetworks" class="menu-icon-socialNetworks menu-icons" src="../assets/img/menu/close_socialNetworks_menu.png" alt="social networks" title="Social networks" (click)="close_socialNetworks(true)">
 
     <img *ngIf="isOpen_photography" class="menu-icon-photography menu-icons" src="../assets/img/menu/photography_menu.png" alt="photography" title="Photography" (click)="close_photography(true)">
 
@@ -262,41 +274,49 @@
   </div>
 </div>
 
-<!-- SWITCH CAMERA -->
+<!-- INIT POSITION !isMini -->
 
-<div class="switchCamera-container" [style.display]="isOpen_switchCamera ? 'block' : 'none'" [@switchCamera_fadeIn]="switchCamera_fadeIn">
-  <img class="red-cross" src="../assets/img/icons/red_cross.png" alt="close" (click)="close_switchCamera()">
+<div *ngIf="!isMini" class="initPosition-container">
+  <img class="icon-initPosition" src="../assets/img/menu/init_position_50x50.png" alt="init position" (click)="init_position()">
+</div>
 
-  <div class="switch-camera">
-      <span *ngIf="language_english && !isMax576 && !isMin576" class="span-switchCamera">Switch camera</span>
-      <span *ngIf="language_french && !isMax576 && !isMin576" class="span-switchCamera">Changer de caméra</span>
-      <span *ngIf="language_spanish && !isMax576 && !isMin576" class="span-switchCamera">Cambiar de cámara</span>
+<!-- MENU isMini -->
 
-    <div class="div-cameraRegular" (click)="switch_cameraRegular()">
-      <img class="img-cameraRegular imgs-camera" src="../assets/img/icons/camera_regular.png" alt="camera regular">
+<div *ngIf="isMini" class="menu-container-left-mini">
+  <div class="menu-left-mini">
+    <img *ngIf="isActive_cameraRegular" class="menu-icon-cameraAnaglyph-mini menu-icons-mini" src="../assets/img/menu/camera_anaglyph.png" alt="camera anaglyph" title="Camera anaglyph" (click)="switch_cameraAnaglyph()">
+    <img *ngIf="isActive_cameraAnaglyph" class="menu-icon-cameraAnaglyph-mini menu-icons-mini" src="../assets/img/menu/close_camera_anaglyph.png" alt="camera anaglyph" title="Camera anaglyph" (click)="switch_cameraRegular()">
 
-      <div *ngIf="language_english && isActive_cameraRegular" class="span-cameraRegular spans-camera isActive-spansCamera">Regular</div>
-      <div *ngIf="language_english && !isActive_cameraRegular" class="span-cameraRegular spans-camera">Regular</div>
+    <img class="menu-icon-cameraVR-mini menu-icons-mini" src="../assets/img/menu/camera_VR.png" alt="camera VR" title="Camera VR">
 
-      <div *ngIf="language_french && isActive_cameraRegular" class="span-cameraRegular spans-camera isActive-spansCamera">Normale</div>
-      <div *ngIf="language_french && !isActive_cameraRegular" class="span-cameraRegular spans-camera">Normale</div>
+    <img *ngIf="isOpen_photography" class="menu-icon-photography-mini menu-icons-mini" src="../assets/img/menu/photography_menu.png" alt="photography" title="Photography" (click)="close_photography(true)">
 
-      <div *ngIf="language_spanish && isActive_cameraRegular" class="span-cameraRegular spans-camera isActive-spansCamera">Regular</div>
-      <div *ngIf="language_spanish && !isActive_cameraRegular" class="span-cameraRegular spans-camera">Regular</div>
-    </div>
+    <img *ngIf="isOpen_movies" class="menu-icon-movies-mini menu-icons-mini" src="../assets/img/menu/movies_menu.png" alt="movies" title="Movies" (click)="close_movies(true)">
+  </div>
+</div>
 
-    <div class="div-cameraAnaglyph" (click)="switch_cameraAnaglyph()">
-      <img class="img-cameraAnaglyph imgs-camera" src="../assets/img/icons/camera_anaglyph.png" alt="camera anaglyph">
+<div *ngIf="isMini" class="initPosition-container-mini">
+  <div class="initPosition-mini">
+    <img class="icon-initPosition-mini" src="../assets/img/menu/init_position_50x50.png" alt="init position" (click)="init_position()">
+  </div>
+</div>
 
-      <div *ngIf="language_english && isActive_cameraAnaglyph" class="span-cameraRegular spans-camera isActive-spansCamera">Anaglyph</div>
-      <div *ngIf="language_english && !isActive_cameraAnaglyph" class="span-cameraRegular spans-camera">Anaglyph</div>
+<div *ngIf="isMini" class="menu-container-right-mini">
+  <div class="menu-right-mini">
+    <img *ngIf="!isOpen_development" class="menu-icon-development-mini menu-icons-mini" src="../assets/img/menu/development_menu.png" alt="development" title="Development" (click)="open_development()">
+    <img *ngIf="isOpen_development" class="menu-icon-development-mini menu-icons-mini" src="../assets/img/menu/close_development_menu.png" alt="development" title="Development"  (click)="close_development(true)">
 
-      <div *ngIf="language_french && isActive_cameraAnaglyph" class="span-cameraRegular spans-camera isActive-spansCamera">Anaglyphe</div>
-      <div *ngIf="language_french && !isActive_cameraAnaglyph" class="span-cameraRegular spans-camera">Anaglyphe</div>
+    <img *ngIf="!isOpen_datas" class="menu-icon-datas-mini menu-icons-mini" src="../assets/img/menu/datas_menu.png" alt="datas" title="Datas" (click)="open_datas()">
+    <img *ngIf="isOpen_datas" class="menu-icon-datas-mini menu-icons-mini" src="../assets/img/menu/close_datas_menu.png" alt="datas" title="Datas" (click)="close_datas(true)">
 
-      <div *ngIf="language_spanish && isActive_cameraAnaglyph" class="span-cameraRegular spans-camera isActive-spansCamera">Anaglifo</div>
-      <div *ngIf="language_spanish && !isActive_cameraAnaglyph" class="span-cameraRegular spans-camera">Anaglifo</div>
-    </div>
+    <img *ngIf="!isOpen_threed" class="menu-icon-threed-mini menu-icons-mini" src="../assets/img/menu/threed_menu.png" alt="3D" title="3D" (click)="open_threed()">
+    <img *ngIf="isOpen_threed" class="menu-icon-threed-mini menu-icons-mini" src="../assets/img/menu/close_threed_menu.png" alt="3D" title="3D" (click)="close_threed(true)">
+
+    <img *ngIf="!isOpen_arvr" class="menu-icon-arvr-mini menu-icons-mini" src="../assets/img/menu/arvr_menu.png" alt="AR VR" title="AR VR" (click)="open_arvr()">
+    <img *ngIf="isOpen_arvr" class="menu-icon-arvr-mini menu-icons-mini" src="../assets/img/menu/close_arvr_menu.png" alt="AR VR" title="AR VR" (click)="close_arvr(true)">
+
+    <img *ngIf="!isCV && !isOpen_socialNetworks" class="menu-icon-socialNetworks-mini menu-icons-mini" src="../assets/img/menu/socialNetworks_menu.png" alt="social networks" title="Social networks" (click)="open_socialNetworks()">
+    <img *ngIf="!isCV && isOpen_socialNetworks" class="menu-icon-socialNetworks-mini menu-icons-mini" src="../assets/img/menu/close_socialNetworks_menu.png" alt="social networks" title="Social networks" (click)="close_socialNetworks(true)">
   </div>
 </div>
 
@@ -322,12 +342,6 @@
   </div>
 </div>
 
-<!-- INIT POSITION -->
-
-<div class="initPosition-container">
-  <img class="icon-initPosition" src="../assets/img/menu/init_position_50x50.png" alt="init position" (click)="init_position()">
-</div>
-
 <!-- DEVELOPMENT !isCV && !isMini -->
 
 <div *ngIf="!isCV && !isMini" class="container-cards" [style.display]="isOpen_development ? 'block' : 'none'" [@development_fadeIn]="development_fadeIn">
@@ -335,19 +349,22 @@
   <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_development_fr.png" alt="development">
   <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_development_es.png" alt="development">
 
-  <h1 *ngIf="language_english" class="h1-card">Unleash your creativity!</h1>
-  <h1 *ngIf="language_french" class="h1-card">Liberez votre créativité !</h1>
-  <h1 *ngIf="language_spanish" class="h1-card">¡Da rienda suelta a tu creatividad!</h1>
+  <h1 *ngIf="language_english" class="h1-card">Technology at the service of creativity</h1>
+  <h1 *ngIf="language_french" class="h1-card">La technique au service de la créativité</h1>
+  <h1 *ngIf="language_spanish" class="h1-card">Tecnología al servicio de la creatividad</h1>
 
   <p class="texts-card" *ngIf="language_english">
+    <!--
     Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas.
     <br/><br/>
     Front-end and Back-end development for a better distribution of functionalities. Database management. Configuration and securing of your servers. 3D modeling and programming.
     <br/>
     <br/>
     Go to the '<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Development</a>' section for more details.
+    -->
   </p>
   <p class="texts-card" *ngIf="language_french">
+    <!--
     Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.
     <br/>
     <br/>
@@ -355,8 +372,10 @@
     <br/>
     <br/>
     Accédez à la rubrique "<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Développement</a>" pour plus de détails.
+    -->
   </p>
   <p class="texts-card" *ngIf="language_spanish">
+    <!--
     Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.
     <br/>
     <br/>
@@ -364,6 +383,7 @@
     <br/>
     <br/>
     Vaya a la sección "<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Desarollo</a>" para obtener más detalles.
+    -->
   </p>
 
   <div *ngIf="language_english" class="spans-language-cards">
@@ -414,14 +434,18 @@
     <h1 *ngIf="language_spanish" class="h1-card-mini">¡Da rienda suelta a tu creatividad!</h1>
 
     <p *ngIf="language_english" class="texts-card-mini">
+      <!--
       Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas.
-      <br/><br/>
+      <br/>
+      <br/>
       Front-end and Back-end development for a better distribution of functionalities. Database management. Configuration and securing of your servers. 3D modeling and programming.
       <br/>
       <br/>
       Go to the '<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Development</a>' section for more details.
+      -->
     </p>
     <p *ngIf="language_french" class="texts-card-mini">
+      <!--
       Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.
       <br/>
       <br/>
@@ -429,8 +453,10 @@
       <br/>
       <br/>
       Accédez à la rubrique "<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Développement</a>" pour plus de détails.
+      -->
     </p>
     <p *ngIf="language_spanish" class="texts-card-mini">
+      <!--
       Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.
       <br/>
       <br/>
@@ -438,18 +464,21 @@
       <br/>
       <br/>
       Vaya a la sección "<a *ngIf="!isCV" [routerLink]="['/development']" (click)="cleanUp_laboratory()">Desarollo</a>" para obtener más detalles.
+      -->
     </p>
   </div>
 </div>
 
-<!-- DEVELOPMENT isCV  && !isMini -->
+<!-- DEVELOPMENT isCV && !isMini -->
 
 <div *ngIf="isCV && !isMini" class="container-cards" [style.display]="isOpen_development ? 'block' : 'none'" [@development_fadeIn]="development_fadeIn">
   <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_development_en.png" alt="development">
   <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_development_fr.png" alt="development">
   <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_development_es.png" alt="development">
 
-  <h1 class="h1-card">JAVA EE - ANGULAR - BABYLONJS</h1>
+  <h1 *ngIf="language_english" class="h1-card">Technology at the service of creativity</h1>
+  <h1 *ngIf="language_french" class="h1-card">La technique au service de la créativité</h1>
+  <h1 *ngIf="language_spanish" class="h1-card">Tecnología al servicio de la creatividad</h1>
 
   <p class="texts-card" *ngIf="language_english">
     In the years to come, our way of interacting with applications will experience major changes, requiring that we rethink their development.
@@ -549,13 +578,63 @@
   </div>
 
   <div class="card-right-mini">
-    <h1 class="h1-card-mini">SPRING - ANGULAR - BABYLONJS</h1>
+    <h1 *ngIf="language_english" class="h1-card-mini">Technology at the service of creativity</h1>
+    <h1 *ngIf="language_french" class="h1-card-mini">La technique au service de la créativité</h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini">Tecnología al servicio de la creatividad</h1>
 
     <p *ngIf="language_english" class="texts-card-mini">
+      In the years to come, our way of interacting with applications will experience major changes, requiring that we rethink their development.
+      <br/>
+      <br/>
+      My learning was therefore guided by two objectives:
+      <br/>
+      <br/>
+      Offer the user a richer and more stimulating experience through a three-dimensional interface.
+      <br/>
+      <br/>
+      Master the tools necessary for the development of robust, secure and scalable applications.
+      <br/>
+      <br/>
+      This laboratory is intended to serve as a “playground” for my experiments! ⚗️🧪
+      <br/>
+      <br/>
+      To know more ! 👉🏼 "<a [routerLink]="['/development/true']" (click)="cleanUp_laboratory()">Development</a>".
     </p>
     <p *ngIf="language_french" class="texts-card-mini">
+      Dans les années à venir, notre manière d'interagir avec les applications va connaître de grands changements, exigeant que l'on repense leur développement.
+      <br/>
+      <br/>
+      Mon apprentissage a donc été guidé par deux objectifs :
+      <br/>
+      <br/>
+      Offrir à l'utilisateur une expérience plus riche et stimulante au travers d'une interface tridimensionnelle.
+      <br/>
+      <br/>
+      Maîtriser les outils nécessaires au développement d'applications robustes, sécurisées et évolutives.
+      <br/>
+      <br/>
+      Ce laboratoire a vocation à servir de « playground » à mes expériences ! ⚗️🧪
+      <br/>
+      <br/>
+      Pour en savoir plus ! 👉🏼 "<a [routerLink]="['/development/true']" (click)="cleanUp_laboratory()">Développement</a>".
     </p>
     <p *ngIf="language_spanish" class="texts-card-mini">
+      En los próximos años, nuestra forma de interactuar con las aplicaciones experimentará cambios importantes, por lo que es necesario repensar su desarrollo.
+      <br/>
+      <br/>
+      Por tanto, mi aprendizaje se guió por dos objetivos:
+      <br/>
+      <br/>
+      Ofrecer al usuario una experiencia más rica y estimulante a través de una interfaz tridimensional.
+      <br/>
+      <br/>
+      Dominar las herramientas necesarias para el desarrollo de aplicaciones robustas, seguras y escalables.
+      <br/>
+      <br/>
+      ¡Este laboratorio está destinado a servir como un "playground" para mis experimentos! ⚗️🧪
+      <br/>
+      <br/>
+      Para saber más ! 👉🏼 "<a [routerLink]="['/development/true']" (click)="cleanUp_laboratory()">Desarrollo</a>".
     </p>
   </div>
 </div>
@@ -568,20 +647,26 @@
   <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_datas_es.png" alt="datas">
 
   <h1 *ngIf="language_english" class="h1-card"></h1>
-  <h1 *ngIf="language_french" class="h1-card">Reprenez le contrôle de vos données</h1>
+  <h1 *ngIf="language_french" class="h1-card"></h1>
   <h1 *ngIf="language_spanish" class="h1-card"></h1>
 
   <p class="texts-card" *ngIf="language_english">
+    <!--
     MK-Lab develops innovative 3D representation tools for better visualization and exploitation of your data.<br/>
     Improve your user experience and gain efficiency with our innovative representation tools.
+      -->
   </p>
   <p class="texts-card" *ngIf="language_french">
+      <!--
     MK-Lab développe des outils de représentation 3D innovants pour une meilleure visualisation et exploitation de vos données.<br/>
     Améliorez votre expérience utilisateur et gagnez en efficience grâce à des outils de représentation personnalisables.
+      -->
   </p>
   <p class="texts-card" *ngIf="language_spanish">
+      <!--
     MK-Lab desarrolla herramientas de representación 3D innovadoras para una mejor visualización y explotación de sus datos.<br/>
     Mejore su experiencia de usuario y gane eficiencia con nuestras innovadoras herramientas de representación.
+      -->
   </p>
   <div *ngIf="language_english" class="spans-language-cards">
       <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -626,21 +711,27 @@
   </div>
 
   <div class="card-right-mini">
-    <h1 *ngIf="language_english" class="h1-card-mini">Take back control of your data!</h1>
-    <h1 *ngIf="language_french" class="h1-card-mini">Reprenez le contrôle de vos données</h1>
-    <h1 *ngIf="language_spanish" class="h1-card-mini">¡Recupere el control de sus datos!</h1>
+    <h1 *ngIf="language_english" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_french" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
 
     <p *ngIf="language_english" class="texts-card-mini">
+      <!--
       MK-Lab develops innovative 3D representation tools for better visualization and exploitation of your data.<br/>
       Improve your user experience and gain efficiency with our innovative representation tools.
+      -->
     </p>
     <p *ngIf="language_french" class="texts-card-mini">
+      <!--
       MK-Lab développe des outils de représentation 3D innovants pour une meilleure visualisation et exploitation de vos données.<br/>
       Améliorez votre expérience utilisateur et gagnez en efficience grâce à des outils de représentation personnalisables.
+      -->
     </p>
     <p *ngIf="language_spanish" class="texts-card-mini">
+      <!--
       MK-Lab desarrolla herramientas de representación 3D innovadoras para una mejor visualización y explotación de sus datos.<br/>
       Mejore su experiencia de usuario y gane eficiencia con nuestras innovadoras herramientas de representación.
+      -->
     </p>
   </div>
 </div>
@@ -652,9 +743,9 @@
   <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_datas_fr.png" alt="datas">
   <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_datas_es.png" alt="datas">
 
-  <h1 *ngIf="language_english" class="h1-card"></h1>
+  <h1 *ngIf="language_english" class="h1-card">Data materialization</h1>
   <h1 *ngIf="language_french" class="h1-card">Matérialisation des données</h1>
-  <h1 *ngIf="language_spanish" class="h1-card"></h1>
+  <h1 *ngIf="language_spanish" class="h1-card">Materialización de los datos</h1>
 
   <p class="texts-card" *ngIf="language_english">
     The most precious resources in the digital world, data is at the center of my work.
@@ -666,6 +757,7 @@
     On the other hand, by researching innovative strategies for classifying, visualizing and exploiting information.
     <br/>
     <br/>
+    Applications are organic systems for which a <a class="links" (click)="open_threed()">three-dimensional interface</a> will provide more intuitive control.
   </p>
   <p class="texts-card" *ngIf="language_french">
     Ressources les plus précieuses du monde digital, les données sont au centre mon travail.
@@ -677,6 +769,7 @@
     D'autre part, par la recherche de stratégies novatrices de classement, de visualisation et d'exploitation de l'information.
     <br/>
     <br/>
+    Les applications sont des systèmes organiques pour lesquels une <a class="links" (click)="open_threed()">interface tridimensionnelle</a> apporterai un contrôle plus intuitif.
   </p>
   <p class="texts-card" *ngIf="language_spanish">
     Recursos más preciados del mundo digital, los datos están en el centro de mi trabajo.
@@ -688,6 +781,7 @@
     Por otro lado, investigando estrategias innovadoras para clasificar, visualizar y explotar la información.
     <br/>
     <br/>
+    Las aplicaciones son sistemas orgánicos para los que una <a class="links" (click)="open_threed()">interfaz tridimensional</a> proporcionará un control más intuitivo.
   </p>
   <div *ngIf="language_english" class="spans-language-cards">
       <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -713,9 +807,109 @@
 
 <div *ngIf="isCV && isMini" class="container-cards-mini" [style.display]="isOpen_datas ? 'block' : 'none'" [@data_fadeIn]="datas_fadeIn">
   <div class="card-left-mini">
-    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_datas_en.png" alt="development">
-    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_datas_fr.png" alt="development">
-    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_datas_es.png" alt="development">
+    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_datas_en.png" alt="datas">
+    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_datas_fr.png" alt="datas">
+    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_datas_es.png" alt="datas">
+
+    <div *ngIf="language_english" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+    </div>
+    <div *ngIf="language_french" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+    </div>
+    <div *ngIf="language_spanish" class="spans-language-cards-mini">
+      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+    </div>
+  </div>
+
+  <div class="card-right-mini">
+    <h1 *ngIf="language_english" class="h1-card-mini">Data materialization</h1>
+    <h1 *ngIf="language_french" class="h1-card-mini">Matérialisation des données</h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini">Materialización de los datos</h1>
+
+    <p *ngIf="language_english" class="texts-card-mini">
+      The most precious resources in the digital world, data is at the center of my work.
+      <br/>
+      <br/>
+      By setting-up and controlling the "pipe" connecting the 3D scene to the database on the one hand.
+      <br/>
+      <br/>
+      On the other hand, by researching innovative strategies for classifying, visualizing and exploiting information.
+      <br/>
+      <br/>
+      Applications are organic systems for which a <a class="links" (click)="open_threed()">three-dimensional interface</a> will provide more intuitive control.
+    </p>
+    <p *ngIf="language_french" class="texts-card-mini">
+      Ressources les plus précieuses du monde digital, les données sont au centre mon travail.
+      <br/>
+      <br/>
+      Par la mise-en-place et le contrôle du « pipe » reliant la scène 3D à la base de données d'une part.
+      <br/>
+      <br/>
+      D'autre part, par la recherche de stratégies novatrices de classement, de visualisation et d'exploitation de l'information.
+      <br/>
+      <br/>
+      Les applications sont des systèmes organiques pour lesquels une <a class="links" (click)="open_threed()">interface tridimensionnelle</a> apporterai un contrôle plus intuitif.
+    </p>
+    <p *ngIf="language_spanish" class="texts-card-mini">
+      Recursos más preciados del mundo digital, los datos están en el centro de mi trabajo.
+      <br/>
+      <br/>
+      Configurando y controlando la "pipe" que conecta la escena 3D a la base de datos por un lado.
+      <br/>
+      <br/>
+      Por otro lado, investigando estrategias innovadoras para clasificar, visualizar y explotar la información.
+      <br/>
+      <br/>
+      Las aplicaciones son sistemas orgánicos para los que una <a class="links" (click)="open_threed()">interfaz tridimensional</a> proporcionará un control más intuitivo.
+    </p>
+  </div>
+</div>
+
+<!-- 3D !isCV && !isMini -->
+
+<div *ngIf="!isCV && !isMini" class="container-cards" [style.display]="isOpen_threed ? 'block' : 'none'" [@datas_fadeIn]="threed_fadeIn">
+  <img class="title-card" src="../assets/img/titles/title_threed.png" alt="3D">
+
+  <h1 *ngIf="language_english" class="h1-card"></h1>
+  <h1 *ngIf="language_french" class="h1-card"></h1>
+  <h1 *ngIf="language_spanish" class="h1-card"></h1>
+
+  <p *ngIf="language_english" class="texts-card">
+  </p>
+  <p *ngIf="language_french" class="texts-card">
+  </p>
+  <p *ngIf="language_spanish" class="texts-card">
+  </p>
+
+  <div *ngIf="language_english" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+  </div>
+  <div *ngIf="language_french" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  </div>
+  <div *ngIf="language_spanish" class="spans-language-cards">
+      <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+      <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  </div>
+
+  <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_threed(true)">
+    <span *ngIf="language_english">Close</span>
+    <span *ngIf="language_french">Fermer</span>
+    <span *ngIf="language_spanish">Cerrar</span>
+  </button>
+</div>
+
+<!-- 3D !isCV && isMini -->
+
+<div *ngIf="!isCV && isMini" class="container-cards-mini" [style.display]="isOpen_threed ? 'block' : 'none'" [@threed_fadeIn]="threed_fadeIn">
+  <div class="card-left-mini">
+    <img class="title-card" src="../assets/img/titles/title_threed.png" alt="3D">
 
     <div *ngIf="language_english" class="spans-language-cards-mini">
       <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -737,13 +931,10 @@
     <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
 
     <p *ngIf="language_english" class="texts-card-mini">
-
     </p>
     <p *ngIf="language_french" class="texts-card-mini">
-
     </p>
     <p *ngIf="language_spanish" class="texts-card-mini">
-
     </p>
   </div>
 </div>
@@ -753,9 +944,9 @@
 <div *ngIf="isCV && !isMini" class="container-cards" [style.display]="isOpen_threed ? 'block' : 'none'" [@datas_fadeIn]="threed_fadeIn">
   <img class="title-card" src="../assets/img/titles/title_threed.png" alt="3D">
 
-  <h1 *ngIf="language_english" class="h1-card"></h1>
-  <h1 *ngIf="language_french" class="h1-card"></h1>
-  <h1 *ngIf="language_spanish" class="h1-card"></h1>
+  <h1 *ngIf="language_english" class="h1-card">Three-dimensional interface</h1>
+  <h1 *ngIf="language_french" class="h1-card">Interface tridimensionnelle</h1>
+  <h1 *ngIf="language_spanish" class="h1-card">Interfaz tridimensional</h1>
 
   <p class="texts-card" *ngIf="language_english">
     Certainly the Lego's excess being small and too many nights spent playing Sim City, but I've always felt cramped while surfing the internet.
@@ -770,7 +961,7 @@
     This technology, with its still untapped potential, will gradually shake up the codes of linear navigation, replacing it with a unique and ultra-personalized experience.
     <br/>
     <br/>
-    The design of <a class="links" (click)="open_datas()">three-dimensional tools</a> that will result from it will push us to rethink UX and UI. And these upheavals will accelerate with the popularization of <a class="links" (click)="open_stereoscopy()">augmented reality and virtual reality</a>.
+    The design of <a class="links" (click)="open_datas()">three-dimensional tools</a> that will result from it will push us to rethink UX and UI. And these upheavals will accelerate with the popularization of <a class="links" (click)="open_arvr()">augmented reality and virtual reality</a>.
   </p>
   <p class="texts-card" *ngIf="language_french">
     Certainement l’excès de Lego étant petit et de trop de nuits passées à jouer à Sim City, mais je me suis toujours senti à l'étroit en naviguant sur Internet.
@@ -785,7 +976,7 @@
     Cette technologie au potentiel encore inexploité, va progressivement bousculer les codes de la navigation linéaire, lui substituant une expérience inédite et ultra personnalisée.
     <br/>
     <br/>
-    La conception d'<a class="links" (click)="open_datas()">outils tridimensionnels</a> qui en découleront nous poussera à repenser l'UX et l'UI. Et ces bouleversements iront s'accélérant avec la popularisation de <a class="links" (click)="open_stereoscopy()">la réalité augmentée et de la réalité virtuelle.</a>
+    La conception d'<a class="links" (click)="open_datas()">outils tridimensionnels</a> qui en découleront nous poussera à repenser l'UX et l'UI. Et ces bouleversements iront s'accélérant avec la popularisation de <a class="links" (click)="open_arvr()">la réalité augmentée et de la réalité virtuelle.</a>
     <br/>
     <br/>
   </p>
@@ -802,7 +993,7 @@
     Esta tecnología, con su potencial aún sin explotar, revolucionará gradualmente los códigos de la navegación lineal, reemplazándola por una experiencia única y ultrapersonalizada.
     <br/>
     <br/>
-    El diseño de <a class="links" (click)="open_datas()">herramientas tridimensionales</a> que resultará de él nos empujará a repensar UX y UI. Y estos trastornos se acelerarán con la popularización de <a class="links" (click)="open_stereoscopy()">la realidad aumentada y la realidad virtual.</a>
+    El diseño de <a class="links" (click)="open_datas()">herramientas tridimensionales</a> que resultará de él nos empujará a repensar UX y UI. Y estos trastornos se acelerarán con la popularización de <a class="links" (click)="open_arvr()">la realidad aumentada y la realidad virtual.</a>
   </p>
   <div *ngIf="language_english" class="spans-language-cards">
       <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -826,11 +1017,9 @@
 
 <!-- 3D isCV && isMini -->
 
-<div *ngIf="isCV && isMini" class="container-cards-mini" [style.display]="isOpen_datas ? 'block' : 'none'" [@data_fadeIn]="datas_fadeIn">
+<div *ngIf="isCV && isMini" class="container-cards-mini" [style.display]="isOpen_threed ? 'block' : 'none'" [@threed_fadeIn]="threed_fadeIn">
   <div class="card-left-mini">
-    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_datas_en.png" alt="development">
-    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_datas_fr.png" alt="development">
-    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_datas_es.png" alt="development">
+    <img class="title-card" src="../assets/img/titles/title_threed.png" alt="3D">
 
     <div *ngIf="language_english" class="spans-language-cards-mini">
       <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -847,9 +1036,9 @@
   </div>
 
   <div class="card-right-mini">
-    <h1 *ngIf="language_english" class="h1-card-mini"></h1>
-    <h1 *ngIf="language_french" class="h1-card-mini"></h1>
-    <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_english" class="h1-card-mini">Three-dimensional interface</h1>
+    <h1 *ngIf="language_french" class="h1-card-mini">Interface tridimensionnelle</h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini">Interfaz tridimensional</h1>
 
     <p *ngIf="language_english" class="texts-card-mini">
       Certainly the Lego's excess being small and too many nights spent playing Sim City, but I've always felt cramped while surfing the internet.
@@ -864,7 +1053,7 @@
       This technology, with its still untapped potential, will gradually shake up the codes of linear navigation, replacing it with a unique and ultra-personalized experience.
       <br/>
       <br/>
-      The design of <a class="links" (click)="open_datas()">three-dimensional tools</a> that will result from it will push us to rethink UX and UI. And these upheavals will accelerate with the popularization of augmented reality and virtual reality.
+      The design of <a class="links" (click)="open_datas()">three-dimensional tools</a> that will result from it will push us to rethink UX and UI. And these upheavals will accelerate with the popularization of <a class="links" (click)="open_arvr()">augmented reality and virtual reality</a>.
     </p>
     <p *ngIf="language_french" class="texts-card-mini">
       Certainement l’excès de Lego étant petit et de trop de nuits passées à jouer à Sim City, mais je me suis toujours senti à l'étroit en naviguant sur Internet.
@@ -879,7 +1068,7 @@
       Cette technologie au potentiel encore inexploité, va progressivement bousculer les codes de la navigation linéaire, lui substituant une expérience inédite et ultra personnalisée.
       <br/>
       <br/>
-      La conception d'<a class="links" (click)="open_datas()">outils tridimensionnels</a> qui en découleront nous poussera à repenser l'UX et l'UI. Et ces bouleversements iront s'accélérant avec la popularisation de la réalité augmentée et de la réalité virtuelle.
+      La conception d'<a class="links" (click)="open_datas()">outils tridimensionnels</a> qui en découleront nous poussera à repenser l'UX et l'UI. Et ces bouleversements iront s'accélérant avec la popularisation de <a class="links" (click)="open_arvr()">la réalité augmentée et de la réalité virtuelle.</a>
     </p>
     <p *ngIf="language_spanish" class="texts-card-mini">
       Ciertamente, el exceso de Lego chiquito y demasiadas noches jugando a Sim City, pero siempre me he sentido agobiado mientras navegaba por Internet.
@@ -894,30 +1083,34 @@
       Esta tecnología, con su potencial aún sin explotar, revolucionará gradualmente los códigos de la navegación lineal, reemplazándola por una experiencia única y ultrapersonalizada.
       <br/>
       <br/>
-      El diseño de <a class="links" (click)="open_datas()">herramientas tridimensionales</a> que resultará de él nos empujará a repensar UX y UI. Y estos trastornos se acelerarán con la popularización de la realidad aumentada y la realidad virtual.
+      El diseño de <a class="links" (click)="open_datas()">herramientas tridimensionales</a> que resultará de él nos empujará a repensar UX y UI. Y estos trastornos se acelerarán con la popularización de <a class="links" (click)="open_arvr()">la realidad aumentada y la realidad virtual.</a>
     </p>
   </div>
 </div>
 
-<!-- STEREOSCOPY !isCV && !isMini -->
+<!-- AR / VR !isCV && !isMini -->
 
-<div *ngIf="!isCV && !isMobileDevice && !isMini" class="container-cards" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
-  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_stereoscopy_en.png" alt="stereoscopy">
-  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_stereoscopy_fr.png" alt="stereoscopy">
-  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_stereoscopy_es.png" alt="stereoscopy">
+<div *ngIf="!isCV && !isMobileDevice && !isMini" class="container-cards" [style.display]="isOpen_arvr ? 'block' : 'none'" [@arvr_fadeIn]="arvr_fadeIn">
+  <img class="title-card" src="../assets/img/titles/title_arvr.png" alt="AR VR">
 
-  <h1 *ngIf="language_english" class="h1-card">Immerse your community in your universe!</h1>
-  <h1 *ngIf="language_french" class="h1-card">Immergez votre communauté dans votre univers !</h1>
-  <h1 *ngIf="language_spanish" class="h1-card">¡Sumerja a su comunidad en su universo!</h1>
+  <h1 *ngIf="language_english" class="h1-card"></h1>
+  <h1 *ngIf="language_french" class="h1-card"></h1>
+  <h1 *ngIf="language_spanish" class="h1-card"></h1>
 
   <p class="texts-card" *ngIf="language_english">
+    <!--
     Give an unprecedented viewing experience for your products and data using stereoscopy.
+    -->
   </p>
   <p class="texts-card" *ngIf="language_french">
+    <!--
     Offrez une expérience inédite de visualisation de vos produits et de vos données grâce à la stéréoscopie.
+    -->
   </p>
   <p class="texts-card" *ngIf="language_spanish">
+    <!--
     Ofrezca una experiencia de visualización sin precedentes para sus productos y datos mediante estereoscopía.
+    -->
   </p>
   <div *ngIf="language_english" class="spans-language-cards">
       <span class="span-language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -932,20 +1125,18 @@
       <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
-  <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_stereoscopy(true)">
+  <button type="button" class="btn-close btn btn-primary mt-3" (click)="close_arvr(true)">
     <span *ngIf="language_english">Close</span>
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>
   </button>
 </div>
 
-<!-- STEREOSCOPY !isCV && isMini -->
+<!-- AR / VR !isCV && isMini -->
 
-<div *ngIf="!isCV && !isMobileDevice && isMini" class="container-cards-mini" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
+<div *ngIf="!isCV && !isMobileDevice && isMini" class="container-cards-mini" [style.display]="isOpen_arvr ? 'block' : 'none'" [@arvr_fadeIn]="arvr_fadeIn">
   <div class="card-left-mini">
-    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_en.png" alt="stereoscopy">
-    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_fr.png" alt="stereoscopy">
-    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_es.png" alt="stereoscopy">
+    <img class="title-card-mini" src="../assets/img/titles/title_arvr.png" alt="AR VR">
 
     <div *ngIf="language_english" class="spans-language-cards-mini">
       <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -967,30 +1158,34 @@
     <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
 
     <p *ngIf="language_english" class="texts-card-mini">
+      <!--
       Give an unprecedented viewing experience for your products and data using stereoscopy.
+      -->
     </p>
     <p *ngIf="language_french" class="texts-card-mini">
+      <!--
       Offrez une expérience inédite de visualisation de vos produits et de vos données grâce à la stéréoscopie.
+      -->
     </p>
     <p *ngIf="language_spanish" class="texts-card-mini">
+      <!--
       Ofrezca una experiencia de visualización sin precedentes para sus productos y datos mediante estereoscopía.
+      -->
     </p>
   </div>
 </div>
 
-<!-- STEREOSCOPY isCV && !isMini -->
+<!-- AR / VR isCV && !isMini -->
 
-<div *ngIf="isCV && !isMobileDevice && !isMini" class="container-cards" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
-  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_stereoscopy_en.png" alt="stereoscopy">
-  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_stereoscopy_fr.png" alt="stereoscopy">
-  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_stereoscopy_es.png" alt="stereoscopy">
+<div *ngIf="isCV && !isMini" class="container-cards" [style.display]="isOpen_arvr ? 'block' : 'none'" [@arvr_fadeIn]="arvr_fadeIn">
+  <img class="title-card" src="../assets/img/titles/title_arvr.png" alt="AR VR">
 
-  <h1 *ngIf="language_english" class="h1-card"></h1>
-  <h1 *ngIf="language_french" class="h1-card"></h1>
-  <h1 *ngIf="language_spanish" class="h1-card"></h1>
+  <h1 *ngIf="language_english" class="h1-card">Merge the real and the virtual</h1>
+  <h1 *ngIf="language_french" class="h1-card">Fusionner le réel et le virtuel</h1>
+  <h1 *ngIf="language_spanish" class="h1-card">Fusionar lo real y lo virtual</h1>
 
   <p class="texts-card" *ngIf="language_english">
-    Based on 3D, virtual reality (VR) and augmented reality (AR) are two emerging technologies.
+    Based on <a class="links" (click)="open_threed()">3D</a>, virtual reality (VR) and augmented reality (AR) are two emerging technologies.
     Beyond a trend, they have become a major axis of development and have acquired the reputation of being capable of profoundly transforming the way we live and work.
     <br/>
     <br/>
@@ -1003,7 +1198,7 @@
     <img class="gif-card" src="../assets/gif/virtual_reality.gif" alt="virtual reality" />
   </p>
   <p class="texts-card" *ngIf="language_french">
-    Reposant sur la 3D, la réalité virtuelle (VR) et la réalité augmentée (AR) sont deux technologies émergentes.
+    Reposant sur la <a class="links" (click)="open_threed()">3D</a>, la réalité virtuelle (VR) et la réalité augmentée (AR) sont deux technologies émergentes.
     Au-delà d’une tendance, elle sont devenues un axe de développement majeur et ont acquis la réputation d'être susceptibles de transformer profondément nos modes de vie et de travail.
     <br/>
     <br/>
@@ -1016,7 +1211,7 @@
     <img src="../assets/gif/virtual_reality.gif" alt="virtual reality" />
   </p>
   <p class="texts-card" *ngIf="language_spanish">
-    Basado en 3D, la realidad virtual (VR) y la realidad aumentada (AR) son dos tecnologías emergentes.
+    Basado en <a class="links" (click)="open_threed()">3D</a>, la realidad virtual (VR) y la realidad aumentada (AR) son dos tecnologías emergentes.
     Más allá de una tendencia, se han convertido en un gran eje de desarrollo y han adquirido la reputación de ser capaces de transformar profundamente la forma en que vivimos y trabajamos.
     <br/>
     <br/>
@@ -1041,20 +1236,18 @@
       <span class="span-language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
   </div>
 
-  <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_stereoscopy(true)">
+  <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_arvr(true)">
     <span *ngIf="language_english">Close</span>
     <span *ngIf="language_french">Fermer</span>
     <span *ngIf="language_spanish">Cerrar</span>
   </button>
 </div>
 
-<!-- STEREOSCOPY isCV && isMini -->
+<!-- AR / VR isCV && isMini -->
 
-<div *ngIf="isCV && !isMobileDevice && isMini" class="container-cards-mini" [style.display]="isOpen_stereoscopy ? 'block' : 'none'" [@stereoscopy_fadeIn]="stereoscopy_fadeIn">
+<div *ngIf="isCV && isMini" class="container-cards-mini" [style.display]="isOpen_arvr ? 'block' : 'none'" [@arvr_fadeIn]="arvr_fadeIn">
   <div class="card-left-mini">
-    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_en.png" alt="development">
-    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_fr.png" alt="development">
-    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_stereoscopy_es.png" alt="development">
+    <img class="title-card-mini" src="../assets/img/titles/title_arvr.png" alt="AR VR">
 
     <div *ngIf="language_english" class="spans-language-cards-mini">
       <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -1071,28 +1264,58 @@
   </div>
 
   <div class="card-right-mini">
-    <h1 *ngIf="language_english" class="h1-card-mini"></h1>
-    <h1 *ngIf="language_french" class="h1-card-mini"></h1>
-    <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
+    <h1 *ngIf="language_english" class="h1-card-mini">Merge the real and the virtual</h1>
+    <h1 *ngIf="language_french" class="h1-card-mini">Fusionner le réel et le virtuel</h1>
+    <h1 *ngIf="language_spanish" class="h1-card-mini">Fusionar lo real y lo virtual</h1>
 
     <p *ngIf="language_english" class="texts-card-mini">
-
+      Based on <a class="links" (click)="open_threed()">3D</a>, virtual reality (VR) and augmented reality (AR) are two emerging technologies.
+      Beyond a trend, they have become a major axis of development and have acquired the reputation of being capable of profoundly transforming the way we live and work.
+      <br/>
+      <br/>
+      The way in which we can usefully navigate and interact in virtual or augmented environments will evolve, leading us to imagine more natural methods of interacting and exploring virtual space as well as solutions tailored to the entertainment and industries.
+      <br/>
+      <br/>
+      I must admit that this is the aspect of the job that seems to me to be the most attractive!
+      <br/>
+      <br/>
+      <img class="gif-card" src="../assets/gif/virtual_reality.gif" alt="virtual reality" />
     </p>
     <p *ngIf="language_french" class="texts-card-mini">
-
+      Reposant sur la <a class="links" (click)="open_threed()">3D</a>, la réalité virtuelle (VR) et la réalité augmentée (AR) sont deux technologies émergentes.
+      Au-delà d’une tendance, elle sont devenues un axe de développement majeur et ont acquis la réputation d'être susceptibles de transformer profondément nos modes de vie et de travail.
+      <br/>
+      <br/>
+      La façon dont nous pouvons utilement naviguer et interagir dans des environnements virtuels ou augmentés évoluera, nous conduisant à imaginer des méthodes plus naturelles d’interaction et d’exploration de l’espace virtuel ainsi que des solutions adaptées aux secteurs du divertissement et de l’industrie.
+      <br/>
+      <br/>
+      Je dois avouer que c'est l'aspect du métier qui me paraît être le plus attrayant !
+      <br/>
+      <br/>
+      <img src="../assets/gif/virtual_reality.gif" alt="virtual reality" />
     </p>
     <p *ngIf="language_spanish" class="texts-card-mini">
-
+      Basado en <a class="links" (click)="open_threed()">3D</a>, la realidad virtual (VR) y la realidad aumentada (AR) son dos tecnologías emergentes.
+      Más allá de una tendencia, se han convertido en un gran eje de desarrollo y han adquirido la reputación de ser capaces de transformar profundamente la forma en que vivimos y trabajamos.
+      <br/>
+      <br/>
+      La forma en que podemos navegar e interactuar de manera útil en entornos virtuales o aumentados evolucionará, lo que nos llevará a imaginar métodos más naturales de interactuar y explorar el espacio virtual, así como soluciones adaptadas a las industrias del entretenimiento y la industria.
+      <br/>
+      <br/>
+      ¡Debo admitir que este es el aspecto del trabajo que me parece más atractivo!
+      <br/>
+      <br/>
+      <img src="../assets/gif/virtual_reality.gif" alt="virtual reality" />
     </p>
   </div>
 </div>
 
 <!-- SOCIAL NETWORKS !isCV && !isMini -->
 
-<div *ngIf="!isCV && !isMini" class="container-cards" [style.display]="isOpen_socNet ? 'block' : 'none'" [@socNet_fadeIn]="socNet_fadeIn">
-  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_socNet_en.png" alt="social networks">
-  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_socNet_fr.png" alt="social networks">
-  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_socNet_es.png" alt="social networks">
+<div *ngIf="!isCV && !isMini" class="container-cards" [style.display]="isOpen_socialNetworks ? 'block' : 'none'" [@socialNetworks_fadeIn]="socialNetworks_fadeIn">
+  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_socialNetworks_en.png" alt="social networks">
+  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_socialNetworks_fr.png" alt="social networks">
+  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_socialNetworks_es.png" alt="social networks">
 
   <h1 *ngIf="language_english" class="h1-card"></h1>
   <h1 *ngIf="language_french" class="h1-card"></h1>
@@ -1129,90 +1352,11 @@
 
 <!-- SOCIAL NETWORKS !isCV && isMini -->
 
-<div *ngIf="!isCV && isMini" class="container-cards-mini" [style.display]="isOpen_socNet ? 'block' : 'none'" [@socNet_fadeIn]="socNet_fadeIn">
+<div *ngIf="!isCV && isMini" class="container-cards-mini" [style.display]="isOpen_socialNetworks ? 'block' : 'none'" [@socialNetworks_fadeIn]="socialNetworks_fadeIn">
   <div class="card-left-mini">
-    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_socNet_en.png" alt="development">
-    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_socNet_fr.png" alt="development">
-    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_socNet_es.png" alt="development">
-
-    <div *ngIf="language_english" class="spans-language-cards-mini">
-      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-    </div>
-    <div *ngIf="language_french" class="spans-language-cards-mini">
-      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-    </div>
-    <div *ngIf="language_spanish" class="spans-language-cards-mini">
-      <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-      <span class="badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-    </div>
-  </div>
-
-  <div class="card-right-mini">
-    <h1 *ngIf="language_english" class="h1-card-mini"></h1>
-    <h1 *ngIf="language_french" class="h1-card-mini"></h1>
-    <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
-
-    <p *ngIf="language_english" class="texts-card-mini">
-
-    </p>
-    <p *ngIf="language_french" class="texts-card-mini">
-
-    </p>
-    <p *ngIf="language_spanish" class="texts-card-mini">
-
-    </p>
-  </div>
-</div>
-
-<!-- SOCIAL NETWORKS isCV && !isMini -->
-
-<div *ngIf="isCV && !isMini" class="container-cards" [style.display]="isOpen_socNet ? 'block' : 'none'" [@socNet_fadeIn]="socNet_fadeIn">
-  <img *ngIf="language_english" class="title-card" src="../assets/img/titles/title_socNet_en.png" alt="social networks">
-  <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_socNet_fr.png" alt="social networks">
-  <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_socNet_es.png" alt="social networks">
-
-  <h1 *ngIf="language_english" class="h1-card"></h1>
-  <h1 *ngIf="language_french" class="h1-card"></h1>
-  <h1 *ngIf="language_spanish" class="h1-card"></h1>
-
-  <p class="texts-card" *ngIf="language_english">
-
-  </p>
-  <p class="texts-card" *ngIf="language_french">
-
-  </p>
-  <p class="texts-card" *ngIf="language_spanish">
-
-  </p>
-  <div *ngIf="language_english" class="spans-language-cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
-  </div>
-  <div *ngIf="language_french" class="spans-language-cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
-  </div>
-  <div *ngIf="language_spanish" class="spans-language-cards">
-      <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
-      <span class="span_language badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
-  </div>
-
-  <button *ngIf="!isMobileDevice" type="button" class="btn-close btn btn-primary mt-3" (click)="close_socialNetworks(true)">
-    <span *ngIf="language_english">Close</span>
-    <span *ngIf="language_french">Fermer</span>
-    <span *ngIf="language_spanish">Cerrar</span>
-  </button>
-</div>
-
-<!-- SOCIAL NETWORKS isCV && isMini -->
-
-<div *ngIf="isCV && isMini" class="container-cards-mini" [style.display]="isOpen_socNet ? 'block' : 'none'" [@socNet_fadeIn]="socNet_fadeIn">
-  <div class="card-left-mini">
-    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_socNet_en.png" alt="development">
-    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_socNet_fr.png" alt="development">
-    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_socNet_es.png" alt="development">
+    <img *ngIf="language_english" class="title-card-mini" src="../assets/img/titles/title_socialNetworks_en.png" alt="social networks">
+    <img *ngIf="language_french" class="title-card-mini" src="../assets/img/titles/title_socialNetworks_fr.png" alt="social networks">
+    <img *ngIf="language_spanish" class="title-card-mini" src="../assets/img/titles/title_socialNetworks_es.png" alt="social networks">
 
     <div *ngIf="language_english" class="spans-language-cards-mini">
       <span class="badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -1252,11 +1396,12 @@
   <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_photography_fr.png" alt="photography">
   <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_photography_es.png" alt="photography">
 
-  <h1 *ngIf="language_english" class="h1-card">Immerse your community in your universe!</h1>
-  <h1 *ngIf="language_french" class="h1-card">Immergez votre communauté dans votre univers !</h1>
-  <h1 *ngIf="language_spanish" class="h1-card">¡Sumerja a su comunidad en su universo!</h1>
+  <h1 *ngIf="language_english" class="h1-card"></h1>
+  <h1 *ngIf="language_french" class="h1-card"></h1>
+  <h1 *ngIf="language_spanish" class="h1-card"></h1>
 
   <p class="texts-card" *ngIf="language_english">
+    <!--
     Street photographer, my desire is to show the beauty of the things that surround us and that the frenzy of our urban lives does not leave us time to contemplate.
     <br/>
     <br/>
@@ -1264,8 +1409,10 @@
     <br/>
     <br/>
     Dedicated site to come.
+    -->
   </p>
   <p class="texts-card" *ngIf="language_french">
+    <!--
     Photographe de rue, ma volonté est de montrer la beauté des choses qui nous entourent et que la frénésie de nos vies urbaines ne nous laisse le temps de contempler.
     <br/>
     <br/>
@@ -1273,8 +1420,10 @@
     <br/>
     <br/>
     Site dédié à venir.
+    -->
   </p>
   <p class="texts-card" *ngIf="language_spanish">
+    <!--
     Fotografo callejero, mi deseo es mostrar la belleza de las cosas que nos rodean y que el frenesí de nuestra vida urbana no nos deje tiempo para contemplar.
     <br/>
     <br/>
@@ -1282,6 +1431,7 @@
     <br/>
     <br/>
     Sitio dedicado por venir.
+    -->
   </p>
   <div *ngIf="language_english" class="spans-language-cards">
       <span class="span_language badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
@@ -1331,6 +1481,7 @@
     <h1 *ngIf="language_spanish" class="h1-card-mini"></h1>
 
     <p *ngIf="language_english" class="texts-card-mini">
+      <!--
       Street photographer, my desire is to show the beauty of the things that surround us and that the frenzy of our urban lives does not leave us time to contemplate.
       <br/>
       <br/>
@@ -1338,8 +1489,10 @@
       <br/>
       <br/>
       Dedicated site to come.
+      -->
     </p>
     <p *ngIf="language_french" class="texts-card-mini">
+      <!--
       Photographe de rue, ma volonté est de montrer la beauté des choses qui nous entourent et que la frénésie de nos vies urbaines ne nous laisse le temps de contempler.
       <br/>
       <br/>
@@ -1347,15 +1500,17 @@
       <br/>
       <br/>
       Site dédié à venir.
+      -->
     </p>
     <p *ngIf="language_spanish" class="texts-card-mini">
+      <!--
       Fotografo callejero, mi deseo es mostrar la belleza de las cosas que nos rodean y que el frenesí de nuestra vida urbana no nos deje tiempo para contemplar.
       <br/>
       <br/>
       La luz y los colores al servicio de las emociones, ¡tal es mi concepción de la fotografía¡.
       <br/>
       <br/>
-      Sitio dedicado por venir.
+      Sitio dedicado por venir.-->
     </p>
   </div>
 </div>
@@ -1367,9 +1522,9 @@
   <img *ngIf="language_french" class="title-card" src="../assets/img/titles/title_photography_fr.png" alt="photography">
   <img *ngIf="language_spanish" class="title-card" src="../assets/img/titles/title_photography_es.png" alt="photography">
 
-  <h1 *ngIf="language_english" class="h1-card">Immerse your community in your universe!</h1>
-  <h1 *ngIf="language_french" class="h1-card">Immergez votre communauté dans votre univers !</h1>
-  <h1 *ngIf="language_spanish" class="h1-card">¡Sumerja a su comunidad en su universo!</h1>
+  <h1 *ngIf="language_english" class="h1-card"></h1>
+  <h1 *ngIf="language_french" class="h1-card"></h1>
+  <h1 *ngIf="language_spanish" class="h1-card"></h1>
 
   <p class="texts-card" *ngIf="language_english">
     Street photographer, my desire is to show the beauty of the things that surround us and that the frenzy of our urban lives does not leave us time to contemplate.

@@ -34,7 +34,7 @@
   display: grid;
   height: 100%;
   max-height: 350px;
-  margin-left: 20px;
+  margin-left: 60px;
   margin-right: 20px;
 }
 
@@ -504,12 +504,12 @@
     grid-auto-rows: auto;
   }
 
-  .menu-icon-stereoscopy {
+  .menu-icon-arvr {
     grid-area: row-start-menu / col-3-menu / row-stop-menu / col-4-menu;
     grid-auto-rows: auto;
   }
 
-  .menu-icon-socNet {
+  .menu-icon-socialNetworks {
     grid-area: row-start-menu / col-4-menu / row-stop-menu / col-5-menu;
     grid-auto-rows: auto;
   }
@@ -554,7 +554,7 @@
 @media (min-width: 600px) {
   .menu-container {
     grid-template-columns: [col-start-menu] 50px [col-stop-menu];
-    grid-template-rows: [row-start-menu] 250px [row-1-menu] 50px [row-2-menu] 50px [row-3-menu] 50px [row-4-menu] 50px [row-5-menu] 50px [row-6-menu] 50px [row-7-menu] 1fr [row-8-menu] 60px [row-stop-menu];
+    grid-template-rows: [row-start-menu] 270px [row-1-menu] 50px [row-2-menu] 50px [row-3-menu] 50px [row-4-menu] 50px [row-5-menu] 50px [row-6-menu] 50px [row-7-menu] 1fr [row-8-menu] 60px [row-stop-menu];
     display: grid;
     right: 0px;
     width: 50px;
@@ -582,12 +582,12 @@
     grid-auto-rows: auto;
   }
 
-  .menu-icon-stereoscopy {
+  .menu-icon-arvr {
     grid-area: row-4-menu / col-start-menu / row-5-menu / col-stop-menu;
     grid-auto-rows: auto;
   }
 
-  .menu-icon-socNet {
+  .menu-icon-socialNetworks {
     grid-area: row-5-menu / col-start-menu / row-6-menu / col-stop-menu;
     grid-auto-rows: auto;
   }
@@ -626,81 +626,126 @@
   }
 }
 
-@media (max-height: 500px) {
-  .menu-container {
-    grid-template-columns: [col-start-menu] 40px [col-stop-menu];
-    grid-template-rows: [row-start-menu] 60px [row-1-menu] 40px [row-2-menu] 40px [row-3-menu] 40px [row-4-menu] 40px [row-5-menu] 40px [row-6-menu] 40px [row-7-menu] 40px [row-8-menu] 1fr [row-9-menu] 45px [row-stop-menu];
-    display: grid;
-    right: 0px;
-    width: 40px;
-    height: 100%;
-  }
+/* MENU isMini */
 
-  .menu {
-    grid-area: row-1-menu / col-start-menu / row-9-menu / col-stop-menu;
-    grid-auto-rows: auto;
-    background-color: #00000066;
-  }
+.menu-container-left-mini {
+  z-index: 5;
+  position: absolute;
+}
 
-  .menu-icon-development {
-    grid-area: row-1-menu / col-start-menu / row-2-menu / col-stop-menu;
-    grid-auto-rows: auto;
-  }
+.menu-container-right-mini {
+  z-index: 5;
+  position: absolute;
+}
 
-  .menu-icon_datas {
-    grid-area: row-2-menu / col-start-menu / row-3-menu / col-stop-menu;
-    grid-auto-rows: auto;
-  }
+/* MENU LEFT isMini */
 
-  .menu-icon-threed {
-    grid-area: row-3-menu / col-start-menu / row-4-menu / col-stop-menu;
-    grid-auto-rows: auto;
-  }
+.menu-container-left-mini {
+  grid-template-columns: [col-start-menu-left-mini] 40px [col-stop-menu-left-mini];
+  grid-template-rows: [row-start-menu-left-mini] 60px [row-1-menu-left-mini] 40px [row-2-menu-left-mini] 40px [row-3-menu-left-mini] 1fr [row-stop-menu-left-mini];
+  display: grid;
+  left: 0px;
+  width: 40px;
+  height: 100%;
+}
 
-  .menu-icon-stereoscopy {
-    grid-area: row-4-menu / col-start-menu / row-5-menu / col-stop-menu;
-    grid-auto-rows: auto;
-  }
+.menu-left-mini {
+  grid-area: row-1-menu-left-mini / col-start-menu-left-mini / row-stop-menu-left-mini / col-stop-menu-left-mini;
+  grid-auto-rows: auto;
+  background-color: #00000066;
+}
 
-  .menu-icon-socNet {
-    grid-area: row-5-menu / col-start-menu / row-6-menu / col-stop-menu;
-    grid-auto-rows: auto;
-  }
+.menu-icon-cameraAnaglyph-mini {
+  grid-area: row-1-menu-left-mini / col-start-menu-left-mini / row-2-menu-left-mini / col-stop-menu-left-mini;
+  grid-auto-rows: auto;
+}
 
-  .menu-icon-photography {
-    grid-area: row-6-menu / col-start-menu / row-7-menu / col-stop-menu;
-    grid-auto-rows: auto;
-  }
+.menu-icon-cameraVR-mini {
+  grid-area: row-2-menu-left-mini / col-start-menu-left-mini / row-3-menu-left-mini / col-stop-menu-left-mini;
+  grid-auto-rows: auto;
+}
 
-  .menu-icon-movies {
-    grid-area: row-7-menu / col-start-menu / row-8-menu / col-stop-menu;
-    grid-auto-rows: auto;
-  }
+.menu-icon-photography-mini {
+  grid-area: row-3-menu-left-mini / col-start-menu-left-mini / row-4-menu-left-mini / col-stop-menu-left-mini;
+  grid-auto-rows: auto;
+}
 
-  .menu-icons {
-    width: 30px;
-    height: 30px;
-    margin: 5px;
-    cursor: pointer;
-  }
+.menu-icon-movies-mini {
+  grid-area: row-4-menu-left-mini / col-start-menu-left-mini / row-5-menu-left-mini / col-stop-menu-left-mini;
+  grid-auto-rows: auto;
+}
 
-  .initPosition-container {
-    grid-template-columns: [col-start-menu] 50px [col-stop-menu];
-    grid-template-rows: [row-start-menu] 45px [row-1-menu] 5px [row-stop-menu];
-    display: grid;
-    right: 0px;
-    bottom:0px;
-    width: 40px;
-    height: 45px;
-    background-color: #00000066;
-  }
+.initPosition-container-mini {
+  grid-template-columns: [col-start-initPosition-mini] 40px [col-stop-initPosition-mini];
+  grid-template-rows: [row-start-initPosition-mini] 45px [row-stop-initPosition-mini];
+  display: grid;
+  z-index: 6;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 40px;
+  height: 45px;
+}
 
-  .icon-initPosition {
-    grid-area: row-start-menu / col-start-menu / row-1-menu / col-stop-menu;
-    grid-auto-rows: auto;
-    width: 40px;
-    height: 40px;
-  }
+.initPosition-mini {
+  grid-area: row-start-initPosition-mini / col-start-initPosition-mini / row-stop-initPosition-mini / col-stop-initPosition-mini;
+  grid-auto-rows: auto;
+}
+
+.icon-initPosition-mini {
+  grid-area: row-start-initPosition-mini / col-start-initPosition-mini / row-stop-initPosition-mini / col-stop-initPosition-mini;
+  grid-auto-rows: auto;
+  width: 40px;
+  height: 40px;
+}
+
+/* MENU RIGHT isMini */
+
+.menu-container-right-mini {
+  grid-template-columns: [col-start-menu-right-mini] 40px [col-stop-menu-right-mini];
+  grid-template-rows: [row-start-menu-right-mini] 60px [row-1-menu-right-mini] 40px [row-2-menu-right-mini] 40px [row-3-menu-right-mini] 40px [row-4-menu-right-mini] 40px [row-5-menu-right-mini] 40px [row-6-menu-right-mini] auto [row-stop-menu-right-mini];
+  display: grid;
+  right: 0px;
+  width: 40px;
+  height: 100%;
+}
+
+.menu-right-mini {
+  grid-area: row-1-menu-right-mini / col-start-menu-right-mini / row-stop-menu-right-mini / col-stop-menu-right-mini;
+  grid-auto-rows: auto;
+  background-color: #00000066;
+}
+
+.menu-icon-development-mini {
+  grid-area: row-1-menu-right-mini / col-start-menu-right-mini / row-2-menu-right-mini / col-stop-menu-right-mini;
+  grid-auto-rows: auto;
+}
+
+.menu-icon-datas-mini {
+  grid-area: row-2-menu-right-mini / col-start-menu-right-mini / row-3-menu-right-mini / col-stop-menu-right-mini;
+  grid-auto-rows: auto;
+}
+
+.menu-icon-threed-mini {
+  grid-area: row-3-menu-right-mini / col-start-menu-right-mini / row-4-menu-right-mini / col-stop-menu-right-mini;
+  grid-auto-rows: auto;
+}
+
+.menu-icon-arvr-mini {
+  grid-area: row-4-menu-right-mini / col-start-menu-right-mini / row-5-menu-right-mini / col-stop-menu-right-mini;
+  grid-auto-rows: auto;
+}
+
+.menu-icon-socialNetworks-mini {
+  grid-area: row-5-menu-right-mini / col-start-menu-right-mini / row-6-menu-right-mini / col-stop-menu-right-mini;
+  grid-auto-rows: auto;
+}
+
+.menu-icons-mini {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  cursor: pointer;
 }
 
 /* SWITCH CAMERA */
@@ -995,196 +1040,6 @@
   }
 }
 
-@media (min-width: 960px) {
-  .switchCamera-container {
-    grid-template-columns: [col-start-switchCamera] 80px [col-1-switchCamera] 80px [col-stop-switchCamera];
-    grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 70px [row-3-switchCamera] auto [row-stop-switchCamera];
-    display: grid;
-    top: 80px;
-    right: 0px;
-    width: 160px;
-  }
-
-  /* RED CROSS */
-
-  .red-cross {
-    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-stop-switchCamera;
-    grid-auto-rows: auto;
-    width: 15px;
-    height: 15px;
-    margin-bottom: 5px;
-  }
-
-  /* SWITCH CAMERA */
-
-  .switch-camera {
-    grid-area: row-1-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
-    grid-auto-rows: auto;
-    background-color: #00000088;
-  }
-
-  /* SPAN SWITCH CAMERA */
-
-  .span-switchCamera {
-    grid-area: row-s1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-stop-switchCamera;
-    grid-auto-rows: auto;
-    font-family: Roboto-Bold;
-    color: white;
-    margin: 10px;
-  }
-
-  /* CAMERA REGULAR */
-
-  .div-cameraRegular {
-    grid-area: row-2-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
-    grid-auto-rows: auto;
-    display: inline-block;
-  }
-
-  .img-cameraRegular {
-    grid-area: row-2-switchCamera / col-start-switchCamera / row-3-switchCamera / col-1-switchCamera;
-    grid-auto-rows: auto;
-  }
-
-  .span-cameraRegular {
-    grid-area: row-3-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
-    grid-auto-rows: auto;
-  }
-
-  /* CAMERA ANAGLYPH */
-
-  .div_cameraAnaglyph {
-    grid-area: row2-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
-    grid-auto-rows: auto;
-    display: inline-block;
-  }
-
-  .img-cameraAnaglyph {
-    grid-area: row-2-switchCamera / col-1-switchCamera / row-3-switchCamera / col-stop-switchCamera;
-    grid-auto-rows: auto;
-  }
-
-  .span-cameraAnaglyph {
-    grid-area: row-3-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
-    grid-auto-rows: auto;
-  }
-
-  .imgs-camera {
-    width: 60px;
-    height: 60px;
-    margin: 10px;
-    margin-bottom: 0px;
-  }
-
-  .spans-camera {
-    font-family: Roboto-Regular;
-    font-size: 12px;
-    color: grey;
-    padding: 10px;
-    text-align: center;
-    padding-bottom: 5px;
-  }
-
-  .isActive-spansCamera {
-    color: #017bff;
-  }
-}
-
-@media (min-width: 1140px) {
-  .switchCamera-container {
-    grid-template-columns: [col-start-switchCamera] 90px [col-1-switchCamera] 90px [col-stop-switchCamera];
-    grid-template-rows: [row-start-switchCamera] 20px [row-1-switchCamera] auto [row-2-switchCamera] 80px [row-3-switchCamera] auto [row-stop-switchCamera];
-    display: grid;
-    top: 80px;
-    right: 0px;
-    width: 180px;
-  }
-
-  /* RED CROSS */
-
-  .red-cross {
-    grid-area: row-start-switchCamera / col-start-switchCamera / row-1-switchCamera / col-1-switchCamera;
-    grid-auto-rows: auto;
-    width: 15px;
-    height: 15px;
-    margin-bottom: 5px;
-  }
-
-  /* SWITCH CAMERA */
-
-  .switch-camera {
-    grid-area: row-1-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
-    grid-auto-rows: auto;
-    background-color: #00000088;
-  }
-
-  /* SPAN SWITCH CAMERA */
-
-  .span_switchCamera {
-    grid-area: row-s1-switchCamera / col-start-switchCamera / row-2-switchCamera / col-stop-switchCamera;
-    grid-auto-rows: auto;
-    font-family: Roboto-Bold;
-    color: white;
-    margin: 10px;
-  }
-
-  /* CAMERA REGULAR */
-
-  .div-cameraRegular {
-    grid-area: row-2-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
-    grid-auto-rows: auto;
-    display: inline-block;
-  }
-
-  .img-cameraRegular {
-    grid-area: row-2-switchCamera / col-start-switchCamera / row-3-switchCamera / col-1-switchCamera;
-    grid-auto-rows: auto;
-  }
-
-  .span-cameraRegular {
-    grid-area: row-3-switchCamera / col-start-switchCamera / row-stop-switchCamera / col-1-switchCamera;
-    grid-auto-rows: auto;
-  }
-
-  /* CAMERA ANAGLYPH */
-
-  .div-cameraAnaglyph {
-    grid-area: row2-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
-    grid-auto-rows: auto;
-    display: inline-block;
-  }
-
-  .img-cameraAnaglyph {
-    grid-area: row-2-switchCamera / col-1-switchCamera / row-3-switchCamera / col-stop-switchCamera;
-    grid-auto-rows: auto;
-  }
-
-  .span-cameraAnaglyph {
-    grid-area: row-3-switchCamera / col-1-switchCamera / row-stop-switchCamera / col-stop-switchCamera;
-    grid-auto-rows: auto;
-  }
-
-  .imgs-camera {
-    width: 70px;
-    height: 70px;
-    margin: 10px;
-    margin-bottom: 0px;
-  }
-
-  .spans-camera {
-    font-family: Roboto-Regular;
-    font-size: 12px;
-    color: grey;
-    padding: 10px;
-    text-align: center;
-    padding-bottom: 5px;
-  }
-
-  .isActive-spansCamera {
-    color: #017bff;
-  }
-}
-
 @media (max-height: 500px) {
   .switchCamera-container {
     grid-template-columns: [col-start-switchCamera] 60px [col-stop-switchCamera];
@@ -1353,7 +1208,7 @@
 .title-card-mini {
   position: absolute;
   top: 60px;
-  left: 20px;
+  left: 60px;
   width: 200px;
   height: 70px;
 }
@@ -1361,13 +1216,13 @@
 .spans-language-cards-mini {
   position: absolute;
   top: 140px;
-  left: 20px;
+  left: 60px;
 }
 
 .h1-card-mini {
   position: absolute;
   top: 60px;
-  left: 230px;
+  left: 270px;
   width: 350px;
   font-family: Roboto-Bold;
   font-size: 18px;
@@ -1379,7 +1234,7 @@
 .texts-card-mini {
   position: absolute;
   top: 90px;
-  left: 230px;
+  left: 270px;
   color: #D3D3D3;
   width: 350px;
   max-height: 180px;

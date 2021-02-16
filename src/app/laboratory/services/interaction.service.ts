@@ -20,7 +20,7 @@ export class InteractionService {
 
   open_threed = new Subject<boolean>();
 
-  open_stereoscopy = new Subject<boolean>();
+  open_arvr = new Subject<boolean>();
 
   open_socialNetworks = new Subject<boolean>();
 

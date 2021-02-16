@@ -184,6 +184,8 @@ export class LaboratoryService {
   private threed_faces_MATERIAL: BABYLON.StandardMaterial;
 
   private fireSystem: BABYLON.ParticleSystem;
+  private fire_source: BABYLON.Mesh;
+  private smokeSystem: BABYLON.ParticleSystem;
 
   private scene_loaded = false;
   private introduction_closed = false;
@@ -208,6 +210,72 @@ export class LaboratoryService {
 
     this.scene = new BABYLON.Scene(this.engine);
     this.scene.clearColor = BABYLON.Color4.FromHexString('#1c191bFF');
+
+    // FIRE SOURCE
+
+    this.fire_source = BABYLON.Mesh.CreateBox("foutain", 0.1, this.scene);
+    this.fire_source.position = new BABYLON.Vector3(-0.2, 0, -9.4);
+
+    // SMOKE
+
+    this.smokeSystem = new BABYLON.ParticleSystem("particles", 1000, this.scene);
+    this.smokeSystem.particleTexture = new BABYLON.Texture("../../assets/glb/laboratory/particles/smoke.png", this.scene);
+    this.smokeSystem.emitter = this.fire_source;
+    this.smokeSystem.minEmitBox = new BABYLON.Vector3(-1, 1, -1);
+    this.smokeSystem.maxEmitBox = new BABYLON.Vector3(1, 1, 1);
+
+    this.smokeSystem.color1 = new BABYLON.Color4(0.02, 0.02, 0.02, .02);
+    this.smokeSystem.color2 = new BABYLON.Color4(0.02, 0.02, 0.02, .02);
+    this.smokeSystem.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+
+    this.smokeSystem.minSize = 0.5;
+    this.smokeSystem.maxSize = 1.5;
+
+    this.smokeSystem.minLifeTime = 0.3;
+    this.smokeSystem.maxLifeTime = 1.2;
+
+    this.smokeSystem.emitRate = 150;
+    this.smokeSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+
+    this.smokeSystem.gravity = new BABYLON.Vector3(0, 0, 0);
+
+    this.smokeSystem.direction1 = new BABYLON.Vector3(-1.5, 8, -1.5);
+    this.smokeSystem.direction2 = new BABYLON.Vector3(1.5, 8, 1.5);
+
+    this.smokeSystem.minAngularSpeed = 0;
+    this.smokeSystem.maxAngularSpeed = Math.PI;
+
+    this.smokeSystem.minEmitPower = 0.5;
+    this.smokeSystem.maxEmitPower = 1.5;
+    this.smokeSystem.updateSpeed = 0.005;
+
+    this.smokeSystem.start();
+
+    // FIRE
+
+    this.fireSystem = new BABYLON.ParticleSystem("particles", 1500, this.scene);
+    this.fireSystem.particleTexture = new BABYLON.Texture("../../assets/glb/laboratory/particles/smoke.png", this.scene);
+    this.fireSystem.emitter = this.fire_source;
+    this.fireSystem.minEmitBox = new BABYLON.Vector3(-0.6, 1, -0.6);
+    this.fireSystem.maxEmitBox = new BABYLON.Vector3(0.6, 1, 0.6);
+    this.fireSystem.color1 = new BABYLON.Color4(1, 0.5, 0, 0.6);
+    this.fireSystem.color2 = new BABYLON.Color4(1, 0.5, 0, 0.6);
+    this.fireSystem.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
+    this.fireSystem.minSize = 0.3;
+    this.fireSystem.maxSize = 1;
+    this.fireSystem.minLifeTime = 0.2;
+    this.fireSystem.maxLifeTime = 0.4;
+    this.fireSystem.emitRate = 300;
+    this.fireSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+    this.fireSystem.gravity = new BABYLON.Vector3(0, 0, 0);
+    this.fireSystem.direction1 = new BABYLON.Vector3(0, 4, 0);
+    this.fireSystem.direction2 = new BABYLON.Vector3(0, 4, 0);
+    this.fireSystem.minAngularSpeed = 0;
+    this.fireSystem.maxAngularSpeed = Math.PI;
+    this.fireSystem.minEmitPower = 1;
+    this.fireSystem.maxEmitPower = 3;
+    this.fireSystem.updateSpeed = 0.005;
+    this.fireSystem.start();
 
     // CANERAS
 
@@ -483,72 +551,6 @@ export class LaboratoryService {
 
   BABYLON.SceneLoader.ImportMeshAsync("logs", "../../assets/glb/laboratory/", "logs.glb", this.scene).then((result) => {
   });
-
-  // FIRE SOURCE
-
-  var fire_source = BABYLON.Mesh.CreateBox("foutain", 0.1, this.scene);
-  fire_source.position = new BABYLON.Vector3(-0.2, 0, -9.4);
-
-  // SMOKE
-
-  var smokeSystem = new BABYLON.ParticleSystem("particles", 1000, this.scene);
-  smokeSystem.particleTexture = new BABYLON.Texture("../../assets/glb/laboratory/particles/smoke.png", this.scene);
-  smokeSystem.emitter = fire_source;
-  smokeSystem.minEmitBox = new BABYLON.Vector3(-1, 1, -1);
-  smokeSystem.maxEmitBox = new BABYLON.Vector3(1, 1, 1);
-
-  smokeSystem.color1 = new BABYLON.Color4(0.02, 0.02, 0.02, .02);
-  smokeSystem.color2 = new BABYLON.Color4(0.02, 0.02, 0.02, .02);
-  smokeSystem.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
-
-  smokeSystem.minSize = 0.5;
-  smokeSystem.maxSize = 1.5;
-
-  smokeSystem.minLifeTime = 0.3;
-  smokeSystem.maxLifeTime = 1.2;
-
-  smokeSystem.emitRate = 150;
-  smokeSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
-
-  smokeSystem.gravity = new BABYLON.Vector3(0, 0, 0);
-
-  smokeSystem.direction1 = new BABYLON.Vector3(-1.5, 8, -1.5);
-  smokeSystem.direction2 = new BABYLON.Vector3(1.5, 8, 1.5);
-
-  smokeSystem.minAngularSpeed = 0;
-  smokeSystem.maxAngularSpeed = Math.PI;
-
-  smokeSystem.minEmitPower = 0.5;
-  smokeSystem.maxEmitPower = 1.5;
-  smokeSystem.updateSpeed = 0.005;
-
-  smokeSystem.start();
-
-  // FIRE
-
-  this.fireSystem = new BABYLON.ParticleSystem("particles", 1500, this.scene);
-  this.fireSystem.particleTexture = new BABYLON.Texture("../../assets/glb/laboratory/particles/smoke.png", this.scene);
-  this.fireSystem.emitter = fire_source;
-  this.fireSystem.minEmitBox = new BABYLON.Vector3(-0.6, 1, -0.6);
-  this.fireSystem.maxEmitBox = new BABYLON.Vector3(0.6, 1, 0.6);
-  this.fireSystem.color1 = new BABYLON.Color4(1, 0.5, 0, 0.6);
-  this.fireSystem.color2 = new BABYLON.Color4(1, 0.5, 0, 0.6);
-  this.fireSystem.colorDead = new BABYLON.Color4(0, 0, 0, 0.0);
-  this.fireSystem.minSize = 0.3;
-  this.fireSystem.maxSize = 1;
-  this.fireSystem.minLifeTime = 0.2;
-  this.fireSystem.maxLifeTime = 0.4;
-  this.fireSystem.emitRate = 300;
-  this.fireSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
-  this.fireSystem.gravity = new BABYLON.Vector3(0, 0, 0);
-  this.fireSystem.direction1 = new BABYLON.Vector3(0, 4, 0);
-  this.fireSystem.direction2 = new BABYLON.Vector3(0, 4, 0);
-  this.fireSystem.minAngularSpeed = 0;
-  this.fireSystem.maxAngularSpeed = Math.PI;
-  this.fireSystem.minEmitPower = 1;
-  this.fireSystem.maxEmitPower = 3;
-  this.fireSystem.updateSpeed = 0.005;
-  this.fireSystem.start();
 
   // CHECKER
 
@@ -1308,7 +1310,7 @@ public addActions_buttons(): void {
     this.threed_cube.isPickable = true; this.threed_scale.isPickable = true; this.threed_faces.isPickable = true;
   }
 
-  public activation_buttonsStereoscopy(): void {
+  public activation_buttonsARVR(): void {
     this.threed_glasses_frame.isPickable = true; this.threed_glass_blue.isPickable = true; this.threed_glass_red.isPickable = true;
   }
 
@@ -1366,7 +1368,7 @@ public addActions_buttons(): void {
     this.threed_cube.isPickable = false; this.threed_scale.isPickable = false; this.threed_faces.isPickable = false;
   }
 
-  public desactivation_buttonsStereoscopy(): void {
+  public desactivation_buttonsARVR(): void {
     this.threed_glasses_frame.isPickable = false; this.threed_glass_blue.isPickable = false; this.threed_glass_red.isPickable = false;
   }
 
@@ -2074,7 +2076,7 @@ public addActions_buttons(): void {
     this.threed_glasses_frame.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glasses_frame},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_arvr.next())
         ]
       )
     );
@@ -2096,7 +2098,7 @@ public addActions_buttons(): void {
     this.threed_glass_blue.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_blue},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_arvr.next())
         ]
       )
     );
@@ -2118,7 +2120,7 @@ public addActions_buttons(): void {
     this.threed_glass_red.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_red},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_arvr.next())
         ]
       )
     );
