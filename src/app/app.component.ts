@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   public innerWidth: any;
   public innerHeight: any;
 
-  public isMini;
+  public isMini: boolean;
 
   public isCV = false;
 

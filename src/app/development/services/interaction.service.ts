@@ -56,5 +56,5 @@ export class InteractionService {
 
     toogle_anaglyph_activated = new Subject<boolean>();
 
-    open_stereoscopy = new Subject<boolean>();
+    switch_cameraAnaglyph = new Subject<boolean>();
 }

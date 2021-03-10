@@ -15,6 +15,8 @@ export class LaboratoryService {
 
   private isCV: boolean;
 
+  private isMini: boolean;
+
   private innerWidth: any;
   private innerHeight: any;
 
@@ -201,6 +203,10 @@ export class LaboratoryService {
   ) {}
 
   public createScene(canvas: ElementRef<HTMLCanvasElement>): void {
+
+    // CV
+
+    this.isCV = true;
 
     // CANVAS / ENGINE / SCENE
 
@@ -1102,6 +1108,7 @@ export class LaboratoryService {
     this.social_networks = this.scene.getMeshByName("social_networks");
   });
 
+
   // TWITTER
 
   this.twitter_BAKING = new BABYLON.Texture("../../assets/glb/laboratory/baking/twitter_BAKING.jpg", this.scene, false, false);
@@ -1228,9 +1235,9 @@ export class LaboratoryService {
 
 // IS CV
 
-public set_isCV(isCV): void {
-  this.isCV = isCV;
-}
+//public set_isCV(isCV): void {
+  //this.isCV = isCV;
+//}
 
 // WINDOW DIMENSIONS
 
@@ -1261,7 +1268,7 @@ public addActions_buttons(): void {
   this.addActions_FourtyFour(); this.addActions_FourtyFourMarieLouise(); this.addActions_FourtyFourFrame();
   this.addActions_Brique(); this.addActions_BriqueMarieLouise(); this.addActions_BriqueFrame();
   this.addActions_Tofu(); this.addActions_TofuMarieLouise(); this.addActions_TofuFrame();
-  this.addActions_ThreedGlassesFrame(); this.addActions_ThreedGlassBlue(); this.addActions_ThreedGlassRed();
+  // this.addActions_ThreedGlassesFrame(); this.addActions_ThreedGlassBlue(); this.addActions_ThreedGlassRed();
   this.addActions_Keyboard(); this.addActions_KeyboardKeyboard();
   this.addActions_MacMini(); this.addActions_Laptop(); this.addActions_LaptopKeyboard(); this.addActions_LaptopScreen(); this.addActions_ScreenCenter(); this.addActions_ScreenFrameCenter(); this.addActions_ScreenRight(); this.addActions_ScreenFrameRight();
   this.addActions_DvdPi(); this.addActions_DvdEnterTheVoid(); this.addActions_Dvd2001OdysseeEspace(); this.addActions_DvdLaHaine(); this.addActions_DvdSweetSixteen(); this.addActions_DvdEternalSunshine(); this.addActions_DvdZeroTheorem(); this.addActions_DvdShining();
@@ -1270,6 +1277,7 @@ public addActions_buttons(): void {
   this.addActions_Instagram(); this.addActions_InstagramLens();
   this.addActions_Youtube(); this.addActions_YoutubePlay();
   this.addActions_SpotifyGreen(); this.addActions_SpotifyBlack();
+  this.addActions_LinkedinBlue(); this.addActions_LinkedinWhite();
   this.addActions_threeDCube(); this.addActions_threeDScale(); this.addActions_threeDFaces();
   this.addActions_UnitedKingdomRed(); this.addActions_UnitedKingdomWhite(); this.addActions_UnitedKingdomBlue();
   this.addActions_FranceBlue(); this.addActions_FranceWhite(); this.addActions_FranceRed();
@@ -1286,14 +1294,17 @@ public addActions_buttons(): void {
     this.fourty_four.isPickable = true; this.fourty_four_marie_louise.isPickable = true; this.fourty_four_frame.isPickable = true;
     this.brique.isPickable = true; this.brique_marie_louise.isPickable = true; this.brique_frame.isPickable = true;
     this.tofu.isPickable = true; this.tofu_marie_louise.isPickable = true; this.tofu_frame.isPickable = true;
-    this.threed_glasses_frame.isPickable = true; this.threed_glass_blue.isPickable = true; this.threed_glass_red.isPickable = true;
+    // this.threed_glasses_frame.isPickable = true; this.threed_glass_blue.isPickable = true; this.threed_glass_red.isPickable = true;
     this.mac_mini.isPickable = true; this.laptop.isPickable = true; this.laptop_keyboard.isPickable = true; this.laptop_screen.isPickable = true; this.screen_center.isPickable = true; this.screen_frame_center.isPickable = true; this.screen_right.isPickable = true; this.screen_frame_right.isPickable = true;
     this.dvd_pi.isPickable = true; this.dvd_enter_the_void.isPickable = true; this.dvd_2001_odyssee_espace.isPickable = true; this.dvd_la_haine.isPickable = true; this.dvd_sweet_sixteen.isPickable = true; this.dvd_eternal_sunshine.isPickable = true; this.dvd_zero_theorem.isPickable = true; this.dvd_shining.isPickable = true;
-    this.social_networks.isPickable = true;
+    if(!this.isMini) {
+      this.social_networks.isPickable = true;
+    }
     this.twitter.isPickable = true;
     this.instagram.isPickable = true; this.instagram_lens.isPickable = true;
     this.youtube.isPickable = true; this.youtube_play.isPickable = true;
     this.spotify_green.isPickable = true; this.spotify_black.isPickable = true;
+    this.linkedin_blue.isPickable = true; this.linkedin_white.isPickable = true;
     this.threed_cube.isPickable = true; this.threed_scale.isPickable = true; this.threed_faces.isPickable = true;
   }
 
@@ -1345,12 +1356,15 @@ public addActions_buttons(): void {
     this.fourty_four.isPickable = false; this.fourty_four_marie_louise.isPickable = false; this.fourty_four_frame.isPickable = false;
     this.brique.isPickable = false; this.brique_marie_louise.isPickable = false; this.brique_frame.isPickable = false;
     this.tofu.isPickable = false; this.tofu_marie_louise.isPickable = false; this.tofu_frame.isPickable = false;
-    this.threed_glasses_frame.isPickable = false; this.threed_glass_blue.isPickable = false; this.threed_glass_red.isPickable = false;
-    this.social_networks.isPickable = false;
+    // this.threed_glasses_frame.isPickable = false; this.threed_glass_blue.isPickable = false; this.threed_glass_red.isPickable = false;
+    if(!this.isMini) {
+      this.social_networks.isPickable = false;
+    }
     this.twitter.isPickable = false;
     this.instagram.isPickable = false; this.instagram_lens.isPickable = false;
     this.youtube.isPickable = false; this.youtube_play.isPickable = false;
     this.spotify_green.isPickable = false; this.spotify_black.isPickable = false;
+    this.linkedin_blue.isPickable = false; this.linkedin_white.isPickable = false;
     this.projector.isPickable = false;
     this.dvd_pi.isPickable = false; this.dvd_enter_the_void.isPickable = false; this.dvd_2001_odyssee_espace.isPickable = false; this.dvd_la_haine.isPickable = false, this.dvd_sweet_sixteen.isPickable = false; this.dvd_eternal_sunshine.isPickable = false; this.dvd_zero_theorem.isPickable = false; this.dvd_shining.isPickable = false;
   }
@@ -2076,7 +2090,7 @@ public addActions_buttons(): void {
     this.threed_glasses_frame.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glasses_frame},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_arvr.next())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.switch_cameraAnaglyph.next())
         ]
       )
     );
@@ -2098,7 +2112,7 @@ public addActions_buttons(): void {
     this.threed_glass_blue.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_blue},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_arvr.next())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.switch_cameraAnaglyph.next())
         ]
       )
     );
@@ -2120,7 +2134,7 @@ public addActions_buttons(): void {
     this.threed_glass_red.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_red},
         [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_arvr.next())
+          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.switch_cameraAnaglyph.next())
         ]
       )
     );
@@ -2748,20 +2762,23 @@ public addActions_buttons(): void {
     );
   }
 
+
   private addActions_SocialNetworks() {
-    this.social_networks.isPickable = true;
-    this.social_networks.actionManager = new BABYLON.ActionManager(this.scene);
+    if(!this.isCV) {
+      this.social_networks.isPickable = true;
+      this.social_networks.actionManager = new BABYLON.ActionManager(this.scene);
 
-    this.social_networks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.social_networks.material, "albedoTexture", this.social_networks_BAKING_HIGHLIGHT));
-    this.social_networks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.social_networks.material, "albedoTexture", this.social_networks_BAKING));
+      this.social_networks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.social_networks.material, "albedoTexture", this.social_networks_BAKING_HIGHLIGHT));
+      this.social_networks.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.social_networks.material, "albedoTexture", this.social_networks_BAKING));
 
-    this.social_networks.actionManager.registerAction(new BABYLON.CombineAction(
-        {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.social_networks},
-        [
-          new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_socialNetworks.next())
-        ]
-      )
-    );
+      this.social_networks.actionManager.registerAction(new BABYLON.CombineAction(
+          {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.social_networks},
+          [
+            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_socialNetworks.next())
+          ]
+        )
+      );
+    }
   }
 
   private addActions_Twitter() {
@@ -2774,7 +2791,7 @@ public addActions_buttons(): void {
       new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
         function(event){
           var pickedMesh = event.meshUnderPointer;
-          window.open("https://twitter.com/FedericoMoko");
+          window.open("https://twitter.com/Moko_MKLab");
         }
       )
     );
@@ -2791,7 +2808,7 @@ public addActions_buttons(): void {
       new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
         function(event){
           var pickedMesh = event.meshUnderPointer;
-          window.open("https://www.instagram.com/moko_maracucho/?hl=fr");
+          window.open("https://www.instagram.com/moko_laboratory/?igshid=1v087bd31r20p");
         }
       )
     );
@@ -2808,7 +2825,7 @@ public addActions_buttons(): void {
       new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
         function(event){
           var pickedMesh = event.meshUnderPointer;
-          window.open("https://www.instagram.com/moko_maracucho/?hl=fr");
+          window.open("https://www.instagram.com/moko_laboratory/?igshid=1v087bd31r20p");
         }
       )
     );
@@ -2828,7 +2845,7 @@ public addActions_buttons(): void {
       new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
         function(event){
           var pickedMesh = event.meshUnderPointer;
-          window.open("https://www.youtube.com/channel/UCi50Pr7mvDz79EFFMd0stEQ/playlists?view_as=subscriber");
+          window.open("https://www.youtube.com/channel/UCi50Pr7mvDz79EFFMd0stEQ/playlists");
         }
       )
     );
@@ -2848,7 +2865,7 @@ public addActions_buttons(): void {
       new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
         function(event){
           var pickedMesh = event.meshUnderPointer;
-          window.open("https://www.youtube.com/channel/UCi50Pr7mvDz79EFFMd0stEQ/playlists?view_as=subscriber");
+          window.open("https://www.youtube.com/channel/UCi50Pr7mvDz79EFFMd0stEQ/playlists");
         }
       )
     );
@@ -2866,6 +2883,46 @@ public addActions_buttons(): void {
         function(event){
           var pickedMesh = event.meshUnderPointer;
           window.open("https://open.spotify.com/user/21g42fpdhcs6if5nooxgivpsq?si=VFoLaPHTRZSTdEEIb4d0Qw");
+        }
+      )
+    );
+  }
+
+  private addActions_LinkedinBlue() {
+    this.linkedin_blue.isPickable = true;
+    this.linkedin_blue.actionManager = new BABYLON.ActionManager(this.scene);
+
+    this.linkedin_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.linkedin_blue.material, "albedoTexture", this.linkedin_blue_BAKING_HIGHLIGHT));
+    this.linkedin_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.linkedin_blue.material, "albedoTexture", this.linkedin_blue_BAKING));
+
+    this.linkedin_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.linkedin_white.material, "albedoTexture", this.linkedin_white_BAKING_HIGHLIGHT));
+    this.linkedin_blue.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.linkedin_white.material, "albedoTexture", this.linkedin_white_BAKING));
+
+    this.linkedin_blue.actionManager.registerAction(
+      new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
+        function(event){
+          var pickedMesh = event.meshUnderPointer;
+          window.open("https://www.linkedin.com/in/federico-desmoulin/");
+        }
+      )
+    );
+  }
+
+  private addActions_LinkedinWhite() {
+    this.linkedin_white.isPickable = true;
+    this.linkedin_white.actionManager = new BABYLON.ActionManager(this.scene);
+
+    this.linkedin_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.linkedin_blue.material, "albedoTexture", this.linkedin_blue_BAKING_HIGHLIGHT));
+    this.linkedin_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.linkedin_blue.material, "albedoTexture", this.linkedin_blue_BAKING));
+
+    this.linkedin_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOverTrigger, this.linkedin_white.material, "albedoTexture", this.linkedin_white_BAKING_HIGHLIGHT));
+    this.linkedin_white.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPointerOutTrigger, this.linkedin_white.material, "albedoTexture", this.linkedin_white_BAKING));
+
+    this.linkedin_white.actionManager.registerAction(
+      new BABYLON.ExecuteCodeAction({trigger: BABYLON.ActionManager.OnPickTrigger},
+        function(event){
+          var pickedMesh = event.meshUnderPointer;
+          window.open("https://www.linkedin.com/in/federico-desmoulin/");
         }
       )
     );
@@ -3271,15 +3328,17 @@ public addActions_buttons(): void {
   // INITIAL POSITION CAMERA
 
   private get_initPositionCamera(): BABYLON.Vector3 {
-    if(this.innerWidth <= 576) {
+    if(this.isMini) {
+      return new BABYLON.Vector3(-30, 17, 12);
+    } else if(this.innerWidth <= 576 && !this.isMini) {
       return new BABYLON.Vector3(-60, 35, 25);
-    } else if(this.innerWidth <= 768) {
+    } else if(this.innerWidth <= 768 && !this.isMini) {
       return new BABYLON.Vector3(-60, 35, 25);
-    } else if(this.innerWidth <= 960) {
+    } else if(this.innerWidth <= 960 && !this.isMini) {
       return new BABYLON.Vector3(-60, 35, 25);
-    } else if(this.innerWidth <= 1140) {
+    } else if(this.innerWidth <= 1140 && !this.isMini) {
       return new BABYLON.Vector3(-55, 30, 25);
-    } else if(this.innerWidth <= 1400) {
+    } else if(this.innerWidth <= 1400 && !this.isMini) {
       return new BABYLON.Vector3(-50, 30, 25);
     } else {
       return new BABYLON.Vector3(-50, 22, 25);
@@ -3287,15 +3346,17 @@ public addActions_buttons(): void {
   }
 
   private get_initPositionCameraTarget(): BABYLON.Vector3 {
-    if(this.innerWidth <= 576) {
-      return new BABYLON.Vector3(-8, 7, -12);
-    } else if(this.innerWidth <= 768) {
-      return new BABYLON.Vector3(-8, 10, -12);
-    } else if(this.innerWidth <= 960) {
-      return new BABYLON.Vector3(-8, 10, -12);
-    } else if(this.innerWidth <= 1140) {
+    if(this.isMini) {
       return new BABYLON.Vector3(-4, 3, -12);
-    } else if(this.innerWidth <= 1400) {
+    } else if(this.innerWidth <= 576 && !this.isMini) {
+      return new BABYLON.Vector3(-8, 7, -12);
+    } else if(this.innerWidth <= 768 && !this.isMini) {
+      return new BABYLON.Vector3(-8, 10, -12);
+    } else if(this.innerWidth <= 960 && !this.isMini) {
+      return new BABYLON.Vector3(-8, 10, -12);
+    } else if(this.innerWidth <= 1140 && !this.isMini) {
+      return new BABYLON.Vector3(-4, 3, -12);
+    } else if(this.innerWidth <= 1400 && !this.isMini) {
       return new BABYLON.Vector3(0, -1, -12);
     } else {
       return new BABYLON.Vector3(0, 0, -12);
@@ -3319,7 +3380,7 @@ public addActions_buttons(): void {
   private animation_cameraTarget_enterLaboratory() {
     const ease = new BABYLON.CubicEase();
     ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
-    BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_enterLaboratory', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-16.5, 5, -12), 0, ease);
+    BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_enterLaboratory', this.universal_camera, 'target', 15, 30, this.universal_camera.target, new BABYLON.Vector3(-16.5, 8, -12), 0, ease);
   }
 
   // OPEN CARDS
@@ -3337,38 +3398,42 @@ public addActions_buttons(): void {
     BABYLON.Animation.CreateAndStartAnimation('animation_camera_openCard', this.universal_camera, 'position', 15, 30, this.universal_camera.position, this.get_positionCamera_openCard(), 0, ease);
   }
 
-  private get_positionCamera_openCard(): BABYLON.Vector3 {
-    if(this.innerWidth <= 576) {
-      return new BABYLON.Vector3(-50, 35, 35);
-    } else if(this.innerWidth <= 768) {
-      return new BABYLON.Vector3(-50, 35, 35);
-    } else if(this.innerWidth <= 960) {
-      return new BABYLON.Vector3(-50, 35, 35);
-    } else if(this.innerWidth <= 1140) {
-      return new BABYLON.Vector3(-50, 35, 35);
-    } else if(this.innerWidth <= 1400) {
-      return new BABYLON.Vector3(-50, 35, 35);
-    } else {
-      return new BABYLON.Vector3(-50, 35, 35);
-    }
-  }
-
   private animation_cameraTarget_openCard() {
     const ease = new BABYLON.CubicEase();
     ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
     BABYLON.Animation.CreateAndStartAnimation('animation_cameraTarget_openCard', this.universal_camera, 'target', 15, 30, this.universal_camera.target, this.get_positionCameraTarget_openCard(), 0, ease);
   }
 
+  private get_positionCamera_openCard(): BABYLON.Vector3 {
+    if(this.isMini) {
+      return new BABYLON.Vector3(-30, 17, 12);
+    } else if(this.innerWidth <= 576 && !this.isMini) {
+      return new BABYLON.Vector3(-50, 35, 35);
+    } else if(this.innerWidth <= 768 && !this.isMini) {
+      return new BABYLON.Vector3(-50, 35, 35);
+    } else if(this.innerWidth <= 960 && !this.isMini) {
+      return new BABYLON.Vector3(-50, 35, 35);
+    } else if(this.innerWidth <= 1140 && !this.isMini) {
+      return new BABYLON.Vector3(-50, 35, 35);
+    } else if(this.innerWidth <= 1400 && !this.isMini) {
+      return new BABYLON.Vector3(-50, 35, 35);
+    } else {
+      return new BABYLON.Vector3(-50, 35, 35);
+    }
+  }
+
   private get_positionCameraTarget_openCard(): BABYLON.Vector3 {
-    if(this.innerWidth <= 576) {
+    if(this.isMini) {
+      return new BABYLON.Vector3(-4, 3, -12);
+    } else if(this.innerWidth <= 576 && !this.isMini) {
       return new BABYLON.Vector3(-16, 11, 2);
-    } else if(this.innerWidth <= 768) {
+    } else if(this.innerWidth <= 768 && !this.isMini) {
       return new BABYLON.Vector3(-16, 11, 2);
-    } else if(this.innerWidth <= 960) {
+    } else if(this.innerWidth <= 960 && !this.isMini) {
       return new BABYLON.Vector3(-16, 11, 2);
-    } else if(this.innerWidth <= 1140) {
+    } else if(this.innerWidth <= 1140 && !this.isMini) {
       return new BABYLON.Vector3(-14, 11, 2);
-    } else if(this.innerWidth <= 1400) {
+    } else if(this.innerWidth <= 1400 && !this.isMini) {
       return new BABYLON.Vector3(-14, 11, 2);
     } else {
       return new BABYLON.Vector3(-14, 11, 2);
@@ -3461,6 +3526,12 @@ public addActions_buttons(): void {
     this.animation_cameraTarget_enterLaboratory();
     this.universal_camera.detachControl();
     this.universal_camera.attachControl(this.canvas);
+  }
+
+  // SET isMini
+
+  public set_isMini(isMini):void {
+    this.isMini = isMini;
   }
 
   // ANIMATE

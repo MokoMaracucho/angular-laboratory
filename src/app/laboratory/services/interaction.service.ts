@@ -29,4 +29,6 @@ export class InteractionService {
   open_movies = new Subject<boolean>();
 
   open_contactMe = new Subject<boolean>();
+
+  switch_cameraAnaglyph = new Subject<boolean>();
 }

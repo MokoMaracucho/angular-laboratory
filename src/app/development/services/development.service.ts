@@ -10,6 +10,8 @@ import { InteractionService } from './interaction.service';
 })
 export class DevelopmentService {
 
+    public isMini: boolean;
+
     private innerWidth: any;
     private innerHeight: any;
 
@@ -1177,7 +1179,7 @@ export class DevelopmentService {
     this.threed_glasses_frame.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glasses_frame},
         [
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
+            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.switch_cameraAnaglyph.next())
         ]
       )
     );
@@ -1199,7 +1201,7 @@ export class DevelopmentService {
     this.threed_glass_blue.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_blue},
         [
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
+            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.switch_cameraAnaglyph.next())
         ]
       )
     );
@@ -1221,7 +1223,7 @@ export class DevelopmentService {
     this.threed_glass_red.actionManager.registerAction(new BABYLON.CombineAction(
         {trigger: BABYLON.ActionManager.OnPickTrigger, parameter: this.threed_glass_red},
         [
-            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.open_stereoscopy.next())
+            new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.NothingTrigger, () => this.interaction.switch_cameraAnaglyph.next())
         ]
       )
     );
@@ -1230,13 +1232,15 @@ export class DevelopmentService {
   // INITIAL POSITION CAMERA
 
   private get_initPositionCamera(): BABYLON.Vector3 {
-    if(this.innerWidth <= 576) {
+    if(this.isMini) {
+      return new BABYLON.Vector3(-22, 12, 27);
+    } else if(this.innerWidth <= 576 && !this.isMini) {
       return new BABYLON.Vector3(-45, 25, 55);
-    } else if(this.innerWidth <= 768) {
+    } else if(this.innerWidth <= 768 && !this.isMini) {
       return new BABYLON.Vector3(-45, 25, 40);
-    } else if(this.innerWidth <= 960) {
+    } else if(this.innerWidth <= 960 && !this.isMini) {
       return new BABYLON.Vector3(-45, 25, 35);
-    } else if(this.innerWidth <= 1140) {
+    } else if(this.innerWidth <= 1140 && !this.isMini) {
       return new BABYLON.Vector3(-38, 20, 30);
     } else {
       return new BABYLON.Vector3(-37, 20, 35);
@@ -1244,13 +1248,15 @@ export class DevelopmentService {
   }
 
   private get_initPositionCameraTarget(): BABYLON.Vector3 {
-    if(this.innerWidth <= 576) {
+    if(this.isMini) {
+      return new BABYLON.Vector3(-2, 8, 2);
+    } else if(this.innerWidth <= 576 && !this.isMini) {
       return new BABYLON.Vector3(-8, 15, 2);
-    } else if(this.innerWidth <= 768) {
+    } else if(this.innerWidth <= 768 && !this.isMini) {
       return new BABYLON.Vector3(-6, 18, 2);
-    } else if(this.innerWidth <= 960) {
+    } else if(this.innerWidth <= 960 && !this.isMini) {
       return new BABYLON.Vector3(-2, 16, 2);
-    } else if(this.innerWidth <= 1140) {
+    } else if(this.innerWidth <= 1140 && !this.isMini) {
       return new BABYLON.Vector3(-4, 8, 5);
     } else {
       return new BABYLON.Vector3(5, 7, 0);
@@ -1272,15 +1278,17 @@ export class DevelopmentService {
   }
 
   private get_initPositionCamera_enterLaboratory(): BABYLON.Vector3 {
-    if(this.innerWidth <= 576) {
+    if(this.isMini) {
+      return new BABYLON.Vector3(-1, 15, 37);
+    } else if(this.innerWidth <= 576 && !this.isMini) {
       return new BABYLON.Vector3(19, 32, 20);
-    } else if(this.innerWidth <= 768) {
+    } else if(this.innerWidth <= 768 && !this.isMini) {
       return new BABYLON.Vector3(17, 30, 20);
-    } else if(this.innerWidth <= 960) {
+    } else if(this.innerWidth <= 960 && !this.isMini) {
       return new BABYLON.Vector3(10, 30, 15);
-    } else if(this.innerWidth <= 1140) {
+    } else if(this.innerWidth <= 1140 && !this.isMini) {
       return new BABYLON.Vector3(-1, 20, 63);
-    } else if(this.innerWidth <= 1400) {
+    } else if(this.innerWidth <= 1400 && !this.isMini) {
       return new BABYLON.Vector3(-1, 20, 55);
     } else {
       return new BABYLON.Vector3(-1, 20, 45);
@@ -1294,15 +1302,17 @@ export class DevelopmentService {
   }
 
   private get_initPositionCameraTarget_enterLaboratory(): BABYLON.Vector3 {
-    if(this.innerWidth <= 576) {
-      return new BABYLON.Vector3(-10, 8, -2);
-    } else if(this.innerWidth <= 768) {
-      return new BABYLON.Vector3(-10, 10, -1);
-    } else if(this.innerWidth <= 960) {
-      return new BABYLON.Vector3(-10, 10, -1);
-    } else if(this.innerWidth <= 1140) {
+    if(this.isMini) {
       return new BABYLON.Vector3(-1, 10, 0);
-    } else if(this.innerWidth <= 1400) {
+    } else if(this.innerWidth <= 576 && !this.isMini) {
+      return new BABYLON.Vector3(-10, 8, -2);
+    } else if(this.innerWidth <= 768 && !this.isMini) {
+      return new BABYLON.Vector3(-10, 10, -1);
+    } else if(this.innerWidth <= 960 && !this.isMini) {
+      return new BABYLON.Vector3(-10, 10, -1);
+    } else if(this.innerWidth <= 1140 && !this.isMini) {
+      return new BABYLON.Vector3(-1, 10, 0);
+    } else if(this.innerWidth <= 1400 && !this.isMini) {
       return new BABYLON.Vector3(-1, 10, 0);
     } else {
       return new BABYLON.Vector3(-1, 10, 0);
@@ -1325,15 +1335,17 @@ export class DevelopmentService {
   }
 
   private get_initPositionCamera_openCard(): BABYLON.Vector3 {
-    if(this.innerWidth <= 576) {
+    if(this.isMini) {
+      return new BABYLON.Vector3(-22, 12, 27);
+    } else if(this.innerWidth <= 576 && !this.isMini) {
       return new BABYLON.Vector3(-40, 20, 45);
-    } else if(this.innerWidth <= 768) {
+    } else if(this.innerWidth <= 768 && !this.isMini) {
       return new BABYLON.Vector3(-40, 20, 45);
-    } else if(this.innerWidth <= 960) {
+    } else if(this.innerWidth <= 960 && !this.isMini) {
       return new BABYLON.Vector3(-40, 20, 50);
-    } else if(this.innerWidth <= 1140) {
+    } else if(this.innerWidth <= 1140 && !this.isMini) {
       return new BABYLON.Vector3(-33, 20, 40);
-    } else if(this.innerWidth <= 1400) {
+    } else if(this.innerWidth <= 1400 && !this.isMini) {
       return new BABYLON.Vector3(-33, 20, 35);
     } else {
       return new BABYLON.Vector3(-33, 20, 35);
@@ -1347,15 +1359,17 @@ export class DevelopmentService {
   }
 
   private get_initPositionCameraTarget_openCard(): BABYLON.Vector3 {
-    if(this.innerWidth <= 576) {
+    if(this.isMini) {
+      return new BABYLON.Vector3(-2, 8, 2);
+    } else if(this.innerWidth <= 576 && !this.isMini) {
       return new BABYLON.Vector3(-4, 15, 0);
-    } else if(this.innerWidth <= 768) {
+    } else if(this.innerWidth <= 768 && !this.isMini) {
       return new BABYLON.Vector3(-4, 8, 0);
-    } else if(this.innerWidth <= 960) {
+    } else if(this.innerWidth <= 960 && !this.isMini) {
       return new BABYLON.Vector3(-1, 8, 0);
-    } else if(this.innerWidth <= 1140) {
+    } else if(this.innerWidth <= 1140 && !this.isMini) {
       return new BABYLON.Vector3(-1, 8, 0);
-    } else if(this.innerWidth <= 1400) {
+    } else if(this.innerWidth <= 1400 && !this.isMini) {
       return new BABYLON.Vector3(1, 7, 0);
     } else {
       return new BABYLON.Vector3(3, 7, 0);
@@ -1430,11 +1444,19 @@ export class DevelopmentService {
     });
   }
 
+  // CLEAN UP
+
   public cleanUp() {
     this.engine.stopRenderLoop();
     this.scene.dispose();
     this.engine.dispose();
     this.scene_loaded = false;
+  }
+
+  // SET isMini
+
+  public set_isMini(isMini):void {
+    this.isMini = isMini;
   }
 
   // INIT POSITION

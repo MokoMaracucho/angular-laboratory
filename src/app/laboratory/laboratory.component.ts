@@ -16,38 +16,11 @@ import { InteractionService } from './services/interaction.service';
   styleUrls: ['./laboratory.component.css'],
   animations: [
     trigger('fadeOut_backgroundIntroduction', [
-      state('false', style({background: '#160130'})),
-      state('true', style({background: '#16013066'})),
-      transition('false => true', [animate('2s')])
-    ]),
-    trigger('logoIntroduction_fadeIn', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')])
-    ]),
-    trigger('h1Introduction_fadeIn', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')])
-    ]),
-    trigger('textIntroduction_fadeIn', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')])
-    ]),
-    trigger('spanLanguageIntroduction_fadeIn', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')])
-    ]),
-    trigger('btnCloseIntroduction_fadeIn', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
+      state('false', style({opacity: '1'})),
+      state('true', style({opacity: '0.5'})),
       transition('false => true', [animate('2s')])
     ]),
     trigger('development_fadeIn', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
       transition('false => true', [animate('1s')])
     ]),
     trigger('datas_fadeIn', [
@@ -112,8 +85,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   public isMin960 = false;
   public isMin1140 = false;
 
-  public isLandscape;
-  public isMini;
+  public isLandscape: boolean;
+  public isMini: boolean;
 
   // CV
 
@@ -206,7 +179,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.isCV = false;
     }
     this.appComponent.set_isCV(this.isCV);
-    this.laboratoryService.set_isCV(this.isCV);
+    //this.laboratoryService.set_isCV(this.isCV);
 
     this.laboratoryService.createScene(this.rendererCanvas_laboratory);
     this.laboratoryService.animate();
@@ -230,6 +203,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
     this.subscription = this.interaction.open_photography.subscribe(() => this.open_photography());
     this.subscription = this.interaction.open_contactMe.subscribe(() => this.open_contactMe());
     this.subscription = this.interaction.open_movies.subscribe(() => this.open_movies());
+    this.subscription = this.interaction.switch_cameraAnaglyph.subscribe(() => this.switch_cameraAnaglyph());
   }
 
   ngOnDestroy(): void {
@@ -258,6 +232,7 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
       this.isMini = false;
     }
     this.appComponent.set_isMini(this.isMini);
+    this.laboratoryService.set_isMini(this.isMini);
   }
 
   private fetch_isLandscape():void {
@@ -315,9 +290,8 @@ export class LaboratoryComponent implements OnInit, OnDestroy {
   }
 
   private isLoaded_function(): void {
-    this.isLoaded = true;
-    this.btnCloseIntroduction_fadeIn = true;
     this.fadeOut_backgroundIntroduction = true;
+    this.isLoaded = true;
   }
 
   private change_language_english(): void {

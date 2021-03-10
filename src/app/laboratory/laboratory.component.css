@@ -760,13 +760,13 @@
   position: absolute;
 }
 
-@media (max-width: 799px) {
+@media (max-width: 599px) {
   .menuMovies-container {
     grid-template-columns: [col-start-menu] auto [col-1-menu] auto [col-2-menu] auto [col-stop-menu];
     grid-template-rows: [row-start-menu] auto [row-stop-menu];
     display: grid;
-    left: 202px;
-    bottom: 55px;
+    left: 134px;
+    bottom: 45px;
     background-color: #00000066;
     padding-top: 5px;
     padding-left: 10px;
@@ -775,12 +775,12 @@
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 600px) {
   .menuMovies-container {
     grid-template-columns: [col-start-menu] auto [col-1-menu] auto [col-2-menu] auto [col-stop-menu];
     grid-template-rows: [row-start-menu] auto [row-stop-menu];
     display: grid;
-    top: 457px;
+    top: 477px;
     right: 60px;
     background-color: #00000066;
     padding-top: 5px;
@@ -811,7 +811,7 @@
   color: grey;
 }
 
-.buttons_movies:hover {
+.buttons-movies:hover {
   color: white;
   cursor: pointer;
 }
@@ -1119,13 +1119,13 @@
 
 @media (min-width: 1140px) {
   .container-cards {
-    grid-template-columns: [col-start-cards] 400px [col-stop-cards];
+    grid-template-columns: [col-start-cards] 500px [col-stop-cards];
     grid-template-rows: [row-start-cards] 134px [row-1-cards] auto [row-2-cards] auto [row-3-cards] auto [row-4-cards] 40px [row-stop-cards];
     display: grid;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    max-width: 400px;
+    max-width: 500px;
     margin-left: 100px;
     padding-bottom: 20px;
   }
@@ -1155,7 +1155,7 @@
   .texts-card {
     grid-area: row-2-cards / col-start-cards / row-3-cards / col-stop-cards;
     grid-auto-rows: auto;
-    max-width: 400px;
+    max-width: 500px;
     color: #D3D3D3;
     text-align: justify;
     overflow-x: hidden;

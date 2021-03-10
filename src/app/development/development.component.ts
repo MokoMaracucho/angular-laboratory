@@ -16,44 +16,9 @@ import { InteractionService } from './services/interaction.service';
   styleUrls: ['./development.component.css'],
   animations: [
     trigger('fadeOut_backgroundIntroduction', [
-      state('false', style({background: '#002486'})),
+      state('false', style({background: '#002486FF'})),
       state('true', style({background: '#00248666'})),
       transition('false => true', [animate('2s')])
-    ]),
-    trigger('logoDevelopment_fadeIn', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')])
-    ]),
-    trigger('titleDevelopment_fadeIn', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')])
-    ]),
-    trigger('h1Introduction_fadeIn', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')])
-    ]),
-    trigger('textIntroduction_fadeIn', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')])
-    ]),
-    trigger('spanLanguageIntroduction_fadeIn', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')])
-    ]),
-    trigger('btnCloseIntroduction_fadeIn', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('2s')])
-    ]),
-    trigger('switchCamera_fadeIn', [
-      state('false', style({opacity: '0'})),
-      state('true', style({opacity: '1'})),
-      transition('false => true', [animate('1s')])
     ]),
     trigger('postgresql_fadeIn', [
       state('false', style({opacity: '0'})),
@@ -305,6 +270,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     if(!this.isCV) {
       this.isCV = false;
     }
+    this.appComponent.set_isCV(this.isCV);
 
     this.developmentService.createScene(this.rendererCanvas_development);
     this.developmentService.animate();
@@ -320,8 +286,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     this.subscription = this.interaction.change_language_english.subscribe(() => this.change_language_english());
     this.subscription = this.interaction.change_language_french.subscribe(() => this.change_language_french());
     this.subscription = this.interaction.change_language_spanish.subscribe(() => this.change_language_spanish());
-
-    this.subscription = this.interaction.open_stereoscopy.subscribe(() => this.open_stereoscopy());
 
     this.subscription = this.interaction.open_postgresql.subscribe(() => this.open_postgresql());
     this.subscription = this.interaction.open_java.subscribe(() => this.open_java());
@@ -341,6 +305,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     this.subscription = this.interaction.open_illustrator.subscribe(() => this.open_illustrator());
     this.subscription = this.interaction.open_ubuntu.subscribe(() => this.open_ubuntu());
     this.subscription = this.interaction.open_apache.subscribe(() => this.open_apache());
+    this.subscription = this.interaction.switch_cameraAnaglyph.subscribe(() => this.switch_cameraAnaglyph());
   }
 
   ngOnDestroy(): void {
@@ -380,6 +345,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
       this.isMini = false;
     }
     this.appComponent.set_isMini(this.isMini);
+    this.developmentService.set_isMini(this.isMini);
   }
 
   private fetch_isLandscape():void {
@@ -451,9 +417,8 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
   }
 
   private isLoaded_function(): void {
-    this.isLoaded = true;
-    this.btnCloseIntroduction_fadeIn = true;
     this.fadeOut_backgroundIntroduction = true;
+    this.isLoaded = true;
   }
 
   public close_introduction(): void {
@@ -464,60 +429,14 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     this.appComponent.close_navBar_menu();
   }
 
-  // STEREOSCOPY
-
-  public open_stereoscopy(): void {
-    this.developmentService.desactivation_buttonsStereoscopy();
-    if(this.isCard_open) {
-      this.close_openedCard();
-    }
-    this.isOpen_switchCamera = true;
-    this.switchCamera_fadeIn = true;
-    if(!this.isCard_open && !this.isMobileDevice) {
-      this.developmentService.open_card();
-      this.isCard_open = true;
-      // this.laboratoryService.set_isOpenCard(this.isCard_open);
-    }
-    if(this.isMobileDevice && this.isCard_open) {
-      this.isVisible_cacheMobileDevice = false;
-      this.developmentService.init_position();
-      this.isCard_open = false;
-    }
-  }
-
-  public close_stereoscopy(close_clicked): void {
-    this.developmentService.activation_buttonsStereoscopy();
-    this.isOpen_stereoscopy = false;
-    this.stereoscopy_fadeIn = false;
-    if(close_clicked) {
-      this.developmentService.close_card();
-      this.isCard_open = false;
-      // this.laboratoryService.set_isOpenCard(this.isCard_open);
-      if(this.isMobileDevice) {
-        this.isVisible_cacheMobileDevice = false;
-      }
-    }
-    if(this.isMobileDevice) {
-      this.close_switchCamera();
-    }
-  }
-
-  public close_switchCamera(): void {
-    this.isOpen_switchCamera = false;
-    if(this.isOpen_stereoscopy && !this.isMobileDevice) {
-      this.close_stereoscopy(true);
-    }
-    if(this.isMobileDevice) {
-      this.isOpen_stereoscopy = false;
-      this.stereoscopy_fadeIn = false;
-    }
-  }
+  // SWITCH CAMERA
 
   public switch_cameraRegular(): void {
     if(!this.isActive_cameraRegular) {
       this.developmentService.switch_camera();
       this.isActive_cameraRegular = !this.isActive_cameraRegular;
       this.isActive_cameraAnaglyph = !this.isActive_cameraAnaglyph;
+      this.developmentService.activation_buttonsStereoscopy();
     }
   }
 
@@ -526,6 +445,7 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
       this.developmentService.switch_camera();
       this.isActive_cameraRegular = !this.isActive_cameraRegular;
       this.isActive_cameraAnaglyph = !this.isActive_cameraAnaglyph;
+      this.developmentService.desactivation_buttonsStereoscopy();
     }
   }
 
@@ -544,9 +464,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -578,9 +495,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -612,9 +526,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -646,9 +557,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -680,9 +588,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -714,9 +619,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -748,9 +650,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -782,9 +681,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -816,9 +712,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -850,9 +743,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -884,9 +774,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -918,9 +805,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -952,9 +836,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -986,9 +867,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -1020,9 +898,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -1054,9 +929,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -1088,9 +960,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 
@@ -1122,9 +991,6 @@ export class DevelopmentComponent implements OnInit, OnDestroy {
     }
     if(this.isMobileDevice) {
       this.isVisible_cacheMobileDevice = true;
-      if(this.isOpen_switchCamera) {
-        this.close_switchCamera();
-      }
     }
   }
 

@@ -12,36 +12,27 @@
 <div *ngIf="!isCV && isOpen_introduction && !isMini" class="container-introduction">
   <img class="logo-introductionDevelopment" src="../assets/img/titles/introduction_development.png" alt="development" [@logoDevelopment_fadeIn]="logoDevelopment_fadeIn">
 
-  <h1 *ngIf="language_english" class="h1-introduction" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">Unleash your creativity!</h1>
-  <h1 *ngIf="language_french" class="h1-introduction" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">Liberez votre créativité !</h1>
-  <h1 *ngIf="language_spanish" class="h1-introduction" [@h1Introduction_fadeIn]="h1Introduction_fadeIn">¡Da rienda suelta a tu creatividad!</h1>
+  <h1 *ngIf="language_english" class="h1-introduction" [@h1Introduction_fadeIn]="h1Introduction_fadeIn"></h1>
+  <h1 *ngIf="language_french" class="h1-introduction" [@h1Introduction_fadeIn]="h1Introduction_fadeIn"></h1>
+  <h1 *ngIf="language_spanish" class="h1-introduction" [@h1Introduction_fadeIn]="h1Introduction_fadeIn"></h1>
 
   <p *ngIf="language_english" class="text-introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
-    Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas.
+    The realization of applications calls for many resources, each operating at different levels.
     <br/>
     <br/>
-    Front-end and Back-end development for a better distribution of functionalities. Database management. Configuration and securing of your servers. 3D modeling and programming.
-    <br/>
-    <br/>
-    In this section you will find a description of each language, framework or software used.
+    You will find here the languages, frameworks and software that I use and which, for the most part, were used to create this site.
   </p>
   <p *ngIf="language_french" class="text-introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
-    Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.
+    La réalisation d'applications fait appel à de nombreuses ressources opérant chacune à des niveaux différents.
     <br/>
     <br/>
-    Developpement Front-end et Back-end pour une meilleure répartition des fonctionnalités. Gestion des bases de données. Configuration et sécurisation de vos serveurs. Modélisation et programmtion 3D.
-    <br/>
-    <br/>
-    Vous trouvez dans cette section une description de chaque langage, framework ou logiciel utilisé.
+    Vous trouverez ici les langages, frameworks et logiciels que j'utilise et qui, pour la plupart, ont servi à la réalisation de ce site.
   </p>
   <p *ngIf="language_spanish" class="text-introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
-    Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.
+    La realización de aplicaciones requiere muchos recursos, cada uno operando en diferentes niveles.
     <br/>
     <br/>
-    Desarrollo Front-end y Back-end para una mejor distribución de funcionalidades. Gestión de base de datos. Configuración y aseguramiento de sus servidores. Modelado y programación 3D.
-    <br/>
-    <br/>
-    En esta sección encontrará una descripción de cada idioma, marco o software utilizado.
+    Aquí encontrará los lenguajes, frameworks y software que utilizo y que, en su mayor parte, se utilizaron para crear este sitio.
   </p>
 
   <div *ngIf="language_english" class="spans-language" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
@@ -66,35 +57,26 @@
 
 <!-- INTRODUCTION !isCV && isMini -->
 
-<div #container_introduction *ngIf="!isCV && isOpen_introduction && isMini" class="container-introduction-mini">
+<div *ngIf="!isCV && isOpen_introduction && isMini" class="container-introduction-mini">
   <img class="logo-introductionDevelopment-mini" src="../assets/img/titles/introduction_development.png" alt="introduction_development" [@logoDevelopment_fadeIn]="logoDevelopment_fadeIn">
 
-  <p *ngIf="language_english" class="text-introduction-mini" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
-    Mastering all the skills necessary for website development, MK-Lab offers its partners the opportunity to realize their most creative ideas.
+  <p *ngIf="language_english" class="text-introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
+    The realization of applications calls for many resources, each operating at different levels.
     <br/>
     <br/>
-    Front-end and Back-end development for a better distribution of functionalities. Database management. Configuration and securing of your servers. 3D modeling and programming.
-    <br/>
-    <br/>
-    In this section you will find a description of each language, framework or software used.
+    You will find here the languages, frameworks and software that I use and which, for the most part, were used to create this site.
   </p>
-  <p *ngIf="language_french" class="text-introduction-mini" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
-    Maîtrisant l'ensemble des compétences nécessaires au développement de sites web, MK-Lab offre à ses partenaires la possibilité de réaliser leurs idées les plus créatives.
+  <p *ngIf="language_french" class="text-introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
+    La réalisation d'applications fait appel à de nombreuses ressources opérant chacune à des niveaux différents.
     <br/>
     <br/>
-    Developpement Front-end et Back-end pour une meilleure répartition des fonctionnalités. Gestion des bases de données. Configuration et sécurisation de vos serveurs. Modélisation et programmtion 3D.
-    <br/>
-    <br/>
-    Vous trouvez dans cette section une description de chaque langage, framework ou logiciel utilisé.
+    Vous trouverez ici les langages, frameworks et logiciels que j'utilise et qui, pour la plupart, ont servi à la réalisation de ce site.
   </p>
-  <p *ngIf="language_spanish" class="text-introduction-mini" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
-    Al dominar todas las habilidades necesarias para el desarrollo de sitios web, MK-Lab ofrece a sus socios la oportunidad de realizar sus ideas más creativas.
+  <p *ngIf="language_spanish" class="text-introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
+    La realización de aplicaciones requiere muchos recursos, cada uno operando en diferentes niveles.
     <br/>
     <br/>
-    Desarrollo Front-end y Back-end para una mejor distribución de funcionalidades. Gestión de base de datos. Configuración y aseguramiento de sus servidores. Modelado y programación 3D.
-    <br/>
-    <br/>
-    En esta sección encontrará una descripción de cada idioma, marco o software utilizado.
+    Aquí encontrará los lenguajes, frameworks y software que utilizo y que, en su mayor parte, se utilizaron para crear este sitio.
   </p>
 
   <div *ngIf="language_english" class="spans-language-mini" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
@@ -127,13 +109,22 @@
   <h1 *ngIf="language_spanish" class="h1-introduction" [@h1Introduction_fadeIn]="h1Introduction_fadeIn"></h1>
 
   <p *ngIf="language_english" class="text-introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
-
+    The realization of applications calls for many resources, each operating at different levels.
+    <br/>
+    <br/>
+    You will find here the languages, frameworks and software that I use and which, for the most part, were used to create this site.
   </p>
   <p *ngIf="language_french" class="text-introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
-
+    La réalisation d'applications fait appel à de nombreuses ressources opérant chacune à des niveaux différents.
+    <br/>
+    <br/>
+    Vous trouverez ici les langages, frameworks et logiciels que j'utilise et qui, pour la plupart, ont servi à la réalisation de ce site.
   </p>
   <p *ngIf="language_spanish" class="text-introduction" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
-
+    La realización de aplicaciones requiere muchos recursos, cada uno operando en diferentes niveles.
+    <br/>
+    <br/>
+    Aquí encontrará los lenguajes, frameworks y software que utilizo y que, en su mayor parte, se utilizaron para crear este sitio.
   </p>
 
   <div *ngIf="language_english" class="spans-language" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
@@ -156,12 +147,56 @@
   </button>
 </div>
 
+<!-- INTRODUCTION !isCV && isMini -->
+
+<div *ngIf="isCV && isOpen_introduction && isMini" class="container-introduction-mini">
+  <img class="logo-introductionDevelopment-mini" src="../assets/img/titles/introduction_development.png" alt="introduction_development" [@logoDevelopment_fadeIn]="logoDevelopment_fadeIn">
+
+  <p *ngIf="language_english" class="text-introduction-mini" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
+    The realization of applications calls for many resources, each operating at different levels.
+    <br/>
+    <br/>
+    You will find here the languages, frameworks and software that I use and which, for the most part, were used to create this site.
+  </p>
+  <p *ngIf="language_french" class="text-introduction-mini" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
+    La réalisation d'applications fait appel à de nombreuses ressources opérant chacune à des niveaux différents.
+    <br/>
+    <br/>
+    Vous trouverez ici les langages, frameworks et logiciels que j'utilise et qui, pour la plupart, ont servi à la réalisation de ce site.
+  </p>
+  <p *ngIf="language_spanish" class="text-introduction-mini" [@textIntroduction_fadeIn]="textIntroduction_fadeIn">
+    La realización de aplicaciones requiere muchos recursos, cada uno operando en diferentes niveles.
+    <br/>
+    <br/>
+    Aquí encontrará los lenguajes, frameworks y software que utilizo y que, en su mayor parte, se utilizaron para crear este sitio.
+  </p>
+
+  <div *ngIf="language_english" class="spans-language-mini" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
+    <span class="span-language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_french()">french</span>
+    <span class="span-language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">spanish</span>
+  </div>
+  <div *ngIf="language_french" class="spans-language-mini" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
+    <span class="span-language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">anglais</span>
+    <span class="span-language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_spanish()">espagnol</span>
+  </div>
+  <div *ngIf="language_spanish" class="spans-language-mini" [@spanLanguageIntroduction_fadeIn]="spanLanguageIntroduction_fadeIn">
+    <span class="span-language-mini badge badge-pill badge-info mr-2 p-1 pl-2 pr-2" (click)="change_language_english()">inglés</span>
+    <span class="span-language-mini badge badge-pill badge-info p-1 pl-2 pr-2" (click)="change_language_french()">francés</span>
+  </div>
+
+  <button type="button" class="btn-enter-mini btn btn-primary mt-3" [disabled]="isLoaded == false" [@btnCloseIntroduction_fadeIn]="btnCloseIntroduction_fadeIn" (click)="close_introduction()">
+    <span *ngIf="language_english">Enter</span>
+    <span *ngIf="language_french">Entrer</span>
+    <span *ngIf="language_spanish">Entrar</span>
+  </button>
+</div>
+
 <!-- MENU -->
 
 <div class="menu-container">
   <div class="menu">
-    <img *ngIf="!isOpen_switchCamera" class="menu-icon-stereoscopy menu-icons" src="../assets/img/menu/stereoscopy_menu.png" alt="stereoscopy" (click)="open_stereoscopy()">
-    <img *ngIf="isOpen_switchCamera" class="menu-icon-stereoscopy menu-icons" src="../assets/img/menu/close_stereoscopy_menu.png" alt="stereoscopy" (click)="close_stereoscopy(true)">
+    <img *ngIf="isActive_cameraRegular" class="menu-icon-cameraAnaglyph menu-icons" src="../assets/img/menu/camera_anaglyph.png" alt="camera anaglyph" (click)="switch_cameraAnaglyph()">
+    <img *ngIf="isActive_cameraAnaglyph" class="menu-icon-cameraAnaglyph menu-icons" src="../assets/img/menu/close_camera_anaglyph.png" alt="camera anaglyph" (click)="switch_cameraRegular()">
   </div>
 </div>
 
@@ -169,44 +204,6 @@
 
 <div class="initPosition-container">
   <img class="icon-initPosition" src="../assets/img/menu/init_position_50x50.png" alt="init position" (click)="init_position()">
-</div>
-
-<!-- SWITCH CAMERA -->
-
-<div class="switchCamera-container" [style.display]="isOpen_switchCamera ? 'block' : 'none'" [@switchCamera_fadeIn]="switchCamera_fadeIn">
-  <img class="red_-ross" src="../assets/img/icons/red_cross.png" alt="red cross" (click)="close_switchCamera()">
-
-  <div class="switch-camera">
-      <span *ngIf="language_english && !isMax576 && !isMin576" class="span-switchCamera">Switch camera</span>
-      <span *ngIf="language_french && !isMax576 && !isMin576" class="span-switchCamera">Changer de caméra</span>
-      <span *ngIf="language_spanish && !isMax576 && !isMin576" class="span-switchCamera">Cambiar de cámara</span>
-
-    <div class="div-cameraRegular">
-      <img class="img-cameraRegular imgs-camera" src="../assets/img/icons/camera_regular.png" alt="camera regular" (click)="switch_cameraRegular()">
-
-      <div *ngIf="language_english && isActive_cameraRegular" class="span-cameraRegular spans-camera isActive-spansCamera" (click)="switch_cameraRegular()">Regular</div>
-      <div *ngIf="language_english && !isActive_cameraRegular" class="span-cameraRegular spans-camera" (click)="switch_cameraRegular()">Regular</div>
-
-      <div *ngIf="language_french && isActive_cameraRegular" class="span-cameraRegular spans-camera isActive-spansCamera" (click)="switch_cameraRegular()">Normale</div>
-      <div *ngIf="language_french && !isActive_cameraRegular" class="span-cameraRegular spans-camera" (click)="switch_cameraRegular()">Normale</div>
-
-      <div *ngIf="language_spanish && isActive_cameraRegular" class="span-cameraRegular spans-camera isActive-spansCamera" (click)="switch_cameraRegular()">Regular</div>
-      <div *ngIf="language_spanish && !isActive_cameraRegular" class="span-cameraRegular spans-camera" (click)="switch_cameraRegular()">Regular</div>
-    </div>
-
-    <div class="div-cameraAnaglyph">
-      <img class="img-cameraAnaglyph imgs-camera" src="../assets/img/icons/camera_anaglyph.png" alt="camera anaglyph" (click)="switch_cameraAnaglyph()">
-
-      <div *ngIf="language_english && isActive_cameraAnaglyph" class="span-cameraRegular spans-camera isActive-spansCamera" (click)="switch_cameraAnaglyph()">Anaglyph</div>
-      <div *ngIf="language_english && !isActive_cameraAnaglyph" class="span-cameraRegular spans-camera" (click)="switch_cameraAnaglyph()">Anaglyph</div>
-
-      <div *ngIf="language_french && isActive_cameraAnaglyph" class="span-cameraRegular spans-camera isActive-spansCamera" (click)="switch_cameraAnaglyph()">Anaglyphe</div>
-      <div *ngIf="language_french && !isActive_cameraAnaglyph" class="span-cameraRegular spans-camera" (click)="switch_cameraAnaglyph()">Anaglyphe</div>
-
-      <div *ngIf="language_spanish && isActive_cameraAnaglyph" class="span-cameraRegular spans-camera isActive-spansCamera" (click)="switch_cameraAnaglyph()">Anaglifo</div>
-      <div *ngIf="language_spanish && !isActive_cameraAnaglyph" class="span-cameraRegular spans-camera" (click)="switch_cameraAnaglyph()">Anaglifo</div>
-    </div>
-  </div>
 </div>
 
 <!-- POSTGRESQL && !isMini -->
@@ -513,7 +510,7 @@
 
   <p class="texts-card" *ngIf="language_english">
     Leader for more than a decade, Java makes it possible to do everything in computing.<br/>
-    From creating desktop applications with the Swing API or JavaFX, to developing complete web applications (Internet or Intranet) with the Java EE specification, which make the language very popular in companies, Java is also an ideal language for the development of mobile applications for Androïd.
+    From creating desktop applications with the Swing API or JavaFX, to developing complete web applications (Internet or Intranet) with the Java specification, which make the language very popular in companies, Java is also an ideal language for the development of mobile applications for Androïd.
     When it comes to cloud computing, major service providers such as Amazon, Google and Microsoft all support this programming language for application development.
     Java Card provides an operating system for smart cards.
     Finally, Java is also widely used for the Internet of Things (Iot) which is set to experience exponential growth in the coming years with the deployment of 5G.
@@ -523,7 +520,7 @@
   </p>
   <p class="texts-card" *ngIf="language_french">
     Leader depuis plus d'une décennie, Java permet de tout faire en informatique.<br/>
-    De la création d'applications de bureau avec l'API Swing ou JavaFX, au développement d'applications web complètes (Internet ou Intranet) avec la spécification Java EE, qui rendent le langage très populaire dans les entreprises, Java est également un langage idéal pour le développement d'applications mobiles pour Androïd.
+    De la création d'applications de bureau avec l'API Swing ou JavaFX, au développement d'applications web complètes (Internet ou Intranet) avec la spécification Java, qui rendent le langage très populaire dans les entreprises, Java est également un langage idéal pour le développement d'applications mobiles pour Androïd.
     Concernant le cloud computing, les principaux fournisseurs de services tels que Amazon, Google et Microsoft prennent tous en charge ce langage de programmation pour le développement d'applications.
     Java Card fournit quant à lui un système d'exploitation pour carte à puce.
     Enfin, Java est aussi largement utilisé pour l'Internet des objets (Iot) qui est appelé à connaître une croissance exponentielle ces prochaines années avec le déploiment de la 5G.
@@ -533,7 +530,7 @@
   </p>
   <p class="texts-card" *ngIf="language_spanish">
     Líder durante más de una década, Java hace posible hacer todo en informática. <br/>
-    Desde la creación de aplicaciones de escritorio con la API Swing o JavaFX, hasta el desarrollo de aplicaciones web completas (Internet o Intranet) con la especificación Java EE, que hacen que el lenguaje sea muy popular en las empresas, Java también es un lenguaje ideal para el desarrollo de aplicaciones móviles para Androide.
+    Desde la creación de aplicaciones de escritorio con la API Swing o JavaFX, hasta el desarrollo de aplicaciones web completas (Internet o Intranet) con la especificación Java, que hacen que el lenguaje sea muy popular en las empresas, Java también es un lenguaje ideal para el desarrollo de aplicaciones móviles para Androide.
     Cuando se trata de computación en la nube, los principales proveedores de servicios como Amazon, Google y Microsoft admiten este lenguaje de programación para el desarrollo de aplicaciones.
     Java Card proporciona un sistema operativo para tarjetas inteligentes.
     Finalmente, Java también se usa ampliamente para Internet de las Cosas (Iot), que experimentará un crecimiento exponencial en los próximos años con el despliegue de 5G.
@@ -591,7 +588,7 @@
   <div class="card-right-mini">
     <p *ngIf="language_english" class="texts-card-mini">
       Leader for more than a decade, Java makes it possible to do everything in computing.<br/>
-      From creating desktop applications with the Swing API or JavaFX, to developing complete web applications (Internet or Intranet) with the Java EE specification, which make the language very popular in companies, Java is also an ideal language for the development of mobile applications for Androïd.
+      From creating desktop applications with the Swing API or JavaFX, to developing complete web applications (Internet or Intranet) with the Java specification, which make the language very popular in companies, Java is also an ideal language for the development of mobile applications for Androïd.
       When it comes to cloud computing, major service providers such as Amazon, Google and Microsoft all support this programming language for application development.
       Java Card provides an operating system for smart cards.
       Finally, Java is also widely used for the Internet of Things (Iot) which is set to experience exponential growth in the coming years with the deployment of 5G.
@@ -601,7 +598,7 @@
     </p>
     <p *ngIf="language_french" class="texts-card-mini">
       Leader depuis plus d'une décennie, Java permet de tout faire en informatique.<br/>
-      De la création d'applications de bureau avec l'API Swing ou JavaFX, au développement d'applications web complètes (Internet ou Intranet) avec la spécification Java EE, qui rendent le langage très populaire dans les entreprises, Java est également un langage idéal pour le développement d'applications mobiles pour Androïd.
+      De la création d'applications de bureau avec l'API Swing ou JavaFX, au développement d'applications web complètes (Internet ou Intranet) avec la spécification Java, qui rendent le langage très populaire dans les entreprises, Java est également un langage idéal pour le développement d'applications mobiles pour Androïd.
       Concernant le cloud computing, les principaux fournisseurs de services tels que Amazon, Google et Microsoft prennent tous en charge ce langage de programmation pour le développement d'applications.
       Java Card fournit quant à lui un système d'exploitation pour carte à puce.
       Enfin, Java est aussi largement utilisé pour l'Internet des objets (Iot) qui est appelé à connaître une croissance exponentielle ces prochaines années avec le déploiment de la 5G.
@@ -611,7 +608,7 @@
     </p>
     <p *ngIf="language_spanish" class="texts-card-mini">
       Líder durante más de una década, Java hace posible hacer todo en informática. <br/>
-      Desde la creación de aplicaciones de escritorio con la API Swing o JavaFX, hasta el desarrollo de aplicaciones web completas (Internet o Intranet) con la especificación Java EE, que hacen que el lenguaje sea muy popular en las empresas, Java también es un lenguaje ideal para el desarrollo de aplicaciones móviles para Androide.
+      Desde la creación de aplicaciones de escritorio con la API Swing o JavaFX, hasta el desarrollo de aplicaciones web completas (Internet o Intranet) con la especificación Java, que hacen que el lenguaje sea muy popular en las empresas, Java también es un lenguaje ideal para el desarrollo de aplicaciones móviles para Androide.
       Cuando se trata de computación en la nube, los principales proveedores de servicios como Amazon, Google y Microsoft admiten este lenguaje de programación para el desarrollo de aplicaciones.
       Java Card proporciona un sistema operativo para tarjetas inteligentes.
       Finalmente, Java también se usa ampliamente para Internet de las Cosas (Iot), que experimentará un crecimiento exponencial en los próximos años con el despliegue de 5G.
@@ -1016,6 +1013,9 @@
     <a class="links" onclick="window.open('https://getbootstrap.com/', '_blank'); return false;">Official website</a>
     <br/>
     <br/>
+    Still very widely used, it is important to understand its use. However, the appearance of CSS "grids" now allows a much flexible layout.
+    <br/>
+    <br/>
     <iframe class="videos" src="https://www.youtube.com/embed/77hwpuVHGps" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </p>
   <p class="texts-card" *ngIf="language_french">
@@ -1025,6 +1025,9 @@
     <a class="links" onclick="window.open('https://getbootstrap.com/', '_blank'); return false;">Official website</a>
     <br/>
     <br/>
+    Encore très largement utilisé, il est important de comprendre son utilisation. Toutefois, l'apparition des "grilles" CSS permet aujourd´hui une mise-en-page beaucoup souple.
+    <br/>
+    <br/>
     <iframe class="videos" src="https://www.youtube.com/embed/77hwpuVHGps" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </p>
   <p class="texts-card" *ngIf="language_spanish">
@@ -1032,6 +1035,9 @@
     <br/>
     <br/>
     <a class="links" onclick="window.open('https://getbootstrap.com/', '_blank'); return false;">Official website</a>
+    <br/>
+    <br/>
+    Aún muy utilizado, es importante comprender su uso. Sin embargo, la aparición de "cuadrículas" CSS ahora permite un diseño mucho más flexible.
     <br/>
     <br/>
     <iframe class="videos" src="https://www.youtube.com/embed/77hwpuVHGps" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
